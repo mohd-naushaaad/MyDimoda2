@@ -229,8 +229,7 @@ public class DMNotificationActivity extends Activity {
 
 				} else {
 					mIsRemember = true;
-					vBtnRemember
-							.setBackgroundResource(R.drawable.remember_checked_bg);
+					vBtnRemember.setBackgroundResource(R.drawable.remember_checked_bg);
 					FavoriteCloths();
 				}
 			}
