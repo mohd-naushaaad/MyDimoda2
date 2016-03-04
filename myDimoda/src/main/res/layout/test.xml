@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/layout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        android:padding="10dp" >
+
+        <TextView
+            android:id="@+id/title_txt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:lines="2"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:id="@+id/star_layout"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:layout_below="@id/title_txt"
+            android:layout_marginTop="5dp"
+            android:weightSum="100" >
+
+            <ImageView
+                android:id="@+id/star_img1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:padding="2dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/img_star" />
+
+            <ImageView
+                android:id="@+id/star_img2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:padding="2dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/img_star" />
+
+            <ImageView
+                android:id="@+id/star_img3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:padding="2dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/img_star" />
+
+            <ImageView
+                android:id="@+id/star_img4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:padding="2dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/img_star" />
+
+            <ImageView
+                android:id="@+id/star_img5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:padding="2dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/img_star" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/price_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/star_layout"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:text="Price : $$27.00"
+            android:textColor="#000000"
+            android:textSize="15sp" />
+
+        <LinearLayout
+            android:id="@+id/button_layout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:weightSum="100" >
+
+            <Button
+                android:id="@+id/my_style_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="48"
+                android:background="@drawable/signup_btn_sel"
+                android:text="My Style"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="4" />
+
+            <Button
+                android:id="@+id/buy_style_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="48"
+                android:background="@drawable/signup_btn_sel"
+                android:text="Buy My Style"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/product_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/button_layout"
+            android:layout_below="@id/price_txt"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:scaleType="centerCrop" />
+    </RelativeLayout>
+
+</RelativeLayout>

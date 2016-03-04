@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:circular="http://schemas.android.com/apk/res/com.mydimoda"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <RelativeLayout
+        android:id="@+id/item_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/edit_bg">
+
+        <FrameLayout
+            android:layout_width="@dimen/grid_width"
+            android:layout_height="@dimen/grid_width"
+            android:layout_centerInParent="true" >
+
+            <ImageView
+                android:id="@+id/item_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop" />
+
+            <com.mydimoda.widget.CircularProgressBar
+                android:id="@+id/item_progress"
+                style="@style/Widget.ProgressBar.Holo.CircularProgressBar"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                circular:strokeWidth="20" />
+
+            <TextView
+                android:id="@+id/typeText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:gravity="center"
+                android:textColor="#C8A200"
+                android:textSize="20sp" />
+
+        </FrameLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

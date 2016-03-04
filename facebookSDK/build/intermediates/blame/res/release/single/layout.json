@@ -1,0 +1,58 @@
+[
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\facebookSDK\\build\\intermediates\\res\\merged\\release\\layout\\com_facebook_login_activity_layout.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\facebookSDK\\src\\main\\res\\layout\\com_facebook_login_activity_layout.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\facebookSDK\\build\\intermediates\\res\\merged\\release\\layout\\com_facebook_usersettingsfragment.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\facebookSDK\\src\\main\\res\\layout\\com_facebook_usersettingsfragment.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\facebookSDK\\build\\intermediates\\res\\merged\\release\\layout\\com_facebook_picker_list_section_header.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\facebookSDK\\src\\main\\res\\layout\\com_facebook_picker_list_section_header.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\facebookSDK\\build\\intermediates\\res\\merged\\release\\layout\\com_facebook_picker_search_box.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\facebookSDK\\src\\main\\res\\layout\\com_facebook_picker_search_box.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\facebookSDK\\build\\intermediates\\res\\merged\\release\\layout\\com_facebook_search_bar_layout.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\facebookSDK\\src\\main\\res\\layout\\com_facebook_search_bar_layout.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\facebookSDK\\build\\intermediates\\res\\merged\\release\\layout\\com_facebook_picker_checkbox.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\facebookSDK\\src\\main\\res\\layout\\com_facebook_picker_checkbox.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\facebookSDK\\build\\intermediates\\res\\merged\\release\\layout\\com_facebook_picker_title_bar.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\facebookSDK\\src\\main\\res\\layout\\com_facebook_picker_title_bar.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\facebookSDK\\build\\intermediates\\res\\merged\\release\\layout\\com_facebook_picker_title_bar_stub.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\facebookSDK\\src\\main\\res\\layout\\com_facebook_picker_title_bar_stub.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\facebookSDK\\build\\intermediates\\res\\merged\\release\\layout\\com_facebook_picker_activity_circle_row.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\facebookSDK\\src\\main\\res\\layout\\com_facebook_picker_activity_circle_row.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\facebookSDK\\build\\intermediates\\res\\merged\\release\\layout\\com_facebook_picker_list_row.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\facebookSDK\\src\\main\\res\\layout\\com_facebook_picker_list_row.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\facebookSDK\\build\\intermediates\\res\\merged\\release\\layout\\com_facebook_placepickerfragment.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\facebookSDK\\src\\main\\res\\layout\\com_facebook_placepickerfragment.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\facebookSDK\\build\\intermediates\\res\\merged\\release\\layout\\com_facebook_placepickerfragment_list_row.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\facebookSDK\\src\\main\\res\\layout\\com_facebook_placepickerfragment_list_row.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\facebookSDK\\build\\intermediates\\res\\merged\\release\\layout\\com_facebook_friendpickerfragment.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\facebookSDK\\src\\main\\res\\layout\\com_facebook_friendpickerfragment.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\facebookSDK\\build\\intermediates\\res\\merged\\release\\layout\\com_facebook_picker_image.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\facebookSDK\\src\\main\\res\\layout\\com_facebook_picker_image.xml"
+    }
+]

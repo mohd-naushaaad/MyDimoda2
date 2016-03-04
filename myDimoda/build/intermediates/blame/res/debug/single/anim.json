@@ -1,0 +1,46 @@
+[
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\anim\\slide_out_to_bottom.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\pullSDK\\unspecified\\res\\anim\\slide_out_to_bottom.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\anim\\slide_in_from_top.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\pullSDK\\unspecified\\res\\anim\\slide_in_from_top.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\anim\\slide_in_from_bottom.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\pullSDK\\unspecified\\res\\anim\\slide_in_from_bottom.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\anim\\slide_down_out.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\anim\\slide_down_out.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\anim\\slide_up.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\anim\\slide_up.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\anim\\slide_up_out.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\anim\\slide_up_out.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\anim\\dialog_up_bottom.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\anim\\dialog_up_bottom.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\anim\\button_click.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\anim\\button_click.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\anim\\slide_down.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\anim\\slide_down.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\anim\\slide_out_to_top.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\pullSDK\\unspecified\\res\\anim\\slide_out_to_top.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\anim\\dialog_bottom_up.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\anim\\dialog_bottom_up.xml"
+    }
+]

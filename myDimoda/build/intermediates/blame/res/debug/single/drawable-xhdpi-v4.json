@@ -1,0 +1,470 @@
+[
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\list_formal.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\list_formal.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\test2.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\test2.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\mydimoda4.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\mydimoda4.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\progress_custom.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\progress_custom.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\intro_occasion.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\intro_occasion.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\rate_app_icon.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\rate_app_icon.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\stamp_btn.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\stamp_btn.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\login_bg.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\login_bg.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\btn_white_round_sel.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\btn_white_round_sel.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\logout_btn.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\logout_btn.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\com_facebook_logo.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\drawable-xhdpi-v4\\com_facebook_logo.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\edit_white_gray_bg.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\edit_white_gray_bg.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\intro_hangup.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\intro_hangup.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\intro_menu.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\intro_menu.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\icon_tie.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\icon_tie.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\white_bg.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\white_bg.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\home_btn.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\home_btn.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\edit_yel_line_bg.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\edit_yel_line_bg.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\icon_refresh.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\icon_refresh.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\filter_icon.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\filter_icon.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\img_star_47.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\img_star_47.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\default_ptr_rotate.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\pullSDK\\unspecified\\res\\drawable-xhdpi-v4\\default_ptr_rotate.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\hangup_bg.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\hangup_bg.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\title.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\title.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\com_facebook_button_blue_focused.9.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\drawable-xhdpi-v4\\com_facebook_button_blue_focused.9.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\list_tie.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\list_tie.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\list_shirt.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\list_shirt.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\camera_btn.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\camera_btn.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\style_bg.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\style_bg.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\intro_puchase1.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\intro_puchase1.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\capture_btn.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\capture_btn.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\restore.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\restore.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\button_bg.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\button_bg.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\img_star_40.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\img_star_40.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\com_facebook_button_grey_normal.9.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\drawable-xhdpi-v4\\com_facebook_button_grey_normal.9.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\com_facebook_button_blue_pressed.9.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\drawable-xhdpi-v4\\com_facebook_button_blue_pressed.9.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\intro_video.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\intro_video.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\back_btn.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\back_btn.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\edit_white_rect_bg.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\edit_white_rect_bg.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\com_facebook_picker_magnifier.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\drawable-xhdpi-v4\\com_facebook_picker_magnifier.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\intro_formal.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\intro_formal.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\remember_bg.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\remember_bg.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\remember_checked_bg.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\remember_checked_bg.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\list_bg_sel.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\list_bg_sel.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\list_cloth.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\list_cloth.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\findme_bg.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\findme_bg.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\img_star_48.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\img_star_48.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\icon_shirt.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\icon_shirt.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\default_ptr_flip.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\pullSDK\\unspecified\\res\\drawable-xhdpi-v4\\default_ptr_flip.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\img_star_41.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\img_star_41.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\signup_background.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\signup_background.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\img_star_49.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\img_star_49.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\facebook_btn.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\facebook_btn.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\edit_empty_round_bg.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\edit_empty_round_bg.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\list_bg.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\list_bg.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\com_facebook_button_blue_normal.9.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\drawable-xhdpi-v4\\com_facebook_button_blue_normal.9.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\icon_shoes.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\icon_shoes.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\intro_detail.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\intro_detail.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\btn_sel.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\btn_sel.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\empty.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\empty.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\com_facebook_close.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\drawable-xhdpi-v4\\com_facebook_close.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_photos.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\ic_photos.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\img_check_sel.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\img_check_sel.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\icon_pants.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\icon_pants.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\icon_intro.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\icon_intro.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\test1.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\test1.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\list_after.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\list_after.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\img_star_45.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\img_star_45.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\img_star_42.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\img_star_42.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\logout_btn_sel.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\logout_btn_sel.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\capture_btn_sel.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\capture_btn_sel.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\img_star_44.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\img_star_44.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\edit_white_round_bg.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\edit_white_round_bg.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\com_facebook_button_grey_focused.9.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\drawable-xhdpi-v4\\com_facebook_button_grey_focused.9.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_camera.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\ic_camera.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\edit_yellow_round_bg.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\edit_yellow_round_bg.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\list_item_reverse_sel.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\list_item_reverse_sel.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\like_btn_sel.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\like_btn_sel.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\icon_cort.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\icon_cort.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\edit_bg.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\edit_bg.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\icon_suit.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\icon_suit.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\back_btn_sel.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\back_btn_sel.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\mydimoda3.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\mydimoda3.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\like_btn.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\like_btn.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\list_casual.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\list_casual.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\list_favorites.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\list_favorites.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\btn_yellow_sel.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\btn_yellow_sel.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\stamp_btn_sel.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\stamp_btn_sel.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\dimiss_btn.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\dimiss_btn.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\edit_empty_bg.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\edit_empty_bg.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\scanbar.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\scanbar.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\notification.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\notification.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\icon_findme.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\icon_findme.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\com_facebook_button_grey_pressed.9.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\drawable-xhdpi-v4\\com_facebook_button_grey_pressed.9.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\splash_bg.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\splash_bg.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\signup_btn_sel.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\signup_btn_sel.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\list_item_sel.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\list_item_sel.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\auto_bg.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\auto_bg.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\img_star_46.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\img_star_46.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\com_facebook_inverse_icon.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\drawable-xhdpi-v4\\com_facebook_inverse_icon.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\img_star_43.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\img_star_43.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\logout.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\logout.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\list_trouser.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\list_trouser.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\menu_bg.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\menu_bg.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\home_btn_sel.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\home_btn_sel.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\intro_purchase2.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\intro_purchase2.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\btn_menu_sel.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\btn_menu_sel.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\progress_bg.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\progress_bg.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\icon_menu_normal.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\icon_menu_normal.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\help_bg.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\help_bg.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\btn_menu_reverse_sel.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\btn_menu_reverse_sel.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\indicator_arrow.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\pullSDK\\unspecified\\res\\drawable-xhdpi-v4\\indicator_arrow.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\btn_list_sel.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\btn_list_sel.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\icon_menu_sel.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\icon_menu_sel.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\img_star.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\img_star.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\dismiss_btn_sel.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\dismiss_btn_sel.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_launcher.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-xhdpi\\ic_launcher.png"
+    }
+]

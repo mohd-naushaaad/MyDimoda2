@@ -1,0 +1,246 @@
+[
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_picker_title_bar_stub.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\layout\\com_facebook_picker_title_bar_stub.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_crop.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_crop.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\crop_image_view.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\crop_image_view.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_occasion.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_occasion.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_usersettingsfragment.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\layout\\com_facebook_usersettingsfragment.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\notification_view.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\notification_view.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_camera.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_camera.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_picker_list_section_header.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\layout\\com_facebook_picker_list_section_header.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_placepickerfragment.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\layout\\com_facebook_placepickerfragment.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\test.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\test.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_intro2.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\fragment_intro2.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\list_menu_item.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\list_menu_item.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_fashion_eight.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_fashion_eight.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_picker_image.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\layout\\com_facebook_picker_image.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\section_row_view.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\section_row_view.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_capture.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_capture.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_auto.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_auto.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_placepickerfragment_list_row.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\layout\\com_facebook_placepickerfragment_list_row.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\loading_empty_view.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\loading_empty_view.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_favorite.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_favorite.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_capture_option.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_capture_option.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_process.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_process.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\layout_rate_app.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\layout_rate_app.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_resetpassword.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_resetpassword.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\grid_cloth_delete_item.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\grid_cloth_delete_item.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\pull_to_refresh_header_horizontal.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\pullSDK\\unspecified\\res\\layout\\pull_to_refresh_header_horizontal.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_setting.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_setting.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\index_bar_view.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\index_bar_view.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_picker_activity_circle_row.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\layout\\com_facebook_picker_activity_circle_row.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_detail.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_detail.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_exact.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_exact.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\preview_view.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\preview_view.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_search_bar_layout.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\layout\\com_facebook_search_bar_layout.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_picker_title_bar.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\layout\\com_facebook_picker_title_bar.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_notfashion.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_notfashion.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_home.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\fragment_home.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_picker_checkbox.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\layout\\com_facebook_picker_checkbox.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\row_view.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\row_view.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\list_occasion_item.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\list_occasion_item.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_delete.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\dialog_delete.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_picker_search_box.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\layout\\com_facebook_picker_search_box.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_hangup.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_hangup.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_home.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_home.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_login.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_login.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\grid_fashion_layout.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\grid_fashion_layout.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\list_favorite_item.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\list_favorite_item.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_help.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_help.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_picker_list_row.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\layout\\com_facebook_picker_list_row.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_friendpickerfragment.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\layout\\com_facebook_friendpickerfragment.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\pull_to_refresh_header_vertical.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\pullSDK\\unspecified\\res\\layout\\pull_to_refresh_header_vertical.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_style.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_style.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_fashion.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_fashion.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_findme.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_findme.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_intro.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_intro.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\main_act.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\main_act.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\grid_product_item.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\grid_product_item.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_login_activity_layout.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\layout\\com_facebook_login_activity_layout.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_algorithm.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_algorithm.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_signup.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_signup.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_intro1.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\fragment_intro1.xml"
+    }
+]

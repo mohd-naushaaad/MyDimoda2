@@ -1,0 +1,1698 @@
+[
+    {
+        "outputFile": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\values\\values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endLine": 335,
+                    "endColumn": 19,
+                    "endOffset": 10052
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\array.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 336,
+                    "startColumn": 4,
+                    "startOffset": 10057,
+                    "endLine": 669,
+                    "endColumn": 19,
+                    "endOffset": 22449
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\array.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 670,
+                    "startColumn": 4,
+                    "startOffset": 22454,
+                    "endLine": 716,
+                    "endColumn": 19,
+                    "endOffset": 23932
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\array.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 717,
+                    "startColumn": 4,
+                    "startOffset": 23937,
+                    "endLine": 763,
+                    "endColumn": 19,
+                    "endOffset": 25420
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\array.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 764,
+                    "startColumn": 4,
+                    "startOffset": 25425,
+                    "endLine": 825,
+                    "endColumn": 19,
+                    "endOffset": 27409
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\array.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 826,
+                    "startColumn": 4,
+                    "startOffset": 27414,
+                    "endLine": 887,
+                    "endColumn": 19,
+                    "endOffset": 29403
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\array.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 888,
+                    "startColumn": 4,
+                    "startOffset": 29408,
+                    "endLine": 931,
+                    "endColumn": 19,
+                    "endOffset": 30836
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\array.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 932,
+                    "startColumn": 4,
+                    "startOffset": 30841,
+                    "endLine": 975,
+                    "endColumn": 19,
+                    "endOffset": 32274
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\array.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 976,
+                    "startColumn": 4,
+                    "startOffset": 32279,
+                    "endLine": 1032,
+                    "endColumn": 19,
+                    "endOffset": 34028
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\array.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1033,
+                    "startColumn": 4,
+                    "startOffset": 34033,
+                    "endLine": 1089,
+                    "endColumn": 19,
+                    "endOffset": 35787
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\array.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1090,
+                    "startColumn": 4,
+                    "startOffset": 35792,
+                    "endColumn": 49,
+                    "endOffset": 35837
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\colors.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1091,
+                    "startColumn": 4,
+                    "startOffset": 35842,
+                    "endColumn": 53,
+                    "endOffset": 35891
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\colors.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1092,
+                    "startColumn": 4,
+                    "startOffset": 35896,
+                    "endColumn": 70,
+                    "endOffset": 35962
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\colors.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1093,
+                    "startColumn": 4,
+                    "startOffset": 35967,
+                    "endColumn": 68,
+                    "endOffset": 36031
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\colors.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1094,
+                    "startColumn": 4,
+                    "startOffset": 36036,
+                    "endColumn": 68,
+                    "endOffset": 36100
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\colors.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1095,
+                    "startColumn": 4,
+                    "startOffset": 36105,
+                    "endColumn": 65,
+                    "endOffset": 36166
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\colors.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1096,
+                    "startColumn": 4,
+                    "startOffset": 36171,
+                    "endColumn": 45,
+                    "endOffset": 36212
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\colors.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1097,
+                    "startColumn": 4,
+                    "startOffset": 36217,
+                    "endColumn": 53,
+                    "endOffset": 36266
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\colors.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1098,
+                    "startColumn": 4,
+                    "startOffset": 36271,
+                    "endColumn": 52,
+                    "endOffset": 36319
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\colors.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1099,
+                    "startColumn": 4,
+                    "startOffset": 36324,
+                    "endColumn": 45,
+                    "endOffset": 36365
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\colors.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1100,
+                    "startColumn": 4,
+                    "startOffset": 36370,
+                    "endColumn": 51,
+                    "endOffset": 36417
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1101,
+                    "startColumn": 4,
+                    "startOffset": 36422,
+                    "endColumn": 67,
+                    "endOffset": 36485
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1102,
+                    "startColumn": 4,
+                    "startOffset": 36490,
+                    "endColumn": 75,
+                    "endOffset": 36561
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1103,
+                    "startColumn": 4,
+                    "startOffset": 36566,
+                    "endColumn": 69,
+                    "endOffset": 36631
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1104,
+                    "startColumn": 4,
+                    "startOffset": 36636,
+                    "endColumn": 90,
+                    "endOffset": 36722
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1105,
+                    "startColumn": 4,
+                    "startOffset": 36727,
+                    "endColumn": 88,
+                    "endOffset": 36811
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1106,
+                    "startColumn": 4,
+                    "startOffset": 36816,
+                    "endColumn": 92,
+                    "endOffset": 36904
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1107,
+                    "startColumn": 4,
+                    "startOffset": 36909,
+                    "endColumn": 49,
+                    "endOffset": 36954
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\colors.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1108,
+                    "startColumn": 4,
+                    "startOffset": 36959,
+                    "endColumn": 47,
+                    "endOffset": 37002
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\colors.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1109,
+                    "startColumn": 4,
+                    "startOffset": 37007,
+                    "endColumn": 52,
+                    "endOffset": 37055
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\colors.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1110,
+                    "startColumn": 4,
+                    "startOffset": 37060,
+                    "endColumn": 45,
+                    "endOffset": 37101
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\colors.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1111,
+                    "startColumn": 4,
+                    "startOffset": 37106,
+                    "endColumn": 58,
+                    "endOffset": 37160
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\colors.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1112,
+                    "startColumn": 4,
+                    "startOffset": 37165,
+                    "endColumn": 55,
+                    "endOffset": 37216
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\colors.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1113,
+                    "startColumn": 4,
+                    "startOffset": 37221,
+                    "endColumn": 53,
+                    "endOffset": 37270
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\colors.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1114,
+                    "startColumn": 4,
+                    "startOffset": 37275,
+                    "endColumn": 49,
+                    "endOffset": 37320
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\colors.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1115,
+                    "startColumn": 4,
+                    "startOffset": 37325,
+                    "endColumn": 47,
+                    "endOffset": 37368
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\colors.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1116,
+                    "startColumn": 4,
+                    "startOffset": 37373,
+                    "endColumn": 47,
+                    "endOffset": 37416
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\colors.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1117,
+                    "startColumn": 4,
+                    "startOffset": 37421,
+                    "endColumn": 53,
+                    "endOffset": 37470
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\colors.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1118,
+                    "startColumn": 4,
+                    "startOffset": 37475,
+                    "endColumn": 51,
+                    "endOffset": 37522
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\colors.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1119,
+                    "startColumn": 4,
+                    "startOffset": 37527,
+                    "endColumn": 51,
+                    "endOffset": 37574
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\colors.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1120,
+                    "startColumn": 4,
+                    "startOffset": 37579,
+                    "endColumn": 51,
+                    "endOffset": 37626
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\colors.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1121,
+                    "startColumn": 4,
+                    "startOffset": 37631,
+                    "endColumn": 49,
+                    "endOffset": 37676
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\colors.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1122,
+                    "startColumn": 4,
+                    "startOffset": 37681,
+                    "endColumn": 56,
+                    "endOffset": 37733
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\colors.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1123,
+                    "startColumn": 4,
+                    "startOffset": 37738,
+                    "endColumn": 52,
+                    "endOffset": 37786
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\colors.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1124,
+                    "startColumn": 4,
+                    "startOffset": 37791,
+                    "endColumn": 46,
+                    "endOffset": 37833
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\colors.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1125,
+                    "startColumn": 4,
+                    "startOffset": 37838,
+                    "endColumn": 47,
+                    "endOffset": 37881
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\colors.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1126,
+                    "startColumn": 4,
+                    "startOffset": 37886,
+                    "endColumn": 47,
+                    "endOffset": 37929
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\colors.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1127,
+                    "startColumn": 4,
+                    "startOffset": 37934,
+                    "endColumn": 47,
+                    "endOffset": 37977
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\colors.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1128,
+                    "startColumn": 4,
+                    "startOffset": 37982,
+                    "endColumn": 52,
+                    "endOffset": 38030
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\colors.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1129,
+                    "startColumn": 4,
+                    "startOffset": 38035,
+                    "endColumn": 52,
+                    "endOffset": 38083
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\colors.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1130,
+                    "startColumn": 4,
+                    "startOffset": 38088,
+                    "endColumn": 51,
+                    "endOffset": 38135
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\colors.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1131,
+                    "startColumn": 4,
+                    "startOffset": 38140,
+                    "endColumn": 39,
+                    "endOffset": 38175
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\colors.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1141,
+                    "startColumn": 4,
+                    "startOffset": 42356,
+                    "endColumn": 57,
+                    "endOffset": 42409
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\dimens.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1142,
+                    "startColumn": 4,
+                    "startOffset": 42414,
+                    "endColumn": 55,
+                    "endOffset": 42465
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\dimens.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1143,
+                    "startColumn": 4,
+                    "startOffset": 42470,
+                    "endColumn": 79,
+                    "endOffset": 42545
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1144,
+                    "startColumn": 4,
+                    "startOffset": 42550,
+                    "endColumn": 68,
+                    "endOffset": 42614
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1145,
+                    "startColumn": 4,
+                    "startOffset": 42619,
+                    "endColumn": 67,
+                    "endOffset": 42682
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1146,
+                    "startColumn": 4,
+                    "startOffset": 42687,
+                    "endColumn": 67,
+                    "endOffset": 42750
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1147,
+                    "startColumn": 4,
+                    "startOffset": 42755,
+                    "endColumn": 65,
+                    "endOffset": 42816
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1148,
+                    "startColumn": 4,
+                    "startOffset": 42821,
+                    "endColumn": 65,
+                    "endOffset": 42882
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1149,
+                    "startColumn": 4,
+                    "startOffset": 42887,
+                    "endColumn": 67,
+                    "endOffset": 42950
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1150,
+                    "startColumn": 4,
+                    "startOffset": 42955,
+                    "endColumn": 81,
+                    "endOffset": 43032
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1151,
+                    "startColumn": 4,
+                    "startOffset": 43037,
+                    "endColumn": 82,
+                    "endOffset": 43115
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1152,
+                    "startColumn": 4,
+                    "startOffset": 43120,
+                    "endColumn": 80,
+                    "endOffset": 43196
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1153,
+                    "startColumn": 4,
+                    "startOffset": 43201,
+                    "endColumn": 87,
+                    "endOffset": 43284
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1154,
+                    "startColumn": 4,
+                    "startOffset": 43289,
+                    "endColumn": 86,
+                    "endOffset": 43371
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1155,
+                    "startColumn": 4,
+                    "startOffset": 43376,
+                    "endColumn": 42,
+                    "endOffset": 43414
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\dimens.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1156,
+                    "startColumn": 4,
+                    "startOffset": 43419,
+                    "endColumn": 63,
+                    "endOffset": 43478
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\pullSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1157,
+                    "startColumn": 4,
+                    "startOffset": 43483,
+                    "endColumn": 63,
+                    "endOffset": 43542
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\pullSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1158,
+                    "startColumn": 4,
+                    "startOffset": 43547,
+                    "endColumn": 52,
+                    "endOffset": 43595
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\dimens.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1159,
+                    "startColumn": 4,
+                    "startOffset": 43600,
+                    "endColumn": 55,
+                    "endOffset": 43651
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\dimens.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1160,
+                    "startColumn": 4,
+                    "startOffset": 43656,
+                    "endColumn": 51,
+                    "endOffset": 43703
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\dimens.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1161,
+                    "startColumn": 4,
+                    "startOffset": 43708,
+                    "endColumn": 54,
+                    "endOffset": 43758
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\pullSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1162,
+                    "startColumn": 4,
+                    "startOffset": 43763,
+                    "endColumn": 56,
+                    "endOffset": 43815
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\pullSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1163,
+                    "startColumn": 4,
+                    "startOffset": 43820,
+                    "endColumn": 54,
+                    "endOffset": 43870
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\pullSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1164,
+                    "startColumn": 4,
+                    "startOffset": 43875,
+                    "endColumn": 44,
+                    "endOffset": 43915
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\dimens.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1165,
+                    "startColumn": 4,
+                    "startOffset": 43920,
+                    "endColumn": 53,
+                    "endOffset": 43969
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\dimens.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1166,
+                    "startColumn": 4,
+                    "startOffset": 43974,
+                    "endColumn": 85,
+                    "endOffset": 44055
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1167,
+                    "startColumn": 4,
+                    "startOffset": 44060,
+                    "endColumn": 37,
+                    "endOffset": 44093
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\pullSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1168,
+                    "startColumn": 4,
+                    "startOffset": 44098,
+                    "endColumn": 39,
+                    "endOffset": 44133
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\pullSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1169,
+                    "startColumn": 4,
+                    "startOffset": 44138,
+                    "endColumn": 36,
+                    "endOffset": 44170
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\pullSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1170,
+                    "startColumn": 4,
+                    "startOffset": 44175,
+                    "endColumn": 52,
+                    "endOffset": 44223
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1171,
+                    "startColumn": 4,
+                    "startOffset": 44228,
+                    "endColumn": 45,
+                    "endOffset": 44269
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1172,
+                    "startColumn": 4,
+                    "startOffset": 44274,
+                    "endColumn": 114,
+                    "endOffset": 44384
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1173,
+                    "startColumn": 4,
+                    "startOffset": 44389,
+                    "endColumn": 57,
+                    "endOffset": 44442
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1174,
+                    "startColumn": 4,
+                    "startOffset": 44447,
+                    "endColumn": 70,
+                    "endOffset": 44513
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1175,
+                    "startColumn": 4,
+                    "startOffset": 44518,
+                    "endColumn": 73,
+                    "endOffset": 44587
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1176,
+                    "startColumn": 4,
+                    "startOffset": 44592,
+                    "endColumn": 117,
+                    "endOffset": 44705
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1177,
+                    "startColumn": 4,
+                    "startOffset": 44710,
+                    "endColumn": 94,
+                    "endOffset": 44800
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1178,
+                    "startColumn": 4,
+                    "startOffset": 44805,
+                    "endColumn": 59,
+                    "endOffset": 44860
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1179,
+                    "startColumn": 4,
+                    "startOffset": 44865,
+                    "endColumn": 71,
+                    "endOffset": 44932
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1180,
+                    "startColumn": 4,
+                    "startOffset": 44937,
+                    "endColumn": 85,
+                    "endOffset": 45018
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1181,
+                    "startColumn": 4,
+                    "startOffset": 45023,
+                    "endColumn": 73,
+                    "endOffset": 45092
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1182,
+                    "startColumn": 4,
+                    "startOffset": 45097,
+                    "endColumn": 73,
+                    "endOffset": 45166
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1183,
+                    "startColumn": 4,
+                    "startOffset": 45171,
+                    "endColumn": 82,
+                    "endOffset": 45249
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1184,
+                    "startColumn": 4,
+                    "startOffset": 45254,
+                    "endColumn": 100,
+                    "endOffset": 45350
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1185,
+                    "startColumn": 4,
+                    "startOffset": 45355,
+                    "endColumn": 79,
+                    "endOffset": 45430
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1186,
+                    "startColumn": 4,
+                    "startOffset": 45435,
+                    "endColumn": 54,
+                    "endOffset": 45485
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1187,
+                    "startColumn": 4,
+                    "startOffset": 45490,
+                    "endColumn": 69,
+                    "endOffset": 45555
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1188,
+                    "startColumn": 4,
+                    "startOffset": 45560,
+                    "endColumn": 87,
+                    "endOffset": 45643
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1189,
+                    "startColumn": 4,
+                    "startOffset": 45648,
+                    "endColumn": 91,
+                    "endOffset": 45735
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1190,
+                    "startColumn": 4,
+                    "startOffset": 45740,
+                    "endColumn": 99,
+                    "endOffset": 45835
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1191,
+                    "startColumn": 4,
+                    "startOffset": 45840,
+                    "endColumn": 173,
+                    "endOffset": 46009
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1192,
+                    "startColumn": 4,
+                    "startOffset": 46014,
+                    "endColumn": 165,
+                    "endOffset": 46175
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1193,
+                    "startColumn": 4,
+                    "startOffset": 46180,
+                    "endColumn": 130,
+                    "endOffset": 46306
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1194,
+                    "startColumn": 4,
+                    "startOffset": 46311,
+                    "endColumn": 128,
+                    "endOffset": 46435
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1195,
+                    "startColumn": 4,
+                    "startOffset": 46440,
+                    "endColumn": 142,
+                    "endOffset": 46578
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1196,
+                    "startColumn": 4,
+                    "startOffset": 46583,
+                    "endColumn": 83,
+                    "endOffset": 46662
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1197,
+                    "startColumn": 4,
+                    "startOffset": 46667,
+                    "endColumn": 81,
+                    "endOffset": 46744
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1198,
+                    "startColumn": 4,
+                    "startOffset": 46749,
+                    "endColumn": 89,
+                    "endOffset": 46834
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1199,
+                    "startColumn": 4,
+                    "startOffset": 46839,
+                    "endColumn": 59,
+                    "endOffset": 46894
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1200,
+                    "startColumn": 4,
+                    "startOffset": 46899,
+                    "endColumn": 74,
+                    "endOffset": 46969
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1201,
+                    "startColumn": 4,
+                    "startOffset": 46974,
+                    "endColumn": 88,
+                    "endOffset": 47058
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1202,
+                    "startColumn": 4,
+                    "startOffset": 47063,
+                    "endColumn": 112,
+                    "endOffset": 47171
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1203,
+                    "startColumn": 4,
+                    "startOffset": 47176,
+                    "endColumn": 140,
+                    "endOffset": 47312
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1204,
+                    "startColumn": 4,
+                    "startOffset": 47317,
+                    "endColumn": 117,
+                    "endOffset": 47430
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1205,
+                    "startColumn": 4,
+                    "startOffset": 47435,
+                    "endColumn": 438,
+                    "endOffset": 47869
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1206,
+                    "startColumn": 4,
+                    "startOffset": 47874,
+                    "endColumn": 52,
+                    "endOffset": 47922
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1207,
+                    "startColumn": 4,
+                    "startOffset": 47927,
+                    "endColumn": 101,
+                    "endOffset": 48024
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\pullSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1208,
+                    "startColumn": 4,
+                    "startOffset": 48029,
+                    "endColumn": 113,
+                    "endOffset": 48138
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\pullSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1209,
+                    "startColumn": 4,
+                    "startOffset": 48143,
+                    "endColumn": 107,
+                    "endOffset": 48246
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\pullSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1210,
+                    "startColumn": 4,
+                    "startOffset": 48251,
+                    "endColumn": 71,
+                    "endOffset": 48318
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\pullSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1211,
+                    "startColumn": 4,
+                    "startOffset": 48323,
+                    "endColumn": 69,
+                    "endOffset": 48388
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\pullSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1212,
+                    "startColumn": 4,
+                    "startOffset": 48393,
+                    "endColumn": 77,
+                    "endOffset": 48466
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\pullSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1213,
+                    "startColumn": 4,
+                    "startOffset": 48471,
+                    "endColumn": 138,
+                    "endOffset": 48605
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1214,
+                    "startColumn": 4,
+                    "startOffset": 48610,
+                    "endColumn": 52,
+                    "endOffset": 48658
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1215,
+                    "startColumn": 4,
+                    "startOffset": 48663,
+                    "endColumn": 51,
+                    "endOffset": 48710
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1216,
+                    "startColumn": 4,
+                    "startOffset": 48715,
+                    "endColumn": 52,
+                    "endOffset": 48763
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1217,
+                    "startColumn": 4,
+                    "startOffset": 48768,
+                    "endColumn": 62,
+                    "endOffset": 48826
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 28,
+                        "startColumn": 4,
+                        "startOffset": 2337,
+                        "endColumn": 62,
+                        "endOffset": 2395
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1218,
+                    "startColumn": 4,
+                    "startOffset": 48831,
+                    "endColumn": 49,
+                    "endOffset": 48876
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1219,
+                    "startColumn": 4,
+                    "startOffset": 48881,
+                    "endColumn": 52,
+                    "endOffset": 48929
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1220,
+                    "startColumn": 4,
+                    "startOffset": 48934,
+                    "endColumn": 45,
+                    "endOffset": 48975
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1221,
+                    "startColumn": 4,
+                    "startOffset": 48980,
+                    "endLine": 1228,
+                    "endColumn": 12,
+                    "endOffset": 49267
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\styles.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1229,
+                    "startColumn": 4,
+                    "startOffset": 49272,
+                    "endLine": 1231,
+                    "endColumn": 12,
+                    "endOffset": 49427
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\styles.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1232,
+                    "startColumn": 4,
+                    "startOffset": 49432,
+                    "endColumn": 26,
+                    "endOffset": 49454
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\styles.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1233,
+                    "startColumn": 4,
+                    "startOffset": 49459,
+                    "endLine": 1241,
+                    "endColumn": 12,
+                    "endOffset": 49991
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\styles.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1242,
+                    "startColumn": 4,
+                    "startOffset": 49996,
+                    "endLine": 1245,
+                    "endColumn": 12,
+                    "endOffset": 50201
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values\\styles.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1246,
+                    "startColumn": 4,
+                    "startOffset": 50206,
+                    "endLine": 1255,
+                    "endColumn": 12,
+                    "endOffset": 50880
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1256,
+                    "startColumn": 4,
+                    "startOffset": 50885,
+                    "endLine": 1264,
+                    "endColumn": 12,
+                    "endOffset": 51377
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values\\values.xml"
+                }
+            }
+        ]
+    }
+]

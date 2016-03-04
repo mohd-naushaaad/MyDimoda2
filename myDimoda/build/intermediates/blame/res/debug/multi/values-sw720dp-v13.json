@@ -1,0 +1,26 @@
+[
+    {
+        "outputFile": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\values-sw720dp-v13\\values-sw720dp-v13.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 42,
+                    "endOffset": 93
+                },
+                "from": {
+                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\values-sw720dp\\dimens.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 3,
+                        "startOffset": 18,
+                        "endColumn": 41,
+                        "endOffset": 56
+                    }
+                }
+            }
+        ]
+    }
+]

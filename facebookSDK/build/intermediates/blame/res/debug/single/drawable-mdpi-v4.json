@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\facebookSDK\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\com_facebook_button_blue_normal.9.png",
+        "source": "E:\\MyDimoda_3_MARCH\\facebookSDK\\src\\main\\res\\drawable-mdpi\\com_facebook_button_blue_normal.9.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\facebookSDK\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\com_facebook_inverse_icon.png",
+        "source": "E:\\MyDimoda_3_MARCH\\facebookSDK\\src\\main\\res\\drawable-mdpi\\com_facebook_inverse_icon.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\facebookSDK\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\com_facebook_button_blue_pressed.9.png",
+        "source": "E:\\MyDimoda_3_MARCH\\facebookSDK\\src\\main\\res\\drawable-mdpi\\com_facebook_button_blue_pressed.9.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\facebookSDK\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\com_facebook_picker_magnifier.png",
+        "source": "E:\\MyDimoda_3_MARCH\\facebookSDK\\src\\main\\res\\drawable-mdpi\\com_facebook_picker_magnifier.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\facebookSDK\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\com_facebook_button_blue_focused.9.png",
+        "source": "E:\\MyDimoda_3_MARCH\\facebookSDK\\src\\main\\res\\drawable-mdpi\\com_facebook_button_blue_focused.9.png"
+    }
+]

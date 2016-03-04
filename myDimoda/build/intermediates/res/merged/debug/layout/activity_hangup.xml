@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/main_content_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <android.support.v4.widget.DrawerLayout
+            android:id="@+id/drawer_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white" >
+
+            <RelativeLayout
+                android:id="@+id/layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <RelativeLayout
+                    android:id="@+id/title_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="#f7f7f7" >
+
+                    <Button
+                        android:id="@+id/menu_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="15dp"
+                        android:background="@drawable/btn_menu_sel" />
+
+                    <TextView
+                        android:id="@+id/title_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:text="Where to start"
+                        android:textColor="#000000"
+                        android:textSize="25sp" />
+
+                    <RelativeLayout
+                        android:id="@+id/back_layout"
+                        android:layout_width="90dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true" >
+
+                        <TextView
+                            android:id="@+id/back_txt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="5dp"
+                            android:layout_toLeftOf="@id/back_btn"
+                            android:text="Back"
+                            android:textColor="@color/color_black"
+                            android:textSize="20sp" />
+
+                        <ImageButton
+                            android:id="@+id/back_btn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="5dp"
+                            android:background="@drawable/back_btn" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/line_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="#878787" >
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/restore_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_below="@id/title_layout"
+                    android:background="@color/btn_background_gray"
+                    android:paddingLeft="5dp" >
+
+                    <Button
+                        android:id="@+id/restore_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/list_item_sel" />
+
+                    <ImageView
+                        android:id="@+id/shirt_icon"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:padding="5dp"
+                        android:src="@drawable/icon_shirt" />
+
+                    <TextView
+                        android:id="@+id/shirt_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toRightOf="@id/shirt_icon"
+                        android:text="SHIRTS"
+                        android:textColor="#000000"
+                        android:textSize="25sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/pants_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_below="@id/restore_layout"
+                    android:layout_marginTop="0.5dp"
+                    android:background="@color/btn_background_gray"
+                    android:paddingLeft="5dp" >
+
+                    <Button
+                        android:id="@+id/pants_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/list_item_sel" />
+
+                    <ImageView
+                        android:id="@+id/pants_icon"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:padding="5dp"
+                        android:src="@drawable/icon_pants" />
+
+                    <TextView
+                        android:id="@+id/pants_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toRightOf="@id/pants_icon"
+                        android:text="TROUSERS"
+                        android:textColor="#000000"
+                        android:textSize="25sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/coat_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_below="@id/pants_layout"
+                    android:layout_marginTop="0.5dp"
+                    android:background="@color/btn_background_gray"
+                    android:paddingLeft="5dp" >
+
+                    <Button
+                        android:id="@+id/coat_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/list_item_sel" />
+
+                    <ImageView
+                        android:id="@+id/coat_icon"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:padding="5dp"
+                        android:src="@drawable/icon_cort" />
+
+                    <TextView
+                        android:id="@+id/coat_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toRightOf="@id/coat_icon"
+                        android:text="JACKET"
+                        android:textColor="#000000"
+                        android:textSize="25sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/tie_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_below="@id/coat_layout"
+                    android:layout_marginTop="0.5dp"
+                    android:background="@color/btn_background_gray"
+                    android:paddingLeft="5dp" >
+
+                    <Button
+                        android:id="@+id/tie_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/list_item_sel" />
+
+                    <ImageView
+                        android:id="@+id/tie_icon"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:padding="5dp"
+                        android:src="@drawable/icon_tie" />
+
+                    <TextView
+                        android:id="@+id/tie_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toRightOf="@id/tie_icon"
+                        android:text="TIE"
+                        android:textColor="#000000"
+                        android:textSize="25sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/suit_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_below="@id/tie_layout"
+                    android:layout_marginTop="0.5dp"
+                    android:background="@color/btn_background_gray"
+                    android:paddingLeft="5dp" >
+
+                    <Button
+                        android:id="@+id/suit_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/list_item_sel" />
+
+                    <ImageView
+                        android:id="@+id/suit_icon"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:padding="5dp"
+                        android:src="@drawable/icon_suit" />
+
+                    <TextView
+                        android:id="@+id/suit_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toRightOf="@id/suit_icon"
+                        android:text="SUIT"
+                        android:textColor="#000000"
+                        android:textSize="25sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/shoes_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_below="@id/suit_layout"
+                    android:layout_marginTop="1dp"
+                    android:background="#c8a200"
+                    android:paddingLeft="5dp"
+                    android:visibility="gone" >
+
+                    <Button
+                        android:id="@+id/shoes_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/list_item_sel" />
+
+                    <ImageView
+                        android:id="@+id/shoes_icon"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:padding="5dp"
+                        android:src="@drawable/icon_shoes" />
+
+                    <TextView
+                        android:id="@+id/shoes_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toRightOf="@id/shoes_icon"
+                        android:text="SHOES"
+                        android:textColor="#000000"
+                        android:textSize="25sp" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/menu_layout"
+                android:layout_width="270dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="left"
+                android:background="@drawable/menu_bg"
+                android:orientation="vertical" >
+
+                <ListView
+                    android:id="@+id/menu_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:divider="@drawable/empty"
+                    android:dividerHeight="2dp"
+                    android:listSelector="@drawable/listitem_selector"
+                    android:paddingTop="60dp" >
+                </ListView>
+            </LinearLayout>
+        </android.support.v4.widget.DrawerLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

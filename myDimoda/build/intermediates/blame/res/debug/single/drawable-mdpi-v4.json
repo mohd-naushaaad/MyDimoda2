@@ -1,0 +1,50 @@
+[
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\indicator_arrow.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\pullSDK\\unspecified\\res\\drawable-mdpi-v4\\indicator_arrow.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\com_facebook_button_blue_normal.9.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\drawable-mdpi-v4\\com_facebook_button_blue_normal.9.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\com_facebook_button_blue_pressed.9.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\drawable-mdpi-v4\\com_facebook_button_blue_pressed.9.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\ic_launcher.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\default_ptr_flip.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\pullSDK\\unspecified\\res\\drawable-mdpi-v4\\default_ptr_flip.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\ic_camera.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-mdpi\\ic_camera.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\com_facebook_inverse_icon.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\drawable-mdpi-v4\\com_facebook_inverse_icon.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\com_facebook_picker_magnifier.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\drawable-mdpi-v4\\com_facebook_picker_magnifier.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\com_facebook_button_blue_focused.9.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\drawable-mdpi-v4\\com_facebook_button_blue_focused.9.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\rate_app_icon.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-mdpi\\rate_app_icon.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\default_ptr_rotate.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\pullSDK\\unspecified\\res\\drawable-mdpi-v4\\default_ptr_rotate.png"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\ic_photos.png",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\drawable-mdpi\\ic_photos.png"
+    }
+]

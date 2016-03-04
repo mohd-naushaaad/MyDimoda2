@@ -1,0 +1,134 @@
+[
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout-xlarge-v4\\preview_view.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout-xlarge\\preview_view.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout-xlarge-v4\\list_favorite_item.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout-xlarge\\list_favorite_item.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout-xlarge-v4\\activity_algorithm.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout-xlarge\\activity_algorithm.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout-xlarge-v4\\row_view.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout-xlarge\\row_view.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout-xlarge-v4\\list_occasion_item.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout-xlarge\\list_occasion_item.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout-xlarge-v4\\activity_detail.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout-xlarge\\activity_detail.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout-xlarge-v4\\activity_occasion.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout-xlarge\\activity_occasion.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout-xlarge-v4\\fragment_intro2.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout-xlarge\\fragment_intro2.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout-xlarge-v4\\activity_home.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout-xlarge\\activity_home.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout-xlarge-v4\\activity_exact.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout-xlarge\\activity_exact.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout-xlarge-v4\\activity_capture_option.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout-xlarge\\activity_capture_option.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout-xlarge-v4\\test.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout-xlarge\\test.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout-xlarge-v4\\main_act.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout-xlarge\\main_act.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout-xlarge-v4\\activity_setting.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout-xlarge\\activity_setting.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout-xlarge-v4\\activity_hangup.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout-xlarge\\activity_hangup.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout-xlarge-v4\\activity_main.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout-xlarge\\activity_main.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout-xlarge-v4\\grid_fashion_layout.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout-xlarge\\grid_fashion_layout.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout-xlarge-v4\\activity_findme.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout-xlarge\\activity_findme.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout-xlarge-v4\\loading_empty_view.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout-xlarge\\loading_empty_view.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout-xlarge-v4\\activity_favorite.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout-xlarge\\activity_favorite.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout-xlarge-v4\\fragment_home.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout-xlarge\\fragment_home.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout-xlarge-v4\\activity_signup.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout-xlarge\\activity_signup.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout-xlarge-v4\\fragment_intro1.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout-xlarge\\fragment_intro1.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout-xlarge-v4\\section_row_view.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout-xlarge\\section_row_view.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout-xlarge-v4\\activity_help.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout-xlarge\\activity_help.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout-xlarge-v4\\activity_process.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout-xlarge\\activity_process.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout-xlarge-v4\\activity_style.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout-xlarge\\activity_style.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout-xlarge-v4\\grid_product_item.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout-xlarge\\grid_product_item.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout-xlarge-v4\\activity_auto.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout-xlarge\\activity_auto.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout-xlarge-v4\\grid_cloth_delete_item.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout-xlarge\\grid_cloth_delete_item.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout-xlarge-v4\\activity_login.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout-xlarge\\activity_login.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout-xlarge-v4\\list_menu_item.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout-xlarge\\list_menu_item.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout-xlarge-v4\\activity_fashion.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout-xlarge\\activity_fashion.xml"
+    }
+]
