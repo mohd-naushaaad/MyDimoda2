@@ -1,13 +1,5 @@
 package com.mydimoda;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -40,6 +32,14 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 public class DMAlgorithmActivity extends Activity {
 
 	// / menu
@@ -69,6 +69,7 @@ public class DMAlgorithmActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_algorithm);
+		constant mConstant  = new constant();
 		mDbAdapter = new DbAdapter(DMAlgorithmActivity.this);
 		mDbAdapter.createDatabase();
 		mDbAdapter.open();
@@ -251,6 +252,7 @@ public class DMAlgorithmActivity extends Activity {
 		{
 			Intent intent = new Intent(DMAlgorithmActivity.this, DMFashionActivity_7Hour.class);
 			intent.putExtra("favorite", "no");
+			intent.putExtra("showlayout", "showlayout"); // mayur to make sure we see the remember layout when needed
 			startActivity(intent);
 			finish();
 		}
@@ -576,7 +578,7 @@ public class DMAlgorithmActivity extends Activity {
 				e.printStackTrace();
 			}
 		}
-		Log.e("response -----12345 from db", data.toString());
+		Log.e("response --12345 from db", data.toString());
 		// if(constant.gFashion.blockedList.size()>0)
 		goFashionActivity();
 	}

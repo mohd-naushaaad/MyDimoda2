@@ -82,8 +82,7 @@ public class DMFashionActivity_7Hour extends Activity {
 	final public static String ONE_TIME = "onetime";
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) 
-	{
+	protected void onCreate(Bundle savedInstanceState) 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_fashion_eight);
 		mDbAdapter = new DbAdapter(DMFashionActivity_7Hour.this);

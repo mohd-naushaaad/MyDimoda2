@@ -26,6 +26,7 @@ public class NotificationClickActivity extends Activity
 			mNotificationManager.cancel(requestId);
 			Intent intentTL = new Intent(mContext, DMFashionActivity_7Hour.class);
 			intentTL.putExtra("favorite", "no");
+
 			intentTL.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
 			startActivity(intentTL);
 			finish();

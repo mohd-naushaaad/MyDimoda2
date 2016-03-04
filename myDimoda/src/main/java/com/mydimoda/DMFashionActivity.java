@@ -560,11 +560,12 @@ public class DMFashionActivity extends Activity {
 //							.currentTimeMillis() + 30 * 1000);
 					// am.set(AlarmManager.RTC_WAKEUP,24*60*60*1000,pi);
 					// am.set(AlarmManager.RTC_WAKEUP,thirtySecondsFromNow,pi);
-				/*	am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,  // mayur
+					am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,  // mayur
 							SystemClock.elapsedRealtime() + 24 * 60 * 60 * 1000,pi);
-					*/
+/*
 					am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,
 							SystemClock.elapsedRealtime() + 30 * 1000,pi);
+*/
 
 					/*
 					 * am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,

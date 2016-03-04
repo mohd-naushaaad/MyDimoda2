@@ -446,6 +446,8 @@ public class AlarmReciever_7hour extends WakefulBroadcastReceiver {
             //intentTL.putExtra("notification_look", "true");
             Intent intentTL = new Intent(context, DMFashionActivity_7Hour.class);
             intentTL.putExtra("favorite", "no");
+            intentTL.putExtra("showlayout", "showlayout");
+
             intentTL.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
 
             PendingIntent pendingIntent = PendingIntent.getActivity(context, 1234, intentTL, PendingIntent.FLAG_UPDATE_CURRENT);
