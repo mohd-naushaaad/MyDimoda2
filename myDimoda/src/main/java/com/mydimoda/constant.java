@@ -250,4 +250,12 @@ public class constant {
 
 	//notification enable disable pref key
 	public static final String PREF_IS_NOTI_ENABLE = "notificationenabledisable";
+	public static final String PREF_MAX_COUNT = "maxearnedcounts";
+    public static final String PREF_MAX_COUNT_GVN = "maxearnedcountsfor";
+   /* public static final String PREF_MAX_COUNT_GVN_shirt = "maxearnedcountsforshirt";
+    public static final String PREF_MAX_COUNT_trousers = "maxearnedcountsfortrousers";
+    public static final String PREF_MAX_COUNT_GVN_jacket = "maxearnedcountsforjacket";
+    public static final String PREF_MAX_COUNT_GVN_suit = "maxearnedcountsforsuits";*/
+   public static final String USER_MAX_COUNT = "MaxUserCount";
+
 }

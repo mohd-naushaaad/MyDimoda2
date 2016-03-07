@@ -333,7 +333,6 @@ public class DMFashionActivity extends Activity {
 			vRememberDate.setText(constant.getCurrentTime());
 		else
 			vRememberDate.setText(time);
-
 	}
 
 	// / -------------------------------------- initialize id list
@@ -556,10 +555,8 @@ public class DMFashionActivity extends Activity {
 
 					PendingIntent pi = PendingIntent.getBroadcast(this, id,
 							intent, PendingIntent.FLAG_ONE_SHOT);
-//					int thirtySecondsFromNow = (int) (System
-//							.currentTimeMillis() + 30 * 1000);
-					// am.set(AlarmManager.RTC_WAKEUP,24*60*60*1000,pi);
-					// am.set(AlarmManager.RTC_WAKEUP,thirtySecondsFromNow,pi);
+			/*		int fifteenSecondsFromNow = (int) (SystemClock.elapsedRealtime() + 10 * 1000);
+					am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,fifteenSecondsFromNow,pi);*/
 					am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,  // mayur
 							SystemClock.elapsedRealtime() + 24 * 60 * 60 * 1000,pi);
 /*

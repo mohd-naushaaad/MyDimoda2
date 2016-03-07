@@ -353,82 +353,85 @@ public class AlarmReciever_7hour extends WakefulBroadcastReceiver {
     }
 
     public void generateCustomNotification() {
-        try {
-            message = "New Look! We have created a new look for you from your wardrobe.";
-            String when = "";
-            Bitmap bmp1 = null;
-            Bitmap bmp2 = null;
-            Bitmap bmp3 = null;
-            Bitmap bmp4 = null;
-            NotificationManager mNotificationManager;
-            mNotificationManager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
-            Notification notification = new Notification(R.drawable.ic_launcher, message, new Date().getTime());
-            RemoteViews notificationView = new RemoteViews(mContext.getPackageName(), R.layout.notification_view);
+        if (SharedPreferenceUtil.getBoolean(constant.PREF_IS_NOTI_ENABLE, true)) {
 
-            SimpleDateFormat sdfs = new SimpleDateFormat("hh:mm a");
-            Date dt = Calendar.getInstance().getTime();
             try {
-                when = sdfs.format(dt);
+                message = "New Look! We have created a new look for you from your wardrobe.";
+                String when = "";
+                Bitmap bmp1 = null;
+                Bitmap bmp2 = null;
+                Bitmap bmp3 = null;
+                Bitmap bmp4 = null;
+                NotificationManager mNotificationManager;
+                mNotificationManager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
+                Notification notification = new Notification(R.drawable.ic_launcher, message, new Date().getTime());
+                RemoteViews notificationView = new RemoteViews(mContext.getPackageName(), R.layout.notification_view);
+
+                SimpleDateFormat sdfs = new SimpleDateFormat("hh:mm a");
+                Date dt = Calendar.getInstance().getTime();
+                try {
+                    when = sdfs.format(dt);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                try {
+                    bmp1 = imageBmpList.get(0);
+                    bmp2 = imageBmpList.get(1);
+                    bmp3 = imageBmpList.get(2);
+                    bmp4 = imageBmpList.get(3);
+                } catch (Exception e) {
+                }
+
+                //notificationView.setImageViewResource(R.id.imgAppicon, R.drawable.ic_launcher);
+                notificationView.setTextViewText(R.id.txtNoteDetail, message);
+                notificationView.setTextViewText(R.id.txtNoteTime, when);
+                //ParseApplication.getInstance().mImageLoader.displayImage(imageList.get(0), R.id.img1);
+                //notificationView.setImageViewUri(R.id.img1, bmp1);
+
+                if (imageBmpList.size() > 2) {
+                    notificationView.setViewVisibility(R.id.llt2images, View.GONE);
+                    notificationView.setViewVisibility(R.id.llt4images, View.VISIBLE);
+                    if (bmp1 != null)
+                        notificationView.setImageViewBitmap(R.id.img1, bmp1);
+                    if (bmp2 != null)
+                        notificationView.setImageViewBitmap(R.id.img2, bmp2);
+                    if (bmp3 != null)
+                        notificationView.setImageViewBitmap(R.id.img3, bmp3);
+                    if (bmp4 != null)
+                        notificationView.setImageViewBitmap(R.id.img4, bmp4);
+                } else {
+                    notificationView.setViewVisibility(R.id.llt2images, View.VISIBLE);
+                    notificationView.setViewVisibility(R.id.llt4images, View.GONE);
+                    if (bmp1 != null)
+                        notificationView.setImageViewBitmap(R.id.img1full, bmp1);
+                    if (bmp2 != null)
+                        notificationView.setImageViewBitmap(R.id.img2full, bmp2);
+                    else
+                        notificationView.setViewVisibility(R.id.img2full, View.GONE);
+                }
+
+
+                //Generated random number includes min and max number
+                //int requestId = 1 + (int)(Math.random() * ((1000 - 1) + 1));
+                int requestId = 1234;
+                notification.contentView = notificationView;
+                notification.bigContentView = notificationView;
+                notification.defaults |= Notification.DEFAULT_ALL;
+                notification.flags = Notification.FLAG_ONLY_ALERT_ONCE | Notification.FLAG_AUTO_CANCEL;
+
+                Intent intentTL = new Intent(mContext, NotificationClickActivity.class);
+                intentTL.putExtra("NOTIFICATION", "done");
+                intentTL.putExtra("requestId", requestId);
+                intentTL.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                PendingIntent pendingIntent = PendingIntent.getActivity(mContext, requestId, intentTL, PendingIntent.FLAG_UPDATE_CURRENT);
+                notificationView.setOnClickPendingIntent(R.id.lltNotificationMain, pendingIntent);
+                mNotificationManager.cancelAll();
+                mNotificationManager.notify(requestId, notification);
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
-            try {
-                bmp1 = imageBmpList.get(0);
-                bmp2 = imageBmpList.get(1);
-                bmp3 = imageBmpList.get(2);
-                bmp4 = imageBmpList.get(3);
-            } catch (Exception e) {
-            }
-
-            //notificationView.setImageViewResource(R.id.imgAppicon, R.drawable.ic_launcher);
-            notificationView.setTextViewText(R.id.txtNoteDetail, message);
-            notificationView.setTextViewText(R.id.txtNoteTime, when);
-            //ParseApplication.getInstance().mImageLoader.displayImage(imageList.get(0), R.id.img1);
-            //notificationView.setImageViewUri(R.id.img1, bmp1);
-
-            if (imageBmpList.size() > 2) {
-                notificationView.setViewVisibility(R.id.llt2images, View.GONE);
-                notificationView.setViewVisibility(R.id.llt4images, View.VISIBLE);
-                if (bmp1 != null)
-                    notificationView.setImageViewBitmap(R.id.img1, bmp1);
-                if (bmp2 != null)
-                    notificationView.setImageViewBitmap(R.id.img2, bmp2);
-                if (bmp3 != null)
-                    notificationView.setImageViewBitmap(R.id.img3, bmp3);
-                if (bmp4 != null)
-                    notificationView.setImageViewBitmap(R.id.img4, bmp4);
-            } else {
-                notificationView.setViewVisibility(R.id.llt2images, View.VISIBLE);
-                notificationView.setViewVisibility(R.id.llt4images, View.GONE);
-                if (bmp1 != null)
-                    notificationView.setImageViewBitmap(R.id.img1full, bmp1);
-                if (bmp2 != null)
-                    notificationView.setImageViewBitmap(R.id.img2full, bmp2);
-                else
-                    notificationView.setViewVisibility(R.id.img2full, View.GONE);
-            }
-
-
-            //Generated random number includes min and max number
-            //int requestId = 1 + (int)(Math.random() * ((1000 - 1) + 1));
-            int requestId = 1234;
-            notification.contentView = notificationView;
-            notification.bigContentView = notificationView;
-            notification.defaults |= Notification.DEFAULT_ALL;
-            notification.flags = Notification.FLAG_ONLY_ALERT_ONCE | Notification.FLAG_AUTO_CANCEL;
-
-            Intent intentTL = new Intent(mContext, NotificationClickActivity.class);
-            intentTL.putExtra("NOTIFICATION", "done");
-            intentTL.putExtra("requestId", requestId);
-            intentTL.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-
-            PendingIntent pendingIntent = PendingIntent.getActivity(mContext, requestId, intentTL, PendingIntent.FLAG_UPDATE_CURRENT);
-            notificationView.setOnClickPendingIntent(R.id.lltNotificationMain, pendingIntent);
-            mNotificationManager.cancelAll();
-            mNotificationManager.notify(requestId, notification);
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 

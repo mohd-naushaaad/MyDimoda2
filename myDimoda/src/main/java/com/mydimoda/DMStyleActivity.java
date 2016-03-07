@@ -266,13 +266,15 @@ public class DMStyleActivity extends Activity {
 
 		final ParseUser user = ParseUser.getCurrentUser();
 		boolean bPurchased = user.getBoolean("Buy");
+        int maxCount = user.getInt(constant.USER_MAX_COUNT); // new max count according to new policy
 
 		if (!bPurchased) {
 			int count = user.getInt("Count");
+
 			if (SharedPreferenceUtil.getString("inApp", "0").equalsIgnoreCase(
 					"1")) {
 				gotoAlgorithmActivity();
-			} else if (count >= constant.maxCount) {
+			} else if  (count >= (maxCount >= 5 ? maxCount : constant.maxCount)) {
 				/*
 				 * if(SharedPreferenceUtil.getString("inApp",
 				 * "0").equalsIgnoreCase("1")) { gotoAlgorithmActivity(); } else

@@ -538,9 +538,8 @@ public class DMFashionActivity_7Hour extends Activity {
 				// intent, 0);
 
 				PendingIntent pi = PendingIntent.getBroadcast(this, id, intent, PendingIntent.FLAG_ONE_SHOT);
-				int thirtySecondsFromNow = (int) (System .currentTimeMillis() + 30 * 1000);
-				// am.set(AlarmManager.RTC_WAKEUP,24*60*60*1000,pi);
-				// am.set(AlarmManager.RTC_WAKEUP,thirtySecondsFromNow,pi);
+			/*	int fifteenSecondsFromNow = (int) (SystemClock.elapsedRealtime() + 15 * 1000);
+				 am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,fifteenSecondsFromNow,pi);*/
 				am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,
 						SystemClock.elapsedRealtime() + 24 * 60 * 60 * 1000,
 						pi);
@@ -728,8 +727,8 @@ public class DMFashionActivity_7Hour extends Activity {
 
 			// / when get response, call parser response function of the class
 			constant.hideProgress();
-			//parseResponse(mResponseData);
-			vBackLayout.performClick();
+			parseResponse(mResponseData);
+		//	vBackLayout.performClick();
 			super.onPostExecute(result);
 		}
 	}

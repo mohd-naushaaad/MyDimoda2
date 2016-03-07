@@ -259,8 +259,7 @@ public class DMHangUpActivity extends Activity {
 			intent.putExtra("type", type);
 			intent.putExtra("isCapture", true);
 			startActivity(intent);
-		} else 
-		{
+		} else {
 			Intent intent = new Intent(DMHangUpActivity.this, DMHelpActivity.class);
 			intent.putExtra("type", type);
 			startActivity(intent);
