@@ -24,7 +24,9 @@ import android.widget.Toast;
 import com.mydimoda.adapter.DMMenuListAdapter;
 import com.mydimoda.social.google.GoogleIAP;
 import com.mydimoda.widget.cropper.util.FontsUtil;
+import com.parse.ParseException;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 public class DMStyleActivity extends Activity {
 
@@ -452,12 +454,21 @@ public class DMStyleActivity extends Activity {
 			int count = user.getInt("Count");
 			count++;
 			user.put("Count", count);
-			user.saveInBackground();
-		}
+			user.saveInBackground(new SaveCallback() {
+                @Override
+                public void done(ParseException e) {
+                    constant.gMode = "style me";
+                    Intent intent = new Intent(DMStyleActivity.this,DMAlgorithmActivity.class);
+                    startActivity(intent);
+                }
+            });
+		}else{
+            constant.gMode = "style me";
+            Intent intent = new Intent(DMStyleActivity.this,DMAlgorithmActivity.class);
+            startActivity(intent);
+        }
 
-		constant.gMode = "style me";
-		Intent intent = new Intent(DMStyleActivity.this,DMAlgorithmActivity.class);
-		startActivity(intent);
+
 	}
 	private void gotoAlgorithmActivity_8(String Category) {
 

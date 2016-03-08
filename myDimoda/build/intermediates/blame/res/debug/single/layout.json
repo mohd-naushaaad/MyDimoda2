@@ -232,15 +232,15 @@
         "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\layout\\com_facebook_login_activity_layout.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_algorithm.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_algorithm.xml"
-    },
-    {
         "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_signup.xml",
         "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_signup.xml"
     },
     {
         "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_intro1.xml",
         "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\fragment_intro1.xml"
+    },
+    {
+        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_algorithm.xml",
+        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_algorithm.xml"
     }
 ]
