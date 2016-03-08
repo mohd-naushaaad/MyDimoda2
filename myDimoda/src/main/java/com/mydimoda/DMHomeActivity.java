@@ -114,9 +114,14 @@ public class DMHomeActivity extends FragmentActivity {
                 }
             }
         });
-        if (user.getInt(constant.USER_MAX_COUNT) >= 5) {
+        if (user.getInt(constant.USER_MAX_COUNT) >= 10) {
             constant.maxCount = user.getInt(constant.USER_MAX_COUNT);
         } else {
+            if (user.getInt(constant.USER_MAX_COUNT) < 5) {
+
+                user.put(constant.USER_MAX_COUNT,5); // it needs to be initilised as 5 which is the minimum free style points
+                user.saveInBackground();
+            }
             ParseQuery<ParseObject> query = ParseQuery.getQuery("License");
             query.findInBackground(new FindCallback<ParseObject>() {
 

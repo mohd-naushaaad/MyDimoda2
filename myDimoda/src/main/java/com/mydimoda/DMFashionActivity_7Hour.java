@@ -165,12 +165,9 @@ public class DMFashionActivity_7Hour extends Activity {
 					showlayout = extras.getString("showlayout");
 				}
 
-				if (showlayout != null && showlayout.equalsIgnoreCase("showlayout")) 
-				{
+				if (showlayout != null && showlayout.equalsIgnoreCase("showlayout")) {
 					showRemeberLayout("");
-				}
-				else 
-				{
+				}else{
 					hideBtnLayout();
 					likeCloth();
 				}
