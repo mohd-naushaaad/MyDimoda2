@@ -27,5 +27,7 @@
     <string name="build_closet">Tap the camera or photo icon to add photos and start building your closet</string>
     <string name="setting.rate">Rate App</string>
     <string name="setting.notification">Notifications</string>
+    <string name="dialog.gallery.title">We have chosen 12 pics from your photo library.\nKindly tap on any of them to start hanging up.</string>
+    <string name="welcome">Welcome</string>
 
 </resources>

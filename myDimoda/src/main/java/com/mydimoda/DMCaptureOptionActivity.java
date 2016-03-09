@@ -209,4 +209,7 @@ public class DMCaptureOptionActivity extends Activity {
 		}
 	}
 
+
+
+
 }

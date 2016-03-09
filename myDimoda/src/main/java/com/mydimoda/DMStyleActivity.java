@@ -457,11 +457,13 @@ public class DMStyleActivity extends Activity {
 			user.saveInBackground(new SaveCallback() {
                 @Override
                 public void done(ParseException e) {
-                    constant.gMode = "style me";
-                    Intent intent = new Intent(DMStyleActivity.this,DMAlgorithmActivity.class);
-                    startActivity(intent);
+
                 }
+
             });
+            constant.gMode = "style me";
+            Intent intent = new Intent(DMStyleActivity.this,DMAlgorithmActivity.class);
+            startActivity(intent);
 		}else{
             constant.gMode = "style me";
             Intent intent = new Intent(DMStyleActivity.this,DMAlgorithmActivity.class);

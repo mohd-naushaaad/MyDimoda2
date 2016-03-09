@@ -248,6 +248,9 @@ public class constant {
 		}
 	}
 
+	public static final int MAX_GAL_IMAGE_COUNT = 12;
+
+
 	//notification enable disable pref key
 	public static final String PREF_IS_NOTI_ENABLE = "notificationenabledisable";
 	public static final String PREF_MAX_COUNT = "maxearnedcounts";

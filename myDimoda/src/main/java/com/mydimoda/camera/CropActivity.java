@@ -136,7 +136,6 @@ public class CropActivity extends Activity implements OnClickListener {
 			setResult(RESULT_OK);
 		else
 			getParent().setResult(RESULT_OK);
-
 		finish();
 	}
 

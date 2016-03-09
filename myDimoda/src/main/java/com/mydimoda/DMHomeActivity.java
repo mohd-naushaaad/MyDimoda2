@@ -1,27 +1,39 @@
 package com.mydimoda;
 
+import android.app.AlertDialog;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mydimoda.adapter.DMDialogGridAdapter;
 import com.mydimoda.adapter.DMMenuListAdapter;
 import com.mydimoda.database.DbAdapter;
 import com.mydimoda.model.DatabaseModel;
+import com.mydimoda.model.DialogImagesModel;
+import com.mydimoda.widget.cropper.util.FontsUtil;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DMHomeActivity extends FragmentActivity {
@@ -35,11 +47,12 @@ public class DMHomeActivity extends FragmentActivity {
     Context mContext;
     DatabaseModel m_DatabaseModel;
     final public static String ONE_TIME = "onetime";
+    String TAG = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        TAG = getLocalClassName();
         setContentView(R.layout.activity_home);
         mDbAdapter = new DbAdapter(DMHomeActivity.this);
         mDbAdapter.createDatabase();
@@ -119,7 +132,7 @@ public class DMHomeActivity extends FragmentActivity {
         } else {
             if (user.getInt(constant.USER_MAX_COUNT) < 5) {
 
-                user.put(constant.USER_MAX_COUNT,5); // it needs to be initilised as 5 which is the minimum free style points
+                user.put(constant.USER_MAX_COUNT, 5); // it needs to be initilised as 5 which is the minimum free style points
                 user.saveInBackground();
             }
             ParseQuery<ParseObject> query = ParseQuery.getQuery("License");
@@ -146,6 +159,7 @@ public class DMHomeActivity extends FragmentActivity {
 
     public void init() {
         showMenu();
+        showGalleryDialog();
     }
 
     // / --------------------------------- init Data
@@ -192,6 +206,82 @@ public class DMHomeActivity extends FragmentActivity {
         } catch (Exception e) {
 
         }
+    }
+
+    public ArrayList<DialogImagesModel> mGallerImageLst = new ArrayList();
+
+    public void showGalleryDialog() {
+        mGallerImageLst.clear();
+
+        String[] projection = new String[]{
+                MediaStore.Images.Media._ID,
+                MediaStore.Images.Media.BUCKET_DISPLAY_NAME,
+                MediaStore.Images.Media.DATE_TAKEN, MediaStore.Images.Media.DATA};
+
+        // content:// style URI for the "primary" external storage volume
+        Uri images = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+
+        // Make the query.
+        Cursor cur = getContentResolver().query(images,
+                projection, // Which columns to return
+                null,       // Which rows to return (all rows)
+                null,       // Selection arguments (none)
+                MediaStore.Images.Media.DATE_TAKEN        // Ordering
+        );
+
+        Log.i("ListingImages", " query count=" + cur.getCount());
+
+        if (cur.moveToFirst()) {
+            String bucket;
+            String date;
+            String mUri2;
+
+            int bucketColumn = cur.getColumnIndex(
+                    MediaStore.Images.Media._ID);
+
+            int PathColumn = cur.getColumnIndex(
+                    MediaStore.Images.Media.DATA);
+
+            cur.moveToLast();
+            int i = 0;
+            int count = cur.getCount();
+
+            DialogImagesModel mOdle;
+            do {
+                try {
+
+                    // Get the field values
+                    mOdle = new DialogImagesModel();
+                    mOdle.setOrigId(Long.valueOf(cur.getString(bucketColumn)));
+                    mOdle.setImagePathl(cur.getString(PathColumn));
+                 /*   mUri2 = cur.getString(cur.getColumnIndex(MediaStore.Images.Media.DATA));
+                    Log.e(TAG, mUri2 + "\n" + "");*/
+                    mGallerImageLst.add(mOdle);
+                    i++;
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            while ((count > constant.MAX_GAL_IMAGE_COUNT) ? cur.moveToPrevious() && (i < constant.MAX_GAL_IMAGE_COUNT) : cur.moveToPrevious());
+
+
+        }
+
+        AlertDialog.Builder mBuilder = new AlertDialog.Builder(new ContextThemeWrapper(this, android.R.style.Theme_Holo));
+        View mView = getLayoutInflater().inflate(R.layout.dialog_gallery, null);
+        mBuilder.setView(mView);
+
+        GridView mGalGridview = (GridView) mView.findViewById(R.id.dialog_gridview);
+        TextView mGalTitlevw = (TextView) mView.findViewById(R.id.dialog_gal_title);
+        TextView mGalTitleTextvw = (TextView) mView.findViewById(R.id.dialog_gal_title_txt);
+        FontsUtil.setExistenceLight(this, mGalTitlevw);
+        FontsUtil.setExistenceLight(this, mGalTitleTextvw);
+
+
+        mGalGridview.setAdapter(new DMDialogGridAdapter(DMHomeActivity.this, mGallerImageLst));
+
+        mBuilder.create().show();
     }
 
 

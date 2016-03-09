@@ -9,8 +9,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.os.SystemClock;
+
+import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.View;
@@ -555,10 +556,10 @@ public class DMFashionActivity extends Activity {
 
 					PendingIntent pi = PendingIntent.getBroadcast(this, id,
 							intent, PendingIntent.FLAG_ONE_SHOT);
-			/*		int fifteenSecondsFromNow = (int) (SystemClock.elapsedRealtime() + 10 * 1000);
+					/*int fifteenSecondsFromNow = (int) (SystemClock.elapsedRealtime() + 10 * 1000);
 					am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,fifteenSecondsFromNow,pi);*/
 					am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,  // mayur
-							SystemClock.elapsedRealtime() + 24 * 60 * 60 * 1000,pi);
+							SystemClock.elapsedRealtime() + 30 * 1000,pi);
 /*
 					am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,
 							SystemClock.elapsedRealtime() + 30 * 1000,pi);
