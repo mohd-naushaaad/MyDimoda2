@@ -89,7 +89,7 @@ public class DMCaptureActivity extends Activity implements OnClickListener,
     FrameLayout mMaskLayout1;
     LinearLayout mMenuLayout;
 
-    boolean mIsFormal = false, mIsCapture = false;
+    boolean mIsFormal = false, mIsCapture = false, mIsFrmDialog = false;
     int RESULT_CAMERA = 1;
     int RESULT_GALLERY = 2;
     int RESULT_CROP = 3;
@@ -268,14 +268,16 @@ public class DMCaptureActivity extends Activity implements OnClickListener,
         Intent intent = getIntent();
         mType = intent.getStringExtra("type");
         mIsCapture = intent.getBooleanExtra("isCapture", true);
-
+        mIsFrmDialog = intent.getBooleanExtra(constant.FRM_DIALG_KEY, false);
         if (mIsCapture) {
             hideLayout();
             callCamera();
         } else {
-            if (constant.gTakenBitmap != null) {
+            if (constant.gTakenBitmap != null && !mIsFrmDialog) {
                 mBitmap = constant.gTakenBitmap;
                 vCaptureImg.setImageBitmap(mBitmap);
+            } else {
+                goCropActivity();
             }
         }
     }
@@ -500,12 +502,18 @@ public class DMCaptureActivity extends Activity implements OnClickListener,
     // / ------------------------------------- call function after 1 second
     // -----------------------
     public void goCropActivity() {
-
-        if (mBitmap != null) {
+        if (!mIsFrmDialog) {
             constant.gTakenBitmap = mBitmap;
+            if (mBitmap != null) {
+                Intent intent = new Intent(this, CropActivity.class);
+                startActivityForResult(intent, RESULT_CROP);
+            }
+        }else{
             Intent intent = new Intent(this, CropActivity.class);
             startActivityForResult(intent, RESULT_CROP);
         }
+
+
     }
 
     public void goProcessActivity() {
@@ -684,9 +692,8 @@ public class DMCaptureActivity extends Activity implements OnClickListener,
                     }
                 }
             });
-        } else if (items > 2 ) {
+        } else if (items > 2) {
             final ParseUser user = ParseUser.getCurrentUser();
-
             mMaxCount = user.getInt(constant.USER_MAX_COUNT);
             user.put(constant.USER_MAX_COUNT, mMaxCount + 1);
             user.saveInBackground(new SaveCallback() {

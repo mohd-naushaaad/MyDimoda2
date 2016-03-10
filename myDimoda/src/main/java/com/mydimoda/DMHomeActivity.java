@@ -1,9 +1,12 @@
 package com.mydimoda;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -48,6 +51,7 @@ public class DMHomeActivity extends FragmentActivity {
     DatabaseModel m_DatabaseModel;
     final public static String ONE_TIME = "onetime";
     String TAG = "";
+    Dialog mGalleryDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -211,78 +215,77 @@ public class DMHomeActivity extends FragmentActivity {
     public ArrayList<DialogImagesModel> mGallerImageLst = new ArrayList();
 
     public void showGalleryDialog() {
-        mGallerImageLst.clear();
+        if (mGalleryDialog == null || !mGalleryDialog.isShowing()) {
+            mGallerImageLst.clear();
+            String[] projection = new String[]{
+                    MediaStore.Images.Media._ID,
+                    MediaStore.Images.Media.BUCKET_DISPLAY_NAME,
+                    MediaStore.Images.Media.DATE_TAKEN, MediaStore.Images.Media.DATA};
+            // content:// style URI for the "primary" external storage volume
+            Uri images = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+            // Make the query.
+            Cursor cur = getContentResolver().query(images,
+                    projection, // Which columns to return
+                    null,       // Which rows to return (all rows)
+                    null,       // Selection arguments (none)
+                    MediaStore.Images.Media.DATE_TAKEN        // Ordering
+            );
+            Log.i("ListingImages", " query count=" + cur.getCount());
+            if (cur.moveToFirst()) {
+                int bucketColumn = cur.getColumnIndex(
+                        MediaStore.Images.Media._ID);
+                int PathColumn = cur.getColumnIndex(
+                        MediaStore.Images.Media.DATA);
 
-        String[] projection = new String[]{
-                MediaStore.Images.Media._ID,
-                MediaStore.Images.Media.BUCKET_DISPLAY_NAME,
-                MediaStore.Images.Media.DATE_TAKEN, MediaStore.Images.Media.DATA};
-
-        // content:// style URI for the "primary" external storage volume
-        Uri images = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
-
-        // Make the query.
-        Cursor cur = getContentResolver().query(images,
-                projection, // Which columns to return
-                null,       // Which rows to return (all rows)
-                null,       // Selection arguments (none)
-                MediaStore.Images.Media.DATE_TAKEN        // Ordering
-        );
-
-        Log.i("ListingImages", " query count=" + cur.getCount());
-
-        if (cur.moveToFirst()) {
-            String bucket;
-            String date;
-            String mUri2;
-
-            int bucketColumn = cur.getColumnIndex(
-                    MediaStore.Images.Media._ID);
-
-            int PathColumn = cur.getColumnIndex(
-                    MediaStore.Images.Media.DATA);
-
-            cur.moveToLast();
-            int i = 0;
-            int count = cur.getCount();
-
-            DialogImagesModel mOdle;
-            do {
-                try {
-
-                    // Get the field values
-                    mOdle = new DialogImagesModel();
-                    mOdle.setOrigId(Long.valueOf(cur.getString(bucketColumn)));
-                    mOdle.setImagePathl(cur.getString(PathColumn));
+                cur.moveToLast();
+                int i = 0;
+                int count = cur.getCount();
+                DialogImagesModel mOdle;
+                do {
+                    try {
+                        // Get the field values
+                        mOdle = new DialogImagesModel();
+                        mOdle.setOrigId(Long.valueOf(cur.getString(bucketColumn)));
+                        mOdle.setImagePathl(cur.getString(PathColumn));
                  /*   mUri2 = cur.getString(cur.getColumnIndex(MediaStore.Images.Media.DATA));
                     Log.e(TAG, mUri2 + "\n" + "");*/
-                    mGallerImageLst.add(mOdle);
-                    i++;
-
-                } catch (Exception e) {
-                    e.printStackTrace();
+                        mGallerImageLst.add(mOdle);
+                        i++;
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
+                while ((count > constant.MAX_GAL_IMAGE_COUNT) ? cur.moveToPrevious() && (i < constant.MAX_GAL_IMAGE_COUNT) : cur.moveToPrevious());
             }
-            while ((count > constant.MAX_GAL_IMAGE_COUNT) ? cur.moveToPrevious() && (i < constant.MAX_GAL_IMAGE_COUNT) : cur.moveToPrevious());
 
 
+            final AlertDialog.Builder mBuilder = new AlertDialog.Builder(new ContextThemeWrapper(this, android.R.style.Theme_Holo));
+            View mView = getLayoutInflater().inflate(R.layout.dialog_gallery, null);
+            mBuilder.setView(mView);
+
+            GridView mGalGridview = (GridView) mView.findViewById(R.id.dialog_gridview);
+            TextView mGalTitlevw = (TextView) mView.findViewById(R.id.dialog_gal_title);
+            TextView mGalTitleTextvw = (TextView) mView.findViewById(R.id.dialog_gal_title_txt);
+            FontsUtil.setExistenceLight(this, mGalTitlevw);
+            FontsUtil.setExistenceLight(this, mGalTitleTextvw);
+            mGalleryDialog = mBuilder.create();
+
+            mGalGridview.setAdapter(new DMDialogGridAdapter(DMHomeActivity.this, mGallerImageLst));
+            mGalGridview.setOnItemClickListener(new OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                    constant.gTakenBitmap = BitmapFactory.decodeFile(mGallerImageLst.get(position).getImagePathl());
+                    Intent intent = new Intent(mContext, DMCaptureActivity.class);
+                    intent.putExtra("type", constant.EMPTY_TYPE);
+                    intent.putExtra("isCapture", false);
+                    intent.putExtra(constant.FRM_DIALG_KEY, true);
+                    startActivity(intent);
+                    mGalleryDialog.dismiss();
+                }
+            });
+            mGalleryDialog.show();
         }
 
-        AlertDialog.Builder mBuilder = new AlertDialog.Builder(new ContextThemeWrapper(this, android.R.style.Theme_Holo));
-        View mView = getLayoutInflater().inflate(R.layout.dialog_gallery, null);
-        mBuilder.setView(mView);
-
-        GridView mGalGridview = (GridView) mView.findViewById(R.id.dialog_gridview);
-        TextView mGalTitlevw = (TextView) mView.findViewById(R.id.dialog_gal_title);
-        TextView mGalTitleTextvw = (TextView) mView.findViewById(R.id.dialog_gal_title_txt);
-        FontsUtil.setExistenceLight(this, mGalTitlevw);
-        FontsUtil.setExistenceLight(this, mGalTitleTextvw);
-
-
-        mGalGridview.setAdapter(new DMDialogGridAdapter(DMHomeActivity.this, mGallerImageLst));
-
-        mBuilder.create().show();
     }
-
-
 }

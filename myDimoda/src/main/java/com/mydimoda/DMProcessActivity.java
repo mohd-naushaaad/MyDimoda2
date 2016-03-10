@@ -105,6 +105,7 @@ public class DMProcessActivity extends Activity {
 
 	}.start();
 
+
 	public void goCaptureActivity() {
 		Intent intent = new Intent(DMProcessActivity.this,
 				DMCaptureActivity.class);

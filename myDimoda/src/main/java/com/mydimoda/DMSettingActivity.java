@@ -208,15 +208,7 @@ public class DMSettingActivity extends Activity {
         vMenuList.setAdapter(new DMMenuListAdapter(this, constant.gMenuList));
     }
 
-    // / --------------------------------- set font
-    // -------------------------------------
-    // public void setViewWithFont() {
-    // vTxtTitle.setTypeface(constant.fontface);
-    // vTxtBack.setTypeface(constant.fontface);
-    // vTxtRestore.setTypeface(constant.fontface);
-    // vTxtLogout.setTypeface(constant.fontface);
-    // vTxtIntro.setTypeface(constant.fontface);
-    // }
+
 
     // / -------------------------------------------- logout
     // -----------------------------

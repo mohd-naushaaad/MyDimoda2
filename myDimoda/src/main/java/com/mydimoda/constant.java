@@ -249,6 +249,9 @@ public class constant {
 	}
 
 	public static final int MAX_GAL_IMAGE_COUNT = 12;
+	public static final String EMPTY_TYPE = "Undefined";
+	public static final String FRM_DIALG_KEY = "isFromDialog";
+
 
 
 	//notification enable disable pref key

@@ -11,11 +11,11 @@ import android.widget.TextView;
 
 public class FontsUtil {
 
-//	public static void setBold(Context c, TextView tv) {
-//		Typeface tfTap = Typeface.createFromAsset(c.getAssets(),
-//				"Brixton Bold.ttf");
-//		tv.setTypeface(tfTap);
-//	}
+	public static void setMedium(Context c, TextView tv) {
+		Typeface tfTap = Typeface.createFromAsset(c.getAssets(),
+				"Brixton Medium.ttf");
+		tv.setTypeface(tfTap);
+	}
 
 //	public static void setBold(Context c, Button button) {
 //		Typeface tfTap = Typeface.createFromAsset(c.getAssets(),
