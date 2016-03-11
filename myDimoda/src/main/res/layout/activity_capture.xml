@@ -1,38 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/main_content_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent">
 
         <android.support.v4.widget.DrawerLayout
             android:id="@+id/drawer_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@android:color/white" >
+            android:background="@android:color/white">
 
             <RelativeLayout
                 android:id="@+id/layout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="match_parent">
 
                 <RelativeLayout
                     android:id="@+id/title_layout"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:background="#f7f7f7" >
+                    android:background="#f7f7f7">
 
                     <Button
                         android:id="@+id/menu_btn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="15dp"
@@ -50,7 +51,7 @@
                         android:id="@+id/back_layout"
                         android:layout_width="90dp"
                         android:layout_height="match_parent"
-                        android:layout_alignParentRight="true" >
+                        android:layout_alignParentRight="true">
 
                         <TextView
                             android:id="@+id/back_txt"
@@ -78,15 +79,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_alignParentBottom="true"
-                        android:background="#878787" >
-                    </RelativeLayout>
+                        android:background="#878787"></RelativeLayout>
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:id="@+id/image_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/title_layout" >
+                    android:layout_below="@id/title_layout">
 
                     <ImageView
                         android:id="@+id/capture_image"
@@ -102,8 +102,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_below="@id/capture_image"
-                        android:background="#878787" >
-                    </RelativeLayout>
+                        android:background="#878787"></RelativeLayout>
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -112,13 +111,13 @@
                     android:layout_height="match_parent"
                     android:layout_below="@id/image_layout"
                     android:padding="10dp"
-                    tools:ignore="DuplicateIds" >
+                    tools:ignore="DuplicateIds">
 
                     <RelativeLayout
                         android:id="@+id/formal_layout"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:visibility="gone" >
+                        android:visibility="gone">
 
                         <ImageView
                             android:id="@+id/formal_image"
@@ -140,6 +139,61 @@
                     </RelativeLayout>
 
                     <LinearLayout
+                        android:id="@+id/act_capture_cattype_ll"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <TextView
+                            android:id="@+id/act_cap_category_spnr"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="6dp"
+                            android:layout_weight=".5"
+                            android:background="@drawable/grey_border"
+                            android:drawableRight="@drawable/down"
+                            android:gravity="center_vertical"
+                            android:minHeight="50dp"
+                            android:paddingLeft="12dp"
+                            android:paddingRight="12dp"
+                            android:text="@string/act.capt.category"
+                            android:textColor="@color/contents_text"
+                            android:textSize="18sp" />
+
+
+                        <TextView
+                            android:id="@+id/act_cap_type_spnr"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="6dp"
+                            android:layout_weight=".5"
+                            android:background="@drawable/grey_border"
+                            android:drawableRight="@drawable/down"
+                            android:gravity="center_vertical"
+                            android:minHeight="50dp"
+                            android:paddingLeft="12dp"
+                            android:paddingRight="12dp"
+                            android:text="@string/act.capt.type"
+                            android:textColor="@color/contents_text"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/act_cap_error_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/act_capture_cattype_ll"
+                        android:gravity="center_horizontal"
+                        android:paddingBottom="6dp"
+                        android:paddingLeft="12dp"
+                        android:paddingRight="12dp"
+                        android:visibility="invisible"
+                        android:text="@string/act.capt.errortxt"
+                        android:textColor="@android:color/holo_red_light" />
+
+
+                    <LinearLayout
                         android:id="@+id/button_layout"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
@@ -147,7 +201,7 @@
                         android:layout_marginBottom="10dp"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
-                        android:weightSum="100" >
+                        android:weightSum="100">
 
                         <Button
                             android:id="@+id/cancel_btn"
@@ -184,7 +238,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="left"
                 android:background="@drawable/menu_bg"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <ListView
                     android:id="@+id/menu_list"
@@ -193,8 +247,7 @@
                     android:divider="@drawable/empty"
                     android:dividerHeight="2dp"
                     android:listSelector="@drawable/listitem_selector"
-                    android:paddingTop="60dp" >
-                </ListView>
+                    android:paddingTop="60dp"></ListView>
             </LinearLayout>
         </android.support.v4.widget.DrawerLayout>
     </RelativeLayout>
@@ -203,14 +256,13 @@
         android:id="@+id/maskLayer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone" >
+        android:visibility="gone">
 
         <FrameLayout
             android:id="@+id/maskLayout1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@android:color/black" >
-        </FrameLayout>
+            android:background="@android:color/black"></FrameLayout>
 
         <LinearLayout
             android:id="@+id/farmalLayer"
@@ -219,14 +271,14 @@
             android:layout_gravity="bottom"
             android:layout_margin="10dp"
             android:orientation="vertical"
-            android:visibility="invisible" >
+            android:visibility="invisible">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/radius_background"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/textView1"
@@ -241,8 +293,7 @@
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@android:color/darker_gray" >
-                </FrameLayout>
+                    android:background="@android:color/darker_gray"></FrameLayout>
 
                 <Button
                     android:id="@+id/formalBtn"
@@ -257,8 +308,7 @@
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@android:color/darker_gray" >
-                </FrameLayout>
+                    android:background="@android:color/darker_gray"></FrameLayout>
 
                 <Button
                     android:id="@+id/casualBtn"
@@ -274,7 +324,7 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:background="@drawable/radius_background" >
+                android:background="@drawable/radius_background">
 
                 <Button
                     android:id="@+id/cancelBtn"

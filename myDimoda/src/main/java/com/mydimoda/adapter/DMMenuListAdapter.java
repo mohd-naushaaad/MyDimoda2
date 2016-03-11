@@ -51,7 +51,7 @@ public class DMMenuListAdapter extends BaseAdapter {
 			holder = new ViewHolder();
 			holder.menuItem = (TextView) convertView
 					.findViewById(R.id.menu_itemname);
-			
+
 			convertView.setTag(holder);
 
 		} else {

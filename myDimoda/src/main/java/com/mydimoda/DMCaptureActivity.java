@@ -1,6 +1,5 @@
 package com.mydimoda;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,8 +11,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.Animation;
@@ -32,6 +34,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mydimoda.adapter.DMMenuListAdapter;
+import com.mydimoda.adapter.DMOptionsListAdapter;
 import com.mydimoda.camera.CameraActivity;
 import com.mydimoda.camera.CropActivity;
 import com.mydimoda.widget.cropper.util.FontsUtil;
@@ -50,7 +53,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DMCaptureActivity extends Activity implements OnClickListener,
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
+public class DMCaptureActivity extends FragmentActivity implements OnClickListener,
         AnimationListener {
 
     private static final int ANIM_NONE = 0;
@@ -89,7 +95,7 @@ public class DMCaptureActivity extends Activity implements OnClickListener,
     FrameLayout mMaskLayout1;
     LinearLayout mMenuLayout;
 
-    boolean mIsFormal = false, mIsCapture = false, mIsFrmDialog = false;
+    boolean mIsFormal = false, mIsCapture = false, mIsFrmDialog = false, mIsFrmDialogProcess = false;
     int RESULT_CAMERA = 1;
     int RESULT_GALLERY = 2;
     int RESULT_CROP = 3;
@@ -97,12 +103,24 @@ public class DMCaptureActivity extends Activity implements OnClickListener,
     String fileName;
     String mCurrentPhotoPath;
     Uri imageUri;
+    @Bind(R.id.act_cap_category_spnr)
+    TextView mCatSpinner;
+    @Bind(R.id.act_cap_type_spnr)
+    TextView mTypeSpinner;
+    @Bind(R.id.act_capture_cattype_ll)
+    LinearLayout mOptionsLL;
+    @Bind(R.id.act_cap_error_tv)
+    TextView mCatTyprErrTv;
+
+    AlertDialog mCatDialog;
+    AlertDialog mTypeDialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_capture);
-
+        ButterKnife.bind(this);
         // / layout
         vDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         vMenuList = (ListView) findViewById(R.id.menu_list);
@@ -126,6 +144,11 @@ public class DMCaptureActivity extends Activity implements OnClickListener,
 
         vBtnHangUp = (Button) findViewById(R.id.hangup_btn);
         FontsUtil.setExistenceLight(this, vBtnHangUp);
+
+
+        FontsUtil.setExistenceLight(this, mCatSpinner);
+        FontsUtil.setExistenceLight(this, mTypeSpinner);
+
 
         mMaskLayout = (FrameLayout) findViewById(R.id.maskLayer);
         mMaskLayout1 = (FrameLayout) findViewById(R.id.maskLayout1);
@@ -182,8 +205,14 @@ public class DMCaptureActivity extends Activity implements OnClickListener,
 
                 if (bForcusedMenu)
                     return;
+                if (mIsFrmDialogProcess ){
+                    if(checkCatAndType()){
+                        savePhotoToParse();
+                    }
+                }else{
+                    showFormalMenu(true);
+                }
 
-                showFormalMenu(true);
             }
         });
 
@@ -200,6 +229,8 @@ public class DMCaptureActivity extends Activity implements OnClickListener,
                 }
             }
         });
+        mTypeSpinner.setOnClickListener(this);
+        mCatSpinner.setOnClickListener(this);
 
         initOnCreate();
     }
@@ -223,6 +254,13 @@ public class DMCaptureActivity extends Activity implements OnClickListener,
             case R.id.cancelBtn:
                 sel_formal = CLOSE_ID;
                 showFormalMenu(false);
+                break;
+
+            case R.id.act_cap_category_spnr:
+                showCategoryDialog();
+                break;
+            case R.id.act_cap_type_spnr:
+                showTypeDialog();
                 break;
         }
     }
@@ -265,10 +303,12 @@ public class DMCaptureActivity extends Activity implements OnClickListener,
 
     public void initOnCreate() {
 
+        //   mTypeSpinner.getBackground().setColorFilter(getResources().getColor(R.color.background_floating_material_dark), PorterDuff.Mode.SRC_ATOP);
         Intent intent = getIntent();
         mType = intent.getStringExtra("type");
         mIsCapture = intent.getBooleanExtra("isCapture", true);
         mIsFrmDialog = intent.getBooleanExtra(constant.FRM_DIALG_KEY, false);
+        mIsFrmDialogProcess = intent.getBooleanExtra(constant.FRM_DIALG_PROCESS_KEY, false);
         if (mIsCapture) {
             hideLayout();
             callCamera();
@@ -276,6 +316,11 @@ public class DMCaptureActivity extends Activity implements OnClickListener,
             if (constant.gTakenBitmap != null && !mIsFrmDialog) {
                 mBitmap = constant.gTakenBitmap;
                 vCaptureImg.setImageBitmap(mBitmap);
+                if (mIsFrmDialogProcess) {
+                    mOptionsLL.setVisibility(View.VISIBLE);
+                } else {
+                    mOptionsLL.setVisibility(View.INVISIBLE);
+                }
             } else {
                 goCropActivity();
             }
@@ -405,6 +450,7 @@ public class DMCaptureActivity extends Activity implements OnClickListener,
             bitmap = BitmapFactory.decodeStream(fis);
             fis.close();
         } catch (Exception e) {
+
             bitmap = null;
         }
         return bitmap;
@@ -415,7 +461,7 @@ public class DMCaptureActivity extends Activity implements OnClickListener,
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         if (resultCode != RESULT_OK) {
-            super.onBackPressed();
+            finish();
             return;
         }
 
@@ -508,7 +554,8 @@ public class DMCaptureActivity extends Activity implements OnClickListener,
                 Intent intent = new Intent(this, CropActivity.class);
                 startActivityForResult(intent, RESULT_CROP);
             }
-        }else{
+        } else {
+            mBitmap = constant.gTakenBitmap;
             Intent intent = new Intent(this, CropActivity.class);
             startActivityForResult(intent, RESULT_CROP);
         }
@@ -522,6 +569,7 @@ public class DMCaptureActivity extends Activity implements OnClickListener,
             Intent intent = new Intent(this, DMProcessActivity.class);
             intent.putExtra("purchase", false);
             intent.putExtra("type", mType);
+            intent.putExtra(constant.FRM_DIALG_KEY, mIsFrmDialog);
             startActivity(intent);
             finish();
         }
@@ -589,8 +637,7 @@ public class DMCaptureActivity extends Activity implements OnClickListener,
         user.put("isDemoCloset", true);
         user.saveInBackground();
 
-        SharedPreferences settings = getSharedPreferences(constant.PREFS_NAME,
-                0);
+        SharedPreferences settings = getSharedPreferences(constant.PREFS_NAME, 0);
         SharedPreferences.Editor editor = settings.edit();
         editor.putBoolean("isCloset", constant.gIsCloset);
         editor.commit();
@@ -713,4 +760,80 @@ public class DMCaptureActivity extends Activity implements OnClickListener,
         finish();
     }
 
+    final String[] mCatList = {"Formal", "Casual"};
+    final String[] mTypeList = {"Shirt", "Trousers", "Suit", "Jacket", "Tie"};
+
+    public void showCategoryDialog() {
+        if (mCatDialog == null) {
+            AlertDialog.Builder mBuilder = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AppCompatAlertDialogStyle));
+            View mmain = this.getLayoutInflater().inflate(R.layout.dialog_options, null);
+
+            ListView mOptions = (ListView) mmain.findViewById(R.id.dialog_options_lstvw);
+            final DMOptionsListAdapter mAdapter = new DMOptionsListAdapter(this, mCatList);
+
+            mOptions.setAdapter(mAdapter);
+
+            mOptions.setOnItemClickListener(new OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    if (mAdapter.mList[position].equalsIgnoreCase("formal")) {
+                        mIsFormal = true;
+                    } else {
+                        mIsFormal = false;
+                    }
+                    mCatSpinner.setText(mAdapter.mList[position]);
+                    if (mCatDialog != null && mCatDialog.isShowing()) {
+                        mCatDialog.dismiss();
+                    }
+                }
+            });
+            mBuilder.setView(mmain);
+            mCatDialog = mBuilder.create();
+        }
+        mCatDialog.show();
+    }
+
+    public void showTypeDialog() {
+        if (mTypeDialog == null) {
+
+            AlertDialog.Builder mBuilder = new AlertDialog.Builder(new ContextThemeWrapper(this, android.R.style.Theme_Holo));
+            View mmain = this.getLayoutInflater().inflate(R.layout.dialog_options, null);
+
+            ListView mOptions = (ListView) mmain.findViewById(R.id.dialog_options_lstvw);
+            final DMOptionsListAdapter mAdapter = new DMOptionsListAdapter(this, mTypeList);
+
+            mOptions.setAdapter(mAdapter);
+
+            mOptions.setOnItemClickListener(new OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    mType = mAdapter.mList[position].toLowerCase();
+                    mTypeSpinner.setText(mAdapter.mList[position]);
+                    if (mTypeDialog != null && mTypeDialog.isShowing()) {
+                        mTypeDialog.dismiss();
+                    }
+                }
+            });
+            mBuilder.setView(mmain);
+            mTypeDialog = mBuilder.create();
+        }
+
+        mTypeDialog.show();
+    }
+
+    public boolean checkCatAndType() {
+        for (int i = 0; i < mCatList.length; i++) {
+            if (mCatList[i].equalsIgnoreCase(mCatSpinner.getText().toString())) {
+                for (int i2 = 0; i < mTypeList.length; i++) {
+                    if (mTypeList[i].equalsIgnoreCase(mTypeSpinner.getText().toString())) {
+                        mCatTyprErrTv.setVisibility(View.INVISIBLE);
+                        return true;
+                    }
+                }
+            }
+        }
+        mCatTyprErrTv.setVisibility(View.VISIBLE);
+        return false;
+
+    }
 }

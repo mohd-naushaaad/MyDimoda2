@@ -21,7 +21,7 @@
             android:layout_alignParentTop="true"
             android:gravity="center"
             android:padding="10dp"
-            android:text="Are you confirm to delete the event?"
+            android:text="Do you confirm to delete the event?"
             android:textColor="#000000"
             android:textSize="20sp" />
 

@@ -29,5 +29,8 @@
     <string name="setting.notification">Notifications</string>
     <string name="dialog.gallery.title">We have chosen 12 pics from your photo library.\nKindly tap on any of them to start hanging up.</string>
     <string name="welcome">Welcome</string>
+    <string name="act.capt.type">Type</string>
+    <string name="act.capt.category">Category</string>
+    <string name="act.capt.errortxt">Please select a Category and a Type to Hang Up</string>
 
 </resources>

@@ -274,7 +274,6 @@ public class DMHomeActivity extends FragmentActivity {
             mGalGridview.setOnItemClickListener(new OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
                     constant.gTakenBitmap = BitmapFactory.decodeFile(mGallerImageLst.get(position).getImagePathl());
                     Intent intent = new Intent(mContext, DMCaptureActivity.class);
                     intent.putExtra("type", constant.EMPTY_TYPE);
