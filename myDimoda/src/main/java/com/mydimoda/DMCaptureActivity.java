@@ -116,6 +116,7 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
     AlertDialog mTypeDialog;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -732,7 +733,6 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
                         SharedPreferenceUtil.putValue(constant.PREF_MAX_COUNT_GVN + mType, true);
                         constant.maxCount = user.getInt(constant.USER_MAX_COUNT);
                         constant.hideProgress();
-
                     } else {
                         Toast.makeText(DMCaptureActivity.this, e.toString(),
                                 Toast.LENGTH_LONG).show();
@@ -785,6 +785,7 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
                     if (mCatDialog != null && mCatDialog.isShowing()) {
                         mCatDialog.dismiss();
                     }
+                    checkCatAndType();
                 }
             });
             mBuilder.setView(mmain);
@@ -812,6 +813,7 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
                     if (mTypeDialog != null && mTypeDialog.isShowing()) {
                         mTypeDialog.dismiss();
                     }
+                    checkCatAndType();
                 }
             });
             mBuilder.setView(mmain);

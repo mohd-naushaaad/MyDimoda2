@@ -71,6 +71,7 @@ public class DMSignUpActivity extends Activity {
 					"Please fill username, email, password.",
 					DMSignUpActivity.this);
 		} else {
+			AppUtils.getDefaults(DMSignUpActivity.this, constant.PREF_IS_GALRY_DIALOG_SHOWN, false);
 			signupToParse(username, email, password);
 		}
 

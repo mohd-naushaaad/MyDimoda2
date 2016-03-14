@@ -158,7 +158,6 @@ public class DMLoginActivity extends Activity {
         vPassword.setTypeface(constant.fontface);
         vBtnSignUp.setTypeface(constant.fontface);
         vBtnLogin.setTypeface(constant.fontface);
-        vUsername.setTypeface(constant.fontface);
         vTxtRemember.setTypeface(constant.fontface);
         Button forgotPasswordButton = (Button) findViewById(R.id.forgot_password_btn);
         forgotPasswordButton.setTypeface(constant.fontface);
@@ -180,6 +179,7 @@ public class DMLoginActivity extends Activity {
                 } else if (user.isNew()) {
                     Log.d("MyApp",
                             "User signed up and logged in through Facebook!");
+                    AppUtils.getDefaults(DMLoginActivity.this, constant.PREF_IS_GALRY_DIALOG_SHOWN, false);
                     saveUserData(DMLoginActivity.this);
                 } else {
                     Log.d("MyApp", "User logged in through Facebook!");
@@ -187,6 +187,7 @@ public class DMLoginActivity extends Activity {
                 }
             }
         });
+
     }
 
     public void saveUserData(final Activity activity) {

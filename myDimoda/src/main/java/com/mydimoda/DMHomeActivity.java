@@ -131,6 +131,9 @@ public class DMHomeActivity extends FragmentActivity {
                 }
             }
         });
+        if (!AppUtils.getDefaults(this, constant.PREF_IS_GALRY_DIALOG_SHOWN, false)) {
+            showGalleryDialog();
+        }
         if (user.getInt(constant.USER_MAX_COUNT) >= 10) {
             constant.maxCount = user.getInt(constant.USER_MAX_COUNT);
         } else {
@@ -163,7 +166,7 @@ public class DMHomeActivity extends FragmentActivity {
 
     public void init() {
         showMenu();
-        showGalleryDialog();
+
     }
 
     // / --------------------------------- init Data
@@ -274,13 +277,14 @@ public class DMHomeActivity extends FragmentActivity {
             mGalGridview.setOnItemClickListener(new OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    mGalleryDialog.dismiss();
+                    AppUtils.setDefaults(constant.PREF_IS_GALRY_DIALOG_SHOWN, true, DMHomeActivity.this);
                     constant.gTakenBitmap = BitmapFactory.decodeFile(mGallerImageLst.get(position).getImagePathl());
                     Intent intent = new Intent(mContext, DMCaptureActivity.class);
                     intent.putExtra("type", constant.EMPTY_TYPE);
                     intent.putExtra("isCapture", false);
                     intent.putExtra(constant.FRM_DIALG_KEY, true);
                     startActivity(intent);
-                    mGalleryDialog.dismiss();
                 }
             });
             mGalleryDialog.show();
