@@ -262,4 +262,14 @@ public class constant {
     public static final String PREF_IS_GALRY_DIALOG_SHOWN = "isgalshown";
 
 
+    //Mayur to save array of cropped images
+    private static ArrayList<Bitmap> mCroppedItemList;
+    public static ArrayList<Bitmap> getCroppedImageLst() {
+        if (mCroppedItemList == null) {
+            mCroppedItemList = new ArrayList<>();
+        }
+        return mCroppedItemList;
+    }
+
+
 }

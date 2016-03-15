@@ -116,7 +116,6 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
     AlertDialog mTypeDialog;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -206,11 +205,11 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
 
                 if (bForcusedMenu)
                     return;
-                if (mIsFrmDialogProcess ){
-                    if(checkCatAndType()){
+                if (mIsFrmDialogProcess) {
+                    if (checkCatAndType()) {
                         savePhotoToParse();
                     }
-                }else{
+                } else {
                     showFormalMenu(true);
                 }
 
@@ -553,11 +552,13 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
             constant.gTakenBitmap = mBitmap;
             if (mBitmap != null) {
                 Intent intent = new Intent(this, CropActivity.class);
+                intent.putExtra(constant.FRM_DIALG_KEY, true);
                 startActivityForResult(intent, RESULT_CROP);
             }
         } else {
             mBitmap = constant.gTakenBitmap;
             Intent intent = new Intent(this, CropActivity.class);
+            intent.putExtra(constant.FRM_DIALG_KEY, true);
             startActivityForResult(intent, RESULT_CROP);
         }
 

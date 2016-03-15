@@ -36,5 +36,6 @@
     <color name="btn_background_gray">#908f8f</color>
     <color name="row_background_gray">#cccccc</color>
       <color name="blue_color_code">#089bcb</color>
-
+    <color name="orange">#c86100</color>
+    <color name="darker_gray">#cccccc</color>
 </resources>

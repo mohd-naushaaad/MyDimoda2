@@ -9,4 +9,5 @@
     <dimen name="index_bar_view_margin">10dp</dimen>
     <dimen name="right.padding">12dp</dimen>
     <dimen name="setting.large.butn.txt">22sp</dimen>
+    <dimen name="item.crop.recyclrvw.size">60dp</dimen>
 </resources>

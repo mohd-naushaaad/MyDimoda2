@@ -1,8 +1,5 @@
 package com.mydimoda.adapter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +9,9 @@ import android.widget.TextView;
 
 import com.mydimoda.R;
 import com.mydimoda.widget.cropper.util.FontsUtil;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DMMenuListAdapter extends BaseAdapter {
 
@@ -49,11 +49,8 @@ public class DMMenuListAdapter extends BaseAdapter {
 
 			convertView = layoutInflater.inflate(R.layout.list_menu_item, null);
 			holder = new ViewHolder();
-			holder.menuItem = (TextView) convertView
-					.findViewById(R.id.menu_itemname);
-
+			holder.menuItem = (TextView) convertView.findViewById(R.id.menu_itemname);
 			convertView.setTag(holder);
-
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
