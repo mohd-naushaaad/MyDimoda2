@@ -143,7 +143,7 @@ public class DMProcessActivity extends Activity {
             }
         }, 4000);
     }
-
+//this is actual method which extracts image rgb values
     public void parse(Bitmap bitmap) {
         int[] buffer = new int[bitmap.getWidth() * bitmap.getHeight()];
         bitmap.getPixels(buffer, 0, bitmap.getWidth(), 0, 0, bitmap.getWidth(),

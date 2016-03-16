@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
 
+import com.mydimoda.model.CropListModel;
 import com.mydimoda.model.DatabaseModel;
 import com.mydimoda.object.DMBlockedObject;
 import com.mydimoda.object.DMItemObject;
@@ -181,7 +182,7 @@ public class constant {
             vProgress.setCancelable(true);
             vProgress.show();
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
     }
 
@@ -264,6 +265,7 @@ public class constant {
 
     //Mayur to save array of cropped images
     private static ArrayList<Bitmap> mCroppedItemList;
+
     public static ArrayList<Bitmap> getCroppedImageLst() {
         if (mCroppedItemList == null) {
             mCroppedItemList = new ArrayList<>();
@@ -271,5 +273,14 @@ public class constant {
         return mCroppedItemList;
     }
 
+    //Mayur to save array of cropped images for otehr view
+    private static ArrayList<CropListModel> mCroppedItemListModelArray;
+
+    public static ArrayList<CropListModel> getImageLst() {
+        if (mCroppedItemListModelArray == null) {
+            mCroppedItemListModelArray = new ArrayList<>();
+        }
+        return mCroppedItemListModelArray;
+    }
 
 }

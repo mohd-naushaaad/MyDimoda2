@@ -25,10 +25,10 @@
 
         <ImageButton
             android:id="@+id/act_crop_add"
-            android:layout_toRightOf="@id/doneText"
             android:layout_width="40dp"
             android:layout_height="match_parent"
-            android:src="@drawable/img_check_sel"/>
+            android:layout_toRightOf="@id/doneText"
+            android:src="@drawable/img_check_sel" />
 
         <TextView
             android:id="@+id/typeText"
@@ -85,28 +85,43 @@
 
     </android.support.v7.widget.RecyclerView>
 
-    <FrameLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:fillViewport="true"
         android:layout_weight="1">
 
-        <com.mydimoda.widget.cropper.CropImageView
-            android:id="@+id/cropView"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"></com.mydimoda.widget.cropper.CropImageView>
+            android:orientation="vertical"
+            android:layout_marginBottom="50dp">
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|bottom"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:gravity="center"
-            android:text="Please select best area for color and pattern recognition"
-            android:textColor="@android:color/holo_red_light" />
-    </FrameLayout>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
 
+                <com.mydimoda.widget.cropper.CropImageView
+                    android:id="@+id/cropView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                </com.mydimoda.widget.cropper.CropImageView>
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|bottom"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:gravity="center"
+                    android:text="Please select best area for color and pattern recognition"
+                    android:textColor="@android:color/holo_red_light" />
+            </FrameLayout>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

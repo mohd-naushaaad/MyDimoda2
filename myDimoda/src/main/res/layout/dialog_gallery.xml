@@ -25,7 +25,7 @@
         android:layout_below="@+id/dialog_gal_title"
         android:gravity="center"
         android:text="@string/dialog.gallery.title"
-        android:textSize="14sp" />
+        android:textSize="16sp" />
 
 
     <GridView

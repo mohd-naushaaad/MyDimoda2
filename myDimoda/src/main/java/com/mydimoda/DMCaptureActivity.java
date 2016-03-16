@@ -559,7 +559,8 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
             mBitmap = constant.gTakenBitmap;
             Intent intent = new Intent(this, CropActivity.class);
             intent.putExtra(constant.FRM_DIALG_KEY, true);
-            startActivityForResult(intent, RESULT_CROP);
+            startActivity(intent);
+            finish();
         }
 
 
@@ -615,7 +616,6 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
                             Toast.makeText(DMCaptureActivity.this,
                                     e.toString(), Toast.LENGTH_LONG).show();
 
-                        // CGChange - IsCloset
                         if (!constant.gIsCloset)
                             setIsCloset();
 
@@ -687,7 +687,7 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
     List<ParseObject> mClothList = new ArrayList<>();
 
     /**
-     * mayur: to get the count of cloths already in closet so as to increase style me count
+     * mayur: to get the count of cloths already in closet to increase style me count accordingly
      */
     public void getClothFP() {
         //   constant.showProgress(this, "Loading...");

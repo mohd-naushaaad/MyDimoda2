@@ -131,9 +131,9 @@ public class DMHomeActivity extends FragmentActivity {
                 }
             }
         });
-        if (!AppUtils.getDefaults(this, constant.PREF_IS_GALRY_DIALOG_SHOWN, false)) {
+     //   if (!AppUtils.getDefaults(this, constant.PREF_IS_GALRY_DIALOG_SHOWN, false)) {
             showGalleryDialog();
-        }
+       //mayur test }
         if (user.getInt(constant.USER_MAX_COUNT) >= 10) {
             constant.maxCount = user.getInt(constant.USER_MAX_COUNT);
         } else {

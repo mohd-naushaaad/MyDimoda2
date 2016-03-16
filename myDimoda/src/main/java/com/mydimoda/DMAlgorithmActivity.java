@@ -236,8 +236,7 @@ public class DMAlgorithmActivity extends Activity {
 	{
 		
 		System.out.println("Fashion"+Fashion8);
-		if (!yes.equalsIgnoreCase("") && yes.equalsIgnoreCase("true")) 
-		{
+		if (!yes.equalsIgnoreCase("") && yes.equalsIgnoreCase("true")){
 			Intent intent1 = new Intent(DMAlgorithmActivity.this,
 					DMNotificationActivity.class);
 			intent1.putExtra("favorite", "no");
@@ -248,23 +247,18 @@ public class DMAlgorithmActivity extends Activity {
 			finish();
 		}
 		
-		else if(isFromNotification)
-		{
+		else if(isFromNotification){
 			Intent intent = new Intent(DMAlgorithmActivity.this, DMFashionActivity_7Hour.class);
 			intent.putExtra("favorite", "no");
 			intent.putExtra("showlayout", "showlayout"); // mayur to make sure we see the remember layout when needed
 			startActivity(intent);
 			finish();
-		}
-		
-		else {
+		} else {
 			Intent intent = new Intent(DMAlgorithmActivity.this, DMFashionActivity.class);
 			intent.putExtra("favorite", "no");
 			startActivity(intent);
 			finish();
 		}
-		
-
 	}
 
 	// / ---------------------------------- get cloth set from parse
@@ -360,7 +354,6 @@ public class DMAlgorithmActivity extends Activity {
 						// jsonObj.put("id", AppUtils.getPref("index", null));
 						jsonObj.put("color", parseObj.get("Color"));
 						jsonObj.put("pattern", parseObj.get("Pattern"));
-
 						clothArr.put(jsonObj);
 					} catch (JSONException e) {
 						// TODO Auto-generated catch block
@@ -420,8 +413,6 @@ public class DMAlgorithmActivity extends Activity {
 			mSendData.put("name", "genparams");
 			mSendData.put("value", "1");
 			System.out.println("Sending"+constant.gCategory+""+constant.gMode +""+clothArr);
-			
-			
 			if (constant.gCategory.equalsIgnoreCase("")) {
 				mSendData.put("category", "casual");
 			}

@@ -24,9 +24,11 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mydimoda.DMCropImageListActivity;
 import com.mydimoda.R;
 import com.mydimoda.adapter.DMCropActRecycAdapter;
 import com.mydimoda.constant;
+import com.mydimoda.model.CropListModel;
 import com.mydimoda.widget.cropper.CropImageView;
 import com.mydimoda.widget.cropper.util.FontsUtil;
 import com.parse.ParseUser;
@@ -56,6 +58,8 @@ public class CropActivity extends Activity implements OnClickListener {
     @Bind(R.id.act_crop_add)
     ImageButton mAddCropBtn;
     LinearLayoutManager layoutManager;
+    CropListModel mModel;
+    boolean isfrmDialog;
 
     @Override
     protected void onSaveInstanceState(Bundle bundle) {
@@ -107,7 +111,9 @@ public class CropActivity extends Activity implements OnClickListener {
         if (constant.gTakenBitmap != null)
             _cropView.setImageBitmap(constant.gTakenBitmap);
 
-        if (getIntent().getBooleanExtra(constant.FRM_DIALG_KEY, false)) {
+        isfrmDialog = getIntent().getBooleanExtra(constant.FRM_DIALG_KEY, false);
+
+        if (isfrmDialog) {
             prepareMultiCropView();
         } else {
             mCropListVw.setVisibility(View.GONE);
@@ -127,8 +133,12 @@ public class CropActivity extends Activity implements OnClickListener {
                 if (mCropListVw.getVisibility() != View.VISIBLE) {
                     mCropListVw.setVisibility(View.VISIBLE);
                     constant.getCroppedImageLst().clear();
+                    constant.getImageLst().clear();
                 }
-                constant.getCroppedImageLst().add(_cropView.getCroppedImage());
+                mModel = new CropListModel();
+                mModel.setmImage(_cropView.getCroppedImage());
+                constant.getCroppedImageLst().add(mModel.getmImage());
+                constant.getImageLst().add(mModel);
                 mCropListVw.getAdapter().notifyDataSetChanged();
                 mCropListVw.smoothScrollToPosition(constant.getCroppedImageLst().size() - 1);
             }
@@ -164,6 +174,9 @@ public class CropActivity extends Activity implements OnClickListener {
                 break;
             }
             case R.id.doneText:
+                if (isfrmDialog) {
+
+                }
                 checkPermission();
                 break;
             default:
@@ -177,7 +190,21 @@ public class CropActivity extends Activity implements OnClickListener {
             setResult(RESULT_OK);
         else
             getParent().setResult(RESULT_OK);
-        finish();
+
+        if (getIntent().getBooleanExtra(constant.FRM_DIALG_KEY, false)) {
+            if (mCropListVw.getVisibility() != View.VISIBLE) {
+                constant.getImageLst().clear();
+                mModel = new CropListModel();
+                mModel.setmImage(_cropView.getCroppedImage());
+                constant.getImageLst().add(mModel);
+            }
+            Intent intent = new Intent(this, DMCropImageListActivity.class);
+            startActivity(intent);
+            finish();
+        } else {
+            finish();
+
+        }
     }
 
     private void checkPermission() {
