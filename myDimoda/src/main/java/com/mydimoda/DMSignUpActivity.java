@@ -62,8 +62,8 @@ public class DMSignUpActivity extends Activity {
 	// / ------------------------------------ previous process before sign up to
 	// parse.com----------------
 	public void preSignup() {
-		String username = vUsername.getText().toString().toLowerCase();
-		String email = vEmail.getText().toString();
+		String username = vUsername.getText().toString().toLowerCase().trim();
+		String email = vEmail.getText().toString().trim();
 		String password = vPassword.getText().toString();
 
 		if (username.equals("") || email.equals("") || password.equals("")) {

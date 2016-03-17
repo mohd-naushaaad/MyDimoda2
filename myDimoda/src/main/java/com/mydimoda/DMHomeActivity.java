@@ -39,7 +39,6 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 public class DMHomeActivity extends FragmentActivity {
@@ -184,9 +183,9 @@ public class DMHomeActivity extends FragmentActivity {
             user = ParseUser.getCurrentUser();
         }
         shouldShowGalleryDialog(user);
-   //     if (!AppUtils.getDefaults(this, constant.PREF_IS_GALRY_DIALOG_SHOWN, false) || SharedPreferenceUtil.getInt(constant.PREF_CLOTH_COUNT, 0) <= 50) {
+        if (!AppUtils.getDefaults(this, constant.PREF_IS_GALRY_DIALOG_SHOWN, false) || SharedPreferenceUtil.getInt(constant.PREF_CLOTH_COUNT, 0) <= 50) {
             showGalleryDialog();
-    //    }
+        }
     }
 
     // / --------------------------------- show menu list
@@ -260,15 +259,15 @@ public class DMHomeActivity extends FragmentActivity {
                 do {
                     try {
                         // Get the field values
-                        if (Long.parseLong(cur.getString(DateColumn)) <= (currenttime-(24*60*60*1000)*i)||i==0  ){
+                        if (Long.parseLong(cur.getString(DateColumn)) <= (currenttime - (24 * 60 * 60 * 1000) * i) || i == 0) {
                             mOdle = new DialogImagesModel();
                             mOdle.setOrigId(Long.valueOf(cur.getString(bucketColumn)));
                             mOdle.setImagePathl(cur.getString(PathColumn));
                             mGallerImageLst.add(mOdle);
                             i++;
-                            Calendar c = Calendar.getInstance();
+                          /*  Calendar c = Calendar.getInstance();
                             c.setTimeInMillis(Long.parseLong(cur.getString(DateColumn)));
-                            Log.e(this.getLocalClassName(),c.getTime()+"");
+                            Log.e(this.getLocalClassName(), c.getTime() + "");*/
                         }
 
                  /*   mUri2 = cur.getString(cur.getColumnIndex(MediaStore.Images.Media.DATA));
