@@ -124,6 +124,18 @@ public class CropOverlayView extends View {
                 return true;
 
             case MotionEvent.ACTION_MOVE:
+
+                try {
+                    //to send touch events to parent in case of view is in scroll view
+                    //and touch is not inside of CropOverlay view.(#IAMGENIUS)
+                    Rect mtempRect = new Rect();
+                    mtempRect.set((int) Edge.LEFT.getCoordinate(), (int) Edge.TOP.getCoordinate(), (int) Edge.RIGHT.getCoordinate(), (int) Edge.BOTTOM.getCoordinate());
+                        if (!mtempRect.contains((int) event.getX(), (int) event.getY())) {
+                            return false;
+                        }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 onActionMove(event.getX(), event.getY());
                 getParent().requestDisallowInterceptTouchEvent(true);
                 return true;
