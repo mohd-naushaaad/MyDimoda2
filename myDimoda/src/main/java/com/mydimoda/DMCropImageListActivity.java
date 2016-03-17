@@ -62,6 +62,8 @@ public class DMCropImageListActivity extends FragmentActivity {
     @Bind(R.id.doneImageVw)
     ImageView mDoneBtn;
 
+    @Bind(R.id.title_text)
+    TextView mTitleTxt;
 
     AlertDialog mCatDialog;
     AlertDialog mTypeDialog;
@@ -76,6 +78,7 @@ public class DMCropImageListActivity extends FragmentActivity {
         // / layout
         vTxtBack = (TextView) findViewById(R.id.back_txt);
         FontsUtil.setExistenceLight(this, vTxtBack);
+        FontsUtil.setExistenceLight(this, mTitleTxt);
 
         vBackLayout = (RelativeLayout) findViewById(R.id.back_layout);
 
@@ -85,8 +88,6 @@ public class DMCropImageListActivity extends FragmentActivity {
 
 // initilised
         mModelList = constant.getImageLst();
-
-
         vBackLayout.setOnClickListener(new OnClickListener() {
 
             public void onClick(View v) {
@@ -96,7 +97,6 @@ public class DMCropImageListActivity extends FragmentActivity {
         });
 
         prepareView();
-        // savePhotoToParse();
 
         mDoneBtn.setOnClickListener(new OnClickListener() {
             @Override
@@ -157,7 +157,7 @@ public class DMCropImageListActivity extends FragmentActivity {
 
                     ParseObject object = new ParseObject("Clothes");
                     object.put("User", user);
-                    object.put("Type", mModel.getmType().toLowerCase().trim());
+                    object.put("Type", mModel.getmType().toLowerCase());
                     object.put("Color", mModel.getmColor());
                     object.put("Pattern", mModel.getmPattern());
                     object.put("Category", category);
@@ -170,12 +170,21 @@ public class DMCropImageListActivity extends FragmentActivity {
                         @Override
                         public void done(ParseException e) {
                             // TODO Auto-generated method stub
-                            if (e == null)
-                                Toast.makeText(DMCropImageListActivity.this, "Saved",
-                                        Toast.LENGTH_LONG).show();
-                            else
+                            if (e == null){
+
+                                if(!isFinishing()){
+                                    Toast.makeText(DMCropImageListActivity.this, "Saved",
+                                            Toast.LENGTH_LONG).show();
+                                }
+                            }
+
+                            else {
                                 Toast.makeText(DMCropImageListActivity.this,
                                         e.toString(), Toast.LENGTH_LONG).show();
+                                Log.e(DMCropImageListActivity.this.getLocalClassName(), e.toString());
+
+                            }
+
 
                             // CGChange - IsCloset
                             if (!constant.gIsCloset)
@@ -185,6 +194,11 @@ public class DMCropImageListActivity extends FragmentActivity {
 
                             getClothFP(finalI);
                             if (finalI == mModelList.size() - 1) {
+                                if (getParent() == null) {
+                                    setResult(RESULT_OK);
+                                } else {
+                                    getParent().setResult(RESULT_OK);
+                                }
                                 finish();
                             }
 
@@ -243,7 +257,7 @@ public class DMCropImageListActivity extends FragmentActivity {
         //   constant.showProgress(this, "Loading...");
         ParseUser user = ParseUser.getCurrentUser();
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Clothes");
-        query.whereEqualTo("Type", mModelList.get(pos));
+        query.whereEqualTo("Type", mModelList.get(pos).getmType().toLowerCase());
         query.whereEqualTo("User", user);
         query.orderByDescending("createdAt");
 
@@ -333,7 +347,7 @@ public class DMCropImageListActivity extends FragmentActivity {
                 if (mCatDialog != null && mCatDialog.isShowing()) {
                     mCatDialog.dismiss();
                 }
-                checkCatAndType(pos);
+                //    checkCatAndType(pos);
             }
         });
         mBuilder.setView(mmain);
@@ -370,8 +384,8 @@ public class DMCropImageListActivity extends FragmentActivity {
     public boolean checkCatAndType(int pos) {
         for (int i = 0; i < mCatList.length; i++) {
             if (mCatList[i].equalsIgnoreCase(mModelList.get(pos).getmCategory().toString())) {
-                for (int i2 = 0; i < mTypeList.length; i++) {
-                    if (mTypeList[i].equalsIgnoreCase(mModelList.get(pos).getmType().toString())) {
+                for (int i2 = 0; i2 < mTypeList.length; i2++) {
+                    if (mTypeList[i2].equalsIgnoreCase(mModelList.get(pos).getmType().toString())) {
                         mModelList.get(pos).setIsError(false);
                         mMainAdapter.notifyDataSetChanged();
                         return true;
@@ -409,10 +423,10 @@ public class DMCropImageListActivity extends FragmentActivity {
             // mColor = constant.gColor[color];
             //  constant.gPatternVal = constant.gPattern[pat];
 
-            constant.gMessage = "Color is " + constant.gColorVal
-                    + " and Pattern is " + constant.gPatternVal;
+            constant.gMessage = "Color is " + mModelList.get(position).getmColor()
+                    + " and Pattern is " + mModelList.get(position).getmPattern();
 
-            Log.e("", constant.gMessage);
+            Log.e(this.getLocalClassName(), constant.gMessage);
         } catch (Exception e) {
             Toast.makeText(this, e.toString(), Toast.LENGTH_LONG).show();
         }
@@ -443,7 +457,6 @@ public class DMCropImageListActivity extends FragmentActivity {
             vProgress.setMessage(" Please wait...\n Analysing image(s)");
             vProgress.setCancelable(false);
             vProgress.show();
-
         }
 
 

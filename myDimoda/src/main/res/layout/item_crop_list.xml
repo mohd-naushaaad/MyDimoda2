@@ -5,30 +5,43 @@
     android:layout_marginLeft="10dp"
     android:layout_marginRight="10dp">
 
-<ImageView
-    android:id="@+id/item_cap_delete"
-    android:layout_width="50dp"
-    android:layout_height="50dp"
-    android:layout_alignParentRight="true"
-   android:paddingBottom="20dp"
-    android:layout_marginTop="20dp"
-    android:src="@drawable/cross"/>
-    <ImageView
-        android:id="@+id/item_capture_image"
+    <FrameLayout
+        android:id="@+id/item_capture_image_fl"
+
         android:layout_width="match_parent"
-        android:layout_height="240dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
-        android:layout_marginTop="14dp"
-        android:paddingLeft="20dp"
-        android:scaleType="centerCrop"
+        android:layout_marginTop="10dp"
         android:background="@drawable/black_border"
-        android:paddingRight="20dp" />
+        android:paddingBottom="6dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="6dp">
+
+        <ImageView
+            android:id="@+id/item_capture_image"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+
+            android:scaleType="centerCrop" />
+
+    </FrameLayout>
+
+
+    <ImageView
+        android:id="@+id/item_cap_delete"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20dp"
+        android:paddingBottom="20dp"
+        android:src="@drawable/cross" />
 
     <LinearLayout
         android:id="@+id/item_capture_cattype_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/item_capture_image">
+        android:layout_below="@id/item_capture_image_fl">
 
 
         <TextView
@@ -76,11 +89,11 @@
         android:gravity="center_horizontal"
         android:paddingBottom="6dp"
         android:paddingLeft="12dp"
-        android:paddingTop="6dp"
         android:paddingRight="12dp"
+        android:paddingTop="6dp"
         android:text="@string/act.capt.errortxt"
         android:textColor="@android:color/holo_red_light"
-        android:visibility="visible" />
+        android:visibility="invisible" />
 
 
 </RelativeLayout>

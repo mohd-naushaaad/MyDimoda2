@@ -1,5 +1,6 @@
 package com.mydimoda.adapter;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import com.mydimoda.R;
 import com.mydimoda.model.CropListModel;
+import com.mydimoda.widget.cropper.util.FontsUtil;
 
 import java.util.ArrayList;
 
@@ -20,6 +22,7 @@ public class DMImageRecycAdapter extends RecyclerView.Adapter<DMImageRecycAdapte
 
     private ArrayList<CropListModel> items;
     private CropListCallBacks mCallbacks;
+    Context mContext;
 
     public DMImageRecycAdapter(ArrayList<CropListModel> modelData, CropListCallBacks mCallbacks) {
         if (modelData == null) {
@@ -33,6 +36,7 @@ public class DMImageRecycAdapter extends RecyclerView.Adapter<DMImageRecycAdapte
     public ListItemViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         View itemView = LayoutInflater.from(viewGroup.getContext()).
                 inflate(R.layout.item_crop_list, viewGroup, false);
+        mContext = viewGroup.getContext();
         return new ListItemViewHolder(itemView);
     }
 
@@ -71,6 +75,10 @@ public class DMImageRecycAdapter extends RecyclerView.Adapter<DMImageRecycAdapte
         });
 
         viewHolder.mErrorTv.setVisibility(items.get(position).isError() ? View.VISIBLE : View.INVISIBLE);
+
+        FontsUtil.setExistenceLight(mContext, viewHolder.mErrorTv);
+        FontsUtil.setExistenceLight(mContext, viewHolder.mCategory);
+        FontsUtil.setExistenceLight(mContext, viewHolder.mType);
     }
 
     @Override

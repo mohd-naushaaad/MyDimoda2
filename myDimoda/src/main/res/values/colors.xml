@@ -37,5 +37,6 @@
     <color name="row_background_gray">#cccccc</color>
       <color name="blue_color_code">#089bcb</color>
     <color name="orange">#c86100</color>
+    <color name="material_deep_teal_500">#ff009688</color>
     <color name="darker_gray">#cccccc</color>
 </resources>

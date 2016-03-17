@@ -52,6 +52,8 @@ public class DMHomeActivity extends FragmentActivity {
     final public static String ONE_TIME = "onetime";
     String TAG = "";
     Dialog mGalleryDialog;
+    int RESULT_GALLERY = 2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,9 +133,9 @@ public class DMHomeActivity extends FragmentActivity {
                 }
             }
         });
-     //   if (!AppUtils.getDefaults(this, constant.PREF_IS_GALRY_DIALOG_SHOWN, false)) {
-            showGalleryDialog();
-       //mayur test }
+        //   if (!AppUtils.getDefaults(this, constant.PREF_IS_GALRY_DIALOG_SHOWN, false)) {
+        showGalleryDialog();
+        //mayur test }
         if (user.getInt(constant.USER_MAX_COUNT) >= 10) {
             constant.maxCount = user.getInt(constant.USER_MAX_COUNT);
         } else {
@@ -269,8 +271,16 @@ public class DMHomeActivity extends FragmentActivity {
             GridView mGalGridview = (GridView) mView.findViewById(R.id.dialog_gridview);
             TextView mGalTitlevw = (TextView) mView.findViewById(R.id.dialog_gal_title);
             TextView mGalTitleTextvw = (TextView) mView.findViewById(R.id.dialog_gal_title_txt);
+            TextView mGalleryTvw = (TextView) mView.findViewById(R.id.dialog_gallery_tv);
             FontsUtil.setExistenceLight(this, mGalTitlevw);
             FontsUtil.setExistenceLight(this, mGalTitleTextvw);
+            FontsUtil.setExistenceLight(this, mGalleryTvw);
+            mGalleryTvw.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    callGallery();
+                }
+            });
             mGalleryDialog = mBuilder.create();
 
             mGalGridview.setAdapter(new DMDialogGridAdapter(DMHomeActivity.this, mGallerImageLst));
@@ -279,16 +289,42 @@ public class DMHomeActivity extends FragmentActivity {
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     mGalleryDialog.dismiss();
                     AppUtils.setDefaults(constant.PREF_IS_GALRY_DIALOG_SHOWN, true, DMHomeActivity.this);
-                    constant.gTakenBitmap = BitmapFactory.decodeFile(mGallerImageLst.get(position).getImagePathl());
-                    Intent intent = new Intent(mContext, DMCaptureActivity.class);
-                    intent.putExtra("type", constant.EMPTY_TYPE);
-                    intent.putExtra("isCapture", false);
-                    intent.putExtra(constant.FRM_DIALG_KEY, true);
-                    startActivity(intent);
+                    //   constant.gTakenBitmap = BitmapFactory.decodeFile();
+                    goToCropActivity(mGallerImageLst.get(position).getImagePathl());
                 }
             });
             mGalleryDialog.show();
         }
 
+    }
+
+    public void callGallery() {
+        Intent i = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(i, RESULT_GALLERY);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent result) {
+
+        if (requestCode == RESULT_GALLERY && resultCode == RESULT_OK) {
+            Uri selectedImage = result.getData();
+            String[] filePathColumn = {MediaStore.Images.Media.DATA};
+            Cursor cursor = getContentResolver().query(selectedImage,
+                    filePathColumn, null, null, null);
+            cursor.moveToFirst();
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            goToCropActivity(cursor.getString(columnIndex));
+            cursor.close();
+
+        }
+    }
+
+    public void goToCropActivity(String picPath) {
+        constant.gTakenBitmap = BitmapFactory.decodeFile(picPath);
+        Intent intent = new Intent(mContext, DMCaptureActivity.class);
+        intent.putExtra("type", constant.EMPTY_TYPE);
+        intent.putExtra("isCapture", false);
+        intent.putExtra(constant.FRM_DIALG_KEY, true);
+        startActivity(intent);
     }
 }

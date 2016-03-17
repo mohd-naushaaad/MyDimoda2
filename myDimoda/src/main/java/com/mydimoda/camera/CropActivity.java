@@ -57,9 +57,13 @@ public class CropActivity extends Activity implements OnClickListener {
     RecyclerView mCropListVw;
     @Bind(R.id.act_crop_add)
     ImageButton mAddCropBtn;
+    @Bind(R.id.act_crop_done)
+    ImageButton mDoneImagebtn;
+
     LinearLayoutManager layoutManager;
     CropListModel mModel;
     boolean isfrmDialog;
+    int RESULT_CROP_LIST = 3;
 
     @Override
     protected void onSaveInstanceState(Bundle bundle) {
@@ -116,11 +120,17 @@ public class CropActivity extends Activity implements OnClickListener {
         if (isfrmDialog) {
             prepareMultiCropView();
         } else {
+            mDoneImagebtn.setVisibility(View.INVISIBLE);
+            doneText.setVisibility(View.VISIBLE);
             mCropListVw.setVisibility(View.GONE);
+            mAddCropBtn.setVisibility(View.INVISIBLE);
         }
     }
 
     private void prepareMultiCropView() {
+        mDoneImagebtn.setVisibility(View.VISIBLE);
+        doneText.setVisibility(View.INVISIBLE);
+        mAddCropBtn.setVisibility(View.VISIBLE);
         layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         mCropListVw.setHasFixedSize(true);
@@ -148,6 +158,9 @@ public class CropActivity extends Activity implements OnClickListener {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         Log.i(LOGTAG, "onActivityResult requestCode " + requestCode);
+        if (requestCode == RESULT_CROP_LIST && resultCode == RESULT_OK) {
+            finish();
+        }
     }
 
     @Override
@@ -174,9 +187,9 @@ public class CropActivity extends Activity implements OnClickListener {
                 break;
             }
             case R.id.doneText:
-                if (isfrmDialog) {
-
-                }
+                checkPermission();
+                break;
+            case R.id.act_crop_done:
                 checkPermission();
                 break;
             default:
@@ -199,8 +212,8 @@ public class CropActivity extends Activity implements OnClickListener {
                 constant.getImageLst().add(mModel);
             }
             Intent intent = new Intent(this, DMCropImageListActivity.class);
-            startActivity(intent);
-            finish();
+            startActivityForResult(intent, RESULT_CROP_LIST);
+            //   finish();
         } else {
             finish();
 
