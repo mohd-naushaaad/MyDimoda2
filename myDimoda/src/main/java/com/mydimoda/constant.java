@@ -257,10 +257,13 @@ public class constant {
     public static final String PREF_MAX_COUNT_GVN = "maxearnedcountsfor";
     /* public static final String PREF_MAX_COUNT_GVN_shirt = "maxearnedcountsforshirt";
      public static final String PREF_MAX_COUNT_trousers = "maxearnedcountsfortrousers";
-     public static final String PREF_MAX_COUNT_GVN_jacket = "maxearnedcountsforjacket";
-     public static final String PREF_MAX_COUNT_GVN_suit = "maxearnedcountsforsuits";*/
+     public static final String PREF_MAX_COUNT_GVN_jacket = "maxearnedcountsforjacket";*/
+     public static final String PREF_CLOTH_COUNT = "maxearnedcountsforsuits";
     public static final String USER_MAX_COUNT = "MaxUserCount";
     public static final String PREF_IS_GALRY_DIALOG_SHOWN = "isgalshown";
+
+
+
 
 
     //Mayur to save array of cropped images

@@ -442,5 +442,11 @@ public class DMLoginActivity extends Activity {
             mDbAdapter.open();
             return null;
         }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+
+        }
     }
 }

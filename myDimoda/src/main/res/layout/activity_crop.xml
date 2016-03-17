@@ -47,7 +47,7 @@
             android:clickable="true"
             android:gravity="center_vertical"
             android:onClick="onClick"
-            android:padding="12dp"
+            android:padding="@dimen/tick_btn_padding"
             android:scaleType="fitXY"
             android:src="@drawable/tike"
             android:visibility="visible" />

@@ -5,6 +5,14 @@
     android:background="@drawable/rounded_rectangle_white">
 
 
+    <ImageView
+        android:id="@+id/dialog_gal_close"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:padding="12dp"
+        android:src="@drawable/cross" />
+
     <TextView
         android:id="@+id/dialog_gal_title"
         android:layout_width="match_parent"
@@ -25,7 +33,7 @@
         android:gravity="center"
         android:text="@string/dialog.gallery.title"
         android:textColor="@color/help_view"
-        android:textSize="16sp" />
+        android:textSize="14sp" />
 
 
     <GridView
@@ -54,9 +62,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:layout_gravity="right"
+            android:layout_gravity="center_horizontal"
             android:layout_marginBottom="10dp"
-            android:layout_marginRight="18dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/black_border"
             android:gravity="center"

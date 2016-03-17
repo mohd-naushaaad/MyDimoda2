@@ -35,6 +35,9 @@ public class CropOverlayView extends View {
     private static final int GUIDELINES_ON_TOUCH = 1;
     private static final int GUIDELINES_ON = 2;
 
+    private static final int TOUCH_BUFFER = 50;
+
+
     private Paint mBorderPaint;
     private Paint mGuidelinePaint;
     private Paint mCornerPaint;
@@ -129,10 +132,12 @@ public class CropOverlayView extends View {
                     //to send touch events to parent in case of view is in scroll view
                     //and touch is not inside of CropOverlay view.(#IAMGENIUS)
                     Rect mtempRect = new Rect();
-                    mtempRect.set((int) Edge.LEFT.getCoordinate(), (int) Edge.TOP.getCoordinate(), (int) Edge.RIGHT.getCoordinate(), (int) Edge.BOTTOM.getCoordinate());
-                        if (!mtempRect.contains((int) event.getX(), (int) event.getY())) {
-                            return false;
-                        }
+                    mtempRect.set((int) (Edge.LEFT.getCoordinate() > TOUCH_BUFFER ? Edge.LEFT.getCoordinate() - TOUCH_BUFFER : Edge.LEFT.getCoordinate()),
+                            (int) (Edge.TOP.getCoordinate() > TOUCH_BUFFER ? Edge.TOP.getCoordinate() - TOUCH_BUFFER : Edge.TOP.getCoordinate()),
+                            (int) Edge.RIGHT.getCoordinate() + TOUCH_BUFFER, (int) Edge.BOTTOM.getCoordinate() + TOUCH_BUFFER);
+                    if (!mtempRect.contains((int) event.getX(), (int) event.getY())) {
+                        return false;
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

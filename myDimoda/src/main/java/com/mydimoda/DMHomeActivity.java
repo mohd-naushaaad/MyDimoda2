@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -19,6 +20,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -37,6 +39,7 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class DMHomeActivity extends FragmentActivity {
@@ -53,7 +56,7 @@ public class DMHomeActivity extends FragmentActivity {
     String TAG = "";
     Dialog mGalleryDialog;
     int RESULT_GALLERY = 2;
-
+    ParseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +71,7 @@ public class DMHomeActivity extends FragmentActivity {
         System.out.println("Before" + AppUtils.getPref("pro", DMHomeActivity.this));
         mContext = DMHomeActivity.this;
 
-        final ParseUser user = ParseUser.getCurrentUser();
+        user = ParseUser.getCurrentUser();
         boolean bPurchased = user.getBoolean("ratedMyDimoda");
         System.out.println("HomePurchased" + bPurchased);
 
@@ -133,9 +136,7 @@ public class DMHomeActivity extends FragmentActivity {
                 }
             }
         });
-        //   if (!AppUtils.getDefaults(this, constant.PREF_IS_GALRY_DIALOG_SHOWN, false)) {
-        showGalleryDialog();
-        //mayur test }
+
         if (user.getInt(constant.USER_MAX_COUNT) >= 10) {
             constant.maxCount = user.getInt(constant.USER_MAX_COUNT);
         } else {
@@ -164,6 +165,8 @@ public class DMHomeActivity extends FragmentActivity {
                 }
             });
         }
+
+
     }
 
     public void init() {
@@ -177,6 +180,13 @@ public class DMHomeActivity extends FragmentActivity {
         constant.gCategory = "";
         constant.gMode = "";
         constant.gLikeNum = 0;
+        if (user == null) {
+            user = ParseUser.getCurrentUser();
+        }
+        shouldShowGalleryDialog(user);
+   //     if (!AppUtils.getDefaults(this, constant.PREF_IS_GALRY_DIALOG_SHOWN, false) || SharedPreferenceUtil.getInt(constant.PREF_CLOTH_COUNT, 0) <= 50) {
+            showGalleryDialog();
+    //    }
     }
 
     // / --------------------------------- show menu list
@@ -241,7 +251,8 @@ public class DMHomeActivity extends FragmentActivity {
                         MediaStore.Images.Media._ID);
                 int PathColumn = cur.getColumnIndex(
                         MediaStore.Images.Media.DATA);
-
+                int DateColumn = cur.getColumnIndex(MediaStore.Images.Media.DATE_TAKEN);
+                long currenttime = System.currentTimeMillis();
                 cur.moveToLast();
                 int i = 0;
                 int count = cur.getCount();
@@ -249,13 +260,19 @@ public class DMHomeActivity extends FragmentActivity {
                 do {
                     try {
                         // Get the field values
-                        mOdle = new DialogImagesModel();
-                        mOdle.setOrigId(Long.valueOf(cur.getString(bucketColumn)));
-                        mOdle.setImagePathl(cur.getString(PathColumn));
+                        if (Long.parseLong(cur.getString(DateColumn)) <= (currenttime-(24*60*60*1000)*i)||i==0  ){
+                            mOdle = new DialogImagesModel();
+                            mOdle.setOrigId(Long.valueOf(cur.getString(bucketColumn)));
+                            mOdle.setImagePathl(cur.getString(PathColumn));
+                            mGallerImageLst.add(mOdle);
+                            i++;
+                            Calendar c = Calendar.getInstance();
+                            c.setTimeInMillis(Long.parseLong(cur.getString(DateColumn)));
+                            Log.e(this.getLocalClassName(),c.getTime()+"");
+                        }
+
                  /*   mUri2 = cur.getString(cur.getColumnIndex(MediaStore.Images.Media.DATA));
                     Log.e(TAG, mUri2 + "\n" + "");*/
-                        mGallerImageLst.add(mOdle);
-                        i++;
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -272,9 +289,20 @@ public class DMHomeActivity extends FragmentActivity {
             TextView mGalTitlevw = (TextView) mView.findViewById(R.id.dialog_gal_title);
             TextView mGalTitleTextvw = (TextView) mView.findViewById(R.id.dialog_gal_title_txt);
             TextView mGalleryTvw = (TextView) mView.findViewById(R.id.dialog_gallery_tv);
+            ImageView mCloseImgVw = (ImageView) mView.findViewById(R.id.dialog_gal_close);
+
+
             FontsUtil.setExistenceLight(this, mGalTitlevw);
             FontsUtil.setExistenceLight(this, mGalTitleTextvw);
             FontsUtil.setExistenceLight(this, mGalleryTvw);
+
+            mCloseImgVw.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mGalleryDialog.dismiss();
+                }
+            });
+
             mGalleryTvw.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -326,5 +354,35 @@ public class DMHomeActivity extends FragmentActivity {
         intent.putExtra("isCapture", false);
         intent.putExtra(constant.FRM_DIALG_KEY, true);
         startActivity(intent);
+    }
+
+    int totalCloths = 0;
+
+    public void shouldShowGalleryDialog(ParseUser user) {
+        SharedPreferences settings = mContext.getSharedPreferences(constant.PREFS_NAME, Context.MODE_PRIVATE);
+
+        if (settings.getBoolean("isCloset", false)) {
+            ParseQuery<ParseObject> query = null;
+            query = ParseQuery.getQuery("Clothes");
+            query.whereEqualTo("User", user);
+            query.orderByDescending("createdAt");
+
+            query.findInBackground(new FindCallback<ParseObject>() {
+                @Override
+                public void done(List<ParseObject> list, ParseException e) {
+                    totalCloths = list.size();
+                    SharedPreferenceUtil.putValue(constant.PREF_CLOTH_COUNT, totalCloths);
+                    SharedPreferenceUtil.save();
+                    Log.e(this.getClass().getSimpleName(), "cloth list size: " + totalCloths);
+                    if (totalCloths <= 50) {
+                        AppUtils.setDefaults(constant.PREF_IS_GALRY_DIALOG_SHOWN, false, mContext);
+                    } else {
+                        AppUtils.setDefaults(constant.PREF_IS_GALRY_DIALOG_SHOWN, true, mContext);
+                    }
+                }
+            });
+        } else {
+            AppUtils.setDefaults(constant.PREF_IS_GALRY_DIALOG_SHOWN, false, mContext);
+        }
     }
 }
