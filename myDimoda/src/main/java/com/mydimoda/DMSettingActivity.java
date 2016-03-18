@@ -230,6 +230,8 @@ public class DMSettingActivity extends Activity {
         mNotificationManager.cancel(1234);
         mNotificationManager.cancelAll();
 
+        //mayur removing checks
+        SharedPreferenceUtil.putValue(constant.PREF_IS_GALRY_DIALOG_SHOWN,false);
         Intent intent = new Intent(this, DMLoginActivity.class);
         startActivity(intent);
         finish();
