@@ -138,24 +138,11 @@ public class DMHomeActivity extends FragmentActivity {
             }
         });
 
-        Log.e(this.getLocalClassName(),user.getInt(constant.USER_MAX_COUNT)+"count "+ user.getInt("Count"));
+        Log.e(this.getLocalClassName(), user.getInt(constant.USER_MAX_COUNT) + "count " + user.getInt("Count"));
         if (user.getInt(constant.USER_MAX_COUNT) >= 10) {
             constant.maxCount = user.getInt(constant.USER_MAX_COUNT);
         } else {
-            if (!SharedPreferenceUtil.getBoolean(constant.USER_MAX_COUNT_INITILISED, false)) {
 
-
-                if (user.getInt(constant.USER_MAX_COUNT) < 5) {
-
-                    user.put(constant.USER_MAX_COUNT, 5); // it needs to be initilised as 5 which is the minimum free style points
-                    user.saveInBackground(new SaveCallback() {
-                        @Override
-                        public void done(ParseException e) {
-                            SharedPreferenceUtil.putValue(constant.USER_MAX_COUNT_INITILISED,true);
-                        }
-                    });
-                }
-            }
             ParseQuery<ParseObject> query = ParseQuery.getQuery("License");
             query.findInBackground(new FindCallback<ParseObject>() {
 
@@ -168,6 +155,21 @@ public class DMHomeActivity extends FragmentActivity {
 
                             ParseObject object = objects.get(0);
                             constant.maxCount = object.getInt("MaxValue");
+
+                            if (!SharedPreferenceUtil.getBoolean(constant.USER_MAX_COUNT_INITILISED, false)) {
+
+
+                                if (user.getInt(constant.USER_MAX_COUNT) < constant.maxCount) {
+
+                                    user.put(constant.USER_MAX_COUNT, constant.maxCount); // it needs to be initilised as 5 which is the minimum free style points
+                                    user.saveInBackground(new SaveCallback() {
+                                        @Override
+                                        public void done(ParseException e) {
+                                            SharedPreferenceUtil.putValue(constant.USER_MAX_COUNT_INITILISED,true);
+                                        }
+                                    });
+                                }
+                            }
                         }
                     } else {
                         Toast.makeText(DMHomeActivity.this, e.toString(),
@@ -177,7 +179,13 @@ public class DMHomeActivity extends FragmentActivity {
             });
         }
 
-
+        if (user == null) {
+            user = ParseUser.getCurrentUser();
+        }
+        shouldShowGalleryDialog(user);
+        if (!AppUtils.getDefaults(this, constant.PREF_IS_GALRY_DIALOG_SHOWN, false) ) {
+            showGalleryDialog();
+        }
     }
 
     public void init() {
@@ -191,13 +199,7 @@ public class DMHomeActivity extends FragmentActivity {
         constant.gCategory = "";
         constant.gMode = "";
         constant.gLikeNum = 0;
-        if (user == null) {
-            user = ParseUser.getCurrentUser();
-        }
-        shouldShowGalleryDialog(user);
-        if (!AppUtils.getDefaults(this, constant.PREF_IS_GALRY_DIALOG_SHOWN, false) || SharedPreferenceUtil.getInt(constant.PREF_CLOTH_COUNT, 0) <= 50) {
-            showGalleryDialog();
-        }
+
     }
 
     // / --------------------------------- show menu list
@@ -310,7 +312,11 @@ public class DMHomeActivity extends FragmentActivity {
             mCloseImgVw.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mGalleryDialog.dismiss();
+                    try {
+                        mGalleryDialog.dismiss();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             });
 
@@ -320,19 +326,25 @@ public class DMHomeActivity extends FragmentActivity {
                     callGallery();
                 }
             });
-            mGalleryDialog = mBuilder.create();
 
             mGalGridview.setAdapter(new DMDialogGridAdapter(DMHomeActivity.this, mGallerImageLst));
             mGalGridview.setOnItemClickListener(new OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    mGalleryDialog.dismiss();
-                    AppUtils.setDefaults(constant.PREF_IS_GALRY_DIALOG_SHOWN, true, DMHomeActivity.this);
+                    try {
+                        mGalleryDialog.dismiss();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     //   constant.gTakenBitmap = BitmapFactory.decodeFile();
                     goToCropActivity(mGallerImageLst.get(position).getImagePathl());
                 }
             });
+
+            mGalleryDialog = mBuilder.create();
             mGalleryDialog.show();
+            AppUtils.setDefaults(constant.PREF_IS_GALRY_DIALOG_SHOWN, true, DMHomeActivity.this);
+
         }
 
     }
@@ -354,7 +366,6 @@ public class DMHomeActivity extends FragmentActivity {
             int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
             goToCropActivity(cursor.getString(columnIndex));
             cursor.close();
-
         }
     }
 
@@ -387,12 +398,11 @@ public class DMHomeActivity extends FragmentActivity {
                         SharedPreferenceUtil.save();
                         Log.e(this.getClass().getSimpleName(), "cloth list size: " + totalCloths);
                         if (totalCloths <= 50) {
-                            AppUtils.setDefaults(constant.PREF_IS_GALRY_DIALOG_SHOWN, false, mContext);
+                          //  AppUtils.setDefaults(constant.PREF_IS_GALRY_DIALOG_SHOWN, false, mContext);
                         } else {
                             AppUtils.setDefaults(constant.PREF_IS_GALRY_DIALOG_SHOWN, true, mContext);
                         }
                     }
-
                 }
             });
         } else {

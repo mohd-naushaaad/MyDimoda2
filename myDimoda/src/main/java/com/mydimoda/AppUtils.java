@@ -7,6 +7,11 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.preference.PreferenceManager;
+import android.widget.Toast;
+
+import com.parse.ParseException;
+import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 public class AppUtils {
 
@@ -116,5 +121,48 @@ public class AppUtils {
                 + (target.length() > 1 ? target.substring(1) : "");
     }
 
+    /**
+     * for calculating and assigning style options
+     *
+     * @param items
+     */
+    public void stylePointProcessor(int items, final String mType, final Context mContext) {
+        if (items == 2 && !SharedPreferenceUtil.getBoolean(constant.PREF_MAX_COUNT_GVN + mType, false)) {
+            final ParseUser user = ParseUser.getCurrentUser();
+
+            final int mMaxCount = user.getInt(constant.USER_MAX_COUNT);
+            user.put(constant.USER_MAX_COUNT, mMaxCount + 5);
+            user.saveInBackground(new SaveCallback() {
+                @Override
+                public void done(ParseException e) {
+                    if (e == null) {
+                        SharedPreferenceUtil.putValue(constant.PREF_MAX_COUNT_GVN + mType, true);
+                        constant.maxCount = user.getInt(constant.USER_MAX_COUNT);
+                        constant.hideProgress();
+                    } else {
+                        Toast.makeText(mContext, e.toString(),
+                                Toast.LENGTH_LONG).show();
+                    }
+                }
+            });
+        } else if (items > 2) {
+            final ParseUser user = ParseUser.getCurrentUser();
+            final int mMaxCount = user.getInt(constant.USER_MAX_COUNT);
+            user.put(constant.USER_MAX_COUNT, mMaxCount + 1);
+            user.saveInBackground(new SaveCallback() {
+                @Override
+                public void done(ParseException e) {
+                    if (e == null) {
+                        constant.maxCount = user.getInt(constant.USER_MAX_COUNT);
+
+                    } else {
+                        Toast.makeText(mContext, e.toString(),
+                                Toast.LENGTH_LONG).show();
+                    }
+                }
+            });
+        }
+
+    }
 
 }

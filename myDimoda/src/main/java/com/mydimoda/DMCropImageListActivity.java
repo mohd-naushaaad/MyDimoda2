@@ -124,8 +124,14 @@ public class DMCropImageListActivity extends FragmentActivity {
 
             @Override
             public void delete(int position) {
-                mModelList.remove(position);
-                mMainAdapter.notifyDataSetChanged();
+                if(mModelList.size()>1){
+                    mModelList.remove(position);
+                    mMainAdapter.notifyDataSetChanged();
+                }else{
+                    constant.getImageLst().clear();
+                    finish();
+                }
+
             }
         });
         mLayoutManager = new LinearLayoutManager(this);
@@ -199,7 +205,7 @@ public class DMCropImageListActivity extends FragmentActivity {
                                 } else {
                                     getParent().setResult(RESULT_OK);
                                 }
-                                //finish();
+                                finish();
                             }
 
 

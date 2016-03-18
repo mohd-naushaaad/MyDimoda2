@@ -160,12 +160,25 @@ public class CropActivity extends Activity implements OnClickListener {
         Log.i(LOGTAG, "onActivityResult requestCode " + requestCode);
         if (requestCode == RESULT_CROP_LIST && resultCode == RESULT_OK) {
             finish();
+        } else if ((requestCode == RESULT_CROP_LIST && resultCode == RESULT_CANCELED)) {
+            try {
+                //   this.recreate();
+                if (constant.getImageLst().isEmpty()) {
+                    mCropListVw.setVisibility(View.GONE);
+                    constant.getCroppedImageLst().clear();
+                    mCropListVw.getAdapter().notifyDataSetChanged();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
+
     }
 
     @Override
     public void onResume() {
         super.onResume();
+
     }
 
     @Override
