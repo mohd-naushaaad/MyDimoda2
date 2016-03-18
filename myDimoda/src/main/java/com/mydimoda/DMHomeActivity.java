@@ -40,6 +40,7 @@ import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class DMHomeActivity extends FragmentActivity {
@@ -276,9 +277,9 @@ public class DMHomeActivity extends FragmentActivity {
                             mOdle.setImagePathl(cur.getString(PathColumn));
                             mGallerImageLst.add(mOdle);
                             i++;
-                          /*  Calendar c = Calendar.getInstance();
+                            Calendar c = Calendar.getInstance();
                             c.setTimeInMillis(Long.parseLong(cur.getString(DateColumn)));
-                            Log.e(this.getLocalClassName(), c.getTime() + "");*/
+                            Log.e(this.getLocalClassName(), c.getTime() + "");
                         }
 
                  /*   mUri2 = cur.getString(cur.getColumnIndex(MediaStore.Images.Media.DATA));

@@ -1,5 +1,7 @@
 package com.mydimoda;
 
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
 import org.acra.ACRA;
 import org.acra.annotation.ReportsCrashes;
 
@@ -37,6 +39,7 @@ public class ParseApplication extends Application {
 	@Override
 	public void onCreate() {
 		super.onCreate();
+		Fabric.with(this, new Crashlytics());
 		mContext = this;
 		try {
 			//ACRA.init(this); // Open only in development mode.
