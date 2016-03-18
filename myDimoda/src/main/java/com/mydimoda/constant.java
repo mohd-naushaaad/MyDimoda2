@@ -261,6 +261,8 @@ public class constant {
      public static final String PREF_CLOTH_COUNT = "maxearnedcountsforsuits";
     public static final String USER_MAX_COUNT = "MaxUserCount";
     public static final String PREF_IS_GALRY_DIALOG_SHOWN = "isgalshown";
+    public static final String USER_MAX_COUNT_INITILISED = "maxusercountinitilised";
+
 
 
 

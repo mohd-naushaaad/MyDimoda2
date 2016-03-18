@@ -199,7 +199,7 @@ public class DMCropImageListActivity extends FragmentActivity {
                                 } else {
                                     getParent().setResult(RESULT_OK);
                                 }
-                                finish();
+                                //finish();
                             }
 
 

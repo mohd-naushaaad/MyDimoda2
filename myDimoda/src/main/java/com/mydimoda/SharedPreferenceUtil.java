@@ -1,10 +1,10 @@
 package com.mydimoda;
 
-import java.util.Map;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+
+import java.util.Map;
 
 /**
  * Creates SharedPreference for the application. and provides access to it
@@ -42,6 +42,8 @@ public class SharedPreferenceUtil {
 	 */
 	public static void putValue(String key, String value) {
 		editor.putString(key, value);
+		editor.commit();
+
 	}
 
 	/**
@@ -52,6 +54,8 @@ public class SharedPreferenceUtil {
 	 */
 	public static void putValue(String key, int value) {
 		editor.putInt(key, value);
+		editor.commit();
+
 	}
 
 	/**
@@ -62,6 +66,8 @@ public class SharedPreferenceUtil {
 	 */
 	public static void putValue(String key, long value) {
 		editor.putLong(key, value);
+		editor.commit();
+
 	}
 
 	/**
@@ -72,6 +78,8 @@ public class SharedPreferenceUtil {
 	 */
 	public static void putValue(String key, boolean value) {
 		editor.putBoolean(key, value);
+		editor.commit();
+
 	}
 
 	/**

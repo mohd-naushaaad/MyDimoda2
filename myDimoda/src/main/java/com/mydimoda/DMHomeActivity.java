@@ -37,6 +37,7 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -136,13 +137,23 @@ public class DMHomeActivity extends FragmentActivity {
             }
         });
 
+        Log.e(this.getLocalClassName(),user.getInt(constant.USER_MAX_COUNT)+"count "+ user.getInt("Count"));
         if (user.getInt(constant.USER_MAX_COUNT) >= 10) {
             constant.maxCount = user.getInt(constant.USER_MAX_COUNT);
         } else {
-            if (user.getInt(constant.USER_MAX_COUNT) < 5) {
+            if (!SharedPreferenceUtil.getBoolean(constant.USER_MAX_COUNT_INITILISED, false)) {
 
-                user.put(constant.USER_MAX_COUNT, 5); // it needs to be initilised as 5 which is the minimum free style points
-                user.saveInBackground();
+
+                if (user.getInt(constant.USER_MAX_COUNT) < 5) {
+
+                    user.put(constant.USER_MAX_COUNT, 5); // it needs to be initilised as 5 which is the minimum free style points
+                    user.saveInBackground(new SaveCallback() {
+                        @Override
+                        public void done(ParseException e) {
+                            SharedPreferenceUtil.putValue(constant.USER_MAX_COUNT_INITILISED,true);
+                        }
+                    });
+                }
             }
             ParseQuery<ParseObject> query = ParseQuery.getQuery("License");
             query.findInBackground(new FindCallback<ParseObject>() {
@@ -369,15 +380,18 @@ public class DMHomeActivity extends FragmentActivity {
             query.findInBackground(new FindCallback<ParseObject>() {
                 @Override
                 public void done(List<ParseObject> list, ParseException e) {
-                    totalCloths = list.size();
-                    SharedPreferenceUtil.putValue(constant.PREF_CLOTH_COUNT, totalCloths);
-                    SharedPreferenceUtil.save();
-                    Log.e(this.getClass().getSimpleName(), "cloth list size: " + totalCloths);
-                    if (totalCloths <= 50) {
-                        AppUtils.setDefaults(constant.PREF_IS_GALRY_DIALOG_SHOWN, false, mContext);
-                    } else {
-                        AppUtils.setDefaults(constant.PREF_IS_GALRY_DIALOG_SHOWN, true, mContext);
+                    if(list!=null){
+                        totalCloths = list.size();
+                        SharedPreferenceUtil.putValue(constant.PREF_CLOTH_COUNT, totalCloths);
+                        SharedPreferenceUtil.save();
+                        Log.e(this.getClass().getSimpleName(), "cloth list size: " + totalCloths);
+                        if (totalCloths <= 50) {
+                            AppUtils.setDefaults(constant.PREF_IS_GALRY_DIALOG_SHOWN, false, mContext);
+                        } else {
+                            AppUtils.setDefaults(constant.PREF_IS_GALRY_DIALOG_SHOWN, true, mContext);
+                        }
                     }
+
                 }
             });
         } else {

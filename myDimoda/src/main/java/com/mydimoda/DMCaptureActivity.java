@@ -205,13 +205,8 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
 
                 if (bForcusedMenu)
                     return;
-                if (mIsFrmDialogProcess) {
-                    if (checkCatAndType()) {
-                        savePhotoToParse();
-                    }
-                } else {
+
                     showFormalMenu(true);
-                }
 
             }
         });
