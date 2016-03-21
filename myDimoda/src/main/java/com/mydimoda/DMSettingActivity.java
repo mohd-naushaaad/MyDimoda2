@@ -65,7 +65,7 @@ public class DMSettingActivity extends Activity {
         setContentView(R.layout.activity_setting);
         ButterKnife.bind(this);
         final ParseUser user = ParseUser.getCurrentUser();
-        boolean bPurchased = user.getBoolean("ratedMyDimoda");
+        boolean bPurchased = user.getBoolean(constant.RATED_APP);
         System.out.println("HomePurchased" + bPurchased);
 
         if (bPurchased == true) {
@@ -214,6 +214,8 @@ public class DMSettingActivity extends Activity {
 
     public void init() {
         showMenu();
+        setStyleCount(ParseUser.getCurrentUser());
+
         // setViewWithFont();
     }
 
@@ -349,13 +351,13 @@ public class DMSettingActivity extends Activity {
 
     private void setStyleCount(ParseUser user) {
 
-        if (user.getBoolean("ratedMyDimoda") || user.getBoolean("Buy") ||
+        if (user.getBoolean(constant.RATED_APP) || user.getBoolean("Buy") ||
                 SharedPreferenceUtil.getString("inApp", "0").equalsIgnoreCase("1")) {
             mStylemePointTv.setText(getResources().getString(R.string.unlimited));
         } else {
             try {
                 int i = user.getInt(constant.USER_MAX_COUNT) - user.getInt("Count");
-                mStylemePointTv.setText((i >= 0 ? i : 0) + "");
+                mStylemePointTv.setText((i >= 0 ? i : 0) + " " + (i > 1 ? "Styles left" : "Style left"));
             } catch (Exception e) {
                 e.printStackTrace();
             }

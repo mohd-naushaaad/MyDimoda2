@@ -342,7 +342,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginLeft="15dp"
                             android:layout_toRightOf="@id/logout_img"
-                            android:text="Style Me points"
+                            android:text="Style Me"
                             android:textColor="#000000"
                             android:textSize="20sp" />
 

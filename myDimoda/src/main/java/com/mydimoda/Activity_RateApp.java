@@ -48,7 +48,7 @@ public class Activity_RateApp extends Activity implements OnClickListener{
 			AppUtils.putPref("pro", "true", Activity_RateApp.this);
 			ParseUser user = ParseUser.getCurrentUser();
 			//			user.put("Buy", true);
-			user.put("ratedmyDiModa", true);
+			user.put(constant.RATED_APP, true);
 			user.saveInBackground();
 			rate_app_click = true;
 			SharedPreferenceUtil.putValue("inApp", "1");
