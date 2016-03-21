@@ -200,16 +200,9 @@ public class DMHelpActivity extends Activity {
             if (SharedPreferenceUtil.getString("inApp", "0").equalsIgnoreCase(
                     "1")) {
                 goAlgorithmActivity();
-            } else if (count >= (maxCount >= 5 ? maxCount : constant.maxCount)) {
-
-				/*
-                 * if(SharedPreferenceUtil.getString("inApp",
-				 * "0").equalsIgnoreCase("1")) { goAlgorithmActivity(); } else {
-				 */
+            } else if (count >= (maxCount >= constant.maxCount ? maxCount : constant.maxCount)) {
                 showPurchaseAlert();
-                /* } */
-                // showRateAlert();
-                // goAlgorithmActivity();
+
             } else {
                 goAlgorithmActivity();
             }
@@ -229,32 +222,6 @@ public class DMHelpActivity extends Activity {
             procRate();
         }
     }
-
-    // private boolean OverOneDay() {
-    //
-    // long currenttime = System.currentTimeMillis();
-    //
-    // SharedPreferences setting = getSharedPreferences("mydimoda_setting", 0);
-    // long reviewtime = setting.getLong("reviewtime", 0);
-    // if(reviewtime == 0) {
-    // Editor editor = getSharedPreferences("mydimoda_setting", 0).edit();
-    // editor.putLong("reviewtime", currenttime);
-    // editor.commit();
-    //
-    // return true;
-    // }
-    //
-    // float delta = (float)(currenttime - reviewtime) / 1000.0f / 3600.0f;
-    // if(delta > 24.0f) {
-    // Editor editor = getSharedPreferences("mydimoda_setting", 0).edit();
-    // editor.putLong("reviewtime", currenttime);
-    // editor.commit();
-    //
-    // return true;
-    // }
-    //
-    // return false;
-    // }
 
     private void showRateAlert() {
 

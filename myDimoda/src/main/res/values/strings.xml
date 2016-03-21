@@ -32,5 +32,6 @@
     <string name="act.capt.type">Type</string>
     <string name="act.capt.category">Category</string>
     <string name="act.capt.errortxt">Please select a Category and a Type to Hang Up</string>
+    <string name="unlimited">Unlimited</string>
 
 </resources>

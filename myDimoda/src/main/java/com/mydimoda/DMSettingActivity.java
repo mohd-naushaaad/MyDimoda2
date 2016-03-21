@@ -48,6 +48,11 @@ public class DMSettingActivity extends Activity {
     TextView mNotificationTxt;
     @Bind(R.id.setting_notification_toggleButton)
     SwitchCompat mNotificationToggleBtn;
+    @Bind(R.id.style_me_label_txt)
+    TextView mStyleMeLAbel;
+    @Bind(R.id.act_setting_stylme_point_tv)
+    TextView mStylemePointTv;
+
 
     // / Layout variables
     TextView vTxtRestore, vTxtLogout, vTxtIntro, VTxtRate;
@@ -65,6 +70,7 @@ public class DMSettingActivity extends Activity {
 
         if (bPurchased == true) {
             System.out.println("TRUE" + bPurchased);
+
         } else {
             if (AppUtils.getPref("pro", DMSettingActivity.this) != null) {
                 if (AppUtils.getPref("pro", DMSettingActivity.this).equalsIgnoreCase("false")) {
@@ -109,8 +115,14 @@ public class DMSettingActivity extends Activity {
         mNotificationTxt = (TextView) findViewById(R.id.noti_txt);
 
         FontsUtil.setExistenceLight(this, mNotificationTxt);
-        FontsUtil.setExistenceLightAnyView(this,mNotificationToggleBtn);
-        mNotificationToggleBtn.setChecked(SharedPreferenceUtil.getBoolean(constant.PREF_IS_NOTI_ENABLE,true));
+        FontsUtil.setExistenceLightAnyView(this, mNotificationToggleBtn);
+
+        FontsUtil.setExistenceLight(this, mStyleMeLAbel);
+        FontsUtil.setExistenceLight(this, mStylemePointTv);
+        setStyleCount(user);
+
+
+        mNotificationToggleBtn.setChecked(SharedPreferenceUtil.getBoolean(constant.PREF_IS_NOTI_ENABLE, true));
 
         vLytRestore = (RelativeLayout) findViewById(R.id.restore_layout);
         vLytLogout = (RelativeLayout) findViewById(R.id.logout_layout);
@@ -187,6 +199,8 @@ public class DMSettingActivity extends Activity {
                 SharedPreferenceUtil.save();
             }
         });
+
+
     }
 
     // / --------------------------------- slide menu section
@@ -208,7 +222,6 @@ public class DMSettingActivity extends Activity {
     public void showMenu() {
         vMenuList.setAdapter(new DMMenuListAdapter(this, constant.gMenuList));
     }
-
 
 
     // / -------------------------------------------- logout
@@ -334,4 +347,20 @@ public class DMSettingActivity extends Activity {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 
+    private void setStyleCount(ParseUser user) {
+
+        if (user.getBoolean("ratedMyDimoda") || user.getBoolean("Buy") ||
+                SharedPreferenceUtil.getString("inApp", "0").equalsIgnoreCase("1")) {
+            mStylemePointTv.setText(getResources().getString(R.string.unlimited));
+        } else {
+            try {
+                int i = user.getInt(constant.USER_MAX_COUNT) - user.getInt("Count");
+                mStylemePointTv.setText((i >= 0 ? i : 0) + "");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+
+    }
 }
