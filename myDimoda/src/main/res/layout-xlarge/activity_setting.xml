@@ -219,7 +219,8 @@
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:background="#878787" />
+                            android:background="#878787"
+                            android:id="@+id/view" />
 
                         <ImageView
                             android:id="@+id/logout_img"
@@ -247,16 +248,18 @@
                             android:layout_alignParentBottom="true"
                             android:background="#878787" />
 
-                        <ToggleButton
+
+                        <android.support.v7.widget.SwitchCompat
                             android:id="@+id/setting_notification_toggleButton"
-                            android:layout_width="120dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:layout_alignParentEnd="true"
+                            android:layout_gravity="center"
+                            android:clickable="false"
+                            android:layout_marginRight="98dp"
                             android:layout_alignParentRight="true"
                             android:layout_centerVertical="true"
-                            android:layout_margin="@dimen/right.padding"
-                            android:clickable="false"
-                            android:textSize="@dimen/setting.large.butn.txt" />
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="98dp" />
                     </RelativeLayout>
 
                     <View

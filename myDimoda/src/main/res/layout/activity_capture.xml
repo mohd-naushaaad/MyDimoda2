@@ -32,8 +32,8 @@
 
                     <Button
                         android:id="@+id/menu_btn"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
+                        android:layout_width="@dimen/menu_btn_size"
+                        android:layout_height="@dimen/menu_btn_size"
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="15dp"

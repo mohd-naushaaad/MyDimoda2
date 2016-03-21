@@ -138,7 +138,7 @@ public class DMHomeActivity extends FragmentActivity {
             }
         });
 
-        Log.e(this.getLocalClassName(), user.getInt(constant.USER_MAX_COUNT) + "count " + user.getInt("Count"));
+        Log.e(this.getLocalClassName(), user.getInt(constant.USER_MAX_COUNT) + " count " + user.getInt("Count"));
         if (user.getInt(constant.USER_MAX_COUNT) >= 10) {
             constant.maxCount = user.getInt(constant.USER_MAX_COUNT);
         } else {
@@ -343,10 +343,8 @@ public class DMHomeActivity extends FragmentActivity {
 
             mGalleryDialog = mBuilder.create();
             mGalleryDialog.show();
-            AppUtils.setDefaults(constant.PREF_IS_GALRY_DIALOG_SHOWN, true, DMHomeActivity.this);
-
         }
-
+        AppUtils.setDefaults(constant.PREF_IS_GALRY_DIALOG_SHOWN, true, DMHomeActivity.this);
     }
 
     public void callGallery() {
@@ -405,8 +403,6 @@ public class DMHomeActivity extends FragmentActivity {
                     }
                 }
             });
-        } else {
-            AppUtils.setDefaults(constant.PREF_IS_GALRY_DIALOG_SHOWN, false, mContext);
         }
     }
 }

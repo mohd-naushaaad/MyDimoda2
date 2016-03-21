@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.widget.SwitchCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -18,7 +19,6 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
 import com.mydimoda.adapter.DMMenuListAdapter;
 import com.mydimoda.social.google.GoogleIAP;
@@ -30,6 +30,7 @@ import com.mydimoda.social.google.util.Inventory;
 import com.mydimoda.social.google.util.Purchase;
 import com.mydimoda.widget.cropper.util.FontsUtil;
 import com.parse.ParseUser;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
@@ -46,7 +47,7 @@ public class DMSettingActivity extends Activity {
     RelativeLayout mNotificationRL;
     TextView mNotificationTxt;
     @Bind(R.id.setting_notification_toggleButton)
-    ToggleButton mNotificationToggleBtn;
+    SwitchCompat mNotificationToggleBtn;
 
     // / Layout variables
     TextView vTxtRestore, vTxtLogout, vTxtIntro, VTxtRate;
@@ -231,7 +232,7 @@ public class DMSettingActivity extends Activity {
         mNotificationManager.cancelAll();
 
         //mayur removing checks
-        SharedPreferenceUtil.putValue(constant.PREF_IS_GALRY_DIALOG_SHOWN,false);
+        AppUtils.setDefaults(constant.PREF_IS_GALRY_DIALOG_SHOWN, false, this);
         Intent intent = new Intent(this, DMLoginActivity.class);
         startActivity(intent);
         finish();

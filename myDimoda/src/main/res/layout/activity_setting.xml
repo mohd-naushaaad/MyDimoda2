@@ -30,8 +30,8 @@
 
                     <Button
                         android:id="@+id/menu_btn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="@dimen/menu_btn_size"
+                        android:layout_height="@dimen/menu_btn_size"
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="15dp"
@@ -252,17 +252,16 @@
                             android:layout_height="match_parent"
                             android:layout_alignParentEnd="true"
                             android:layout_alignParentRight="true"
-                            android:paddingTop="2dp"
+                            android:layout_centerVertical="true"
                             android:layout_marginRight="@dimen/right.padding"
-                            android:layout_centerVertical="true">
+                            android:paddingTop="2dp">
 
-                            <ToggleButton
+                            <android.support.v7.widget.SwitchCompat
                                 android:id="@+id/setting_notification_toggleButton"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:clickable="false"
-                                 />
+                                android:clickable="false" />
                         </FrameLayout>
 
 

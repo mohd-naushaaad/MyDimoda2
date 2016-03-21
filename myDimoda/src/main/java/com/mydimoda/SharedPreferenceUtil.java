@@ -79,7 +79,6 @@ public class SharedPreferenceUtil {
 	public static void putValue(String key, boolean value) {
 		editor.putBoolean(key, value);
 		editor.commit();
-
 	}
 
 	/**
