@@ -182,16 +182,19 @@ public class AppUtils {
         }
 
     }
+
     static Dialog mGalleryDialog;
+
     /**
      * Displays a dialog with images from gallery
      * with time difference of 24hrs
      *
      * @param mContext
      */
-    public static void showGalleryDialog(Context mContext, final ArrayList<DialogImagesModel> mGallerImageLst,
-                                         final DialogItemClickListener mCallback) throws ClassCastException {
+    public static void showGalleryDialog(Context mContext, final DialogItemClickListener mCallback,boolean isFrmHome)
+            throws ClassCastException {
         if (mGalleryDialog == null || !mGalleryDialog.isShowing()) {
+            final ArrayList<DialogImagesModel> mGallerImageLst = new ArrayList();
             mGallerImageLst.clear();
             String[] projection = new String[]{
                     MediaStore.Images.Media._ID,
@@ -276,13 +279,13 @@ public class AppUtils {
                     mCallback.onImageClick(mGallerImageLst.get(position).getImagePathl());
                 }
             });
+            mGalleryDialog = mBuilder.create();
             mGalleryDialog.setOnShowListener(new DialogInterface.OnShowListener() {
                 @Override
                 public void onShow(DialogInterface dialog) {
                     mCallback.onDialogVisible(dialog);
                 }
             });
-            mGalleryDialog = mBuilder.create();
             mGalleryDialog.show();
         }
         AppUtils.setDefaults(constant.PREF_IS_GALRY_DIALOG_SHOWN, true, mContext);

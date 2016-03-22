@@ -25,7 +25,6 @@ import com.mydimoda.adapter.DMMenuListAdapter;
 import com.mydimoda.database.DbAdapter;
 import com.mydimoda.interfaces.DialogItemClickListener;
 import com.mydimoda.model.DatabaseModel;
-import com.mydimoda.model.DialogImagesModel;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -33,7 +32,6 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class DMHomeActivity extends FragmentActivity {
@@ -68,21 +66,6 @@ public class DMHomeActivity extends FragmentActivity {
         user = ParseUser.getCurrentUser();
         boolean bPurchased = user.getBoolean("ratedMyDimoda");
         System.out.println("HomePurchased" + bPurchased);
-
-		/*if(AppUtils.getPref("key alarm", mContext) == null)
-        {
-			setAlarm_8hour();
-			System.out.println("Appalarm preference set values");
-		}
-		else if(AppUtils.getPref("key alarm", mContext).equalsIgnoreCase("1"))
-		{
-			System.out.println("Appalarm preference already set in values");
-		}
-		else 
-		{
-			setAlarm_8hour();
-			System.out.println("Appalarm preference set values");
-		}*/
 
 
         if (bPurchased == true) {
@@ -176,10 +159,10 @@ public class DMHomeActivity extends FragmentActivity {
             user = ParseUser.getCurrentUser();
         }
         shouldShowGalleryDialog(user);
-        //   if (!AppUtils.getDefaults(this, constant.PREF_IS_GALRY_DIALOG_SHOWN, false)) {
+           if (!AppUtils.getDefaults(this, constant.PREF_IS_GALRY_DIALOG_SHOWN, false)) {
 
-        try{
-            AppUtils.showGalleryDialog(this, mGallerImageLst, new DialogItemClickListener() {
+        try {
+            AppUtils.showGalleryDialog(this, new DialogItemClickListener() {
 
                 @Override
                 public void onImageClick(String imagePath) {
@@ -209,22 +192,18 @@ public class DMHomeActivity extends FragmentActivity {
                         e.printStackTrace();
                     }
                 }
-
                 @Override
                 public void onDialogVisible(DialogInterface mDialogInterface) {
                     mDlgInterface = mDialogInterface;
                 }
-            });
-        }catch(Exception e){
+            },true);
+        } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
-    // }
-
+     }
     public void init() {
         showMenu();
-
     }
 
     // / --------------------------------- init Data
@@ -233,13 +212,11 @@ public class DMHomeActivity extends FragmentActivity {
         constant.gCategory = "";
         constant.gMode = "";
         constant.gLikeNum = 0;
-
     }
 
     // / --------------------------------- show menu list
     // --------------------------------------
     public void showMenu() {
-
         System.out.println("Setting" + constant.gMenuList);
         vMenuList.setAdapter(new DMMenuListAdapter(this, constant.gMenuList));
     }
@@ -274,100 +251,6 @@ public class DMHomeActivity extends FragmentActivity {
         }
     }
 
-    public ArrayList<DialogImagesModel> mGallerImageLst = new ArrayList();
-
-    /*
-      public void showGalleryDialog(Context mContext, DialogItemClickListener mListner) {
-          if (mGalleryDialog == null || !mGalleryDialog.isShowing()) {
-              mGallerImageLst.clear();
-              String[] projection = new String[]{
-                      MediaStore.Images.Media._ID,
-                      MediaStore.Images.Media.BUCKET_DISPLAY_NAME,
-                      MediaStore.Images.Media.DATE_TAKEN, MediaStore.Images.Media.DATA};
-              // content:// style URI for the "primary" external storage volume
-              Uri images = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
-              // Make the query.
-              Cursor cur = getContentResolver().query(images,
-                      projection, // Which columns to return
-                      null,       // Which rows to return (all rows)
-                      null,       // Selection arguments (none)
-                      MediaStore.Images.Media.DATE_TAKEN        // Ordering
-              );
-              Log.i("ListingImages", " query count=" + cur.getCount());
-              if (cur.moveToLast()) {
-                  int bucketColumn = cur.getColumnIndex(
-                          MediaStore.Images.Media._ID);
-                  int PathColumn = cur.getColumnIndex(
-                          MediaStore.Images.Media.DATA);
-                  int DateColumn = cur.getColumnIndex(MediaStore.Images.Media.DATE_TAKEN);
-                  long currenttime = System.currentTimeMillis();
-                  int i = 0;
-                  int count = cur.getCount();
-                  DialogImagesModel mOdle;
-                  do {
-                      try {
-                          // Get the field values
-                          if (Long.parseLong(cur.getString(DateColumn)) <= (currenttime - (24 * 60 * 60 * 1000) * i) || i == 0) {
-                              mOdle = new DialogImagesModel();
-                              mOdle.setOrigId(Long.valueOf(cur.getString(bucketColumn)));
-                              mOdle.setImagePathl(cur.getString(PathColumn));
-                              mGallerImageLst.add(mOdle);
-                              i++;
-                       *//*       Calendar c = Calendar.getInstance();
-                            c.setTimeInMillis(Long.parseLong(cur.getString(DateColumn)));
-                            Log.e(this.getLocalClassName(), c.getTime() + "");*//*
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-                while ((count > constant.MAX_GAL_IMAGE_COUNT) ? cur.moveToPrevious() && (i < constant.MAX_GAL_IMAGE_COUNT) : cur.moveToPrevious());
-            }
-
-
-            final AlertDialog.Builder mBuilder = new AlertDialog.Builder(new ContextThemeWrapper(this, android.R.style.Theme_Holo));
-            View mView = getLayoutInflater().inflate(R.layout.dialog_gallery, null);
-            mBuilder.setView(mView);
-
-            GridView mGalGridview = (GridView) mView.findViewById(R.id.dialog_gridview);
-            TextView mGalTitlevw = (TextView) mView.findViewById(R.id.dialog_gal_title);
-            TextView mGalTitleTextvw = (TextView) mView.findViewById(R.id.dialog_gal_title_txt);
-            TextView mGalleryTvw = (TextView) mView.findViewById(R.id.dialog_gallery_tv);
-            ImageView mCloseImgVw = (ImageView) mView.findViewById(R.id.dialog_gal_close);
-
-
-            FontsUtil.setExistenceLight(mContext, mGalTitlevw);
-            FontsUtil.setExistenceLight(mContext, mGalTitleTextvw);
-            FontsUtil.setExistenceLight(mContext, mGalleryTvw);
-
-            mCloseImgVw.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
-
-            mGalleryTvw.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
-
-            mGalGridview.setAdapter(new DMDialogGridAdapter(mContext, mGallerImageLst));
-            mGalGridview.setOnItemClickListener(new OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                }
-            });
-
-            mGalleryDialog = mBuilder.create();
-            mGalleryDialog.show();
-        }
-        AppUtils.setDefaults(constant.PREF_IS_GALRY_DIALOG_SHOWN, true, mContext);
-    }
-*/
     public void callGallery() {
         Intent i = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(i, RESULT_GALLERY);

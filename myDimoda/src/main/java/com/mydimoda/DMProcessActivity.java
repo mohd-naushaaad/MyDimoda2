@@ -116,6 +116,7 @@ public class DMProcessActivity extends Activity {
         intent.putExtra(constant.FRM_DIALG_PROCESS_KEY, mIsFrmDialog);
         startActivity(intent);
         finish();
+
     }
 
     public void showAnimation() {

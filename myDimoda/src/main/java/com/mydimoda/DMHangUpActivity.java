@@ -138,12 +138,12 @@ public class DMHangUpActivity extends Activity {
 
 			public void onClick(View v) {
 
-				if (mFromMain) {
+			/*	if (!mFromMain) {
 					Intent intent = new Intent(DMHangUpActivity.this,
 							DMHomeActivity.class);
 					startActivity(intent);
 				}
-
+*/
 				finish();
 			}
 		});
@@ -283,8 +283,6 @@ public class DMHangUpActivity extends Activity {
 	public void onBackPressed() {
 		super.onBackPressed();
 
-		Intent intent = new Intent(DMHangUpActivity.this, DMHomeActivity.class);
-		startActivity(intent);
-		finish();
+
 	}
 }

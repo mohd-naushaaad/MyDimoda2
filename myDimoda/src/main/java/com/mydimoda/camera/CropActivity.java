@@ -159,6 +159,7 @@ public class CropActivity extends Activity implements OnClickListener {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         Log.i(LOGTAG, "onActivityResult requestCode " + requestCode);
         if (requestCode == RESULT_CROP_LIST && resultCode == RESULT_OK) {
+            setResult(RESULT_OK);
             finish();
         } else if ((requestCode == RESULT_CROP_LIST && resultCode == RESULT_CANCELED)) {
             try {

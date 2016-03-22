@@ -188,7 +188,11 @@ public class constant {
 
     public static void hideProgress() {
         if (vProgress != null) {
-            vProgress.dismiss();
+            try{
+                vProgress.dismiss();
+            }catch(IllegalArgumentException e){
+                e.printStackTrace();
+            }
         }
     }
 

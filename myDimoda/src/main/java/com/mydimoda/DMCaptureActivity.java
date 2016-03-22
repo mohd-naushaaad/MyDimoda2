@@ -15,7 +15,6 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
-import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.Animation;
@@ -34,7 +33,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mydimoda.adapter.DMMenuListAdapter;
-import com.mydimoda.adapter.DMOptionsListAdapter;
 import com.mydimoda.camera.CameraActivity;
 import com.mydimoda.camera.CropActivity;
 import com.mydimoda.widget.cropper.util.FontsUtil;
@@ -53,7 +51,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class DMCaptureActivity extends FragmentActivity implements OnClickListener,
@@ -103,14 +100,8 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
     String fileName;
     String mCurrentPhotoPath;
     Uri imageUri;
-    @Bind(R.id.act_cap_category_spnr)
-    TextView mCatSpinner;
-    @Bind(R.id.act_cap_type_spnr)
-    TextView mTypeSpinner;
-    @Bind(R.id.act_capture_cattype_ll)
-    LinearLayout mOptionsLL;
-    @Bind(R.id.act_cap_error_tv)
-    TextView mCatTyprErrTv;
+
+
 
     AlertDialog mCatDialog;
     AlertDialog mTypeDialog;
@@ -146,8 +137,7 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
         FontsUtil.setExistenceLight(this, vBtnHangUp);
 
 
-        FontsUtil.setExistenceLight(this, mCatSpinner);
-        FontsUtil.setExistenceLight(this, mTypeSpinner);
+
 
 
         mMaskLayout = (FrameLayout) findViewById(R.id.maskLayer);
@@ -224,8 +214,7 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
                 }
             }
         });
-        mTypeSpinner.setOnClickListener(this);
-        mCatSpinner.setOnClickListener(this);
+
 
         initOnCreate();
     }
@@ -251,12 +240,6 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
                 showFormalMenu(false);
                 break;
 
-            case R.id.act_cap_category_spnr:
-                showCategoryDialog();
-                break;
-            case R.id.act_cap_type_spnr:
-                showTypeDialog();
-                break;
         }
     }
 
@@ -311,11 +294,6 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
             if (constant.gTakenBitmap != null && !mIsFrmDialog) {
                 mBitmap = constant.gTakenBitmap;
                 vCaptureImg.setImageBitmap(mBitmap);
-                if (mIsFrmDialogProcess) {
-                    mOptionsLL.setVisibility(View.VISIBLE);
-                } else {
-                    mOptionsLL.setVisibility(View.INVISIBLE);
-                }
             } else {
                 goCropActivity();
             }
@@ -547,18 +525,15 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
             constant.gTakenBitmap = mBitmap;
             if (mBitmap != null) {
                 Intent intent = new Intent(this, CropActivity.class);
-                intent.putExtra(constant.FRM_DIALG_KEY, true);
+                intent.putExtra(constant.FRM_DIALG_KEY, false);
                 startActivityForResult(intent, RESULT_CROP);
             }
         } else {
-            mBitmap = constant.gTakenBitmap;
             Intent intent = new Intent(this, CropActivity.class);
             intent.putExtra(constant.FRM_DIALG_KEY, true);
             startActivity(intent);
             finish();
         }
-
-
     }
 
     public void goProcessActivity() {
@@ -710,10 +685,8 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
     }
 
     int mMaxCount = 0;
-
     /**
      * for calculating and assigning style options
-     *
      * @param items
      */
     public void stylePointProcessor(int items) {
@@ -757,84 +730,5 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
         }
         constant.hideProgress();
         finish();
-    }
-
-    final String[] mCatList = {"Formal", "Casual"};
-    final String[] mTypeList = {"Shirt", "Trousers", "Suit", "Jacket", "Tie"};
-
-    public void showCategoryDialog() {
-        if (mCatDialog == null) {
-            AlertDialog.Builder mBuilder = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AppCompatAlertDialogStyle));
-            View mmain = this.getLayoutInflater().inflate(R.layout.dialog_options, null);
-
-            ListView mOptions = (ListView) mmain.findViewById(R.id.dialog_options_lstvw);
-            final DMOptionsListAdapter mAdapter = new DMOptionsListAdapter(this, mCatList);
-
-            mOptions.setAdapter(mAdapter);
-
-            mOptions.setOnItemClickListener(new OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    if (mAdapter.mList[position].equalsIgnoreCase("formal")) {
-                        mIsFormal = true;
-                    } else {
-                        mIsFormal = false;
-                    }
-                    mCatSpinner.setText(mAdapter.mList[position]);
-                    if (mCatDialog != null && mCatDialog.isShowing()) {
-                        mCatDialog.dismiss();
-                    }
-                    checkCatAndType();
-                }
-            });
-            mBuilder.setView(mmain);
-            mCatDialog = mBuilder.create();
-        }
-        mCatDialog.show();
-    }
-
-    public void showTypeDialog() {
-        if (mTypeDialog == null) {
-
-            AlertDialog.Builder mBuilder = new AlertDialog.Builder(new ContextThemeWrapper(this, android.R.style.Theme_Holo));
-            View mmain = this.getLayoutInflater().inflate(R.layout.dialog_options, null);
-
-            ListView mOptions = (ListView) mmain.findViewById(R.id.dialog_options_lstvw);
-            final DMOptionsListAdapter mAdapter = new DMOptionsListAdapter(this, mTypeList);
-
-            mOptions.setAdapter(mAdapter);
-
-            mOptions.setOnItemClickListener(new OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    mType = mAdapter.mList[position].toLowerCase();
-                    mTypeSpinner.setText(mAdapter.mList[position]);
-                    if (mTypeDialog != null && mTypeDialog.isShowing()) {
-                        mTypeDialog.dismiss();
-                    }
-                    checkCatAndType();
-                }
-            });
-            mBuilder.setView(mmain);
-            mTypeDialog = mBuilder.create();
-        }
-
-        mTypeDialog.show();
-    }
-
-    public boolean checkCatAndType() {
-        for (int i = 0; i < mCatList.length; i++) {
-            if (mCatList[i].equalsIgnoreCase(mCatSpinner.getText().toString())) {
-                for (int i2 = 0; i < mTypeList.length; i++) {
-                    if (mTypeList[i].equalsIgnoreCase(mTypeSpinner.getText().toString())) {
-                        mCatTyprErrTv.setVisibility(View.INVISIBLE);
-                        return true;
-                    }
-                }
-            }
-        }
-        mCatTyprErrTv.setVisibility(View.VISIBLE);
-        return false;
-
     }
 }
