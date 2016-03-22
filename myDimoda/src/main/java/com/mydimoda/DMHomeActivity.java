@@ -1,9 +1,8 @@
 package com.mydimoda;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -14,24 +13,19 @@ import android.provider.MediaStore;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
-import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
-import android.widget.GridView;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.mydimoda.adapter.DMDialogGridAdapter;
 import com.mydimoda.adapter.DMMenuListAdapter;
 import com.mydimoda.database.DbAdapter;
+import com.mydimoda.interfaces.DialogItemClickListener;
 import com.mydimoda.model.DatabaseModel;
 import com.mydimoda.model.DialogImagesModel;
-import com.mydimoda.widget.cropper.util.FontsUtil;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -40,7 +34,6 @@ import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 public class DMHomeActivity extends FragmentActivity {
@@ -55,7 +48,7 @@ public class DMHomeActivity extends FragmentActivity {
     DatabaseModel m_DatabaseModel;
     final public static String ONE_TIME = "onetime";
     String TAG = "";
-    Dialog mGalleryDialog;
+    DialogInterface mDlgInterface;
     int RESULT_GALLERY = 2;
     ParseUser user;
 
@@ -165,7 +158,7 @@ public class DMHomeActivity extends FragmentActivity {
                                     user.saveInBackground(new SaveCallback() {
                                         @Override
                                         public void done(ParseException e) {
-                                            SharedPreferenceUtil.putValue(constant.USER_MAX_COUNT_INITILISED,true);
+                                            SharedPreferenceUtil.putValue(constant.USER_MAX_COUNT_INITILISED, true);
                                         }
                                     });
                                 }
@@ -183,10 +176,51 @@ public class DMHomeActivity extends FragmentActivity {
             user = ParseUser.getCurrentUser();
         }
         shouldShowGalleryDialog(user);
-        if (!AppUtils.getDefaults(this, constant.PREF_IS_GALRY_DIALOG_SHOWN, false) ) {
-            showGalleryDialog();
+        //   if (!AppUtils.getDefaults(this, constant.PREF_IS_GALRY_DIALOG_SHOWN, false)) {
+
+        try{
+            AppUtils.showGalleryDialog(this, mGallerImageLst, new DialogItemClickListener() {
+
+                @Override
+                public void onImageClick(String imagePath) {
+                    try {
+                        mDlgInterface.dismiss();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    goToCropActivity(imagePath);
+                }
+
+                @Override
+                public void onGalleryClick() {
+                    try {
+                        mDlgInterface.dismiss();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    callGallery();
+                }
+
+                @Override
+                public void onCloseClick() {
+                    try {
+                        mDlgInterface.dismiss();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                @Override
+                public void onDialogVisible(DialogInterface mDialogInterface) {
+                    mDlgInterface = mDialogInterface;
+                }
+            });
+        }catch(Exception e){
+            e.printStackTrace();
         }
+
     }
+    // }
 
     public void init() {
         showMenu();
@@ -242,50 +276,47 @@ public class DMHomeActivity extends FragmentActivity {
 
     public ArrayList<DialogImagesModel> mGallerImageLst = new ArrayList();
 
-    public void showGalleryDialog() {
-        if (mGalleryDialog == null || !mGalleryDialog.isShowing()) {
-            mGallerImageLst.clear();
-            String[] projection = new String[]{
-                    MediaStore.Images.Media._ID,
-                    MediaStore.Images.Media.BUCKET_DISPLAY_NAME,
-                    MediaStore.Images.Media.DATE_TAKEN, MediaStore.Images.Media.DATA};
-            // content:// style URI for the "primary" external storage volume
-            Uri images = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
-            // Make the query.
-            Cursor cur = getContentResolver().query(images,
-                    projection, // Which columns to return
-                    null,       // Which rows to return (all rows)
-                    null,       // Selection arguments (none)
-                    MediaStore.Images.Media.DATE_TAKEN        // Ordering
-            );
-            Log.i("ListingImages", " query count=" + cur.getCount());
-            if (cur.moveToFirst()) {
-                int bucketColumn = cur.getColumnIndex(
-                        MediaStore.Images.Media._ID);
-                int PathColumn = cur.getColumnIndex(
-                        MediaStore.Images.Media.DATA);
-                int DateColumn = cur.getColumnIndex(MediaStore.Images.Media.DATE_TAKEN);
-                long currenttime = System.currentTimeMillis();
-                cur.moveToLast();
-                int i = 0;
-                int count = cur.getCount();
-                DialogImagesModel mOdle;
-                do {
-                    try {
-                        // Get the field values
-                        if (Long.parseLong(cur.getString(DateColumn)) <= (currenttime - (24 * 60 * 60 * 1000) * i) || i == 0) {
-                            mOdle = new DialogImagesModel();
-                            mOdle.setOrigId(Long.valueOf(cur.getString(bucketColumn)));
-                            mOdle.setImagePathl(cur.getString(PathColumn));
-                            mGallerImageLst.add(mOdle);
-                            i++;
-                            Calendar c = Calendar.getInstance();
+    /*
+      public void showGalleryDialog(Context mContext, DialogItemClickListener mListner) {
+          if (mGalleryDialog == null || !mGalleryDialog.isShowing()) {
+              mGallerImageLst.clear();
+              String[] projection = new String[]{
+                      MediaStore.Images.Media._ID,
+                      MediaStore.Images.Media.BUCKET_DISPLAY_NAME,
+                      MediaStore.Images.Media.DATE_TAKEN, MediaStore.Images.Media.DATA};
+              // content:// style URI for the "primary" external storage volume
+              Uri images = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+              // Make the query.
+              Cursor cur = getContentResolver().query(images,
+                      projection, // Which columns to return
+                      null,       // Which rows to return (all rows)
+                      null,       // Selection arguments (none)
+                      MediaStore.Images.Media.DATE_TAKEN        // Ordering
+              );
+              Log.i("ListingImages", " query count=" + cur.getCount());
+              if (cur.moveToLast()) {
+                  int bucketColumn = cur.getColumnIndex(
+                          MediaStore.Images.Media._ID);
+                  int PathColumn = cur.getColumnIndex(
+                          MediaStore.Images.Media.DATA);
+                  int DateColumn = cur.getColumnIndex(MediaStore.Images.Media.DATE_TAKEN);
+                  long currenttime = System.currentTimeMillis();
+                  int i = 0;
+                  int count = cur.getCount();
+                  DialogImagesModel mOdle;
+                  do {
+                      try {
+                          // Get the field values
+                          if (Long.parseLong(cur.getString(DateColumn)) <= (currenttime - (24 * 60 * 60 * 1000) * i) || i == 0) {
+                              mOdle = new DialogImagesModel();
+                              mOdle.setOrigId(Long.valueOf(cur.getString(bucketColumn)));
+                              mOdle.setImagePathl(cur.getString(PathColumn));
+                              mGallerImageLst.add(mOdle);
+                              i++;
+                       *//*       Calendar c = Calendar.getInstance();
                             c.setTimeInMillis(Long.parseLong(cur.getString(DateColumn)));
-                            Log.e(this.getLocalClassName(), c.getTime() + "");
+                            Log.e(this.getLocalClassName(), c.getTime() + "");*//*
                         }
-
-                 /*   mUri2 = cur.getString(cur.getColumnIndex(MediaStore.Images.Media.DATA));
-                    Log.e(TAG, mUri2 + "\n" + "");*/
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -305,48 +336,38 @@ public class DMHomeActivity extends FragmentActivity {
             ImageView mCloseImgVw = (ImageView) mView.findViewById(R.id.dialog_gal_close);
 
 
-            FontsUtil.setExistenceLight(this, mGalTitlevw);
-            FontsUtil.setExistenceLight(this, mGalTitleTextvw);
-            FontsUtil.setExistenceLight(this, mGalleryTvw);
+            FontsUtil.setExistenceLight(mContext, mGalTitlevw);
+            FontsUtil.setExistenceLight(mContext, mGalTitleTextvw);
+            FontsUtil.setExistenceLight(mContext, mGalleryTvw);
 
             mCloseImgVw.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    try {
-                        mGalleryDialog.dismiss();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+
                 }
             });
 
             mGalleryTvw.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    callGallery();
+
                 }
             });
 
-            mGalGridview.setAdapter(new DMDialogGridAdapter(DMHomeActivity.this, mGallerImageLst));
+            mGalGridview.setAdapter(new DMDialogGridAdapter(mContext, mGallerImageLst));
             mGalGridview.setOnItemClickListener(new OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    try {
-                        mGalleryDialog.dismiss();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    //   constant.gTakenBitmap = BitmapFactory.decodeFile();
-                    goToCropActivity(mGallerImageLst.get(position).getImagePathl());
+
                 }
             });
 
             mGalleryDialog = mBuilder.create();
             mGalleryDialog.show();
         }
-        AppUtils.setDefaults(constant.PREF_IS_GALRY_DIALOG_SHOWN, true, DMHomeActivity.this);
+        AppUtils.setDefaults(constant.PREF_IS_GALRY_DIALOG_SHOWN, true, mContext);
     }
-
+*/
     public void callGallery() {
         Intent i = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(i, RESULT_GALLERY);
@@ -390,13 +411,13 @@ public class DMHomeActivity extends FragmentActivity {
             query.findInBackground(new FindCallback<ParseObject>() {
                 @Override
                 public void done(List<ParseObject> list, ParseException e) {
-                    if(list!=null){
+                    if (list != null) {
                         totalCloths = list.size();
                         SharedPreferenceUtil.putValue(constant.PREF_CLOTH_COUNT, totalCloths);
                         SharedPreferenceUtil.save();
                         Log.e(this.getClass().getSimpleName(), "cloth list size: " + totalCloths);
                         if (totalCloths <= 50) {
-                          //  AppUtils.setDefaults(constant.PREF_IS_GALRY_DIALOG_SHOWN, false, mContext);
+                            //  AppUtils.setDefaults(constant.PREF_IS_GALRY_DIALOG_SHOWN, false, mContext);
                         } else {
                             AppUtils.setDefaults(constant.PREF_IS_GALRY_DIALOG_SHOWN, true, mContext);
                         }

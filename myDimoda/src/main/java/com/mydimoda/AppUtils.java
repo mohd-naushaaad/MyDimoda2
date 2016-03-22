@@ -1,17 +1,35 @@
 package com.mydimoda;
 
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.preference.PreferenceManager;
+import android.provider.MediaStore;
+import android.util.Log;
+import android.view.ContextThemeWrapper;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mydimoda.adapter.DMDialogGridAdapter;
+import com.mydimoda.interfaces.DialogItemClickListener;
+import com.mydimoda.model.DialogImagesModel;
+import com.mydimoda.widget.cropper.util.FontsUtil;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
+
+import java.util.ArrayList;
 
 public class AppUtils {
 
@@ -164,5 +182,109 @@ public class AppUtils {
         }
 
     }
+    static Dialog mGalleryDialog;
+    /**
+     * Displays a dialog with images from gallery
+     * with time difference of 24hrs
+     *
+     * @param mContext
+     */
+    public static void showGalleryDialog(Context mContext, final ArrayList<DialogImagesModel> mGallerImageLst,
+                                         final DialogItemClickListener mCallback) throws ClassCastException {
+        if (mGalleryDialog == null || !mGalleryDialog.isShowing()) {
+            mGallerImageLst.clear();
+            String[] projection = new String[]{
+                    MediaStore.Images.Media._ID,
+                    MediaStore.Images.Media.BUCKET_DISPLAY_NAME,
+                    MediaStore.Images.Media.DATE_TAKEN, MediaStore.Images.Media.DATA};
+            // content:// style URI for the "primary" external storage volume
+            Uri images = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+            // Make the query.
+            Cursor cur = mContext.getContentResolver().query(images,
+                    projection, // Which columns to return
+                    null,       // Which rows to return (all rows)
+                    null,       // Selection arguments (none)
+                    MediaStore.Images.Media.DATE_TAKEN        // Ordering
+            );
+            Log.i("ListingImages", " query count=" + cur.getCount());
+            if (cur.moveToLast()) {
+                int bucketColumn = cur.getColumnIndex(
+                        MediaStore.Images.Media._ID);
+                int PathColumn = cur.getColumnIndex(
+                        MediaStore.Images.Media.DATA);
+                int DateColumn = cur.getColumnIndex(MediaStore.Images.Media.DATE_TAKEN);
+                long currenttime = System.currentTimeMillis();
+                int i = 0;
+                int count = cur.getCount();
+                DialogImagesModel mOdle;
+                do {
+                    try {
+                        // Get the field values
+                        if (Long.parseLong(cur.getString(DateColumn)) <= (currenttime - (24 * 60 * 60 * 1000) * i) || i == 0) {
+                            mOdle = new DialogImagesModel();
+                            mOdle.setOrigId(Long.valueOf(cur.getString(bucketColumn)));
+                            mOdle.setImagePathl(cur.getString(PathColumn));
+                            mGallerImageLst.add(mOdle);
+                            i++;
+                     /*       Calendar c = Calendar.getInstance();
+                            c.setTimeInMillis(Long.parseLong(cur.getString(DateColumn)));
+                            Log.e(this.getLocalClassName(), c.getTime() + "");*/
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                while ((count > constant.MAX_GAL_IMAGE_COUNT) ? cur.moveToPrevious() && (i < constant.MAX_GAL_IMAGE_COUNT) : cur.moveToPrevious());
+            }
 
+
+            final AlertDialog.Builder mBuilder = new AlertDialog.Builder(new ContextThemeWrapper(mContext, android.R.style.Theme_Holo));
+            View mView = ((Activity) mContext).getLayoutInflater().inflate(R.layout.dialog_gallery, null);
+            mBuilder.setView(mView);
+
+            GridView mGalGridview = (GridView) mView.findViewById(R.id.dialog_gridview);
+            TextView mGalTitlevw = (TextView) mView.findViewById(R.id.dialog_gal_title);
+            TextView mGalTitleTextvw = (TextView) mView.findViewById(R.id.dialog_gal_title_txt);
+            TextView mGalleryTvw = (TextView) mView.findViewById(R.id.dialog_gallery_tv);
+            ImageView mCloseImgVw = (ImageView) mView.findViewById(R.id.dialog_gal_close);
+
+
+            FontsUtil.setExistenceLight(mContext, mGalTitlevw);
+            FontsUtil.setExistenceLight(mContext, mGalTitleTextvw);
+            FontsUtil.setExistenceLight(mContext, mGalleryTvw);
+
+            mCloseImgVw.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mCallback.onCloseClick();
+                }
+            });
+
+            mGalleryTvw.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    mCallback.onGalleryClick();
+                }
+            });
+
+            mGalGridview.setAdapter(new DMDialogGridAdapter(mContext, mGallerImageLst));
+            mGalGridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                    mCallback.onImageClick(mGallerImageLst.get(position).getImagePathl());
+                }
+            });
+            mGalleryDialog.setOnShowListener(new DialogInterface.OnShowListener() {
+                @Override
+                public void onShow(DialogInterface dialog) {
+                    mCallback.onDialogVisible(dialog);
+                }
+            });
+            mGalleryDialog = mBuilder.create();
+            mGalleryDialog.show();
+        }
+        AppUtils.setDefaults(constant.PREF_IS_GALRY_DIALOG_SHOWN, true, mContext);
+    }
 }
