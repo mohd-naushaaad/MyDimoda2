@@ -702,8 +702,11 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
                         SharedPreferenceUtil.putValue(constant.PREF_MAX_COUNT_GVN + mType, true);
                         constant.maxCount = user.getInt(constant.USER_MAX_COUNT);
                         constant.hideProgress();
-                        Toast.makeText(DMCaptureActivity.this, "5 Styles awarded",
-                                Toast.LENGTH_LONG).show();
+                        if (!(user.getBoolean(constant.RATED_APP) || user.getBoolean("Buy") ||
+                                SharedPreferenceUtil.getString("inApp", "0").equalsIgnoreCase("1"))) {
+                            Toast.makeText(DMCaptureActivity.this, "5 Style me options awarded",
+                                    Toast.LENGTH_LONG).show();
+                        }
                     } else {
                         Toast.makeText(DMCaptureActivity.this, e.toString(),
                                 Toast.LENGTH_LONG).show();
@@ -719,8 +722,11 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
                 public void done(ParseException e) {
                     if (e == null) {
                         constant.maxCount = user.getInt(constant.USER_MAX_COUNT);
-                        Toast.makeText(DMCaptureActivity.this, "1 Style awarded",
-                                Toast.LENGTH_LONG).show();
+                        if (!(user.getBoolean(constant.RATED_APP) || user.getBoolean("Buy") ||
+                                SharedPreferenceUtil.getString("inApp", "0").equalsIgnoreCase("1"))) {
+                            Toast.makeText(DMCaptureActivity.this, "1 Style me option awarded",
+                                    Toast.LENGTH_LONG).show();
+                        }
                     } else {
                         Toast.makeText(DMCaptureActivity.this, e.toString(),
                                 Toast.LENGTH_LONG).show();

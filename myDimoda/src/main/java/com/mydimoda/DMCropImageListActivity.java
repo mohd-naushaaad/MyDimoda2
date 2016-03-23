@@ -311,8 +311,12 @@ public class DMCropImageListActivity extends FragmentActivity {
                     if (e == null) {
                         SharedPreferenceUtil.putValue(constant.PREF_MAX_COUNT_GVN + mType, true);
                         constant.maxCount = user.getInt(constant.USER_MAX_COUNT);
-                        Toast.makeText(DMCropImageListActivity.this, "5 Styles awarded",
-                                Toast.LENGTH_LONG).show();
+                        if (!(user.getBoolean(constant.RATED_APP) || user.getBoolean("Buy") ||
+                                SharedPreferenceUtil.getString("inApp", "0").equalsIgnoreCase("1"))) {
+                            Toast.makeText(DMCropImageListActivity.this, "5 Style me options awarded",
+                                    Toast.LENGTH_LONG).show();
+                        }
+
                         constant.hideProgress();
                     } else {
                         Toast.makeText(DMCropImageListActivity.this, e.toString(),
@@ -329,8 +333,12 @@ public class DMCropImageListActivity extends FragmentActivity {
                 public void done(ParseException e) {
                     if (e == null) {
                         constant.maxCount = user.getInt(constant.USER_MAX_COUNT);
-                        Toast.makeText(DMCropImageListActivity.this, "1 Style awarded",
-                                Toast.LENGTH_LONG).show();
+                        if (!(user.getBoolean(constant.RATED_APP) || user.getBoolean("Buy") ||
+                                SharedPreferenceUtil.getString("inApp", "0").equalsIgnoreCase("1"))) {
+                            Toast.makeText(DMCropImageListActivity.this, "1 Style me option awarded",
+                                    Toast.LENGTH_LONG).show();
+                        }
+
                     } else {
                         Toast.makeText(DMCropImageListActivity.this, e.toString(),
                                 Toast.LENGTH_LONG).show();
