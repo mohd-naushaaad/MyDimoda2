@@ -226,6 +226,7 @@ public class CropActivity extends Activity implements OnClickListener {
                 constant.getImageLst().add(mModel);
             }
             Intent intent = new Intent(this, DMCropImageListActivity.class);
+            intent.putExtra("type", this.getIntent().getStringExtra("type")+"");
             startActivityForResult(intent, RESULT_CROP_LIST);
             //   finish();
         } else {

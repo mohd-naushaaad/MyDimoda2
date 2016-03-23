@@ -191,7 +191,7 @@ public class AppUtils {
      *
      * @param mContext
      */
-    public static void showGalleryDialog(Context mContext, final DialogItemClickListener mCallback,boolean isFrmHome)
+    public static void showGalleryDialog(Context mContext, final DialogItemClickListener mCallback, boolean isFrmHome)
             throws ClassCastException {
         if (mGalleryDialog == null || !mGalleryDialog.isShowing()) {
             final ArrayList<DialogImagesModel> mGallerImageLst = new ArrayList();
@@ -251,6 +251,9 @@ public class AppUtils {
             TextView mGalleryTvw = (TextView) mView.findViewById(R.id.dialog_gallery_tv);
             ImageView mCloseImgVw = (ImageView) mView.findViewById(R.id.dialog_gal_close);
 
+            if (!isFrmHome) {
+                mGalTitlevw.setText("Select");
+            }
 
             FontsUtil.setExistenceLight(mContext, mGalTitlevw);
             FontsUtil.setExistenceLight(mContext, mGalTitleTextvw);

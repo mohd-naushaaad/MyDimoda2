@@ -248,6 +248,8 @@ public class DMSettingActivity extends Activity {
 
         //mayur removing checks
         AppUtils.setDefaults(constant.PREF_IS_GALRY_DIALOG_SHOWN, false, this);
+        SharedPreferenceUtil.putValue(constant.USER_MAX_COUNT_INITILISED, false);
+        SharedPreferenceUtil.putValue(constant.PREF_MAX_COUNT_CONFIGURED, false);
         Intent intent = new Intent(this, DMLoginActivity.class);
         startActivity(intent);
         finish();
@@ -362,7 +364,5 @@ public class DMSettingActivity extends Activity {
                 e.printStackTrace();
             }
         }
-
-
     }
 }

@@ -87,6 +87,7 @@ public class constant {
     public static String gPatternVal = null;
 
     public static boolean gIsStart = false;
+    public static  final  String COUNT = "Count";
 
     public constant() {
 
@@ -248,6 +249,7 @@ public class constant {
                 context.finish();
         }
     }
+    public static int max_lic_count = 5;
 
     public static final int MAX_GAL_IMAGE_COUNT = 12;
     public static final String EMPTY_TYPE = "Undefined";
@@ -259,8 +261,8 @@ public class constant {
     public static final String PREF_IS_NOTI_ENABLE = "notificationenabledisable";
     public static final String PREF_MAX_COUNT = "maxearnedcounts";
     public static final String PREF_MAX_COUNT_GVN = "maxearnedcountsfor";
-    /* public static final String PREF_MAX_COUNT_GVN_shirt = "maxearnedcountsforshirt";
-     public static final String PREF_MAX_COUNT_trousers = "maxearnedcountsfortrousers";*/
+    /* public static final String PREF_MAX_COUNT_GVN_shirt = "maxearnedcountsforshirt";*/
+     public static final String PREF_MAX_COUNT_CONFIGURED = "ismaxcountconfigured";
      public static final String RATED_APP = "ratedmyDiModa";
      public static final String PREF_CLOTH_COUNT = "maxearnedcountsforsuits";
     public static final String USER_MAX_COUNT = "MaxUserCount";

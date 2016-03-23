@@ -213,7 +213,7 @@ public class DMCaptureOptionActivity extends Activity {
     public void goToCropActivity(String picPath) {
         constant.gTakenBitmap = BitmapFactory.decodeFile(picPath);
         Intent intent = new Intent(mContext, CropActivity.class);
-        intent.putExtra("type", constant.EMPTY_TYPE);
+        intent.putExtra("type", mType);
         intent.putExtra("isCapture", false);
         intent.putExtra(constant.FRM_DIALG_KEY, true);
         startActivityForResult(intent, RESULT_CROP);

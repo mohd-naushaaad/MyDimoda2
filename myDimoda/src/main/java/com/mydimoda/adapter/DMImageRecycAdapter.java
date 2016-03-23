@@ -46,7 +46,6 @@ public class DMImageRecycAdapter extends RecyclerView.Adapter<DMImageRecycAdapte
         viewHolder.mCroppedImage.setImageBitmap(items.get(position).getmImage());
         if (!TextUtils.isEmpty(items.get(position).getmType())) {
             viewHolder.mType.setText(items.get(position).getmType());
-
         } else {
             viewHolder.mType.setText("Type");
         }

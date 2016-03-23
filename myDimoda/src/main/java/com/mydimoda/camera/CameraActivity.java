@@ -1,12 +1,5 @@
 package com.mydimoda.camera;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.List;
-import java.util.regex.Pattern;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -37,11 +30,17 @@ import android.widget.TextView;
 
 import com.android.zlightness;
 import com.mydimoda.DMCaptureOptionActivity;
-import com.mydimoda.DMHangUpActivity;
 import com.mydimoda.R;
-import com.mydimoda.constant;
 import com.mydimoda.adapter.DMMenuListAdapter;
+import com.mydimoda.constant;
 import com.mydimoda.widget.cropper.util.FontsUtil;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.List;
+import java.util.regex.Pattern;
 
 public class CameraActivity extends Activity implements SurfaceHolder.Callback,
 		Camera.PreviewCallback, OnClickListener {
@@ -197,7 +196,11 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback,
 		case R.id.captureBtn: {
 			Intent intent = getIntent();
 			imageUri = intent.getStringExtra("photoname");
-			camera.takePicture(null, null, mPicture);
+			try{
+				camera.takePicture(null, null, mPicture);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 			break;
 		}
 		case R.id.back_layout: {

@@ -14,6 +14,10 @@ public interface DialogItemClickListener {
 
     void onCloseClick();
 
+    /**
+     * get dialog's interface to dismiss the dialog when required
+     * @param mDialogInterface
+     */
     void onDialogVisible(DialogInterface mDialogInterface);
 
 }

@@ -131,7 +131,7 @@ public class DMHomeActivity extends FragmentActivity {
 
                             ParseObject object = objects.get(0);
                             constant.maxCount = object.getInt("MaxValue");
-
+                            constant.max_lic_count = object.getInt("MaxValue");
                             if (!SharedPreferenceUtil.getBoolean(constant.USER_MAX_COUNT_INITILISED, false)) {
 
 
@@ -158,50 +158,53 @@ public class DMHomeActivity extends FragmentActivity {
         if (user == null) {
             user = ParseUser.getCurrentUser();
         }
+        configOldUsersMaxCount();
         shouldShowGalleryDialog(user);
-           if (!AppUtils.getDefaults(this, constant.PREF_IS_GALRY_DIALOG_SHOWN, false)) {
+        if (!AppUtils.getDefaults(this, constant.PREF_IS_GALRY_DIALOG_SHOWN, false)) {
 
-        try {
-            AppUtils.showGalleryDialog(this, new DialogItemClickListener() {
+            try {
+                AppUtils.showGalleryDialog(this, new DialogItemClickListener() {
 
-                @Override
-                public void onImageClick(String imagePath) {
-                    try {
-                        mDlgInterface.dismiss();
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                    @Override
+                    public void onImageClick(String imagePath) {
+                        try {
+                            mDlgInterface.dismiss();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        goToCropActivity(imagePath);
                     }
-                    goToCropActivity(imagePath);
-                }
 
-                @Override
-                public void onGalleryClick() {
-                    try {
-                        mDlgInterface.dismiss();
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                    @Override
+                    public void onGalleryClick() {
+                        try {
+                            mDlgInterface.dismiss();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        callGallery();
                     }
-                    callGallery();
-                }
 
-                @Override
-                public void onCloseClick() {
-                    try {
-                        mDlgInterface.dismiss();
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                    @Override
+                    public void onCloseClick() {
+                        try {
+                            mDlgInterface.dismiss();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
-                }
-                @Override
-                public void onDialogVisible(DialogInterface mDialogInterface) {
-                    mDlgInterface = mDialogInterface;
-                }
-            },true);
-        } catch (Exception e) {
-            e.printStackTrace();
+
+                    @Override
+                    public void onDialogVisible(DialogInterface mDialogInterface) {
+                        mDlgInterface = mDialogInterface;
+                    }
+                }, true);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
-     }
+
     public void init() {
         showMenu();
     }
@@ -308,5 +311,51 @@ public class DMHomeActivity extends FragmentActivity {
                 }
             });
         }
+    }
+
+    public void configOldUsersMaxCount() {
+        if (!SharedPreferenceUtil.getBoolean(constant.PREF_MAX_COUNT_CONFIGURED, false)) {
+
+            SharedPreferences settings = mContext.getSharedPreferences(constant.PREFS_NAME, Context.MODE_PRIVATE);
+            if (settings.getBoolean("isCloset", false)) {
+                ParseQuery<ParseObject> query = null;
+                query = ParseQuery.getQuery("Clothes");
+                query.whereEqualTo("User", user);
+                query.orderByDescending("createdAt");
+
+                query.findInBackground(new FindCallback<ParseObject>() {
+                    @Override
+                    public void done(List<ParseObject> list, ParseException e) {
+                        if (list != null) {
+                            int toAddCount = user.getInt(constant.USER_MAX_COUNT);
+                            totalCloths = list.size();
+                            SharedPreferenceUtil.putValue(constant.PREF_CLOTH_COUNT, totalCloths);
+                            SharedPreferenceUtil.save();
+                            Log.e("home", "cloth list size: " + totalCloths);
+                            if (totalCloths >= 2 && user.getInt(constant.USER_MAX_COUNT) == constant.max_lic_count) {
+
+                                for (int i = 0; i < totalCloths; i++) {
+                                    toAddCount++;
+                                }
+                                if (totalCloths >= 10) {
+                                    toAddCount = toAddCount + 40;//we have to give 50 but..the loop above already gave 10 points
+                                }
+                                user.put(constant.USER_MAX_COUNT, toAddCount);
+                                user.saveInBackground(new SaveCallback() {
+                                    @Override
+                                    public void done(ParseException e) {
+                                        SharedPreferenceUtil.putValue(constant.PREF_MAX_COUNT_CONFIGURED, true);
+                                    }
+                                });
+
+                            }
+                        }
+                    }
+                });
+            }
+
+
+        }
+
     }
 }

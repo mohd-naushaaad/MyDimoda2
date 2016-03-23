@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.View;
@@ -69,6 +70,7 @@ public class DMCropImageListActivity extends FragmentActivity {
     AlertDialog mTypeDialog;
     DMImageRecycAdapter mMainAdapter;
     LinearLayoutManager mLayoutManager;
+    String mType = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,6 +112,13 @@ public class DMCropImageListActivity extends FragmentActivity {
     }
 
     public void prepareView() {
+        mType = getIntent().getStringExtra("type");
+        if(!TextUtils.isEmpty(mType)&&!mType.equalsIgnoreCase(constant.EMPTY_TYPE)&&
+                !mType.equalsIgnoreCase("null")){
+            for (CropListModel model :mModelList){
+                model.setmType(mType);
+            }
+        }
 
         mMainAdapter = new DMImageRecycAdapter(mModelList, new DMImageRecycAdapter.CropListCallBacks() {
             @Override
