@@ -102,7 +102,6 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
     Uri imageUri;
 
 
-
     AlertDialog mCatDialog;
     AlertDialog mTypeDialog;
 
@@ -135,9 +134,6 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
 
         vBtnHangUp = (Button) findViewById(R.id.hangup_btn);
         FontsUtil.setExistenceLight(this, vBtnHangUp);
-
-
-
 
 
         mMaskLayout = (FrameLayout) findViewById(R.id.maskLayer);
@@ -196,7 +192,7 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
                 if (bForcusedMenu)
                     return;
 
-                    showFormalMenu(true);
+                showFormalMenu(true);
 
             }
         });
@@ -399,11 +395,12 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
         String imageFileName = "PNG_temp_";
         File storageDir = Environment
                 .getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+        storageDir.mkdirs();
+
         File image = File.createTempFile(imageFileName, /* prefix */
                 ".png", /* suffix */
                 storageDir /* directory */
         );
-
         fileName = image.getAbsolutePath();
         mCurrentPhotoPath = "file:" + image.getAbsolutePath();
 
@@ -423,7 +420,6 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
             bitmap = BitmapFactory.decodeStream(fis);
             fis.close();
         } catch (Exception e) {
-
             bitmap = null;
         }
         return bitmap;
@@ -685,8 +681,10 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
     }
 
     int mMaxCount = 0;
+
     /**
      * for calculating and assigning style options
+     *
      * @param items
      */
     public void stylePointProcessor(int items) {
@@ -724,7 +722,7 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
                         constant.maxCount = user.getInt(constant.USER_MAX_COUNT);
                         if (!(user.getBoolean(constant.RATED_APP) || user.getBoolean("Buy") ||
                                 SharedPreferenceUtil.getString("inApp", "0").equalsIgnoreCase("1"))) {
-                            Toast.makeText(DMCaptureActivity.this, "1 Style me option awarded",
+                            Toast.makeText(DMCaptureActivity.this, getString(R.string.style_me_awarded_1, 1),
                                     Toast.LENGTH_LONG).show();
                         }
                     } else {

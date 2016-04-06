@@ -387,15 +387,6 @@ public class CropImageView extends FrameLayout {
         mCropOverlayView = (CropOverlayView) v.findViewById(R.id.CropOverlayView);
         mCropOverlayView.setInitialAttributeValues(mGuidelines, mFixAspectRatio, mAspectRatioX, mAspectRatioY);
 
-        //mCropview2 = (CropOverlayView) v.findViewById(R.id.CropOverlayView2);
-        //mCropview2.setInitialAttributeValues(mGuidelines, mFixAspectRatio, mAspectRatioX, mAspectRatioY);
-
-        //exp start mayur
-       /* final FrameLayout fm = (FrameLayout) v.findViewById(R.id.exp_frame_ll);
-        CropOverlayView mCroOver2 = new CropOverlayView(context);
-        mCroOver2.setInitialAttributeValues(mGuidelines, mFixAspectRatio, mAspectRatioX, mAspectRatioY * 2);
-        fm.addView(mCroOver2);*/
-        //
 
     }
 

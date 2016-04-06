@@ -33,5 +33,7 @@
     <string name="act.capt.category">Category</string>
     <string name="act.capt.errortxt">Please select a Category and a Type to Hang Up</string>
     <string name="unlimited">Unlimited</string>
+    <string name="style_me_awarded_1">%1$d Style me option(s) awarded</string>
+
 
 </resources>

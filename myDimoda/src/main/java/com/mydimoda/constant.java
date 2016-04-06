@@ -274,16 +274,6 @@ public class constant {
 
 
 
-    //Mayur to save array of cropped images
-    private static ArrayList<Bitmap> mCroppedItemList;
-
-    public static ArrayList<Bitmap> getCroppedImageLst() {
-        if (mCroppedItemList == null) {
-            mCroppedItemList = new ArrayList<>();
-        }
-        return mCroppedItemList;
-    }
-
     //Mayur to save array of cropped images for otehr view
     private static ArrayList<CropListModel> mCroppedItemListModelArray;
 

@@ -1,6 +1,5 @@
 package com.mydimoda.adapter;
 
-import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.mydimoda.R;
+import com.mydimoda.model.CropListModel;
 
 import java.util.ArrayList;
 
@@ -16,9 +16,9 @@ import java.util.ArrayList;
  */
 public class DMCropActRecycAdapter extends RecyclerView.Adapter<DMCropActRecycAdapter.ListItemViewHolder> {
 
-    private ArrayList<Bitmap> items;
+    private ArrayList<CropListModel> items;
 
-    public DMCropActRecycAdapter(ArrayList<Bitmap> modelData) {
+    public DMCropActRecycAdapter(ArrayList<CropListModel> modelData) {
         if (modelData == null) {
             throw new IllegalArgumentException("modelData must not be null");
         }
@@ -35,7 +35,7 @@ public class DMCropActRecycAdapter extends RecyclerView.Adapter<DMCropActRecycAd
     @Override
     public void onBindViewHolder(
             ListItemViewHolder viewHolder, int position) {
-        viewHolder.mCroppedImage.setImageBitmap(items.get(position));
+        viewHolder.mCroppedImage.setImageBitmap(items.get(position).getmImage());
     }
 
     @Override

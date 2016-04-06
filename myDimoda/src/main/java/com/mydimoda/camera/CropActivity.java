@@ -135,22 +135,20 @@ public class CropActivity extends Activity implements OnClickListener {
         layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         mCropListVw.setHasFixedSize(true);
         mCropListVw.setLayoutManager(layoutManager);
-        mCropListVw.setAdapter(new DMCropActRecycAdapter(constant.getCroppedImageLst()));
+        mCropListVw.setAdapter(new DMCropActRecycAdapter(constant.getImageLst()));
 
         mAddCropBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mCropListVw.getVisibility() != View.VISIBLE) {
-                    mCropListVw.setVisibility(View.VISIBLE);
-                    constant.getCroppedImageLst().clear();
                     constant.getImageLst().clear();
+                    mCropListVw.setVisibility(View.VISIBLE);
                 }
                 mModel = new CropListModel();
                 mModel.setmImage(_cropView.getCroppedImage());
-                constant.getCroppedImageLst().add(mModel.getmImage());
                 constant.getImageLst().add(mModel);
                 mCropListVw.getAdapter().notifyDataSetChanged();
-                mCropListVw.smoothScrollToPosition(constant.getCroppedImageLst().size() - 1);
+                mCropListVw.smoothScrollToPosition(constant.getImageLst().size() - 1);
             }
         });
     }
@@ -160,15 +158,17 @@ public class CropActivity extends Activity implements OnClickListener {
         Log.i(LOGTAG, "onActivityResult requestCode " + requestCode);
         if (requestCode == RESULT_CROP_LIST && resultCode == RESULT_OK) {
             setResult(RESULT_OK);
-            finish();
+            this.finish();
         } else if ((requestCode == RESULT_CROP_LIST && resultCode == RESULT_CANCELED)) {
             try {
                 //   this.recreate();
-                if (constant.getImageLst().isEmpty()) {
-                    mCropListVw.setVisibility(View.GONE);
-                    constant.getCroppedImageLst().clear();
-                    mCropListVw.getAdapter().notifyDataSetChanged();
+                mCropListVw.setVisibility(View.GONE);
+                int cropLstSize = constant.getImageLst().size();
+                for (int i = 0; i < cropLstSize; i++) {
+                    constant.getImageLst().get(i).getmImage().recycle();
                 }
+                constant.getImageLst().clear();
+                mCropListVw.getAdapter().notifyDataSetChanged();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -226,8 +226,9 @@ public class CropActivity extends Activity implements OnClickListener {
                 constant.getImageLst().add(mModel);
             }
             Intent intent = new Intent(this, DMCropImageListActivity.class);
-            intent.putExtra("type", this.getIntent().getStringExtra("type")+"");
+            intent.putExtra("type", this.getIntent().getStringExtra("type") + "");
             startActivityForResult(intent, RESULT_CROP_LIST);
+
             //   finish();
         } else {
             finish();
@@ -355,5 +356,11 @@ public class CropActivity extends Activity implements OnClickListener {
             Toast.makeText(this, "unable to find market app", Toast.LENGTH_LONG)
                     .show();
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        constant.getImageLst().clear();
     }
 }

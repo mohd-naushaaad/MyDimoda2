@@ -332,7 +332,7 @@ public class DMHomeActivity extends FragmentActivity {
                             SharedPreferenceUtil.putValue(constant.PREF_CLOTH_COUNT, totalCloths);
                             SharedPreferenceUtil.save();
                             Log.e("home", "cloth list size: " + totalCloths);
-                            if (totalCloths >= 2 && user.getInt(constant.USER_MAX_COUNT) == constant.max_lic_count) { //well well yea thats a bit confusing, deal with it!!
+                            if (totalCloths >= 2 && user.getInt(constant.USER_MAX_COUNT) == constant.max_lic_count) { // for old users usermax count will by default set to max licence count
 
                                 for (int i = 0; i < totalCloths; i++) {
                                     toAddCount++;
