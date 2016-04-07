@@ -72,9 +72,9 @@ public class DMLoginActivity extends Activity {
                 Log.d("Testing:", "Hi key ::" + strHashKey);
             }
         } catch (NameNotFoundException e) {
-
+            e.printStackTrace();
         } catch (NoSuchAlgorithmException e) {
-
+            e.printStackTrace();
         }
 
         vBtnFacebook = (Button) findViewById(R.id.facebook_btn);
@@ -90,9 +90,14 @@ public class DMLoginActivity extends Activity {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                Intent intent = new Intent(DMLoginActivity.this,
-                        DMResetPasswordActivity.class);
-                startActivity(intent);
+                if (AppUtils.isConnectingToInternet(DMLoginActivity.this)) {
+                    Intent intent = new Intent(DMLoginActivity.this,
+                            DMResetPasswordActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(DMLoginActivity.this, getString(R.string.no_internet_msg), Toast.LENGTH_LONG).show();
+                }
+
             }
         });
 
@@ -106,8 +111,7 @@ public class DMLoginActivity extends Activity {
                     vBtnRemember.setBackgroundResource(R.drawable.remember_bg);
                 } else {
                     mIsRemember = true;
-                    vBtnRemember
-                            .setBackgroundResource(R.drawable.remember_checked_bg);
+                    vBtnRemember.setBackgroundResource(R.drawable.remember_checked_bg);
                 }
             }
         });
@@ -116,7 +120,11 @@ public class DMLoginActivity extends Activity {
 
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                loginWithFacebook();
+                if (AppUtils.isConnectingToInternet(DMLoginActivity.this)) {
+                    loginWithFacebook();
+                } else {
+                    Toast.makeText(DMLoginActivity.this, getString(R.string.no_internet_msg), Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -124,9 +132,14 @@ public class DMLoginActivity extends Activity {
 
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                Intent intent = new Intent(DMLoginActivity.this,
-                        DMSignUpActivity.class);
-                startActivity(intent);
+                if (AppUtils.isConnectingToInternet(DMLoginActivity.this)) {
+                    Intent intent = new Intent(DMLoginActivity.this,
+                            DMSignUpActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(DMLoginActivity.this, getString(R.string.no_internet_msg), Toast.LENGTH_LONG).show();
+                }
+
             }
         });
 
@@ -134,10 +147,13 @@ public class DMLoginActivity extends Activity {
 
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                loginToParse();
+                if (AppUtils.isConnectingToInternet(DMLoginActivity.this)) {
+                    loginToParse();
+                } else {
+                    Toast.makeText(DMLoginActivity.this, getString(R.string.no_internet_msg), Toast.LENGTH_LONG).show();
+                }
             }
         });
-
     }
 
     public void init() {
@@ -173,7 +189,7 @@ public class DMLoginActivity extends Activity {
                 if (user == null) {
                     Toast.makeText(
                             DMLoginActivity.this,
-                            "MyApp, Uh oh. The user cancelled the Facebook login.",
+                            "Uh oh. The user cancelled the Facebook login.",
                             Toast.LENGTH_LONG).show();
                     // constant.hideProgress();
                 } else if (user.isNew()) {
@@ -187,7 +203,6 @@ public class DMLoginActivity extends Activity {
                 }
             }
         });
-
     }
 
     public void saveUserData(final Activity activity) {
@@ -250,11 +265,10 @@ public class DMLoginActivity extends Activity {
 
                                                 });
                                     }
-
                                     saveUserToInstallation(parseUser);
                                 } else {
                                     Toast.makeText(DMLoginActivity.this,
-                                            arg0.toString(), Toast.LENGTH_LONG)
+                                            AppUtils.asUpperCaseFirstChar(arg0.getMessage()), Toast.LENGTH_LONG)
                                             .show();
                                 }
                             }
@@ -273,7 +287,7 @@ public class DMLoginActivity extends Activity {
         final String password = vPassword.getText().toString();
 
         if (username.equals("") || password.equals("")) {
-            constant.alertbox("Warning!", "Please enter username,password.",
+            constant.alertbox("Warning!", "Please enter username & password.",
                     this);
         } else {
             constant.showProgress(this, "Submit Login");
@@ -291,7 +305,6 @@ public class DMLoginActivity extends Activity {
                                     constant.gUserId = user.getObjectId();
                                     constant.gPassword = password;
                                     constant.gIsCloset = user.getBoolean("isDemoCloset");
-
                                     saveUserToInstallation(user);
                                 } else {
                                     // Toast.makeText(DMLoginActivity.this,
@@ -300,10 +313,9 @@ public class DMLoginActivity extends Activity {
                                     constant.hideProgress();
                                     showVerifyDialog();
                                 }
-
                             } else {
                                 Toast.makeText(DMLoginActivity.this,
-                                        e.toString(), Toast.LENGTH_LONG).show();
+                                        AppUtils.asUpperCaseFirstChar(e.getMessage()), Toast.LENGTH_LONG).show();
                                 constant.hideProgress();
                             }
                         }
@@ -340,8 +352,7 @@ public class DMLoginActivity extends Activity {
     // And get user data from shared preference
     // --------------------------------------
     public void saveUserData() {
-        SharedPreferences settings = getSharedPreferences(constant.PREFS_NAME,
-                0);
+        SharedPreferences settings = getSharedPreferences(constant.PREFS_NAME,0);
         SharedPreferences.Editor editor = settings.edit();
 
         editor.putString("username", constant.gUserName);
@@ -417,7 +428,6 @@ public class DMLoginActivity extends Activity {
     @Override
     public void onResume() {
         super.onResume();
-
         if (!constant.gUserName.equals("") && !constant.gPassword.equals("")) {
             vUsername.setText(constant.gUserName);
             vPassword.setText(constant.gPassword);

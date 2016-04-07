@@ -336,7 +336,11 @@ public class DMFashionActivity_7Hour extends Activity {
 
 		if (mIdList != null && mIdList.size() > 0)
 			getClothsFP(mIdList);*/
-		getClothsFP(AlarmReciever_7hour.mIdList);
+		if (AppUtils.isConnectingToInternet(DMFashionActivity_7Hour.this)) {
+			getClothsFP(AlarmReciever_7hour.mIdList);
+		} else {
+			Toast.makeText(DMFashionActivity_7Hour.this, getString(R.string.no_internet_msg), Toast.LENGTH_LONG).show();
+		}
 	}
 
 	// / -------------------------------------- get cloth from parse.com
@@ -362,7 +366,7 @@ public class DMFashionActivity_7Hour extends Activity {
 				if (e == null) {
 					makeClothList(clothList);
 				} else {
-					Toast.makeText(DMFashionActivity_7Hour.this, e.toString(),
+					Toast.makeText(DMFashionActivity_7Hour.this, AppUtils.asUpperCaseFirstChar(e.getMessage()),
 							Toast.LENGTH_LONG).show();
 				}
 			}
@@ -454,7 +458,7 @@ public class DMFashionActivity_7Hour extends Activity {
 					Toast.makeText(DMFashionActivity_7Hour.this, "Favorited",
 							Toast.LENGTH_LONG).show();
 				else
-					Toast.makeText(DMFashionActivity_7Hour.this, e.toString(),
+					Toast.makeText(DMFashionActivity_7Hour.this,AppUtils.asUpperCaseFirstChar(e.getMessage()),
 							Toast.LENGTH_LONG).show();
 
 				constant.hideProgress();

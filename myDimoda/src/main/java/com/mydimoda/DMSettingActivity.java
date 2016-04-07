@@ -246,11 +246,12 @@ public class DMSettingActivity extends Activity {
         mNotificationManager.cancel(1234);
         mNotificationManager.cancelAll();
 
-        //mayur removing checks
+        //mayur resetting checks
         AppUtils.setDefaults(constant.PREF_IS_GALRY_DIALOG_SHOWN, false, this);
         SharedPreferenceUtil.putValue(constant.USER_MAX_COUNT_INITILISED, false);
         SharedPreferenceUtil.putValue(constant.PREF_MAX_COUNT_CONFIGURED, false);
         Intent intent = new Intent(this, DMLoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
     }

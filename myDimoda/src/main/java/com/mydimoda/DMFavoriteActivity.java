@@ -1,8 +1,5 @@
 package com.mydimoda;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,208 +25,217 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DMFavoriteActivity extends Activity {
 
-	// / menu
-	Button vBtnMenu;
-	ListView vMenuList;
-	TextView vTxtBack, vTxtTitle;
-	DrawerLayout vDrawerLayout;
-	LinearLayout vMenuLayout;
-	RelativeLayout vBackLayout;
+    // / menu
+    Button vBtnMenu;
+    ListView vMenuList;
+    TextView vTxtBack, vTxtTitle;
+    DrawerLayout vDrawerLayout;
+    LinearLayout vMenuLayout;
+    RelativeLayout vBackLayout;
 
-	ListView vFavoriteList;
+    ListView vFavoriteList;
 
-	List<ParseObject> mFavoriteList = null;
+    List<ParseObject> mFavoriteList = null;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_favorite);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_favorite);
 
-		// / layout
-		vDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-		vMenuList = (ListView) findViewById(R.id.menu_list);
-		vMenuLayout = (LinearLayout) findViewById(R.id.menu_layout);
-		vBtnMenu = (Button) findViewById(R.id.menu_btn);
-		vTxtTitle = (TextView) findViewById(R.id.title_view);
-		FontsUtil.setExistenceLight(this, vTxtTitle);
+        // / layout
+        vDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        vMenuList = (ListView) findViewById(R.id.menu_list);
+        vMenuLayout = (LinearLayout) findViewById(R.id.menu_layout);
+        vBtnMenu = (Button) findViewById(R.id.menu_btn);
+        vTxtTitle = (TextView) findViewById(R.id.title_view);
+        FontsUtil.setExistenceLight(this, vTxtTitle);
 
-		vTxtBack = (TextView) findViewById(R.id.back_txt);
-		FontsUtil.setExistenceLight(this, vTxtBack);
+        vTxtBack = (TextView) findViewById(R.id.back_txt);
+        FontsUtil.setExistenceLight(this, vTxtBack);
 
-		vBackLayout = (RelativeLayout) findViewById(R.id.back_layout);
+        vBackLayout = (RelativeLayout) findViewById(R.id.back_layout);
 
-		vFavoriteList = (ListView) findViewById(R.id.favorite_list);
+        vFavoriteList = (ListView) findViewById(R.id.favorite_list);
 
-		vBtnMenu.setOnClickListener(new View.OnClickListener() {
+        vBtnMenu.setOnClickListener(new View.OnClickListener() {
 
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				slideMenu();
-			}
-		});
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                slideMenu();
+            }
+        });
 
-		vMenuList.setOnItemClickListener(new OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-				constant.selectMenuItem(DMFavoriteActivity.this, position, true);
-			}
-		});
+        vMenuList.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                constant.selectMenuItem(DMFavoriteActivity.this, position, true);
+            }
+        });
 
-		vBackLayout.setOnClickListener(new View.OnClickListener() {
+        vBackLayout.setOnClickListener(new View.OnClickListener() {
 
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				finish();
-			}
-		});
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                finish();
+            }
+        });
 
-		vFavoriteList.setOnItemClickListener(new OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-				makeFavoriteIdArray(position);
-				Intent intent = new Intent(DMFavoriteActivity.this,
-						DMFashionActivity.class);
-				intent.putExtra("favorite", "yes");
-				intent.putExtra("favoritelist", "favoritelist");
-				intent.putExtra("showlayout", "showlayout");
-				intent.putExtra("date", constant.getCustomDate(mFavoriteList
-						.get(position).getString("DateTime")));
-				startActivity(intent);
-			}
-		});
+        vFavoriteList.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                makeFavoriteIdArray(position);
+                Intent intent = new Intent(DMFavoriteActivity.this,
+                        DMFashionActivity.class);
+                intent.putExtra("favorite", "yes");
+                intent.putExtra("favoritelist", "favoritelist");
+                intent.putExtra("showlayout", "showlayout");
+                intent.putExtra("date", constant.getCustomDate(mFavoriteList
+                        .get(position).getString("DateTime")));
+                startActivity(intent);
+            }
+        });
 
-	}
+    }
 
-	@Override
-	protected void onResume() {
-		// TODO Auto-generated method stub
-		super.onResume();
-		init();
-	}
+    @Override
+    protected void onResume() {
+        // TODO Auto-generated method stub
+        super.onResume();
+        init();
+    }
 
-	public void init() {
-		showMenu();
-		// setViewWithFont();
+    public void init() {
+        showMenu();
+        // setViewWithFont();
+        if (AppUtils.isConnectingToInternet(DMFavoriteActivity.this)) {
+            getFavoriteList();
+        } else {
+            Toast.makeText(DMFavoriteActivity.this, getString(R.string.no_internet_msg), Toast.LENGTH_LONG).show();
+        }
+    }
 
-		getFavoriteList();
-	}
+    // / --------------------------------- set font
+    // -------------------------------------
+    // public void setViewWithFont()
+    // {
+    // vTxtTitle.setTypeface(constant.fontface);
+    // vTxtBack.setTypeface(constant.fontface);
+    // }
+    //
+    // / --------------------------------- show menu list
+    // --------------------------------------
+    public void showMenu() {
+        vMenuList.setAdapter(new DMMenuListAdapter(this, constant.gMenuList));
+    }
 
-	// / --------------------------------- set font
-	// -------------------------------------
-	// public void setViewWithFont()
-	// {
-	// vTxtTitle.setTypeface(constant.fontface);
-	// vTxtBack.setTypeface(constant.fontface);
-	// }
-	//
-	// / --------------------------------- show menu list
-	// --------------------------------------
-	public void showMenu() {
-		vMenuList.setAdapter(new DMMenuListAdapter(this, constant.gMenuList));
-	}
+    // / --------------------------------- slide menu section
+    // ------------------------------
+    public void slideMenu() {
+        if (vDrawerLayout.isDrawerOpen(vMenuLayout)) {
+            vDrawerLayout.closeDrawer(vMenuLayout);
+        } else
+            vDrawerLayout.openDrawer(vMenuLayout);
+    }
 
-	// / --------------------------------- slide menu section
-	// ------------------------------
-	public void slideMenu() {
-		if (vDrawerLayout.isDrawerOpen(vMenuLayout)) {
-			vDrawerLayout.closeDrawer(vMenuLayout);
-		} else
-			vDrawerLayout.openDrawer(vMenuLayout);
-	}
+    // / -------------------------------------------- get favorite list from
+    // parse --------------------
+    public void getFavoriteList() {
+        if (AppUtils.isConnectingToInternet(DMFavoriteActivity.this)) {
+            constant.showProgress(this, "Loading...");
+            ParseUser user = ParseUser.getCurrentUser();
+            ParseQuery<ParseObject> query = ParseQuery.getQuery("Favorite");
+            query.orderByDescending("DateTime");
+            query.whereEqualTo("User", user);
+            query.findInBackground(new FindCallback<ParseObject>() {
+                public void done(List<ParseObject> clothList, ParseException e) {
+                    constant.hideProgress();
+                    if (e == null) {
+                        showFavoriteList(clothList);
+                    } else {
+                        Toast.makeText(DMFavoriteActivity.this, AppUtils.asUpperCaseFirstChar(e.getMessage()),
+                                Toast.LENGTH_LONG).show();
+                    }
+                }
+            });
+        } else {
+            Toast.makeText(DMFavoriteActivity.this, getString(R.string.no_internet_msg), Toast.LENGTH_LONG).show();
+        }
+    }
 
-	// / -------------------------------------------- get favorite list from
-	// parse --------------------
-	public void getFavoriteList() {
-		constant.showProgress(this, "Loading...");
-		ParseUser user = ParseUser.getCurrentUser();
-		ParseQuery<ParseObject> query = ParseQuery.getQuery("Favorite");
-		query.orderByDescending("DateTime");
-		query.whereEqualTo("User", user);
-		query.findInBackground(new FindCallback<ParseObject>() {
-			public void done(List<ParseObject> clothList, ParseException e) {
+    // / --------------------------------------------------- show favorite list
+    // -----------------------
+    public void showFavoriteList(List<ParseObject> list) {
+        if (list != null) {
+            ParseUser user = ParseUser.getCurrentUser();
+            mFavoriteList = new ArrayList<ParseObject>();
+            for (int i = 0; i < list.size(); i++) {
+                ParseUser itemUser = list.get(i).getParseUser("User");
+                if (itemUser.getObjectId().equals(user.getObjectId())) {
+                    mFavoriteList.add(list.get(i));
+                }
+            }
+            vFavoriteList.setAdapter(new DMFavoriteListAdapter(this,
+                    mFavoriteList));
+        }
+    }
 
-				constant.hideProgress();
-				if (e == null) {
-					showFavoriteList(clothList);
-				} else {
-					Toast.makeText(DMFavoriteActivity.this, e.toString(),
-							Toast.LENGTH_LONG).show();
-				}
-			}
-		});
-	}
+    // / -------------------------------------------------- make id array that
+    // is favorited by user -----------
+    public void makeFavoriteIdArray(int pos) {
+        if (mFavoriteList != null) {
+            ParseObject object = mFavoriteList.get(pos);
+            ParseObject shirtObj = (ParseObject) object.get("Shirt");
+            ParseObject trousersObj = (ParseObject) object.get("Trousers");
+            ParseObject jacketObj = (ParseObject) object.get("Jacket");
+            ParseObject tieObj = (ParseObject) object.get("Tie");
+            ParseObject suitObj = (ParseObject) object.get("Suit");
 
-	// / --------------------------------------------------- show favorite list
-	// -----------------------
-	public void showFavoriteList(List<ParseObject> list) {
-		if (list != null) {
-			ParseUser user = ParseUser.getCurrentUser();
-			mFavoriteList = new ArrayList<ParseObject>();
-			for (int i = 0; i < list.size(); i++) {
-				ParseUser itemUser = list.get(i).getParseUser("User");
-				if (itemUser.getObjectId().equals(user.getObjectId())) {
-					mFavoriteList.add(list.get(i));
-				}
-			}
-			vFavoriteList.setAdapter(new DMFavoriteListAdapter(this,
-					mFavoriteList));
-		}
-	}
+            constant.gFashionID = object.getObjectId();
 
-	// / -------------------------------------------------- make id array that
-	// is favorited by user -----------
-	public void makeFavoriteIdArray(int pos) {
-		if (mFavoriteList != null) {
-			ParseObject object = mFavoriteList.get(pos);
-			ParseObject shirtObj = (ParseObject) object.get("Shirt");
-			ParseObject trousersObj = (ParseObject) object.get("Trousers");
-			ParseObject jacketObj = (ParseObject) object.get("Jacket");
-			ParseObject tieObj = (ParseObject) object.get("Tie");
-			ParseObject suitObj = (ParseObject) object.get("Suit");
+            constant.gFashion = new DMBlockedObject();
+            if (shirtObj != null) {
+                DMItemObject item = new DMItemObject();
+                item.index = shirtObj.getObjectId();
+                item.type = "shirt";
+                constant.gFashion.blockedList.add(item);
+            }
 
-			constant.gFashionID = object.getObjectId();
+            if (trousersObj != null) {
+                DMItemObject item = new DMItemObject();
+                item.index = trousersObj.getObjectId();
+                item.type = "trousers";
+                constant.gFashion.blockedList.add(item);
+            }
 
-			constant.gFashion = new DMBlockedObject();
-			if (shirtObj != null) {
-				DMItemObject item = new DMItemObject();
-				item.index = shirtObj.getObjectId();
-				item.type = "shirt";
-				constant.gFashion.blockedList.add(item);
-			}
+            if (jacketObj != null) {
+                DMItemObject item = new DMItemObject();
+                item.index = jacketObj.getObjectId();
+                item.type = "jacket";
+                constant.gFashion.blockedList.add(item);
+            }
 
-			if (trousersObj != null) {
-				DMItemObject item = new DMItemObject();
-				item.index = trousersObj.getObjectId();
-				item.type = "trousers";
-				constant.gFashion.blockedList.add(item);
-			}
+            if (tieObj != null) {
+                DMItemObject item = new DMItemObject();
+                item.index = tieObj.getObjectId();
+                item.type = "tie";
+                constant.gFashion.blockedList.add(item);
+            }
 
-			if (jacketObj != null) {
-				DMItemObject item = new DMItemObject();
-				item.index = jacketObj.getObjectId();
-				item.type = "jacket";
-				constant.gFashion.blockedList.add(item);
-			}
+            if (suitObj != null) {
+                DMItemObject item = new DMItemObject();
+                item.index = suitObj.getObjectId();
+                item.type = "suit";
+                constant.gFashion.blockedList.add(item);
+            }
 
-			if (tieObj != null) {
-				DMItemObject item = new DMItemObject();
-				item.index = tieObj.getObjectId();
-				item.type = "tie";
-				constant.gFashion.blockedList.add(item);
-			}
-
-			if (suitObj != null) {
-				DMItemObject item = new DMItemObject();
-				item.index = suitObj.getObjectId();
-				item.type = "suit";
-				constant.gFashion.blockedList.add(item);
-			}
-
-		}
-	}
+        }
+    }
 
 }

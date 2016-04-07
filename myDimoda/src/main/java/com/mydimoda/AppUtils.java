@@ -132,8 +132,8 @@ public class AppUtils {
     public final static String asUpperCaseFirstChar(final String target) {
 
         if ((target == null) || (target.length() == 0)) {
-            return target; // You could omit this check and simply live with an
-            // exception if you like
+            return target; // old dev: You could omit this check and simply live with an
+            // exception if you like. //-new dev: hey thats not a way to talk to some one reading ur crappy code!!
         }
         return Character.toUpperCase(target.charAt(0))
                 + (target.length() > 1 ? target.substring(1) : "");
@@ -293,4 +293,12 @@ public class AppUtils {
         }
         AppUtils.setDefaults(constant.PREF_IS_GALRY_DIALOG_SHOWN, true, mContext);
     }
+    public static  boolean isOnline(Context mContext) {
+        ConnectivityManager cm =
+                (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isConnectedOrConnecting();
+    }
+
+
 }

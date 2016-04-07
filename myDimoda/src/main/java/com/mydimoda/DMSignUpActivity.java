@@ -54,7 +54,11 @@ public class DMSignUpActivity extends Activity {
 
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				preSignup();
+				if (AppUtils.isConnectingToInternet(DMSignUpActivity.this)) {
+					preSignup();
+				} else {
+					Toast.makeText(DMSignUpActivity.this, getString(R.string.no_internet_msg), Toast.LENGTH_LONG).show();
+				}
 			}
 		});
 	}
@@ -97,7 +101,7 @@ public class DMSignUpActivity extends Activity {
 					constant.gEmail = email;
 					finish();
 				} else {
-					Toast.makeText(DMSignUpActivity.this, e.toString(),
+					Toast.makeText(DMSignUpActivity.this, AppUtils.asUpperCaseFirstChar(e.getMessage()),
 							Toast.LENGTH_LONG).show();
 
 //					if (e.toString().contains("already taken")) {

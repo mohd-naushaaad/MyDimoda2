@@ -580,7 +580,7 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
                                     Toast.LENGTH_LONG).show();
                         else
                             Toast.makeText(DMCaptureActivity.this,
-                                    e.toString(), Toast.LENGTH_LONG).show();
+                                    AppUtils.asUpperCaseFirstChar(e.getMessage()), Toast.LENGTH_LONG).show();
 
                         if (!constant.gIsCloset)
                             setIsCloset();
@@ -673,7 +673,7 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
 
                 } else {
 
-                    Toast.makeText(DMCaptureActivity.this, e.toString(),
+                    Toast.makeText(DMCaptureActivity.this,  AppUtils.asUpperCaseFirstChar(e.getMessage()),
                             Toast.LENGTH_LONG).show();
                 }
             }
@@ -706,7 +706,7 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
                                     Toast.LENGTH_LONG).show();
                         }
                     } else {
-                        Toast.makeText(DMCaptureActivity.this, e.toString(),
+                        Toast.makeText(DMCaptureActivity.this,  AppUtils.asUpperCaseFirstChar(e.getMessage()),
                                 Toast.LENGTH_LONG).show();
                     }
                 }
@@ -726,7 +726,7 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
                                     Toast.LENGTH_LONG).show();
                         }
                     } else {
-                        Toast.makeText(DMCaptureActivity.this, e.toString(),
+                        Toast.makeText(DMCaptureActivity.this,  AppUtils.asUpperCaseFirstChar(e.getMessage()),
                                 Toast.LENGTH_LONG).show();
                     }
                 }

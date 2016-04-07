@@ -118,8 +118,11 @@ public class DMHelpActivity extends Activity {
         Intent in = getIntent();
         mType = in.getStringExtra("type");
         showTitle();
-
-        getClothFP();
+        if (AppUtils.isConnectingToInternet(DMHelpActivity.this)) {
+            getClothFP();
+        } else {
+            Toast.makeText(DMHelpActivity.this, getString(R.string.no_internet_msg), Toast.LENGTH_LONG).show();
+        }
     }
 
     // / --------------------------------- set font
@@ -329,7 +332,7 @@ public class DMHelpActivity extends Activity {
                                 GoogleIAP.buyFeature(0);
 
 								/*
-								 * showProgressBar("");
+                                 * showProgressBar("");
 								 * 
 								 * ParseUser user = ParseUser.getCurrentUser();
 								 * user.put("Buy", true);
@@ -418,7 +421,7 @@ public class DMHelpActivity extends Activity {
                 if (e == null) {
                     makeClothList(clothList);
                 } else {
-                    Toast.makeText(DMHelpActivity.this, e.toString(),
+                    Toast.makeText(DMHelpActivity.this, AppUtils.asUpperCaseFirstChar(e.getMessage()),
                             Toast.LENGTH_LONG).show();
                 }
             }

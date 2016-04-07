@@ -1,8 +1,5 @@
 package com.mydimoda;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
@@ -33,6 +30,9 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DMDeleteActivity extends Activity implements DMListItemCallback {
 
@@ -120,7 +120,11 @@ public class DMDeleteActivity extends Activity implements DMListItemCallback {
 		Intent in = getIntent();
 		mType = in.getStringExtra("type");
 		showTitle();
-		getClothFP();
+		if (AppUtils.isConnectingToInternet(DMDeleteActivity.this)) {
+			getClothFP();
+		} else {
+			Toast.makeText(DMDeleteActivity.this, getString(R.string.no_internet_msg), Toast.LENGTH_LONG).show();
+		}
 	}
 
 	// / --------------------------------- set font
@@ -187,7 +191,7 @@ public class DMDeleteActivity extends Activity implements DMListItemCallback {
 				if (e == null) {
 					checkContains(clothList, object, pos);
 				} else {
-					Toast.makeText(DMDeleteActivity.this, e.toString(),
+					Toast.makeText(DMDeleteActivity.this,  AppUtils.asUpperCaseFirstChar(e.getMessage()),
 							Toast.LENGTH_LONG).show();
 				}
 			}
@@ -272,7 +276,7 @@ public class DMDeleteActivity extends Activity implements DMListItemCallback {
 				if (e == null) {
 					makeClothList(clothList);
 				} else {
-					Toast.makeText(DMDeleteActivity.this, e.toString(),
+					Toast.makeText(DMDeleteActivity.this, AppUtils.asUpperCaseFirstChar(e.getMessage()),
 							Toast.LENGTH_LONG).show();
 				}
 			}

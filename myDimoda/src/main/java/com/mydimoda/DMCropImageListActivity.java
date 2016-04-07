@@ -103,9 +103,13 @@ public class DMCropImageListActivity extends FragmentActivity {
         mDoneBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (checkCatAndTypeForALL()) {
-                    new AnalyseTask().execute();
+                if (AppUtils.isConnectingToInternet(DMCropImageListActivity.this)) {
+                    if (checkCatAndTypeForALL()) {
+                        new AnalyseTask().execute();
+                    } } else {
+                    Toast.makeText(DMCropImageListActivity.this, getString(R.string.no_internet_msg), Toast.LENGTH_LONG).show();
                 }
+
             }
         });
 
@@ -194,7 +198,7 @@ public class DMCropImageListActivity extends FragmentActivity {
                                 }
                             } else {
                                 Toast.makeText(DMCropImageListActivity.this,
-                                        e.toString(), Toast.LENGTH_LONG).show();
+                                        AppUtils.asUpperCaseFirstChar(e.getMessage()), Toast.LENGTH_LONG).show();
                                 Log.e(DMCropImageListActivity.this.getLocalClassName(), e.toString());
 
                             }
@@ -281,12 +285,10 @@ public class DMCropImageListActivity extends FragmentActivity {
 
                 if (e == null) {
                     mClothList = clothList;
-                    if (!mModelList.isEmpty()) {
                         stylePointProcessor(mClothList.size(), mModelList.get(pos).getmType().toLowerCase().trim());
-                    }
 
                 } else {
-                    Toast.makeText(DMCropImageListActivity.this, e.toString(),
+                    Toast.makeText(DMCropImageListActivity.this, AppUtils.asUpperCaseFirstChar(e.getMessage()),
                             Toast.LENGTH_LONG).show();
                 }
             }
@@ -317,7 +319,7 @@ public class DMCropImageListActivity extends FragmentActivity {
 
                         constant.hideProgress();
                     } else {
-                        Toast.makeText(DMCropImageListActivity.this, e.toString(),
+                        Toast.makeText(DMCropImageListActivity.this,  AppUtils.asUpperCaseFirstChar(e.getMessage()),
                                 Toast.LENGTH_LONG).show();
                     }
                 }
@@ -338,7 +340,7 @@ public class DMCropImageListActivity extends FragmentActivity {
                         }
 
                     } else {
-                        Toast.makeText(DMCropImageListActivity.this, e.toString(),
+                        Toast.makeText(DMCropImageListActivity.this, AppUtils.asUpperCaseFirstChar(e.getMessage()),
                                 Toast.LENGTH_LONG).show();
                     }
                 }
@@ -500,7 +502,11 @@ public class DMCropImageListActivity extends FragmentActivity {
                 vProgress.dismiss();
             }
 
-            savePhotosToParse();
+            if (AppUtils.isConnectingToInternet(DMCropImageListActivity.this)) {
+                savePhotosToParse();
+            } else {
+                Toast.makeText(DMCropImageListActivity.this, getString(R.string.no_internet_msg), Toast.LENGTH_LONG).show();
+            }
         }
 
     }

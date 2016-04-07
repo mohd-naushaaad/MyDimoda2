@@ -31,7 +31,12 @@ public class DMResetPasswordActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				resetPassword();
+
+				if (AppUtils.isConnectingToInternet(DMResetPasswordActivity.this)) {
+					resetPassword();
+				} else {
+					Toast.makeText(DMResetPasswordActivity.this, getString(R.string.no_internet_msg), Toast.LENGTH_LONG).show();
+				}
 			}
 		});
 
@@ -73,7 +78,7 @@ public class DMResetPasswordActivity extends Activity {
 				} else {
 					Toast.makeText(
 							DMResetPasswordActivity.this,
-							"That email was not be registered or unknown error.",
+							"That email is not registered or unknown error.",
 							Toast.LENGTH_SHORT).show();
 				}
 			}

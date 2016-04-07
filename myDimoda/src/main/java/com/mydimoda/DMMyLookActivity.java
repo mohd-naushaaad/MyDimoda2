@@ -1,7 +1,5 @@
 package com.mydimoda;
 
-import java.util.Random;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,10 +13,13 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mydimoda.adapter.DMMenuListAdapter;
 import com.mydimoda.widget.cropper.util.FontsUtil;
 import com.parse.ParseUser;
+
+import java.util.Random;
 
 public class DMMyLookActivity extends Activity implements OnClickListener {
 
@@ -242,22 +243,27 @@ public class DMMyLookActivity extends Activity implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
-		switch (v.getId()) {
-		case R.id.layout_favorites:
-			goFavoriteActivity();
-			break;
+		if (AppUtils.isConnectingToInternet(DMMyLookActivity.this)) {
+			switch (v.getId()) {
+				case R.id.layout_favorites:
+					goFavoriteActivity();
+					break;
 
-		case R.id.layout_casual:
-			goStyleActivity(1);
-			break;
+				case R.id.layout_casual:
+					goStyleActivity(1);
+					break;
 
-		case R.id.layout_after5:
-			goStyleActivity(2);
-			break;
+				case R.id.layout_after5:
+					goStyleActivity(2);
+					break;
 
-		case R.id.layout_formal:
-			goStyleActivity(3);
-			break;
+				case R.id.layout_formal:
+					goStyleActivity(3);
+					break;
+			}
+		} else {
+			Toast.makeText(DMMyLookActivity.this, getString(R.string.no_internet_msg), Toast.LENGTH_LONG).show();
 		}
+
 	}
 }
