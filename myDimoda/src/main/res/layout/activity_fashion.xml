@@ -98,7 +98,7 @@
                         android:background="@drawable/signup_btn_sel"
                         android:text="Home"
                         android:textColor="#000000"
-                        android:textSize="15sp" />
+                        android:textSize="16sp" />
                 </RelativeLayout>
 
                 <LinearLayout

@@ -148,6 +148,8 @@ public class DMFashionActivity extends Activity {
                 // TODO Auto-generated method stub
                 Intent intent = new Intent(DMFashionActivity.this,
                         DMHomeActivity.class);
+
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 finish();
             }
