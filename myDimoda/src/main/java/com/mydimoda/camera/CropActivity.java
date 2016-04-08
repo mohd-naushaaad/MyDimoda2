@@ -361,6 +361,6 @@ public class CropActivity extends Activity implements OnClickListener {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        constant.getImageLst().clear();
+     //   constant.getImageLst().clear();
     }
 }

@@ -71,6 +71,7 @@ public class DMCropImageListActivity extends FragmentActivity {
     DMImageRecycAdapter mMainAdapter;
     LinearLayoutManager mLayoutManager;
     String mType = "";
+    int totalAddedCloths;// to show in toast nigga
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,10 +91,12 @@ public class DMCropImageListActivity extends FragmentActivity {
 
 // initilised
         mModelList = constant.getImageLst();
+        totalAddedCloths = mModelList.size();
         vBackLayout.setOnClickListener(new OnClickListener() {
 
             public void onClick(View v) {
                 // TODO Auto-generated method stub
+                clearImagesFrmMemory();
                 finish();
             }
         });
@@ -143,7 +146,7 @@ public class DMCropImageListActivity extends FragmentActivity {
                     mModelList.remove(position);
                     mMainAdapter.notifyDataSetChanged();
                 } else {
-                    constant.getImageLst().clear();
+                    clearImagesFrmMemory();
                     finish();
                 }
 
@@ -214,7 +217,7 @@ public class DMCropImageListActivity extends FragmentActivity {
                                     SharedPreferenceUtil.getString("inApp", "0").equalsIgnoreCase("1"))) {
                                 getClothFP(finalI);
 
-                            }else{
+                            } else {
                                 if (finalI == mModelList.size() - 1) {
                                     if (getParent() == null) {
                                         setResult(RESULT_OK);
@@ -224,7 +227,6 @@ public class DMCropImageListActivity extends FragmentActivity {
                                     finish();
                                 }
                             }
-
 
 
                             //
@@ -310,6 +312,7 @@ public class DMCropImageListActivity extends FragmentActivity {
      * @param items
      */
     public void stylePointProcessor(int items, final String mType, int pos) {
+        final boolean isLastCall = (pos == (mModelList.size() - 1));
         if (items == 2 && !SharedPreferenceUtil.getBoolean(constant.PREF_MAX_COUNT_GVN + mType, false)) {
             final ParseUser user = ParseUser.getCurrentUser();
             mMaxCount = user.getInt(constant.USER_MAX_COUNT);
@@ -320,8 +323,8 @@ public class DMCropImageListActivity extends FragmentActivity {
                     if (e == null) {
                         SharedPreferenceUtil.putValue(constant.PREF_MAX_COUNT_GVN + mType, true);
                         constant.maxCount = user.getInt(constant.USER_MAX_COUNT);
-                        if (!(user.getBoolean(constant.RATED_APP) || user.getBoolean("Buy") ||
-                                SharedPreferenceUtil.getString("inApp", "0").equalsIgnoreCase("1"))) {
+                        if ((!(user.getBoolean(constant.RATED_APP) || user.getBoolean("Buy") ||
+                                SharedPreferenceUtil.getString("inApp", "0").equalsIgnoreCase("1"))) && isLastCall) {
                             Toast.makeText(DMCropImageListActivity.this, "5 Style me options awarded",
                                     Toast.LENGTH_LONG).show();
                         }
@@ -342,9 +345,9 @@ public class DMCropImageListActivity extends FragmentActivity {
                 public void done(ParseException e) {
                     if (e == null) {
                         constant.maxCount = user.getInt(constant.USER_MAX_COUNT);
-                        if (!(user.getBoolean(constant.RATED_APP) || user.getBoolean("Buy") ||
-                                SharedPreferenceUtil.getString("inApp", "0").equalsIgnoreCase("1"))) {
-                            Toast.makeText(DMCropImageListActivity.this, getString(R.string.style_me_awarded_1, mModelList.size()),
+                        if ((!(user.getBoolean(constant.RATED_APP) || user.getBoolean("Buy") ||
+                                SharedPreferenceUtil.getString("inApp", "0").equalsIgnoreCase("1"))) && isLastCall) {
+                            Toast.makeText(DMCropImageListActivity.this, getString(R.string.style_me_awarded_1, totalAddedCloths),
                                     Toast.LENGTH_LONG).show();
                         }
 
@@ -355,7 +358,7 @@ public class DMCropImageListActivity extends FragmentActivity {
                 }
             });
         }
-        if (pos == (mModelList.size() - 1)) {
+        if (isLastCall) {
             clearImagesFrmMemory();
             constant.hideProgress();
             if (getParent() == null) {
