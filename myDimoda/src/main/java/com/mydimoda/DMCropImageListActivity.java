@@ -106,7 +106,8 @@ public class DMCropImageListActivity extends FragmentActivity {
                 if (AppUtils.isConnectingToInternet(DMCropImageListActivity.this)) {
                     if (checkCatAndTypeForALL()) {
                         new AnalyseTask().execute();
-                    } } else {
+                    }
+                } else {
                     Toast.makeText(DMCropImageListActivity.this, getString(R.string.no_internet_msg), Toast.LENGTH_LONG).show();
                 }
 
@@ -172,7 +173,7 @@ public class DMCropImageListActivity extends FragmentActivity {
                     category = mModel.getmCategory().toLowerCase();
 
                     // Make parse object
-                    ParseUser user = ParseUser.getCurrentUser();
+                    final ParseUser user = ParseUser.getCurrentUser();
                     ParseFile file = new ParseFile("image.jpg", byteArray);
 
                     ParseObject object = new ParseObject("Clothes");
@@ -209,16 +210,21 @@ public class DMCropImageListActivity extends FragmentActivity {
                                 setIsCloset();
 
 //                        constant.hideProgress();
+                            if (!(user.getBoolean(constant.RATED_APP) || user.getBoolean("Buy") ||
+                                    SharedPreferenceUtil.getString("inApp", "0").equalsIgnoreCase("1"))) {
+                                getClothFP(finalI);
 
-                            getClothFP(finalI);
-                            if (finalI == mModelList.size() - 1) {
-                                if (getParent() == null) {
-                                    setResult(RESULT_OK);
-                                } else {
-                                    getParent().setResult(RESULT_OK);
+                            }else{
+                                if (finalI == mModelList.size() - 1) {
+                                    if (getParent() == null) {
+                                        setResult(RESULT_OK);
+                                    } else {
+                                        getParent().setResult(RESULT_OK);
+                                    }
+                                    finish();
                                 }
-                                finish();
                             }
+
 
 
                             //
@@ -285,7 +291,8 @@ public class DMCropImageListActivity extends FragmentActivity {
 
                 if (e == null) {
                     mClothList = clothList;
-                        stylePointProcessor(mClothList.size(), mModelList.get(pos).getmType().toLowerCase().trim());
+                    stylePointProcessor(mClothList.size(),
+                            mModelList.get(pos).getmType().toLowerCase().trim().toString(), pos);
 
                 } else {
                     Toast.makeText(DMCropImageListActivity.this, AppUtils.asUpperCaseFirstChar(e.getMessage()),
@@ -294,13 +301,15 @@ public class DMCropImageListActivity extends FragmentActivity {
             }
         });
     }
+
     int mMaxCount = 0;
+
     /**
      * for calculating and assigning style options
      *
      * @param items
      */
-    public void stylePointProcessor(int items, final String mType) {
+    public void stylePointProcessor(int items, final String mType, int pos) {
         if (items == 2 && !SharedPreferenceUtil.getBoolean(constant.PREF_MAX_COUNT_GVN + mType, false)) {
             final ParseUser user = ParseUser.getCurrentUser();
             mMaxCount = user.getInt(constant.USER_MAX_COUNT);
@@ -319,7 +328,7 @@ public class DMCropImageListActivity extends FragmentActivity {
 
                         constant.hideProgress();
                     } else {
-                        Toast.makeText(DMCropImageListActivity.this,  AppUtils.asUpperCaseFirstChar(e.getMessage()),
+                        Toast.makeText(DMCropImageListActivity.this, AppUtils.asUpperCaseFirstChar(e.getMessage()),
                                 Toast.LENGTH_LONG).show();
                     }
                 }
@@ -346,8 +355,17 @@ public class DMCropImageListActivity extends FragmentActivity {
                 }
             });
         }
-        constant.hideProgress();
-        finish();
+        if (pos == (mModelList.size() - 1)) {
+            clearImagesFrmMemory();
+            constant.hideProgress();
+            if (getParent() == null) {
+                setResult(RESULT_OK);
+            } else {
+                getParent().setResult(RESULT_OK);
+            }
+            finish();
+        }
+
     }
 
     final String[] mCatList = {"Formal", "Casual"};
@@ -524,6 +542,10 @@ public class DMCropImageListActivity extends FragmentActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+
+    }
+
+    public void clearImagesFrmMemory() {
         int cropLstSize = constant.getImageLst().size();
         for (int i = 0; i < cropLstSize; i++) {
             constant.getImageLst().get(i).getmImage().recycle();
