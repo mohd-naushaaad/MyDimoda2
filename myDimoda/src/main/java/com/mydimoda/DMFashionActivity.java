@@ -294,8 +294,9 @@ public class DMFashionActivity extends Activity {
     public void slideMenu() {
         if (vDrawerLayout.isDrawerOpen(vMenuLayout)) {
             vDrawerLayout.closeDrawer(vMenuLayout);
-        } else
+        } else{
             vDrawerLayout.openDrawer(vMenuLayout);
+        }
     }
 
     // / -------------------------------------- go algorithmActivity

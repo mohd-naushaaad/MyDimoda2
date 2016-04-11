@@ -13,6 +13,7 @@ import android.content.pm.Signature;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
@@ -182,6 +183,7 @@ public class DMLoginActivity extends Activity {
     // /--------------------------------------- login with facebook data
     // -----------------------------------------
     public void loginWithFacebook() {
+        constant.showProgress(this, "Logging in..");
         List<String> permissions = Arrays.asList("email");
         ParseFacebookUtils.logIn(permissions, this, new LogInCallback() {
             @Override
@@ -236,7 +238,9 @@ public class DMLoginActivity extends Activity {
                         // if(parseUser.isNew())
                         {
                             parseUser.setUsername(constant.gUserName);
-                            parseUser.setEmail(constant.gEmail);
+                            if (TextUtils.isEmpty(parseUser.getEmail()) && !TextUtils.isEmpty(constant.gEmail)) {
+                                parseUser.setEmail(constant.gEmail);
+                            }
                             parseUser.setPassword("");
                         }
 

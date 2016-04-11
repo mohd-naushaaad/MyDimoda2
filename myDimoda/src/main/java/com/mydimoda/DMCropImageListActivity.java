@@ -195,7 +195,6 @@ public class DMCropImageListActivity extends FragmentActivity {
                         public void done(ParseException e) {
                             // TODO Auto-generated method stub
                             if (e == null) {
-
                                 if (!isFinishing()) {
                                     Toast.makeText(DMCropImageListActivity.this, "Saved",
                                             Toast.LENGTH_LONG).show();
@@ -204,19 +203,14 @@ public class DMCropImageListActivity extends FragmentActivity {
                                 Toast.makeText(DMCropImageListActivity.this,
                                         AppUtils.asUpperCaseFirstChar(e.getMessage()), Toast.LENGTH_LONG).show();
                                 Log.e(DMCropImageListActivity.this.getLocalClassName(), e.toString());
-
                             }
-
-
                             // CGChange - IsCloset
                             if (!constant.gIsCloset)
                                 setIsCloset();
-
 //                        constant.hideProgress();
                             if (!(user.getBoolean(constant.RATED_APP) || user.getBoolean("Buy") ||
                                     SharedPreferenceUtil.getString("inApp", "0").equalsIgnoreCase("1"))) {
                                 getClothFP(finalI);
-
                             } else {
                                 if (finalI == mModelList.size() - 1) {
                                     if (getParent() == null) {
@@ -227,8 +221,6 @@ public class DMCropImageListActivity extends FragmentActivity {
                                     finish();
                                 }
                             }
-
-
                             //
                         }
                     });
@@ -355,11 +347,15 @@ public class DMCropImageListActivity extends FragmentActivity {
                         Toast.makeText(DMCropImageListActivity.this, AppUtils.asUpperCaseFirstChar(e.getMessage()),
                                 Toast.LENGTH_LONG).show();
                     }
+                    if (isLastCall) {
+
+                        clearImagesFrmMemory();
+                    }
                 }
             });
         }
         if (isLastCall) {
-            clearImagesFrmMemory();
+
             constant.hideProgress();
             if (getParent() == null) {
                 setResult(RESULT_OK);
