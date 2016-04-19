@@ -44,7 +44,6 @@ public class Activity_RateApp extends Activity implements OnClickListener{
 		case R.id.btn_rate:
 			startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + APP_PNAME)));
 
-
 			AppUtils.putPref("pro", "true", Activity_RateApp.this);
 			ParseUser user = ParseUser.getCurrentUser();
 			//			user.put("Buy", true);
