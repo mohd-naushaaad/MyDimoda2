@@ -56,7 +56,8 @@ public class ParseApplication extends Application {
 		Parse.initialize(this, "SPi9A2wXDrfMonNm9PBbJzumanlXMiEYfqpRCkJd",
 				"MGuamZwIkAVisZWyZ5ZGqGR50Cl42kOAhNNgFQLm");
 
-		ParseFacebookUtils.initialize("608361809277602");
+//		ParseFacebookUtils.initialize("608361809277602");
+		ParseFacebookUtils.initialize(this);//mayur updated
 		ParseACL defaultACL = new ParseACL();
 		ParseACL.setDefaultACL(defaultACL, true);
 

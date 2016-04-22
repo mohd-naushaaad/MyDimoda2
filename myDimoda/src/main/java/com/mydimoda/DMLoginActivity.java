@@ -25,10 +25,9 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.facebook.Request;
-import com.facebook.Response;
-import com.facebook.Session;
-import com.facebook.model.GraphUser;
+import com.facebook.AccessToken;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
 import com.mydimoda.database.DbAdapter;
 import com.mydimoda.widget.cropper.util.FontsUtil;
 import com.parse.LogInCallback;
@@ -37,6 +36,8 @@ import com.parse.ParseFacebookUtils;
 import com.parse.ParseInstallation;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
+
+import org.json.JSONObject;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -185,7 +186,7 @@ public class DMLoginActivity extends Activity {
     public void loginWithFacebook() {
         constant.showProgress(this, "Logging in..");
         List<String> permissions = Arrays.asList("email");
-        ParseFacebookUtils.logIn(permissions, this, new LogInCallback() {
+        ParseFacebookUtils.logInWithReadPermissionsInBackground(this, permissions, new LogInCallback() {
             @Override
             public void done(ParseUser user, ParseException err) {
                 if (user == null) {
@@ -208,14 +209,82 @@ public class DMLoginActivity extends Activity {
     }
 
     public void saveUserData(final Activity activity) {
-        Session session = ParseFacebookUtils.getSession();
+       /* Session session = ParseFacebookUtils.getSession();
         if (session == null || session.isOpened() == false)
-            return;
+            return;*/
 
-        Request request = Request.newMeRequest(ParseFacebookUtils.getSession(),
-                new Request.GraphUserCallback() {
+        GraphRequest request = GraphRequest.newMeRequest(AccessToken.getCurrentAccessToken(),
+                new GraphRequest.GraphJSONObjectCallback() {
 
                     @Override
+                    public void onCompleted(JSONObject object, GraphResponse response) {
+
+                        Log.e("dmlogin", object.toString() + " response: "+response.getRawResponse());
+                        constant.gUserName = user.getName();
+
+                        if (user.asMap() != null
+                                && user.asMap().get("email") != null)
+                            constant.gEmail = user.asMap().get("email")
+                                    .toString();
+
+                        // / save data to parse.com
+                        final ParseUser parseUser = ParseUser.getCurrentUser();
+                        constant.gUserId = parseUser.getObjectId();
+
+                        if (!constant.gUserName.equals(""))
+                            parseUser.put("username", constant.gUserName);
+                        if (!constant.gEmail.equals(""))
+                            parseUser.put("email", constant.gEmail);
+                        parseUser.put("loggedInWay", "facebook");
+
+                        // if(parseUser.isNew())
+                        {
+                            parseUser.setUsername(constant.gUserName);
+                            if (TextUtils.isEmpty(parseUser.getEmail()) && !TextUtils.isEmpty(constant.gEmail)) {
+                                parseUser.setEmail(constant.gEmail);
+                            }
+                            parseUser.setPassword("");
+                        }
+
+                        parseUser.saveInBackground(new SaveCallback() {
+                            @Override
+                            public void done(ParseException arg0) {
+                                // TODO Auto-generated method stub
+                                if (arg0 == null) {
+                                    if (!ParseFacebookUtils.isLinked(parseUser)) {
+                                        ParseFacebookUtils.link(parseUser,
+                                                activity, new SaveCallback() {
+
+                                                    @Override
+                                                    public void done(
+                                                            ParseException arg0) {
+                                                        // TODO Auto-generated
+                                                        // method stub
+                                                        if (ParseFacebookUtils
+                                                                .isLinked(parseUser)) {
+                                                            Log.d("Wooho",
+                                                                    "user logged in with Facebook");
+                                                            ParseFacebookUtils
+                                                                    .saveLatestSessionData(parseUser);
+                                                        }
+                                                    }
+
+                                                });
+                                    }
+                                    saveUserToInstallation(parseUser);
+                                } else {
+                                    Toast.makeText(DMLoginActivity.this,
+                                            AppUtils.asUpperCaseFirstChar(arg0.getMessage()), Toast.LENGTH_LONG)
+                                            .show();
+                                }
+                            }
+                        });
+                    }
+                    }
+
+                });
+
+                 /*   @Override
                     public void onCompleted(GraphUser user, Response response) {
                         // TODO Auto-generated method stub
                         constant.gUserName = user.getName();
@@ -278,7 +347,7 @@ public class DMLoginActivity extends Activity {
                             }
                         });
                     }
-                });
+                });*/
 
         request.executeAsync();
     }
@@ -356,7 +425,7 @@ public class DMLoginActivity extends Activity {
     // And get user data from shared preference
     // --------------------------------------
     public void saveUserData() {
-        SharedPreferences settings = getSharedPreferences(constant.PREFS_NAME,0);
+        SharedPreferences settings = getSharedPreferences(constant.PREFS_NAME, 0);
         SharedPreferences.Editor editor = settings.edit();
 
         editor.putString("username", constant.gUserName);
@@ -426,7 +495,8 @@ public class DMLoginActivity extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        ParseFacebookUtils.finishAuthentication(requestCode, resultCode, data);
+        //  ParseFacebookUtils.finishAuthentication(requestCode, resultCode, data);
+        ParseFacebookUtils.onActivityResult(requestCode, resultCode, data);// mayur updated
     }
 
     @Override
