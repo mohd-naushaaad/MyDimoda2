@@ -13,6 +13,7 @@ import android.content.pm.Signature;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
@@ -184,7 +185,7 @@ public class DMLoginActivity extends Activity {
     // -----------------------------------------
     public void loginWithFacebook() {
         constant.showProgress(this, "Logging in..");
-        List<String> permissions = Arrays.asList("email");
+        List<String> permissions = Arrays.asList("email","basic_info");
         ParseFacebookUtils.logInWithReadPermissionsInBackground(this, permissions, new LogInCallback() {
             @Override
             public void done(ParseUser user, ParseException err) {
@@ -203,10 +204,11 @@ public class DMLoginActivity extends Activity {
                     Log.d("MyApp", "User logged in through Facebook!");
                     saveUserData(DMLoginActivity.this);
                 }
+
             }
         });
     }
-
+// updated according to new sdk
     public void saveUserData(final Activity activity) {
        /* Session session = ParseFacebookUtils.getSession();
         if (session == null || session.isOpened() == false)
@@ -219,21 +221,20 @@ public class DMLoginActivity extends Activity {
                     public void onCompleted(JSONObject object, GraphResponse response) {
 
                         Log.e("dmlogin", object.toString() + " response: "+response.getRawResponse());
-                     /*   constant.gUserName = user.getName();
+                        constant.gUserName = object.optString("name");;
 
-                        if (user.asMap() != null
-                                && user.asMap().get("email") != null)
-                            constant.gEmail = user.asMap().get("email")
-                                    .toString();
-
+                        if (object.has("email")) {
+                            constant.gEmail = object.optString("email");
+                        }
                         // / save data to parse.com
                         final ParseUser parseUser = ParseUser.getCurrentUser();
                         constant.gUserId = parseUser.getObjectId();
 
                         if (!constant.gUserName.equals(""))
                             parseUser.put("username", constant.gUserName);
-                        if (!constant.gEmail.equals(""))
+                        if (!constant.gEmail.equals("")){
                             parseUser.put("email", constant.gEmail);
+                        }
                         parseUser.put("loggedInWay", "facebook");
 
                         // if(parseUser.isNew())
@@ -251,8 +252,8 @@ public class DMLoginActivity extends Activity {
                                 // TODO Auto-generated method stub
                                 if (arg0 == null) {
                                     if (!ParseFacebookUtils.isLinked(parseUser)) {
-                                        ParseFacebookUtils.link(parseUser,
-                                                activity, new SaveCallback() {
+                                        ParseFacebookUtils.linkInBackground(parseUser,
+                                                AccessToken.getCurrentAccessToken(), new SaveCallback() {
 
                                                     @Override
                                                     public void done(
@@ -263,8 +264,8 @@ public class DMLoginActivity extends Activity {
                                                                 .isLinked(parseUser)) {
                                                             Log.d("Wooho",
                                                                     "user logged in with Facebook");
-                                                            ParseFacebookUtils
-                                                                    .saveLatestSessionData(parseUser);
+                                                         //   ParseFacebookUtils.save
+                                                          //          .saveLatestSessionData(parseUser);
                                                         }
                                                     }
 
@@ -278,76 +279,8 @@ public class DMLoginActivity extends Activity {
                                 }
                             }
                         });
-                    }*/
                     }
-
                 });
-
-                 /*   @Override
-                    public void onCompleted(GraphUser user, Response response) {
-                        // TODO Auto-generated method stub
-                        constant.gUserName = user.getName();
-
-                        if (user.asMap() != null
-                                && user.asMap().get("email") != null)
-                            constant.gEmail = user.asMap().get("email")
-                                    .toString();
-
-                        // / save data to parse.com
-                        final ParseUser parseUser = ParseUser.getCurrentUser();
-                        constant.gUserId = parseUser.getObjectId();
-
-                        if (!constant.gUserName.equals(""))
-                            parseUser.put("username", constant.gUserName);
-                        if (!constant.gEmail.equals(""))
-                            parseUser.put("email", constant.gEmail);
-                        parseUser.put("loggedInWay", "facebook");
-
-                        // if(parseUser.isNew())
-                        {
-                            parseUser.setUsername(constant.gUserName);
-                            if (TextUtils.isEmpty(parseUser.getEmail()) && !TextUtils.isEmpty(constant.gEmail)) {
-                                parseUser.setEmail(constant.gEmail);
-                            }
-                            parseUser.setPassword("");
-                        }
-
-                        parseUser.saveInBackground(new SaveCallback() {
-                            @Override
-                            public void done(ParseException arg0) {
-                                // TODO Auto-generated method stub
-                                if (arg0 == null) {
-                                    if (!ParseFacebookUtils.isLinked(parseUser)) {
-                                        ParseFacebookUtils.link(parseUser,
-                                                activity, new SaveCallback() {
-
-                                                    @Override
-                                                    public void done(
-                                                            ParseException arg0) {
-                                                        // TODO Auto-generated
-                                                        // method stub
-                                                        if (ParseFacebookUtils
-                                                                .isLinked(parseUser)) {
-                                                            Log.d("Wooho",
-                                                                    "user logged in with Facebook");
-                                                            ParseFacebookUtils
-                                                                    .saveLatestSessionData(parseUser);
-                                                        }
-                                                    }
-
-                                                });
-                                    }
-                                    saveUserToInstallation(parseUser);
-                                } else {
-                                    Toast.makeText(DMLoginActivity.this,
-                                            AppUtils.asUpperCaseFirstChar(arg0.getMessage()), Toast.LENGTH_LONG)
-                                            .show();
-                                }
-                            }
-                        });
-                    }
-                });*/
-
         request.executeAsync();
     }
 

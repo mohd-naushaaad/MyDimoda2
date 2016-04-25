@@ -1,10 +1,12 @@
 package com.mydimoda;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.DrawerLayout;
@@ -250,6 +252,11 @@ public class DMSettingActivity extends Activity {
         AppUtils.setDefaults(constant.PREF_IS_GALRY_DIALOG_SHOWN, false, this);
         SharedPreferenceUtil.putValue(constant.USER_MAX_COUNT_INITILISED, false);
         SharedPreferenceUtil.putValue(constant.PREF_MAX_COUNT_CONFIGURED, false);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            Log.d(this.getLocalClassName(), "yay we're on 19+ clearApplicationUserData");
+            ActivityManager am = (ActivityManager) DMSettingActivity.this.getSystemService(Context.ACTIVITY_SERVICE);
+            am.clearApplicationUserData();
+        }
         Intent intent = new Intent(this, DMLoginActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
