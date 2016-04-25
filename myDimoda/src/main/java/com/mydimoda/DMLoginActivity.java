@@ -13,7 +13,6 @@ import android.content.pm.Signature;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
@@ -220,7 +219,7 @@ public class DMLoginActivity extends Activity {
                     public void onCompleted(JSONObject object, GraphResponse response) {
 
                         Log.e("dmlogin", object.toString() + " response: "+response.getRawResponse());
-                        constant.gUserName = user.getName();
+                     /*   constant.gUserName = user.getName();
 
                         if (user.asMap() != null
                                 && user.asMap().get("email") != null)
@@ -279,7 +278,7 @@ public class DMLoginActivity extends Activity {
                                 }
                             }
                         });
-                    }
+                    }*/
                     }
 
                 });
