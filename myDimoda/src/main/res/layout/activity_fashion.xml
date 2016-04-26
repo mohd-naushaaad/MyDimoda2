@@ -107,6 +107,7 @@
                     android:layout_height="65dp"
                     android:layout_alignParentBottom="true"
                     android:padding="10dp"
+                    android:layout_above="@+id/homebtn_layout"
                     android:weightSum="96" >
 
                     <Button
@@ -152,14 +153,14 @@
                     android:id="@+id/content_layout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_above="@id/button_layout"
                     android:layout_below="@id/title_layout"
-                    android:padding="10dp" >
+                    android:padding="10dp"
+                    android:layout_above="@+id/act_fsn_share_rl">
 
                     <GridView
                         android:id="@+id/fashion_gridview"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_marginTop="5dp"
                         android:horizontalSpacing="10dp"
                         android:listSelector="#cccccc"
@@ -204,7 +205,44 @@
                             android:textColor="@color/orange"
                             android:textSize="15sp" />
                     </RelativeLayout>
+
+
+
                 </RelativeLayout>
+                <LinearLayout
+                    android:id="@+id/act_fsn_share_rl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:layout_marginBottom="65dp"
+                    android:layout_above="@+id/btn_layout"
+                    android:layout_alignParentBottom="true"
+                    >
+
+                    <ImageView
+                        android:id="@+id/act_fash_fb_share"
+                        android:layout_weight=".3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:src="@drawable/facebook_share"/>
+
+                    <ImageView
+                        android:id="@+id/act_fash_fb_share"
+                        android:layout_weight=".3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/twitter_share"/>
+                    <ImageView
+                        android:id="@+id/act_fash_fb_share"
+                        android:layout_weight=".3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/instagram_share"/>
+
+                </LinearLayout>
+
             </RelativeLayout>
 
             <LinearLayout

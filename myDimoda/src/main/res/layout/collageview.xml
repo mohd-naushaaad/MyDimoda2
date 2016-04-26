@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/blue_color_code"
+    >
+
+    <FrameLayout
+        android:id="@+id/collage_1"
+        android:layout_width="@dimen/collage_width"
+        android:layout_height="@dimen/collage_height"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="@dimen/collage_margin_bottom"
+        android:layout_marginRight="@dimen/collage_margin_i"
+        android:layout_marginTop="@dimen/collage_margin_i"
+        android:layout_marginLeft="@dimen/collage_margin_i"
+        android:background="@drawable/photo_bg"
+        android:paddingBottom="@dimen/collage_padding_bottom"
+        android:paddingLeft="@dimen/collage_padding_left"
+        android:paddingRight="@dimen/collage_padding_right"
+        android:paddingTop="@dimen/collage_padding_top"
+        >
+
+        <ImageView
+            android:layout_width="@dimen/collage_image_size"
+            android:layout_height="@dimen/collage_image_size"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            android:src="@drawable/findme_bg" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/collage_4"
+        android:layout_width="@dimen/collage_width"
+        android:layout_height="@dimen/collage_height"
+        android:background="@drawable/photo_bg"
+        android:paddingBottom="@dimen/collage_padding_bottom"
+        android:paddingLeft="@dimen/collage_padding_left"
+        android:paddingRight="@dimen/collage_padding_right"
+        android:paddingTop="@dimen/collage_padding_top"
+        android:layout_below="@+id/collage_2"
+        android:layout_alignLeft="@+id/collage_2"
+        android:layout_alignStart="@+id/collage_2"
+        android:layout_alignRight="@+id/collage_2"
+        android:layout_alignEnd="@+id/collage_2">
+
+        <ImageView
+            android:layout_width="@dimen/collage_image_size"
+            android:layout_height="@dimen/collage_image_size"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            android:src="@drawable/findme_bg" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/collage_3"
+        android:layout_width="@dimen/collage_width"
+        android:layout_height="@dimen/collage_height"
+        android:background="@drawable/photo_bg"
+        android:paddingBottom="@dimen/collage_padding_bottom"
+        android:paddingLeft="@dimen/collage_padding_left"
+        android:paddingRight="@dimen/collage_padding_right"
+        android:paddingTop="@dimen/collage_padding_top"
+
+        android:layout_below="@+id/collage_1"
+        android:layout_toLeftOf="@+id/collage_4"
+        android:layout_toStartOf="@+id/collage_4">
+
+        <ImageView
+            android:layout_width="@dimen/collage_image_size"
+            android:layout_height="@dimen/collage_image_size"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            android:src="@drawable/findme_bg" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/collage_2"
+        android:layout_width="@dimen/collage_width"
+        android:layout_height="@dimen/collage_height"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="@dimen/collage_margin_bottom"
+        android:layout_marginRight="@dimen/collage_margin_i"
+        android:layout_marginTop="@dimen/collage_margin_i"
+        android:background="@drawable/photo_bg"
+        android:paddingBottom="@dimen/collage_padding_bottom"
+        android:paddingLeft="@dimen/collage_padding_left"
+        android:paddingRight="@dimen/collage_padding_right"
+        android:paddingTop="@dimen/collage_padding_top"
+        >
+
+        <ImageView
+            android:layout_width="@dimen/collage_image_size"
+            android:layout_height="@dimen/collage_image_size"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            android:src="@drawable/findme_bg" />
+    </FrameLayout>
+</RelativeLayout>
