@@ -184,7 +184,7 @@ public class DMLoginActivity extends Activity {
     // /--------------------------------------- login with facebook data
     // -----------------------------------------
     public void loginWithFacebook() {
-        constant.showProgress(this, "Logging in..");
+        //constant.showProgress(this, "Logging in..");
         List<String> permissions = Arrays.asList("email","basic_info");
         ParseFacebookUtils.logInWithReadPermissionsInBackground(this, permissions, new LogInCallback() {
             @Override

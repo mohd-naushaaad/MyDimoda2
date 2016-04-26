@@ -1,10 +1,13 @@
 package com.mydimoda;
 
 import android.app.Fragment;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnPreparedListener;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +16,11 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import com.mydimoda.widget.MyVideoView;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class DMHomeFragment extends Fragment {
 
@@ -52,6 +60,8 @@ public class DMHomeFragment extends Fragment {
 		calculateVideoSize();
 		playVideo();
 		// t.start();
+		makeImage();
+
 	}
 
 	// / --------------------------------- play video
@@ -141,5 +151,33 @@ public class DMHomeFragment extends Fragment {
 		} catch (Exception exception) {
 
 		}
+	}
+	public void makeImage() {
+		View v = LayoutInflater.from(getActivity()).inflate(R.layout.collageview, new RelativeLayout(getActivity()), false);
+
+		// Or this
+		int specWidth = View.MeasureSpec.makeMeasureSpec(0 /* any */, View.MeasureSpec.UNSPECIFIED);
+		v.measure(specWidth, specWidth);
+		Bitmap b = Bitmap.createBitmap(v.getMeasuredWidth(), v.getMeasuredHeight(), Bitmap.Config.ARGB_8888);
+		Canvas c = new Canvas(b);
+		v.layout(0, 0, v.getMeasuredWidth(), v.getMeasuredHeight());
+		v.draw(c);
+		try {
+			savebitmap(b);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static File savebitmap(Bitmap bmp) throws IOException {
+		ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+		bmp.compress(Bitmap.CompressFormat.JPEG, 60, bytes);
+		File f = new File(Environment.getExternalStorageDirectory()
+				+ File.separator + "testimage.jpg");
+		f.createNewFile();
+		FileOutputStream fo = new FileOutputStream(f);
+		fo.write(bytes.toByteArray());
+		fo.close();
+		return f;
 	}
 }

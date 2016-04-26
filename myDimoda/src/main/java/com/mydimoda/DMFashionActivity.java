@@ -8,18 +8,23 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.os.AsyncTask;
+import android.os.Environment;
 import android.os.SystemClock;
 
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -46,12 +51,19 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 public class DMFashionActivity extends Activity {
 
@@ -82,11 +94,18 @@ public class DMFashionActivity extends Activity {
     DatabaseModel m_DatabaseModel;
     DbAdapter mDbAdapter;
     final public static String ONE_TIME = "onetime";
+    @Bind(R.id.act_fash_fb_share)
+    ImageView mFbShareBtn;
+    @Bind(R.id.act_fash_tw_share)
+    ImageView mTwShareBtn;
+    @Bind(R.id.act_fash_In_share)
+    ImageView mInShareBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fashion);
+        ButterKnife.bind(this);
         mDbAdapter = new DbAdapter(DMFashionActivity.this);
         mDbAdapter.createDatabase();
         mDbAdapter.open();
@@ -240,6 +259,12 @@ public class DMFashionActivity extends Activity {
                 }
             }
         });
+        mFbShareBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                makeImage();
+            }
+        });
     }
 
     @Override
@@ -294,7 +319,7 @@ public class DMFashionActivity extends Activity {
     public void slideMenu() {
         if (vDrawerLayout.isDrawerOpen(vMenuLayout)) {
             vDrawerLayout.closeDrawer(vMenuLayout);
-        } else{
+        } else {
             vDrawerLayout.openDrawer(vMenuLayout);
         }
     }
@@ -379,7 +404,7 @@ public class DMFashionActivity extends Activity {
                 if (e == null) {
                     makeClothList(clothList);
                 } else {
-                    Toast.makeText(DMFashionActivity.this,  AppUtils.asUpperCaseFirstChar(e.getMessage()),
+                    Toast.makeText(DMFashionActivity.this, AppUtils.asUpperCaseFirstChar(e.getMessage()),
                             Toast.LENGTH_LONG).show();
                 }
             }
@@ -468,7 +493,7 @@ public class DMFashionActivity extends Activity {
                     Toast.makeText(DMFashionActivity.this, "Favorited",
                             Toast.LENGTH_LONG).show();
                 else
-                    Toast.makeText(DMFashionActivity.this,  AppUtils.asUpperCaseFirstChar(e.getMessage()),
+                    Toast.makeText(DMFashionActivity.this, AppUtils.asUpperCaseFirstChar(e.getMessage()),
                             Toast.LENGTH_LONG).show();
 
                 constant.hideProgress();
@@ -754,5 +779,34 @@ public class DMFashionActivity extends Activity {
 
     public void hideProgress() {
         vProgress.dismiss();
+    }
+
+    public void makeImage() {
+        View v = LayoutInflater.from(getApplication()).inflate(R.layout.collageview, new RelativeLayout(getApplication()), false);
+
+        // Or this
+        int specWidth = View.MeasureSpec.makeMeasureSpec(0 /* any */, View.MeasureSpec.UNSPECIFIED);
+        v.measure(specWidth, specWidth);
+        Bitmap b = Bitmap.createBitmap(v.getMeasuredWidth(), v.getMeasuredHeight(), Bitmap.Config.ARGB_8888);
+        Canvas c = new Canvas(b);
+        v.layout(0, 0, v.getMeasuredWidth(), v.getMeasuredHeight());
+        v.draw(c);
+        try {
+            savebitmap(b);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static File savebitmap(Bitmap bmp) throws IOException {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.JPEG, 60, bytes);
+        File f = new File(Environment.getExternalStorageDirectory()
+                + File.separator + "testimage.jpg");
+        f.createNewFile();
+        FileOutputStream fo = new FileOutputStream(f);
+        fo.write(bytes.toByteArray());
+        fo.close();
+        return f;
     }
 }

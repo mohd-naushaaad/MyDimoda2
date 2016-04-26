@@ -229,13 +229,13 @@
                         android:src="@drawable/facebook_share"/>
 
                     <ImageView
-                        android:id="@+id/act_fash_fb_share"
+                        android:id="@+id/act_fash_tw_share"
                         android:layout_weight=".3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/twitter_share"/>
                     <ImageView
-                        android:id="@+id/act_fash_fb_share"
+                        android:id="@+id/act_fash_In_share"
                         android:layout_weight=".3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
