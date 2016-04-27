@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.os.AsyncTask;
 import android.os.Environment;
@@ -22,6 +23,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -55,6 +57,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -100,6 +103,8 @@ public class DMFashionActivity extends Activity {
     ImageView mTwShareBtn;
     @Bind(R.id.act_fash_In_share)
     ImageView mInShareBtn;
+    List<OrderClothModel> mClothModellist;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -262,7 +267,9 @@ public class DMFashionActivity extends Activity {
         mFbShareBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                makeImage();
+                //makeImage();
+                //downloadBitmaps();
+           new DownloadTaskRunner().execute();
             }
         });
     }
@@ -425,7 +432,7 @@ public class DMFashionActivity extends Activity {
                 Log.e("URL", mClothList.get(i).get("ImageContent").toString());
 
                 model.setImageUrl(url);
-
+                model.setType(AppUtils.asUpperCaseFirstChar(mClothList.get(i).getString("Type")));
                 if (mClothList.get(i).getString("Type")
                         .equalsIgnoreCase("shirt")) {
                     model.setPosition(constant.SHIRT);
@@ -455,6 +462,7 @@ public class DMFashionActivity extends Activity {
                 }
             });
             showFashionList(photoList);
+            mClothModellist = photoList;
         }
     }
 
@@ -781,20 +789,131 @@ public class DMFashionActivity extends Activity {
         vProgress.dismiss();
     }
 
-    public void makeImage() {
+    public boolean makeImage() {
         View v = LayoutInflater.from(getApplication()).inflate(R.layout.collageview, new RelativeLayout(getApplication()), false);
+        AlertDialog.Builder builder = new AlertDialog.Builder(DMFashionActivity.this);
+        builder.setView(v);
+        //    builder.create().show();
 
-        // Or this
+        ImageView mImage_1, mImage_2, mImage_3, mImage_4;
+        TextView mTxtVw_1, mTxtVw_2, mTxtVw_3, mTxtVw_4;
+        FrameLayout mFl_1, mFl_2, mFl_3, mFl_4;
+        mImage_1 = (ImageView) v.findViewById(R.id.collage_image_1);
+        mImage_2 = (ImageView) v.findViewById(R.id.collage_image_2);
+        mImage_3 = (ImageView) v.findViewById(R.id.collage_image_3);
+        mImage_4 = (ImageView) v.findViewById(R.id.collage_image_4);
+
+        mTxtVw_1 = (TextView) v.findViewById(R.id.collage_1_tv);
+        mTxtVw_2 = (TextView) v.findViewById(R.id.collage_2_tv);
+        mTxtVw_3 = (TextView) v.findViewById(R.id.collage_3_tv);
+        mTxtVw_4 = (TextView) v.findViewById(R.id.collage_4_tv);
+
+        mFl_1 = (FrameLayout) v.findViewById(R.id.collage_1);
+        mFl_2 = (FrameLayout) v.findViewById(R.id.collage_2);
+        mFl_3 = (FrameLayout) v.findViewById(R.id.collage_3);
+        mFl_4 = (FrameLayout) v.findViewById(R.id.collage_4);
+        FontsUtil.setExistenceLight(this, mTxtVw_1);
+        FontsUtil.setExistenceLight(this, mTxtVw_2);
+        FontsUtil.setExistenceLight(this, mTxtVw_3);
+        FontsUtil.setExistenceLight(this, mTxtVw_4);
+
+        switch (mClothModellist.size()) {
+            case 0:
+                return false;
+            case 1:
+                return false;
+            case 2:
+
+                try {
+                    mImage_1.setImageBitmap(constant.getclothsBitmapLst().get(0));
+                    mImage_2.setImageBitmap(constant.getclothsBitmapLst().get(1));
+
+                    //  ParseApplication.getInstance().mImageLoader.displayImage(
+                    //        mClothModellist.get(1).getImageUrl(), mImage_2);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                mTxtVw_1.setText(mClothModellist.get(0).getType());
+
+                mTxtVw_2.setText(mClothModellist.get(1).getType());
+
+                mFl_1.setRotation(AppUtils.generatRandomPositiveNegitiveValue());
+                mFl_2.setRotation(AppUtils.generatRandomPositiveNegitiveValue());
+                mFl_3.setVisibility(View.GONE);
+                mFl_4.setVisibility(View.GONE);
+                break;
+            case 3:
+                mImage_1.setImageBitmap(constant.getclothsBitmapLst().get(0));
+                mImage_2.setImageBitmap(constant.getclothsBitmapLst().get(1));
+                mImage_3.setImageBitmap(constant.getclothsBitmapLst().get(2));
+
+                mTxtVw_1.setText(mClothModellist.get(0).getType());
+                mTxtVw_2.setText(mClothModellist.get(1).getType());
+                mTxtVw_3.setText(mClothModellist.get(2).getType());
+                mFl_1.setRotation(AppUtils.generatRandomPositiveNegitiveValue());
+                mFl_2.setRotation(AppUtils.generatRandomPositiveNegitiveValue());
+                mFl_3.setRotation(AppUtils.generatRandomPositiveNegitiveValue());
+                mFl_4.setVisibility(View.GONE);
+                break;
+            case 4:
+                mImage_1.setImageBitmap(constant.getclothsBitmapLst().get(0));
+                mImage_2.setImageBitmap(constant.getclothsBitmapLst().get(1));
+                mImage_3.setImageBitmap(constant.getclothsBitmapLst().get(2));
+                mImage_4.setImageBitmap(constant.getclothsBitmapLst().get(3));
+
+                mTxtVw_1.setText(mClothModellist.get(0).getType());
+                mTxtVw_2.setText(mClothModellist.get(1).getType());
+                mTxtVw_3.setText(mClothModellist.get(2).getType());
+                mTxtVw_4.setText(mClothModellist.get(3).getType());
+                mFl_1.setRotation(AppUtils.generatRandomPositiveNegitiveValue(30, 5));
+                mFl_2.setRotation(AppUtils.generatRandomPositiveNegitiveValue());
+                mFl_3.setRotation(AppUtils.generatRandomPositiveNegitiveValue());
+                mFl_4.setRotation(AppUtils.generatRandomPositiveNegitiveValue());
+                break;
+            default:
+                try {
+                    ParseApplication.getInstance().mImageLoader.displayImage(
+                            mClothModellist.get(0).getImageUrl(), mImage_1);
+                    mTxtVw_1.setText(mClothModellist.get(0).getType());
+                    ParseApplication.getInstance().mImageLoader.displayImage(
+                            mClothModellist.get(1).getImageUrl(), mImage_2);
+                    mTxtVw_2.setText(mClothModellist.get(1).getType());
+                    ParseApplication.getInstance().mImageLoader.displayImage(
+                            mClothModellist.get(2).getImageUrl(), mImage_3);
+                    mTxtVw_3.setText(mClothModellist.get(2).getType());
+                    ParseApplication.getInstance().mImageLoader.displayImage(
+                            mClothModellist.get(3).getImageUrl(), mImage_4);
+                    mTxtVw_4.setText(mClothModellist.get(3).getType());
+                    mFl_1.setRotation(AppUtils.generatRandomPositiveNegitiveValue());
+                    mFl_2.setRotation(AppUtils.generatRandomPositiveNegitiveValue());
+                    mFl_3.setRotation(AppUtils.generatRandomPositiveNegitiveValue());
+                    mFl_4.setRotation(AppUtils.generatRandomPositiveNegitiveValue());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+        }
+
+        // this is to give attribute
         int specWidth = View.MeasureSpec.makeMeasureSpec(0 /* any */, View.MeasureSpec.UNSPECIFIED);
+        // if (v.getHeight() == 0) {
         v.measure(specWidth, specWidth);
+
+        //}
+
+
         Bitmap b = Bitmap.createBitmap(v.getMeasuredWidth(), v.getMeasuredHeight(), Bitmap.Config.ARGB_8888);
         Canvas c = new Canvas(b);
         v.layout(0, 0, v.getMeasuredWidth(), v.getMeasuredHeight());
         v.draw(c);
         try {
+
             savebitmap(b);
+
+
+            return true;
         } catch (IOException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
@@ -808,5 +927,55 @@ public class DMFashionActivity extends Activity {
         fo.write(bytes.toByteArray());
         fo.close();
         return f;
+    }
+
+    public void downloadBitmaps() {
+        if(constant.getclothsBitmapLst().size()!=mClothModellist.size()){
+            for (int i = 0; i < mClothModellist.size(); i++) {
+                try {
+                    constant.getclothsBitmapLst().add(i, BitmapFactory.decodeStream
+                            (new URL(mClothModellist.get(i).getImageUrl()).openConnection().getInputStream()));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        constant.clearClothBitmapList();
+    }
+
+
+
+    private class DownloadTaskRunner extends AsyncTask<Void, Void, Void> {
+
+
+        @Override
+        protected Void doInBackground(Void... params) {
+           downloadBitmaps();
+        return null;
+        }
+
+        /*
+         * (non-Javadoc)
+         *
+         * @see android.os.AsyncTask#onPostExecute(java.lang.Object)
+         */
+        @Override
+        protected void onPostExecute(Void result) {
+            // execution of result of Long time consuming operation
+            makeImage();
+        }
+
+        /*
+         * (non-Javadoc)
+         *
+         * @see android.os.AsyncTask#onPreExecute()
+         */
+
     }
 }

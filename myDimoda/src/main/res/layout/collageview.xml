@@ -3,6 +3,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@color/white"
+    android:paddingBottom="12dp"
     >
 
     <FrameLayout
@@ -13,7 +14,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginBottom="@dimen/collage_margin_bottom"
-        android:layout_marginRight="@dimen/collage_margin_i"
+        android:layout_marginRight="@dimen/collage_margin_bottom"
         android:layout_marginTop="@dimen/collage_margin_i"
         android:layout_marginLeft="@dimen/collage_margin_i"
         android:background="@drawable/photo_bg"
@@ -22,7 +23,7 @@
         >
 
         <ImageView
-            android:id="@+id/collage_image_4"
+            android:id="@+id/collage_image_1"
             android:layout_width="@dimen/collage_image_size"
             android:layout_height="@dimen/collage_image_size"
             android:layout_gravity="center_horizontal|top"
@@ -36,9 +37,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/collage_txt_margin"
-            android:text="zummba"
+            android:text=""
             android:textSize="@dimen/collage_txt_size"
             android:gravity="center"
+            android:textColor="@android:color/black"
+
             android:layout_gravity="center_horizontal|bottom"
             />
     </FrameLayout>
@@ -52,14 +55,12 @@
         android:paddingRight="@dimen/collage_padding_right"
         android:paddingTop="@dimen/collage_padding_top"
         android:visibility="visible"
-        android:layout_below="@+id/collage_2"
-        android:layout_alignLeft="@+id/collage_2"
-        android:layout_alignStart="@+id/collage_2"
-        android:layout_alignRight="@+id/collage_2"
-        android:layout_alignEnd="@+id/collage_2">
+        android:layout_alignTop="@+id/collage_3"
+        android:layout_toRightOf="@+id/collage_1"
+        android:layout_toEndOf="@+id/collage_1">
 
         <ImageView
-            android:id="@+id/collage_image_1"
+            android:id="@+id/collage_image_4"
             android:layout_width="@dimen/collage_image_size"
             android:layout_height="@dimen/collage_image_size"
             android:layout_gravity="top"
@@ -70,9 +71,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/collage_txt_margin"
-            android:text="zummba"
+            android:text=""
             android:textSize="@dimen/collage_txt_size"
             android:gravity="center"
+            android:textColor="@android:color/black"
+
             android:layout_gravity="center_horizontal|bottom"
             />
     </FrameLayout>
@@ -87,7 +90,7 @@
         android:paddingTop="@dimen/collage_padding_top"
         android:visibility="visible"
         android:layout_toLeftOf="@id/collage_4"
-        android:layout_marginRight="@dimen/collage_margin_i"
+        android:layout_marginRight="@dimen/collage_margin_bottom"
         android:layout_below="@+id/collage_1"
         android:layout_marginBottom="@dimen/collage_margin_i"
         android:layout_centerHorizontal="true">
@@ -104,7 +107,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/collage_txt_margin"
-            android:text="zummba"
+            android:text=""
+            android:textColor="@android:color/black"
+
             android:textSize="@dimen/collage_txt_size"
             android:gravity="center"
             android:layout_gravity="center_horizontal|bottom"
@@ -117,13 +122,13 @@
         android:layout_height="@dimen/collage_height"
         android:layout_toRightOf="@id/collage_1"
         android:layout_marginBottom="@dimen/collage_margin_bottom"
-        android:layout_marginRight="@dimen/collage_margin_i"
         android:layout_marginTop="@dimen/collage_margin_i"
         android:background="@drawable/photo_bg"
         android:paddingLeft="@dimen/collage_padding_left"
         android:paddingRight="@dimen/collage_padding_right"
         android:paddingTop="@dimen/collage_padding_top"
-        >
+        android:layout_alignRight="@+id/collage_4"
+        android:layout_alignEnd="@+id/collage_4">
 
         <ImageView
             android:id="@+id/collage_image_2"
@@ -137,7 +142,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/collage_txt_margin"
-            android:text="zummba"
+            android:textColor="@android:color/black"
+            android:text=""
             android:textSize="@dimen/collage_txt_size"
             android:gravity="center"
             android:layout_gravity="center_horizontal|bottom"

@@ -300,5 +300,12 @@ public class AppUtils {
         return netInfo != null && netInfo.isConnectedOrConnecting();
     }
 
-
+    public static int generatRandomPositiveNegitiveValue(int max, int min) {
+        int ii = -min + (int) (Math.random() * ((max - (-min)) + 1));
+        return ii;
+    }
+    public static int generatRandomPositiveNegitiveValue() {
+        int ii = -(10) + (int) (Math.random() * ((40 - (-10)) + 1));
+        return ii;
+    }
 }

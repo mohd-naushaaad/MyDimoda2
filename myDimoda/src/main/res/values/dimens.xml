@@ -12,19 +12,19 @@
     <dimen name="item.crop.recyclrvw.size">60dp</dimen>
     <dimen name="tick_btn_padding">12dp</dimen>
     <dimen name="menu_btn_size">30dp</dimen>
-    <dimen name="collage_padding_left">12dp</dimen>
-    <dimen name="collage_padding_right">20dp</dimen>
+    <dimen name="collage_padding_left">10dp</dimen>
+    <dimen name="collage_padding_right">16dp</dimen>
     <dimen name="collage_padding_bottom">40dp</dimen>
-    <dimen name="collage_padding_top">12dp</dimen>
-    <dimen name="collage_height">200dp</dimen>
+    <dimen name="collage_padding_top">10dp</dimen>
+    <dimen name="collage_height">190dp</dimen>
     <dimen name="collage_width">160dp</dimen>
-    <dimen name="collage_margin_i">30dp</dimen>
+    <dimen name="collage_margin_i">25dp</dimen>
     <dimen name="collage_image_size">130dp</dimen>
-    <dimen name="collage_margin_bottom">4dp</dimen>
+    <dimen name="collage_margin_bottom">6dp</dimen>
     <dimen name="collage_main_width">350dp</dimen>
     <dimen name="collage_main_height">800dp</dimen>
     <dimen name="collage_txt_size">16sp</dimen>
-    <dimen name="collage_txt_margin">25dp</dimen>
+    <dimen name="collage_txt_margin">20dp</dimen>
 
 
 </resources>

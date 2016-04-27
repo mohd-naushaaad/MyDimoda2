@@ -87,7 +87,7 @@ public class constant {
     public static String gPatternVal = null;
 
     public static boolean gIsStart = false;
-    public static  final  String COUNT = "Count";
+    public static final String COUNT = "Count";
 
     public constant() {
 
@@ -189,9 +189,9 @@ public class constant {
 
     public static void hideProgress() {
         if (vProgress != null) {
-            try{
+            try {
                 vProgress.dismiss();
-            }catch(IllegalArgumentException e){
+            } catch (IllegalArgumentException e) {
                 e.printStackTrace();
             }
         }
@@ -249,6 +249,7 @@ public class constant {
                 context.finish();
         }
     }
+
     public static int max_lic_count = 5;
 
     public static final int MAX_GAL_IMAGE_COUNT = 12;
@@ -262,16 +263,12 @@ public class constant {
     public static final String PREF_MAX_COUNT = "maxearnedcounts";
     public static final String PREF_MAX_COUNT_GVN = "maxearnedcountsfor";
     /* public static final String PREF_MAX_COUNT_GVN_shirt = "maxearnedcountsforshirt";*/
-     public static final String PREF_MAX_COUNT_CONFIGURED = "ismaxcountconfigured";
-     public static final String RATED_APP = "ratedmyDiModa";
-     public static final String PREF_CLOTH_COUNT = "maxearnedcountsforsuits";
+    public static final String PREF_MAX_COUNT_CONFIGURED = "ismaxcountconfigured";
+    public static final String RATED_APP = "ratedmyDiModa";
+    public static final String PREF_CLOTH_COUNT = "maxearnedcountsforsuits";
     public static final String USER_MAX_COUNT = "MaxUserCount";
     public static final String PREF_IS_GALRY_DIALOG_SHOWN = "isgalshown";
     public static final String USER_MAX_COUNT_INITILISED = "maxusercountinitilised";
-
-
-
-
 
 
     //Mayur to save array of cropped images for otehr view
@@ -282,6 +279,25 @@ public class constant {
             mCroppedItemListModelArray = new ArrayList<>();
         }
         return mCroppedItemListModelArray;
+    }
+
+    //Mayur to save array of cropped images for otehr view
+    private static ArrayList<Bitmap> clothsBitmapLst;
+
+    public static ArrayList<Bitmap> getclothsBitmapLst() {
+        if (clothsBitmapLst == null) {
+            clothsBitmapLst = new ArrayList<>();
+        }
+        return clothsBitmapLst;
+    }
+
+    public static void clearClothBitmapList() {
+        if (clothsBitmapLst != null) {
+            for (Bitmap mBitmap : clothsBitmapLst) {
+                mBitmap.recycle();
+            }
+            clothsBitmapLst.clear();
+        }
     }
 
 }
