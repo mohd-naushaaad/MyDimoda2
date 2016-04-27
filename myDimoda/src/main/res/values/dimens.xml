@@ -13,7 +13,7 @@
     <dimen name="tick_btn_padding">12dp</dimen>
     <dimen name="menu_btn_size">30dp</dimen>
     <dimen name="collage_padding_left">10dp</dimen>
-    <dimen name="collage_padding_right">16dp</dimen>
+    <dimen name="collage_padding_right">14dp</dimen>
     <dimen name="collage_padding_bottom">40dp</dimen>
     <dimen name="collage_padding_top">10dp</dimen>
     <dimen name="collage_height">190dp</dimen>
