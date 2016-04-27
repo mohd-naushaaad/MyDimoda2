@@ -29,7 +29,6 @@ public class DMFashionGridAdapter extends BaseAdapter {
     private List<OrderClothModel> mList = new ArrayList<OrderClothModel>();
 
     public DMFashionGridAdapter(Context context, List<OrderClothModel> list) {
-        constant.clearClothBitmapList();
         m_Context = context;
         layoutInflater = LayoutInflater.from(m_Context);
         mList = list;
@@ -95,7 +94,6 @@ public class DMFashionGridAdapter extends BaseAdapter {
                     public void onLoadingComplete(String imageUri, View view,
                                                   Bitmap loadedImage) {
 
-                    //    constant.getclothsBitmapLst().add(loadedImage); // to add images to the to be shared pic
                         holder.progress.setVisibility(View.GONE);
                         if (mList.get(position).getPosition() == constant.SUIT)
                             holder.typeText.setText("suit");
@@ -113,7 +111,6 @@ public class DMFashionGridAdapter extends BaseAdapter {
                 });
         // new
         // ImageDownloaderTask1(holder.imageView,holder.progress,m_Context,"",position).execute(mList.get(position));
-
         return convertView;
     }
 

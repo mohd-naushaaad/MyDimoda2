@@ -37,6 +37,7 @@ android {
 }
 
 dependencies {
+
     /*    compile project(':facebookSDK')*/
     compile 'com.parse:parsefacebookutils-v4-android:1.10.4@aar'
     compile 'com.parse:parse-android:1.13.0'

@@ -3,7 +3,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@color/white"
-    android:paddingBottom="12dp">
+    >
 
     <FrameLayout
         android:id="@+id/collage_1"
@@ -85,6 +85,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/collage_margin_i"
         android:layout_marginRight="@dimen/collage_margin_bottom"
+        android:layout_marginTop="-16dp"
         android:layout_toLeftOf="@id/collage_4"
         android:background="@drawable/photo_bg"
         android:paddingLeft="@dimen/collage_padding_left"
@@ -118,7 +119,7 @@
         android:layout_width="@dimen/collage_width"
         android:layout_height="@dimen/collage_height"
         android:layout_alignTop="@+id/collage_1"
-        android:layout_marginRight="15dp"
+        android:layout_marginRight="28dp"
         android:layout_toRightOf="@id/collage_1"
         android:background="@drawable/photo_bg"
         android:paddingLeft="@dimen/collage_padding_left"

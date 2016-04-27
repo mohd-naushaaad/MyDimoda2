@@ -264,6 +264,10 @@
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="971828c19addc8704feca2725eade9a7c9e899a6" />
+
+        <provider android:authorities="com.facebook.app.FacebookContentProvider608361809277602"
+            android:name="com.facebook.FacebookContentProvider"
+            android:exported="true"/>
     </application>
 
 </manifest>

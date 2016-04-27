@@ -5,17 +5,20 @@ import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.app.ProgressDialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.os.Environment;
 import android.os.SystemClock;
-
-import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -33,6 +36,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.share.model.ShareContent;
+import com.facebook.share.model.ShareMedia;
+import com.facebook.share.model.ShareOpenGraphAction;
+import com.facebook.share.model.ShareOpenGraphContent;
+import com.facebook.share.model.ShareOpenGraphObject;
+import com.facebook.share.model.SharePhoto;
+import com.facebook.share.model.SharePhotoContent;
+import com.facebook.share.widget.ShareDialog;
 import com.mydimoda.adapter.DMFashionGridAdapter;
 import com.mydimoda.adapter.DMMenuListAdapter;
 import com.mydimoda.database.DbAdapter;
@@ -53,9 +64,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -98,12 +107,17 @@ public class DMFashionActivity extends Activity {
     DbAdapter mDbAdapter;
     final public static String ONE_TIME = "onetime";
     @Bind(R.id.act_fash_fb_share)
-    ImageView mFbShareBtn;
+    TextView mFbShareBtn;
     @Bind(R.id.act_fash_tw_share)
-    ImageView mTwShareBtn;
+    TextView mTwShareBtn;
     @Bind(R.id.act_fash_In_share)
-    ImageView mInShareBtn;
+    TextView mInShareBtn;
     List<OrderClothModel> mClothModellist;
+
+    private int ShareType = 0;
+    private final int FB = 1;
+    private final int TW = 2;
+    private final int IN = 3;
 
 
     @Override
@@ -209,6 +223,7 @@ public class DMFashionActivity extends Activity {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 dislikeCloth();
+                constant.clearClothBitmapList();
             }
         });
 
@@ -218,6 +233,8 @@ public class DMFashionActivity extends Activity {
                 // TODO Auto-generated method stub
                 constant.gBlockedList.add(constant.gFashion);
                 goAlgorithmActivity();
+                constant.clearClothBitmapList();
+
             }
         });
 
@@ -269,7 +286,25 @@ public class DMFashionActivity extends Activity {
             public void onClick(View view) {
                 //makeImage();
                 //downloadBitmaps();
-           new DownloadTaskRunner().execute();
+                ShareType = FB;
+                new DownloadTaskRunner().execute();
+            }
+        });
+
+        mTwShareBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ShareType = TW;
+
+                new DownloadTaskRunner().execute();
+
+            }
+        });
+        mInShareBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ShareType = IN;
+                new DownloadTaskRunner().execute();
             }
         });
     }
@@ -907,30 +942,19 @@ public class DMFashionActivity extends Activity {
         v.draw(c);
         try {
 
-            savebitmap(b);
-
+            AppUtils.savebitmap(b);
+            share( b);
 
             return true;
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
     }
 
-    public static File savebitmap(Bitmap bmp) throws IOException {
-        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-        bmp.compress(Bitmap.CompressFormat.JPEG, 60, bytes);
-        File f = new File(Environment.getExternalStorageDirectory()
-                + File.separator + "testimage.jpg");
-        f.createNewFile();
-        FileOutputStream fo = new FileOutputStream(f);
-        fo.write(bytes.toByteArray());
-        fo.close();
-        return f;
-    }
 
     public void downloadBitmaps() {
-        if(constant.getclothsBitmapLst().size()!=mClothModellist.size()){
+        if (constant.getclothsBitmapLst().size() != mClothModellist.size()) {
             for (int i = 0; i < mClothModellist.size(); i++) {
                 try {
                     constant.getclothsBitmapLst().add(i, BitmapFactory.decodeStream
@@ -945,37 +969,113 @@ public class DMFashionActivity extends Activity {
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         constant.clearClothBitmapList();
-    }
+        super.onDestroy();
 
+    }
 
 
     private class DownloadTaskRunner extends AsyncTask<Void, Void, Void> {
 
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        constant.showProgress(DMFashionActivity.this,"Please wait...");
+        }
 
         @Override
         protected Void doInBackground(Void... params) {
-           downloadBitmaps();
-        return null;
+            downloadBitmaps();
+            return null;
         }
 
-        /*
-         * (non-Javadoc)
-         *
-         * @see android.os.AsyncTask#onPostExecute(java.lang.Object)
-         */
+
         @Override
         protected void onPostExecute(Void result) {
-            // execution of result of Long time consuming operation
             makeImage();
+            constant.hideProgress();
         }
 
-        /*
-         * (non-Javadoc)
-         *
-         * @see android.os.AsyncTask#onPreExecute()
-         */
+    }
 
+    public void share( Bitmap mImage) {
+        switch (ShareType) {
+            case FB:
+                SharePhoto photo = new SharePhoto.Builder()
+                        .setBitmap(mImage)
+                        .setCaption("#MyDimoda")
+                        .build();
+                SharePhotoContent content = new SharePhotoContent.Builder()
+                        .addPhoto(photo)
+                        .build();
+                ShareDialog shareDialog = new ShareDialog(DMFashionActivity.this);
+                shareDialog.show(content, ShareDialog.Mode.AUTOMATIC);
+                break;
+            case TW:
+                sendShareTwit();
+                break;
+            case IN:
+                sendShareInsta();
+                break;
+        }
+
+    }
+
+    private void sendShareTwit() {
+        try {
+            Intent tweetIntent = new Intent(Intent.ACTION_SEND);
+
+            String filename = "shareimage.jpg";
+            File imageFile = new File(Environment.getExternalStorageDirectory(), filename);
+
+            tweetIntent.putExtra(Intent.EXTRA_TEXT, constant.APP_LINK);
+            tweetIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(imageFile));
+            tweetIntent.setType("image/jpeg");
+            PackageManager pm = this.getPackageManager();
+            List<ResolveInfo> lract = pm.queryIntentActivities(tweetIntent, PackageManager.MATCH_DEFAULT_ONLY);
+            boolean resolved = false;
+            for (ResolveInfo ri : lract) {
+                if (ri.activityInfo.name.contains("twitter")) {
+                    tweetIntent.setClassName(ri.activityInfo.packageName,
+                            ri.activityInfo.name);
+                    resolved = true;
+                    break;
+                }
+            }
+            startActivity(resolved ?
+                    tweetIntent :
+                    Intent.createChooser(tweetIntent, "Choose one"));
+        } catch (final ActivityNotFoundException e) {
+           // Toast.makeText(this, "You don't seem to have twitter installed on this device", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, this.getString(R.string.no_app_msg,"Twitter"),Toast.LENGTH_SHORT).show();//"You don't seem to have Instagram installed on this device", ;
+        }
+    }
+    private void sendShareInsta() {
+        try {
+            Intent tweetIntent = new Intent(Intent.ACTION_SEND);
+
+            String filename = "shareimage.jpg";
+            File imageFile = new File(Environment.getExternalStorageDirectory(), filename);
+
+            tweetIntent.putExtra(Intent.EXTRA_TEXT, constant.APP_LINK);
+            tweetIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(imageFile));
+            tweetIntent.setType("image/jpeg");
+            PackageManager pm = this.getPackageManager();
+            List<ResolveInfo> lract = pm.queryIntentActivities(tweetIntent, PackageManager.MATCH_DEFAULT_ONLY);
+            boolean resolved = false;
+            for (ResolveInfo ri : lract) {
+                if (ri.activityInfo.name.contains("instagram")) {
+                    tweetIntent.setClassName(ri.activityInfo.packageName,
+                            ri.activityInfo.name);
+                    resolved = true;
+                    break;
+                }
+            }
+            startActivity(resolved ?
+                    tweetIntent :
+                    Intent.createChooser(tweetIntent, "Choose one"));
+        } catch (final ActivityNotFoundException e) {
+            Toast.makeText(this, this.getString(R.string.no_app_msg,"Instagram"),Toast.LENGTH_SHORT).show();//"You don't seem to have Instagram installed on this device", ;
+        }
     }
 }

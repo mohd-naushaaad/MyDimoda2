@@ -34,6 +34,7 @@
     <string name="unlimited">Unlimited</string>
     <string name="style_me_awarded_1">%1$d Style me option(s) awarded</string>
     <string name="no_internet_msg">No internet connection</string>
+    <string name="no_app_msg">You don\'t seem to have %1$s installed on this device</string>
 
 
 

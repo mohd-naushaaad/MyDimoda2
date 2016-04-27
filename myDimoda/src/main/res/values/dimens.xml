@@ -20,7 +20,7 @@
     <dimen name="collage_width">160dp</dimen>
     <dimen name="collage_margin_i">25dp</dimen>
     <dimen name="collage_image_size">130dp</dimen>
-    <dimen name="collage_margin_bottom">6dp</dimen>
+    <dimen name="collage_margin_bottom">16dp</dimen>
     <dimen name="collage_main_width">350dp</dimen>
     <dimen name="collage_main_height">800dp</dimen>
     <dimen name="collage_txt_size">16sp</dimen>

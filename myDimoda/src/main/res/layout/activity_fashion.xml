@@ -4,29 +4,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/main_content_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent">
 
         <android.support.v4.widget.DrawerLayout
             android:id="@+id/drawer_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/darker_gray" >
+            android:background="@color/darker_gray">
 
             <RelativeLayout
                 android:id="@+id/layout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="match_parent">
 
                 <RelativeLayout
                     android:id="@+id/title_layout"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:background="#f7f7f7" >
+                    android:background="#f7f7f7">
 
                     <Button
                         android:id="@+id/menu_btn"
@@ -51,7 +51,7 @@
                         android:id="@+id/back_layout"
                         android:layout_width="90dp"
                         android:layout_height="match_parent"
-                        android:layout_alignParentRight="true" >
+                        android:layout_alignParentRight="true">
 
                         <TextView
                             android:id="@+id/back_txt"
@@ -79,8 +79,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_alignParentBottom="true"
-                        android:background="#878787" >
-                    </RelativeLayout>
+                        android:background="#878787"></RelativeLayout>
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -88,7 +87,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="65dp"
                     android:layout_alignParentBottom="true"
-                    android:padding="10dp" >
+                    android:padding="10dp">
 
                     <Button
                         android:id="@+id/btn_home"
@@ -105,57 +104,52 @@
                     android:id="@+id/button_layout"
                     android:layout_width="match_parent"
                     android:layout_height="65dp"
+                    android:layout_above="@+id/homebtn_layout"
                     android:layout_alignParentBottom="true"
                     android:padding="10dp"
-                    android:layout_above="@+id/homebtn_layout"
-                    android:weightSum="96" >
+                    android:weightSum="96">
 
                     <Button
                         android:id="@+id/like_btn"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="30"
-                        android:background="@drawable/like_btn_sel" >
-                    </Button>
+                        android:background="@drawable/like_btn_sel"></Button>
 
                     <RelativeLayout
                         android:id="@+id/empty_layout1"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="3" >
-                    </RelativeLayout>
+                        android:layout_weight="3"></RelativeLayout>
 
                     <Button
                         android:id="@+id/dissmiss_btn"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="30"
-                        android:background="@drawable/dismiss_btn_sel" >
-                    </Button>
+                        android:background="@drawable/dismiss_btn_sel"></Button>
 
                     <RelativeLayout
                         android:id="@+id/empty_layout2"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="3" >
-                    </RelativeLayout>
+                        android:layout_weight="3"></RelativeLayout>
 
                     <Button
                         android:id="@+id/stamp_btn"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="30"
-                        android:background="@drawable/stamp_btn_sel" >
-                    </Button>
+                        android:background="@drawable/stamp_btn_sel"></Button>
                 </LinearLayout>
 
                 <RelativeLayout
                     android:id="@+id/content_layout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_above="@+id/act_fsn_share_rl"
                     android:layout_below="@id/title_layout"
-                    android:padding="10dp"
-                    android:layout_above="@+id/act_fsn_share_rl">
+                    android:padding="10dp">
 
                     <GridView
                         android:id="@+id/fashion_gridview"
@@ -165,8 +159,7 @@
                         android:horizontalSpacing="10dp"
                         android:listSelector="#cccccc"
                         android:numColumns="2"
-                        android:verticalSpacing="10dp" >
-                    </GridView>
+                        android:verticalSpacing="10dp"></GridView>
 
                     <RelativeLayout
                         android:id="@+id/remember_layout"
@@ -175,7 +168,7 @@
                         android:layout_below="@id/fashion_gridview"
                         android:layout_marginTop="10dp"
                         android:paddingLeft="10dp"
-                        android:paddingRight="10dp" >
+                        android:paddingRight="10dp">
 
                         <ImageButton
                             android:id="@+id/remember_btn"
@@ -207,39 +200,52 @@
                     </RelativeLayout>
 
 
-
                 </RelativeLayout>
+
                 <LinearLayout
                     android:id="@+id/act_fsn_share_rl"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:layout_marginBottom="65dp"
                     android:layout_above="@+id/btn_layout"
                     android:layout_alignParentBottom="true"
-                    >
+                    android:layout_marginBottom="65dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
 
-                    <ImageView
+                    <TextView
                         android:id="@+id/act_fash_fb_share"
-                        android:layout_weight=".3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight=".3"
+                        android:text="Facebook"
+                        android:gravity="center"
+                        android:paddingLeft="16dp"
+                        android:textColor="@color/color_white"
+                        android:background="@drawable/facebook_share" />
 
-                        android:src="@drawable/facebook_share"/>
-
-                    <ImageView
+                    <TextView
                         android:id="@+id/act_fash_tw_share"
-                        android:layout_weight=".3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/twitter_share"/>
-                    <ImageView
+                        android:layout_marginRight="10dp"
+                        android:layout_weight=".3"
+                        android:text="Twitter"
+                        android:gravity="center"
+                        android:paddingLeft="12dp"
+                        android:background="@drawable/twitter_share"
+                        android:textColor="@color/color_white" />
+
+                    <TextView
                         android:id="@+id/act_fash_In_share"
-                        android:layout_weight=".3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/instagram_share"/>
+                        android:layout_weight=".3"
+                        android:text="Instagram"
+                        android:gravity="center"
+                        android:paddingLeft="20dp"
+                        android:textColor="@color/color_white"
+                        android:background="@drawable/instagram_share" />
 
                 </LinearLayout>
 
@@ -251,7 +257,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="left"
                 android:background="@drawable/menu_bg"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <ListView
                     android:id="@+id/menu_list"
@@ -260,8 +266,7 @@
                     android:divider="@drawable/empty"
                     android:dividerHeight="2dp"
                     android:listSelector="@drawable/listitem_selector"
-                    android:paddingTop="60dp" >
-                </ListView>
+                    android:paddingTop="60dp"></ListView>
             </LinearLayout>
         </android.support.v4.widget.DrawerLayout>
     </RelativeLayout>

@@ -300,4 +300,6 @@ public class constant {
         }
     }
 
+    public static String APP_LINK = "Enhancing my look w/ myDiModa\n"+"App Store: http://apple.co/235CP4Y\n" +
+            "Play Store: http://bit.ly/26tp8RZ";
 }
