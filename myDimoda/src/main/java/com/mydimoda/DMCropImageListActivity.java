@@ -44,6 +44,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import io.fabric.sdk.android.Fabric;
 
 public class DMCropImageListActivity extends FragmentActivity {
 
@@ -285,9 +286,14 @@ public class DMCropImageListActivity extends FragmentActivity {
 
                 if (e == null) {
                     mClothList = clothList;
-                    stylePointProcessor(mClothList.size(),
-                            mModelList.get(pos).getmType().toLowerCase().trim().toString(), pos);
+                    try {
+                        stylePointProcessor(mClothList.size(),
+                                mModelList.get(pos).getmType().toLowerCase().trim().toString(), pos);
 
+                    } catch (Exception e2) {
+                        e2.printStackTrace();
+                        Fabric.getLogger().e("error", e2.getMessage());
+                    }
                 } else {
                     Toast.makeText(DMCropImageListActivity.this, AppUtils.asUpperCaseFirstChar(e.getMessage()),
                             Toast.LENGTH_LONG).show();
@@ -355,7 +361,6 @@ public class DMCropImageListActivity extends FragmentActivity {
             });
         }
         if (isLastCall) {
-
             constant.hideProgress();
             if (getParent() == null) {
                 setResult(RESULT_OK);

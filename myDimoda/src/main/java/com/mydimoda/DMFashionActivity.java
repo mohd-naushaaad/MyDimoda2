@@ -943,7 +943,7 @@ public class DMFashionActivity extends Activity {
         try {
 
             AppUtils.savebitmap(b);
-            share( b);
+            share(b);
 
             return true;
         } catch (Exception e) {
@@ -954,15 +954,18 @@ public class DMFashionActivity extends Activity {
 
 
     public void downloadBitmaps() {
-        if (constant.getclothsBitmapLst().size() != mClothModellist.size()) {
-            for (int i = 0; i < mClothModellist.size(); i++) {
-                try {
+        try {
+            if (constant.getclothsBitmapLst().size() != mClothModellist.size()) {
+                for (int i = 0; i < mClothModellist.size(); i++) {
+
                     constant.getclothsBitmapLst().add(i, BitmapFactory.decodeStream
                             (new URL(mClothModellist.get(i).getImageUrl()).openConnection().getInputStream()));
-                } catch (IOException e) {
-                    e.printStackTrace();
+
                 }
             }
+        } catch (IOException e) {
+            e.printStackTrace();
+            Toast.makeText(DMFashionActivity.this,"Loading images please wait",Toast.LENGTH_SHORT);
         }
     }
 
@@ -980,7 +983,7 @@ public class DMFashionActivity extends Activity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-        constant.showProgress(DMFashionActivity.this,"Please wait...");
+            constant.showProgress(DMFashionActivity.this, "Please wait...");
         }
 
         @Override
@@ -998,7 +1001,7 @@ public class DMFashionActivity extends Activity {
 
     }
 
-    public void share( Bitmap mImage) {
+    public void share(Bitmap mImage) {
         switch (ShareType) {
             case FB:
                 SharePhoto photo = new SharePhoto.Builder()
@@ -1046,10 +1049,11 @@ public class DMFashionActivity extends Activity {
                     tweetIntent :
                     Intent.createChooser(tweetIntent, "Choose one"));
         } catch (final ActivityNotFoundException e) {
-           // Toast.makeText(this, "You don't seem to have twitter installed on this device", Toast.LENGTH_SHORT).show();
-            Toast.makeText(this, this.getString(R.string.no_app_msg,"Twitter"),Toast.LENGTH_SHORT).show();//"You don't seem to have Instagram installed on this device", ;
+            // Toast.makeText(this, "You don't seem to have twitter installed on this device", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, this.getString(R.string.no_app_msg, "Twitter"), Toast.LENGTH_SHORT).show();//"You don't seem to have Instagram installed on this device", ;
         }
     }
+
     private void sendShareInsta() {
         try {
             Intent tweetIntent = new Intent(Intent.ACTION_SEND);
@@ -1075,7 +1079,7 @@ public class DMFashionActivity extends Activity {
                     tweetIntent :
                     Intent.createChooser(tweetIntent, "Choose one"));
         } catch (final ActivityNotFoundException e) {
-            Toast.makeText(this, this.getString(R.string.no_app_msg,"Instagram"),Toast.LENGTH_SHORT).show();//"You don't seem to have Instagram installed on this device", ;
+            Toast.makeText(this, this.getString(R.string.no_app_msg, "Instagram"), Toast.LENGTH_SHORT).show();//"You don't seem to have Instagram installed on this device", ;
         }
     }
 }

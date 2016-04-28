@@ -300,6 +300,23 @@ public class constant {
         }
     }
 
-    public static String APP_LINK = "Enhancing my look w/ myDiModa\n"+"App Store: http://apple.co/235CP4Y\n" +
+    public static String APP_LINK = getRandomStatus() + "\nApp Store: http://apple.co/235CP4Y\n" +
             "Play Store: http://bit.ly/26tp8RZ";
+
+    public static ArrayList<String> mStatuses = new ArrayList<>();
+
+    public static String getRandomStatus() {
+        if (mStatuses == null || mStatuses.isEmpty()) {
+            mStatuses.add("Confidence provided by myDiModa.");
+            mStatuses.add("Professionally styled by myDiModa.");
+            mStatuses.add("Enhancing my look with myDiModa.");
+        }
+        try {
+            return mStatuses.get(Math.abs(AppUtils.generatRandomPositiveNegitiveValue(2, 0)));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return mStatuses.get(0);
+        }
+    }
+
 }

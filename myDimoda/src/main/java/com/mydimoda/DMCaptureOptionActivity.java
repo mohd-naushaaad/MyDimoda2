@@ -20,11 +20,14 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mydimoda.adapter.DMMenuListAdapter;
 import com.mydimoda.camera.CropActivity;
 import com.mydimoda.interfaces.DialogItemClickListener;
 import com.mydimoda.widget.cropper.util.FontsUtil;
+
+import java.io.File;
 
 /**
  * @author Keyur
@@ -145,7 +148,7 @@ public class DMCaptureOptionActivity extends Activity {
     public void slideMenu() {
         if (vDrawerLayout.isDrawerOpen(vMenuLayout)) {
             vDrawerLayout.closeDrawer(vMenuLayout);
-        } else{
+        } else {
             vDrawerLayout.openDrawer(vMenuLayout);
         }
     }
@@ -177,13 +180,18 @@ public class DMCaptureOptionActivity extends Activity {
             String[] filePathColumn = {MediaStore.Images.Media.DATA};
             Cursor cursor = getContentResolver().query(selectedImage,
                     filePathColumn, null, null, null);
-            cursor.moveToFirst();
-            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-            String picturePath = cursor.getString(columnIndex);
-            cursor.close();
-            mBitmap = BitmapFactory.decodeFile(picturePath);
-            // goCropActivity();
-            goToCropActivity(picturePath);
+            if (cursor != null) {
+                cursor.moveToFirst();
+                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                String picturePath = cursor.getString(columnIndex);
+                cursor.close();
+                mBitmap = BitmapFactory.decodeFile(picturePath);
+                // goCropActivity();
+                goToCropActivity(picturePath);
+            } else {
+                Toast.makeText(this, "Opps! Something went wrong, please try again", Toast.LENGTH_SHORT).show();
+            }
+
         } else if (requestCode == RESULT_CROP && resultCode == RESULT_OK) {
             finish();
             //goProcessActivity();
@@ -233,6 +241,7 @@ public class DMCaptureOptionActivity extends Activity {
                     }
                     goToCropActivity(imagePath);
                 }
+
                 @Override
                 public void onGalleryClick() {
                     try {
@@ -242,6 +251,7 @@ public class DMCaptureOptionActivity extends Activity {
                     }
                     callGallery();
                 }
+
                 @Override
                 public void onCloseClick() {
                     try {
@@ -250,11 +260,12 @@ public class DMCaptureOptionActivity extends Activity {
                         e.printStackTrace();
                     }
                 }
+
                 @Override
                 public void onDialogVisible(DialogInterface mDialogInterface) {
                     mDlgInterface = mDialogInterface;
                 }
-            },false);
+            }, false);
         } catch (Exception e) {
             e.printStackTrace();
         }
