@@ -307,6 +307,8 @@ public class DMFashionActivity extends Activity {
                 new DownloadTaskRunner().execute();
             }
         });
+        init();
+
     }
 
     @Override
@@ -314,7 +316,6 @@ public class DMFashionActivity extends Activity {
         // TODO Auto-generated method stub
         super.onResume();
 
-        init();
     }
 
     public void init() {
@@ -965,7 +966,7 @@ public class DMFashionActivity extends Activity {
             }
         } catch (IOException e) {
             e.printStackTrace();
-            Toast.makeText(DMFashionActivity.this,"Loading images please wait",Toast.LENGTH_SHORT);
+       //     Toast.makeText(DMFashionActivity.this,"Loading images please wait",Toast.LENGTH_SHORT);
         }
     }
 
@@ -1031,7 +1032,7 @@ public class DMFashionActivity extends Activity {
             String filename = "shareimage.jpg";
             File imageFile = new File(Environment.getExternalStorageDirectory(), filename);
 
-            tweetIntent.putExtra(Intent.EXTRA_TEXT, constant.APP_LINK);
+            tweetIntent.putExtra(Intent.EXTRA_TEXT, constant.getRandomStatus());
             tweetIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(imageFile));
             tweetIntent.setType("image/jpeg");
             PackageManager pm = this.getPackageManager();
@@ -1061,7 +1062,7 @@ public class DMFashionActivity extends Activity {
             String filename = "shareimage.jpg";
             File imageFile = new File(Environment.getExternalStorageDirectory(), filename);
 
-            tweetIntent.putExtra(Intent.EXTRA_TEXT, constant.APP_LINK);
+            tweetIntent.putExtra(Intent.EXTRA_TEXT, constant.getRandomStatus());
             tweetIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(imageFile));
             tweetIntent.setType("image/jpeg");
             PackageManager pm = this.getPackageManager();

@@ -23,6 +23,7 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 @SuppressLint("SimpleDateFormat")
 public class constant {
@@ -300,23 +301,31 @@ public class constant {
         }
     }
 
-    public static String APP_LINK = getRandomStatus() + "\nApp Store: http://apple.co/235CP4Y\n" +
+    public static String APP_LINK = "\nApp Store: http://apple.co/235CP4Y\n" +
             "Play Store: http://bit.ly/26tp8RZ";
 
-    public static ArrayList<String> mStatuses = new ArrayList<>();
+    private static ArrayList<String> mStatuses;
 
     public static String getRandomStatus() {
         if (mStatuses == null || mStatuses.isEmpty()) {
-            mStatuses.add("Confidence provided by myDiModa.");
-            mStatuses.add("Professionally styled by myDiModa.");
-            mStatuses.add("Enhancing my look with myDiModa.");
+            mStatuses = new ArrayList<>();
+            mStatuses.add("Confidence provided by myDiModa." + APP_LINK);
+            mStatuses.add("Professionally styled by myDiModa." + APP_LINK);
+            mStatuses.add("Enhancing my look with myDiModa." + APP_LINK);
         }
         try {
-            return mStatuses.get(Math.abs(AppUtils.generatRandomPositiveNegitiveValue(2, 0)));
+            return mStatuses.get(getRandom(0, 2));
         } catch (Exception e) {
             e.printStackTrace();
             return mStatuses.get(0);
         }
     }
 
+    public static int getRandom(int from, int to) {
+        if (from < to){
+            return (new Random().nextInt(to - from + 1) + from);
+        }else{
+            return (new Random().nextInt(from - to + 1) + to);
+        }
+    }
 }
