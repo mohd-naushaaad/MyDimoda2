@@ -149,6 +149,7 @@ public class CropActivity extends Activity implements OnClickListener {
                 constant.getImageLst().add(mModel);
                 mCropListVw.getAdapter().notifyDataSetChanged();
                 mCropListVw.smoothScrollToPosition(constant.getImageLst().size() - 1);
+                _cropView.resetImageRectView();
             }
         });
     }
@@ -361,6 +362,6 @@ public class CropActivity extends Activity implements OnClickListener {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-     //   constant.getImageLst().clear();
+        //   constant.getImageLst().clear();
     }
 }

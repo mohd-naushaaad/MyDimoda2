@@ -216,9 +216,14 @@ public class CropImageView extends FrameLayout {
         if (mCropOverlayView != null) {
             mCropOverlayView.resetCropOverlayView();
         }
-//        if (mCropview2 != null) {
-//            mCropview2.resetCropOverlayView();
-//        }
+
+    }
+    public void resetImageRectView() {
+
+        if (mCropOverlayView != null) {
+            mCropOverlayView.resetCropOverlayView();
+        }
+
     }
 
     public void setImageBitmap(Bitmap bitmap, ExifInterface exif) {

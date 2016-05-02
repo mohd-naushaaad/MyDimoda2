@@ -36,11 +36,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.facebook.share.model.ShareContent;
-import com.facebook.share.model.ShareMedia;
-import com.facebook.share.model.ShareOpenGraphAction;
-import com.facebook.share.model.ShareOpenGraphContent;
-import com.facebook.share.model.ShareOpenGraphObject;
 import com.facebook.share.model.SharePhoto;
 import com.facebook.share.model.SharePhotoContent;
 import com.facebook.share.widget.ShareDialog;
@@ -826,7 +821,7 @@ public class DMFashionActivity extends Activity {
     }
 
     public boolean makeImage() {
-        View v = LayoutInflater.from(getApplication()).inflate(R.layout.collageview, new RelativeLayout(getApplication()), false);
+        View v = LayoutInflater.from(getApplication()).inflate(R.layout.collage_view, new RelativeLayout(getApplication()), false);
         AlertDialog.Builder builder = new AlertDialog.Builder(DMFashionActivity.this);
         builder.setView(v);
         //    builder.create().show();
@@ -989,6 +984,9 @@ public class DMFashionActivity extends Activity {
 
         @Override
         protected Void doInBackground(Void... params) {
+            if(isFinishing()){
+                return null;
+            }
             downloadBitmaps();
             return null;
         }
@@ -996,8 +994,11 @@ public class DMFashionActivity extends Activity {
 
         @Override
         protected void onPostExecute(Void result) {
-            makeImage();
+            if(!isFinishing()){
+                makeImage();
+            }
             constant.hideProgress();
+
         }
 
     }

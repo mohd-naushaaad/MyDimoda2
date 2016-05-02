@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:paddingLeft="@dimen/dialog.share.padding"
+    android:paddingTop="@dimen/dialog.share.padding"
+    android:paddingRight="@dimen/dialog.share.padding"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<ImageView
+    android:id="@+id/dialog_share_imageview"
+    android:layout_width="match_parent"
+    android:layout_centerHorizontal="true"
+    android:src="@drawable/com_facebook_profile_picture_blank_square"
+    android:layout_height="@dimen/dialog.share.image.height" />
+
+
+
+
+
+</RelativeLayout>

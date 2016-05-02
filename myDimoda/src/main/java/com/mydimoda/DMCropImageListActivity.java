@@ -502,7 +502,7 @@ public class DMCropImageListActivity extends FragmentActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             vProgress = new ProgressDialog(DMCropImageListActivity.this);
-            vProgress.setMessage(" Please wait...\n Analysing image(s)");
+            vProgress.setMessage(" Please wait...\n Analyzing image(s)");
             vProgress.setCancelable(false);
             vProgress.show();
         }
