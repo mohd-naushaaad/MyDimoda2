@@ -200,6 +200,7 @@ public class AppUtils {
     }
 
     static Dialog mGalleryDialog;
+    static DMDialogGridAdapter mAdapter;
 
     /**
      * Displays a dialog with images from gallery
@@ -289,13 +290,14 @@ public class AppUtils {
                     mCallback.onGalleryClick();
                 }
             });
-
-            mGalGridview.setAdapter(new DMDialogGridAdapter(mContext, mGallerImageLst));
+            mAdapter = new DMDialogGridAdapter(mContext, mGallerImageLst);
+            mGalGridview.setAdapter(mAdapter);
             mGalGridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                    mCallback.onImageClick(mGallerImageLst.get(position).getImagePathl());
+                    mGallerImageLst.get(position).setSelected(!mGallerImageLst.get(position).isSelected());
+                    mAdapter.notifyDataSetChanged();
+                    //   mCallback.onImageClick(mGallerImageLst.get(position).getImagePathl());
                 }
             });
             mGalleryDialog = mBuilder.create();
@@ -353,7 +355,7 @@ public class AppUtils {
         final ImageView mFbShareBtn = (ImageView) mView.findViewById(R.id.dialog_share_fb_share);
         ImageView mTwShareBtn = (ImageView) mView.findViewById(R.id.dialog_share_tw_share);
         ImageView mInShareBtn = (ImageView) mView.findViewById(R.id.dialog_share_In_share);
-
+        FontsUtil.setExistenceLight(mContext, (TextView) (mView.findViewById(R.id.dialog_share_title)));
 
         mLookCollageImage.setImageBitmap(bitmap);
         mFbShareBtn.setOnClickListener(new View.OnClickListener() {
@@ -423,7 +425,6 @@ public class AppUtils {
                 sendShareInsta(mContext);
                 break;
         }
-
     }
 
     private static void sendShareTwit(Context mContext) {

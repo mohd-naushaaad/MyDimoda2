@@ -114,7 +114,7 @@
             android:name="com.mydimoda.DMFashionActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.NoTitleBar" >
+            android:theme="@style/AppotherTheme" >
         </activity>
         <activity
             android:name="com.mydimoda.DMFashionActivity_7Hour"

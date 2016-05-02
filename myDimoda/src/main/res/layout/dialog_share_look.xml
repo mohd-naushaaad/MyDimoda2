@@ -17,31 +17,30 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginBottom="12dp"
             android:gravity="bottom"
             android:paddingLeft="10dp"
             android:text="Share look..."
             android:textColor="@color/color_black_light"
-            android:textSize="26sp" />
+            android:textSize="21sp"
+           />
 
         <ImageView
             android:id="@+id/dialog_share_imageview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/dialog.share.image.height"
             android:layout_below="@+id/dialog_share_title"
-
+            android:src="@drawable/help_bg"
             />
 
         <LinearLayout
             android:id="@+id/dialog_share_share_rl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:layout_below="@+id/dialog_share_imageview"
-            android:layout_marginTop="18dp"
             android:paddingLeft="10dp"
-            android:paddingRight="10dp">
+            android:paddingRight="10dp"
+            android:paddingTop="6dp"
+            android:layout_marginBottom="12dp">
 
             <ImageView
                 android:id="@+id/dialog_share_fb_share"

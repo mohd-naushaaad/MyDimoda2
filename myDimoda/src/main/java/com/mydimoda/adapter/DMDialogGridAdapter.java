@@ -78,6 +78,7 @@ public class DMDialogGridAdapter extends BaseAdapter {
             convertView = layoutInflater.inflate(R.layout.item_gal_dialog, null);
             holder = new ViewHolder();
             holder.imageView = (ImageView) convertView.findViewById(R.id.item_gal_imageView);
+            holder.mSelectedIv = (ImageView) convertView.findViewById(R.id.item_gal_selected_iv);
             convertView.setTag(holder);
 
         } else {
@@ -86,6 +87,12 @@ public class DMDialogGridAdapter extends BaseAdapter {
 
 
         holder.imageView.setImageBitmap(getThumb(mList.get(position).getOrigId()));
+        if (mList.get(position).isSelected()) {
+            holder.mSelectedIv.setImageResource(R.drawable.selected);
+
+        } else {
+            holder.mSelectedIv.setImageResource(R.drawable.unselected);
+        }
         return convertView;
     }
 
@@ -93,6 +100,7 @@ public class DMDialogGridAdapter extends BaseAdapter {
     static class ViewHolder {
         ImageView imageView;
         CircularProgressBar progress;
+        ImageView mSelectedIv;
     }
 
 
