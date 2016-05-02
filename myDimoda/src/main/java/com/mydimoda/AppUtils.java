@@ -3,9 +3,13 @@ package com.mydimoda;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
@@ -23,6 +27,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.share.model.SharePhoto;
+import com.facebook.share.model.SharePhotoContent;
+import com.facebook.share.widget.ShareDialog;
 import com.mydimoda.adapter.DMDialogGridAdapter;
 import com.mydimoda.interfaces.DialogItemClickListener;
 import com.mydimoda.model.DialogImagesModel;
@@ -36,6 +43,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.Bind;
 
 public class AppUtils {
 
@@ -299,7 +309,8 @@ public class AppUtils {
         }
         AppUtils.setDefaults(constant.PREF_IS_GALRY_DIALOG_SHOWN, true, mContext);
     }
-    public static  boolean isOnline(Context mContext) {
+
+    public static boolean isOnline(Context mContext) {
         ConnectivityManager cm =
                 (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
@@ -310,11 +321,14 @@ public class AppUtils {
         int ii = -min + (int) (Math.random() * ((max - (-min)) + 1));
         return ii;
     }
+
     public static int generatRandomPositiveNegitiveValue() {
         int ii = -(10) + (int) (Math.random() * ((40 - (-10)) + 1));
         return ii;
     }
-    public static final  String  SHARE_IMAGE_NAME = "shareimage.jpg";
+
+    public static final String SHARE_IMAGE_NAME = "shareimage.jpg";
+
     public static File savebitmap(Bitmap bmp) throws IOException {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         bmp.compress(Bitmap.CompressFormat.JPEG, 60, bytes);
@@ -327,4 +341,146 @@ public class AppUtils {
         return f;
     }
 
+    private static Dialog mShareDialog;
+    private static DialogInterface mShareDialogInter;
+
+    public static void showShareDialog(final Bitmap bitmap, final Context mContext) {
+        final AlertDialog.Builder mBuilder = new AlertDialog.Builder(new ContextThemeWrapper(mContext, android.R.style.Theme_Holo));
+        View mView = ((Activity) mContext).getLayoutInflater().inflate(R.layout.dialog_share_look, null);
+        mBuilder.setView(mView);
+        ImageView mLookCollageImage = (ImageView) mView.findViewById(R.id.dialog_share_imageview);
+        ImageView mCloseBtn = (ImageView) mView.findViewById(R.id.dialog_share_close);
+        final ImageView mFbShareBtn = (ImageView) mView.findViewById(R.id.dialog_share_fb_share);
+        ImageView mTwShareBtn = (ImageView) mView.findViewById(R.id.dialog_share_tw_share);
+        ImageView mInShareBtn = (ImageView) mView.findViewById(R.id.dialog_share_In_share);
+
+
+        mLookCollageImage.setImageBitmap(bitmap);
+        mFbShareBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                share(bitmap, FB, mContext);
+                closeShareDialog(mShareDialogInter);
+            }
+        });
+        mTwShareBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                share(bitmap, TW, mContext);
+                closeShareDialog(mShareDialogInter);
+            }
+        });
+        mInShareBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                share(bitmap, IN, mContext);
+                closeShareDialog(mShareDialogInter);
+            }
+        });
+        mCloseBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                closeShareDialog(mShareDialogInter);
+            }
+        });
+        mShareDialog = mBuilder.create();
+        mShareDialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialogInterface) {
+                mShareDialogInter = dialogInterface;
+            }
+        });
+        mShareDialog.show();
+    }
+
+    private static void closeShareDialog(DialogInterface mFace) {
+        if (mShareDialogInter != null) {
+            mShareDialogInter.dismiss();
+        }
+    }
+
+    private static final int FB = 1;
+    private static final int TW = 2;
+    private static final int IN = 3;
+
+    private static void share(Bitmap mImage, int shareType, Context mContext) {
+        switch (shareType) {
+            case FB:
+                SharePhoto photo = new SharePhoto.Builder()
+                        .setBitmap(mImage)
+                        .setCaption("#MyDimoda")
+                        .build();
+                SharePhotoContent content = new SharePhotoContent.Builder()
+                        .addPhoto(photo)
+                        .build();
+                ShareDialog shareDialog = new ShareDialog((Activity) mContext);
+                shareDialog.show(content, ShareDialog.Mode.AUTOMATIC);
+                break;
+            case TW:
+                sendShareTwit(mContext);
+                break;
+            case IN:
+                sendShareInsta(mContext);
+                break;
+        }
+
+    }
+
+    private static void sendShareTwit(Context mContext) {
+        try {
+            Intent tweetIntent = new Intent(Intent.ACTION_SEND);
+
+            String filename = "shareimage.jpg";
+            File imageFile = new File(Environment.getExternalStorageDirectory(), filename);
+
+            tweetIntent.putExtra(Intent.EXTRA_TEXT, constant.getRandomStatus());
+            tweetIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(imageFile));
+            tweetIntent.setType("image/jpeg");
+            PackageManager pm = mContext.getPackageManager();
+            List<ResolveInfo> lract = pm.queryIntentActivities(tweetIntent, PackageManager.MATCH_DEFAULT_ONLY);
+            boolean resolved = false;
+            for (ResolveInfo ri : lract) {
+                if (ri.activityInfo.name.contains("twitter")) {
+                    tweetIntent.setClassName(ri.activityInfo.packageName,
+                            ri.activityInfo.name);
+                    resolved = true;
+                    break;
+                }
+            }
+            mContext.startActivity(resolved ?
+                    tweetIntent :
+                    Intent.createChooser(tweetIntent, "Choose one"));
+        } catch (final ActivityNotFoundException e) {
+            // Toast.makeText(this, "You don't seem to have twitter installed on this device", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, mContext.getString(R.string.no_app_msg, "Twitter"), Toast.LENGTH_SHORT).show();//"You don't seem to have Instagram installed on this device", ;
+        }
+    }
+
+
+    private static void sendShareInsta(Context mContext) {
+        try {
+            Intent tweetIntent = new Intent(Intent.ACTION_SEND);
+
+            String filename = "shareimage.jpg";
+            File imageFile = new File(Environment.getExternalStorageDirectory(), filename);
+
+            tweetIntent.putExtra(Intent.EXTRA_TEXT, constant.getRandomStatus());
+            tweetIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(imageFile));
+            tweetIntent.setType("image/jpeg");
+            PackageManager pm = mContext.getPackageManager();
+            List<ResolveInfo> lract = pm.queryIntentActivities(tweetIntent, PackageManager.MATCH_DEFAULT_ONLY);
+            boolean resolved = false;
+            for (ResolveInfo ri : lract) {
+                if (ri.activityInfo.name.contains("instagram")) {
+                    tweetIntent.setClassName(ri.activityInfo.packageName,
+                            ri.activityInfo.name);
+                    resolved = true;
+                    break;
+                }
+            }
+            mContext.startActivity(resolved ? tweetIntent : Intent.createChooser(tweetIntent, "Choose one"));
+        } catch (final ActivityNotFoundException e) {
+            Toast.makeText(mContext, mContext.getString(R.string.no_app_msg, "Instagram"), Toast.LENGTH_SHORT).show();//"You don't seem to have Instagram installed on this device", ;
+        }
+    }
 }

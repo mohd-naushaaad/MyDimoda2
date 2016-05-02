@@ -17,19 +17,15 @@ public class DMMainActivity extends Activity {
 		new Handler().postDelayed(new Runnable(){
 			public void run() {
 				/* show login layout */
-				
-				if(getUserData())
-				{
+				if(getUserData()){
 					Intent intent = new Intent(DMMainActivity.this, DMIntroActivity.class);
 					intent.putExtra("isStart", true);
 					startActivity(intent);
-				}else
-				{
+				}else{
 					Intent intent = new Intent(DMMainActivity.this, DMLoginActivity.class);
 					startActivity(intent);
 				}
-				
-				finish();	
+				finish();
 			}
 		}, 2000);
 	}

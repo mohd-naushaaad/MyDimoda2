@@ -27,5 +27,5 @@
     <dimen name="collage_txt_margin">20dp</dimen>
     <dimen name="dialog.share.image.height">220dp</dimen>
     <dimen name="dialog.share.padding">12dp</dimen>
-
+    <dimen name="dialog.share.iconsize">50dp</dimen>
 </resources>

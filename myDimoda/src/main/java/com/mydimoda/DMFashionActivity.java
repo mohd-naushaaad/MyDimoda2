@@ -109,11 +109,6 @@ public class DMFashionActivity extends Activity {
     TextView mInShareBtn;
     List<OrderClothModel> mClothModellist;
 
-    private int ShareType = 0;
-    private final int FB = 1;
-    private final int TW = 2;
-    private final int IN = 3;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -192,6 +187,7 @@ public class DMFashionActivity extends Activity {
 
             public void onClick(View v) {
 
+                new DownloadTaskRunner().execute();
                 String favoritelist = "", showlayout = "";
                 Bundle extras = getIntent().getExtras();
                 if (extras != null) {
@@ -276,32 +272,7 @@ public class DMFashionActivity extends Activity {
                 }
             }
         });
-        mFbShareBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //makeImage();
-                //downloadBitmaps();
-                ShareType = FB;
-                new DownloadTaskRunner().execute();
-            }
-        });
 
-        mTwShareBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ShareType = TW;
-
-                new DownloadTaskRunner().execute();
-
-            }
-        });
-        mInShareBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ShareType = IN;
-                new DownloadTaskRunner().execute();
-            }
-        });
         init();
 
     }
@@ -891,7 +862,6 @@ public class DMFashionActivity extends Activity {
                 mImage_2.setImageBitmap(constant.getclothsBitmapLst().get(1));
                 mImage_3.setImageBitmap(constant.getclothsBitmapLst().get(2));
                 mImage_4.setImageBitmap(constant.getclothsBitmapLst().get(3));
-
                 mTxtVw_1.setText(mClothModellist.get(0).getType());
                 mTxtVw_2.setText(mClothModellist.get(1).getType());
                 mTxtVw_3.setText(mClothModellist.get(2).getType());
@@ -939,7 +909,7 @@ public class DMFashionActivity extends Activity {
         try {
 
             AppUtils.savebitmap(b);
-            share(b);
+            AppUtils.showShareDialog(b, DMFashionActivity.this);
 
             return true;
         } catch (Exception e) {
@@ -961,7 +931,7 @@ public class DMFashionActivity extends Activity {
             }
         } catch (IOException e) {
             e.printStackTrace();
-       //     Toast.makeText(DMFashionActivity.this,"Loading images please wait",Toast.LENGTH_SHORT);
+            //     Toast.makeText(DMFashionActivity.this,"Loading images please wait",Toast.LENGTH_SHORT);
         }
     }
 
@@ -979,12 +949,12 @@ public class DMFashionActivity extends Activity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            constant.showProgress(DMFashionActivity.this, "Please wait...");
+          //  constant.showProgress(DMFashionActivity.this, "Please wait...");
         }
 
         @Override
         protected Void doInBackground(Void... params) {
-            if(isFinishing()){
+            if (isFinishing()) {
                 return null;
             }
             downloadBitmaps();
@@ -994,7 +964,7 @@ public class DMFashionActivity extends Activity {
 
         @Override
         protected void onPostExecute(Void result) {
-            if(!isFinishing()){
+            if (!isFinishing()) {
                 makeImage();
             }
             constant.hideProgress();
@@ -1003,85 +973,5 @@ public class DMFashionActivity extends Activity {
 
     }
 
-    public void share(Bitmap mImage) {
-        switch (ShareType) {
-            case FB:
-                SharePhoto photo = new SharePhoto.Builder()
-                        .setBitmap(mImage)
-                        .setCaption("#MyDimoda")
-                        .build();
-                SharePhotoContent content = new SharePhotoContent.Builder()
-                        .addPhoto(photo)
-                        .build();
-                ShareDialog shareDialog = new ShareDialog(DMFashionActivity.this);
-                shareDialog.show(content, ShareDialog.Mode.AUTOMATIC);
-                break;
-            case TW:
-                sendShareTwit();
-                break;
-            case IN:
-                sendShareInsta();
-                break;
-        }
 
-    }
-
-    private void sendShareTwit() {
-        try {
-            Intent tweetIntent = new Intent(Intent.ACTION_SEND);
-
-            String filename = "shareimage.jpg";
-            File imageFile = new File(Environment.getExternalStorageDirectory(), filename);
-
-            tweetIntent.putExtra(Intent.EXTRA_TEXT, constant.getRandomStatus());
-            tweetIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(imageFile));
-            tweetIntent.setType("image/jpeg");
-            PackageManager pm = this.getPackageManager();
-            List<ResolveInfo> lract = pm.queryIntentActivities(tweetIntent, PackageManager.MATCH_DEFAULT_ONLY);
-            boolean resolved = false;
-            for (ResolveInfo ri : lract) {
-                if (ri.activityInfo.name.contains("twitter")) {
-                    tweetIntent.setClassName(ri.activityInfo.packageName,
-                            ri.activityInfo.name);
-                    resolved = true;
-                    break;
-                }
-            }
-            startActivity(resolved ?
-                    tweetIntent :
-                    Intent.createChooser(tweetIntent, "Choose one"));
-        } catch (final ActivityNotFoundException e) {
-            // Toast.makeText(this, "You don't seem to have twitter installed on this device", Toast.LENGTH_SHORT).show();
-            Toast.makeText(this, this.getString(R.string.no_app_msg, "Twitter"), Toast.LENGTH_SHORT).show();//"You don't seem to have Instagram installed on this device", ;
-        }
-    }
-
-    private void sendShareInsta() {
-        try {
-            Intent tweetIntent = new Intent(Intent.ACTION_SEND);
-
-            String filename = "shareimage.jpg";
-            File imageFile = new File(Environment.getExternalStorageDirectory(), filename);
-
-            tweetIntent.putExtra(Intent.EXTRA_TEXT, constant.getRandomStatus());
-            tweetIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(imageFile));
-            tweetIntent.setType("image/jpeg");
-            PackageManager pm = this.getPackageManager();
-            List<ResolveInfo> lract = pm.queryIntentActivities(tweetIntent, PackageManager.MATCH_DEFAULT_ONLY);
-            boolean resolved = false;
-            for (ResolveInfo ri : lract) {
-                if (ri.activityInfo.name.contains("instagram")) {
-                    tweetIntent.setClassName(ri.activityInfo.packageName,
-                            ri.activityInfo.name);
-                    resolved = true;
-                    break;
-                }
-            }
-            startActivity(resolved ?
-                    tweetIntent :
-                    Intent.createChooser(tweetIntent, "Choose one"));
-        } catch (final ActivityNotFoundException e) {
-            Toast.makeText(this, this.getString(R.string.no_app_msg, "Instagram"), Toast.LENGTH_SHORT).show();//"You don't seem to have Instagram installed on this device", ;
-        }
-    }
 }
