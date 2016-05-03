@@ -14,7 +14,9 @@
     <string name="user_name_cn"> 用户名</string>
     <string name="fragment_1">Click Hang Up to add your wardrobe.</string>
     <string name="fragment_2">Add at least 2 of each for myDiModa to style you.</string>
-    <string name="fragment_3">Avoid shadows, take good pictures, folded or hanging, it does not matter.</string>
+    <string name="fragment_3">Press Plus sign to add multiple clothing items to your wardrobe from same image.</string>
+    <string name="fragment_3_5"> Select one or more images to add items to your wardrobe.</string>
+
     <string name="fragment_4">After selecting Style Me, pick your occasion. No items added yet? No worries, demo clothes available.</string>
     <string name="fragment_5">Have myDiModa style you or pick a starting item and myDiModa will do the rest.</string>
     <string name="rate_title">Rate MyDimoda</string>

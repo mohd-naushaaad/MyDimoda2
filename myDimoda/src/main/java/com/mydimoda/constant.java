@@ -309,9 +309,9 @@ public class constant {
     public static String getRandomStatus() {
         if (mStatuses == null || mStatuses.isEmpty()) {
             mStatuses = new ArrayList<>();
-            mStatuses.add("Confidence provided by myDiModa." + APP_LINK);
-            mStatuses.add("Professionally styled by myDiModa." + APP_LINK);
-            mStatuses.add("Enhancing my look with myDiModa." + APP_LINK);
+            mStatuses.add("Confidence provided by myDiModa." );
+            mStatuses.add("Professionally styled by myDiModa.");
+            mStatuses.add("Enhancing my look with myDiModa.");
         }
         try {
             return mStatuses.get(getRandom(0, 2));

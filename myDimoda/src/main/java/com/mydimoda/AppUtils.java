@@ -379,28 +379,30 @@ public class AppUtils {
         final ImageView mFbShareBtn = (ImageView) mView.findViewById(R.id.dialog_share_fb_share);
         ImageView mTwShareBtn = (ImageView) mView.findViewById(R.id.dialog_share_tw_share);
         ImageView mInShareBtn = (ImageView) mView.findViewById(R.id.dialog_share_In_share);
+        final TextView mTagTv = (TextView) mView.findViewById(R.id.dialog_share_tag_tv);
         FontsUtil.setExistenceLight(mContext, (TextView) (mView.findViewById(R.id.dialog_share_title)));
-
+        mTagTv.setText(constant.getRandomStatus());
+        FontsUtil.setExistenceLight(mContext, mTagTv);
         mLookCollageImage.setImageBitmap(bitmap);
         mFbShareBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                share(bitmap, FB, mContext);
-                closeShareDialog(mShareDialogInter);
+                share(bitmap, FB, mContext, mTagTv.getText().toString());
+                //  closeShareDialog(mShareDialogInter);
             }
         });
         mTwShareBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                share(bitmap, TW, mContext);
-                closeShareDialog(mShareDialogInter);
+                share(bitmap, TW, mContext, mTagTv.getText().toString());
+                //    closeShareDialog(mShareDialogInter);
             }
         });
         mInShareBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                share(bitmap, IN, mContext);
-                closeShareDialog(mShareDialogInter);
+                share(bitmap, IN, mContext, mTagTv.getText().toString());
+                //closeShareDialog(mShareDialogInter);
             }
         });
         mCloseBtn.setOnClickListener(new View.OnClickListener() {
@@ -416,6 +418,7 @@ public class AppUtils {
                 mShareDialogInter = dialogInterface;
             }
         });
+        mShareDialog.setCancelable(false);
         mShareDialog.show();
     }
 
@@ -429,7 +432,7 @@ public class AppUtils {
     private static final int TW = 2;
     private static final int IN = 3;
 
-    private static void share(Bitmap mImage, int shareType, Context mContext) {
+    private static void share(Bitmap mImage, int shareType, Context mContext, String tag) {
         switch (shareType) {
             case FB:
                 SharePhoto photo = new SharePhoto.Builder()
@@ -443,22 +446,22 @@ public class AppUtils {
                 shareDialog.show(content, ShareDialog.Mode.AUTOMATIC);
                 break;
             case TW:
-                sendShareTwit(mContext);
+                sendShareTwit(mContext, tag);
                 break;
             case IN:
-                sendShareInsta(mContext);
+                sendShareInsta(mContext, tag);
                 break;
         }
     }
 
-    private static void sendShareTwit(Context mContext) {
+    private static void sendShareTwit(Context mContext, String tag) {
         try {
             Intent tweetIntent = new Intent(Intent.ACTION_SEND);
 
             String filename = "shareimage.jpg";
             File imageFile = new File(Environment.getExternalStorageDirectory(), filename);
 
-            tweetIntent.putExtra(Intent.EXTRA_TEXT, constant.getRandomStatus());
+            tweetIntent.putExtra(Intent.EXTRA_TEXT, tag + constant.APP_LINK);
             tweetIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(imageFile));
             tweetIntent.setType("image/jpeg");
             PackageManager pm = mContext.getPackageManager();
@@ -482,14 +485,14 @@ public class AppUtils {
     }
 
 
-    private static void sendShareInsta(Context mContext) {
+    private static void sendShareInsta(Context mContext, String tag) {
         try {
             Intent tweetIntent = new Intent(Intent.ACTION_SEND);
 
             String filename = "shareimage.jpg";
             File imageFile = new File(Environment.getExternalStorageDirectory(), filename);
 
-            tweetIntent.putExtra(Intent.EXTRA_TEXT, constant.getRandomStatus());
+            tweetIntent.putExtra(Intent.EXTRA_TEXT, tag + constant.APP_LINK);
             tweetIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(imageFile));
             tweetIntent.setType("image/jpeg");
             PackageManager pm = mContext.getPackageManager();

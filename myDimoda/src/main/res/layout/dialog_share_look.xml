@@ -16,10 +16,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/dialog_share_close"
+            android:ellipsize="end"
             android:gravity="bottom"
-            android:paddingLeft="10dp"
-            android:text="Share look..."
-            android:textColor="@color/color_black_light"
+            android:maxLines="2"
+            android:paddingLeft="16dp"
+            android:text="Would you like to share your look?"
+            android:textColor="@color/color_black"
             android:textSize="21sp" />
 
         <ImageView
@@ -29,11 +32,19 @@
             android:layout_below="@+id/dialog_share_title"
             android:src="@drawable/help_bg" />
 
+        <TextView
+            android:id="@+id/dialog_share_tag_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_black"
+            android:paddingLeft="16dp"
+            android:layout_below="@id/dialog_share_imageview" />
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
+            android:layout_below="@id/dialog_share_tag_tv"
             android:layout_marginTop="2dp"
-            android:layout_below="@id/dialog_share_imageview"
             android:background="@color/color_black_light">
 
         </View>
@@ -42,7 +53,7 @@
             android:id="@+id/dialog_share_share_rl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/dialog_share_imageview"
+            android:layout_below="@+id/dialog_share_tag_tv"
             android:layout_marginBottom="12dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
@@ -85,6 +96,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentRight="true"
+            android:layout_marginRight="-4dp"
             android:layout_marginTop="-2dp"
             android:paddingBottom="12dp"
             android:paddingLeft="24dp"
