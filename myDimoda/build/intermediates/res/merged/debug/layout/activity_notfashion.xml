@@ -3,7 +3,7 @@
     android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
+    android:background="@color/color_white"
     android:orientation="vertical" >
 
     <RelativeLayout
@@ -20,6 +20,8 @@
             <RelativeLayout
                 android:id="@+id/layout"
                 android:layout_width="match_parent"
+                android:background="@color/color_gray_light"
+
                 android:layout_height="match_parent" >
 
                 <RelativeLayout

@@ -113,7 +113,7 @@
             android:name="com.mydimoda.DMFashionActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.NoTitleBar" >
+            android:theme="@style/AppotherTheme" >
         </activity>
         <activity
             android:name="com.mydimoda.DMFashionActivity_7Hour"
@@ -131,7 +131,13 @@
             android:name="com.mydimoda.DMCaptureActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.NoTitleBar" >
+            android:theme="@style/AppotherTheme" >
+        </activity>
+        <activity
+            android:name="com.mydimoda.DMCropImageListActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppotherTheme" >
         </activity>
         <activity
             android:name="com.mydimoda.DMSignUpActivity"
@@ -215,7 +221,7 @@
             android:name="com.mydimoda.DMSettingActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.NoTitleBar" >
+            android:theme="@style/AppotherTheme" >
         </activity>
         <activity
             android:name="com.mydimoda.DMDetailActivity"
@@ -248,12 +254,22 @@
             android:windowSoftInputMode="stateHidden|adjustPan" >
         </activity>
         <activity
-            android:name="com.facebook.LoginActivity"
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="971828c19addc8704feca2725eade9a7c9e899a6" />
+
+        <provider
+            android:name="com.facebook.FacebookContentProvider"
+            android:authorities="com.facebook.app.FacebookContentProvider608361809277602"
+            android:exported="true" />
     </application>
 
 </manifest>

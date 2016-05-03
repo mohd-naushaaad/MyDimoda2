@@ -7,7 +7,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_rectangle_white"
-        android:paddingBottom="@dimen/dialog.share.padding"
         android:paddingLeft="@dimen/dialog.share.padding"
         android:paddingRight="@dimen/dialog.share.padding"
         android:paddingTop="@dimen/dialog.share.padding">
@@ -21,26 +20,33 @@
             android:paddingLeft="10dp"
             android:text="Share look..."
             android:textColor="@color/color_black_light"
-            android:textSize="21sp"
-           />
+            android:textSize="21sp" />
 
         <ImageView
             android:id="@+id/dialog_share_imageview"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dialog.share.image.height"
             android:layout_below="@+id/dialog_share_title"
-            android:src="@drawable/help_bg"
-            />
+            android:src="@drawable/help_bg" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="2dp"
+            android:layout_below="@id/dialog_share_imageview"
+            android:background="@color/color_black_light">
+
+        </View>
 
         <LinearLayout
             android:id="@+id/dialog_share_share_rl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/dialog_share_imageview"
+            android:layout_marginBottom="12dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:paddingTop="6dp"
-            android:layout_marginBottom="12dp">
+            android:paddingTop="10dp">
 
             <ImageView
                 android:id="@+id/dialog_share_fb_share"

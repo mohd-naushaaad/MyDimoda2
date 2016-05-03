@@ -97,7 +97,7 @@ public class DMCropImageListActivity extends FragmentActivity {
 
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                clearImagesFrmMemory();
+                //clearImagesFrmMemory();
                 finish();
             }
         });
@@ -147,7 +147,7 @@ public class DMCropImageListActivity extends FragmentActivity {
                     mModelList.remove(position);
                     mMainAdapter.notifyDataSetChanged();
                 } else {
-                    clearImagesFrmMemory();
+                  //  clearImagesFrmMemory();
                     finish();
                 }
 
@@ -218,6 +218,9 @@ public class DMCropImageListActivity extends FragmentActivity {
                                         setResult(RESULT_OK);
                                     } else {
                                         getParent().setResult(RESULT_OK);
+                                    }
+                                    if (AppUtils.getDialogImgSelectLst().size() > 0) {
+                                        AppUtils.getDialogImgSelectLst().remove(0);
                                     }
                                     finish();
                                 }
@@ -355,7 +358,7 @@ public class DMCropImageListActivity extends FragmentActivity {
                     }
                     if (isLastCall) {
 
-                        clearImagesFrmMemory();
+                    //    clearImagesFrmMemory();
                     }
                 }
             });
@@ -366,6 +369,9 @@ public class DMCropImageListActivity extends FragmentActivity {
                 setResult(RESULT_OK);
             } else {
                 getParent().setResult(RESULT_OK);
+            }
+            if (AppUtils.getDialogImgSelectLst().size() > 0) {
+                AppUtils.getDialogImgSelectLst().remove(0);
             }
             finish();
         }
@@ -545,6 +551,7 @@ public class DMCropImageListActivity extends FragmentActivity {
 
     @Override
     protected void onDestroy() {
+        clearImagesFrmMemory();
         super.onDestroy();
 
     }

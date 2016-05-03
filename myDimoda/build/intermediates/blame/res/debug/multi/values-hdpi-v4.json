@@ -1,23 +1,25 @@
 [
     {
-        "outputFile": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\values-hdpi-v4\\values-hdpi-v4.xml",
+        "outputFile": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\values-hdpi-v4\\values-hdpi-v4.xml",
         "map": [
             {
                 "to": {
                     "startLine": 2,
                     "startColumn": 4,
                     "startOffset": 55,
-                    "endColumn": 63,
-                    "endOffset": 114
+                    "endLine": 6,
+                    "endColumn": 13,
+                    "endOffset": 325
                 },
                 "from": {
-                    "file": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\values-hdpi-v4\\values-hdpi-v4.xml",
+                    "file": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.1.0\\res\\values-hdpi-v4\\values.xml",
                     "position": {
-                        "startLine": 2,
+                        "startLine": 4,
                         "startColumn": 4,
-                        "startOffset": 55,
-                        "endColumn": 63,
-                        "endOffset": 114
+                        "startOffset": 297,
+                        "endLine": 8,
+                        "endColumn": 13,
+                        "endOffset": 567
                     }
                 }
             }

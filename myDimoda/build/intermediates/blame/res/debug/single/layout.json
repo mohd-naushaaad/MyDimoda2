@@ -1,246 +1,374 @@
 [
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_picker_title_bar_stub.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\layout\\com_facebook_picker_title_bar_stub.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\grid_cloth_delete_item.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\grid_cloth_delete_item.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_crop.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_crop.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_checkbox.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.1.0\\res\\layout\\abc_list_menu_item_checkbox.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\crop_image_view.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\crop_image_view.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\main_act.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\main_act.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_occasion.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_occasion.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_login.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\activity_login.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_usersettingsfragment.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\layout\\com_facebook_usersettingsfragment.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\messenger_button_send_blue_small.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.8.0\\res\\layout\\messenger_button_send_blue_small.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\notification_view.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\notification_view.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\messenger_button_send_blue_large.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.8.0\\res\\layout\\messenger_button_send_blue_large.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_camera.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_camera.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\list_menu_item.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\list_menu_item.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_picker_list_section_header.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\layout\\com_facebook_picker_list_section_header.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\pull_to_refresh_header_horizontal.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\mydimodagit\\pullSDK\\unspecified\\res\\layout\\pull_to_refresh_header_horizontal.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_placepickerfragment.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\layout\\com_facebook_placepickerfragment.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_gallery.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\dialog_gallery.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\test.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\test.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_resetpassword.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\activity_resetpassword.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_intro2.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\fragment_intro2.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\test.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\test.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\list_menu_item.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\list_menu_item.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_layout.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.1.0\\res\\layout\\abc_action_menu_layout.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_fashion_eight.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_fashion_eight.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_up_container.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.1.0\\res\\layout\\abc_action_bar_up_container.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_picker_image.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\layout\\com_facebook_picker_image.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\collage_view.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\collage_view.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\section_row_view.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\section_row_view.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_toolbar.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.1.0\\res\\layout\\abc_screen_toolbar.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_capture.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_capture.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_home.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\fragment_home.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_auto.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_auto.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_fashion.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\activity_fashion.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_placepickerfragment_list_row.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\layout\\com_facebook_placepickerfragment_list_row.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\pull_to_refresh_header_vertical.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\mydimodagit\\pullSDK\\unspecified\\res\\layout\\pull_to_refresh_header_vertical.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\loading_empty_view.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\loading_empty_view.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_share_look.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\dialog_share_look.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_favorite.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_favorite.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\abc_select_dialog_material.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.1.0\\res\\layout\\abc_select_dialog_material.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_capture_option.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_capture_option.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_item_material.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.1.0\\res\\layout\\select_dialog_item_material.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_process.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_process.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_item_layout.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.1.0\\res\\layout\\abc_popup_menu_item_layout.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\layout_rate_app.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\layout_rate_app.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_fashion_eight.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\activity_fashion_eight.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_resetpassword.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_resetpassword.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\messenger_button_send_white_round.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.8.0\\res\\layout\\messenger_button_send_white_round.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\grid_cloth_delete_item.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\grid_cloth_delete_item.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.1.0\\res\\layout\\abc_screen_simple.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\pull_to_refresh_header_horizontal.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\pullSDK\\unspecified\\res\\layout\\pull_to_refresh_header_horizontal.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\list_occasion_item.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\list_occasion_item.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_setting.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_setting.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\support_simple_spinner_dropdown_item.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.1.0\\res\\layout\\support_simple_spinner_dropdown_item.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\index_bar_view.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\index_bar_view.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_multichoice_material.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.1.0\\res\\layout\\select_dialog_multichoice_material.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_picker_activity_circle_row.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\layout\\com_facebook_picker_activity_circle_row.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\list_favorite_item.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\list_favorite_item.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_detail.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_detail.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\layout_rate_app.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\layout_rate_app.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_exact.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_exact.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_dropdown_item_icons_2line.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.1.0\\res\\layout\\abc_search_dropdown_item_icons_2line.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\preview_view.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\preview_view.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_capture.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\activity_capture.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_search_bar_layout.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\layout\\com_facebook_search_bar_layout.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_process.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\activity_process.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_picker_title_bar.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\layout\\com_facebook_picker_title_bar.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\item_gal_dialog.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\item_gal_dialog.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_notfashion.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_notfashion.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\abc_dialog_title_material.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.1.0\\res\\layout\\abc_dialog_title_material.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_home.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\fragment_home.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_signup.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\activity_signup.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_main.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_help.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\activity_help.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_picker_checkbox.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\layout\\com_facebook_picker_checkbox.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_tooltip_bubble.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.8.0\\res\\layout\\com_facebook_tooltip_bubble.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\row_view.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\row_view.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_notfashion.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\activity_notfashion.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\list_occasion_item.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\list_occasion_item.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_activity_layout.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.8.0\\res\\layout\\com_facebook_activity_layout.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_delete.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\dialog_delete.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_icon.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.1.0\\res\\layout\\abc_list_menu_item_icon.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_picker_search_box.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\layout\\com_facebook_picker_search_box.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_intro1.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\fragment_intro1.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_hangup.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_hangup.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_auto.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\activity_auto.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_home.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_home.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\grid_fashion_layout.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\grid_fashion_layout.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_login.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_login.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_options.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\dialog_options.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\grid_fashion_layout.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\grid_fashion_layout.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\messenger_button_send_white_small.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.8.0\\res\\layout\\messenger_button_send_white_small.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\list_favorite_item.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\list_favorite_item.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_occasion.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\activity_occasion.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_help.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_help.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.1.0\\res\\layout\\abc_activity_chooser_view.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_picker_list_row.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\layout\\com_facebook_picker_list_row.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_home.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\activity_home.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_friendpickerfragment.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\layout\\com_facebook_friendpickerfragment.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\messenger_button_send_white_large.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.8.0\\res\\layout\\messenger_button_send_white_large.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\pull_to_refresh_header_vertical.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\pullSDK\\unspecified\\res\\layout\\pull_to_refresh_header_vertical.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\abc_simple_dropdown_hint.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.1.0\\res\\layout\\abc_simple_dropdown_hint.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_style.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_style.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_intro.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\activity_intro.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_fashion.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_fashion.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\list_option_item.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\list_option_item.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_findme.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_findme.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_findme.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\activity_findme.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_intro.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_intro.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\grid_product_item.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\grid_product_item.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\main_act.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\main_act.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\loading_empty_view.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\loading_empty_view.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\grid_product_item.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\grid_product_item.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_title_item.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.1.0\\res\\layout\\abc_action_bar_title_item.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_login_activity_layout.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\facebookSDK\\unspecified\\res\\layout\\com_facebook_login_activity_layout.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_singlechoice_material.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.1.0\\res\\layout\\select_dialog_singlechoice_material.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_signup.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_signup.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_crop.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\activity_crop.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_intro1.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\fragment_intro1.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\messenger_button_send_blue_round.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.8.0\\res\\layout\\messenger_button_send_blue_round.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_algorithm.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\layout\\activity_algorithm.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple_overlay_action_mode.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.1.0\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
+    },
+    {
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\crop_image_view.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\crop_image_view.xml"
+    },
+    {
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_view_list_nav_layout.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.1.0\\res\\layout\\abc_action_bar_view_list_nav_layout.xml"
+    },
+    {
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\com_facebook_login_fragment.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.facebook.android\\facebook-android-sdk\\4.8.0\\res\\layout\\com_facebook_login_fragment.xml"
+    },
+    {
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_layout.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.1.0\\res\\layout\\abc_list_menu_item_layout.xml"
+    },
+    {
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\abc_expanded_menu_layout.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.1.0\\res\\layout\\abc_expanded_menu_layout.xml"
+    },
+    {
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_camera.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\activity_camera.xml"
+    },
+    {
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_item_layout.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.1.0\\res\\layout\\abc_action_menu_item_layout.xml"
+    },
+    {
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\item_crop_list.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\item_crop_list.xml"
+    },
+    {
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\row_view.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\row_view.xml"
+    },
+    {
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_radio.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.1.0\\res\\layout\\abc_list_menu_item_radio.xml"
+    },
+    {
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_material.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.1.0\\res\\layout\\abc_alert_dialog_material.xml"
+    },
+    {
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_close_item_material.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.1.0\\res\\layout\\abc_action_mode_close_item_material.xml"
+    },
+    {
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_delete.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\dialog_delete.xml"
+    },
+    {
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_capture_option.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\activity_capture_option.xml"
+    },
+    {
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_bar.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.1.0\\res\\layout\\abc_action_mode_bar.xml"
+    },
+    {
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_hangup.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\activity_hangup.xml"
+    },
+    {
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\preview_view.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\preview_view.xml"
+    },
+    {
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_detail.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\activity_detail.xml"
+    },
+    {
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_intro2.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\fragment_intro2.xml"
+    },
+    {
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_exact.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\activity_exact.xml"
+    },
+    {
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\notification_view.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\notification_view.xml"
+    },
+    {
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_setting.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\activity_setting.xml"
+    },
+    {
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view_list_item.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.1.0\\res\\layout\\abc_activity_chooser_view_list_item.xml"
+    },
+    {
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\index_bar_view.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\index_bar_view.xml"
+    },
+    {
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_style.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\activity_style.xml"
+    },
+    {
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_favorite.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\activity_favorite.xml"
+    },
+    {
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_view.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.1.0\\res\\layout\\abc_search_view.xml"
+    },
+    {
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\item_crop_recyclr_vw.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\item_crop_recyclr_vw.xml"
+    },
+    {
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_crop_image_list.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\activity_crop_image_list.xml"
+    },
+    {
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\activity_algorithm.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\activity_algorithm.xml"
+    },
+    {
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\layout\\section_row_view.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\layout\\section_row_view.xml"
     }
 ]

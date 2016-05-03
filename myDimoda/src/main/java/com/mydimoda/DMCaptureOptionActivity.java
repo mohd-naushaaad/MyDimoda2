@@ -193,7 +193,11 @@ public class DMCaptureOptionActivity extends Activity {
             }
 
         } else if (requestCode == RESULT_CROP && resultCode == RESULT_OK) {
-            finish();
+            if (AppUtils.getDialogImgSelectLst().size() > 0) {
+                goToCropActivity(AppUtils.getDialogImgSelectLst().get(0));
+            } else {
+                finish();
+            }
             //goProcessActivity();
         }
 

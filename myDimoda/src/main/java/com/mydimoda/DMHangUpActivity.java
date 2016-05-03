@@ -182,9 +182,7 @@ public class DMHangUpActivity extends Activity {
 		vBtnTie.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
-				if (constant.gCategory.equals("formal")) {
 					goCaptureActivity("tie");
-				}
 			}
 		});
 

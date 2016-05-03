@@ -23,6 +23,7 @@ import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -201,6 +202,14 @@ public class AppUtils {
 
     static Dialog mGalleryDialog;
     static DMDialogGridAdapter mAdapter;
+    static ArrayList<String> dialogImageSelectedLst;
+
+    public static ArrayList<String> getDialogImgSelectLst() {
+        if (dialogImageSelectedLst == null) {
+            dialogImageSelectedLst = new ArrayList<>();
+        }
+        return dialogImageSelectedLst;
+    }
 
     /**
      * Displays a dialog with images from gallery
@@ -213,6 +222,7 @@ public class AppUtils {
         if (mGalleryDialog == null || !mGalleryDialog.isShowing()) {
             final ArrayList<DialogImagesModel> mGallerImageLst = new ArrayList();
             mGallerImageLst.clear();
+            getDialogImgSelectLst().clear();
             String[] projection = new String[]{
                     MediaStore.Images.Media._ID,
                     MediaStore.Images.Media.BUCKET_DISPLAY_NAME,
@@ -267,6 +277,7 @@ public class AppUtils {
             TextView mGalTitleTextvw = (TextView) mView.findViewById(R.id.dialog_gal_title_txt);
             TextView mGalleryTvw = (TextView) mView.findViewById(R.id.dialog_gallery_tv);
             ImageView mCloseImgVw = (ImageView) mView.findViewById(R.id.dialog_gal_close);
+            ImageButton mDoneImageBtn = (ImageButton) mView.findViewById(R.id.dialog_gal_done);
 
             if (!isFrmHome) {
                 mGalTitlevw.setText("Select");
@@ -297,7 +308,20 @@ public class AppUtils {
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     mGallerImageLst.get(position).setSelected(!mGallerImageLst.get(position).isSelected());
                     mAdapter.notifyDataSetChanged();
-                    //   mCallback.onImageClick(mGallerImageLst.get(position).getImagePathl());
+                    if (mGallerImageLst.get(position).isSelected()) {
+                        getDialogImgSelectLst().add(mGallerImageLst.get(position).getImagePathl());
+                    } else {
+                        getDialogImgSelectLst().remove(mGallerImageLst.get(position).getImagePathl());
+                    }
+                    //
+                }
+            });
+            mDoneImageBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (getDialogImgSelectLst().size() > 0) {
+                        mCallback.onImageClick(getDialogImgSelectLst().get(0));
+                    }
                 }
             });
             mGalleryDialog = mBuilder.create();

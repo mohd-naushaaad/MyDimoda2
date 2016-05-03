@@ -1,46 +1,86 @@
 [
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\anim\\slide_out_to_bottom.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\pullSDK\\unspecified\\res\\anim\\slide_out_to_bottom.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_bottom.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.1.0\\res\\anim\\abc_slide_in_bottom.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\anim\\slide_in_from_top.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\pullSDK\\unspecified\\res\\anim\\slide_in_from_top.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_out_bottom.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.1.0\\res\\anim\\abc_slide_out_bottom.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\anim\\slide_in_from_bottom.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\pullSDK\\unspecified\\res\\anim\\slide_in_from_bottom.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\anim\\dialog_up_bottom.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\anim\\dialog_up_bottom.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\anim\\slide_down_out.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\anim\\slide_down_out.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_out.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.1.0\\res\\anim\\abc_fade_out.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\anim\\slide_up.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\anim\\slide_up.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\anim\\slide_up_out.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\anim\\slide_up_out.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\anim\\slide_up_out.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\anim\\slide_up_out.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\anim\\dialog_bottom_up.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\anim\\dialog_bottom_up.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\anim\\dialog_up_bottom.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\anim\\dialog_up_bottom.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\anim\\abc_popup_exit.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.1.0\\res\\anim\\abc_popup_exit.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\anim\\button_click.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\anim\\button_click.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\anim\\abc_popup_enter.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.1.0\\res\\anim\\abc_popup_enter.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\anim\\slide_down.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\anim\\slide_down.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\anim\\slide_in_from_bottom.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\mydimodagit\\pullSDK\\unspecified\\res\\anim\\slide_in_from_bottom.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\anim\\slide_out_to_top.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\exploded-aar\\MyDimoda_3_MARCH\\pullSDK\\unspecified\\res\\anim\\slide_out_to_top.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\anim\\abc_grow_fade_in_from_bottom.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.1.0\\res\\anim\\abc_grow_fade_in_from_bottom.xml"
     },
     {
-        "merged": "E:\\MyDimoda_3_MARCH\\myDimoda\\build\\intermediates\\res\\merged\\debug\\anim\\dialog_bottom_up.xml",
-        "source": "E:\\MyDimoda_3_MARCH\\myDimoda\\src\\main\\res\\anim\\dialog_bottom_up.xml"
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_in.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.1.0\\res\\anim\\abc_fade_in.xml"
+    },
+    {
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_top.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.1.0\\res\\anim\\abc_slide_in_top.xml"
+    },
+    {
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\anim\\slide_in_from_top.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\mydimodagit\\pullSDK\\unspecified\\res\\anim\\slide_in_from_top.xml"
+    },
+    {
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_out_top.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.1.0\\res\\anim\\abc_slide_out_top.xml"
+    },
+    {
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\anim\\button_click.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\anim\\button_click.xml"
+    },
+    {
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\anim\\slide_out_to_bottom.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\mydimodagit\\pullSDK\\unspecified\\res\\anim\\slide_out_to_bottom.xml"
+    },
+    {
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\anim\\slide_down_out.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\anim\\slide_down_out.xml"
+    },
+    {
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\anim\\slide_out_to_top.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\mydimodagit\\pullSDK\\unspecified\\res\\anim\\slide_out_to_top.xml"
+    },
+    {
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\anim\\slide_up.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\anim\\slide_up.xml"
+    },
+    {
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\anim\\abc_shrink_fade_out_from_bottom.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.1.0\\res\\anim\\abc_shrink_fade_out_from_bottom.xml"
+    },
+    {
+        "merged": "E:\\projects\\mydimodagit\\myDimoda\\build\\intermediates\\res\\merged\\debug\\anim\\slide_down.xml",
+        "source": "E:\\projects\\mydimodagit\\myDimoda\\src\\main\\res\\anim\\slide_down.xml"
     }
 ]

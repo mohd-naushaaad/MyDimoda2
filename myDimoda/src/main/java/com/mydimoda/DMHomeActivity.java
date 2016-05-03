@@ -250,7 +250,10 @@ public class DMHomeActivity extends FragmentActivity {
         try {
             showHomeFragment();
         } catch (Exception e) {
-
+            e.printStackTrace();
+        }
+        if (AppUtils.getDialogImgSelectLst().size() > 0) {
+            goToCropActivity(AppUtils.getDialogImgSelectLst().get(0));
         }
     }
 
@@ -348,7 +351,7 @@ public class DMHomeActivity extends FragmentActivity {
                                     }
                                 });
 
-                            }else{
+                            } else {
                                 SharedPreferenceUtil.putValue(constant.PREF_MAX_COUNT_CONFIGURED, true);
                             }
                         }

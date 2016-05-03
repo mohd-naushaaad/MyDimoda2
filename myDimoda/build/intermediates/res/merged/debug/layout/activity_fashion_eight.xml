@@ -15,7 +15,7 @@
             android:id="@+id/drawer_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@android:color/white" >
+            android:background="@color/darker_gray" >
 
             <RelativeLayout
                 android:id="@+id/layout"
@@ -249,7 +249,7 @@
                             android:layout_alignParentRight="true"
                             android:layout_centerVertical="true"
                             android:text="Date"
-                            android:textColor="#c8a200"
+                            android:textColor="@color/orange"
                             android:textSize="15sp" />
                     </RelativeLayout>
                 </RelativeLayout>

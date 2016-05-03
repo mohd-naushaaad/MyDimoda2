@@ -940,7 +940,7 @@ public class DMFashionActivity extends Activity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-          //  constant.showProgress(DMFashionActivity.this, "Please wait...");
+            //  constant.showProgress(DMFashionActivity.this, "Please wait...");
         }
 
         @Override
@@ -955,8 +955,12 @@ public class DMFashionActivity extends Activity {
 
         @Override
         protected void onPostExecute(Void result) {
-            if (!isFinishing()) {
-                makeImage();
+            if (!isFinishing() && AppUtils.isOnline(DMFashionActivity.this)) {
+                try {
+                    makeImage();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
             constant.hideProgress();
 
