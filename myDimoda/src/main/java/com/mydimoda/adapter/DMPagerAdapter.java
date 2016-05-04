@@ -55,7 +55,7 @@ public class DMPagerAdapter extends FragmentPagerAdapter{
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
-		return 8;
+		return 9;
 	}
 
 }

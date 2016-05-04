@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.v4.widget.DrawerLayout;
 import android.view.View;
@@ -168,8 +169,14 @@ public class DMCaptureOptionActivity extends Activity {
     }
 
     public void callGallery() {
-        Intent i = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        startActivityForResult(i, RESULT_GALLERY);
+        /*Intent i = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(i, RESULT_GALLERY);*/
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        intent.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
+        startActivityForResult(Intent.createChooser(intent,
+                "Complete action using"), RESULT_GALLERY);
     }
 
     @Override
@@ -199,6 +206,9 @@ public class DMCaptureOptionActivity extends Activity {
                 finish();
             }
             //goProcessActivity();
+        } else if (requestCode == RESULT_CROP && resultCode == 0) {
+            showGalleryDialog();
+
         }
 
     }

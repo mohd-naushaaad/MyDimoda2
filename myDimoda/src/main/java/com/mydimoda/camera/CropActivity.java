@@ -24,6 +24,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mydimoda.AppUtils;
 import com.mydimoda.DMCropImageListActivity;
 import com.mydimoda.R;
 import com.mydimoda.adapter.DMCropActRecycAdapter;
@@ -198,6 +199,9 @@ public class CropActivity extends Activity implements OnClickListener {
 
         switch (v.getId()) {
             case R.id.back_layout: {
+                if (AppUtils.getDialogImgSelectLst().size() > 0) {
+                    AppUtils.getDialogImgSelectLst().clear();
+                }
                 finish();
                 break;
             }

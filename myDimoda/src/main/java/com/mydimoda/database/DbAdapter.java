@@ -256,7 +256,6 @@ public class DbAdapter {
 
 	/**
 	 * 	Delete Data
-	 * @param mPosition
 	 * @return
 	 */
 	public boolean delete(int id) 

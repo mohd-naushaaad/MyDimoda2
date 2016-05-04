@@ -38,6 +38,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/color_black"
             android:paddingLeft="16dp"
+            android:gravity="center"
             android:layout_below="@id/dialog_share_imageview" />
 
         <View

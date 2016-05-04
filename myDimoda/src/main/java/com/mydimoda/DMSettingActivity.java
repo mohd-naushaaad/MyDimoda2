@@ -31,6 +31,7 @@ import com.mydimoda.social.google.util.IabResult;
 import com.mydimoda.social.google.util.Inventory;
 import com.mydimoda.social.google.util.Purchase;
 import com.mydimoda.widget.cropper.util.FontsUtil;
+import com.parse.ParseFacebookUtils;
 import com.parse.ParseUser;
 
 import butterknife.Bind;
@@ -252,11 +253,9 @@ public class DMSettingActivity extends Activity {
         AppUtils.setDefaults(constant.PREF_IS_GALRY_DIALOG_SHOWN, false, this);
         SharedPreferenceUtil.putValue(constant.USER_MAX_COUNT_INITILISED, false);
         SharedPreferenceUtil.putValue(constant.PREF_MAX_COUNT_CONFIGURED, false);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            Log.d(this.getLocalClassName(), "yay we're on 19+ clearApplicationUserData");
-            ActivityManager am = (ActivityManager) DMSettingActivity.this.getSystemService(Context.ACTIVITY_SERVICE);
-            am.clearApplicationUserData();
-        }
+//Now call logout
+        ParseUser.logOutInBackground();
+
         Intent intent = new Intent(this, DMLoginActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
