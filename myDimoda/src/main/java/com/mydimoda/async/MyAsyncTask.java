@@ -38,7 +38,7 @@ public class MyAsyncTask extends AsyncTask<String, Integer, ArrayList<HashMap<St
 			// Creating JSON Parser instance
 			JSONGetParser jParser = new JSONGetParser();
 			// getting JSON string from URL
-			mResponseData = jParser.getJSONFromUrl(mBaseURL);  
+			mResponseData = jParser.getJSONFromUrl(mBaseURL);
 		}else
 		{
 			// Creating JSON Parser instance

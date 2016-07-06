@@ -26,7 +26,7 @@ public class DMImageObject implements Serializable{
 				width = data.getInt("width");
 				height = data.getInt("height");
 				
-			} catch (JSONException e) {
+			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}

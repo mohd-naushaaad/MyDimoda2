@@ -1,12 +1,5 @@
 package com.mydimoda;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
@@ -33,465 +26,511 @@ import com.mydimoda.async.ServerResponse;
 import com.mydimoda.object.DMProductObject;
 import com.mydimoda.widget.cropper.util.FontsUtil;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 public class DMAutoActivity extends Activity {
 
-	// / menu
-	Button vBtnMenu;
-	ListView vMenuList;
-	TextView vTxtBack, vTxtTitle;
-	DrawerLayout vDrawerLayout;
-	LinearLayout vMenuLayout;
-	RelativeLayout vBackLayout;
+    // / menu
+    Button vBtnMenu;
+    ListView vMenuList;
+    TextView vTxtBack, vTxtTitle;
+    DrawerLayout vDrawerLayout;
+    LinearLayout vMenuLayout;
+    RelativeLayout vBackLayout;
 
-	// / layout
-	PullToRefreshGridView vGrdProduct;
-	String mFrom, mMaxPrice;
-	int mType, mPageIndex = 1, mTotalResult, mTotalPage;
-	boolean mIsRefresh = false;
+    // / layout
+    PullToRefreshGridView vGrdProduct;
+    String mFrom, mMaxPrice;
+    int mType, mPageIndex = 1, mTotalResult, mTotalPage;
+    boolean mIsRefresh = false;
 
-	List<DMProductObject> mProductList;
-	DMProductAdapter mAdapter;
-	Button m_filterbtn;
+    List<DMProductObject> mProductList;
+    DMProductAdapter mAdapter;
+    Button m_filterbtn;
 
-	TextView tv_title;
+    TextView tv_title;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_auto);
+    // after new brands
+    int mAWSOffset = 1;
+    int mShopStyleOffset = 1;
+    int mAsosOffset = 0;
 
-		// / menu
-		vDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-		vMenuList = (ListView) findViewById(R.id.menu_list);
-		vMenuLayout = (LinearLayout) findViewById(R.id.menu_layout);
-		vBtnMenu = (Button) findViewById(R.id.menu_btn);
-		vTxtTitle = (TextView) findViewById(R.id.title_view);
-		FontsUtil.setExistenceLight(this, vTxtTitle);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_auto);
 
-		vTxtBack = (TextView) findViewById(R.id.back_txt);
-		FontsUtil.setExistenceLight(this, vTxtBack);
+        // / menu
+        vDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        vMenuList = (ListView) findViewById(R.id.menu_list);
+        vMenuLayout = (LinearLayout) findViewById(R.id.menu_layout);
+        vBtnMenu = (Button) findViewById(R.id.menu_btn);
+        vTxtTitle = (TextView) findViewById(R.id.title_view);
+        FontsUtil.setExistenceLight(this, vTxtTitle);
 
-		vBackLayout = (RelativeLayout) findViewById(R.id.back_layout);
-		m_filterbtn = (Button) findViewById(R.id.filterbtn);
-		tv_title = (TextView) findViewById(R.id.tv_title);
-		FontsUtil.setExistenceLight(this, tv_title);
+        vTxtBack = (TextView) findViewById(R.id.back_txt);
+        FontsUtil.setExistenceLight(this, vTxtBack);
 
-		// / layout
-		vGrdProduct = (PullToRefreshGridView) findViewById(R.id.product_grid);
+        vBackLayout = (RelativeLayout) findViewById(R.id.back_layout);
+        m_filterbtn = (Button) findViewById(R.id.filterbtn);
+        tv_title = (TextView) findViewById(R.id.tv_title);
+        FontsUtil.setExistenceLight(this, tv_title);
 
-		init();
-		vBtnMenu.setOnClickListener(new View.OnClickListener() {
+        // / layout
+        vGrdProduct = (PullToRefreshGridView) findViewById(R.id.product_grid);
 
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				slideMenu();
-			}
-		});
+        init();
+        vBtnMenu.setOnClickListener(new View.OnClickListener() {
 
-		vMenuList.setOnItemClickListener(new OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-				constant.selectMenuItem(DMAutoActivity.this, position, true);
-			}
-		});
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                slideMenu();
+            }
+        });
 
-		vBackLayout.setOnClickListener(new View.OnClickListener() {
+        vMenuList.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                constant.selectMenuItem(DMAutoActivity.this, position, true);
+            }
+        });
 
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				finish();
-			}
-		});
+        vBackLayout.setOnClickListener(new View.OnClickListener() {
 
-		m_filterbtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                finish();
+            }
+        });
 
-			public void onClick(View v) {
-				Intent m_intent = new Intent(DMAutoActivity.this,
-						MainActivity.class);
-				m_intent.putExtra("type", mType);
-				System.out.println("Main" + mType);
-				startActivity(m_intent);
-			}
-		});
+        m_filterbtn.setOnClickListener(new View.OnClickListener() {
 
-		vGrdProduct.setOnItemClickListener(new OnItemClickListener() {
+            public void onClick(View v) {
+                Intent m_intent = new Intent(DMAutoActivity.this,
+                        MainActivity.class);
+                m_intent.putExtra("type", mType);
+                System.out.println("Main" + mType);
+                startActivity(m_intent);
+            }
+        });
 
-			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1,
-					int position, long arg3) {
-				// TODO Auto-generated method stub
+        vGrdProduct.setOnItemClickListener(new OnItemClickListener() {
 
-				Intent intent = new Intent(DMAutoActivity.this,
-						DMDetailActivity.class);
-				intent.putExtra("type", mType);
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1,
+                                    int position, long arg3) {
+                // TODO Auto-generated method stub
 
-				System.out.println("type ->" + mType);
-				
-				
-				intent.putExtra("product", mProductList.get(position));
-				startActivity(intent);
-			}
-		});
+                Intent intent = new Intent(DMAutoActivity.this,
+                        DMDetailActivity.class);
+                intent.putExtra("type", mType);
 
-		vGrdProduct.setOnRefreshListener(new OnRefreshListener2<GridView>() {
+                System.out.println("type ->" + mType);
 
-			@SuppressWarnings("deprecation")
-			@Override
-			public void onPullDownToRefresh(
-					PullToRefreshBase<GridView> refreshView) {
-				vGrdProduct.setLastUpdatedLabel("Last Updated: "
-						+ constant.getCurrentHour());
-				mIsRefresh = true;
-			}
 
-			@SuppressWarnings("deprecation")
-			@Override
-			public void onPullUpToRefresh(
-					PullToRefreshBase<GridView> refreshView) {
-				vGrdProduct.setLastUpdatedLabel("Last Updated: "
-						+ constant.getCurrentHour());
-				mIsRefresh = true;
+                intent.putExtra("product", mProductList.get(position));
+                startActivity(intent);
+            }
+        });
 
-				if (mPageIndex < mTotalPage) {
-					mPageIndex++;
+        vGrdProduct.setOnRefreshListener(new OnRefreshListener2<GridView>() {
 
-					if (AppUtils.brand != null) {
+            @SuppressWarnings("deprecation")
+            @Override
+            public void onPullDownToRefresh(
+                    PullToRefreshBase<GridView> refreshView) {
+                vGrdProduct.setLastUpdatedLabel("Last Updated: "
+                        + constant.getCurrentHour());
+                mIsRefresh = true;
+            }
 
-						AppUtils.yes = "false";
-						getClosetFS_Shared();
-					} else {
-						AppUtils.yes = "true";
-						getClosetFS();
-					}
-				}
-			}
+            @SuppressWarnings("deprecation")
+            @Override
+            public void onPullUpToRefresh(
+                    PullToRefreshBase<GridView> refreshView) {
+                vGrdProduct.setLastUpdatedLabel("Last Updated: "
+                        + constant.getCurrentHour());
+                mIsRefresh = true;
 
-		});
+                if (mPageIndex < mTotalPage) {
+                    mPageIndex++;
+                    // after brands addded
+                    mAWSOffset = mPageIndex;
+                    mShopStyleOffset += 10;
+                    mAsosOffset += 10;
 
-	}
 
-	public void init() {
-		showMenu();
-		// setViewWithFont();
+                    if (AppUtils.brand != null) {
 
-		Intent intent = getIntent();
-		mFrom = intent.getStringExtra("from");
-		mMaxPrice = intent.getStringExtra("price");
-		mType = intent.getIntExtra("closet", 0);
+                        AppUtils.yes = "false";
+                        getClosetFS_Shared();
+                    } else {
+                        AppUtils.yes = "true";
+                        getClosetFS();
+                    }
+                }
+            }
 
-		System.out.println("from_Selected " + mFrom);
-		System.out.println("closet_Selected " + mType);
-		System.out.println("price_Selected " + mMaxPrice);
+        });
 
-		AppUtils.putPref("type", String.valueOf(mType), DMAutoActivity.this);
-		AppUtils.putPref("price", String.valueOf(mMaxPrice),
-				DMAutoActivity.this);
-		if (mFrom.equals("exact")) {
-			vTxtTitle.setText("Perfect Match");
-		} else {
-			vTxtTitle.setText("I Feel Lucky");
-			m_filterbtn.setVisibility(View.GONE);
-		}
+    }
 
-		
-		
-		if (AppUtils.brand != null) {
-			getClosetFS_Shared();
-		} else {
+    public void init() {
+        showMenu();
+        // setViewWithFont();
 
-			getClosetFS();
-		}
-	}
+        Intent intent = getIntent();
+        mFrom = intent.getStringExtra("from");
+        mMaxPrice = intent.getStringExtra("price");
+        mType = intent.getIntExtra("closet", 0);
 
-	@Override
-	protected void onResume() {
-		super.onResume();
+        System.out.println("from_Selected " + mFrom);
+        System.out.println("closet_Selected " + mType);
+        System.out.println("price_Selected " + mMaxPrice);
+
+        AppUtils.putPref("type", String.valueOf(mType), DMAutoActivity.this);
+        AppUtils.putPref("price", String.valueOf(mMaxPrice),
+                DMAutoActivity.this);
+        if (mFrom.equals("exact")) {
+            vTxtTitle.setText("Perfect Match");
+        } else {
+            vTxtTitle.setText("I Feel Lucky");
+            m_filterbtn.setVisibility(View.GONE);
+        }
+
+
+        if (AppUtils.brand != null) {
+            getClosetFS_Shared();
+        } else {
+
+            getClosetFS();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
 
 		/*
-		 * if(AppUtils.yes.equalsIgnoreCase("true")) {
-		 * 
+         * if(AppUtils.yes.equalsIgnoreCase("true")) {
+		 *
 		 * } else if((AppUtils.yes.equalsIgnoreCase("false"))) {
-		 * 
+		 *
 		 * if(AppUtils.brand == null) {
-		 * 
-		 * 
+		 *
+		 *
 		 * } else if(AppUtils.brand != null) {
-		 * 
+		 *
 		 * if(mProductList != null) { mProductList.clear(); }
 		 * getClosetFS_Shared(); } } else { }
 		 */
-	}
+    }
 
-	// / --------------------------------- set font
-	// -------------------------------------
-	// public void setViewWithFont() {
-	// vTxtTitle.setTypeface(constant.fontface);
-	// vTxtBack.setTypeface(constant.fontface);
-	// }
+    // / --------------------------------- set font
+    // -------------------------------------
+    // public void setViewWithFont() {
+    // vTxtTitle.setTypeface(constant.fontface);
+    // vTxtBack.setTypeface(constant.fontface);
+    // }
 
-	// / --------------------------------- show menu list
-	// --------------------------------------
-	public void showMenu() {
-		vMenuList.setAdapter(new DMMenuListAdapter(this, constant.gMenuList));
-	}
+    // / --------------------------------- show menu list
+    // --------------------------------------
+    public void showMenu() {
+        vMenuList.setAdapter(new DMMenuListAdapter(this, constant.gMenuList));
+    }
 
-	// / --------------------------------- slide menu section
-	// ------------------------------
-	public void slideMenu() {
-		if (vDrawerLayout.isDrawerOpen(vMenuLayout)) {
-			vDrawerLayout.closeDrawer(vMenuLayout);
-		} else
-			vDrawerLayout.openDrawer(vMenuLayout);
-	}
+    // / --------------------------------- slide menu section
+    // ------------------------------
+    public void slideMenu() {
+        if (vDrawerLayout.isDrawerOpen(vMenuLayout)) {
+            vDrawerLayout.closeDrawer(vMenuLayout);
+        } else
+            vDrawerLayout.openDrawer(vMenuLayout);
+    }
 
-	// / -------------------------------- show product list to GridView
-	// -----------------------------------
-	public void showProductGrid(int size) {
-		if (mAdapter == null) {
-			System.out.println("Size" + size);
-			if (mProductList.size() <= 0) {
-				tv_title.setVisibility(View.VISIBLE);
-			}
-			mAdapter = new DMProductAdapter(this, mProductList);
-			vGrdProduct.setAdapter(mAdapter);
+    // / -------------------------------- show product list to GridView
+    // -----------------------------------
+    public void showProductGrid(int size) {
+        if (mAdapter == null) {
+            System.out.println("Size" + size);
+            if (mProductList.size() <= 0) {
+                tv_title.setVisibility(View.VISIBLE);
+            }
+            mAdapter = new DMProductAdapter(this, mProductList);
+            vGrdProduct.setAdapter(mAdapter);
 
-		} else {
-			if (mProductList.size() <= 0) {
-				tv_title.setVisibility(View.VISIBLE);
-			}
-			mAdapter.notifyDataSetChanged();
-		}
-	}
+        } else {
+            if (mProductList.size() <= 0) {
+                tv_title.setVisibility(View.VISIBLE);
+            }
+            mAdapter.notifyDataSetChanged();
+        }
+    }
 
-	// / -------------------------------- get closet from server
-	// ------------------------------
-	@SuppressLint("DefaultLocale")
-	public void getClosetFS() {
-		String baseUrl = "";
-		AppUtils.yes = "true";
-		
-		String[] categoryArr = { "shirt", "jacket", "trousers", "tie", "suit" };
-		
-		
-		if (mFrom.equals("exact")) {
-			if (mType == constant.NONE) {
-				int type = mPageIndex % 5;
+    // / -------------------------------- get closet from server
+    // ------------------------------
+    @SuppressLint("DefaultLocale")
+    public void getClosetFS() {
+        String baseUrl = "";
+        AppUtils.yes = "true";
 
-				if (mMaxPrice.equals("0")) {
-					baseUrl = String.format(
-							"%s/api/getProductList?Category=%s&ItemPage=%d",
-							constant.gPrefUrl, categoryArr[type], mPageIndex);
-					System.out.println("Called without brand");
-					AppUtils.brand = categoryArr[type];
-					AppUtils.putPref("brand", categoryArr[type], DMAutoActivity.this);
+        String[] categoryArr = {"shirt", "jacket", "trousers", "tie", "suit"};
 
-				} else {
-					baseUrl = String
-							.format("%s/api/getProductList?Category=%s&MaximumPrice=%s&ItemPage=%d",
-									constant.gPrefUrl, categoryArr[type],
-									mMaxPrice, mPageIndex);
-					AppUtils.brand = categoryArr[type];
-					AppUtils.putPref("brand", categoryArr[type], DMAutoActivity.this);
-					
-				}
 
-			} else {
-				if (mMaxPrice.equals("0")) {
-					baseUrl = String.format(
-							"%s/api/getProductList?Category=%s&ItemPage=%d",
-							constant.gPrefUrl, categoryArr[mType], mPageIndex);
-					AppUtils.brand = categoryArr[mType];
-					AppUtils.putPref("brand", categoryArr[mType], DMAutoActivity.this);
-				} else {
-					baseUrl = String
-							.format("%s/api/getProductList?Category=%s&MaximumPrice=%s&ItemPage=%d",
-									constant.gPrefUrl, categoryArr[mType],
-									mMaxPrice, mPageIndex);
-					AppUtils.brand = categoryArr[mType];
-					AppUtils.putPref("brand", categoryArr[mType], DMAutoActivity.this);
-				}
-			}
-		} else {
-			int type = mPageIndex % 5;
-			baseUrl = String.format(
-					"%s/api/getProductList?Category=%s&ItemPage=%d",
-					constant.gPrefUrl, categoryArr[type], mPageIndex);
-			AppUtils.brand = categoryArr[type];
-			AppUtils.putPref("brand", categoryArr[type], DMAutoActivity.this);
-		}
+        if (mFrom.equals("exact")) {
+            if (mType == constant.NONE) {
+                int type = mPageIndex % 5;
 
-		if (!mIsRefresh) {
-			constant.showProgress(this, "Loading...");
-		}
+                if (mMaxPrice.equals("0")) {
+                    baseUrl = String.format(
+                            // "%s/api/getProductList?Category=%s&ItemPage=%d",
+                            "%s/api/productloop?Category=%s&ItemPage=%d&AWSOffset=%d&ShopStyleOffset=%d&AsosOffset=%d",
+                            constant.gPrefUrl, categoryArr[type], mPageIndex, mAWSOffset, mShopStyleOffset, mAsosOffset);
+                    System.out.println("Called without brand");
+                    AppUtils.brand = categoryArr[type];
+                    AppUtils.putPref("brand", categoryArr[type], DMAutoActivity.this);
 
-		new MyAsyncTask(new ServerResponse() {
+                } else {
+                    baseUrl = String
+                            .format(
+                                    //"%s/api/getProductList?Category=%s&MaximumPrice=%s&ItemPage=%d",
+                                    "%s/api/productloop?Category=%s&MaximumPrice=%s&ItemPage=%d&AWSOffset=%d&ShopStyleOffset=%d&AsosOffset=%d",
+                                    constant.gPrefUrl, categoryArr[type],
+                                    mMaxPrice, mPageIndex, mAWSOffset, mShopStyleOffset, mAsosOffset);
+                    AppUtils.brand = categoryArr[type];
+                    AppUtils.putPref("brand", categoryArr[type], DMAutoActivity.this);
 
-			@Override
-			public void getResponse(JSONObject data) {
-				// TODO Auto-generated method stub
-				vGrdProduct.onRefreshComplete();
-				constant.hideProgress();
-				mIsRefresh = false;
-				int itemCount = 0;
+                }
 
-				if (mProductList == null)
-					mProductList = new ArrayList<DMProductObject>();
-				if (data != null) {
-					try {
-						mTotalResult = data.getInt("TotalResults");
-						mTotalPage = data.getInt("TotalPages");
-						itemCount = data.getInt("ItemCount");
+            } else {
+                if (mMaxPrice.equals("0")) {
+                    baseUrl = String.format(
+                            //"%s/api/getProductList?Category=%s&ItemPage=%d",
+                            "%s/api/productloop?Category=%s&ItemPage=%d&AWSOffset=%d&ShopStyleOffset=%d&AsosOffset=%d",
+                            constant.gPrefUrl, categoryArr[mType], mPageIndex, mAWSOffset, mShopStyleOffset, mAsosOffset);
+                    AppUtils.brand = categoryArr[mType];
+                    AppUtils.putPref("brand", categoryArr[mType], DMAutoActivity.this);
+                } else {
+                    baseUrl = String
+                            .format(
+                                    //"%s/api/getProductList?Category=%s&MaximumPrice=%s&ItemPage=%d",
+                                    "%s/api/productloop?Category=%s&MaximumPrice=%s&ItemPage=%d&AWSOffset=%d&ShopStyleOffset=%d&AsosOffset=%d",
+                                    constant.gPrefUrl, categoryArr[mType],
+                                    mMaxPrice, mPageIndex, mAWSOffset, mShopStyleOffset, mAsosOffset);
+                    AppUtils.brand = categoryArr[mType];
+                    AppUtils.putPref("brand", categoryArr[mType], DMAutoActivity.this);
+                }
+            }
+        } else {
+            int type = mPageIndex % 5;
+            baseUrl = String.format(
+                    //"%s/api/getProductList?Category=%s&ItemPage=%d",
+                    "%s/api/productloop?Category=%s&ItemPage=%d&AWSOffset=%d&ShopStyleOffset=%d&AsosOffset=%d",
+                    constant.gPrefUrl, categoryArr[type], mPageIndex, mAWSOffset, mShopStyleOffset, mAsosOffset);
+            AppUtils.brand = categoryArr[type];
+            AppUtils.putPref("brand", categoryArr[type], DMAutoActivity.this);
+        }
 
-						JSONObject jObj = data.getJSONObject("Items");
-						if (jObj != null) {
-							for (int i = 0; i < itemCount; i++) {
-								JSONObject pObj = jObj.getJSONObject("Item" + i);
-								DMProductObject item = new DMProductObject(pObj);
+        if (!mIsRefresh) {
+            constant.showProgress(this, "Loading...");
+        }
 
-								String title = item.Title.toLowerCase();
+        new MyAsyncTask(new ServerResponse() {
 
-								if (!title.contains("girl")
-										&& !title.contains("women")) {
-									mProductList.add(item);
+            @Override
+            public void getResponse(JSONObject data) {
+                // TODO Auto-generated method stub
+                vGrdProduct.onRefreshComplete();
+                constant.hideProgress();
+                mIsRefresh = false;
+                int itemCount = 0;
 
-								}
-							}
-						}
-					} catch (JSONException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				} else {
-					Toast.makeText(DMAutoActivity.this, "Network Error",
-							Toast.LENGTH_LONG).show();
-				}
+                if (mProductList == null)
+                    mProductList = new ArrayList<DMProductObject>();
+                if (data != null) {
+                    try {
+                        mTotalResult = data.getInt("TotalResults");
+                        mTotalPage = data.getInt("TotalPages");
+                        JSONArray jObj = data.getJSONArray("Items");// mayur changed as new responce gives array instead of object
 
-				showProductGrid(itemCount);
-			}
-		}, baseUrl, true).execute();
-	}
+                        itemCount = data.getInt("ItemCount") <= jObj.length() ? data.getInt("ItemCount") : jObj.length();
+                        if (jObj != null) {
+                            for (int i = 0; i < itemCount; i++) {
+                                JSONObject pObj = jObj.getJSONObject(i);
+                                DMProductObject item = new DMProductObject(pObj);
 
-	// / -------------------------------- get closet from server
-	// ------------------------------
-	@SuppressLint("DefaultLocale")
-	public void getClosetFS_Shared() {
-		String baseUrl = "";
+                                String title = item.Title.toLowerCase();
 
-		String[] categoryArr = { "shirt", "jacket", "trousers", "tie", "suit" };
-		
-		
-		if (mFrom.equals("exact")) {
-			if (mType == constant.NONE) {
+                                if (!title.contains("girl")
+                                        && !title.contains("women")) {
+                                    mProductList.add(item);
 
-				int type = mPageIndex % 5;
-				System.out.println("Main===>0"+categoryArr[type]);
-				if (mMaxPrice.equals("0")) {
-					baseUrl = String
-							.format("%s/api/getProductList?Category=%s&ItemPage=%d&Brand=%s",
-									constant.gPrefUrl, categoryArr[type],
-									mPageIndex, AppUtils.brand);
+                                }
+                            }
+                        }
+                    } catch (JSONException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                } else {
+                    Toast.makeText(DMAutoActivity.this, "Network Error",
+                            Toast.LENGTH_LONG).show();
+                }
 
-				} else {
-					System.out.println("Main===>none"+categoryArr[type]);
-					baseUrl = String
-							.format("%s/api/getProductList?Category=%s&MaximumPrice=%s&ItemPage=%d&Brand=%s",
-									constant.gPrefUrl, categoryArr[type],
-									mMaxPrice, mPageIndex, AppUtils.brand);
-				}
+                showProductGrid(itemCount);
+            }
+        }, baseUrl, true).execute();
+    }
 
-			} else {
-				if (mMaxPrice.equals("0")) {
-					System.out.println("Main===>type-1"+categoryArr[mType]);
-					baseUrl = String
-							.format("%s/api/getProductList?Category=%s&ItemPage=%d&Brand=%s",
-									constant.gPrefUrl, categoryArr[mType],
-									mPageIndex, AppUtils.brand);
-					System.out.println("Brand" + AppUtils.brand);
-					System.out.println("base" + baseUrl);
-					
-					
-				} else {
-					
-					AppUtils.getPref("closet", DMAutoActivity.this);
-					System.out.println("Main===>"+AppUtils.getPref("type", DMAutoActivity.this)+""+	AppUtils.getPref("closet", DMAutoActivity.this));
-					baseUrl = String
-							.format("%s/api/getProductList?Category=%s&MaximumPrice=%s&ItemPage=%d&Brand=%s",
-									constant.gPrefUrl, categoryArr[mType],
-									mMaxPrice, mPageIndex, AppUtils.brand);
-					System.out.println("Brand" + AppUtils.brand);
-					System.out.println("base" + baseUrl);
-				}
-			}
-		} else {
-			int n[] = { 1, 2, 3, 4, 5 };
+    // / -------------------------------- get closet from server
+    // ------------------------------
+    @SuppressLint("DefaultLocale")
+    public void getClosetFS_Shared() {
+        String baseUrl = "";
 
-			Random random = new Random();
-			System.out.println(n[random.nextInt(n.length)]);
+        String[] categoryArr = {"shirt", "jacket", "trousers", "tie", "suit"};
 
-			int type = n[random.nextInt(n.length)] % 5;
-			// baseUrl =
-			// String.format("%s/api/getProductList?Category=%s&ItemPage=%d&Brand=%s",
-			// constant.gPrefUrl,categoryArr[type],
-			// n[random.nextInt(n.length)],AppUtils.brand);
 
-			baseUrl = String.format(
-					"%s/api/getProductList?Category=%s&ItemPage=%d",
-					constant.gPrefUrl, categoryArr[type],
-					n[random.nextInt(n.length)]);
-			System.out.println("Type" + categoryArr[type]);
-			System.out.println("baseUrlLucky" + baseUrl);
-		}
+        if (mFrom.equals("exact")) {
+            if (mType == constant.NONE) {
 
-		if (!mIsRefresh) {
-			constant.showProgress(this, "Loading...");
-		}
+                int type = mPageIndex % 5;
+                System.out.println("Main===>0" + categoryArr[type]);
+                if (mMaxPrice.equals("0")) {
+                    baseUrl = String
+                            .format(
+                                    //"%s/api/getProductList?Category=%s&ItemPage=%d&Brand=%s",
+                                    "%s/api/productloop?Category=%s&ItemPage=%d&Brand=%s&AWSOffset=%d&ShopStyleOffset=%d&AsosOffset=%d",
+                                    constant.gPrefUrl, categoryArr[type],
+                                    mPageIndex, AppUtils.brand, mAWSOffset, mShopStyleOffset, mAsosOffset);
 
-		new MyAsyncTask(new ServerResponse() {
 
-			@Override
-			public void getResponse(JSONObject data) {
-				// TODO Auto-generated method stub
-				vGrdProduct.onRefreshComplete();
-				constant.hideProgress();
-				mIsRefresh = false;
-				int itemCount = 0;
+                } else {
+                    System.out.println("Main===>none" + categoryArr[type]);
+                    baseUrl = String
+                            .format(
+                                    //"%s/api/getProductList?Category=%s&MaximumPrice=%s&ItemPage=%d&Brand=%s",
+                                    "%s/api/productloop?Category=%s&MaximumPrice=%s&ItemPage=%d&Brand=%s&AWSOffset=%d&ShopStyleOffset=%d&AsosOffset=%d",
+                                    constant.gPrefUrl, categoryArr[type],
+                                    mMaxPrice, mPageIndex, AppUtils.brand, mAWSOffset, mShopStyleOffset, mAsosOffset);
+                }
 
-				if (mProductList == null)
-					mProductList = new ArrayList<DMProductObject>();
-				if (data != null) {
-					try {
-						mTotalResult = data.getInt("TotalResults");
-						mTotalPage = data.getInt("TotalPages");
-						itemCount = data.getInt("ItemCount");
+            } else {
+                if (mMaxPrice.equals("0")) {
+                    System.out.println("Main===>type-1" + categoryArr[mType]);
+                    baseUrl = String
+                            .format(
+                                    //"%s/api/getProductList?Category=%s&ItemPage=%d&Brand=%s",
+                                    "%s/api/productloop?Category=%s&ItemPage=%d&Brand=%s&AWSOffset=%d&ShopStyleOffset=%d&AsosOffset=%d",
+                                    constant.gPrefUrl, categoryArr[mType],
+                                    mPageIndex, AppUtils.brand, mAWSOffset, mShopStyleOffset, mAsosOffset);
 
-						JSONObject jObj = data.getJSONObject("Items");
-						if (jObj != null) {
-							for (int i = 0; i < itemCount; i++) {
-								JSONObject pObj = jObj.getJSONObject("Item" + i);
-								DMProductObject item = new DMProductObject(pObj);
 
-								String title = item.Title.toLowerCase();
+                    System.out.println("Brand" + AppUtils.brand);
+                    System.out.println("base" + baseUrl);
 
-								if (!title.contains("girl")
-										&& !title.contains("women")) {
-									mProductList.add(item);
 
-								}
-							}
-						}
-					} catch (JSONException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				} else {
-					Toast.makeText(DMAutoActivity.this, "Network Error",
-							Toast.LENGTH_LONG).show();
-				}
+                } else {
 
-				showProductGrid(itemCount);
-			}
-		}, baseUrl, true).execute();
-	}
+                    AppUtils.getPref("closet", DMAutoActivity.this);
+                    System.out.println("Main===>" + AppUtils.getPref("type", DMAutoActivity.this) + "" + AppUtils.getPref("closet", DMAutoActivity.this));
+                    baseUrl = String
+                            .format(
+                                    //"%s/api/getProductList?Category=%s&MaximumPrice=%s&ItemPage=%d&Brand=%s",
+                                    "%s/api/productloop?Category=%s&MaximumPrice=%s&ItemPage=%d&Brand=%s&AWSOffset=%d&ShopStyleOffset=%d&AsosOffset=%d",
+                                    constant.gPrefUrl, categoryArr[mType],
+                                    mMaxPrice, mPageIndex, AppUtils.brand, mAWSOffset, mShopStyleOffset, mAsosOffset);
+                    System.out.println("Brand" + AppUtils.brand);
+                    System.out.println("base" + baseUrl);
+                }
+            }
+        } else {
+            int n[] = {1, 2, 3, 4, 5};
+
+            Random random = new Random();
+            System.out.println(n[random.nextInt(n.length)]);
+
+            int type = n[random.nextInt(n.length)] % 5;
+            // baseUrl =
+            // String.format("%s/api/getProductList?Category=%s&ItemPage=%d&Brand=%s",
+            // constant.gPrefUrl,categoryArr[type],
+            // n[random.nextInt(n.length)],AppUtils.brand);
+
+            baseUrl = String.format(
+                    //"%s/api/getProductList?Category=%s&ItemPage=%d",
+                    "%s/api/productloop?Category=%s&ItemPage=%d",
+                    constant.gPrefUrl, categoryArr[type],
+                    n[random.nextInt(n.length)]);
+            System.out.println("Type" + categoryArr[type]);
+            System.out.println("baseUrlLucky" + baseUrl);
+        }
+
+        if (!mIsRefresh) {
+            constant.showProgress(this, "Loading...");
+        }
+
+        new MyAsyncTask(new ServerResponse() {
+
+            @Override
+            public void getResponse(JSONObject data) {
+                // TODO Auto-generated method stub
+                vGrdProduct.onRefreshComplete();
+                constant.hideProgress();
+                mIsRefresh = false;
+                int itemCount = 0;
+
+                if (mProductList == null)
+                    mProductList = new ArrayList<DMProductObject>();
+                if (data != null) {
+                    try {
+
+                        // JSONArray jArrayMain = data.getJSONArray("alldata");
+                        //for (int j = 0; j <= jArrayMain.length(); j++)
+                        {
+
+                            //JSONObject jObjData = jArrayMain.getJSONObject(j);
+
+                            mTotalResult = data.getInt("TotalResults");
+                            mTotalPage = data.getInt("TotalPages");
+
+                            JSONArray jObj = data.getJSONArray("Items");// mayur changed as new responce gives array insted of object
+                            itemCount = data.getInt("ItemCount") <= jObj.length() ? data.getInt("ItemCount") : jObj.length();
+
+                            if (jObj != null) {
+                                for (int i = 0; i < itemCount; i++) {
+                                    JSONObject pObj = jObj.getJSONObject(i);
+                                    DMProductObject item = new DMProductObject(pObj);
+
+                                    String title = item.Title.toLowerCase();
+
+                                    if (!title.contains("girl")
+                                            && !title.contains("women")) {
+                                        mProductList.add(item);
+
+                                    }
+                                }
+                            }
+
+                        }
+                    } catch (Exception e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                } else {
+                    Toast.makeText(DMAutoActivity.this, "Network Error",
+                            Toast.LENGTH_LONG).show();
+                }
+
+                showProductGrid(itemCount);
+            }
+        }, baseUrl, true).execute();
+    }
 
 }

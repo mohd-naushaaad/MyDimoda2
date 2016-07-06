@@ -32,7 +32,7 @@ public class DMProductObject implements Serializable{
 				ParentASIN 		= data.getString("ParentASIN");
 				DetailPageURL 	= data.getString("DetailPageURL");
 				Title 			= data.getString("Title");
-				Feature 		= data.getString("Feature");
+				Feature 		= data.optString("Feature");
 				Price 			= data.getString("Price");
 				
 				JSONObject sObj = data.getJSONObject("SmallImage");
@@ -45,7 +45,7 @@ public class DMProductObject implements Serializable{
 				LargeImage = new DMImageObject(lObj);
 				
 				
-			} catch (JSONException e) {
+			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
