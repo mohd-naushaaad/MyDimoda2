@@ -63,6 +63,28 @@
         <item>Haggar</item>
         <item>Finejo</item>
         <item>LIZHOUMIL</item>
+
+        <item>Adidas</item>
+        <item>Asos</item>
+        <item>Brixton</item>
+        <item>Boss-Orange</item>
+        <item>Burberry</item>
+        <item>DKNY</item>
+        <item>Diesel</item>
+        <item>Ellesse</item>
+        <item>Fila</item>
+        <item>Fred-Perry</item>
+        <item>Gucci</item>
+        <item>Jack-and-Jones</item>
+        <item>Moncler</item>
+        <item>Michael-Kors</item>
+        <item>Puma</item>
+        <item>Paul-Smith</item>
+        <item>Reebok</item>
+        <item>Siksik</item>
+        <item>Versace</item>
+
+
     </string-array>
 
     
@@ -129,6 +151,27 @@
         <item>Haggar</item>
         <item>Finejo</item>
         <item>LIZHOUMIL</item>
+
+
+        <item>Adidas</item>
+        <item>Asos</item>
+        <item>Brixton</item>
+        <item>Boss-Orange</item>
+        <item>Burberry</item>
+        <item>DKNY</item>
+        <item>Diesel</item>
+        <item>Ellesse</item>
+        <item>Fila</item>
+        <item>Fred-Perry</item>
+        <item>Gucci</item>
+        <item>Jack-and-Jones</item>
+        <item>Moncler</item>
+        <item>Michael-Kors</item>
+        <item>Puma</item>
+        <item>Paul-Smith</item>
+        <item>Reebok</item>
+        <item>Siksik</item>
+        <item>Versace</item>
     </string-array>
     
     <!-- Tie Names -->
@@ -175,6 +218,17 @@
         <item>Tinksky</item>
         <item>Epoint</item>
         <item>Skinny Tie Madness</item>
+
+        <item>Asos</item>
+        <item>Burberry</item>
+        <item>Cayler-and-Sons</item>
+        <item>DKNY</item>
+        <item>Diesel</item>
+        <item>Gucci</item>
+        <item>Michael-Kors</item>
+        <item>Paul-Smith</item>
+        <item>Thom-Browne</item>
+        <item>Versace</item>
     </string-array>
 
       <!-- Tie Names -->
@@ -221,6 +275,17 @@
         <item>Tinksky</item>
         <item>Epoint</item>
         <item>Skinny Tie Madness</item>
+
+        <item>Asos</item>
+        <item>Burberry</item>
+        <item>Cayler-and-Sons</item>
+        <item>DKNY</item>
+        <item>Diesel</item>
+        <item>Gucci</item>
+        <item>Michael-Kors</item>
+        <item>Paul-Smith</item>
+        <item>Thom-Browne</item>
+        <item>Versace</item>
     </string-array>
     
     <!-- Jacket Names -->
@@ -270,6 +335,25 @@
         <item>Aulin\u00e9 Collection</item>
         <item>Calvin Klein Jeans</item>
         <item>Members Only</item>
+
+        <item>Adidas</item>
+        <item>Asos</item>
+        <item>Armani-Jeans</item>
+        <item>Burberry</item>
+        <item>DKNY</item>
+        <item>Diesel</item>
+        <item>Ellesse</item>
+        <item>Fila</item>
+        <item>Fred-Perry</item>
+        <item>Gucci</item>
+        <item>Jack-and-Jones</item>
+        <item>Moncler</item>
+        <item>Michael-Kors</item>
+        <item>Puma</item>
+        <item>Paul-Smith</item>
+        <item>Reebok</item>
+        <item>thom-browne</item>
+        <item>Versace</item>
     </string-array>
     
       <!-- Jacket Names -->
@@ -319,6 +403,25 @@
         <item>Aulin\u00e9 Collection</item>
         <item>Calvin Klein Jeans</item>
         <item>Members Only</item>
+
+        <item>Adidas</item>
+        <item>Asos</item>
+        <item>Armani-Jeans</item>
+        <item>Burberry</item>
+        <item>DKNY</item>
+        <item>Diesel</item>
+        <item>Ellesse</item>
+        <item>Fila</item>
+        <item>Fred-Perry</item>
+        <item>Gucci</item>
+        <item>Jack-and-Jones</item>
+        <item>Moncler</item>
+        <item>Michael-Kors</item>
+        <item>Puma</item>
+        <item>Paul-Smith</item>
+        <item>Reebok</item>
+        <item>thom-browne</item>
+        <item>Versace</item>
     </string-array>
 
     <!-- Torusers -->
@@ -378,6 +481,23 @@
         <item>Angelina</item>
         <item>Finejo</item>
         <item>Stitch\'s</item>
+
+        <item>Adidas</item>
+        <item>Asos</item>
+        <item>Burberry</item>
+        <item>DKNY</item>
+        <item>Diesel</item>
+        <item>Ellesse</item>
+        <item>Fila</item>
+        <item>Fred-Perry</item>
+        <item>Gucci</item>
+        <item>Jack-and-Jones</item>
+        <item>Moncler</item>
+        <item>Michael-Kors</item>
+        <item>Puma</item>
+        <item>Paul-Smith</item>
+        <item>Reebok</item>
+        <item>Versace</item>
     </string-array>
     
      <!-- Torusers -->
@@ -437,6 +557,23 @@
         <item>Angelina</item>
         <item>Finejo</item>
         <item>Stitch\'s</item>
+
+        <item>Adidas</item>
+        <item>Asos</item>
+        <item>Burberry</item>
+        <item>DKNY</item>
+        <item>Diesel</item>
+        <item>Ellesse</item>
+        <item>Fila</item>
+        <item>Fred-Perry</item>
+        <item>Gucci</item>
+        <item>Jack-and-Jones</item>
+        <item>Moncler</item>
+        <item>Michael-Kors</item>
+        <item>Puma</item>
+        <item>Paul-Smith</item>
+        <item>Reebok</item>
+        <item>Versace</item>
     </string-array>
     
     

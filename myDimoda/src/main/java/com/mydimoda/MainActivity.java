@@ -107,9 +107,7 @@ public class MainActivity extends Activity {
 			}
 			Collections.sort(cityList);
 			Collections.sort(tempList);
-		}
-
-		else if (AppUtils.getPref("type", MainActivity.this).equalsIgnoreCase(
+		}else if (AppUtils.getPref("type", MainActivity.this).equalsIgnoreCase(
 				"1")) {
 
 			// String[] listItems = TimeZone.getAvailableIDs();
@@ -144,7 +142,6 @@ public class MainActivity extends Activity {
 						.toString(), zoneItems[i]);
 				cityList.add(model);
 				tempList.add(model);
-
 			}
 			Collections.sort(cityList);
 			Collections.sort(tempList);
