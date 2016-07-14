@@ -270,6 +270,16 @@
                     android:paddingTop="60dp"></ListView>
             </LinearLayout>
         </android.support.v4.widget.DrawerLayout>
+
+        <ImageView
+            android:id="@+id/act_fsn_coach_mrk_iv"
+            android:layout_width="match_parent"
+            android:src="@drawable/my_fashion"
+            android:scaleType="fitXY"
+            android:clickable="true"
+            android:visibility="gone"
+            android:layout_height="match_parent" />
+
     </RelativeLayout>
 
 </RelativeLayout>

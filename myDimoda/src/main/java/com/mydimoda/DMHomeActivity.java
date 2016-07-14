@@ -19,6 +19,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.mydimoda.adapter.DMMenuListAdapter;
@@ -33,6 +34,9 @@ import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import java.util.List;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 public class DMHomeActivity extends FragmentActivity {
 
@@ -49,6 +53,8 @@ public class DMHomeActivity extends FragmentActivity {
     DialogInterface mDlgInterface;
     int RESULT_GALLERY = 2;
     ParseUser user;
+    @Bind(R.id.home_overlay_rlyt)
+    RelativeLayout mCoachmark;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +64,8 @@ public class DMHomeActivity extends FragmentActivity {
         mDbAdapter = new DbAdapter(DMHomeActivity.this);
         mDbAdapter.createDatabase();
         mDbAdapter.open();
+
+        ButterKnife.bind(this);
 
         m_DatabaseModel = new DatabaseModel();
         System.out.println("Before" + AppUtils.getPref("pro", DMHomeActivity.this));
@@ -207,6 +215,7 @@ public class DMHomeActivity extends FragmentActivity {
 
     public void init() {
         showMenu();
+        showShowcaseView();
     }
 
     // / --------------------------------- init Data
@@ -369,5 +378,23 @@ public class DMHomeActivity extends FragmentActivity {
 
         }
 
+    }
+
+    private void showShowcaseView() {
+        if (!SharedPreferenceUtil.getBoolean(constant.PREF_IS_HOME_SHOWN, false)) {
+            mCoachmark.setVisibility(View.VISIBLE);
+            mCoachmark.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mCoachmark.setVisibility(View.GONE);
+                    SharedPreferenceUtil.putValue(constant.PREF_IS_HOME_SHOWN,true);
+                }
+            });
+        }
+
+     /*   new ShowcaseView.Builder(this)
+                .setContentTitle("Menu")
+                .setContentText("Organize wardrobe, Explore styling options & purchase new clothes that suits your wardrobe style").replaceEndButton(R.layout.item_transparent_btn)
+                .hideOnTouchOutside().setTarget(new ViewTarget(vBtnMenu)).build();*/
     }
 }

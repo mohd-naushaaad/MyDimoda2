@@ -28,8 +28,8 @@
 
                 <Button
                     android:id="@+id/menu_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/menu_btn_size"
+                    android:layout_height="@dimen/menu_btn_size"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginLeft="10dp"
@@ -42,6 +42,7 @@
                 android:layout_width="270dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="left"
+
                 android:background="@drawable/menu_bg"
                 android:orientation="vertical" >
 
@@ -56,6 +57,18 @@
                 </ListView>
             </LinearLayout>
         </android.support.v4.widget.DrawerLayout>
+        <RelativeLayout
+            android:id="@+id/home_overlay_rlyt"
+            android:layout_width="match_parent"
+            android:background="@drawable/home_2"
+            android:layout_marginLeft="-4dp"
+            android:clickable="true"
+            android:visibility="gone"
+            android:layout_marginTop="-2dp"
+            android:layout_height="match_parent">
+
+        </RelativeLayout>
+
     </RelativeLayout>
 
 </RelativeLayout>

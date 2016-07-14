@@ -162,6 +162,14 @@
                 </ListView>
             </LinearLayout>
         </android.support.v4.widget.DrawerLayout>
+        <ImageView
+            android:id="@+id/act_style_coach_mrk_iv"
+            android:layout_width="match_parent"
+            android:src="@drawable/formal_etc"
+            android:scaleType="fitXY"
+            android:clickable="true"
+            android:visibility="gone"
+            android:layout_height="match_parent" />
     </RelativeLayout>
 
 </RelativeLayout>

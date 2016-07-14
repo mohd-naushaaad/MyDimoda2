@@ -4,34 +4,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/main_content_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent">
 
         <android.support.v4.widget.DrawerLayout
             android:id="@+id/drawer_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@android:color/white" >
+            android:background="@android:color/white">
 
             <RelativeLayout
                 android:id="@+id/layout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="match_parent">
 
                 <RelativeLayout
                     android:id="@+id/title_layout"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:background="#f7f7f7" >
+                    android:background="#f7f7f7">
 
                     <Button
                         android:id="@+id/menu_btn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="@dimen/menu_btn_size"
+                        android:layout_height="@dimen/menu_btn_size"
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="15dp"
@@ -51,7 +51,7 @@
                         android:id="@+id/back_layout"
                         android:layout_width="90dp"
                         android:layout_height="match_parent"
-                        android:layout_alignParentRight="true" >
+                        android:layout_alignParentRight="true">
 
                         <TextView
                             android:id="@+id/back_txt"
@@ -80,13 +80,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_below="@id/title_layout"
-                    android:orientation="vertical" >
+                    android:orientation="vertical">
 
                     <RelativeLayout
                         android:id="@+id/layout_favorites"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1" >
+                        android:layout_weight="1">
 
                         <ImageView
                             android:id="@+id/ImageView01"
@@ -111,7 +111,7 @@
                         android:id="@+id/layout_casual"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1" >
+                        android:layout_weight="1">
 
                         <ImageView
                             android:id="@+id/ImageView02"
@@ -136,7 +136,7 @@
                         android:id="@+id/layout_after5"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1" >
+                        android:layout_weight="1">
 
                         <ImageView
                             android:id="@+id/ImageView04"
@@ -161,7 +161,7 @@
                         android:id="@+id/layout_formal"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1" >
+                        android:layout_weight="1">
 
                         <ImageView
                             android:id="@+id/ImageView03"
@@ -190,7 +190,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="left"
                 android:background="@drawable/menu_bg"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <ListView
                     android:id="@+id/menu_list"
@@ -199,10 +199,18 @@
                     android:divider="@drawable/empty"
                     android:dividerHeight="2dp"
                     android:listSelector="@drawable/listitem_selector"
-                    android:paddingTop="60dp" >
-                </ListView>
+                    android:paddingTop="60dp"></ListView>
             </LinearLayout>
         </android.support.v4.widget.DrawerLayout>
-    </RelativeLayout>
 
+        <ImageView
+            android:id="@+id/act_ocsn_coach_mrk_iv"
+            android:layout_width="match_parent"
+            android:src="@drawable/occasion"
+            android:scaleType="fitXY"
+            android:clickable="true"
+            android:visibility="gone"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
 </RelativeLayout>

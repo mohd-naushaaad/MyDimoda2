@@ -321,11 +321,20 @@ public class constant {
         }
     }
 
-    public static int getRandom(int from, int to) {
-        if (from < to){
+    public static int getRandom( int from, int to) {
+        if (from < to){ // incase some one tries to be funny
             return (new Random().nextInt(to - from + 1) + from);
         }else{
             return (new Random().nextInt(from - to + 1) + to);
         }
     }
+
+    //ShowcaseView pref constants
+  public static final String PREF_IS_HOME_SHOWN = "ishomeshown";
+   public static final String PREF_IS_OCCASION_SHOWN = "isocassionshown";
+       public static final String PREF_IS_STYLE_SHOWN = "isstyleshown";
+    public static final String PREF_IS_FSN_SHOWN = "isfsnshown";
+    public static final String PREF_IS_HANGUP_SHOWN = "ishangupshown";
+
+
 }

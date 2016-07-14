@@ -30,8 +30,8 @@
 
                     <Button
                         android:id="@+id/menu_btn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="@dimen/menu_btn_size"
+                        android:layout_height="@dimen/menu_btn_size"
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="15dp"
@@ -307,6 +307,17 @@
                 </ListView>
             </LinearLayout>
         </android.support.v4.widget.DrawerLayout>
-    </RelativeLayout>
 
+
+    </RelativeLayout>
+    <ImageView
+        android:id="@+id/act_hang_coach_mrk_iv"
+        android:layout_width="match_parent"
+        android:src="@drawable/hang_up"
+        android:scaleType="fitXY"
+        android:clickable="true"
+        android:visibility="gone"
+        android:background="#565656"
+        android:paddingTop="4dp"
+        android:layout_height="match_parent" />
 </RelativeLayout>

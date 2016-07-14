@@ -100,7 +100,8 @@ public class DMFashionActivity extends Activity {
     TextView mInShareBtn;
     List<OrderClothModel> mClothModellist;
 
-
+    @Bind(R.id.act_fsn_coach_mrk_iv)
+    ImageView mCoachMarkScreenIv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -278,6 +279,7 @@ public class DMFashionActivity extends Activity {
     public void init() {
         showMenu();
 //		setViewWithFont();
+        showShowcaseView();
 
         Intent in = getIntent();
         String favorite = in.getStringExtra("favorite");
@@ -968,5 +970,16 @@ public class DMFashionActivity extends Activity {
 
     }
 
-
+    private void showShowcaseView() {
+        if (!SharedPreferenceUtil.getBoolean(constant.PREF_IS_FSN_SHOWN, false)) {
+            mCoachMarkScreenIv.setVisibility(View.VISIBLE);
+            mCoachMarkScreenIv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mCoachMarkScreenIv.setVisibility(View.GONE);
+                    SharedPreferenceUtil.putValue(constant.PREF_IS_FSN_SHOWN, true);
+                }
+            });
+        }
+    }
 }
