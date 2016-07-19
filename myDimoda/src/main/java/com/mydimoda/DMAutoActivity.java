@@ -5,11 +5,13 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -33,6 +35,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 public class DMAutoActivity extends Activity {
 
@@ -61,10 +66,17 @@ public class DMAutoActivity extends Activity {
     int mShopStyleOffset = 1;
     int mAsosOffset = 0;
 
+    String mShopName = "productloop";
+    String mSortType = "relevance";
+    @Bind(R.id.act_auto_coach_mrk_iv)
+    ImageView mCoachMarkScreenIv;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auto);
+        ButterKnife.bind(this);
 
         // / menu
         vDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -167,7 +179,7 @@ public class DMAutoActivity extends Activity {
                     mAsosOffset += 10;
 
 
-                    if (AppUtils.brand != null) {
+                    if (!TextUtils.isEmpty(AppUtils.brand)) {
 
                         AppUtils.yes = "false";
                         getClosetFS_Shared();
@@ -179,7 +191,7 @@ public class DMAutoActivity extends Activity {
             }
 
         });
-
+        showShowcaseView();
     }
 
     public void init() {
@@ -190,10 +202,13 @@ public class DMAutoActivity extends Activity {
         mFrom = intent.getStringExtra("from");
         mMaxPrice = intent.getStringExtra("price");
         mType = intent.getIntExtra("closet", 0);
-
+        mShopName = TextUtils.isEmpty(intent.getStringExtra(constant.SHOP_NAME)) ? mShopName : intent.getStringExtra(constant.SHOP_NAME);
+        mSortType = TextUtils.isEmpty(intent.getStringExtra(constant.SORT_BY_KEY)) ? mSortType : intent.getStringExtra(constant.SORT_BY_KEY);
         System.out.println("from_Selected " + mFrom);
         System.out.println("closet_Selected " + mType);
         System.out.println("price_Selected " + mMaxPrice);
+        System.out.println("Shop name " + mShopName);
+
 
         AppUtils.putPref("type", String.valueOf(mType), DMAutoActivity.this);
         AppUtils.putPref("price", String.valueOf(mMaxPrice),
@@ -206,10 +221,9 @@ public class DMAutoActivity extends Activity {
         }
 
 
-        if (AppUtils.brand != null) {
+        if (!TextUtils.isEmpty(AppUtils.brand)) {
             getClosetFS_Shared();
         } else {
-
             getClosetFS();
         }
     }
@@ -291,20 +305,22 @@ public class DMAutoActivity extends Activity {
                 if (mMaxPrice.equals("0")) {
                     baseUrl = String.format(
                             // "%s/api/getProductList?Category=%s&ItemPage=%d",
-                            "%s/api/productloop?Category=%s&ItemPage=%d&AWSOffset=%d&ShopStyleOffset=%d&AsosOffset=%d",
-                            constant.gPrefUrl, categoryArr[type], mPageIndex, mAWSOffset, mShopStyleOffset, mAsosOffset);
+                            //      "%s/api/productloop?Category=%s&ItemPage=%d&AWSOffset=%d&ShopStyleOffset=%d&AsosOffset=%d",
+                            "%s/api/%s?Category=%s&ItemPage=%d&AWSOffset=%d&ShopStyleOffset=%d&AsosOffset=%d&Sort=%s",
+
+                            constant.gPrefUrl, mShopName, categoryArr[type], mPageIndex, mAWSOffset, mShopStyleOffset, mAsosOffset, mSortType);
                     System.out.println("Called without brand");
-                    AppUtils.brand = categoryArr[type];
+                    // AppUtils.brand = categoryArr[type];
                     AppUtils.putPref("brand", categoryArr[type], DMAutoActivity.this);
 
                 } else {
                     baseUrl = String
                             .format(
                                     //"%s/api/getProductList?Category=%s&MaximumPrice=%s&ItemPage=%d",
-                                    "%s/api/productloop?Category=%s&MaximumPrice=%s&ItemPage=%d&AWSOffset=%d&ShopStyleOffset=%d&AsosOffset=%d",
-                                    constant.gPrefUrl, categoryArr[type],
-                                    mMaxPrice, mPageIndex, mAWSOffset, mShopStyleOffset, mAsosOffset);
-                    AppUtils.brand = categoryArr[type];
+                                    "%s/api/%s?Category=%s&MaximumPrice=%s&ItemPage=%d&AWSOffset=%d&ShopStyleOffset=%d&AsosOffset=%d&Sort=%s",
+                                    constant.gPrefUrl, mShopName, categoryArr[type],
+                                    mMaxPrice, mPageIndex, mAWSOffset, mShopStyleOffset, mAsosOffset, mSortType);
+                    //  AppUtils.brand = categoryArr[type];
                     AppUtils.putPref("brand", categoryArr[type], DMAutoActivity.this);
 
                 }
@@ -313,18 +329,17 @@ public class DMAutoActivity extends Activity {
                 if (mMaxPrice.equals("0")) {
                     baseUrl = String.format(
                             //"%s/api/getProductList?Category=%s&ItemPage=%d",
-                            "%s/api/productloop?Category=%s&ItemPage=%d&AWSOffset=%d&ShopStyleOffset=%d&AsosOffset=%d",
-                            constant.gPrefUrl, categoryArr[mType], mPageIndex, mAWSOffset, mShopStyleOffset, mAsosOffset);
-                    AppUtils.brand = categoryArr[mType];
+                            "%s/api/%s?Category=%s&ItemPage=%d&AWSOffset=%d&ShopStyleOffset=%d&AsosOffset=%d&Sort=%s",
+                            constant.gPrefUrl, mShopName, categoryArr[mType], mPageIndex, mAWSOffset, mShopStyleOffset, mAsosOffset, mSortType);
+                    //   AppUtils.brand = categoryArr[mType];
                     AppUtils.putPref("brand", categoryArr[mType], DMAutoActivity.this);
                 } else {
-                    baseUrl = String
-                            .format(
-                                    //"%s/api/getProductList?Category=%s&MaximumPrice=%s&ItemPage=%d",
-                                    "%s/api/productloop?Category=%s&MaximumPrice=%s&ItemPage=%d&AWSOffset=%d&ShopStyleOffset=%d&AsosOffset=%d",
-                                    constant.gPrefUrl, categoryArr[mType],
-                                    mMaxPrice, mPageIndex, mAWSOffset, mShopStyleOffset, mAsosOffset);
-                    AppUtils.brand = categoryArr[mType];
+                    baseUrl = String.format(
+                            //"%s/api/getProductList?Category=%s&MaximumPrice=%s&ItemPage=%d",
+                            "%s/api/%s?Category=%s&MaximumPrice=%s&ItemPage=%d&AWSOffset=%d&ShopStyleOffset=%d&AsosOffset=%d&Sort=%s",
+                            constant.gPrefUrl, mShopName, categoryArr[mType],
+                            mMaxPrice, mPageIndex, mAWSOffset, mShopStyleOffset, mAsosOffset, mSortType);
+                    // AppUtils.brand = categoryArr[mType];
                     AppUtils.putPref("brand", categoryArr[mType], DMAutoActivity.this);
                 }
             }
@@ -332,9 +347,9 @@ public class DMAutoActivity extends Activity {
             int type = mPageIndex % 5;
             baseUrl = String.format(
                     //"%s/api/getProductList?Category=%s&ItemPage=%d",
-                    "%s/api/productloop?Category=%s&ItemPage=%d&AWSOffset=%d&ShopStyleOffset=%d&AsosOffset=%d",
-                    constant.gPrefUrl, categoryArr[type], mPageIndex, mAWSOffset, mShopStyleOffset, mAsosOffset);
-            AppUtils.brand = categoryArr[type];
+                    "%s/api/productloop?Category=%s&ItemPage=%d&AWSOffset=%d&ShopStyleOffset=%d&AsosOffset=%d&Sort=%s",
+                    constant.gPrefUrl, categoryArr[type], mPageIndex, mAWSOffset, mShopStyleOffset, mAsosOffset, mSortType);
+            // AppUtils.brand = categoryArr[type];
             AppUtils.putPref("brand", categoryArr[type], DMAutoActivity.this);
         }
 
@@ -358,7 +373,7 @@ public class DMAutoActivity extends Activity {
                     try {
                         mTotalResult = data.getInt("TotalResults");
                         mTotalPage = data.getInt("TotalPages");
-                        JSONArray jObj = data.getJSONArray("Items");// mayur changed as new responce gives array instead of object
+                        JSONArray jObj = data.getJSONArray("Items");// mayur changed as new response gives array instead of object
 
                         itemCount = data.getInt("ItemCount") <= jObj.length() ? data.getInt("ItemCount") : jObj.length();
                         if (jObj != null) {
@@ -407,9 +422,9 @@ public class DMAutoActivity extends Activity {
                     baseUrl = String
                             .format(
                                     //"%s/api/getProductList?Category=%s&ItemPage=%d&Brand=%s",
-                                    "%s/api/productloop?Category=%s&ItemPage=%d&Brand=%s&AWSOffset=%d&ShopStyleOffset=%d&AsosOffset=%d",
-                                    constant.gPrefUrl, categoryArr[type],
-                                    mPageIndex, AppUtils.brand, mAWSOffset, mShopStyleOffset, mAsosOffset);
+                                    "%s/api/%s?Category=%s&ItemPage=%d&Brand=%s&AWSOffset=%d&ShopStyleOffset=%d&AsosOffset=%d&Sort=%s",
+                                    constant.gPrefUrl, mShopName, categoryArr[type],
+                                    mPageIndex, AppUtils.brand, mAWSOffset, mShopStyleOffset, mAsosOffset, mSortType);
 
 
                 } else {
@@ -417,9 +432,9 @@ public class DMAutoActivity extends Activity {
                     baseUrl = String
                             .format(
                                     //"%s/api/getProductList?Category=%s&MaximumPrice=%s&ItemPage=%d&Brand=%s",
-                                    "%s/api/productloop?Category=%s&MaximumPrice=%s&ItemPage=%d&Brand=%s&AWSOffset=%d&ShopStyleOffset=%d&AsosOffset=%d",
-                                    constant.gPrefUrl, categoryArr[type],
-                                    mMaxPrice, mPageIndex, AppUtils.brand, mAWSOffset, mShopStyleOffset, mAsosOffset);
+                                    "%s/api/%s?Category=%s&MaximumPrice=%s&ItemPage=%d&Brand=%s&AWSOffset=%d&ShopStyleOffset=%d&AsosOffset=%d&Sort=%s",
+                                    constant.gPrefUrl, mShopName, categoryArr[type],
+                                    mMaxPrice, mPageIndex, AppUtils.brand, mAWSOffset, mShopStyleOffset, mAsosOffset, mSortType);
                 }
 
             } else {
@@ -428,9 +443,9 @@ public class DMAutoActivity extends Activity {
                     baseUrl = String
                             .format(
                                     //"%s/api/getProductList?Category=%s&ItemPage=%d&Brand=%s",
-                                    "%s/api/productloop?Category=%s&ItemPage=%d&Brand=%s&AWSOffset=%d&ShopStyleOffset=%d&AsosOffset=%d",
-                                    constant.gPrefUrl, categoryArr[mType],
-                                    mPageIndex, AppUtils.brand, mAWSOffset, mShopStyleOffset, mAsosOffset);
+                                    "%s/api/%s?Category=%s&ItemPage=%d&Brand=%s&AWSOffset=%d&ShopStyleOffset=%d&AsosOffset=%d&Sort=%s",
+                                    constant.gPrefUrl, mShopName, categoryArr[mType],
+                                    mPageIndex, AppUtils.brand, mAWSOffset, mShopStyleOffset, mAsosOffset, mSortType);
 
 
                     System.out.println("Brand" + AppUtils.brand);
@@ -444,9 +459,9 @@ public class DMAutoActivity extends Activity {
                     baseUrl = String
                             .format(
                                     //"%s/api/getProductList?Category=%s&MaximumPrice=%s&ItemPage=%d&Brand=%s",
-                                    "%s/api/productloop?Category=%s&MaximumPrice=%s&ItemPage=%d&Brand=%s&AWSOffset=%d&ShopStyleOffset=%d&AsosOffset=%d",
-                                    constant.gPrefUrl, categoryArr[mType],
-                                    mMaxPrice, mPageIndex, AppUtils.brand, mAWSOffset, mShopStyleOffset, mAsosOffset);
+                                    "%s/api/%s?Category=%s&MaximumPrice=%s&ItemPage=%d&Brand=%s&AWSOffset=%d&ShopStyleOffset=%d&AsosOffset=%d&Sort=%s",
+                                    constant.gPrefUrl, mShopName, categoryArr[mType],
+                                    mMaxPrice, mPageIndex, AppUtils.brand, mAWSOffset, mShopStyleOffset, mAsosOffset, mSortType);
                     System.out.println("Brand" + AppUtils.brand);
                     System.out.println("base" + baseUrl);
                 }
@@ -527,10 +542,21 @@ public class DMAutoActivity extends Activity {
                     Toast.makeText(DMAutoActivity.this, "Network Error",
                             Toast.LENGTH_LONG).show();
                 }
-
                 showProductGrid(itemCount);
             }
         }, baseUrl, true).execute();
     }
 
+    private void showShowcaseView() {
+        if (!SharedPreferenceUtil.getBoolean(constant.PREF_IS_AUTO_SHOWN, false)) {
+            mCoachMarkScreenIv.setVisibility(View.VISIBLE);
+            mCoachMarkScreenIv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mCoachMarkScreenIv.setVisibility(View.GONE);
+                    SharedPreferenceUtil.putValue(constant.PREF_IS_AUTO_SHOWN, true);
+                }
+            });
+        }
+    }
 }

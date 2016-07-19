@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -16,6 +17,9 @@ import android.widget.TextView;
 import com.mydimoda.adapter.DMMenuListAdapter;
 import com.mydimoda.widget.cropper.util.FontsUtil;
 import com.parse.ParseUser;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 public class DMFindMeActivity extends Activity {
 
@@ -29,12 +33,15 @@ public class DMFindMeActivity extends Activity {
 	RelativeLayout vExactLayout, vAutoLayout;
 	TextView vTxtFindMe, vTxtAuto;
 	String mCategory;
+	@Bind(R.id.act_find_coach_mrk_iv)
+	ImageView mCoachMarkScreenIv;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_findme);
+		ButterKnife.bind(this);
 
 		final ParseUser user = ParseUser.getCurrentUser();
 		boolean bPurchased = user.getBoolean("ratedMyDimoda");
@@ -137,6 +144,8 @@ public class DMFindMeActivity extends Activity {
 				startActivity(intent);
 			}
 		});
+
+		showShowcaseView();
 	}
 
 	@Override
@@ -173,5 +182,17 @@ public class DMFindMeActivity extends Activity {
 			vDrawerLayout.closeDrawer(vMenuLayout);
 		} else
 			vDrawerLayout.openDrawer(vMenuLayout);
+	}
+	private void showShowcaseView() {
+		if (!SharedPreferenceUtil.getBoolean(constant.PREF_IS_FIND_SHOWN, false)) {
+			mCoachMarkScreenIv.setVisibility(View.VISIBLE);
+			mCoachMarkScreenIv.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View view) {
+					mCoachMarkScreenIv.setVisibility(View.GONE);
+					SharedPreferenceUtil.putValue(constant.PREF_IS_FIND_SHOWN, true);
+				}
+			});
+		}
 	}
 }

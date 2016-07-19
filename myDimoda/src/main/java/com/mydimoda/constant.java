@@ -49,6 +49,8 @@ public class constant {
 
     //	public static String 					gPrefUrl 	= "http://52.25.182.16/index.php";
     public static String gPrefUrl = "http://purchase.myDiModa.com/index.php";
+
+
     // / engine value
     public static String[] gColor = {"empty", "black", "blue", "brown", "dark blue",
             "dark green", "dark red", "gray", "green",
@@ -337,4 +339,38 @@ public class constant {
     public static final String PREF_IS_HANGUP_SHOWN = "ishangupshown";
 
 
+    public static final String PREF_IS_FIND_SHOWN = "isfindshown";
+    public static final String PREF_IS_AUTO_SHOWN = "isautoshown";
+    public static final String PREF_IS_ORGANISE_SHOWN = "isorganiseshown";
+    public static final String PREF_IS_SETTING_SHOWN = "issettingshown";
+    public static final String PREF_IS_EXACT_SHOWN = "isexactshown";
+
+    public static final String PREF_IS_DETAIL_SHOWN = "isdetilshown";
+
+    public static final String PREF_IS_CAMERA_OPTION_SHOWN = "iscameraoptionhown";
+
+
+
+
+
+
+
+    // find cloths bundle key
+  public static final String SHOP_NAME = "shopname";
+    public static final String SORT_BY_KEY = "sortby";
+
+
+    // api key
+    public static final String SORT = "Sort";
+
+    public static final String SORT_HI_LO ="high-to-low";
+    public static final String SORT_LO_HI ="low-to-high";
+    public static final String SORT_RELEVANCE ="relevance"; // default
+
+
+    //Shop names api functions
+    public static final String All_OPTION = "productloop";
+    public static final String AMAZON_SHOP= "getAWSdata";
+    public static final String SHOPSTYLE_SHOP="getShopStyleData";
+    public static final String ASOS_SHOP="getAsosData";
 }

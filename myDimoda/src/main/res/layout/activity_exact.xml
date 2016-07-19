@@ -30,8 +30,8 @@
 
                     <Button
                         android:id="@+id/menu_btn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="@dimen/menu_btn_size"
+                        android:layout_height="@dimen/menu_btn_size"
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="15dp"
@@ -369,12 +369,82 @@
                                 android:textColor="#000000"
                                 android:textSize="20sp" />
                         </RelativeLayout>
+                        <RelativeLayout
+                            android:id="@+id/shop_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:layout_below="@id/design_layout"
+                            android:layout_marginTop="30dp"
+                            android:gravity="center_horizontal" >
 
+                            <TextView
+                                android:id="@+id/shop_edit"
+                                android:layout_width="150dp"
+                                android:layout_height="match_parent"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginRight="10dp"
+                                android:background="@drawable/edit_bg"
+                                android:gravity="center"
+                                android:hint="All"
+                                android:clickable="true"
+                                android:editable="false"
+                                android:focusable="false"
+                                android:textColor="#a3a3a3"
+                                android:textColorHint="#aaaaaa"
+                                android:textSize="20sp" />
+
+                            <TextView
+                                android:id="@+id/shop_lyt_title"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginRight="10dp"
+                                android:layout_toLeftOf="@id/shop_edit"
+                                android:text="@string/pick_shop"
+                                android:textColor="#000000"
+                                android:textSize="20sp" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/sort_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:layout_below="@id/shop_layout"
+                            android:layout_marginTop="30dp"
+                            android:gravity="center_horizontal" >
+
+                            <TextView
+                                android:id="@+id/sort_edit"
+                                android:layout_width="150dp"
+                                android:layout_height="match_parent"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginRight="10dp"
+                                android:background="@drawable/edit_bg"
+                                android:gravity="center"
+                                android:hint="Default"
+                                android:clickable="true"
+                                android:editable="false"
+                                android:focusable="false"
+                                android:textColor="#a3a3a3"
+                                android:textColorHint="#aaaaaa"
+                                android:textSize="20sp" />
+
+                            <TextView
+                                android:id="@+id/sort_lyt_title"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginRight="10dp"
+                                android:layout_toLeftOf="@id/sort_edit"
+                                android:text="@string/pick_sorting"
+                                android:textColor="#000000"
+                                android:textSize="20sp" />
+                        </RelativeLayout>
                         <Button
                             android:id="@+id/btn_findme"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/design_layout"
+                            android:layout_below="@id/sort_layout"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="50dp"
                             android:background="@drawable/button_gray_rounded"
@@ -408,6 +478,16 @@
                 </ListView>
             </LinearLayout>
         </android.support.v4.widget.DrawerLayout>
+        <ImageView
+            android:id="@+id/act_exact_coach_mrk_iv"
+            android:layout_width="match_parent"
+            android:src="@drawable/exact_coach_mark"
+            android:scaleType="fitXY"
+            android:clickable="true"
+            android:visibility="gone"
+            android:background="#565656"
+            android:paddingTop="4dp"
+            android:layout_height="match_parent" />
     </RelativeLayout>
 
 </RelativeLayout>

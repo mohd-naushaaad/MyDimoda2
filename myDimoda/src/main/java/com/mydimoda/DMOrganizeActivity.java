@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -16,6 +17,9 @@ import android.widget.TextView;
 import com.mydimoda.adapter.DMMenuListAdapter;
 import com.mydimoda.widget.cropper.util.FontsUtil;
 import com.parse.ParseUser;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 public class DMOrganizeActivity extends Activity {
 
@@ -31,11 +35,14 @@ public class DMOrganizeActivity extends Activity {
 
 	Button vBtnShirt, vBtnPant, vBtnCoat, vBtnTie, vBtnSuit;
 	RelativeLayout vCoatLayout, vTieLayout, vSuitLayout, vShoesLayout;
+	@Bind(R.id.act_hang_coach_mrk_iv)
+	ImageView mCoachMarkScreenIv;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_hangup);
+		ButterKnife.bind(this);
 
 		// / layout
 		vDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -184,6 +191,8 @@ public class DMOrganizeActivity extends Activity {
 				goDeleteActivity("suit");
 			}
 		});
+
+		showShowcaseView();
 	}
 
 	public void init() {
@@ -238,5 +247,18 @@ public class DMOrganizeActivity extends Activity {
 		Intent intent = new Intent(DMOrganizeActivity.this,
 				DMFindMeActivity.class);
 		startActivity(intent);
+	}
+	private void showShowcaseView() {
+		if (!SharedPreferenceUtil.getBoolean(constant.PREF_IS_ORGANISE_SHOWN, false)) {
+			mCoachMarkScreenIv.setImageResource(R.drawable.organise_coach);
+			mCoachMarkScreenIv.setVisibility(View.VISIBLE);
+			mCoachMarkScreenIv.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View view) {
+					mCoachMarkScreenIv.setVisibility(View.GONE);
+					SharedPreferenceUtil.putValue(constant.PREF_IS_ORGANISE_SHOWN, true);
+				}
+			});
+		}
 	}
 }

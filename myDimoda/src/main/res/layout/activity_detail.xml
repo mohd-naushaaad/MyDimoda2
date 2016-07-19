@@ -232,5 +232,12 @@
             </LinearLayout>
         </android.support.v4.widget.DrawerLayout>
     </RelativeLayout>
-
+    <ImageView
+        android:id="@+id/act_detail_coach_mrk_iv"
+        android:layout_width="match_parent"
+        android:src="@drawable/detail_coach_mark"
+        android:scaleType="fitXY"
+        android:clickable="true"
+        android:visibility="gone"
+        android:layout_height="match_parent" />
 </RelativeLayout>

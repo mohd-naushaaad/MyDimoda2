@@ -6,6 +6,7 @@ import java.util.HashMap;
 import org.json.JSONObject;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 public class MyAsyncTask extends AsyncTask<String, Integer, ArrayList<HashMap<String, String>>> {
 	
@@ -22,6 +23,7 @@ public class MyAsyncTask extends AsyncTask<String, Integer, ArrayList<HashMap<St
 		mCallback = callback;
 		mBaseURL = url;
 		mIsGet   = flag;
+		Log.d(getClass().getSimpleName(),url);
 	}
 	
 	@Override

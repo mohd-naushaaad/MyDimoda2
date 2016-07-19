@@ -398,6 +398,17 @@
                     android:paddingTop="60dp"></ListView>
             </LinearLayout>
         </android.support.v4.widget.DrawerLayout>
+
+        <ImageView
+            android:id="@+id/act_sett_coach_mrk_iv"
+            android:layout_width="match_parent"
+            android:src="@drawable/setting_coach_mark"
+            android:scaleType="fitXY"
+            android:clickable="true"
+            android:visibility="gone"
+            android:background="#565656"
+            android:paddingTop="4dp"
+            android:layout_height="match_parent" />
     </RelativeLayout>
 
 </RelativeLayout>

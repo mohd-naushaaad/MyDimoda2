@@ -17,6 +17,7 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -29,6 +30,9 @@ import com.mydimoda.interfaces.DialogItemClickListener;
 import com.mydimoda.widget.cropper.util.FontsUtil;
 
 import java.io.File;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 /**
  * @author Keyur
@@ -57,11 +61,15 @@ public class DMCaptureOptionActivity extends Activity {
     Bitmap mBitmap;
     String mType;
     boolean mFromMain;
+    @Bind(R.id.act_cap_optn_coach_mrk_iv)
+    ImageView mCoachMarkScreenIv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_capture_option);
+        ButterKnife.bind(this);
+
         mContext = this;
         // / layout
         vDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -124,7 +132,7 @@ public class DMCaptureOptionActivity extends Activity {
                 showGalleryDialog();
             }
         });
-
+showShowcaseView();
     }
 
     @Override
@@ -282,6 +290,18 @@ public class DMCaptureOptionActivity extends Activity {
             }, false);
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+    private void showShowcaseView() {
+        if (!SharedPreferenceUtil.getBoolean(constant.PREF_IS_CAMERA_OPTION_SHOWN, false)) {
+            mCoachMarkScreenIv.setVisibility(View.VISIBLE);
+            mCoachMarkScreenIv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mCoachMarkScreenIv.setVisibility(View.GONE);
+                    SharedPreferenceUtil.putValue(constant.PREF_IS_CAMERA_OPTION_SHOWN, true);
+                }
+            });
         }
     }
 }

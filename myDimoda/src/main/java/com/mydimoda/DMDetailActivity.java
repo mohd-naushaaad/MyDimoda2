@@ -31,6 +31,9 @@ import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingProgressListener;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class DMDetailActivity extends Activity {
 
 	// / menu
@@ -54,10 +57,13 @@ public class DMDetailActivity extends Activity {
 	Bitmap mBitmap;
 	int RESULT_CROP = 3;
 
+	@Bind(R.id.act_detail_coach_mrk_iv)
+	ImageView mCoachMarkScreenIv;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_detail);
+		ButterKnife.bind(this);
 
 		// / menu
 		vDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -135,6 +141,8 @@ public class DMDetailActivity extends Activity {
 				startActivity(i);
 			}
 		});
+
+		showShowcaseView();
 	}
 
 	public void init() {
@@ -368,5 +376,16 @@ public class DMDetailActivity extends Activity {
 			goProcessActivity();
 		}
 	}
-
+	private void showShowcaseView() {
+		if (!SharedPreferenceUtil.getBoolean(constant.PREF_IS_DETAIL_SHOWN, false)) {
+			mCoachMarkScreenIv.setVisibility(View.VISIBLE);
+			mCoachMarkScreenIv.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View view) {
+					mCoachMarkScreenIv.setVisibility(View.GONE);
+					SharedPreferenceUtil.putValue(constant.PREF_IS_DETAIL_SHOWN, true);
+				}
+			});
+		}
+	}
 }

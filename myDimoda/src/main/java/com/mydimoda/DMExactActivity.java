@@ -1,9 +1,15 @@
 package com.mydimoda;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.util.SortedList;
+import android.text.TextUtils;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -14,337 +20,484 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mydimoda.adapter.DMMenuListAdapter;
+import com.mydimoda.adapter.DMOptionsListAdapter;
 import com.mydimoda.widget.cropper.util.FontsUtil;
 
-public class DMExactActivity extends Activity {
+import java.util.HashMap;
 
-	// / menu
-	Button vBtnMenu;
-	ListView vMenuList;
-	TextView vTxtBack, vTxtTitle;
-	DrawerLayout vDrawerLayout;
-	LinearLayout vMenuLayout;
-	RelativeLayout vBackLayout;
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
-	Button vBtnFind;
-	EditText vEdtMax, vEdtDesign;
-	TextView vTxtMax, vTxtShirt, vTxtTrouser, vTxtJacket, vTxtTie, vTxtDesign;
-	ImageView vChkShirt, vChkTrouser, vChkJacket, vChkTie;
-	RelativeLayout vLytShirt, vLytTrouser, vLytJacket, vLytTie;
+public class DMExactActivity extends FragmentActivity {
 
-	int mType = 0;
-	boolean mFShirt, mFTrouser, mFJacket, mFTie;
-	Intent intent = getIntent();
-	String zone = "";
+    // / menu
+    Button vBtnMenu;
+    ListView vMenuList;
+    TextView vTxtBack, vTxtTitle;
+    DrawerLayout vDrawerLayout;
+    LinearLayout vMenuLayout;
+    RelativeLayout vBackLayout;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_exact);
+    Button vBtnFind;
+    EditText vEdtMax, vEdtDesign;
+    TextView vTxtMax, vTxtShirt, vTxtTrouser, vTxtJacket, vTxtTie, vTxtDesign;
+    ImageView vChkShirt, vChkTrouser, vChkJacket, vChkTie;
+    RelativeLayout vLytShirt, vLytTrouser, vLytJacket, vLytTie;
 
-		// / layout
-		vDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-		vMenuList = (ListView) findViewById(R.id.menu_list);
-		vMenuLayout = (LinearLayout) findViewById(R.id.menu_layout);
-		vBtnMenu = (Button) findViewById(R.id.menu_btn);
-		vTxtTitle = (TextView) findViewById(R.id.title_view);
-		FontsUtil.setExistenceLight(this, vTxtTitle);
-		vTxtBack = (TextView) findViewById(R.id.back_txt);
-		FontsUtil.setExistenceLight(this, vTxtBack);
+    int mType = 0;
+    boolean mFShirt, mFTrouser, mFJacket, mFTie;
+    Intent intent = getIntent();
+    String zone = "";
 
-		vBackLayout = (RelativeLayout) findViewById(R.id.back_layout);
+    String[] mShopList;
+    HashMap<String, String> mShopMap = new HashMap<>();
+    @Bind(R.id.shop_edit)
+    TextView mShopNameTv;
+    HashMap<String, String> mSort_Map = new HashMap<>();
+    @Bind(R.id.sort_edit)
+    TextView mSortTypeTv;
+    String[] mSortList;
 
-		vBtnFind = (Button) findViewById(R.id.btn_findme);
-		FontsUtil.setExistenceLight(this, vBtnFind);
+    @Bind(R.id.sort_lyt_title)
+    TextView mSortTitle;
+    @Bind(R.id.shop_lyt_title)
+    TextView mShopTitle;
+    @Bind(R.id.act_exact_coach_mrk_iv)
+    ImageView mCoachMarkScreenIv;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_exact);
+        ButterKnife.bind(this);
+        // / layout
+        vDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        vMenuList = (ListView) findViewById(R.id.menu_list);
+        vMenuLayout = (LinearLayout) findViewById(R.id.menu_layout);
+        vBtnMenu = (Button) findViewById(R.id.menu_btn);
+        vTxtTitle = (TextView) findViewById(R.id.title_view);
+        FontsUtil.setExistenceLight(this, vTxtTitle);
+        vTxtBack = (TextView) findViewById(R.id.back_txt);
+        FontsUtil.setExistenceLight(this, vTxtBack);
 
-		vEdtMax = (EditText) findViewById(R.id.max_edit);
-		FontsUtil.setExistenceLight(this, vEdtMax);
+        vBackLayout = (RelativeLayout) findViewById(R.id.back_layout);
 
-		vTxtMax = (TextView) findViewById(R.id.max_price_txt);
-		FontsUtil.setExistenceLight(this, vTxtMax);
+        vBtnFind = (Button) findViewById(R.id.btn_findme);
+        FontsUtil.setExistenceLight(this, vBtnFind);
 
-		vEdtDesign = (EditText) findViewById(R.id.design_edit);
-		FontsUtil.setExistenceLight(this, vEdtDesign);
+        vEdtMax = (EditText) findViewById(R.id.max_edit);
+        FontsUtil.setExistenceLight(this, vEdtMax);
 
-		vTxtDesign = (TextView) findViewById(R.id.design_price_txt);
-		FontsUtil.setExistenceLight(this, vTxtDesign);
+        vTxtMax = (TextView) findViewById(R.id.max_price_txt);
+        FontsUtil.setExistenceLight(this, vTxtMax);
 
-		vTxtShirt = (TextView) findViewById(R.id.shirt_txt);
-		FontsUtil.setExistenceLight(this, vTxtShirt);
+        vEdtDesign = (EditText) findViewById(R.id.design_edit);
+        FontsUtil.setExistenceLight(this, vEdtDesign);
 
-		vTxtTrouser = (TextView) findViewById(R.id.pants_txt);
-		FontsUtil.setExistenceLight(this, vTxtTrouser);
+        vTxtDesign = (TextView) findViewById(R.id.design_price_txt);
+        FontsUtil.setExistenceLight(this, vTxtDesign);
 
-		vTxtJacket = (TextView) findViewById(R.id.coat_txt);
-		FontsUtil.setExistenceLight(this, vTxtJacket);
+        vTxtShirt = (TextView) findViewById(R.id.shirt_txt);
+        FontsUtil.setExistenceLight(this, vTxtShirt);
 
-		vTxtTie = (TextView) findViewById(R.id.tie_txt);
-		FontsUtil.setExistenceLight(this, vTxtTie);
+        vTxtTrouser = (TextView) findViewById(R.id.pants_txt);
+        FontsUtil.setExistenceLight(this, vTxtTrouser);
 
-		vChkShirt = (ImageView) findViewById(R.id.shirt_check);
-		vChkTrouser = (ImageView) findViewById(R.id.pants_check);
-		vChkJacket = (ImageView) findViewById(R.id.coat_check);
-		vChkTie = (ImageView) findViewById(R.id.tie_check);
-		vLytShirt = (RelativeLayout) findViewById(R.id.restore_layout);
-		vLytTrouser = (RelativeLayout) findViewById(R.id.pants_layout);
-		vLytJacket = (RelativeLayout) findViewById(R.id.coat_layout);
-		vLytTie = (RelativeLayout) findViewById(R.id.tie_layout);
+        vTxtJacket = (TextView) findViewById(R.id.coat_txt);
+        FontsUtil.setExistenceLight(this, vTxtJacket);
 
-		vBtnMenu.setOnClickListener(new View.OnClickListener() {
+        vTxtTie = (TextView) findViewById(R.id.tie_txt);
+        FontsUtil.setExistenceLight(this, vTxtTie);
 
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				slideMenu();
-			}
-		});
+        vChkShirt = (ImageView) findViewById(R.id.shirt_check);
+        vChkTrouser = (ImageView) findViewById(R.id.pants_check);
+        vChkJacket = (ImageView) findViewById(R.id.coat_check);
+        vChkTie = (ImageView) findViewById(R.id.tie_check);
+        vLytShirt = (RelativeLayout) findViewById(R.id.restore_layout);
+        vLytTrouser = (RelativeLayout) findViewById(R.id.pants_layout);
+        vLytJacket = (RelativeLayout) findViewById(R.id.coat_layout);
+        vLytTie = (RelativeLayout) findViewById(R.id.tie_layout);
 
-		vMenuList.setOnItemClickListener(new OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-				constant.selectMenuItem(DMExactActivity.this, position, true);
-			}
-		});
+        vBtnMenu.setOnClickListener(new View.OnClickListener() {
 
-		vBackLayout.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                slideMenu();
+            }
+        });
 
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				finish();
-			}
-		});
+        vMenuList.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                constant.selectMenuItem(DMExactActivity.this, position, true);
+            }
+        });
 
-		vBtnFind.setOnClickListener(new View.OnClickListener() {
+        vBackLayout.setOnClickListener(new View.OnClickListener() {
 
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				findMeProduct();
-			}
-		});
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                finish();
+            }
+        });
 
-		vLytShirt.setOnClickListener(new View.OnClickListener() {
+        vBtnFind.setOnClickListener(new View.OnClickListener() {
 
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				selectType(1);
-				AppUtils.brand = "";
-				vEdtDesign.setText("");
-				vEdtDesign.setHint("ALL");
-			}
-		});
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                findMeProduct();
+            }
+        });
 
-		vLytTrouser.setOnClickListener(new View.OnClickListener() {
+        vLytShirt.setOnClickListener(new View.OnClickListener() {
 
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				selectType(2);
-				AppUtils.brand = "";
-				vEdtDesign.setText("");
-				vEdtDesign.setHint("ALL");
-			}
-		});
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                selectType(1);
+                AppUtils.brand = "";
+                vEdtDesign.setText("");
+                vEdtDesign.setHint("ALL");
+            }
+        });
 
-		vLytJacket.setOnClickListener(new View.OnClickListener() {
+        vLytTrouser.setOnClickListener(new View.OnClickListener() {
 
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				selectType(3);
-				AppUtils.brand = "";
-				vEdtDesign.setText("");
-				vEdtDesign.setHint("ALL");
-			}
-		});
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                selectType(2);
+                AppUtils.brand = "";
+                vEdtDesign.setText("");
+                vEdtDesign.setHint("ALL");
+            }
+        });
 
-		vLytTie.setOnClickListener(new View.OnClickListener() {
+        vLytJacket.setOnClickListener(new View.OnClickListener() {
 
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				selectType(4);
-				AppUtils.brand = "";
-				vEdtDesign.setText("");
-				vEdtDesign.setHint("ALL");
-			}
-		});
-	}
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                selectType(3);
+                AppUtils.brand = "";
+                vEdtDesign.setText("");
+                vEdtDesign.setHint("ALL");
+            }
+        });
 
-	@Override
-	protected void onResume() {
-		super.onResume();
+        vLytTie.setOnClickListener(new View.OnClickListener() {
 
-		init();
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                selectType(4);
+                AppUtils.brand = "";
+                vEdtDesign.setText("");
+                vEdtDesign.setHint("ALL");
+            }
+        });
+
+        mShopNameTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showShopDialog();
+            }
+        });
+        mShopList = getResources().getStringArray(R.array.shop_filter);
+        mSortList = getResources().getStringArray(R.array.sort_filter);
+        mShopMap = fillShopmap(mShopMap, mShopList);
+        mSort_Map = fillSortmap(mSort_Map, mSortList);
+        mSortTypeTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showSortDialog();
+            }
+        });
+        mSortTypeTv.setText(mSortList[0]);
+
+        mShopNameTv.setText(mShopList[0]);
+        FontsUtil.setExistenceLight(this, mShopNameTv);
+        FontsUtil.setExistenceLight(this, mSortTypeTv);
+        FontsUtil.setExistenceLight(this, mSortTitle);
+        FontsUtil.setExistenceLight(this, mShopTitle);
+
+        showShowcaseView();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        init();
 
 		/*
-		 * Bundle extras = getIntent().getExtras(); if (extras != null) { zone =
+         * Bundle extras = getIntent().getExtras(); if (extras != null) { zone =
 		 * extras.getString("zone"); }
 		 */
-		vEdtDesign.setOnClickListener(new View.OnClickListener() {
+        vEdtDesign.setOnClickListener(new View.OnClickListener() {
 
-			@Override
-			public void onClick(View v) {
+            @Override
+            public void onClick(View v) {
 
-				System.out.println("TYPE" + mType);
-				AppUtils.putPref("type", String.valueOf(mType),
-						DMExactActivity.this);
-				Intent m_intent = new Intent(DMExactActivity.this,
-						MainActivity.class);
-				m_intent.putExtra("type", mType);
-				System.out.println("Main" + mType);
-				startActivity(m_intent);
+                System.out.println("TYPE" + mType);
+                AppUtils.putPref("type", String.valueOf(mType),
+                        DMExactActivity.this);
+                Intent m_intent = new Intent(DMExactActivity.this,
+                        MainActivity.class);
+                m_intent.putExtra("type", mType);
+                System.out.println("Main" + mType);
+                startActivity(m_intent);
 
-			}
-		});
+            }
+        });
 
-		if (AppUtils.brand != null) {
-			vEdtDesign.setText(AppUtils.brand);
-			AppUtils.yes = "false";
-		} else {
-			vEdtDesign.setText(AppUtils.brand);
-			AppUtils.yes = "true";
-			vEdtDesign.setHint("ALL");
-		}
+        if (!TextUtils.isEmpty(AppUtils.brand)) {
+            vEdtDesign.setText(AppUtils.brand);
+            AppUtils.yes = "false";
+        } else {
+            vEdtDesign.setText("");
+            AppUtils.yes = "true";
+            vEdtDesign.setHint("ALL");
+        }
 
 		/*
-		 * if(AppUtils.getPref("zone", DMExactActivity.this) != null) {
+         * if(AppUtils.getPref("zone", DMExactActivity.this) != null) {
 		 * 
 		 * vEdtDesign.setText(AppUtils.getPref("zone", DMExactActivity.this));
 		 * AppUtils.yes ="false"; } else { AppUtils.yes ="true"; }
 		 */
 
-	}
+    }
 
-	public void init() {
-		showMenu();
-		// setViewWithFont();
-	}
+    public void init() {
+        showMenu();
+        // setViewWithFont();
+    }
 
-	// / --------------------------------- set font
-	// -------------------------------------
-	// public void setViewWithFont()
-	// {
-	// vTxtTitle.setTypeface(constant.fontface);
-	// vTxtBack.setTypeface(constant.fontface);
-	// vTxtMax.setTypeface(constant.fontface);
-	// vTxtDesign.setTypeface(constant.fontface);
-	// vTxtShirt.setTypeface(constant.fontface);
-	// vTxtTrouser.setTypeface(constant.fontface);
-	// vTxtJacket.setTypeface(constant.fontface);
-	// vTxtTie.setTypeface(constant.fontface);
-	// vBtnFind.setTypeface(constant.fontface);
-	//
-	//
-	//
-	// }
+    // / --------------------------------- set font
+    // -------------------------------------
+    // public void setViewWithFont()
+    // {
+    // vTxtTitle.setTypeface(constant.fontface);
+    // vTxtBack.setTypeface(constant.fontface);
+    // vTxtMax.setTypeface(constant.fontface);
+    // vTxtDesign.setTypeface(constant.fontface);
+    // vTxtShirt.setTypeface(constant.fontface);
+    // vTxtTrouser.setTypeface(constant.fontface);
+    // vTxtJacket.setTypeface(constant.fontface);
+    // vTxtTie.setTypeface(constant.fontface);
+    // vBtnFind.setTypeface(constant.fontface);
+    //
+    //
+    //
+    // }
 
-	// / --------------------------------- show menu list
-	// --------------------------------------
-	public void showMenu() {
-		vMenuList.setAdapter(new DMMenuListAdapter(this, constant.gMenuList));
-	}
+    // / --------------------------------- show menu list
+    // --------------------------------------
+    public void showMenu() {
+        vMenuList.setAdapter(new DMMenuListAdapter(this, constant.gMenuList));
+    }
 
-	// / --------------------------------- slide menu section
-	// ------------------------------
-	public void slideMenu() {
-		if (vDrawerLayout.isDrawerOpen(vMenuLayout)) {
-			vDrawerLayout.closeDrawer(vMenuLayout);
-		} else
-			vDrawerLayout.openDrawer(vMenuLayout);
-	}
+    // / --------------------------------- slide menu section
+    // ------------------------------
+    public void slideMenu() {
+        if (vDrawerLayout.isDrawerOpen(vMenuLayout)) {
+            vDrawerLayout.closeDrawer(vMenuLayout);
+        } else
+            vDrawerLayout.openDrawer(vMenuLayout);
+    }
 
-	// / -------------------------------- when items is clicked, show checked
-	// state --------
-	public void selectType(int type) {
-		if (type == 1) {
-			// Shirts
-			mFShirt = !mFShirt;
-			mFTrouser = false;
-			mFJacket = false;
-			mFTie = false;
-		} else if (type == 2) {
-			// Trousers
-			mFTrouser = !mFTrouser;
-			mFShirt = false;
-			mFJacket = false;
-			mFTie = false;
-		} else if (type == 3) {
-			// Jacket
-			mFJacket = !mFJacket;
-			mFTrouser = false;
-			mFShirt = false;
-			mFTie = false;
-		} else if (type == 4) {
-			// Tie
-			mFTie = !mFTie;
-			mFJacket = false;
-			mFTrouser = false;
-			mFShirt = false;
-		}
+    // / -------------------------------- when items is clicked, show checked
+    // state --------
+    public void selectType(int type) {
+        if (type == 1) {
+            // Shirts
+            mFShirt = !mFShirt;
+            mFTrouser = false;
+            mFJacket = false;
+            mFTie = false;
+        } else if (type == 2) {
+            // Trousers
+            mFTrouser = !mFTrouser;
+            mFShirt = false;
+            mFJacket = false;
+            mFTie = false;
+        } else if (type == 3) {
+            // Jacket
+            mFJacket = !mFJacket;
+            mFTrouser = false;
+            mFShirt = false;
+            mFTie = false;
+        } else if (type == 4) {
+            // Tie
+            mFTie = !mFTie;
+            mFJacket = false;
+            mFTrouser = false;
+            mFShirt = false;
+        }
 
-		vChkShirt.setImageResource(R.drawable.edit_yel_line_bg);
-		vChkTrouser.setImageResource(R.drawable.edit_yel_line_bg);
-		vChkJacket.setImageResource(R.drawable.edit_yel_line_bg);
-		vChkTie.setImageResource(R.drawable.edit_yel_line_bg);
+        vChkShirt.setImageResource(R.drawable.edit_yel_line_bg);
+        vChkTrouser.setImageResource(R.drawable.edit_yel_line_bg);
+        vChkJacket.setImageResource(R.drawable.edit_yel_line_bg);
+        vChkTie.setImageResource(R.drawable.edit_yel_line_bg);
 
-		if (mFShirt) {
-			vChkShirt.setImageResource(R.drawable.img_check_sel);
-			mType = constant.SHIRT;
-			AppUtils.putPref("type", String.valueOf(mType),
-					DMExactActivity.this);
-			AppUtils.brand = "";
-			vEdtDesign.setHint("ALL");
-		} else if (mFTrouser) {
-			vChkTrouser.setImageResource(R.drawable.img_check_sel);
-			mType = constant.TROUSERS;
-			AppUtils.brand = "";
-			AppUtils.putPref("type", String.valueOf(mType),
-					DMExactActivity.this);
-			vEdtDesign.setHint("ALL");
-		} else if (mFJacket) {
-			vChkJacket.setImageResource(R.drawable.img_check_sel);
-			mType = constant.JACKET;
-			AppUtils.brand = "";
-			AppUtils.putPref("type", String.valueOf(mType),
-					DMExactActivity.this);
-			vEdtDesign.setHint("ALL");
-		} else if (mFTie) {
-			vChkTie.setImageResource(R.drawable.img_check_sel);
-			mType = constant.TIE;
-			AppUtils.brand = "";
-			AppUtils.putPref("type", String.valueOf(mType),
-					DMExactActivity.this);
-			vEdtDesign.setHint("ALL");
-		} else {
-			mType = constant.NONE;
-			vEdtDesign.setHint("ALL");
-		}
-	}
+        if (mFShirt) {
+            vChkShirt.setImageResource(R.drawable.img_check_sel);
+            mType = constant.SHIRT;
+            AppUtils.putPref("type", String.valueOf(mType),
+                    DMExactActivity.this);
+            AppUtils.brand = "";
+            vEdtDesign.setHint("ALL");
+        } else if (mFTrouser) {
+            vChkTrouser.setImageResource(R.drawable.img_check_sel);
+            mType = constant.TROUSERS;
+            AppUtils.brand = "";
+            AppUtils.putPref("type", String.valueOf(mType),
+                    DMExactActivity.this);
+            vEdtDesign.setHint("ALL");
+        } else if (mFJacket) {
+            vChkJacket.setImageResource(R.drawable.img_check_sel);
+            mType = constant.JACKET;
+            AppUtils.brand = "";
+            AppUtils.putPref("type", String.valueOf(mType),
+                    DMExactActivity.this);
+            vEdtDesign.setHint("ALL");
+        } else if (mFTie) {
+            vChkTie.setImageResource(R.drawable.img_check_sel);
+            mType = constant.TIE;
+            AppUtils.brand = "";
+            AppUtils.putPref("type", String.valueOf(mType),
+                    DMExactActivity.this);
+            vEdtDesign.setHint("ALL");
+        } else {
+            mType = constant.NONE;
+            vEdtDesign.setHint("ALL");
+        }
+    }
 
-	// / --------------------------- find products with price from server
-	// ------------
-	public void findMeProduct() {
-		String maxPrice = vEdtMax.getText().toString();
+    // / --------------------------- find products with price from server
+    // ------------
+    public void findMeProduct() {
+        String maxPrice = vEdtMax.getText().toString();
 
-		if (maxPrice.equals("")) {
-			constant.alertbox("Warning!", "Max Price Empty.", this);
-		} else {
-			Intent intent = new Intent(this, DMAutoActivity.class);
-			intent.putExtra("from", "exact");
-			intent.putExtra("closet", mType);
-			AppUtils.putPref("type", String.valueOf(mType),
-					DMExactActivity.this);
-			System.out.println("closet" + mType);
-			intent.putExtra("price", maxPrice);
-			startActivity(intent);
-		}
+        if (maxPrice.equals("")) {
+            constant.alertbox("Warning!", "Max Price Empty.", this);
+        } else {
+            Intent intent = new Intent(this, DMAutoActivity.class);
+            intent.putExtra("from", "exact");
+            intent.putExtra("closet", mType);
+            intent.putExtra(constant.SHOP_NAME, mShopMap.get(mShopNameTv.getText()));
+            intent.putExtra(constant.SORT_BY_KEY, mSort_Map.get(mSortTypeTv.getText()));
+            AppUtils.putPref("type", String.valueOf(mType),
+                    DMExactActivity.this);
+            System.out.println("closet" + mType);
+            intent.putExtra("price", maxPrice);
+            startActivity(intent);
+        }
 
-	}
+    }
 
-	@Override
-	public void onBackPressed() {
-		AppUtils.brand = "";
-		vEdtDesign.setText("");
-		super.onBackPressed();
-	}
+    @Override
+    public void onBackPressed() {
+        AppUtils.brand = "";
+        vEdtDesign.setText("");
+        super.onBackPressed();
+    }
 
+    private AlertDialog mTypeDialog;
+
+    public void showShopDialog() {
+        if (mTypeDialog == null) {
+            AlertDialog.Builder mBuilder = new AlertDialog.Builder(new ContextThemeWrapper(DMExactActivity.this, android.R.style.Theme_Holo));
+            View mmain = this.getLayoutInflater().inflate(R.layout.dialog_options, null);
+
+            ListView mOptions = (ListView) mmain.findViewById(R.id.dialog_options_lstvw);
+            final DMOptionsListAdapter mAdapter = new DMOptionsListAdapter(this, mShopList);
+
+            mOptions.setAdapter(mAdapter);
+
+            mOptions.setOnItemClickListener(new OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    mShopNameTv.setText(mShopList[position]);
+                    if (mTypeDialog != null && mTypeDialog.isShowing()) {
+                        mTypeDialog.dismiss();
+                    }
+                }
+            });
+            mBuilder.setView(mmain);
+            mTypeDialog = mBuilder.create();
+        }
+
+        mTypeDialog.show();
+    }
+
+    private AlertDialog mSortByDialog;
+
+    public void showSortDialog() {
+        if (mSortByDialog == null) {
+            AlertDialog.Builder mBuilder = new AlertDialog.Builder(new ContextThemeWrapper(DMExactActivity.this, android.R.style.Theme_Holo));
+            View mmain = this.getLayoutInflater().inflate(R.layout.dialog_options, null);
+
+            ListView mOptions = (ListView) mmain.findViewById(R.id.dialog_options_lstvw);
+            final DMOptionsListAdapter mAdapter = new DMOptionsListAdapter(this, mSortList);
+
+            mOptions.setAdapter(mAdapter);
+
+            mOptions.setOnItemClickListener(new OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    mSortTypeTv.setText(mSortList[position]);
+                    if (mSortByDialog != null && mSortByDialog.isShowing()) {
+                        mSortByDialog.dismiss();
+                    }
+                }
+            });
+            mBuilder.setView(mmain);
+            mSortByDialog = mBuilder.create();
+        }
+        mSortByDialog.show();
+    }
+
+    /**
+     * @param fillMe    - the target hashmap to be populated
+     * @param mShopList make sure sequence in shop list syncs with api functions here
+     * @return
+     */
+    private HashMap<String, String> fillShopmap(@NonNull HashMap<String, String> fillMe, @NonNull String[] mShopList) {
+        if (mShopList == null) {
+            throw new NullPointerException("Shop list cannot be null");
+        }
+        fillMe.put(mShopList[0], constant.All_OPTION);
+        fillMe.put(mShopList[1], constant.AMAZON_SHOP);
+        fillMe.put(mShopList[2], constant.SHOPSTYLE_SHOP);
+        fillMe.put(mShopList[3], constant.ASOS_SHOP);
+        return fillMe;
+    }
+
+    /**
+     * @param fillMe    - the target hashmap to be populated
+     * @param mSortList make sure sequence in sort list syncs with api values here
+     * @return
+     */
+    private HashMap<String, String> fillSortmap(HashMap<String, String> fillMe, String[] mSortList) {
+        if (mSortList == null) {
+            throw new NullPointerException("Sort list cannot be null");
+        }
+        fillMe.put(mSortList[0], constant.SORT_RELEVANCE);
+        fillMe.put(mSortList[1], constant.SORT_HI_LO);
+        fillMe.put(mSortList[2], constant.SORT_LO_HI);
+        return fillMe;
+    }
+    private void showShowcaseView() {
+        if (!SharedPreferenceUtil.getBoolean(constant.PREF_IS_EXACT_SHOWN, false)) {
+            mCoachMarkScreenIv.setVisibility(View.VISIBLE);
+            mCoachMarkScreenIv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mCoachMarkScreenIv.setVisibility(View.GONE);
+                    SharedPreferenceUtil.putValue(constant.PREF_IS_EXACT_SHOWN, true);
+                }
+            });
+        }
+    }
 }

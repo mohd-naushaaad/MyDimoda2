@@ -87,9 +87,8 @@
 
     </string-array>
 
-    
-    
-      <!-- Shirt Names -->
+
+    <!-- Shirt Names -->
     <string-array name="shirts_names_zone">
         <item>"Tom's Ware</item>
         <item>Kenneth Cole REACTION</item>
@@ -173,7 +172,7 @@
         <item>Siksik</item>
         <item>Versace</item>
     </string-array>
-    
+
     <!-- Tie Names -->
     <string-array name="tie_names">
         <item>boxed-gifts</item>
@@ -231,7 +230,7 @@
         <item>Versace</item>
     </string-array>
 
-      <!-- Tie Names -->
+    <!-- Tie Names -->
     <string-array name="tie_names_zone">
         <item>boxed-gifts</item>
         <item>Retreez</item>
@@ -287,7 +286,7 @@
         <item>Thom-Browne</item>
         <item>Versace</item>
     </string-array>
-    
+
     <!-- Jacket Names -->
     <string-array name="jacket_names">
         <item>Columbia</item>
@@ -355,8 +354,8 @@
         <item>thom-browne</item>
         <item>Versace</item>
     </string-array>
-    
-      <!-- Jacket Names -->
+
+    <!-- Jacket Names -->
     <string-array name="jacket_names_zone">
         <item>Columbia</item>
         <item>Hee Grand</item>
@@ -499,8 +498,8 @@
         <item>Reebok</item>
         <item>Versace</item>
     </string-array>
-    
-     <!-- Torusers -->
+
+    <!-- Torusers -->
     <string-array name="trouser_names_zone">
         <item>Levi\'s</item>
         <item>Haggar</item>
@@ -575,9 +574,8 @@
         <item>Reebok</item>
         <item>Versace</item>
     </string-array>
-    
-    
-    
+
+
     <string-array name="cities_tz" translatable="false">
         <item>Africa/Abidjan</item>
         <item>Africa/Accra</item>
@@ -1246,5 +1244,15 @@
         <item>Kamchatka</item>
         <item>Chennai</item>
     </string-array>
-
+    <string-array name="shop_filter">
+        <item>All</item>
+        <item>Amazon</item>
+        <item>ShopStyle</item>
+        <item>Asos</item>
+    </string-array>
+    <string-array name="sort_filter">
+        <item>Relevance</item>
+        <item>Price high to low</item>
+        <item>Price low to high</item>
+    </string-array>
 </resources>

@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -55,7 +56,8 @@ public class DMSettingActivity extends Activity {
     TextView mStyleMeLAbel;
     @Bind(R.id.act_setting_stylme_point_tv)
     TextView mStylemePointTv;
-
+    @Bind(R.id.act_sett_coach_mrk_iv)
+    ImageView mCoachMarkScreenIv;
 
     // / Layout variables
     TextView vTxtRestore, vTxtLogout, vTxtIntro, VTxtRate;
@@ -202,7 +204,7 @@ public class DMSettingActivity extends Activity {
                 SharedPreferenceUtil.save();
             }
         });
-
+        showShowcaseView();
 
     }
 
@@ -370,6 +372,19 @@ public class DMSettingActivity extends Activity {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    private void showShowcaseView() {
+        if (!SharedPreferenceUtil.getBoolean(constant.PREF_IS_SETTING_SHOWN, false)) {
+            mCoachMarkScreenIv.setVisibility(View.VISIBLE);
+            mCoachMarkScreenIv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mCoachMarkScreenIv.setVisibility(View.GONE);
+                    SharedPreferenceUtil.putValue(constant.PREF_IS_SETTING_SHOWN, true);
+                }
+            });
         }
     }
 }
