@@ -21,12 +21,14 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mydimoda.AppUtils;
 import com.mydimoda.DMCropImageListActivity;
 import com.mydimoda.R;
+import com.mydimoda.SharedPreferenceUtil;
 import com.mydimoda.adapter.DMCropActRecycAdapter;
 import com.mydimoda.constant;
 import com.mydimoda.model.CropListModel;
@@ -80,6 +82,9 @@ public class CropActivity extends Activity implements OnClickListener {
         mAspectRatioY = bundle.getInt(ASPECT_RATIO_Y);
     }
 
+    @Bind(R.id.act_croap_coach_mrk_iv)
+    ImageView mCoachMarkScreenIv;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
@@ -126,6 +131,7 @@ public class CropActivity extends Activity implements OnClickListener {
             mCropListVw.setVisibility(View.GONE);
             mAddCropBtn.setVisibility(View.INVISIBLE);
         }
+        showShowcaseView();
     }
 
     private void prepareMultiCropView() {
@@ -218,10 +224,11 @@ public class CropActivity extends Activity implements OnClickListener {
 
     private void procDone() {
         constant.gCropBitmap = _cropView.getCroppedImage();
+
         if (getParent() == null)
-            setResult(RESULT_OK);
+            setResult(RESULT_OK, getIntent());
         else
-            getParent().setResult(RESULT_OK);
+            getParent().setResult(RESULT_OK, getIntent());
 
         if (getIntent().getBooleanExtra(constant.FRM_DIALG_KEY, false)) {
             if (mCropListVw.getVisibility() != View.VISIBLE) {
@@ -236,6 +243,7 @@ public class CropActivity extends Activity implements OnClickListener {
 
             //   finish();
         } else {
+
             finish();
 
         }
@@ -367,5 +375,18 @@ public class CropActivity extends Activity implements OnClickListener {
     protected void onDestroy() {
         super.onDestroy();
         //   constant.getImageLst().clear();
+    }
+
+    private void showShowcaseView() {
+        if (!SharedPreferenceUtil.getBoolean(constant.PREF_IS_CROP_SHOWN, false)) {
+            mCoachMarkScreenIv.setVisibility(View.VISIBLE);
+            mCoachMarkScreenIv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mCoachMarkScreenIv.setVisibility(View.GONE);
+                    SharedPreferenceUtil.putValue(constant.PREF_IS_CROP_SHOWN, true);
+                }
+            });
+        }
     }
 }

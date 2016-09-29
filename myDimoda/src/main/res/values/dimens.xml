@@ -28,4 +28,5 @@
     <dimen name="dialog.share.image.height">220dp</dimen>
     <dimen name="dialog.share.padding">12dp</dimen>
     <dimen name="dialog.share.iconsize">45dp</dimen>
+    <dimen name="act_dtl_btn_hight">50dp</dimen>
 </resources>

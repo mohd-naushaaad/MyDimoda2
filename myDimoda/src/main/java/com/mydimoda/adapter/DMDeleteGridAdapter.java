@@ -104,14 +104,13 @@ public class DMDeleteGridAdapter extends BaseAdapter {
 			 }
 		});
 		
-		holder.imageView.setOnLongClickListener(new OnLongClickListener() {
+		holder.imageView.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
-			public boolean onLongClick(View arg0) {
+			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				holder.deleteBtn.setVisibility(View.VISIBLE);
 				holder.formalBtn.setVisibility(View.VISIBLE);
-				return false;
 			}
 		});
 	
@@ -145,7 +144,7 @@ public class DMDeleteGridAdapter extends BaseAdapter {
 	static class ViewHolder {
 		ImageView imageView;
 		CircularProgressBar progress;
-		Button    deleteBtn, formalBtn;
+		Button deleteBtn, formalBtn;
 	}    
 }
 

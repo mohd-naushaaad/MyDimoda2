@@ -51,6 +51,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class DMCaptureActivity extends FragmentActivity implements OnClickListener,
@@ -105,6 +106,8 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
     AlertDialog mCatDialog;
     AlertDialog mTypeDialog;
 
+    @Bind(R.id.act_capture_scrn_coach)
+    ImageView mCoachMarkScreenIv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -211,7 +214,7 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
             }
         });
 
-
+        showShowcaseView();
         initOnCreate();
     }
 
@@ -446,9 +449,10 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
                 boolean isFront = false;
 
                 Bitmap bm = Bitmap.createScaledBitmap(mBitmap,
-                        mBitmap.getWidth() / 3, mBitmap.getHeight() / 3, false);
+                        mBitmap.getWidth() / 5, mBitmap.getHeight() / 5, false);
                 int wid = bm.getWidth();
                 int hei = bm.getHeight();
+
 
                 if (wid > 700)
                     isFront = false;
@@ -457,21 +461,19 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
 
                 if (wid > hei) {
                     Bitmap bmp = getRotateBitmap(bm, isFront);
-                    vCaptureImg.setImageBitmap(bmp);
+                    mBitmap = bmp;
+                    vCaptureImg.setImageBitmap(mBitmap);
+                    //bmp.recycle();
                 }
 
                 wid = mBitmap.getWidth();
                 hei = mBitmap.getHeight();
 
-                if (wid > 700)
-                    isFront = false;
-                else
-                    isFront = true;
 
                 if (wid > hei) {
-                    Bitmap bmp = getRotateBitmap(mBitmap, isFront);
+                    Bitmap bmp = getRotateBitmap(bm, isFront);
                     mBitmap = bmp;
-                    bmp = null;
+                    // bmp.recycle();
                 }
                 goCropActivity();
             }
@@ -673,7 +675,7 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
 
                 } else {
 
-                    Toast.makeText(DMCaptureActivity.this,  AppUtils.asUpperCaseFirstChar(e.getMessage()),
+                    Toast.makeText(DMCaptureActivity.this, AppUtils.asUpperCaseFirstChar(e.getMessage()),
                             Toast.LENGTH_LONG).show();
                 }
             }
@@ -706,7 +708,7 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
                                     Toast.LENGTH_LONG).show();
                         }
                     } else {
-                        Toast.makeText(DMCaptureActivity.this,  AppUtils.asUpperCaseFirstChar(e.getMessage()),
+                        Toast.makeText(DMCaptureActivity.this, AppUtils.asUpperCaseFirstChar(e.getMessage()),
                                 Toast.LENGTH_LONG).show();
                     }
                 }
@@ -726,7 +728,7 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
                                     Toast.LENGTH_LONG).show();
                         }
                     } else {
-                        Toast.makeText(DMCaptureActivity.this,  AppUtils.asUpperCaseFirstChar(e.getMessage()),
+                        Toast.makeText(DMCaptureActivity.this, AppUtils.asUpperCaseFirstChar(e.getMessage()),
                                 Toast.LENGTH_LONG).show();
                     }
                 }
@@ -734,5 +736,29 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
         }
         constant.hideProgress();
         finish();
+    }
+
+    private void showShowcaseView() {
+        if (!SharedPreferenceUtil.getBoolean(constant.PREF_IS_CAPTURE_ACT_SHOWN, false)) {
+            mCoachMarkScreenIv.setVisibility(View.VISIBLE);
+            mCoachMarkScreenIv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mCoachMarkScreenIv.setVisibility(View.GONE);
+                    SharedPreferenceUtil.putValue(constant.PREF_IS_CAPTURE_ACT_SHOWN, true);
+                }
+            });
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        try {
+           // mBitmap.recycle();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }

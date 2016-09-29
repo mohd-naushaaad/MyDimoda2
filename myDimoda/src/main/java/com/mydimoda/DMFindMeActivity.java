@@ -136,11 +136,12 @@ public class DMFindMeActivity extends Activity {
 
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				AppUtils.brand = "";
 				Intent intent = new Intent(DMFindMeActivity.this,
 						DMAutoActivity.class);
 				intent.putExtra("from", "findme");
 				intent.putExtra("closet", constant.NONE);
-				intent.putExtra("price", 0);
+				intent.putExtra("price", "0");
 				startActivity(intent);
 			}
 		});

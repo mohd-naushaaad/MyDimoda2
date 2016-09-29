@@ -21,6 +21,7 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageButton;
@@ -52,6 +53,8 @@ public class AppUtils {
 
     public static String yes = "";
     public static String brand = "";
+    public static String lastCategoryCalled = "";
+    public static String[] categoryArr = {"shirt", "jacket", "trousers", "tie", "suit"};
 
     public static boolean isConnectingToInternet(Context context) {
         ConnectivityManager connectivity = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -509,6 +512,14 @@ public class AppUtils {
             mContext.startActivity(resolved ? tweetIntent : Intent.createChooser(tweetIntent, "Choose one"));
         } catch (final ActivityNotFoundException e) {
             Toast.makeText(mContext, mContext.getString(R.string.no_app_msg, "Instagram"), Toast.LENGTH_SHORT).show();//"You don't seem to have Instagram installed on this device", ;
+        }
+    }
+
+    public static void hideSoftKeyBoard(Activity mActivity) {
+        InputMethodManager imm = (InputMethodManager) mActivity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+
+        if(imm.isAcceptingText()) { // verify if the soft keyboard is open
+            imm.hideSoftInputFromWindow( mActivity.getCurrentFocus().getWindowToken(), 0);
         }
     }
 }

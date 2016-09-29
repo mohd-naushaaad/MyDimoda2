@@ -157,7 +157,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginLeft="15dp"
                             android:layout_toRightOf="@id/intro_img"
-                            android:text="Introduction"
+                            android:text="Help"
                             android:textColor="#000000"
                             android:textSize="20sp" />
 

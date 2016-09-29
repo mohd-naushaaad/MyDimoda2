@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.DrawerLayout;
@@ -67,6 +68,7 @@ public class DMExactActivity extends FragmentActivity {
     TextView mShopTitle;
     @Bind(R.id.act_exact_coach_mrk_iv)
     ImageView mCoachMarkScreenIv;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -488,7 +490,14 @@ public class DMExactActivity extends FragmentActivity {
         fillMe.put(mSortList[2], constant.SORT_LO_HI);
         return fillMe;
     }
+
     private void showShowcaseView() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                AppUtils.hideSoftKeyBoard(DMExactActivity.this);
+            }
+        },500);
         if (!SharedPreferenceUtil.getBoolean(constant.PREF_IS_EXACT_SHOWN, false)) {
             mCoachMarkScreenIv.setVisibility(View.VISIBLE);
             mCoachMarkScreenIv.setOnClickListener(new View.OnClickListener() {

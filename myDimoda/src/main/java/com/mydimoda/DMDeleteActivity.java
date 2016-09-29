@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -34,6 +35,9 @@ import com.parse.ParseUser;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class DMDeleteActivity extends Activity implements DMListItemCallback {
 
 	// / menu
@@ -50,12 +54,13 @@ public class DMDeleteActivity extends Activity implements DMListItemCallback {
 	DMDeleteGridAdapter mAdapter;
 	List<ParseObject> mClothList = null;
 	List<String> mUrlList = null;
-
+	@Bind(R.id.act_help_scrn_coach)
+	ImageView mCoachMarkScreenIv;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_help);
-
+ButterKnife.bind(this);
 		// / layout
 		vDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		vMenuList = (ListView) findViewById(R.id.menu_list);
@@ -103,6 +108,8 @@ public class DMDeleteActivity extends Activity implements DMListItemCallback {
 
 			}
 		});
+
+		showShowcaseView();
 	}
 
 	@Override
@@ -446,6 +453,19 @@ public class DMDeleteActivity extends Activity implements DMListItemCallback {
 			checkFavoriteFP(mClothList.get(pos), pos);
 		} else {
 			checkCategory(mClothList.get(pos), pos);
+		}
+	}
+
+	private void showShowcaseView() {
+		if (!SharedPreferenceUtil.getBoolean(constant.PREF_IS_DELETE_ACT_SHOWN, false)) {
+			mCoachMarkScreenIv.setVisibility(View.VISIBLE);
+			mCoachMarkScreenIv.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View view) {
+					mCoachMarkScreenIv.setVisibility(View.GONE);
+					SharedPreferenceUtil.putValue(constant.PREF_IS_DELETE_ACT_SHOWN, true);
+				}
+			});
 		}
 	}
 }

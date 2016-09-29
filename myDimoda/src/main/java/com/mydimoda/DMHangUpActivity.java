@@ -186,12 +186,13 @@ public class DMHangUpActivity extends Activity {
     public void init() {
         showMenu();
         // setViewWithFont();
-        showShowcaseView();
         Intent in = getIntent();
         mFromMain = in.getBooleanExtra("FromMain", true);
         if (mFromMain == true) {
             vTxtTitle.setText("What to add");
+            showShowcaseView();
         } else {
+            showHelpShowcaseView();
             vTxtTitle.setText("Where to start");
         }
         showButtonWithCategory();
@@ -287,6 +288,19 @@ public class DMHangUpActivity extends Activity {
                 public void onClick(View view) {
                     mCoachMarkScreenIv.setVisibility(View.GONE);
                     SharedPreferenceUtil.putValue(constant.PREF_IS_HANGUP_SHOWN, true);
+                }
+            });
+        }
+    }
+    private void showHelpShowcaseView() {
+        if (!SharedPreferenceUtil.getBoolean(constant.PREF_IS_HANGUP_HELP_SHOWN, false)) {
+            mCoachMarkScreenIv.setVisibility(View.VISIBLE);
+            mCoachMarkScreenIv.setImageResource(R.drawable.help_style_me);
+            mCoachMarkScreenIv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mCoachMarkScreenIv.setVisibility(View.GONE);
+                    SharedPreferenceUtil.putValue(constant.PREF_IS_HANGUP_HELP_SHOWN, true);
                 }
             });
         }

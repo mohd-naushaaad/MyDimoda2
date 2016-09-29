@@ -39,7 +39,7 @@
     <string name="no_app_msg">You don\'t seem to have %1$s installed on this device</string>
     <string name="pick_shop">Shop</string>
     <string name="pick_sorting">Sort by</string>
-
+    <string name="hang_up">Hang Up</string>
 
 
 </resources>

@@ -33,7 +33,7 @@ public class DMMainActivity extends Activity {
 	public boolean getUserData()
 	{
 		SharedPreferences settings = getSharedPreferences(constant.PREFS_NAME, 0);
-		boolean isFirst  = settings.getBoolean("isFirst", true);
+		boolean isFirst  = settings.getBoolean("isFirst", false);//true remove the intro mayur
 		
 		return isFirst;
 	}

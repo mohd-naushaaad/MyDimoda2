@@ -3,9 +3,11 @@ package com.mydimoda;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -33,6 +35,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -191,7 +194,7 @@ public class DMAutoActivity extends Activity {
             }
 
         });
-        showShowcaseView();
+
     }
 
     public void init() {
@@ -215,7 +218,9 @@ public class DMAutoActivity extends Activity {
                 DMAutoActivity.this);
         if (mFrom.equals("exact")) {
             vTxtTitle.setText("Perfect Match");
+            showShowcaseViewExact();
         } else {
+            showShowcaseViewLucky();
             vTxtTitle.setText("I Feel Lucky");
             m_filterbtn.setVisibility(View.GONE);
         }
@@ -226,6 +231,8 @@ public class DMAutoActivity extends Activity {
         } else {
             getClosetFS();
         }
+
+
     }
 
     @Override
@@ -295,8 +302,6 @@ public class DMAutoActivity extends Activity {
         String baseUrl = "";
         AppUtils.yes = "true";
 
-        String[] categoryArr = {"shirt", "jacket", "trousers", "tie", "suit"};
-
 
         if (mFrom.equals("exact")) {
             if (mType == constant.NONE) {
@@ -308,20 +313,20 @@ public class DMAutoActivity extends Activity {
                             //      "%s/api/productloop?Category=%s&ItemPage=%d&AWSOffset=%d&ShopStyleOffset=%d&AsosOffset=%d",
                             "%s/api/%s?Category=%s&ItemPage=%d&AWSOffset=%d&ShopStyleOffset=%d&AsosOffset=%d&Sort=%s",
 
-                            constant.gPrefUrl, mShopName, categoryArr[type], mPageIndex, mAWSOffset, mShopStyleOffset, mAsosOffset, mSortType);
+                            constant.gPrefUrl, mShopName, AppUtils.categoryArr[type], mPageIndex, mAWSOffset, mShopStyleOffset, mAsosOffset, mSortType);
                     System.out.println("Called without brand");
                     // AppUtils.brand = categoryArr[type];
-                    AppUtils.putPref("brand", categoryArr[type], DMAutoActivity.this);
+                    AppUtils.putPref("brand", AppUtils.categoryArr[type], DMAutoActivity.this);
 
                 } else {
                     baseUrl = String
                             .format(
                                     //"%s/api/getProductList?Category=%s&MaximumPrice=%s&ItemPage=%d",
                                     "%s/api/%s?Category=%s&MaximumPrice=%s&ItemPage=%d&AWSOffset=%d&ShopStyleOffset=%d&AsosOffset=%d&Sort=%s",
-                                    constant.gPrefUrl, mShopName, categoryArr[type],
+                                    constant.gPrefUrl, mShopName, AppUtils.categoryArr[type],
                                     mMaxPrice, mPageIndex, mAWSOffset, mShopStyleOffset, mAsosOffset, mSortType);
                     //  AppUtils.brand = categoryArr[type];
-                    AppUtils.putPref("brand", categoryArr[type], DMAutoActivity.this);
+                    AppUtils.putPref("brand", AppUtils.categoryArr[type], DMAutoActivity.this);
 
                 }
 
@@ -330,27 +335,46 @@ public class DMAutoActivity extends Activity {
                     baseUrl = String.format(
                             //"%s/api/getProductList?Category=%s&ItemPage=%d",
                             "%s/api/%s?Category=%s&ItemPage=%d&AWSOffset=%d&ShopStyleOffset=%d&AsosOffset=%d&Sort=%s",
-                            constant.gPrefUrl, mShopName, categoryArr[mType], mPageIndex, mAWSOffset, mShopStyleOffset, mAsosOffset, mSortType);
+                            constant.gPrefUrl, mShopName, AppUtils.categoryArr[mType], mPageIndex, mAWSOffset, mShopStyleOffset, mAsosOffset, mSortType);
                     //   AppUtils.brand = categoryArr[mType];
-                    AppUtils.putPref("brand", categoryArr[mType], DMAutoActivity.this);
+                    AppUtils.putPref("brand", AppUtils.categoryArr[mType], DMAutoActivity.this);
                 } else {
                     baseUrl = String.format(
                             //"%s/api/getProductList?Category=%s&MaximumPrice=%s&ItemPage=%d",
                             "%s/api/%s?Category=%s&MaximumPrice=%s&ItemPage=%d&AWSOffset=%d&ShopStyleOffset=%d&AsosOffset=%d&Sort=%s",
-                            constant.gPrefUrl, mShopName, categoryArr[mType],
+                            constant.gPrefUrl, mShopName, AppUtils.categoryArr[mType],
                             mMaxPrice, mPageIndex, mAWSOffset, mShopStyleOffset, mAsosOffset, mSortType);
                     // AppUtils.brand = categoryArr[mType];
-                    AppUtils.putPref("brand", categoryArr[mType], DMAutoActivity.this);
+                    AppUtils.putPref("brand", AppUtils.categoryArr[mType], DMAutoActivity.this);
                 }
             }
         } else {
-            int type = mPageIndex % 5;
+            int n[] = {1, 2, 3, 4, 5};
+            int type;
+
+            Random random = new Random();
+            if (TextUtils.isEmpty(AppUtils.lastCategoryCalled)) {
+                type = n[random.nextInt(n.length)] % 5;
+            } else {
+                type = Arrays.asList(AppUtils.categoryArr).indexOf(AppUtils.lastCategoryCalled);
+
+                if (type < 0) {
+                    type = n[random.nextInt(n.length)] % 5;
+                } else {
+                    type = (Arrays.asList(AppUtils.categoryArr).indexOf(AppUtils.lastCategoryCalled) + 1) % 5;
+                }
+
+            }
+
             baseUrl = String.format(
                     //"%s/api/getProductList?Category=%s&ItemPage=%d",
                     "%s/api/productloop?Category=%s&ItemPage=%d&AWSOffset=%d&ShopStyleOffset=%d&AsosOffset=%d&Sort=%s",
-                    constant.gPrefUrl, categoryArr[type], mPageIndex, mAWSOffset, mShopStyleOffset, mAsosOffset, mSortType);
-            // AppUtils.brand = categoryArr[type];
-            AppUtils.putPref("brand", categoryArr[type], DMAutoActivity.this);
+                    constant.gPrefUrl, AppUtils.categoryArr[type], mPageIndex, mAWSOffset, mShopStyleOffset, mAsosOffset, mSortType);
+//             AppUtils.brand = categoryArr[type];
+            AppUtils.putPref("brand", AppUtils.categoryArr[type], DMAutoActivity.this);
+            AppUtils.lastCategoryCalled = AppUtils.categoryArr[type];
+
+            Log.e("Autoactivity", "lucky random: " + AppUtils.categoryArr[type]);
         }
 
         if (!mIsRefresh) {
@@ -410,41 +434,39 @@ public class DMAutoActivity extends Activity {
     public void getClosetFS_Shared() {
         String baseUrl = "";
 
-        String[] categoryArr = {"shirt", "jacket", "trousers", "tie", "suit"};
-
 
         if (mFrom.equals("exact")) {
             if (mType == constant.NONE) {
 
                 int type = mPageIndex % 5;
-                System.out.println("Main===>0" + categoryArr[type]);
+                System.out.println("Main===>0" + AppUtils.categoryArr[type]);
                 if (mMaxPrice.equals("0")) {
                     baseUrl = String
                             .format(
                                     //"%s/api/getProductList?Category=%s&ItemPage=%d&Brand=%s",
                                     "%s/api/%s?Category=%s&ItemPage=%d&Brand=%s&AWSOffset=%d&ShopStyleOffset=%d&AsosOffset=%d&Sort=%s",
-                                    constant.gPrefUrl, mShopName, categoryArr[type],
+                                    constant.gPrefUrl, mShopName, AppUtils.categoryArr[type],
                                     mPageIndex, AppUtils.brand, mAWSOffset, mShopStyleOffset, mAsosOffset, mSortType);
 
 
                 } else {
-                    System.out.println("Main===>none" + categoryArr[type]);
+                    System.out.println("Main===>none" + AppUtils.categoryArr[type]);
                     baseUrl = String
                             .format(
                                     //"%s/api/getProductList?Category=%s&MaximumPrice=%s&ItemPage=%d&Brand=%s",
                                     "%s/api/%s?Category=%s&MaximumPrice=%s&ItemPage=%d&Brand=%s&AWSOffset=%d&ShopStyleOffset=%d&AsosOffset=%d&Sort=%s",
-                                    constant.gPrefUrl, mShopName, categoryArr[type],
+                                    constant.gPrefUrl, mShopName, AppUtils.categoryArr[type],
                                     mMaxPrice, mPageIndex, AppUtils.brand, mAWSOffset, mShopStyleOffset, mAsosOffset, mSortType);
                 }
 
             } else {
                 if (mMaxPrice.equals("0")) {
-                    System.out.println("Main===>type-1" + categoryArr[mType]);
+                    System.out.println("Main===>type-1" + AppUtils.categoryArr[mType]);
                     baseUrl = String
                             .format(
                                     //"%s/api/getProductList?Category=%s&ItemPage=%d&Brand=%s",
                                     "%s/api/%s?Category=%s&ItemPage=%d&Brand=%s&AWSOffset=%d&ShopStyleOffset=%d&AsosOffset=%d&Sort=%s",
-                                    constant.gPrefUrl, mShopName, categoryArr[mType],
+                                    constant.gPrefUrl, mShopName, AppUtils.categoryArr[mType],
                                     mPageIndex, AppUtils.brand, mAWSOffset, mShopStyleOffset, mAsosOffset, mSortType);
 
 
@@ -460,7 +482,7 @@ public class DMAutoActivity extends Activity {
                             .format(
                                     //"%s/api/getProductList?Category=%s&MaximumPrice=%s&ItemPage=%d&Brand=%s",
                                     "%s/api/%s?Category=%s&MaximumPrice=%s&ItemPage=%d&Brand=%s&AWSOffset=%d&ShopStyleOffset=%d&AsosOffset=%d&Sort=%s",
-                                    constant.gPrefUrl, mShopName, categoryArr[mType],
+                                    constant.gPrefUrl, mShopName, AppUtils.categoryArr[mType],
                                     mMaxPrice, mPageIndex, AppUtils.brand, mAWSOffset, mShopStyleOffset, mAsosOffset, mSortType);
                     System.out.println("Brand" + AppUtils.brand);
                     System.out.println("base" + baseUrl);
@@ -468,11 +490,23 @@ public class DMAutoActivity extends Activity {
             }
         } else {
             int n[] = {1, 2, 3, 4, 5};
+            int type = -1;
 
             Random random = new Random();
-            System.out.println(n[random.nextInt(n.length)]);
+            if (TextUtils.isEmpty(AppUtils.lastCategoryCalled)) {
+                type = n[random.nextInt(n.length)] % 5;
 
-            int type = n[random.nextInt(n.length)] % 5;
+            } else {
+                type = Arrays.asList(AppUtils.categoryArr).indexOf(AppUtils.lastCategoryCalled);
+                if (type < 0) {
+                    type = n[random.nextInt(n.length)] % 5;
+                } else {
+                    type = Arrays.asList(AppUtils.categoryArr).indexOf(AppUtils.lastCategoryCalled) % 5;
+                }
+
+            }
+
+
             // baseUrl =
             // String.format("%s/api/getProductList?Category=%s&ItemPage=%d&Brand=%s",
             // constant.gPrefUrl,categoryArr[type],
@@ -481,10 +515,13 @@ public class DMAutoActivity extends Activity {
             baseUrl = String.format(
                     //"%s/api/getProductList?Category=%s&ItemPage=%d",
                     "%s/api/productloop?Category=%s&ItemPage=%d",
-                    constant.gPrefUrl, categoryArr[type],
+                    constant.gPrefUrl, AppUtils.categoryArr[type],
                     n[random.nextInt(n.length)]);
-            System.out.println("Type" + categoryArr[type]);
+            System.out.println("Type" + AppUtils.categoryArr[type]);
             System.out.println("baseUrlLucky" + baseUrl);
+            AppUtils.lastCategoryCalled = AppUtils.categoryArr[type];
+
+
         }
 
         if (!mIsRefresh) {
@@ -547,7 +584,7 @@ public class DMAutoActivity extends Activity {
         }, baseUrl, true).execute();
     }
 
-    private void showShowcaseView() {
+    private void showShowcaseViewExact() {
         if (!SharedPreferenceUtil.getBoolean(constant.PREF_IS_AUTO_SHOWN, false)) {
             mCoachMarkScreenIv.setVisibility(View.VISIBLE);
             mCoachMarkScreenIv.setOnClickListener(new View.OnClickListener() {
@@ -555,6 +592,20 @@ public class DMAutoActivity extends Activity {
                 public void onClick(View view) {
                     mCoachMarkScreenIv.setVisibility(View.GONE);
                     SharedPreferenceUtil.putValue(constant.PREF_IS_AUTO_SHOWN, true);
+                }
+            });
+        }
+    }
+
+    private void showShowcaseViewLucky() {
+        if (!SharedPreferenceUtil.getBoolean(constant.PREF_IS_LUCKY_AUTO_SHOWN, false)) {
+            mCoachMarkScreenIv.setImageResource(R.drawable.lucky_feeling_coach);
+            mCoachMarkScreenIv.setVisibility(View.VISIBLE);
+            mCoachMarkScreenIv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mCoachMarkScreenIv.setVisibility(View.GONE);
+                    SharedPreferenceUtil.putValue(constant.PREF_IS_LUCKY_AUTO_SHOWN, true);
                 }
             });
         }

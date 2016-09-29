@@ -48,6 +48,7 @@ public class DMProcessActivity extends Activity {
 
     int mTime = 0;
     boolean mIsPurchase = false, mIsGet = false, mIsFrmDialog;
+    boolean mIsHangup = false;
     List<ParseObject> mClothList = null;
 
     @Override
@@ -63,6 +64,7 @@ public class DMProcessActivity extends Activity {
         mType = intent.getStringExtra("type");
         mIsPurchase = intent.getBooleanExtra("purchase", false);
         mIsFrmDialog = intent.getBooleanExtra(constant.FRM_DIALG_KEY, false);
+        mIsHangup = intent.getBooleanExtra(constant.FRM_DETAIL_FOR_HANGUP_KEY, false);
         System.out.println("DMProcessActivity Type--> " + mType);
         init();
     }
@@ -91,7 +93,11 @@ public class DMProcessActivity extends Activity {
                 if (mColor != null && !mIsGet) {
                     mIsGet = true;
                     if (mIsPurchase) {
-                        getClothes();
+                        if (mIsHangup) {// for hangup from detail screen, added on 20-07-16
+                            goCaptureActivity();
+                        } else {
+                            getClothes();
+                        }
                     } else {
                         goCaptureActivity();
                     }
@@ -139,12 +145,13 @@ public class DMProcessActivity extends Activity {
 
         new Handler().postDelayed(new Runnable() {
             public void run() {
-				/* show login layout */
+                /* show login layout */
                 vProcess.setVisibility(View.GONE);
             }
         }, 4000);
     }
-//this is actual method which extracts image rgb values
+
+    //this is actual method which extracts image rgb values
     public void parse(Bitmap bitmap) {
         int[] buffer = new int[bitmap.getWidth() * bitmap.getHeight()];
         bitmap.getPixels(buffer, 0, bitmap.getWidth(), 0, 0, bitmap.getWidth(),
@@ -371,7 +378,7 @@ public class DMProcessActivity extends Activity {
 
     // / ------------------------- parse Response of recommend -----------------
     public void parseRecommend(JSONObject data) {
-        Log.d("parse Response of recommend", data.toString());
+        Log.d(this.getClass().getSimpleName(), "parse Response of recommend" + data.toString());
         if (data != null) {
             try {
                 String msg = data.getString("recommend");
@@ -636,13 +643,13 @@ public class DMProcessActivity extends Activity {
 
     /**
      * @author Keyur Tailor:
-     * <p/>
+     * <p>
      * This function will create a dummyClosetArray with static values
      * for all Categories.
-     * <p/>
+     * <p>
      * This is used as solution to "error:invalid parameter" in Response
      * of "recommend".
-     * <p/>
+     * <p>
      * Basically it will generate dummy array for each category
      * initially after that original array will be filled as per size of
      * the "mClothList".
@@ -671,7 +678,7 @@ public class DMProcessActivity extends Activity {
      * @param length
      * @return randomString
      * @author Keyur Tailor:
-     * <p/>
+     * <p>
      * A simple alphanumeric random function which will generate a
      * random string based on length.
      */
