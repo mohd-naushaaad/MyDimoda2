@@ -90,6 +90,8 @@ public class DMSignUpActivity extends Activity {
 		user.setPassword(pass);
 		user.setEmail(email);
 
+
+
 		constant.showProgress(this, "Registering");
 		user.signUpInBackground(new SignUpCallback() {
 			public void done(ParseException e) {
