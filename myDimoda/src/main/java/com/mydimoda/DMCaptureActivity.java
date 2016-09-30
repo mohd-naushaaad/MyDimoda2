@@ -560,7 +560,7 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
 
                 // Make parse object
                 ParseUser user = ParseUser.getCurrentUser();
-                ParseFile file = new ParseFile("image.jpg", byteArray);
+                ParseFile file = new ParseFile("image", byteArray,"image/jpeg");
 
                 ParseObject object = new ParseObject("Clothes");
                 object.put("User", user);

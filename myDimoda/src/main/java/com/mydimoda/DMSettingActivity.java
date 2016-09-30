@@ -1,12 +1,10 @@
 package com.mydimoda;
 
 import android.app.Activity;
-import android.app.ActivityManager;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.DrawerLayout;
@@ -32,7 +30,6 @@ import com.mydimoda.social.google.util.IabResult;
 import com.mydimoda.social.google.util.Inventory;
 import com.mydimoda.social.google.util.Purchase;
 import com.mydimoda.widget.cropper.util.FontsUtil;
-import com.parse.ParseFacebookUtils;
 import com.parse.ParseUser;
 
 import butterknife.Bind;

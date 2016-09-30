@@ -246,6 +246,7 @@ public class DMLoginActivity extends Activity {
                             parseUser.setPassword("");
                         }
 
+                        parseUser.put("newUser",true);
                         parseUser.saveInBackground(new SaveCallback() {
                             @Override
                             public void done(ParseException arg0) {
@@ -330,7 +331,7 @@ public class DMLoginActivity extends Activity {
 
     // / --------------------------------------------------- save user to
     // installation --------------------
-    public void saveUserToInstallation(ParseUser user) {
+    public void saveUserToInstallation(final ParseUser user) {
         ParseInstallation installation = ParseInstallation
                 .getCurrentInstallation();
         installation.put("User", user);
@@ -339,10 +340,19 @@ public class DMLoginActivity extends Activity {
             @Override
             public void done(ParseException arg0) {
                 // TODO Auto-generated method stub
-                constant.hideProgress();
-                goHomeActivity();
+                user.put("newUser",true);
+                user.saveInBackground(new SaveCallback() {
+                    @Override
+                    public void done(ParseException e) {
+                        constant.hideProgress();
+                        goHomeActivity();
+                    }
+                });
+
             }
         });
+
+
     }
 
     // / ---------------------------------- go to home activity

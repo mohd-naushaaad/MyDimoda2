@@ -89,7 +89,7 @@ public class DMSignUpActivity extends Activity {
 		user.setUsername(username);
 		user.setPassword(pass);
 		user.setEmail(email);
-
+		user.put("newUser",true);
 
 
 		constant.showProgress(this, "Registering");

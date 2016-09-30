@@ -1,15 +1,11 @@
 package com.mydimoda;
 
-import com.crashlytics.android.Crashlytics;
-import io.fabric.sdk.android.Fabric;
-import org.acra.ACRA;
-import org.acra.annotation.ReportsCrashes;
-
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 
+import com.crashlytics.android.Crashlytics;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -19,6 +15,10 @@ import com.parse.Parse;
 import com.parse.ParseACL;
 import com.parse.ParseFacebookUtils;
 import com.parse.ParseUser;
+
+import org.acra.annotation.ReportsCrashes;
+
+import io.fabric.sdk.android.Fabric;
 
 @ReportsCrashes(mailTo = "nirmal@solulab.com")
 public class ParseApplication extends Application {
@@ -53,8 +53,13 @@ public class ParseApplication extends Application {
 		
 		initImageLoader(getApplicationContext());
 
-		Parse.initialize(this, "SPi9A2wXDrfMonNm9PBbJzumanlXMiEYfqpRCkJd",
-				"MGuamZwIkAVisZWyZ5ZGqGR50Cl42kOAhNNgFQLm");
+		/*Parse.initialize(this, "SPi9A2wXDrfMonNm9PBbJzumanlXMiEYfqpRCkJd",
+				"MGuamZwIkAVisZWyZ5ZGqGR50Cl42kOAhNNgFQLm");*/
+		Parse.initialize(new Parse.Configuration.Builder(this)
+				.applicationId("SPi9A2wXDrfMonNm9PBbJzumanlXMiEYfqpRCkJd") // should correspond to APP_ID env variable
+				.clientKey("MGuamZwIkAVisZWyZ5ZGqGR50Cl42kOAhNNgFQLm")  // set explicitly unless clientKey is explicitly configured on Parse server
+
+				.server("http://52.32.78.155:1337/parse/").build());
 
 //		ParseFacebookUtils.initialize("608361809277602");
 		ParseFacebookUtils.initialize(this);//mayur updated
