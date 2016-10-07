@@ -9,7 +9,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.v4.widget.DrawerLayout;
 import android.view.View;
@@ -28,8 +27,6 @@ import com.mydimoda.adapter.DMMenuListAdapter;
 import com.mydimoda.camera.CropActivity;
 import com.mydimoda.interfaces.DialogItemClickListener;
 import com.mydimoda.widget.cropper.util.FontsUtil;
-
-import java.io.File;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -177,14 +174,14 @@ showShowcaseView();
     }
 
     public void callGallery() {
-        /*Intent i = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        startActivityForResult(i, RESULT_GALLERY);*/
-        Intent intent = new Intent();
-        intent.setType("image/*");
+        Intent i = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(i, RESULT_GALLERY);
+        /*Intent intent = new Intent();
+        intent.setType("image*//*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         intent.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
         startActivityForResult(Intent.createChooser(intent,
-                "Complete action using"), RESULT_GALLERY);
+                "Complete action using"), RESULT_GALLERY);*/
     }
 
     @Override

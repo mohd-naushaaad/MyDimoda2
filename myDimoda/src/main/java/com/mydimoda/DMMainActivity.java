@@ -1,28 +1,49 @@
 package com.mydimoda;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.view.Menu;
+import android.widget.Toast;
 
 import com.parse.ParseUser;
 
+import java.util.ArrayList;
+
 public class DMMainActivity extends Activity {
+
+	public static String[] perm_array = {
+			Manifest.permission.CAMERA,
+			Manifest.permission.WRITE_EXTERNAL_STORAGE
+
+	};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+		loadPermissions(perm_array);
+
+
+	}
+
+	void doAction(){
 		if(SharedPreferenceUtil.getBoolean("isNewInstall",false)==false) {
 			SharedPreferenceUtil.putValue("isNewInstall", true);
 			SharedPreferenceUtil.save();
 			logout();
 		}
+
+
 
 		new Handler().postDelayed(new Runnable(){
 			public void run() {
@@ -39,7 +60,7 @@ public class DMMainActivity extends Activity {
 			}
 		}, 2000);
 	}
-	
+
 	public boolean getUserData()
 	{
 		SharedPreferences settings = getSharedPreferences(constant.PREFS_NAME, 0);
@@ -80,5 +101,48 @@ public class DMMainActivity extends Activity {
 		ParseUser.logOutInBackground();
 
 	}
+	public void loadPermissions(String[] perm_array) {
+		System.out.println("Load permission : ");
+		ArrayList<String> permArray = new ArrayList<>();
+		for (String permission : perm_array) {
+			if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
+				permArray.add(permission);
+			}
+		}
+		perm_array = new String[permArray.size()];
+		perm_array = permArray.toArray(perm_array);
+
+		if (perm_array.length > 0) {
+			ActivityCompat.requestPermissions(this, perm_array, 0);
+		} else {
+			doAction();
+		}
+	}
+
+	@Override
+	public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+
+		switch (requestCode) {
+
+			case 0:
+				boolean isDenied = false;
+				for (int i = 0; i < grantResults.length; i++) {
+					System.out.println(grantResults[i]);
+					if (grantResults[i] == -1) {
+						isDenied = true;
+					}
+				}
+
+				if (!isDenied) {
+					//GlobalApp.getInstance().makeDir();
+					doAction();
+				} else {
+					Toast.makeText(DMMainActivity.this, getResources().getString(R.string.perm_denied), Toast.LENGTH_LONG).show();
+					finish();
+				}
+				break;
+		}
+	}
+
 
 }

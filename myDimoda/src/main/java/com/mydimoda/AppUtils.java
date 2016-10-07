@@ -21,8 +21,10 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.View;
+import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -46,8 +48,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import butterknife.Bind;
 
 public class AppUtils {
 
@@ -390,7 +390,16 @@ public class AppUtils {
         mFbShareBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                share(bitmap, FB, mContext, mTagTv.getText().toString());
+
+
+                PackageManager pm = mContext.getPackageManager();
+                if(AppUtils.isPackageInstalled("com.facebook.katana",pm)){
+                    share(bitmap, FB, mContext, mTagTv.getText().toString());
+                }else{
+                    alertbox(mContext);
+
+                }
+
                 //  closeShareDialog(mShareDialogInter);
             }
         });
@@ -425,6 +434,47 @@ public class AppUtils {
         mShareDialog.show();
     }
 
+    public static void alertbox(final Context mContext) {
+        // custom dialog
+        final Dialog dialog = new Dialog(mContext);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.getWindow().setBackgroundDrawableResource(R.drawable.empty);
+        dialog.setContentView(R.layout.dialog_fb_install);
+        dialog.setCanceledOnTouchOutside(true);
+
+        TextView title = (TextView) dialog.findViewById(R.id.title);
+        FontsUtil.setExistenceLight(mContext, title);
+
+
+        Button okBtn = (Button) dialog.findViewById(R.id.okBtn);
+        FontsUtil.setExistenceLight(mContext, okBtn);
+        okBtn.setText("Yes");
+        okBtn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+            try {
+                    mContext.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.facebook.katana")));
+                } catch (android.content.ActivityNotFoundException anfe) {
+                    mContext.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.facebook.katana")));
+                }
+            dialog.dismiss();
+            }
+        });
+
+        Button cancelBtn = (Button) dialog.findViewById(R.id.cancelBtn);
+        FontsUtil.setExistenceLight(mContext, cancelBtn);
+        cancelBtn.setText("No");
+
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+    }
+
     private static void closeShareDialog(DialogInterface mFace) {
         if (mShareDialogInter != null) {
             mShareDialogInter.dismiss();
@@ -446,7 +496,7 @@ public class AppUtils {
                         .addPhoto(photo)
                         .build();
                 ShareDialog shareDialog = new ShareDialog((Activity) mContext);
-                shareDialog.show(content, ShareDialog.Mode.AUTOMATIC);
+                shareDialog.show(content);
                 break;
             case TW:
                 sendShareTwit(mContext, tag);
@@ -520,6 +570,14 @@ public class AppUtils {
 
         if(imm.isAcceptingText()) { // verify if the soft keyboard is open
             imm.hideSoftInputFromWindow( mActivity.getCurrentFocus().getWindowToken(), 0);
+        }
+    }
+    public static boolean isPackageInstalled(String packagename, PackageManager packageManager) {
+        try {
+            packageManager.getPackageInfo(packagename, PackageManager.GET_ACTIVITIES);
+            return true;
+        } catch (PackageManager.NameNotFoundException e) {
+            return false;
         }
     }
 }

@@ -16,13 +16,14 @@ repositories {
 
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion '22.0.1'
+    compileSdkVersion 23
+    buildToolsVersion '23.0.3'
+    useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
         applicationId "com.mydimoda"
         minSdkVersion 15
-        targetSdkVersion 22
+        targetSdkVersion 23
     }
 
     buildTypes {
@@ -40,14 +41,11 @@ dependencies {
     /*    compile project(':facebookSDK')*/
     compile 'com.parse:parsefacebookutils-v4-android:1.10.4@aar'
     compile 'com.parse:parse-android:1.13.0'
-    compile 'com.android.support:support-v4:22.2.1'
     compile files('libs/acra-4.6.1.jar')
     compile files('libs/google-play-services.jar')
     /* compile files('libs/Parse-1.5.1.jar')*/
     compile files('libs/universal-image-loader-1.9.2.jar')
     compile 'com.jakewharton:butterknife:7.0.1'
-    compile 'com.android.support:appcompat-v7:22.1.0'
-    compile 'com.android.support:recyclerview-v7:22.2.1'
     compile('com.crashlytics.sdk.android:crashlytics:2.5.5@aar') {
         transitive = true;
     }
@@ -56,6 +54,9 @@ dependencies {
         exclude module: 'support-v4'
     }
     compile project(':pullSDK')
-  //  compile 'com.github.amlcurran.showcaseview:library:5.4.3'
-   // compile project(':Showcaselibrary')
+    //  compile 'com.github.amlcurran.showcaseview:library:5.4.3'
+    // compile project(':Showcaselibrary')
+    compile 'com.android.support:appcompat-v7:24.2.1'
+    compile 'com.android.support:recyclerview-v7:24.2.1'
+    compile 'com.android.support:support-v4:24.2.1'
 }

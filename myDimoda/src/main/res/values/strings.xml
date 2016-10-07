@@ -41,5 +41,7 @@
     <string name="pick_sorting">Sort by</string>
     <string name="hang_up">Hang Up</string>
 
+    <string name="perm_denied">Permissions denied. Please check app settings.</string>
+
 
 </resources>
