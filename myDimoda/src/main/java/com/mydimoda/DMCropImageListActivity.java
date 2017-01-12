@@ -411,7 +411,7 @@ public class DMCropImageListActivity extends FragmentActivity {
 
     public void showTypeDialog(final int pos) {
 
-        AlertDialog.Builder mBuilder = new AlertDialog.Builder(new ContextThemeWrapper(this, android.R.style.Theme_Holo));
+        AlertDialog.Builder mBuilder = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.AppCompatAlertDialogStyle));
         View mmain = this.getLayoutInflater().inflate(R.layout.dialog_options, null);
 
         ListView mOptions = (ListView) mmain.findViewById(R.id.dialog_options_lstvw);
