@@ -1,13 +1,10 @@
 package com.mydimoda.adapter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
@@ -20,6 +17,11 @@ import com.mydimoda.widget.CircularProgressBar;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingProgressListener;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DMDeleteGridAdapter extends BaseAdapter {
 	
@@ -79,6 +81,7 @@ public class DMDeleteGridAdapter extends BaseAdapter {
 		 ParseApplication.getInstance().mImageLoader.displayImage(mList.get(position), holder.imageView,ParseApplication.getInstance().options, new SimpleImageLoadingListener() {
 			 @Override
 			 public void onLoadingStarted(String imageUri, View view) {
+				 System.out.println("DMDeleteGridAdapter.onLoadingStarted : "+imageUri);
 				 holder.progress.setProgress(0);
 				 holder.progress.setVisibility(View.VISIBLE);
 			 }
@@ -91,6 +94,10 @@ public class DMDeleteGridAdapter extends BaseAdapter {
 
 			 @Override
 			 public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
+				 System.out.println("DMDeleteGridAdapter.onLoadingStarted : loadedImage Bitmap : "+imageUri);
+				// saveFile(loadedImage);
+
+
 				 holder.progress.setVisibility(View.GONE);
 				
 			 }
@@ -139,6 +146,19 @@ public class DMDeleteGridAdapter extends BaseAdapter {
 		});
 		
         return convertView;         
+	}
+	void saveFile(Bitmap bitmap){
+		String filename = "pippo.png";
+		File sd = Environment.getExternalStorageDirectory();
+		File dest = new File(sd, filename);
+		try {
+			FileOutputStream out = new FileOutputStream(dest);
+			bitmap.compress(Bitmap.CompressFormat.PNG, 90, out);
+			out.flush();
+			out.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	 
 	static class ViewHolder {
