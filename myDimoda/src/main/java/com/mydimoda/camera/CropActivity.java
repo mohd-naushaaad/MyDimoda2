@@ -85,6 +85,8 @@ public class CropActivity extends Activity implements OnClickListener {
     @Bind(R.id.act_croap_coach_mrk_iv)
     ImageView mCoachMarkScreenIv;
 
+    int counter = 0;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
@@ -134,6 +136,7 @@ public class CropActivity extends Activity implements OnClickListener {
         showShowcaseView();
     }
 
+
     private void prepareMultiCropView() {
         mDoneImagebtn.setVisibility(View.VISIBLE);
         doneText.setVisibility(View.INVISIBLE);
@@ -147,6 +150,7 @@ public class CropActivity extends Activity implements OnClickListener {
         mAddCropBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                counter = counter +1;
                 if (mCropListVw.getVisibility() != View.VISIBLE) {
                     constant.getImageLst().clear();
                     mCropListVw.setVisibility(View.VISIBLE);
@@ -173,7 +177,7 @@ public class CropActivity extends Activity implements OnClickListener {
                 mCropListVw.setVisibility(View.GONE);
                 int cropLstSize = constant.getImageLst().size();
                 for (int i = 0; i < cropLstSize; i++) {
-                    constant.getImageLst().get(i).getmImage().recycle();
+                    constant.getImageLst().get(i).getmImage();//.recycle();
                 }
                 constant.getImageLst().clear();
                 mCropListVw.getAdapter().notifyDataSetChanged();
@@ -187,6 +191,7 @@ public class CropActivity extends Activity implements OnClickListener {
     @Override
     public void onResume() {
         super.onResume();
+        counter = 0;
 
     }
 
@@ -234,8 +239,20 @@ public class CropActivity extends Activity implements OnClickListener {
             if (mCropListVw.getVisibility() != View.VISIBLE) {
                 constant.getImageLst().clear();
                 mModel = new CropListModel();
-                mModel.setmImage(_cropView.getCroppedImage());
+                if(counter>=2) {
+                    mModel.setmImage(_cropView.getCroppedImage());
+                }else{
+                    mModel.setmImage(constant.gTakenBitmap);
+                }
                 constant.getImageLst().add(mModel);
+            }else{
+
+                if(counter<2) {
+                    constant.getImageLst().clear();
+                    mModel = new CropListModel();
+                    mModel.setmImage(constant.gTakenBitmap);
+                    constant.getImageLst().add(mModel);
+                }
             }
             Intent intent = new Intent(this, DMCropImageListActivity.class);
             intent.putExtra("type", this.getIntent().getStringExtra("type") + "");

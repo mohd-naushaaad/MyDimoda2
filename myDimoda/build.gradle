@@ -16,8 +16,8 @@ repositories {
 
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion '23.0.3'
+    compileSdkVersion 25
+    buildToolsVersion '25.0.0'
     useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
@@ -40,7 +40,7 @@ android {
 dependencies {
     /*    compile project(':facebookSDK')*/
     compile 'com.parse:parsefacebookutils-v4-android:1.10.4@aar'
-    compile 'com.parse:parse-android:1.13.0'
+    compile 'com.parse:parse-android:1.15.8'
     compile files('libs/acra-4.6.1.jar')
     compile files('libs/google-play-services.jar')
     /* compile files('libs/Parse-1.5.1.jar')*/
@@ -49,14 +49,14 @@ dependencies {
     compile('com.crashlytics.sdk.android:crashlytics:2.5.5@aar') {
         transitive = true;
     }
-    compile('com.facebook.android:facebook-android-sdk:4.8.0') {
+    compile('com.facebook.android:facebook-android-sdk:4.+') {
         exclude module: 'bolts-android'
         exclude module: 'support-v4'
     }
     compile project(':pullSDK')
     //  compile 'com.github.amlcurran.showcaseview:library:5.4.3'
     // compile project(':Showcaselibrary')
-    compile 'com.android.support:appcompat-v7:24.2.1'
-    compile 'com.android.support:recyclerview-v7:24.2.1'
-    compile 'com.android.support:support-v4:24.2.1'
+    compile 'com.android.support:appcompat-v7:25.0.0'
+    compile 'com.android.support:recyclerview-v7:25.0.0'
+    compile 'com.android.support:support-v4:25.0.0'
 }

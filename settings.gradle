@@ -1,3 +1,2 @@
-include ':facebookSDK'
 include ':pullSDK'
 include ':myDimoda'
