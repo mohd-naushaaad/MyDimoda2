@@ -5,7 +5,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Point;
 import android.hardware.Camera;
 import android.hardware.Camera.PictureCallback;
@@ -14,6 +17,7 @@ import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Display;
+import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
@@ -33,6 +37,7 @@ import com.mydimoda.DMCaptureOptionActivity;
 import com.mydimoda.R;
 import com.mydimoda.adapter.DMMenuListAdapter;
 import com.mydimoda.constant;
+import com.mydimoda.image.CustExifUtils;
 import com.mydimoda.widget.cropper.util.FontsUtil;
 
 import java.io.File;
@@ -121,7 +126,7 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback,
 		vMenuList.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
+									int position, long id) {
 				vDrawerLayout.closeDrawer(vMenuLayout);
 
 				if (position != 2)
@@ -193,28 +198,29 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback,
 		v.startAnimation(anim);
 
 		switch (v.getId()) {
-		case R.id.captureBtn: {
-			Intent intent = getIntent();
-			imageUri = intent.getStringExtra("photoname");
-			try{
-				camera.takePicture(null, null, mPicture);
-			}catch(Exception e){
-				e.printStackTrace();
+			case R.id.captureBtn: {
+				Intent intent = getIntent();
+				imageUri = intent.getStringExtra("photoname");
+				try {
+
+					camera.takePicture(null, null, mPicture);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				break;
 			}
-			break;
-		}
-		case R.id.back_layout: {
-			Intent intent = new Intent(CameraActivity.this,
-					DMCaptureOptionActivity.class);
-			startActivity(intent);
-			finish();
-			break;
-		}
-		case R.id.menu_btn:
-			slideMenu();
-			break;
-		default:
-			break;
+			case R.id.back_layout: {
+				Intent intent = new Intent(CameraActivity.this,
+						DMCaptureOptionActivity.class);
+				startActivity(intent);
+				finish();
+				break;
+			}
+			case R.id.menu_btn:
+				slideMenu();
+				break;
+			default:
+				break;
 		}
 	}
 
@@ -253,12 +259,14 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback,
 
 	@SuppressWarnings("static-access")
 	public void surfaceChanged(SurfaceHolder holder, int format, int width,
-			int height) {
+							   int height) {
 		if (previewRunning) {
 			camera.stopPreview();
 		}
 
 		try {
+			   setCameraDisplayOrientation(this, 0, camera);
+
 			cameraParameters.setPreviewSize(cameraResolution.x,
 					cameraResolution.y);
 			List<String> focusModes = cameraParameters.getSupportedFocusModes();
@@ -317,7 +325,7 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback,
 	}
 
 	public static byte[] convertYUV420_NV21toRGB888(byte[] data, int width,
-			int height) {
+													int height) {
 
 		int size = width * height;
 		int pixeloffset = width * 3;
@@ -367,7 +375,7 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback,
 	}
 
 	private static Point getCameraResolution(Camera.Parameters parameters,
-			Point screenResolution) {
+											 Point screenResolution) {
 
 		String previewSizeValueString = parameters.get("preview-size-values");
 
@@ -438,7 +446,7 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback,
 
 		return null;
 	}
-
+//mayur fixed image rotation in nexus
 	private PictureCallback mPicture = new PictureCallback() {
 
 		@Override
@@ -447,13 +455,19 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback,
 			if (imageUri.equals(""))
 				return;
 
-			File photoFile = new File(imageUri);
-
+			final File photoFile = new File(imageUri);
+			Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);//decodeFile(photoFile.getAbsolutePath());
+			//bitmap = CustExifUtils.rotateBitmap(bitmap, finalRotation);
+			Matrix mat = new Matrix();
+			mat.postRotate((finalRotation)); //degree how much you rotate i rotate 270
+			Bitmap bMapRotate=Bitmap.createBitmap(bitmap, 0,0,bitmap.getWidth(),bitmap.getHeight(), mat, true);
+			bitmap.recycle();
 			try {
 				FileOutputStream fos = new FileOutputStream(photoFile);
-				fos.write(data);
+				bMapRotate.compress(Bitmap.CompressFormat.JPEG, 100, fos);
 				fos.flush();
 				fos.close();
+				bMapRotate.recycle();
 
 				if (getParent() == null)
 					setResult(RESULT_OK);
@@ -466,6 +480,31 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback,
 			} catch (IOException e) {
 				Log.d(LOGTAG, "Error accessing file: " + e.getMessage());
 			}
+
+           /* new CustExifUtils().getFixedImage(imageUri, new CustExifUtils.CustExifCallBack() {
+                @Override
+                public void onRotationFixed(Bitmap bitmap) {
+                    try {
+                        FileOutputStream fos = new FileOutputStream(photoFile);
+                        bitmap.compress(Bitmap.CompressFormat.JPEG, 90, fos);
+                        fos.flush();
+                        fos.close();
+
+                        if (getParent() == null)
+                            setResult(RESULT_OK);
+                        else
+                            getParent().setResult(RESULT_OK);
+
+                        finish();
+                    } catch (FileNotFoundException e) {
+                        Log.d(LOGTAG, "File not found: " + e.getMessage());
+                    } catch (IOException e) {
+                        Log.d(LOGTAG, "Error accessing file: " + e.getMessage());
+                    }
+                }
+            });*/
+
+
 		}
 	};
 
@@ -478,5 +517,42 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback,
 			vDrawerLayout.closeDrawer(vMenuLayout);
 		} else
 			vDrawerLayout.openDrawer(vMenuLayout);
+	}
+
+	static int finalRotation = 0;
+
+	public static void setCameraDisplayOrientation(Activity activity,
+												   int cameraId, android.hardware.Camera camera) {
+		int degrees = 0;
+		android.hardware.Camera.CameraInfo info =
+				new android.hardware.Camera.CameraInfo();
+		android.hardware.Camera.getCameraInfo(cameraId, info);
+
+		int rotation = activity.getWindowManager().getDefaultDisplay().getRotation();
+
+		switch (rotation) {
+			case Surface.ROTATION_0:
+				degrees = 0;
+				break;
+			case Surface.ROTATION_90:
+				degrees = 90;
+				break;
+			case Surface.ROTATION_180:
+				degrees = 180;
+				break;
+			case Surface.ROTATION_270:
+				degrees = 270;
+				break;
+		}
+
+		int result;
+		if (info.facing == Camera.CameraInfo.CAMERA_FACING_FRONT) {
+			result = (info.orientation + degrees) % 360;
+			result = (360 - result) % 360;  // compensate the mirror
+		} else {  // back-facing
+			result = (info.orientation - degrees + 360) % 360;
+		}
+		camera.setDisplayOrientation(result);
+		finalRotation = result;//hack
 	}
 }

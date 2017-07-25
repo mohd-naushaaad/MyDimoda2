@@ -35,6 +35,7 @@ import android.widget.Toast;
 import com.mydimoda.adapter.DMMenuListAdapter;
 import com.mydimoda.camera.CameraActivity;
 import com.mydimoda.camera.CropActivity;
+import com.mydimoda.image.CustExifUtils;
 import com.mydimoda.widget.cropper.util.FontsUtil;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -440,43 +441,49 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
         if (requestCode == RESULT_CAMERA && resultCode == RESULT_OK) {
 
             try {
-                mBitmap = BitmapFactory.decodeFile(fileName);
+                new CustExifUtils().getFixedImage(fileName, new CustExifUtils.CustExifCallBack() {
+                    @Override
+                    public void onRotationFixed(Bitmap bitmap) {
+                        mBitmap = bitmap;
+                        if (mBitmap != null) {
+                            boolean isFront = false;
+
+                            Bitmap bm = Bitmap.createScaledBitmap(mBitmap,
+                                    mBitmap.getWidth() / 5, mBitmap.getHeight() / 5, false);
+                            int wid = bm.getWidth();
+                            int hei = bm.getHeight();
+
+
+                            if (wid > 700)
+                                isFront = false;
+                            else
+                                isFront = true;
+
+                            if (wid > hei) {
+                                Bitmap bmp = getRotateBitmap(bm, isFront);
+                                mBitmap = bmp;
+                                vCaptureImg.setImageBitmap(mBitmap);
+                                //bmp.recycle();
+                            }
+
+                            wid = mBitmap.getWidth();
+                            hei = mBitmap.getHeight();
+
+
+                            if (wid > hei) {
+                                Bitmap bmp = getRotateBitmap(bm, isFront);
+                                mBitmap = bmp;
+                                // bmp.recycle();
+                            }
+                            goCropActivity();
+                        }
+                    }
+                });
+
             } catch (Exception e) {
-
+                e.printStackTrace();
             }
 
-            if (mBitmap != null) {
-                boolean isFront = false;
-
-                Bitmap bm = Bitmap.createScaledBitmap(mBitmap,
-                        mBitmap.getWidth() / 5, mBitmap.getHeight() / 5, false);
-                int wid = bm.getWidth();
-                int hei = bm.getHeight();
-
-
-                if (wid > 700)
-                    isFront = false;
-                else
-                    isFront = true;
-
-                if (wid > hei) {
-                    Bitmap bmp = getRotateBitmap(bm, isFront);
-                    mBitmap = bmp;
-                    vCaptureImg.setImageBitmap(mBitmap);
-                    //bmp.recycle();
-                }
-
-                wid = mBitmap.getWidth();
-                hei = mBitmap.getHeight();
-
-
-                if (wid > hei) {
-                    Bitmap bmp = getRotateBitmap(bm, isFront);
-                    mBitmap = bmp;
-                    // bmp.recycle();
-                }
-                goCropActivity();
-            }
 
         } else if (requestCode == RESULT_GALLERY && resultCode == RESULT_OK) {
             Uri selectedImage = data.getData();
@@ -560,7 +567,7 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
 
                 // Make parse object
                 ParseUser user = ParseUser.getCurrentUser();
-                ParseFile file = new ParseFile("image", byteArray,"image/jpeg");
+                ParseFile file = new ParseFile("image", byteArray, "image/jpeg");
 
                 ParseObject object = new ParseObject("Clothes");
                 object.put("User", user);
@@ -755,7 +762,7 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
     protected void onDestroy() {
         super.onDestroy();
         try {
-           // mBitmap.recycle();
+            // mBitmap.recycle();
         } catch (Exception e) {
             e.printStackTrace();
         }

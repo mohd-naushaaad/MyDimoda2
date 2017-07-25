@@ -52,6 +52,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -102,6 +103,7 @@ public class DMFashionActivity extends Activity {
 
     @Bind(R.id.act_fsn_coach_mrk_iv)
     ImageView mCoachMarkScreenIv;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -187,9 +189,6 @@ public class DMFashionActivity extends Activity {
                     showlayout = extras.getString("showlayout");
                 }
 
-                if (showlayout == null) {
-
-                }
                 if (showlayout != null
                         && showlayout.equalsIgnoreCase("showlayout")) {
                     showRemeberLayout("");
@@ -498,7 +497,6 @@ public class DMFashionActivity extends Activity {
                 else
                     Toast.makeText(DMFashionActivity.this, AppUtils.asUpperCaseFirstChar(e.getMessage()),
                             Toast.LENGTH_LONG).show();
-
                 constant.hideProgress();
             }
         });
@@ -592,7 +590,6 @@ public class DMFashionActivity extends Activity {
                             SystemClock.elapsedRealtime() + 24 * 60 * 60 * 1000, pi);
                 }
             }
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -608,7 +605,6 @@ public class DMFashionActivity extends Activity {
                 JSONObject obj = new JSONObject();
                 try {
                     obj.put("color", parseObj.getString("Color"));
-
                     obj.put("pattern", parseObj.getString("Pattern"));
                     obj.put("type", parseObj.getString("Type"));
                     obj.put("id", parseObj.getObjectId());
@@ -692,7 +688,7 @@ public class DMFashionActivity extends Activity {
             initItemList();
             if (constant.gMode.equals("help me")) {
                 constant.gLikeNum++;
-                if (constant.gCategory.equals("casual")) {
+               /* if (constant.gCategory.equals("casual")) {
                     constant.gLikeNum = 0;
                 } else if (constant.gCategory.equals("after5")) {
                     if (constant.gLikeNum == 2) {
@@ -708,7 +704,8 @@ public class DMFashionActivity extends Activity {
                         constant.gItemList = getItemList();
                         goAlgorithmActivity();
                     }
-                }
+                }*/
+                constant.gLikeNum = 0;
             } else {
                 constant.gLikeNum = 0;
             }
@@ -916,10 +913,9 @@ public class DMFashionActivity extends Activity {
         try {
             if (constant.getclothsBitmapLst().size() != mClothModellist.size()) {
                 for (int i = 0; i < mClothModellist.size(); i++) {
-
-                    constant.getclothsBitmapLst().add(i, BitmapFactory.decodeStream
-                            (new URL(mClothModellist.get(i).getImageUrl()).openConnection().getInputStream()));
-
+                    InputStream mInputStr = new URL(mClothModellist.get(i).getImageUrl()).openConnection().getInputStream();
+                    constant.getclothsBitmapLst().add(i, BitmapFactory.decodeStream(mInputStr));
+                    mInputStr.close();
                 }
             }
         } catch (IOException e) {
@@ -942,7 +938,7 @@ public class DMFashionActivity extends Activity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            //  constant.showProgress(DMFashionActivity.this, "Please wait...");
+            constant.showProgress(DMFashionActivity.this, "Please wait...");
         }
 
         @Override

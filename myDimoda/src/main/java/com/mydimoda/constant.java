@@ -43,7 +43,7 @@ public class constant {
     // / server side, shared preference
     public static String PREFS_NAME = "MyPrefName";
     public static ArrayList<NameValuePair> nameValuePairs;
-    public static ProgressDialog vProgress;
+    private static ProgressDialog vProgress;
 //	public static String 					gPrefUrl 	= "http://54.149.157.66/index.php";
 
 
@@ -181,12 +181,30 @@ public class constant {
     public static void showProgress(Context context, String message) {
 
         try {
-            vProgress = new ProgressDialog(context);
+            if (vProgress == null) {
+                vProgress = new ProgressDialog(context);
+            }
             vProgress.setMessage(message);
             vProgress.setCancelable(true);
             vProgress.show();
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    public static void showProgressHard(Context context, String message) {
+        try {
+            if (vProgress == null) {
+                vProgress = new ProgressDialog(context);
+            }
+            vProgress.setMessage(message);
+            vProgress.setCancelable(false);
+            vProgress.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            vProgress = null;
+            vProgress = new ProgressDialog(context);
+            showProgressHard(context, message);
         }
     }
 
@@ -381,4 +399,8 @@ public class constant {
 
     public static final String FRM_DETAIL_FOR_HANGUP_KEY = "isfromdetailforhangup";
 
+
+    public static final String IMAGE_BYTEARRY_KEY = "imagebytearraykey";
+
+    public static final String IMAGE_POS_KEY = "imageposkey";
 }

@@ -369,14 +369,11 @@ public class DMLoginActivity extends Activity {
     public void saveUserData() {
         SharedPreferences settings = getSharedPreferences(constant.PREFS_NAME, 0);
         SharedPreferences.Editor editor = settings.edit();
-
         editor.putString("username", constant.gUserName);
         editor.putString("email", constant.gEmail);
         editor.putString("password", constant.gPassword);
         editor.putString("userid", constant.gUserId);
         editor.putBoolean("isCloset", constant.gIsCloset);
-
-
         System.out.println("isCLosetLogin" + constant.gIsCloset);
         editor.commit();
     }
@@ -388,7 +385,6 @@ public class DMLoginActivity extends Activity {
         constant.gPassword = settings.getString("password", "");
         constant.gUserId = settings.getString("userid", "");
         constant.gIsCloset = settings.getBoolean("isCloset", false);
-
         if (constant.gUserId.equals(""))
             return false;
         else
@@ -453,7 +449,6 @@ public class DMLoginActivity extends Activity {
     @Override
     public void onPause() {
         super.onPause();
-
         if (mIsRemember) {
             saveUserData();
         }
@@ -472,7 +467,6 @@ public class DMLoginActivity extends Activity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-
         }
     }
 }

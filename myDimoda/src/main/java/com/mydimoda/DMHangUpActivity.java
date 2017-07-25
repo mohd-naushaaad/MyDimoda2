@@ -128,11 +128,9 @@ public class DMHangUpActivity extends Activity {
                             true);
             }
         });
-
         vBackLayout.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-
 			/*	if (!mFromMain) {
                     Intent intent = new Intent(DMHangUpActivity.this,
 							DMHomeActivity.class);
@@ -241,12 +239,10 @@ public class DMHangUpActivity extends Activity {
     }
 
     public void goCaptureActivity(String type) {
-
 		/*Intent intent = new Intent(DMHangUpActivity.this, DMCaptureOptionActivity.class);
 		intent.putExtra("FromMain", mFromMain);
 		intent.putExtra("type", type);
 		startActivity(intent);*/
-
         if (mFromMain == true) {
             Intent intent = new Intent(DMHangUpActivity.this, DMCaptureOptionActivity.class);
             intent.putExtra("FromMain", mFromMain);
@@ -276,8 +272,6 @@ public class DMHangUpActivity extends Activity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-
-
     }
 
     private void showShowcaseView() {

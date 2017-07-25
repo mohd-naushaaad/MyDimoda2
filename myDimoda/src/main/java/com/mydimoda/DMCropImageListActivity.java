@@ -259,7 +259,6 @@ public class DMCropImageListActivity extends FragmentActivity {
             // TODO Auto-generated catch block
             e1.printStackTrace();
         }
-
         return byteArray;
     }
 
@@ -357,7 +356,6 @@ public class DMCropImageListActivity extends FragmentActivity {
                                 Toast.LENGTH_LONG).show();
                     }
                     if (isLastCall) {
-
                     //    clearImagesFrmMemory();
                     }
                 }

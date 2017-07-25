@@ -163,7 +163,6 @@ public class DMHelpActivity extends Activity {
     }
 
     private void goAlgorithmActivity() {
-
         ParseUser user = ParseUser.getCurrentUser();
         int count = user.getInt("Count");
         count++;

@@ -105,7 +105,6 @@ public class DMOrganizeActivity extends Activity {
 		{
 			if(AppUtils.getPref("pro",DMOrganizeActivity.this).equalsIgnoreCase("false"))
 			{
-
 				AppRater.app_launched(DMOrganizeActivity.this);
 			}
 			else

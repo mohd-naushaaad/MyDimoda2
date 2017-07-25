@@ -31,7 +31,6 @@ public class NotificationClickActivity extends Activity
 			startActivity(intentTL);
 			finish();
 		}
-		
 	}
 	
 	@Override
