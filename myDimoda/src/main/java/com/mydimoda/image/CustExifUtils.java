@@ -40,7 +40,6 @@ public class CustExifUtils {
                     ExifInterface.ORIENTATION_UNDEFINED);
             final Bitmap bitmap = BitmapFactory.decodeFile(filePath);
             return rotateBitmap(bitmap, orientation);
-
         }
 
         @Override

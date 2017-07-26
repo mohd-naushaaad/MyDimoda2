@@ -147,7 +147,7 @@ public class DMCropImageListActivity extends FragmentActivity {
                     mModelList.remove(position);
                     mMainAdapter.notifyDataSetChanged();
                 } else {
-                  //  clearImagesFrmMemory();
+                    //  clearImagesFrmMemory();
                     finish();
                 }
 
@@ -165,8 +165,11 @@ public class DMCropImageListActivity extends FragmentActivity {
     // -----------------------
     public void savePhotosToParse() {
         CropListModel mModel;
-        constant.showProgress(this, "Saving data");
-
+        //    constant.showProgress(this, "Saving data");
+        vProgress = new ProgressDialog(DMCropImageListActivity.this);
+        vProgress.setMessage(" Please wait...\n saving image(s)");
+        vProgress.setCancelable(false);
+        vProgress.show();
         for (int i = 0; i < mModelList.size(); i++) {
             mModel = mModelList.get(i);
             if (mModel.getmImage() != null) {
@@ -197,6 +200,9 @@ public class DMCropImageListActivity extends FragmentActivity {
                             // TODO Auto-generated method stub
                             if (e == null) {
                                 if (!isFinishing()) {
+                                    if (vProgress != null) {
+                                        vProgress.dismiss();
+                                    }
                                     Toast.makeText(DMCropImageListActivity.this, "Saved",
                                             Toast.LENGTH_LONG).show();
                                 }
@@ -356,7 +362,7 @@ public class DMCropImageListActivity extends FragmentActivity {
                                 Toast.LENGTH_LONG).show();
                     }
                     if (isLastCall) {
-                    //    clearImagesFrmMemory();
+                        //    clearImagesFrmMemory();
                     }
                 }
             });

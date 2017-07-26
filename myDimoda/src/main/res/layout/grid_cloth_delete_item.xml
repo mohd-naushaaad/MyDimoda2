@@ -39,12 +39,12 @@
             android:weightSum="101" >
 
             <Button
-                android:id="@+id/btn_formal"
+                android:id="@+id/btn_delete"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="50"
                 android:background="@drawable/signup_btn_sel"
-                android:text="Formal"
+                android:text="Delete"
                 android:textColor="#ffffff"
                 android:textSize="12sp" />
 
@@ -54,12 +54,12 @@
                 android:layout_weight="1" />
 
             <Button
-                android:id="@+id/btn_delete"
+                android:id="@+id/btn_formal"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="50"
                 android:background="@drawable/signup_btn_sel"
-                android:text="Delete"
+                android:text="Formal"
                 android:textColor="#ffffff"
                 android:textSize="12sp" />
         </LinearLayout>
