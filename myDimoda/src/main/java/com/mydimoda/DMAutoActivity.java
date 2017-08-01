@@ -42,6 +42,9 @@ import java.util.Random;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
+import static com.mydimoda.JSONPostParser.jObj;
+
+
 public class DMAutoActivity extends Activity {
 
     // / menu
@@ -55,7 +58,7 @@ public class DMAutoActivity extends Activity {
     // / layout
     PullToRefreshGridView vGrdProduct;
     String mFrom, mMaxPrice;
-    int mType, mPageIndex = 1, mTotalResult, mTotalPage;
+    int mType, mPageIndex = 0, mTotalResult, mTotalPage;
     boolean mIsRefresh = false;
 
     List<DMProductObject> mProductList;
@@ -351,7 +354,6 @@ public class DMAutoActivity extends Activity {
         } else {
             int n[] = {1, 2, 3, 4, 5};
             int type;
-
             Random random = new Random();
             if (TextUtils.isEmpty(AppUtils.lastCategoryCalled)) {
                 type = n[random.nextInt(n.length)] % 5;
@@ -390,6 +392,8 @@ public class DMAutoActivity extends Activity {
                 constant.hideProgress();
                 mIsRefresh = false;
                 int itemCount = 0;
+                JSONArray mArrayData = new JSONArray();
+                JSONObject mObjectData = new JSONObject();
 
                 if (mProductList == null)
                     mProductList = new ArrayList<DMProductObject>();
@@ -397,23 +401,33 @@ public class DMAutoActivity extends Activity {
                     try {
                         mTotalResult = data.getInt("TotalResults");
                         mTotalPage = data.getInt("TotalPages");
-                        JSONArray jObj = data.getJSONArray("Items");// mayur changed as new response gives array instead of object
+                        if (data.get("Items") instanceof JSONArray) {
+                            mArrayData = data.getJSONArray("Items");// mayur changed as new response gives array instead of object
+                            //   itemCount = data.getInt("ItemCount") <= jObj.length() ? data.getInt("ItemCount") : jObj.length();
+                        } else {
+                            mObjectData = data.getJSONObject("Items");// mayur changed as new response object
+                        }
 
-                        itemCount = data.getInt("ItemCount") <= jObj.length() ? data.getInt("ItemCount") : jObj.length();
-                        if (jObj != null) {
-                            for (int i = 0; i < itemCount; i++) {
-                                JSONObject pObj = jObj.getJSONObject(i);
-                                DMProductObject item = new DMProductObject(pObj);
+                        itemCount = data.getInt("ItemCount");
+                        //   if (jObj != null) {
+                        for (int i = 0; i < itemCount; i++) {
+                            JSONObject pObj;
+                            if (mArrayData != null && !mArrayData.isNull(0)) {
+                                pObj = mArrayData.getJSONObject(i);
+                            } else {
+                                pObj = mObjectData.getJSONObject(String.valueOf(i + 1));//getJSONObject(i);
+                            }
+                            DMProductObject item = new DMProductObject(pObj);
 
-                                String title = item.Title.toLowerCase();
+                            String title = item.Title.toLowerCase();
 
-                                if (!title.contains("girl")
-                                        && !title.contains("women")) {
-                                    mProductList.add(item);
+                            if (!title.contains("girl")
+                                    && !title.contains("women")) {
+                                mProductList.add(item);
 
-                                }
                             }
                         }
+                        //   }
                     } catch (JSONException e) {
                         // TODO Auto-generated catch block
                         e.printStackTrace();
@@ -565,11 +579,9 @@ public class DMAutoActivity extends Activity {
                                     if (!title.contains("girl")
                                             && !title.contains("women")) {
                                         mProductList.add(item);
-
                                     }
                                 }
                             }
-
                         }
                     } catch (Exception e) {
                         // TODO Auto-generated catch block

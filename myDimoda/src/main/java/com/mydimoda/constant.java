@@ -17,6 +17,7 @@ import com.mydimoda.object.DMItemObject;
 
 import org.apache.http.NameValuePair;
 
+import java.lang.ref.WeakReference;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -181,9 +182,8 @@ public class constant {
     public static void showProgress(Context context, String message) {
 
         try {
-            if (vProgress == null) {
-                vProgress = new ProgressDialog(context);
-            }
+            vProgress = null;
+            vProgress = new ProgressDialog(new WeakReference<>(context).get());
             vProgress.setMessage(message);
             vProgress.setCancelable(true);
             vProgress.show();
@@ -194,9 +194,8 @@ public class constant {
 
     public static void showProgressHard(Context context, String message) {
         try {
-            if (vProgress == null) {
-                vProgress = new ProgressDialog(context);
-            }
+            vProgress = null;
+            vProgress = new ProgressDialog(new WeakReference<>(context).get());
             vProgress.setMessage(message);
             vProgress.setCancelable(false);
             vProgress.show();
