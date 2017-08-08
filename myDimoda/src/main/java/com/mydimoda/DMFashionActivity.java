@@ -391,6 +391,7 @@ public class DMFashionActivity extends Activity {
         if (constant.gIsCloset) {
             query = ParseQuery.getQuery("Clothes");
             m_DatabaseModel.setName("Clothes");
+            query.setLimit(constant.RESULT_SIZE);//mayur increased limit to 1000
 
         } else {
             query = ParseQuery.getQuery("DemoCloset");
@@ -688,32 +689,43 @@ public class DMFashionActivity extends Activity {
         else {
             initItemList();
             if (constant.gMode.equals("help me")) {
-                    constant.gLikeNum++;
-                    if (constant.gCategory.equals("casual")) {
+                constant.gLikeNum++;
+                if (constant.gCategory.equals("casual")) {
+                    constant.gLikeNum = 0;
+                    new DownloadTaskRunner().execute();
+                } else if (constant.gCategory.equals("after5")) {
+                    if (constant.gLikeNum == 2) {
                         constant.gLikeNum = 0;
                         new DownloadTaskRunner().execute();
-                    } else if (constant.gCategory.equals("after5")) {
-                        if (constant.gLikeNum == 2) {
-                            constant.gLikeNum = 0;
-                            new DownloadTaskRunner().execute();
-                        } else {
-                            constant.gItemList = getItemList();
-                            goAlgorithmActivity();
-                        }
-                    } else if (constant.gCategory.equals("formal")) {
-                        if (constant.gLikeNum == 3) {
-                            constant.gLikeNum = 0;
-                            new DownloadTaskRunner().execute();
-                        } else {
-                            constant.gItemList = getItemList();
-                            goAlgorithmActivity();
-                        }
+                    } else {
+                        constant.gItemList = getItemList();
+                        goAlgorithmActivity();
                     }
+                } else if (constant.gCategory.equals("formal")) {
+                    if (constant.gLikeNum == 3 || isLookComplete(mClothModellist)) {
+                        constant.gLikeNum = 0;
+                        new DownloadTaskRunner().execute();
+                    } else {
+                        constant.gItemList = getItemList();
+                        goAlgorithmActivity();
+                    }
+                }
             } else {
                 constant.gLikeNum = 0;
                 new DownloadTaskRunner().execute();
             }
         }
+    }
+
+    private boolean isLookComplete(List<OrderClothModel> mClothModellist) {
+        if (mClothModellist.size() == 3) {
+            for (OrderClothModel mModel : mClothModellist) {
+                if (mModel.getType().equalsIgnoreCase("suit")) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     // / --------------------------------------- When mode is help me, make item

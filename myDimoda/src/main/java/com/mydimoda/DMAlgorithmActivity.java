@@ -272,6 +272,7 @@ public class DMAlgorithmActivity extends Activity {
 
             query = ParseQuery.getQuery("Clothes");
             query.whereEqualTo("User", user);
+            query.setLimit(constant.RESULT_SIZE);//mayur increased limit to 1000
         } else {
             query = ParseQuery.getQuery("DemoCloset");
         }
@@ -531,7 +532,7 @@ public class DMAlgorithmActivity extends Activity {
 					 * m_DatabaseModel = new DatabaseModel();
 					 * m_DatabaseModel.getTarget();
 					 */
-					/*
+                    /*
 					 * DMItemObjectDatabase item = new DMItemObjectDatabase();
 					 * item.index= m_notDatabaseModel.toString(); item.type =
 					 * m_notDatabaseModel.toString();

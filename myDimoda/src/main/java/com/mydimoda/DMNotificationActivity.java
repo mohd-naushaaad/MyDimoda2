@@ -362,6 +362,7 @@ public class DMNotificationActivity extends Activity {
 		ParseQuery<ParseObject> query = null;
 		if (constant.gIsCloset) {
 			query = ParseQuery.getQuery("Clothes");
+			query.setLimit(constant.RESULT_SIZE);//mayur increased limit to 1000
 
 		} else {
 			query = ParseQuery.getQuery("DemoCloset");

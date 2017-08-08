@@ -352,6 +352,7 @@ public class DMFashionActivity_7Hour extends Activity {
 		if (constant.gIsCloset) {
 			query = ParseQuery.getQuery("Clothes");
 			m_DatabaseModel.setName("Clothes");
+			query.setLimit(constant.RESULT_SIZE);//mayur increased limit to 1000
 
 		} else {
 			query = ParseQuery.getQuery("DemoCloset");

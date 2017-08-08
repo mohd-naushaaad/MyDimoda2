@@ -287,6 +287,7 @@ public class DMCropImageListActivity extends FragmentActivity {
         query.whereEqualTo("Type", mModelList.get(pos).getmType().toLowerCase());
         query.whereEqualTo("User", user);
         query.orderByDescending("createdAt");
+        query.setLimit(constant.RESULT_SIZE);//mayur increased limit to 1000
 
 
         query.findInBackground(new FindCallback<ParseObject>() {

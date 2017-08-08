@@ -255,6 +255,7 @@ public class AlarmReciever_7hour extends WakefulBroadcastReceiver {
         if (constant.gIsCloset) {
             query = ParseQuery.getQuery("Clothes");
             query.whereEqualTo("User", user);
+            query.setLimit(constant.RESULT_SIZE);//mayur increased limit to 1000
         } else
             query = ParseQuery.getQuery("DemoCloset");
 

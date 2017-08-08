@@ -93,6 +93,11 @@ public class constant {
     public static boolean gIsStart = false;
     public static final String COUNT = "Count";
 
+    public static final int RESULT_SIZE = 1000;
+
+
+
+
     public constant() {
 
     }

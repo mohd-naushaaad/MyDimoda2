@@ -344,7 +344,7 @@ public class DMHomeActivity extends FragmentActivity {
                 query = ParseQuery.getQuery("Clothes");
                 query.whereEqualTo("User", user);
                 query.orderByDescending("createdAt");
-
+                query.setLimit(constant.RESULT_SIZE);//mayur increased limit to 1000
                 query.findInBackground(new FindCallback<ParseObject>() {
                     @Override
                     public void done(List<ParseObject> list, ParseException e) {

@@ -671,6 +671,7 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
         query.whereEqualTo("Type", mType);
         query.whereEqualTo("User", user);
         query.orderByDescending("createdAt");
+        query.setLimit(constant.RESULT_SIZE);//mayur increased limit to 1000
 
 
         query.findInBackground(new FindCallback<ParseObject>() {

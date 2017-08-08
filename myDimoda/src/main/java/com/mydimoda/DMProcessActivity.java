@@ -235,6 +235,7 @@ public class DMProcessActivity extends Activity {
             query = ParseQuery.getQuery("Clothes");
             query.whereEqualTo("User", user);
             query.orderByDescending("createdAt");
+            query.setLimit(constant.RESULT_SIZE);//mayur increased limit to 1000
         } else {
             query = ParseQuery.getQuery("DemoCloset");
             query.orderByDescending("createdAt");
