@@ -969,9 +969,9 @@ public class DMFashionActivity extends Activity {
                     mInputStr.close();
                 }
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-            //     Toast.makeText(DMFashionActivity.this,"Loading images please wait",Toast.LENGTH_SHORT);
+                 //Toast.makeText(DMFashionActivity.this,"Loading images please wait",Toast.LENGTH_SHORT);
         }
     }
 
@@ -1012,10 +1012,7 @@ public class DMFashionActivity extends Activity {
                     e.printStackTrace();
                 }
             }
-
-
         }
-
     }
 
     private void showShowcaseView() {
