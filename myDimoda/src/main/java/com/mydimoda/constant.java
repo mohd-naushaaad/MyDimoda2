@@ -185,7 +185,7 @@ public class constant {
             vProgress = null;
             vProgress = new ProgressDialog(new WeakReference<>(context).get());
             vProgress.setMessage(message);
-            vProgress.setCancelable(true);
+            vProgress.setCancelable(false);
             vProgress.show();
         } catch (Exception e) {
             e.printStackTrace();

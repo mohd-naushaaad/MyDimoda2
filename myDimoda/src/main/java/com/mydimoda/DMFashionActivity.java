@@ -181,7 +181,7 @@ public class DMFashionActivity extends Activity {
 
             public void onClick(View v) {
 
-                new DownloadTaskRunner().execute();
+                //     new DownloadTaskRunner().execute();
                 String favoritelist = "", showlayout = "";
                 Bundle extras = getIntent().getExtras();
                 if (extras != null) {
@@ -684,30 +684,34 @@ public class DMFashionActivity extends Activity {
         if (mIsDislike) {
             mIsDislike = false;
             goAlgorithmActivity();
-        } else {
+        } //moved this code to share dialog dismiss//moved this code to share dialog dismiss
+        else {
             initItemList();
             if (constant.gMode.equals("help me")) {
-                constant.gLikeNum++;
-               /* if (constant.gCategory.equals("casual")) {
-                    constant.gLikeNum = 0;
-                } else if (constant.gCategory.equals("after5")) {
-                    if (constant.gLikeNum == 2) {
+                    constant.gLikeNum++;
+                    if (constant.gCategory.equals("casual")) {
                         constant.gLikeNum = 0;
-                    } else {
-                        constant.gItemList = getItemList();
-                        goAlgorithmActivity();
+                        new DownloadTaskRunner().execute();
+                    } else if (constant.gCategory.equals("after5")) {
+                        if (constant.gLikeNum == 2) {
+                            constant.gLikeNum = 0;
+                            new DownloadTaskRunner().execute();
+                        } else {
+                            constant.gItemList = getItemList();
+                            goAlgorithmActivity();
+                        }
+                    } else if (constant.gCategory.equals("formal")) {
+                        if (constant.gLikeNum == 3) {
+                            constant.gLikeNum = 0;
+                            new DownloadTaskRunner().execute();
+                        } else {
+                            constant.gItemList = getItemList();
+                            goAlgorithmActivity();
+                        }
                     }
-                } else if (constant.gCategory.equals("formal")) {
-                    if (constant.gLikeNum == 3) {
-                        constant.gLikeNum = 0;
-                    } else {
-                        constant.gItemList = getItemList();
-                        goAlgorithmActivity();
-                    }
-                }*/
-                constant.gLikeNum = 0;
             } else {
                 constant.gLikeNum = 0;
+                new DownloadTaskRunner().execute();
             }
         }
     }
@@ -775,6 +779,12 @@ public class DMFashionActivity extends Activity {
         vProgress.setMessage(message);
         vProgress.setCancelable(true);
         vProgress.show();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        constant.hideProgress();
     }
 
     public void hideProgress() {
@@ -899,7 +909,36 @@ public class DMFashionActivity extends Activity {
         try {
 
             AppUtils.savebitmap(b);
-            AppUtils.showShareDialog(b, DMFashionActivity.this);
+
+            AppUtils.showShareDialog(b, DMFashionActivity.this, new AppUtils.onShareDialogDismissListener() {
+                @Override
+                public void onDismiss() {
+
+                   /* initItemList();
+                    if (constant.gMode.equals("help me")) {
+                        constant.gLikeNum++;
+                        if (constant.gCategory.equals("casual")) {
+                            constant.gLikeNum = 0;
+                        } else if (constant.gCategory.equals("after5")) {
+                            if (constant.gLikeNum == 2) {
+                                constant.gLikeNum = 0;
+                            } else {
+                                constant.gItemList = getItemList();
+                                goAlgorithmActivity();
+                            }
+                        } else if (constant.gCategory.equals("formal")) {
+                            if (constant.gLikeNum == 3) {
+                                constant.gLikeNum = 0;
+                            } else {
+                                constant.gItemList = getItemList();
+                                goAlgorithmActivity();
+                            }
+                        }
+                    } else {
+                        constant.gLikeNum = 0;
+                    }*/
+                }
+            });
 
             return true;
         } catch (Exception e) {
@@ -954,13 +993,14 @@ public class DMFashionActivity extends Activity {
         @Override
         protected void onPostExecute(Void result) {
             if (!isFinishing() && AppUtils.isOnline(DMFashionActivity.this)) {
+                constant.hideProgress();
                 try {
                     makeImage();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
-            constant.hideProgress();
+
 
         }
 

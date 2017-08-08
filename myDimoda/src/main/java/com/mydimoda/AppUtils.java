@@ -373,7 +373,7 @@ public class AppUtils {
     private static Dialog mShareDialog;
     private static DialogInterface mShareDialogInter;
 
-    public static void showShareDialog(final Bitmap bitmap, final Context mContext) {
+    public static void showShareDialog(final Bitmap bitmap, final Context mContext, final onShareDialogDismissListener mDismissListener) {
         final AlertDialog.Builder mBuilder = new AlertDialog.Builder(new ContextThemeWrapper(mContext, android.R.style.Theme_Holo));
         View mView = ((Activity) mContext).getLayoutInflater().inflate(R.layout.dialog_share_look, null);
         mBuilder.setView(mView);
@@ -393,9 +393,9 @@ public class AppUtils {
 
 
                 PackageManager pm = mContext.getPackageManager();
-                if(AppUtils.isPackageInstalled("com.facebook.katana",pm)){
+                if (AppUtils.isPackageInstalled("com.facebook.katana", pm)) {
                     share(bitmap, FB, mContext, mTagTv.getText().toString());
-                }else{
+                } else {
                     alertbox(mContext);
 
                 }
@@ -430,9 +430,20 @@ public class AppUtils {
                 mShareDialogInter = dialogInterface;
             }
         });
+        mShareDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                mDismissListener.onDismiss();
+            }
+        });
         mShareDialog.setCancelable(false);
         mShareDialog.show();
     }
+
+    public interface onShareDialogDismissListener {
+        void onDismiss();
+    }
+
 
     public static void alertbox(final Context mContext) {
         // custom dialog
@@ -453,12 +464,12 @@ public class AppUtils {
 
             @Override
             public void onClick(View view) {
-            try {
+                try {
                     mContext.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.facebook.katana")));
                 } catch (android.content.ActivityNotFoundException anfe) {
                     mContext.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.facebook.katana")));
                 }
-            dialog.dismiss();
+                dialog.dismiss();
             }
         });
 
@@ -568,10 +579,11 @@ public class AppUtils {
     public static void hideSoftKeyBoard(Activity mActivity) {
         InputMethodManager imm = (InputMethodManager) mActivity.getSystemService(Activity.INPUT_METHOD_SERVICE);
 
-        if(imm.isAcceptingText()) { // verify if the soft keyboard is open
-            imm.hideSoftInputFromWindow( mActivity.getCurrentFocus().getWindowToken(), 0);
+        if (imm.isAcceptingText()) { // verify if the soft keyboard is open
+            imm.hideSoftInputFromWindow(mActivity.getCurrentFocus().getWindowToken(), 0);
         }
     }
+
     public static boolean isPackageInstalled(String packagename, PackageManager packageManager) {
         try {
             packageManager.getPackageInfo(packagename, PackageManager.GET_ACTIVITIES);

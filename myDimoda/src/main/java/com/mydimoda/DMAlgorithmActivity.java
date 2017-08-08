@@ -425,8 +425,9 @@ public class DMAlgorithmActivity extends Activity {
                 }
             }
 
-            if (constant.gMode.equals("help me"))
+            if (constant.gMode.equals("help me")) {
                 mSendData.put("items", makeItemJSONArray(constant.gItemList));
+            }
 
             mSendData.put("blocked",
                     makeBlockedJSONArray(constant.gBlockedList));
@@ -499,6 +500,7 @@ public class DMAlgorithmActivity extends Activity {
                 // TODO Auto-generated catch block
                 Toast.makeText(this, "You can not get clothes",
                         Toast.LENGTH_LONG).show();
+                constant.gLikeNum = 0;// mayur
                 e.printStackTrace();
             }
         }
@@ -525,7 +527,7 @@ public class DMAlgorithmActivity extends Activity {
 					 */
 
 					/*
-					 * JSONObject obj = arr.getJSONObject(0); DatabaseModel
+                     * JSONObject obj = arr.getJSONObject(0); DatabaseModel
 					 * m_DatabaseModel = new DatabaseModel();
 					 * m_DatabaseModel.getTarget();
 					 */
@@ -559,7 +561,7 @@ public class DMAlgorithmActivity extends Activity {
                 e.printStackTrace();
             }
         }
-        Log.e("response --12345 from db", data.toString());
+        Log.e("response from db", data.toString());
         // if(constant.gFashion.blockedList.size()>0)
         goFashionActivity();
     }
@@ -600,7 +602,6 @@ public class DMAlgorithmActivity extends Activity {
                 // class
                 parseResponse(mResponseData);
             }
-
             super.onPostExecute(result);
         }
     }
@@ -636,7 +637,5 @@ public class DMAlgorithmActivity extends Activity {
 
             }
         }
-
     }
-
 }

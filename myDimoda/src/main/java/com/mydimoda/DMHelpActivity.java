@@ -60,7 +60,6 @@ public class DMHelpActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help);
-
         // / layout
         vDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         vMenuList = (ListView) findViewById(R.id.menu_list);
@@ -72,14 +71,12 @@ public class DMHelpActivity extends Activity {
         FontsUtil.setExistenceLight(this, vTxtBack);
         vBackLayout = (RelativeLayout) findViewById(R.id.back_layout);
         vClothGrid = (GridView) findViewById(R.id.cloths_grid);
-
         vBtnMenu.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
                 slideMenu();
             }
         });
-
         vMenuList.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
@@ -87,14 +84,12 @@ public class DMHelpActivity extends Activity {
                 constant.selectMenuItem(DMHelpActivity.this, position, true);
             }
         });
-
         vBackLayout.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
                 finish();
             }
         });
-
         vClothGrid.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
@@ -192,7 +187,6 @@ public class DMHelpActivity extends Activity {
     }
 
     private void procPurchase() {
-
         final ParseUser user = ParseUser.getCurrentUser();
         boolean bPurchased = user.getBoolean("Buy");
         int maxCount = user.getInt(constant.USER_MAX_COUNT); // new max count according to new policy
@@ -208,14 +202,12 @@ public class DMHelpActivity extends Activity {
             } else {
                 goAlgorithmActivity();
             }
-
         } else {
             goAlgorithmActivity();
         }
     }
 
     private void checkPermissions() {
-
         final ParseUser user = ParseUser.getCurrentUser();
         boolean bRated = user.getBoolean("ratedmyDiModa");
         if (bRated) {
@@ -238,7 +230,6 @@ public class DMHelpActivity extends Activity {
                             @Override
                             public void onClick(DialogInterface dialog,
                                                 int which) {
-
                                 Editor editor = getSharedPreferences(
                                         "mydimoda_setting", 0).edit();
                                 editor.putBoolean("never", true);
@@ -252,7 +243,6 @@ public class DMHelpActivity extends Activity {
                             @Override
                             public void onClick(DialogInterface dialog,
                                                 int which) {
-
                                 ParseUser user = ParseUser.getCurrentUser();
                                 user.put("ratedmyDiModa", true);
                                 user.saveInBackground();
@@ -265,11 +255,9 @@ public class DMHelpActivity extends Activity {
                             @Override
                             public void onClick(DialogInterface dialog,
                                                 int which) {
-
                                 SharedPreferences setting = getSharedPreferences(
                                         "mydimoda_setting", 0);
                                 int count = setting.getInt("rate_count", 1);
-
                                 count++;
                                 if (count == 4)
                                     count = 1;
@@ -277,7 +265,6 @@ public class DMHelpActivity extends Activity {
                                         "mydimoda_setting", 0).edit();
                                 editor.putInt("rate_count", count);
                                 editor.commit();
-
                                 procPurchase();
                             }
                         }).show();
@@ -297,7 +284,6 @@ public class DMHelpActivity extends Activity {
                             @Override
                             public void onClick(DialogInterface dialog,
                                                 int which) {
-
                                 ParseUser user = ParseUser.getCurrentUser();
                                 user.put("ratedmyDiModa", true);
                                 user.saveInBackground();
@@ -306,7 +292,6 @@ public class DMHelpActivity extends Activity {
                         })
                 .setPositiveButton("No thanks",
                         new DialogInterface.OnClickListener() {
-
                             @Override
                             public void onClick(DialogInterface dialog,
                                                 int which) {
@@ -374,10 +359,8 @@ public class DMHelpActivity extends Activity {
 
     @SuppressWarnings("unused")
     private void showProgressBar(String message) {
-
         if (progressbar != null)
             return;
-
         progressbar = ProgressDialog.show(this, null, message);
     }
 
@@ -452,7 +435,6 @@ public class DMHelpActivity extends Activity {
                     mUrlList.add(url);
                 }
             }
-
             showClothList();
         }
     }
