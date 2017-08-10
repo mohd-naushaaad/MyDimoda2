@@ -490,7 +490,7 @@ public class DMAlgorithmActivity extends Activity {
                                 }
                             }
                         } catch (Exception e) {
-
+e.printStackTrace();
                         }
                         constant.gFashion.blockedList.add(item);
                         constant.gFashion.setBlockedList(constant.gFashion.blockedList);

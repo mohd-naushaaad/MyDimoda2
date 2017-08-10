@@ -15,6 +15,7 @@ import android.hardware.Camera.PictureCallback;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Display;
 import android.view.Surface;
@@ -31,6 +32,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.zlightness;
 import com.mydimoda.DMCaptureOptionActivity;
@@ -473,28 +475,37 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback,
                     Matrix mat = new Matrix();
                     mat.postRotate((finalRotation)); //degree how much you rotate i rotate 270
                     Bitmap bMapRotate;
-                    if (finalRotation > 0) {
-                        bMapRotate = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), mat, true);
-                    } else {
-                        bMapRotate = bitmap;
+                    if (bitmap == null) {
+                        return "";
                     }
-                    bitmap.recycle();
+
                     try {
+                        if (finalRotation > 0) {
+                            bMapRotate = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), mat, true);
+                        } else {
+                            bMapRotate = bitmap;
+                        }
+                        bitmap.recycle();
                         FileOutputStream fos = new FileOutputStream(photoFile);
                         bMapRotate.compress(Bitmap.CompressFormat.JPEG, 100, fos);
                         fos.flush();
                         fos.close();
                         bMapRotate.recycle();
-                    } catch (FileNotFoundException e) {
-                        Log.d(LOGTAG, "File not found: " + e.getMessage());
-                    } catch (IOException e) {
+                    } catch (Exception e) {
                         Log.d(LOGTAG, "Error accessing file: " + e.getMessage());
+                        return "";
                     }
                     return imageUri;
                 }
             }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<String>() {
                 @Override
                 public void accept(@NonNull String s) throws Exception {
+                    if (TextUtils.isEmpty(s)) {
+                        Toast.makeText(getApplication(), "Error accessing file", Toast.LENGTH_SHORT).show();
+                        setResult(RESULT_CANCELED);
+                        finish();
+                        return;
+                    }
                     if (getParent() == null) {
                         setResult(RESULT_OK);
                     } else {

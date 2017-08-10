@@ -266,7 +266,13 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
                     mMaskLayout.setVisibility(View.GONE);
 
                     if (sel_formal != CLOSE_ID)
-                        savePhotoToParse();
+                        try{
+                            savePhotoToParse();
+                        }catch(Exception e){
+                            e.printStackTrace();
+                            Toast.makeText(this, "Opps Something went wrong", Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
                     sel_formal = NULL_ID;
                 }
                 break;

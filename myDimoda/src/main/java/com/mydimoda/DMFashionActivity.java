@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Rect;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -39,6 +40,7 @@ import com.mydimoda.model.OrderClothModel;
 import com.mydimoda.object.DMBlockedObject;
 import com.mydimoda.object.DMItemObject;
 import com.mydimoda.widget.cropper.util.FontsUtil;
+import com.nostra13.universalimageloader.core.assist.ImageSize;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -964,17 +966,53 @@ public class DMFashionActivity extends Activity {
         try {
             if (constant.getclothsBitmapLst().size() != mClothModellist.size()) {
                 for (int i = 0; i < mClothModellist.size(); i++) {
-                    InputStream mInputStr = new URL(mClothModellist.get(i).getImageUrl()).openConnection().getInputStream();
-                    constant.getclothsBitmapLst().add(i, BitmapFactory.decodeStream(mInputStr));
-                    mInputStr.close();
+                    //      InputStream mInputStr = new URL(mClothModellist.get(i).getImageUrl()).openConnection().getInputStream();
+                    try {
+                        //            BitmapFactory.Options options = new BitmapFactory.Options();
+                        //              options.inJustDecodeBounds = true;
+                        //                BitmapFactory.decodeStream(mInputStr, null, options);
+
+                        //                  options.inSampleSize = calculateInSampleSize(options, 500, 500);
+                        //                    options.inJustDecodeBounds = false;
+                        //                      mInputStr.reset();
+                        constant.getclothsBitmapLst().add(i, ParseApplication.getInstance().mImageLoader.loadImageSync(mClothModellist.get(i).getImageUrl(), new ImageSize(500, 500)));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    } finally {
+                        //        if (mInputStr != null) {
+                        //          mInputStr.close();
+                        //    }
+                    }
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
-                 //Toast.makeText(DMFashionActivity.this,"Loading images please wait",Toast.LENGTH_SHORT);
+            //Toast.makeText(DMFashionActivity.this,"Loading images please wait",Toast.LENGTH_SHORT);
         }
     }
 
+    public static int calculateInSampleSize(
+            BitmapFactory.Options options, int reqWidth, int reqHeight) {
+        // Raw height and width of image
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+        int inSampleSize = 1;
+
+        if (height > reqHeight || width > reqWidth) {
+
+            final int halfHeight = height / 2;
+            final int halfWidth = width / 2;
+
+            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
+            // height and width larger than the requested height and width.
+            while ((halfHeight / inSampleSize) >= reqHeight
+                    && (halfWidth / inSampleSize) >= reqWidth) {
+                inSampleSize *= 2;
+            }
+        }
+
+        return inSampleSize;
+    }
 
     @Override
     protected void onDestroy() {
