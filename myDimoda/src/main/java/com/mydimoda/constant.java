@@ -95,6 +95,7 @@ public class constant {
 
     public static final int RESULT_SIZE = 1000;
 
+    public static final String API_ITEM_OFFSET = "ItemPageOffset";
 
 
 

@@ -58,7 +58,7 @@ public class DMAutoActivity extends Activity {
     // / layout
     PullToRefreshGridView vGrdProduct;
     String mFrom, mMaxPrice;
-    int mType, mPageIndex = 0, mTotalResult, mTotalPage;
+    int mType, mPageIndex = 1, mTotalResult, mTotalPage, mItemPageOffset = 0;
     boolean mIsRefresh = false;
 
     List<DMProductObject> mProductList;
@@ -184,7 +184,6 @@ public class DMAutoActivity extends Activity {
                     mShopStyleOffset += 10;
                     mAsosOffset += 10;
 
-
                     if (!TextUtils.isEmpty(AppUtils.brand)) {
 
                         AppUtils.yes = "false";
@@ -193,6 +192,8 @@ public class DMAutoActivity extends Activity {
                         AppUtils.yes = "true";
                         getClosetFS();
                     }
+                }else{
+                    vGrdProduct.onRefreshComplete();
                 }
             }
 
@@ -344,9 +345,9 @@ public class DMAutoActivity extends Activity {
                 } else {
                     baseUrl = String.format(
                             //"%s/api/getProductList?Category=%s&MaximumPrice=%s&ItemPage=%d",
-                            "%s/api/%s?Category=%s&MaximumPrice=%s&ItemPage=%d&AWSOffset=%d&ShopStyleOffset=%d&AsosOffset=%d&Sort=%s",
+                            "%s/api/%s?Category=%s&MaximumPrice=%s&ItemPage=%d&AWSOffset=%d&ShopStyleOffset=%d&AsosOffset=%d&Sort=%s&ItemPageOffset=%d",
                             constant.gPrefUrl, mShopName, AppUtils.categoryArr[mType],
-                            mMaxPrice, mPageIndex, mAWSOffset, mShopStyleOffset, mAsosOffset, mSortType);
+                            mMaxPrice, mPageIndex, mAWSOffset, mShopStyleOffset, mAsosOffset, mSortType, mItemPageOffset);
                     // AppUtils.brand = categoryArr[mType];
                     AppUtils.putPref("brand", AppUtils.categoryArr[mType], DMAutoActivity.this);
                 }
@@ -401,6 +402,7 @@ public class DMAutoActivity extends Activity {
                     try {
                         mTotalResult = data.getInt("TotalResults");
                         mTotalPage = data.getInt("TotalPages");
+                        mItemPageOffset =  data.optInt(constant.API_ITEM_OFFSET, 0); //mayur
                         if (data.get("Items") instanceof JSONArray) {
                             mArrayData = data.getJSONArray("Items");// mayur changed as new response gives array instead of object
                             //   itemCount = data.getInt("ItemCount") <= jObj.length() ? data.getInt("ItemCount") : jObj.length();
@@ -509,7 +511,6 @@ public class DMAutoActivity extends Activity {
             Random random = new Random();
             if (TextUtils.isEmpty(AppUtils.lastCategoryCalled)) {
                 type = n[random.nextInt(n.length)] % 5;
-
             } else {
                 type = Arrays.asList(AppUtils.categoryArr).indexOf(AppUtils.lastCategoryCalled);
                 if (type < 0) {
@@ -517,7 +518,6 @@ public class DMAutoActivity extends Activity {
                 } else {
                     type = Arrays.asList(AppUtils.categoryArr).indexOf(AppUtils.lastCategoryCalled) % 5;
                 }
-
             }
 
 
@@ -534,8 +534,6 @@ public class DMAutoActivity extends Activity {
             System.out.println("Type" + AppUtils.categoryArr[type]);
             System.out.println("baseUrlLucky" + baseUrl);
             AppUtils.lastCategoryCalled = AppUtils.categoryArr[type];
-
-
         }
 
         if (!mIsRefresh) {
