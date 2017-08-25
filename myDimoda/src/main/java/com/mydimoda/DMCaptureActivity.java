@@ -164,9 +164,7 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
 
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                Intent cameraIntent = new Intent(DMCaptureActivity.this, DMCaptureOptionActivity.class);
-                startActivity(cameraIntent);
-                finish();
+                goToCaptureOptionsAct();
             }
         });
 
@@ -183,9 +181,7 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
 
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                Intent cameraIntent = new Intent(DMCaptureActivity.this, DMCaptureOptionActivity.class);
-                startActivity(cameraIntent);
-                finish();
+                goToCaptureOptionsAct();
             }
         });
 
@@ -217,6 +213,13 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
 
         showShowcaseView();
         initOnCreate();
+    }
+
+    void goToCaptureOptionsAct() {
+        Intent cameraIntent = new Intent(DMCaptureActivity.this, DMCaptureOptionActivity.class);
+        cameraIntent.putExtras(getIntent());
+        startActivity(cameraIntent);
+        finish();
     }
 
     @Override
@@ -266,9 +269,9 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
                     mMaskLayout.setVisibility(View.GONE);
 
                     if (sel_formal != CLOSE_ID)
-                        try{
+                        try {
                             savePhotoToParse();
-                        }catch(Exception e){
+                        } catch (Exception e) {
                             e.printStackTrace();
                             Toast.makeText(this, "Opps Something went wrong", Toast.LENGTH_SHORT).show();
                             finish();
@@ -634,6 +637,7 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
             byteArray = stream.toByteArray();
             stream.flush();
             stream.close();
+         //   mBitmap.recycle();
         } catch (IOException e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();
@@ -769,7 +773,7 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
     protected void onDestroy() {
         super.onDestroy();
         try {
-            // mBitmap.recycle();
+          //   mBitmap.recycle();
         } catch (Exception e) {
             e.printStackTrace();
         }

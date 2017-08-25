@@ -517,6 +517,8 @@ public class DMFashionActivity extends Activity {
         MyAsyncTask task1 = new MyAsyncTask();
         task1.execute();
 
+        constant.gItemListTemp = getItemList();
+
     }
 
     public void dislikeCloth() {
@@ -696,7 +698,7 @@ public class DMFashionActivity extends Activity {
                     constant.gLikeNum = 0;
                     new DownloadTaskRunner().execute();
                 } else if (constant.gCategory.equals("after5")) {
-                    if (constant.gLikeNum == 2) {
+                    if (constant.gLikeNum == 2 || isLookComplete(mClothModellist, constant.gCategory)) {// mayur added fix for  after 5 cloths
                         constant.gLikeNum = 0;
                         new DownloadTaskRunner().execute();
                     } else {
@@ -704,7 +706,7 @@ public class DMFashionActivity extends Activity {
                         goAlgorithmActivity();
                     }
                 } else if (constant.gCategory.equals("formal")) {
-                    if (constant.gLikeNum == 3 || isLookComplete(mClothModellist)) {
+                    if (constant.gLikeNum == 3 || isLookComplete(mClothModellist, constant.gCategory)) {
                         constant.gLikeNum = 0;
                         new DownloadTaskRunner().execute();
                     } else {
@@ -719,12 +721,18 @@ public class DMFashionActivity extends Activity {
         }
     }
 
-    private boolean isLookComplete(List<OrderClothModel> mClothModellist) {
-        if (mClothModellist.size() == 3) {
-            for (OrderClothModel mModel : mClothModellist) {
-                if (mModel.getType().equalsIgnoreCase("suit")) {
-                    return true;
-                }
+    private boolean isLookComplete(List<OrderClothModel> mClothModellist, String category) {
+        if ((category.equalsIgnoreCase("formal") && mClothModellist.size() == 3) ||
+                (category.equalsIgnoreCase("after5") && mClothModellist.size() == 2)) {
+            return checkHasSuit(mClothModellist);
+        }
+        return false;
+    }
+
+    boolean checkHasSuit(List<OrderClothModel> mClothModellist) {
+        for (OrderClothModel mModel : mClothModellist) {
+            if (mModel.getType().equalsIgnoreCase("suit")) {
+                return true;
             }
         }
         return false;

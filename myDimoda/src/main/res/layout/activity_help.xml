@@ -129,7 +129,7 @@
             android:scaleType="fitXY"
             android:clickable="true"
             android:visibility="gone"
-            tools:visibility="visible"
+            tools:visibility="gone"
             android:layout_height="match_parent" />
     </RelativeLayout>
 

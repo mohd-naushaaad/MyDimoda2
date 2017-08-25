@@ -56,6 +56,7 @@ public class DMDetailActivity extends Activity {
     DMReviewObject mReview;
     Bitmap mBitmap;
     int RESULT_CROP = 3;
+    String type = "";
 
     @Bind(R.id.act_detail_coach_mrk_iv)
     ImageView mCoachMarkScreenIv;
@@ -163,7 +164,7 @@ public class DMDetailActivity extends Activity {
         Intent intent = getIntent();
         mType = intent.getIntExtra("type", 0);
         mProduct = (DMProductObject) intent.getSerializableExtra("product");
-
+      //  type = getType();
         showMenu();
 //		setViewWithFont();
         showProductInfo();
@@ -377,6 +378,23 @@ public class DMDetailActivity extends Activity {
             intent.putExtra(constant.FRM_DETAIL_FOR_HANGUP_KEY, isForHangup);
             startActivity(intent);
         }
+    }
+
+    String getType() {
+        String title = mProduct.Title.toLowerCase();
+        if (title.contains("shirt"))
+            type = "shirt";
+        else if (title.contains("trousers"))
+            type = "trousers";
+        else if (title.contains("jacket"))
+            type = "jacket";
+        else if (title.contains("tie"))
+            type = "tie";
+        else if (title.contains("suit"))
+            type = "suit";
+        else
+            type = "shirt";
+        return type;
     }
 
     // / ---------------------------------- after crop, go to process activity

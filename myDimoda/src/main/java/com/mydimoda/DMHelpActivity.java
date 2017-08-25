@@ -95,6 +95,7 @@ public class DMHelpActivity extends Activity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 constant.gItemList = makeItemList(mClothList.get(position));
+                constant.gItemListTemp = makeItemList(mClothList.get(position));//mayur added for fixinf cloths swap issue
                 checkPermissions();
             }
         });

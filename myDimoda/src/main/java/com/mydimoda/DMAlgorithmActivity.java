@@ -464,6 +464,7 @@ public class DMAlgorithmActivity extends Activity {
 
     // / ----------------------------------------------- parse response
     // -------------------------
+    //@todo mayur 23-8 add check here
     public void parseResponse(JSONObject data) {
         hideProgress();
         constant.gFashion = new DMBlockedObject();
@@ -474,6 +475,7 @@ public class DMAlgorithmActivity extends Activity {
             try {
                 JSONArray arr = data.getJSONArray("selection");
                 if (arr != null) {
+                    zanga:
                     for (int i = 0; i < arr.length(); i++) {
                         JSONObject obj = arr.getJSONObject(i);
                         DMItemObject item = new DMItemObject(obj);
@@ -482,20 +484,29 @@ public class DMAlgorithmActivity extends Activity {
                         // If type we selected and type we get are same then check item.index is same or not
                         // If they are different , then assign our selected item.index to item object.
                         try {
-                            if (AppUtils.getPref("type", this).equalsIgnoreCase(item.type)) {
+                         /*   if (AppUtils.getPref("type", this).equalsIgnoreCase(item.type)) {
                                 if (!item.index.equalsIgnoreCase(AppUtils.getPref("index", this))) {
                                     System.out.println("Not Same");
                                     item.index = AppUtils.getPref("index", this);
                                     item.type = AppUtils.getPref("type", this);
                                 }
+                            }*/
+                            //for keeping temp
+                            for (DMItemObject itemTemp : constant.gItemListTemp) {
+                                if (item.type.equalsIgnoreCase(itemTemp.type)) {
+                                    constant.gFashion.blockedList.add(itemTemp);
+                                    continue zanga;
+                                }
                             }
-                        } catch (Exception e) {
-e.printStackTrace();
-                        }
-                        constant.gFashion.blockedList.add(item);
-                        constant.gFashion.setBlockedList(constant.gFashion.blockedList);
 
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        //  constant.gFashion.setBlockedList(constant.gFashion.blockedList);
+                        constant.gFashion.blockedList.add(item);
                     }
+
+
                 }
             } catch (JSONException e) {
                 // TODO Auto-generated catch block
@@ -510,6 +521,7 @@ e.printStackTrace();
 
             goFashionActivity();
     }
+
 
     // / ----------------------------------------------- parse responsedb
     // -------------------------
@@ -533,7 +545,7 @@ e.printStackTrace();
 					 * m_DatabaseModel.getTarget();
 					 */
                     /*
-					 * DMItemObjectDatabase item = new DMItemObjectDatabase();
+                     * DMItemObjectDatabase item = new DMItemObjectDatabase();
 					 * item.index= m_notDatabaseModel.toString(); item.type =
 					 * m_notDatabaseModel.toString();
 					 * constant.gFashion.blockedList_db.add(item);
@@ -542,13 +554,13 @@ e.printStackTrace();
                     DMItemObjectDatabase item = new DMItemObjectDatabase();
                     item.index = "cmN4DOLWvl";
                     item.type = "suit";
-					/*
-					 * item.index= m_notDatabaseModel.toString(); item.type =
+                    /*
+                     * item.index= m_notDatabaseModel.toString(); item.type =
 					 * m_notDatabaseModel.toString();
 					 */
                     constant.gFashiondb.getTarget();
-					/*
-					 * for(int i=0;i<arr.length();i++) { JSONObject obj =
+                    /*
+                     * for(int i=0;i<arr.length();i++) { JSONObject obj =
 					 * arr.getJSONObject(i); DMItemObject item = new
 					 * DMItemObject(obj); item.index ="cmN4DOLWvl";
 					 * item.type="suit";

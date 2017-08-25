@@ -408,4 +408,8 @@ public class constant {
     public static final String IMAGE_BYTEARRY_KEY = "imagebytearraykey";
 
     public static final String IMAGE_POS_KEY = "imageposkey";
+
+    //mayur added for fixing cloth swap issue in help me
+    public static List<DMItemObject> gItemListTemp = new ArrayList<DMItemObject>();
+
 }
