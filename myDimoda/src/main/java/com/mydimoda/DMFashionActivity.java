@@ -556,9 +556,6 @@ public class DMFashionActivity extends Activity {
                     favoritelist = extras.getString("favoritelist");
                 }
 
-                if (favoritelist == null) {
-
-                }
                 if (favoritelist != null
                         && favoritelist.equalsIgnoreCase("favoritelist")) {
                     System.out.println("favorite" + favoritelist);
@@ -577,27 +574,47 @@ public class DMFashionActivity extends Activity {
                     m_DatabaseModel.setFeedback(feedback);
 
                     mDbAdapter.add(m_DatabaseModel);
-
-                    AlarmManager am = (AlarmManager) DMFashionActivity.this
-                            .getSystemService(Context.ALARM_SERVICE);
-                    Intent intent = new Intent(DMFashionActivity.this,
-                            AlarmReciever.class);
-                    intent.putExtra(ONE_TIME, Boolean.TRUE);
-                    intent.putExtra("id", "" + id);
-                    // PendingIntent pi =
-                    // PendingIntent.getBroadcast(DMFashionActivity.this, 0,
-                    // intent, 0);
-
-                    PendingIntent pi = PendingIntent.getBroadcast(this, id,
-                            intent, PendingIntent.FLAG_ONE_SHOT);
-
-                    am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,  // mayur
-                            SystemClock.elapsedRealtime() + 24 * 60 * 60 * 1000, pi);
+                    setAlarm(id);
                 }
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    void setAlarm(int id) {
+
+        final int ALARM_REQUEST_CODE = 5503;
+
+        AlarmManager am = (AlarmManager) DMFashionActivity.this
+                .getSystemService(Context.ALARM_SERVICE);
+
+
+        Intent alarmIntent = new Intent(DMFashionActivity.this, AlarmReciever.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, ALARM_REQUEST_CODE, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        try {
+            am.cancel(pendingIntent);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        Intent intent = new Intent(DMFashionActivity.this,
+                AlarmReciever.class);
+        intent.putExtra(ONE_TIME, Boolean.TRUE);
+        intent.putExtra("id", "" + id);
+        // PendingIntent pi =
+        // PendingIntent.getBroadcast(DMFashionActivity.this, 0,
+        // intent, 0);
+
+        PendingIntent pi = PendingIntent.getBroadcast(this, ALARM_REQUEST_CODE,
+                intent, PendingIntent.FLAG_ONE_SHOT);
+        am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,  // mayur
+                SystemClock.elapsedRealtime() + 24 * 60 * 60 * 1000,pi);
+                /*    am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,  // for testing mayur
+                            SystemClock.elapsedRealtime() +  10000, pi);
+*/
+
     }
 
     // / ---------------------------------------------- make target json array
