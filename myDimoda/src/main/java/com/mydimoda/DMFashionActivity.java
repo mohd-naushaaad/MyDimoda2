@@ -569,17 +569,29 @@ public class DMFashionActivity extends Activity {
                     // m_DatabaseModel.setName("genparams");
 
                     Random r = new Random();
-                    int id = r.nextInt();
+                    id = r.nextInt();
                     m_DatabaseModel.setValue("" + id);
                     m_DatabaseModel.setFeedback(feedback);
 
                     mDbAdapter.add(m_DatabaseModel);
-                    setAlarm(id);
+//                    setAlarm(id);
                 }
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * for some use idk
+     */
+    int id;
+
+    int getId() {
+        if (id == 0) {
+            id = new Random().nextInt();
+        }
+        return id;
     }
 
     void setAlarm(int id) {
@@ -610,10 +622,9 @@ public class DMFashionActivity extends Activity {
         PendingIntent pi = PendingIntent.getBroadcast(this, ALARM_REQUEST_CODE,
                 intent, PendingIntent.FLAG_ONE_SHOT);
         am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,  // mayur
-                SystemClock.elapsedRealtime() + 24 * 60 * 60 * 1000,pi);
-                /*    am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,  // for testing mayur
-                            SystemClock.elapsedRealtime() +  10000, pi);
-*/
+                SystemClock.elapsedRealtime() + 24 * 60 * 60 * 1000, pi);
+                  /*  am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,  // for testing mayur
+                            SystemClock.elapsedRealtime() +  5*60*1000, pi);*/
 
     }
 
@@ -1052,6 +1063,7 @@ public class DMFashionActivity extends Activity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+            setAlarm(getId());
             constant.showProgress(DMFashionActivity.this, "Please wait...");
         }
 
