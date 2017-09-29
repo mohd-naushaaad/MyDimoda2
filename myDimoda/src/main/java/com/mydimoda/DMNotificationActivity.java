@@ -498,6 +498,7 @@ public class DMNotificationActivity extends Activity {
 		makeSendData("dislike");
 		MyAsyncTask task1 = new MyAsyncTask();
 		task1.execute();
+		hideBtnLayout();
 	}
 
 	// / ----------------------------------------------- make send data with
@@ -636,7 +637,7 @@ public class DMNotificationActivity extends Activity {
 			// Toast.makeText(this, "You can not like",
 			// Toast.LENGTH_LONG).show();
 		}
-
+		mIsDislike = false;//patch for stopping code
 		if (mIsDislike) {
 			mIsDislike = false;
 			goAlgorithmActivity();

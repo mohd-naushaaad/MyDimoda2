@@ -412,4 +412,7 @@ public class constant {
     //mayur added for fixing cloth swap issue in help me
     public static List<DMItemObject> gItemListTemp = new ArrayList<DMItemObject>();
 
+
+    public static final String INTENT_NOTI_KEY = "fromnoti";
+
 }

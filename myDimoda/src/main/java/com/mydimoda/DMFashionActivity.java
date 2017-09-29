@@ -623,8 +623,8 @@ public class DMFashionActivity extends Activity {
                 intent, PendingIntent.FLAG_ONE_SHOT);
         am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,  // mayur
                 SystemClock.elapsedRealtime() + 24 * 60 * 60 * 1000, pi);
-                  /*  am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,  // for testing mayur
-                            SystemClock.elapsedRealtime() +  5*60*1000, pi);*/
+         /*           am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,  // for testing mayur
+                            SystemClock.elapsedRealtime() +  10000, pi);*/
 
     }
 

@@ -151,6 +151,7 @@ public class DMAlgorithmActivity extends Activity {
 
             if (getIntent().hasExtra("notification_counter")) {
                 getIntent().getExtras().getString("notification_counter");
+                yes = "true";
                 getIntent().getExtras().getString("notification_yes");
                 System.out.println("Algorithm"
                         + getIntent().getExtras().getString(
@@ -176,7 +177,6 @@ public class DMAlgorithmActivity extends Activity {
                 System.out.println("Name"
                         + m_notDatabaseModels.get(0).getName());
 
-                yes = "true";
             }
         }
     }
@@ -518,7 +518,6 @@ public class DMAlgorithmActivity extends Activity {
         }
 
         if (constant.gFashion.blockedList.size() > 0)
-
             goFashionActivity();
     }
 
