@@ -2,6 +2,7 @@ package com.mydimoda;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -72,6 +73,7 @@ public class DMCropImageListActivity extends FragmentActivity {
     LinearLayoutManager mLayoutManager;
     String mType = "";
     boolean isAdd = false;
+    boolean isBack = false;
     int totalAddedCloths;// to show in toast nigga
     List<ParseObject> mClothList = new ArrayList<>();
     int mMaxCount = 0;
@@ -107,7 +109,7 @@ public class DMCropImageListActivity extends FragmentActivity {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 //clearImagesFrmMemory();
-                finish();
+                onBackPressed();
             }
         });
 
@@ -133,6 +135,7 @@ public class DMCropImageListActivity extends FragmentActivity {
                 constant.getTempImageLst().addAll(mModelList);
                 isAdd = true;
                 Intent intent = new Intent(DMCropImageListActivity.this, DMCaptureOptionActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.putExtra("FromMain", true);
                 intent.putExtra("type", mType);
                 intent.putExtra("isCapture", true);
@@ -143,6 +146,37 @@ public class DMCropImageListActivity extends FragmentActivity {
     }
 
     // / ------------------------------------------- show dialog
+
+    @Override
+    public void onBackPressed() {
+        new android.app.AlertDialog.Builder(this)
+                .setTitle("Alert!")
+                .setMessage(
+                        "Are you sure you want to go back ?")
+                .setCancelable(false)
+                .setNegativeButton("Yes!",
+                        new DialogInterface.OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog,
+                                                int which) {
+                                constant.getTempImageLst().clear();
+                                Intent hangUpIntent = new Intent(DMCropImageListActivity.this, DMHangUpActivity.class);
+                                hangUpIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                hangUpIntent.putExtra("FromMain", true);
+                                startActivity(hangUpIntent);
+                                finish();
+                            }
+                        })
+                .setPositiveButton("No",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog,
+                                                int which) {
+                            }
+                        }).show();
+
+    }
 
     public void prepareView() {
         mType = getIntent().getStringExtra("type");
@@ -172,6 +206,10 @@ public class DMCropImageListActivity extends FragmentActivity {
                     mMainAdapter.notifyDataSetChanged();
                 } else {
                     //  clearImagesFrmMemory();
+                    Intent hangUpIntent = new Intent(DMCropImageListActivity.this, DMHangUpActivity.class);
+                    hangUpIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    hangUpIntent.putExtra("FromMain", true);
+                    startActivity(hangUpIntent);
                     finish();
                 }
 
@@ -550,9 +588,11 @@ public class DMCropImageListActivity extends FragmentActivity {
 
     public void clearImagesFrmMemory() {
 
-        int cropLstSize = constant.getImageLst().size();
-        for (int i = 0; i < cropLstSize; i++) {
-            constant.getImageLst().get(i).getmImage().recycle();
+        if (!isAdd) {
+            int cropLstSize = constant.getImageLst().size();
+            for (int i = 0; i < cropLstSize; i++) {
+                constant.getImageLst().get(i).getmImage().recycle();
+            }
         }
         constant.getImageLst().clear();
     }

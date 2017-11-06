@@ -54,12 +54,12 @@ public class DMImageRecycAdapter extends RecyclerView.Adapter<DMImageRecycAdapte
         } else {
             viewHolder.mCategory.setText(items.get(position).getmCategory());
         }
-        viewHolder.mType.setOnClickListener(new View.OnClickListener() {
+        /*viewHolder.mType.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mCallbacks.type(position);
             }
-        });
+        });*/
         viewHolder.mCategory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

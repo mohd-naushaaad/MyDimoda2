@@ -70,7 +70,7 @@
             android:layout_marginTop="6dp"
             android:layout_weight=".5"
             android:background="@drawable/grey_border"
-            android:drawableRight="@drawable/down"
+
             android:gravity="center_vertical"
             android:minHeight="50dp"
             android:paddingLeft="12dp"
