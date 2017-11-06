@@ -18,7 +18,7 @@ import com.mydimoda.adapter.DMMenuListAdapter;
 import com.mydimoda.widget.cropper.util.FontsUtil;
 import com.parse.ParseUser;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class DMOrganizeActivity extends Activity {
@@ -35,7 +35,7 @@ public class DMOrganizeActivity extends Activity {
 
 	Button vBtnShirt, vBtnPant, vBtnCoat, vBtnTie, vBtnSuit;
 	RelativeLayout vCoatLayout, vTieLayout, vSuitLayout, vShoesLayout;
-	@Bind(R.id.act_hang_coach_mrk_iv)
+	@BindView(R.id.act_hang_coach_mrk_iv)
 	ImageView mCoachMarkScreenIv;
 
 	@Override

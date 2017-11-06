@@ -11,7 +11,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Rect;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -53,9 +52,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -63,7 +59,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class DMFashionActivity extends Activity {
@@ -95,15 +91,15 @@ public class DMFashionActivity extends Activity {
     DatabaseModel m_DatabaseModel;
     DbAdapter mDbAdapter;
     final public static String ONE_TIME = "onetime";
-    @Bind(R.id.act_fash_fb_share)
+    @BindView(R.id.act_fash_fb_share)
     TextView mFbShareBtn;
-    @Bind(R.id.act_fash_tw_share)
+    @BindView(R.id.act_fash_tw_share)
     TextView mTwShareBtn;
-    @Bind(R.id.act_fash_In_share)
+    @BindView(R.id.act_fash_In_share)
     TextView mInShareBtn;
     List<OrderClothModel> mClothModellist;
 
-    @Bind(R.id.act_fsn_coach_mrk_iv)
+    @BindView(R.id.act_fsn_coach_mrk_iv)
     ImageView mCoachMarkScreenIv;
 
     @Override

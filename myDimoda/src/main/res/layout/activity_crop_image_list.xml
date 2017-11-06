@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -25,12 +23,24 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_centerVertical="true"
-                android:src="@drawable/tike"
                 android:clickable="true"
+                android:hapticFeedbackEnabled="true"
                 android:padding="@dimen/tick_btn_padding"
                 android:scaleType="fitXY"
+                android:src="@drawable/tike" />
+
+            <ImageView
+                android:id="@+id/addImageVw"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignTop="@+id/doneImageVw"
+                android:layout_toEndOf="@+id/doneImageVw"
+                android:layout_toRightOf="@+id/doneImageVw"
+                android:clickable="true"
                 android:hapticFeedbackEnabled="true"
-                 />
+                android:padding="@dimen/tick_btn_padding"
+                android:scaleType="fitXY"
+                android:src="@drawable/plus" />
 
             <TextView
                 android:id="@+id/title_text"
@@ -81,8 +91,7 @@
             android:id="@+id/act_crop_img_lst"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/title_layout">
-        </android.support.v7.widget.RecyclerView>
+            android:layout_below="@id/title_layout"></android.support.v7.widget.RecyclerView>
 
     </RelativeLayout>
 

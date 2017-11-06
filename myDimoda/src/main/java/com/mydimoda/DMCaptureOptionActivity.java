@@ -28,7 +28,7 @@ import com.mydimoda.camera.CropActivity;
 import com.mydimoda.interfaces.DialogItemClickListener;
 import com.mydimoda.widget.cropper.util.FontsUtil;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -58,7 +58,7 @@ public class DMCaptureOptionActivity extends Activity {
     Bitmap mBitmap;
     String mType;
     boolean mFromMain;
-    @Bind(R.id.act_cap_optn_coach_mrk_iv)
+    @BindView(R.id.act_cap_optn_coach_mrk_iv)
     ImageView mCoachMarkScreenIv;
 
     @Override

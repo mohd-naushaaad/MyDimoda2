@@ -44,7 +44,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class DMDeleteActivity extends Activity implements DMListItemCallback {
@@ -64,7 +64,7 @@ public class DMDeleteActivity extends Activity implements DMListItemCallback {
     DMDeleteGridAdapter mAdapter;
     List<ParseObject> mClothList = null;
     List<String> mUrlList = null;
-    @Bind(R.id.act_help_scrn_coach)
+    @BindView(R.id.act_help_scrn_coach)
     ImageView mCoachMarkScreenIv;
     DisplayImageOptions opts = new DisplayImageOptions.Builder().imageScaleType(ImageScaleType.NONE).build();
 

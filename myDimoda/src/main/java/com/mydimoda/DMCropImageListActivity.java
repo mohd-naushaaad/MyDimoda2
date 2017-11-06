@@ -2,6 +2,7 @@ package com.mydimoda;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
@@ -42,37 +43,38 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.fabric.sdk.android.Fabric;
 
 public class DMCropImageListActivity extends FragmentActivity {
 
 
+    final String[] mCatList = {"Formal", "Casual"};
+    final String[] mTypeList = {"Shirt", "Trousers", "Suit", "Jacket", "Tie"};
     // / menu
     Button vBtnMenu;
     TextView vTxtBack;
     RelativeLayout vBackLayout;
-
-
     ProgressDialog vProgress;
-
-
-    @Bind(R.id.act_crop_img_lst)
+    @BindView(R.id.act_crop_img_lst)
     RecyclerView mRecyclerView;
     ArrayList<CropListModel> mModelList;
-    @Bind(R.id.doneImageVw)
+    @BindView(R.id.doneImageVw)
     ImageView mDoneBtn;
-
-    @Bind(R.id.title_text)
+    @BindView(R.id.addImageVw)
+    ImageView addImageVw;
+    @BindView(R.id.title_text)
     TextView mTitleTxt;
-
     AlertDialog mCatDialog;
     AlertDialog mTypeDialog;
     DMImageRecycAdapter mMainAdapter;
     LinearLayoutManager mLayoutManager;
     String mType = "";
+    boolean isAdd = false;
     int totalAddedCloths;// to show in toast nigga
+    List<ParseObject> mClothList = new ArrayList<>();
+    int mMaxCount = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,7 +93,14 @@ public class DMCropImageListActivity extends FragmentActivity {
 
 
 // initilised
+
+
         mModelList = constant.getImageLst();
+
+
+        mModelList.addAll(constant.getTempImageLst());
+        constant.getTempImageLst().clear();
+
         totalAddedCloths = mModelList.size();
         vBackLayout.setOnClickListener(new OnClickListener() {
 
@@ -107,6 +116,7 @@ public class DMCropImageListActivity extends FragmentActivity {
         mDoneBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                constant.getTempImageLst().clear();
                 if (AppUtils.isConnectingToInternet(DMCropImageListActivity.this)) {
                     if (checkCatAndTypeForALL()) {
                         new AnalyseTask().execute();
@@ -117,8 +127,22 @@ public class DMCropImageListActivity extends FragmentActivity {
 
             }
         });
+        addImageVw.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                constant.getTempImageLst().addAll(mModelList);
+                isAdd = true;
+                Intent intent = new Intent(DMCropImageListActivity.this, DMCaptureOptionActivity.class);
+                intent.putExtra("FromMain", true);
+                intent.putExtra("type", mType);
+                intent.putExtra("isCapture", true);
+                startActivity(intent);
+            }
+        });
 
     }
+
+    // / ------------------------------------------- show dialog
 
     public void prepareView() {
         mType = getIntent().getStringExtra("type");
@@ -159,7 +183,6 @@ public class DMCropImageListActivity extends FragmentActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mMainAdapter);
     }
-
 
     // / ------------------------------------- save photo to parse.com database
     // -----------------------
@@ -228,6 +251,11 @@ public class DMCropImageListActivity extends FragmentActivity {
                                     if (AppUtils.getDialogImgSelectLst().size() > 0) {
                                         AppUtils.getDialogImgSelectLst().remove(0);
                                     }
+
+                                    Intent hangUpIntent = new Intent(DMCropImageListActivity.this, DMHangUpActivity.class);
+                                    hangUpIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    hangUpIntent.putExtra("FromMain", true);
+                                    startActivity(hangUpIntent);
                                     finish();
                                 }
                             }
@@ -268,14 +296,11 @@ public class DMCropImageListActivity extends FragmentActivity {
         return byteArray;
     }
 
-    // / ------------------------------------------- show dialog
-
     @Override
     public void onResume() {
+        isAdd = false;
         super.onResume();
     }
-
-    List<ParseObject> mClothList = new ArrayList<>();
 
     /**
      * mayur: to get the count of cloths already in closet so as to increase style me count
@@ -310,8 +335,6 @@ public class DMCropImageListActivity extends FragmentActivity {
             }
         });
     }
-
-    int mMaxCount = 0;
 
     /**
      * for calculating and assigning style options
@@ -378,13 +401,14 @@ public class DMCropImageListActivity extends FragmentActivity {
             if (AppUtils.getDialogImgSelectLst().size() > 0) {
                 AppUtils.getDialogImgSelectLst().remove(0);
             }
+            Intent hangUpIntent = new Intent(DMCropImageListActivity.this, DMHangUpActivity.class);
+            hangUpIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            hangUpIntent.putExtra("FromMain", true);
+            startActivity(hangUpIntent);
             finish();
         }
 
     }
-
-    final String[] mCatList = {"Formal", "Casual"};
-    final String[] mTypeList = {"Shirt", "Trousers", "Suit", "Jacket", "Tie"};
 
     public void showCategoryDialog(final int pos) {
 
@@ -507,6 +531,32 @@ public class DMCropImageListActivity extends FragmentActivity {
         return builder.toString().toUpperCase();
     }
 
+    public boolean checkCatAndTypeForALL() {
+        for (int i = 0; i < mModelList.size(); i++) {
+            if (!checkCatAndType(i)) {
+                mRecyclerView.smoothScrollToPosition(i);
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    protected void onDestroy() {
+        clearImagesFrmMemory();
+        super.onDestroy();
+
+    }
+
+    public void clearImagesFrmMemory() {
+
+        int cropLstSize = constant.getImageLst().size();
+        for (int i = 0; i < cropLstSize; i++) {
+            constant.getImageLst().get(i).getmImage().recycle();
+        }
+        constant.getImageLst().clear();
+    }
+
     private class AnalyseTask extends AsyncTask<Void, Void, Void> {
 
         @Override
@@ -542,30 +592,5 @@ public class DMCropImageListActivity extends FragmentActivity {
             }
         }
 
-    }
-
-    public boolean checkCatAndTypeForALL() {
-        for (int i = 0; i < mModelList.size(); i++) {
-            if (!checkCatAndType(i)) {
-                mRecyclerView.smoothScrollToPosition(i);
-                return false;
-            }
-        }
-        return true;
-    }
-
-    @Override
-    protected void onDestroy() {
-        clearImagesFrmMemory();
-        super.onDestroy();
-
-    }
-
-    public void clearImagesFrmMemory() {
-        int cropLstSize = constant.getImageLst().size();
-        for (int i = 0; i < cropLstSize; i++) {
-            constant.getImageLst().get(i).getmImage().recycle();
-        }
-        constant.getImageLst().clear();
     }
 }

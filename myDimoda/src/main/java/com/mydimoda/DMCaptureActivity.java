@@ -52,7 +52,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class DMCaptureActivity extends FragmentActivity implements OnClickListener,
@@ -107,7 +107,7 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
     AlertDialog mCatDialog;
     AlertDialog mTypeDialog;
 
-    @Bind(R.id.act_capture_scrn_coach)
+    @BindView(R.id.act_capture_scrn_coach)
     ImageView mCoachMarkScreenIv;
 
     @Override

@@ -1,6 +1,5 @@
 package com.mydimoda;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +7,6 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.util.SortedList;
 import android.text.TextUtils;
 import android.view.ContextThemeWrapper;
 import android.view.View;
@@ -21,7 +19,6 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.mydimoda.adapter.DMMenuListAdapter;
 import com.mydimoda.adapter.DMOptionsListAdapter;
@@ -29,7 +26,7 @@ import com.mydimoda.widget.cropper.util.FontsUtil;
 
 import java.util.HashMap;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class DMExactActivity extends FragmentActivity {
@@ -55,18 +52,18 @@ public class DMExactActivity extends FragmentActivity {
 
     String[] mShopList;
     HashMap<String, String> mShopMap = new HashMap<>();
-    @Bind(R.id.shop_edit)
+    @BindView(R.id.shop_edit)
     TextView mShopNameTv;
     HashMap<String, String> mSort_Map = new HashMap<>();
-    @Bind(R.id.sort_edit)
+    @BindView(R.id.sort_edit)
     TextView mSortTypeTv;
     String[] mSortList;
 
-    @Bind(R.id.sort_lyt_title)
+    @BindView(R.id.sort_lyt_title)
     TextView mSortTitle;
-    @Bind(R.id.shop_lyt_title)
+    @BindView(R.id.shop_lyt_title)
     TextView mShopTitle;
-    @Bind(R.id.act_exact_coach_mrk_iv)
+    @BindView(R.id.act_exact_coach_mrk_iv)
     ImageView mCoachMarkScreenIv;
 
     @Override

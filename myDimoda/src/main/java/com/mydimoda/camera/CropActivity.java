@@ -36,7 +36,7 @@ import com.mydimoda.widget.cropper.CropImageView;
 import com.mydimoda.widget.cropper.util.FontsUtil;
 import com.parse.ParseUser;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class CropActivity extends Activity implements OnClickListener {
@@ -56,11 +56,11 @@ public class CropActivity extends Activity implements OnClickListener {
     Bitmap croppedImage;
 
     TextView doneText, typeText, back_txt;
-    @Bind(R.id.act_crop_recyclerview)
+    @BindView(R.id.act_crop_recyclerview)
     RecyclerView mCropListVw;
-    @Bind(R.id.act_crop_add)
+    @BindView(R.id.act_crop_add)
     ImageButton mAddCropBtn;
-    @Bind(R.id.act_crop_done)
+    @BindView(R.id.act_crop_done)
     ImageButton mDoneImagebtn;
 
     LinearLayoutManager layoutManager;
@@ -82,7 +82,7 @@ public class CropActivity extends Activity implements OnClickListener {
         mAspectRatioY = bundle.getInt(ASPECT_RATIO_Y);
     }
 
-    @Bind(R.id.act_croap_coach_mrk_iv)
+    @BindView(R.id.act_croap_coach_mrk_iv)
     ImageView mCoachMarkScreenIv;
 
     int counter = 0;

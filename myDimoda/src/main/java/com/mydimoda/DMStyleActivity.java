@@ -29,7 +29,7 @@ import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class DMStyleActivity extends Activity {
@@ -47,7 +47,7 @@ public class DMStyleActivity extends Activity {
     String mCategory;
     boolean b_rate;
     private ProgressDialog progressbar = null;
-    @Bind(R.id.act_style_coach_mrk_iv)
+    @BindView(R.id.act_style_coach_mrk_iv)
     ImageView mCoachMarkScreenIv;
 
     @Override

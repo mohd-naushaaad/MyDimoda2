@@ -3,7 +3,6 @@ package com.mydimoda;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.text.TextUtils;
@@ -39,10 +38,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
-
-import static com.mydimoda.JSONPostParser.jObj;
 
 
 public class DMAutoActivity extends Activity {
@@ -74,7 +71,7 @@ public class DMAutoActivity extends Activity {
 
     String mShopName = "productloop";
     String mSortType = "relevance";
-    @Bind(R.id.act_auto_coach_mrk_iv)
+    @BindView(R.id.act_auto_coach_mrk_iv)
     ImageView mCoachMarkScreenIv;
 
 

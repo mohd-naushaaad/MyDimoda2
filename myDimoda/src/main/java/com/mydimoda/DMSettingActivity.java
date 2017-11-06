@@ -32,7 +32,7 @@ import com.mydimoda.social.google.util.Purchase;
 import com.mydimoda.widget.cropper.util.FontsUtil;
 import com.parse.ParseUser;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class DMSettingActivity extends Activity {
@@ -44,16 +44,16 @@ public class DMSettingActivity extends Activity {
     DrawerLayout vDrawerLayout;
     LinearLayout vMenuLayout;
     RelativeLayout vBackLayout;
-    @Bind(R.id.setting_notification_layout)
+    @BindView(R.id.setting_notification_layout)
     RelativeLayout mNotificationRL;
     TextView mNotificationTxt;
-    @Bind(R.id.setting_notification_toggleButton)
+    @BindView(R.id.setting_notification_toggleButton)
     SwitchCompat mNotificationToggleBtn;
-    @Bind(R.id.style_me_label_txt)
+    @BindView(R.id.style_me_label_txt)
     TextView mStyleMeLAbel;
-    @Bind(R.id.act_setting_stylme_point_tv)
+    @BindView(R.id.act_setting_stylme_point_tv)
     TextView mStylemePointTv;
-    @Bind(R.id.act_sett_coach_mrk_iv)
+    @BindView(R.id.act_sett_coach_mrk_iv)
     ImageView mCoachMarkScreenIv;
 
     // / Layout variables

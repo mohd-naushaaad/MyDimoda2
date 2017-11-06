@@ -18,7 +18,7 @@ import com.mydimoda.adapter.DMMenuListAdapter;
 import com.mydimoda.widget.cropper.util.FontsUtil;
 import com.parse.ParseUser;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class DMFindMeActivity extends Activity {
@@ -33,7 +33,7 @@ public class DMFindMeActivity extends Activity {
     RelativeLayout vExactLayout, vAutoLayout;
     TextView vTxtFindMe, vTxtAuto;
     String mCategory;
-    @Bind(R.id.act_find_coach_mrk_iv)
+    @BindView(R.id.act_find_coach_mrk_iv)
     ImageView mCoachMarkScreenIv;
 
     @Override

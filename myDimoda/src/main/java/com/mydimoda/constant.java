@@ -296,6 +296,15 @@ public class constant {
     public static final String PREF_IS_GALRY_DIALOG_SHOWN = "isgalshown";
     public static final String USER_MAX_COUNT_INITILISED = "maxusercountinitilised";
 
+    // Dipen Saved image temp to add more images
+    private static ArrayList<CropListModel> mCroppedItemListModelTempArray;
+
+    public static ArrayList<CropListModel> getTempImageLst() {
+        if (mCroppedItemListModelTempArray == null) {
+            mCroppedItemListModelTempArray = new ArrayList<>();
+        }
+        return mCroppedItemListModelTempArray;
+    }
 
     //Mayur to save array of cropped images for otehr view
     private static ArrayList<CropListModel> mCroppedItemListModelArray;

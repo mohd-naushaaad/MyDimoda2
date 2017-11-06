@@ -579,7 +579,7 @@ public class DMAlgorithmActivity extends Activity {
     }
 
     public class MyAsyncTask extends
-            AsyncTask<String, Integer, ArrayList<HashMap<String, String>>> {
+            AsyncTask<String, Integer, JSONObject> {
 
         // / server communicate using asyncTask
 
@@ -592,7 +592,7 @@ public class DMAlgorithmActivity extends Activity {
         }
 
         @Override
-        protected ArrayList<HashMap<String, String>> doInBackground(
+        protected JSONObject doInBackground(
                 String... params) {
 
             // Creating JSON Parser instance
@@ -601,18 +601,19 @@ public class DMAlgorithmActivity extends Activity {
             mResponseData = jParser.getJSONFromUrl(mBaseUrl,
                     mSendData.toString());
 
-            return UploadsList;
+//            return UploadsList;
+            return mResponseData;
         }
 
         @Override
-        protected void onPostExecute(ArrayList<HashMap<String, String>> result) {
+        protected void onPostExecute(JSONObject result) {
 
             if (!yes.equalsIgnoreCase("") && yes.equalsIgnoreCase("true")) {
-                parseResponseDB(mResponseData);
+                parseResponseDB(result);
             } else {
                 // / when get response, call parser response function of the
                 // class
-                parseResponse(mResponseData);
+                parseResponse(result);
             }
             super.onPostExecute(result);
         }

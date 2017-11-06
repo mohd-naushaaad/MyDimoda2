@@ -22,7 +22,7 @@ import com.parse.ParseUser;
 
 import java.util.Random;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class DMMyLookActivity extends Activity implements OnClickListener {
@@ -46,7 +46,7 @@ public class DMMyLookActivity extends Activity implements OnClickListener {
     // ListView vOccasionList;
     int n[] = {1, 2, 3};
     int type;
-    @Bind(R.id.act_ocsn_coach_mrk_iv)
+    @BindView(R.id.act_ocsn_coach_mrk_iv)
     ImageView mCoachMarkScreenIv;
 
     @Override

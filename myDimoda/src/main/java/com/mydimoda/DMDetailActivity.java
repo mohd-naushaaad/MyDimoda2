@@ -1,7 +1,5 @@
 package com.mydimoda;
 
-import org.json.JSONObject;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
@@ -31,7 +29,9 @@ import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingProgressListener;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 
-import butterknife.Bind;
+import org.json.JSONObject;
+
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class DMDetailActivity extends Activity {
@@ -58,10 +58,10 @@ public class DMDetailActivity extends Activity {
     int RESULT_CROP = 3;
     String type = "";
 
-    @Bind(R.id.act_detail_coach_mrk_iv)
+    @BindView(R.id.act_detail_coach_mrk_iv)
     ImageView mCoachMarkScreenIv;
 
-    @Bind(R.id.act_detail_hng_up_btn)
+    @BindView(R.id.act_detail_hng_up_btn)
     Button mHangupBtn;
 
     private boolean isHangup = false;

@@ -35,7 +35,7 @@ import com.parse.SaveCallback;
 
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class DMHomeActivity extends FragmentActivity {
@@ -53,7 +53,7 @@ public class DMHomeActivity extends FragmentActivity {
     DialogInterface mDlgInterface;
     int RESULT_GALLERY = 2;
     ParseUser user;
-    @Bind(R.id.home_overlay_rlyt)
+    @BindView(R.id.home_overlay_rlyt)
     RelativeLayout mCoachmark;
 
     @Override

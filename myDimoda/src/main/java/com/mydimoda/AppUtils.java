@@ -222,6 +222,7 @@ public class AppUtils {
      */
     public static void showGalleryDialog(Context mContext, final DialogItemClickListener mCallback, boolean isFrmHome)
             throws ClassCastException {
+        final String selectedPath = "";
         if (mGalleryDialog == null || !mGalleryDialog.isShowing()) {
             final ArrayList<DialogImagesModel> mGallerImageLst = new ArrayList();
             mGallerImageLst.clear();
@@ -305,18 +306,28 @@ public class AppUtils {
                 }
             });
             mAdapter = new DMDialogGridAdapter(mContext, mGallerImageLst);
+
             mGalGridview.setAdapter(mAdapter);
             mGalGridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                    // Dipen select only one image
+                    if(!mGallerImageLst.get(position).isSelected()) {
+                        for (int i = 0; i < mGallerImageLst.size(); i++) {
+                            if (mGallerImageLst.get(i).isSelected()) {
+                                mGallerImageLst.get(i).setSelected(false);
+                            }
+                        }
+                    }
                     mGallerImageLst.get(position).setSelected(!mGallerImageLst.get(position).isSelected());
+
                     mAdapter.notifyDataSetChanged();
                     if (mGallerImageLst.get(position).isSelected()) {
-                        getDialogImgSelectLst().add(mGallerImageLst.get(position).getImagePathl());
+                        getDialogImgSelectLst().add(0,mGallerImageLst.get(position).getImagePathl());
                     } else {
                         getDialogImgSelectLst().remove(mGallerImageLst.get(position).getImagePathl());
                     }
-                    //
                 }
             });
             mDoneImageBtn.setOnClickListener(new View.OnClickListener() {
