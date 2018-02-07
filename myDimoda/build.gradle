@@ -17,14 +17,14 @@ repositories {
 
 
 android {
-    compileSdkVersion 25
+    compileSdkVersion 26
     buildToolsVersion '26.0.2'
     useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
         applicationId "com.mydimoda"
         minSdkVersion 15
-        targetSdkVersion 25
+        targetSdkVersion 26
     }
 
     buildTypes {
@@ -52,7 +52,7 @@ dependencies {
         transitive = true;
     }
     compile('com.facebook.android:facebook-android-sdk:4.+') {
-        exclude module: 'bolts-android'
+//        exclude module: 'bolts-android'
         exclude module: 'support-v4'
     }
     compile project(':pullSDK')
@@ -69,4 +69,5 @@ dependencies {
 // Because RxAndroid releases are few and far between, it is recommended you also
 // explicitly depend on RxJava's latest version for bug fixes and new features.
     compile 'io.reactivex.rxjava2:rxjava:2.1.0'
+
 }
