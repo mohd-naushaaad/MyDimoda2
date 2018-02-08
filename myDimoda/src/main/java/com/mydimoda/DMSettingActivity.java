@@ -21,6 +21,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mydimoda.activities.PlanANewTripActivity;
 import com.mydimoda.adapter.DMMenuListAdapter;
 import com.mydimoda.social.google.GoogleIAP;
 import com.mydimoda.social.google.util.IabHelper;
@@ -143,7 +144,12 @@ public class DMSettingActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                constant.selectMenuItem(DMSettingActivity.this, position, true);
+                if (position == 6) {
+                    slideMenu();
+                } else {
+                    constant.selectMenuItem(DMSettingActivity.this, position,
+                            true);
+                }
             }
         });
 

@@ -390,7 +390,7 @@ public class DMHomeActivity extends FragmentActivity {
                 @Override
                 public void onClick(View view) {
                     mCoachmark.setVisibility(View.GONE);
-                    SharedPreferenceUtil.putValue(constant.PREF_IS_HOME_SHOWN,true);
+                    SharedPreferenceUtil.putValue(constant.PREF_IS_HOME_SHOWN, true);
                 }
             });
         }

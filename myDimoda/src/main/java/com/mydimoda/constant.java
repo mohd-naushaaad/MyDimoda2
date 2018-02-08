@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
 
+import com.mydimoda.activities.PlanANewTripActivity;
 import com.mydimoda.model.CropListModel;
 import com.mydimoda.model.DatabaseModel;
 import com.mydimoda.object.DMBlockedObject;
@@ -60,7 +61,7 @@ public class constant {
     public static String[] gPattern = {"empty", "dot", "plaid", "stripe", "florial"};
 
     // / menu item
-    public static String[] menuArr = {"HOME", "STYLE ME", "HANG UP", "ORGANIZE", "PURCHASE", "SETTINGS"};
+    public static String[] menuArr = {"HOME", "STYLE ME", "HANG UP", "ORGANIZE", "PURCHASE", "PLAN A NEW TRIP", "SETTINGS"};
     public static List<String> gMenuList = Arrays.asList(menuArr);
 
     // cloth order
@@ -96,7 +97,6 @@ public class constant {
     public static final int RESULT_SIZE = 1000;
 
     public static final String API_ITEM_OFFSET = "ItemPageOffset";
-
 
 
     public constant() {
@@ -267,7 +267,13 @@ public class constant {
             if (isFinish)
                 context.finish();
 
-        } else if (pos == 5)// --- logout
+        } else if (pos == 5)// --- plan a new trip
+        {
+            Intent intent = new Intent(context, PlanANewTripActivity.class);
+            context.startActivity(intent);
+            if (isFinish)
+                context.finish();
+        } else if (pos == 6)// --- logout
         {
             Intent intent = new Intent(context, DMSettingActivity.class);
             context.startActivity(intent);

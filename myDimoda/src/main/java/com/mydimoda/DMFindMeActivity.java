@@ -97,7 +97,11 @@ public class DMFindMeActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                constant.selectMenuItem(DMFindMeActivity.this, position, true);
+                if (position == 4) {
+                    slideMenu();
+                } else {
+                    constant.selectMenuItem(DMFindMeActivity.this, position, true);
+                }
             }
         });
 
