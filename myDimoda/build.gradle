@@ -58,9 +58,10 @@ dependencies {
     compile project(':pullSDK')
     //  compile 'com.github.amlcurran.showcaseview:library:5.4.3'
     // compile project(':Showcaselibrary')
-    compile 'com.android.support:appcompat-v7:25.0.0'
-    compile 'com.android.support:recyclerview-v7:25.0.0'
-    compile 'com.android.support:support-v4:25.0.0'
+    compile 'com.android.support:appcompat-v7:26.+'
+    compile 'com.android.support:design:26.+'
+    compile 'com.android.support:recyclerview-v7:26.+'
+    compile 'com.android.support:support-v4:26.+'
 /*//used in mytrips
     compile "android.arch.lifecycle:runtime:1.0.0-alpha4"
     compile "android.arch.lifecycle:extensions:1.0.0-alpha4"

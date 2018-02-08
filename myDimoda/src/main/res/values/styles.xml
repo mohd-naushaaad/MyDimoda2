@@ -22,6 +22,11 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
 
+    <style name="AppTheme.NoActionbar" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="windowActionBar">false</item>
+    </style>
+
     <style name="AppotherTheme" parent="Theme.AppCompat.Light.NoActionBar"></style>
 
     <style name="Widget"></style>
@@ -45,6 +50,27 @@
         <item name="colorAccent">#FFCC00</item>
         <item name="android:textColorPrimary">@color/color_gray_light</item>
         <item name="android:background">@color/color_white</item>
+    </style>
+
+    <style name="trip_look_selector">
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">20dp</item>
+        <item name="android:paddingTop">7dp</item>
+        <item name="android:paddingBottom">7dp</item>
+        <!--<item name="android:gravity">center_vertical</item>-->
+        <item name="android:button">@android:color/transparent</item>
+        <item name="android:background">@drawable/bg_selector_trip</item>
+        <item name="android:textColor">@drawable/trip_selector_text</item>
+    </style>
+
+    <style name="trip_text">
+        <item name="android:textColor">@color/light_brown</item>
+        <item name="android:textSize">@dimen/normal_text_size</item>
+    </style>
+
+    <style name="tv_plus_minus" parent="trip_text">
+        <item name="android:padding">3dp</item>
+        <item name="android:gravity">center</item>
     </style>
 
 </resources>

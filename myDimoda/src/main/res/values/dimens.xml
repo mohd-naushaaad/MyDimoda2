@@ -29,4 +29,9 @@
     <dimen name="dialog.share.padding">12dp</dimen>
     <dimen name="dialog.share.iconsize">45dp</dimen>
     <dimen name="act_dtl_btn_hight">50dp</dimen>
+    <dimen name="large_margin">25dp</dimen>
+    <!--<dimen name="large_margin">15dp</dimen>-->
+    <dimen name="normal_margin">5dp</dimen>
+    <dimen name="normal_text_size">15sp</dimen>
+    <dimen name="txt_padd">7dp</dimen>
 </resources>
