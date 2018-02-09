@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.daimajia.swipe.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/swiproot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/darker_gray"
+    app:clickToClose="true">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:src="@android:drawable/ic_delete" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="vertical">
+
+            <com.mydimoda.customView.BrixtonLightText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="29"
+                android:textColor="@color/light_black"
+                android:textSize="20sp" />
+
+            <com.mydimoda.customView.BrixtonLightText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SEP 2017"
+                android:textColor="@color/light_black"
+                android:textSize="@dimen/normal_text_size" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:gravity="center_vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.75">
+
+            <com.mydimoda.customView.BrixtonLightText
+                android:id="@+id/tv_trip_ttl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="UK Business Trip"
+                android:textColor="@color/light_black"
+                android:textSize="@dimen/normal_text_size" />
+
+            <com.mydimoda.customView.BrixtonLightText
+                android:id="@+id/tv_trip_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_trip_ttl"
+                android:text="Formal"
+                android:textColor="@android:color/holo_red_light"
+                android:textSize="@dimen/normal_text_size" />
+
+            <com.mydimoda.customView.BrixtonLightText
+                android:id="@+id/tv_trip_looks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_trip_ttl"
+                android:layout_toRightOf="@+id/tv_trip_status"
+                android:paddingLeft="@dimen/normal_margin"
+                android:text="5 Looks"
+                android:textColor="@color/light_black"
+                android:textSize="@dimen/normal_text_size" />
+        </RelativeLayout>
+    </LinearLayout>
+</com.daimajia.swipe.SwipeLayout>

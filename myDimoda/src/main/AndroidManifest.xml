@@ -66,6 +66,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionbar" />
         <activity
+            android:name="com.mydimoda.activities.ReviewTripPlannedActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionbar" />
+        <activity
             android:name="com.mydimoda.NotificationClickActivity"
             android:configChanges="keyboardHidden|orientation|screenSize|locale|layoutDirection"
             android:excludeFromRecents="true"

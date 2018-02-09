@@ -35,9 +35,10 @@
     <color name="color_black_light">#99000000</color>
     <color name="btn_background_gray">#908f8f</color>
     <color name="row_background_gray">#cccccc</color>
-      <color name="blue_color_code">#089bcb</color>
+    <color name="blue_color_code">#089bcb</color>
     <color name="orange">#c86100</color>
     <color name="material_deep_teal_500">#ff009688</color>
     <color name="darker_gray">#cccccc</color>
     <color name="light_brown">#8E8D8E</color>
+    <color name="light_black">#333333</color>
 </resources>

@@ -2,6 +2,7 @@ package com.mydimoda.activities;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
@@ -183,7 +184,7 @@ public class PlanANewTripActivity extends Activity {
     }
 
     @OnClick({R.id.menu_btn, R.id.back_layout, R.id.tv_casual_minus, R.id.tv_casual_plus, R.id.tv_formal_minus, R.id.tv_formal_plus
-            , R.id.tv_business_minus, R.id.tv_business_plus, R.id.tv_start_date, R.id.tv_end_date, R.id.ll_start_date, R.id.ll_end_date})
+            , R.id.tv_business_minus, R.id.tv_business_plus, R.id.tv_start_date, R.id.tv_end_date, R.id.ll_start_date, R.id.ll_end_date, R.id.tv_trip})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.menu_btn:
@@ -225,6 +226,10 @@ public class PlanANewTripActivity extends Activity {
             case R.id.ll_end_date:
                 endDatePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
                 endDatePickerDialog.show();
+                break;
+            case R.id.tv_trip:
+                Intent intent = new Intent(this, ReviewTripPlannedActivity.class);
+                startActivity(intent);
                 break;
         }
     }
