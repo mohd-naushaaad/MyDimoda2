@@ -97,27 +97,124 @@
                             android:textColorHint="@color/light_brown"
                             android:textSize="@dimen/normal_text_size" />
 
-                        <com.mydimoda.customView.BrixtonLightText
-                            android:id="@+id/tv_lbl_date_range"
-                            style="@style/trip_text"
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="@dimen/normal_margin"
-                            android:layout_marginTop="@dimen/large_margin"
-                            android:text="@string/date_range" />
+                            android:orientation="vertical"
+                            android:paddingBottom="@dimen/large_margin"
+                            android:paddingTop="@dimen/large_margin">
 
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:layout_marginBottom="15dp"></RelativeLayout>
+                            <com.mydimoda.customView.BrixtonLightText
+                                android:id="@+id/tv_lbl_date_range"
+                                style="@style/trip_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+
+                                android:text="@string/date_range" />
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <ImageView
+                                    android:id="@+id/iv_calender"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_centerVertical="true"
+                                    android:src="@drawable/cal" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toLeftOf="@id/iv_calender"
+                                    android:gravity="center_vertical"
+                                    android:orientation="horizontal">
+
+                                    <LinearLayout
+                                        android:id="@+id/ll_start_date"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:orientation="horizontal"
+                                        android:visibility="gone">
+
+                                        <com.mydimoda.customView.BrixtonLightText
+                                            android:id="@+id/tv_start_dd"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="13"
+                                            android:textColor="@color/light_brown"
+                                            android:textSize="@dimen/big_txt_calender" />
+
+                                        <com.mydimoda.customView.BrixtonLightText
+                                            android:id="@+id/tv_start_mm"
+                                            style="@style/trip_text"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:paddingLeft="@dimen/txt_padd"
+                                            android:text="Dec" />
+                                    </LinearLayout>
+
+                                    <com.mydimoda.customView.BrixtonLightText
+                                        android:id="@+id/tv_start_date"
+                                        style="@style/trip_text"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="Start Date" />
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/swap" />
+
+                                    <LinearLayout
+                                        android:id="@+id/ll_end_date"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:gravity="center_horizontal"
+                                        android:orientation="horizontal"
+                                        android:visibility="gone">
+
+                                        <com.mydimoda.customView.BrixtonLightText
+                                            android:id="@+id/tv_end_dd"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="13"
+                                            android:textColor="@color/light_brown"
+                                            android:textSize="@dimen/big_txt_calender" />
+
+                                        <com.mydimoda.customView.BrixtonLightText
+                                            android:id="@+id/tv_end_mm"
+                                            style="@style/trip_text"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:paddingLeft="@dimen/txt_padd"
+                                            android:text="Dec" />
+                                    </LinearLayout>
+
+                                    <com.mydimoda.customView.BrixtonLightText
+                                        android:id="@+id/tv_end_date"
+                                        style="@style/trip_text"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:gravity="center"
+                                        android:text="Start Date" />
+                                </LinearLayout>
+
+
+                            </RelativeLayout>
+                        </LinearLayout>
 
                         <com.mydimoda.customView.BrixtonLightText
                             android:id="@+id/tv_lbl_need_pkg"
                             style="@style/trip_text"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="@dimen/normal_margin"
-                            android:layout_marginTop="@dimen/large_margin"
+                            android:paddingBottom="@dimen/normal_margin"
                             android:text="@string/need_pkg" />
 
                         <RadioGroup
@@ -145,13 +242,14 @@
                             style="@style/trip_text"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="@dimen/normal_margin"
-                            android:layout_marginTop="@dimen/large_margin"
+                            android:paddingBottom="@dimen/normal_margin"
+                            android:paddingTop="@dimen/normal_margin"
                             android:text="How many looks do you want for this trip?" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
                             android:orientation="horizontal">
 
                             <LinearLayout
@@ -165,10 +263,11 @@
                                     style="@style/trip_text"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="0.55"
+                                    android:layout_weight="0.50"
                                     android:text="@string/casual" />
 
                                 <com.mydimoda.customView.BrixtonLightText
+                                    android:id="@+id/tv_casual_minus"
                                     style="@style/tv_plus_minus"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
@@ -176,13 +275,17 @@
                                     android:text="-" />
 
                                 <com.mydimoda.customView.BrixtonLightText
-                                    style="@style/tv_plus_minus"
+                                    android:id="@+id/tv_casual_val"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="0.15"
-                                    android:text="0" />
+                                    android:layout_weight="0.20"
+                                    android:gravity="center"
+                                    android:text="0"
+                                    android:textColor="@color/light_brown"
+                                    android:textSize="@dimen/normal_text_size" />
 
                                 <com.mydimoda.customView.BrixtonLightText
+                                    android:id="@+id/tv_casual_plus"
                                     style="@style/tv_plus_minus"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
@@ -190,12 +293,12 @@
                                     android:text="+" />
                             </LinearLayout>
 
-                            <View
-                                android:layout_width="1dp"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="5dp"
-                                android:layout_marginRight="5dp"
-                                android:background="@color/light_brown"></View>
+                            <!-- <View
+                                 android:layout_width="1dp"
+                                 android:layout_height="match_parent"
+                                 android:layout_marginLeft="5dp"
+                                 android:layout_marginRight="5dp"
+                                 android:background="@color/light_brown"></View>-->
 
                             <LinearLayout
                                 android:layout_width="0dp"
@@ -208,10 +311,11 @@
                                     style="@style/trip_text"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="0.55"
+                                    android:layout_weight="0.50"
                                     android:text="@string/formal" />
 
                                 <com.mydimoda.customView.BrixtonLightText
+                                    android:id="@+id/tv_formal_minus"
                                     style="@style/tv_plus_minus"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
@@ -219,13 +323,15 @@
                                     android:text="-" />
 
                                 <com.mydimoda.customView.BrixtonLightText
+                                    android:id="@+id/tv_formal_val"
                                     style="@style/tv_plus_minus"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="0.15"
+                                    android:layout_weight="0.20"
                                     android:text="0" />
 
                                 <com.mydimoda.customView.BrixtonLightText
+                                    android:id="@+id/tv_formal_plus"
                                     style="@style/tv_plus_minus"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
@@ -233,12 +339,12 @@
                                     android:text="+" />
                             </LinearLayout>
 
-                            <View
+                            <!--<View
                                 android:layout_width="1dp"
                                 android:layout_height="match_parent"
                                 android:layout_marginLeft="5dp"
                                 android:layout_marginRight="5dp"
-                                android:background="@color/light_brown"></View>
+                                android:background="@color/light_brown"></View>-->
 
                             <LinearLayout
                                 android:layout_width="0dp"
@@ -251,10 +357,11 @@
                                     style="@style/trip_text"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="0.55"
+                                    android:layout_weight="0.50"
                                     android:text="@string/business" />
 
                                 <com.mydimoda.customView.BrixtonLightText
+                                    android:id="@+id/tv_business_minus"
                                     style="@style/tv_plus_minus"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
@@ -262,13 +369,15 @@
                                     android:text="-" />
 
                                 <com.mydimoda.customView.BrixtonLightText
+                                    android:id="@+id/tv_business_val"
                                     style="@style/tv_plus_minus"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="0.15"
+                                    android:layout_weight="0.20"
                                     android:text="0" />
 
                                 <com.mydimoda.customView.BrixtonLightText
+                                    android:id="@+id/tv_business_plus"
                                     style="@style/tv_plus_minus"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"

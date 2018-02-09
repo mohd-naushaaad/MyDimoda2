@@ -1,27 +1,30 @@
 package com.mydimoda.activities;
 
 import android.app.Activity;
-import android.content.Intent;
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.mydimoda.DMHomeActivity;
 import com.mydimoda.R;
 import com.mydimoda.adapter.DMMenuListAdapter;
 import com.mydimoda.constant;
 import com.mydimoda.customView.BrixtonLightText;
 import com.mydimoda.widget.cropper.util.FontsUtil;
+
+import java.util.Calendar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -78,16 +81,83 @@ public class PlanANewTripActivity extends Activity {
     RelativeLayout mainContentLayout;
     @BindView(R.id.RelativeLayout1)
     RelativeLayout RelativeLayout1;
+    int val_causal = 0, val_formal = 0, val_business = 0;
+    @BindView(R.id.iv_calender)
+    ImageView ivCalender;
+    @BindView(R.id.tv_casual_minus)
+    BrixtonLightText tvCasualMinus;
+    @BindView(R.id.tv_casual_val)
+    BrixtonLightText tvCasualVal;
+    @BindView(R.id.tv_casual_plus)
+    BrixtonLightText tvCasualPlus;
+    @BindView(R.id.tv_formal_minus)
+    BrixtonLightText tvFormalMinus;
+    @BindView(R.id.tv_formal_val)
+    BrixtonLightText tvFormalVal;
+    @BindView(R.id.tv_formal_plus)
+    BrixtonLightText tvFormalPlus;
+    @BindView(R.id.tv_business_minus)
+    BrixtonLightText tvBusinessMinus;
+    @BindView(R.id.tv_business_val)
+    BrixtonLightText tvBusinessVal;
+    @BindView(R.id.tv_business_plus)
+    BrixtonLightText tvBusinessPlus;
+    @BindView(R.id.tv_start_dd)
+    BrixtonLightText tvStartDd;
+    @BindView(R.id.tv_start_mm)
+    BrixtonLightText tvStartMm;
+    @BindView(R.id.ll_start_date)
+    LinearLayout llStartDate;
+    @BindView(R.id.tv_start_date)
+    BrixtonLightText tvStartDate;
+    @BindView(R.id.tv_end_dd)
+    BrixtonLightText tvEndDd;
+    @BindView(R.id.tv_end_mm)
+    BrixtonLightText tvEndMm;
+    @BindView(R.id.ll_end_date)
+    LinearLayout llEndDate;
+    @BindView(R.id.tv_end_date)
+    BrixtonLightText tvEndDate;
+    private DatePickerDialog startDatePickerDialog, endDatePickerDialog;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plannewtrip);
         ButterKnife.bind(this);
-        rbMoreLook.setChecked(true);
+        init_view();
         init();
         setFontToTextView();
         sideMenuClickListner();
+    }
+
+    private void init_view() {
+        rbMoreLook.setChecked(true);
+        tvCasualVal.setText(String.valueOf(val_causal));
+        tvFormalVal.setText(String.valueOf(val_formal));
+        tvBusinessVal.setText(String.valueOf(val_business));
+        Calendar newCalendar = Calendar.getInstance();
+        startDatePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                tvStartDate.setVisibility(View.GONE);
+                llStartDate.setVisibility(View.VISIBLE);
+                tvStartDd.setText(String.valueOf(dayOfMonth));
+                tvStartMm.setText(constant.getMonth(monthOfYear + 1));
+            }
+
+        }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+
+        endDatePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
+                tvEndDate.setVisibility(View.GONE);
+                llEndDate.setVisibility(View.VISIBLE);
+                tvEndDd.setText(String.valueOf(dayOfMonth));
+                tvEndMm.setText(constant.getMonth(monthOfYear + 1));
+            }
+        }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
     }
 
     private void setFontToTextView() {
@@ -112,17 +182,49 @@ public class PlanANewTripActivity extends Activity {
         });
     }
 
-    @OnClick({R.id.menu_btn, R.id.back_layout})
+    @OnClick({R.id.menu_btn, R.id.back_layout, R.id.tv_casual_minus, R.id.tv_casual_plus, R.id.tv_formal_minus, R.id.tv_formal_plus
+            , R.id.tv_business_minus, R.id.tv_business_plus, R.id.tv_start_date, R.id.tv_end_date, R.id.ll_start_date, R.id.ll_end_date})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.menu_btn:
                 slideMenu();
                 break;
             case R.id.back_layout:
-                Intent intent = new Intent(this,
-                        DMHomeActivity.class);
-                startActivity(intent);
-                finish();
+                onBackPressed();
+                break;
+            case R.id.tv_casual_minus:
+                if (val_causal > 0) {
+                    tvCasualVal.setText(String.valueOf(--val_causal));
+                }
+                break;
+            case R.id.tv_casual_plus:
+                tvCasualVal.setText(String.valueOf(++val_causal));
+                break;
+            case R.id.tv_formal_minus:
+                if (val_formal > 0) {
+                    tvFormalVal.setText(String.valueOf(--val_formal));
+                }
+                break;
+            case R.id.tv_formal_plus:
+                tvFormalVal.setText(String.valueOf(++val_formal));
+                break;
+            case R.id.tv_business_minus:
+                if (val_business > 0) {
+                    tvBusinessVal.setText(String.valueOf(--val_business));
+                }
+                break;
+            case R.id.tv_business_plus:
+                tvBusinessVal.setText(String.valueOf(++val_business));
+                break;
+            case R.id.tv_start_date:
+            case R.id.ll_start_date:
+                startDatePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+                startDatePickerDialog.show();
+                break;
+            case R.id.tv_end_date:
+            case R.id.ll_end_date:
+                endDatePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+                endDatePickerDialog.show();
                 break;
         }
     }
