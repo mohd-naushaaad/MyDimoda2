@@ -228,7 +228,9 @@ public class PlanANewTripActivity extends Activity {
                 endDatePickerDialog.show();
                 break;
             case R.id.tv_trip:
-                Intent intent = new Intent(this, ReviewTripPlannedActivity.class);
+                /*Intent intent = new Intent(this, ReviewTripPlannedActivity.class);
+                startActivity(intent);*/
+                Intent intent = new Intent(this, TripSuggestedItemActivity.class);
                 startActivity(intent);
                 break;
         }

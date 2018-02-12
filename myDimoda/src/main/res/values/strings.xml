@@ -52,6 +52,7 @@
     <string name="casual">Casual</string>
     <string name="formal">Formal</string>
     <string name="business">Business</string>
+    <string name="review_trip_planned">Review Trips Planned</string>
 
 
 </resources>

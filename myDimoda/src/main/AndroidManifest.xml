@@ -66,6 +66,11 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionbar" />
         <activity
+            android:name="com.mydimoda.activities.TripSuggestedItemActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionbar" />
+        <activity
             android:name="com.mydimoda.activities.ReviewTripPlannedActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionbar" />
