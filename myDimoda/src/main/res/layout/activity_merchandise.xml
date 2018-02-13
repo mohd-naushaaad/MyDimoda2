@@ -79,6 +79,7 @@
             android:orientation="horizontal">
 
             <com.mydimoda.customView.BrixtonLightText
+                android:id="@+id/tv_next"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Next"

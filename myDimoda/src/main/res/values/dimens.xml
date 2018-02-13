@@ -34,5 +34,6 @@
     <dimen name="normal_margin">7dp</dimen>
     <dimen name="normal_text_size">15sp</dimen>
     <dimen name="txt_padd">7dp</dimen>
+    <dimen name="img_padd">5dp</dimen>
     <dimen name="big_txt_calender">50sp</dimen>
 </resources>

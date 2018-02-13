@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="#ffffff"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#f0f0f0"
+        android:gravity="center_vertical"
+        android:padding="15dp">
+
+        <LinearLayout
+            android:id="@+id/back_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true">
+
+            <com.mydimoda.customView.Existence_Light_TextView
+                android:id="@+id/back_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:text="Back"
+                android:textColor="@color/color_black"
+                android:textSize="20sp" />
+
+            <ImageButton
+                android:id="@+id/back_btn"
+                android:layout_width="15dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/back_btn" />
+        </LinearLayout>
+
+        <com.mydimoda.customView.Existence_Light_TextView
+            android:id="@+id/title_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/back_layout"
+            android:gravity="center"
+            android:text="Suggested wardrob items"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/restore_layout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@id/title_layout"
+        android:background="@color/btn_background_gray"
+        android:paddingLeft="5dp">
+
+        <Button
+            android:id="@+id/restore_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/list_item_sel" />
+
+        <ImageView
+            android:id="@+id/shirt_icon"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            android:src="@drawable/icon_shirt" />
+
+        <com.mydimoda.customView.Existence_Light_TextView
+            android:id="@+id/shirt_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/shirt_icon"
+            android:text="SHIRTS"
+            android:textColor="#000000"
+            android:textSize="25sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/pants_layout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@id/restore_layout"
+        android:layout_marginTop="0.5dp"
+        android:background="@color/btn_background_gray"
+        android:paddingLeft="5dp">
+
+        <Button
+            android:id="@+id/pants_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/list_item_sel" />
+
+        <ImageView
+            android:id="@+id/pants_icon"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            android:src="@drawable/icon_pants" />
+
+        <com.mydimoda.customView.Existence_Light_TextView
+            android:id="@+id/pants_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/pants_icon"
+            android:text="TROUSERS"
+            android:textColor="#000000"
+            android:textSize="25sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/coat_layout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@id/pants_layout"
+        android:layout_marginTop="0.5dp"
+        android:background="@color/btn_background_gray"
+        android:paddingLeft="5dp">
+
+        <Button
+            android:id="@+id/coat_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/list_item_sel" />
+
+        <ImageView
+            android:id="@+id/coat_icon"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            android:src="@drawable/icon_cort" />
+
+        <com.mydimoda.customView.Existence_Light_TextView
+            android:id="@+id/coat_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/coat_icon"
+            android:text="JACKET"
+            android:textColor="#000000"
+            android:textSize="25sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/tie_layout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@id/coat_layout"
+        android:layout_marginTop="0.5dp"
+        android:background="@color/btn_background_gray"
+        android:paddingLeft="5dp">
+
+        <Button
+            android:id="@+id/tie_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/list_item_sel" />
+
+        <ImageView
+            android:id="@+id/tie_icon"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            android:src="@drawable/icon_tie" />
+
+        <com.mydimoda.customView.Existence_Light_TextView
+            android:id="@+id/tie_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/tie_icon"
+            android:text="TIE"
+            android:textColor="#000000"
+            android:textSize="25sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/suit_layout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@id/tie_layout"
+        android:layout_marginTop="0.5dp"
+        android:background="@color/btn_background_gray"
+        android:paddingLeft="5dp">
+
+        <Button
+            android:id="@+id/suit_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/list_item_sel" />
+
+        <ImageView
+            android:id="@+id/suit_icon"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            android:src="@drawable/icon_suit" />
+
+        <com.mydimoda.customView.Existence_Light_TextView
+            android:id="@+id/suit_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/suit_icon"
+            android:text="SUIT"
+            android:textColor="#000000"
+            android:textSize="25sp" />
+    </RelativeLayout>
+
+</RelativeLayout>

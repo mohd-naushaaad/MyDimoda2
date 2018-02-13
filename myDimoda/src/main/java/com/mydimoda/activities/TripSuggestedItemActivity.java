@@ -1,10 +1,12 @@
 package com.mydimoda.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -12,6 +14,7 @@ import android.widget.TextView;
 
 import com.mydimoda.R;
 import com.mydimoda.adapter.SuggestedItemAdp;
+import com.mydimoda.customView.BrixtonLightText;
 import com.mydimoda.model.SuggestedModel;
 import com.mydimoda.widget.cropper.util.FontsUtil;
 
@@ -39,6 +42,8 @@ public class TripSuggestedItemActivity extends AppCompatActivity implements Sugg
     RelativeLayout titleLayout;
     @BindView(R.id.rv_items)
     RecyclerView rvItems;
+    @BindView(R.id.tv_next)
+    BrixtonLightText tvNext;
     private SuggestedItemAdp suggestedItemAdp;
     private List<SuggestedModel> list;
     private int lastSelectedPos = -1;
@@ -69,9 +74,17 @@ public class TripSuggestedItemActivity extends AppCompatActivity implements Sugg
         rvItems.setAdapter(suggestedItemAdp);
     }
 
-    @OnClick(R.id.back_layout)
-    public void onViewClicked() {
-        onBackPressed();
+    @OnClick({R.id.back_layout, R.id.tv_next})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.tv_next:
+                Intent intent = new Intent(this, LookListingActiivty.class);
+                startActivity(intent);
+                break;
+            case R.id.back_layout:
+                onBackPressed();
+                break;
+        }
     }
 
     @Override

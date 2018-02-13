@@ -62,10 +62,6 @@ public class PlanANewTripActivity extends Activity {
     RadioButton rbLessLook;
     @BindView(R.id.tv_lbl_que_looks)
     BrixtonLightText tvLblQueLooks;
-    @BindView(R.id.tv_stylr_me)
-    BrixtonLightText tvStylrMe;
-    @BindView(R.id.tv_help_me)
-    BrixtonLightText tvHelpMe;
     @BindView(R.id.tv_trip)
     BrixtonLightText tvTrip;
     @BindView(R.id.ll_plan_a_new_trip)
@@ -119,6 +115,10 @@ public class PlanANewTripActivity extends Activity {
     LinearLayout llEndDate;
     @BindView(R.id.tv_end_date)
     BrixtonLightText tvEndDate;
+    @BindView(R.id.rl_styleme)
+    RelativeLayout rlStyleme;
+    @BindView(R.id.rl_helpme)
+    RelativeLayout rlHelpme;
     private DatePickerDialog startDatePickerDialog, endDatePickerDialog;
 
 
@@ -184,7 +184,8 @@ public class PlanANewTripActivity extends Activity {
     }
 
     @OnClick({R.id.menu_btn, R.id.back_layout, R.id.tv_casual_minus, R.id.tv_casual_plus, R.id.tv_formal_minus, R.id.tv_formal_plus
-            , R.id.tv_business_minus, R.id.tv_business_plus, R.id.tv_start_date, R.id.tv_end_date, R.id.ll_start_date, R.id.ll_end_date, R.id.tv_trip})
+            , R.id.tv_business_minus, R.id.tv_business_plus, R.id.tv_start_date, R.id.tv_end_date, R.id.ll_start_date, R.id.ll_end_date
+            , R.id.tv_trip, R.id.rl_styleme, R.id.rl_helpme})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.menu_btn:
@@ -228,10 +229,14 @@ public class PlanANewTripActivity extends Activity {
                 endDatePickerDialog.show();
                 break;
             case R.id.tv_trip:
-                /*Intent intent = new Intent(this, ReviewTripPlannedActivity.class);
-                startActivity(intent);*/
-                Intent intent = new Intent(this, TripSuggestedItemActivity.class);
+                Intent intent = new Intent(this, ReviewTripPlannedActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.rl_styleme:
+                break;
+            case R.id.rl_helpme:
+                Intent helpMeintent = new Intent(this, TripHelpMeActivity.class);
+                startActivity(helpMeintent);
                 break;
         }
     }

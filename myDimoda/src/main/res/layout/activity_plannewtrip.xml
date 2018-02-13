@@ -386,6 +386,7 @@
                         </LinearLayout>
 
                         <RelativeLayout
+                            android:id="@+id/rl_styleme"
                             android:layout_width="match_parent"
                             android:layout_height="120dp"
                             android:layout_marginBottom="10dp"
@@ -393,7 +394,6 @@
                             android:background="@drawable/style_bg">
 
                             <com.mydimoda.customView.BrixtonLightText
-                                android:id="@+id/tv_stylr_me"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentBottom="true"
@@ -406,6 +406,7 @@
                         </RelativeLayout>
 
                         <RelativeLayout
+                            android:id="@+id/rl_helpme"
                             android:layout_width="match_parent"
                             android:layout_height="120dp"
                             android:layout_marginBottom="10dp"
@@ -413,7 +414,6 @@
                             android:background="@drawable/help_bg">
 
                             <com.mydimoda.customView.BrixtonLightText
-                                android:id="@+id/tv_help_me"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentBottom="true"
