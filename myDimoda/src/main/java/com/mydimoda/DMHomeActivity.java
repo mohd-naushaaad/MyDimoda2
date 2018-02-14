@@ -114,13 +114,14 @@ public class DMHomeActivity extends FragmentActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-
+//                vDrawerLayout.closeDrawers();
                 if (position == 0) {
                     slideMenu();
                 } else {
                     constant.selectMenuItem(DMHomeActivity.this, position,
                             false);
                 }
+                vDrawerLayout.closeDrawers();
             }
         });
 

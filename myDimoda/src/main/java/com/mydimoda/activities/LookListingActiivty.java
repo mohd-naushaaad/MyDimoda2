@@ -1,21 +1,26 @@
 package com.mydimoda.activities;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.mydimoda.R;
 import com.mydimoda.adapter.LookAdapter;
 import com.mydimoda.customView.BrixtonLightText;
 import com.mydimoda.customView.Existence_Light_TextView;
 import com.mydimoda.model.DemoModelForLook;
+import com.mydimoda.widget.cropper.util.FontsUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +33,7 @@ import butterknife.OnClick;
  * Created by Parth on 2/13/2018.
  */
 
-public class LookListingActiivty extends AppCompatActivity {
+public class LookListingActiivty extends AppCompatActivity implements LookAdapter.ClickListnerOfLook {
     @BindView(R.id.iv_share)
     ImageView ivShare;
     @BindView(R.id.title_view)
@@ -59,7 +64,7 @@ public class LookListingActiivty extends AppCompatActivity {
 
     private void setUpAdp() {
         lookList = new ArrayList<>();
-        lookAdapter = new LookAdapter(lookList, this);
+        lookAdapter = new LookAdapter(lookList, this, this);
         rvLooklisting.setLayoutManager(new LinearLayoutManager(this));
         rvLooklisting.setAdapter(lookAdapter);
     }
@@ -84,7 +89,49 @@ public class LookListingActiivty extends AppCompatActivity {
             case R.id.iv_share:
                 break;
             case R.id.back_layout:
+                onBackPressed();
                 break;
         }
+    }
+
+    @Override
+    public void onClickOfLike(int pos) {
+        lookList.get(pos).setLiked(!lookList.get(pos).isLiked());
+        lookAdapter.notifyItemChanged(pos);
+        if (lookList.get(pos).isLiked()) {
+            showSimilarDialog();
+        }
+    }
+
+    public void showSimilarDialog() {
+        // custom dialog
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.getWindow().setBackgroundDrawableResource(R.drawable.empty);
+        dialog.setContentView(R.layout.dialog_ok);
+        dialog.setCanceledOnTouchOutside(true);
+
+        TextView title = (TextView) dialog.findViewById(R.id.title);
+        FontsUtil.setExistenceLight(this, title);
+        title.setText(R.string.alert_added);
+
+        Button okBtn = (Button) dialog.findViewById(R.id.okbtn);
+        FontsUtil.setExistenceLight(this, okBtn);
+
+        okBtn.setText("OK");
+        okBtn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                dialog.cancel();
+            }
+        });
+        dialog.show();
+    }
+
+    @Override
+    public void onClickofClose(int pos) {
+        lookList.get(pos).setColsed(!lookList.get(pos).isColsed());
+        lookAdapter.notifyItemChanged(pos);
     }
 }
