@@ -3,7 +3,7 @@
     android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
+    android:background="@color/back_wight"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -26,8 +26,7 @@
                 <RelativeLayout
                     android:id="@+id/title_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:background="#f7f7f7">
+                    android:layout_height="60dp">
 
                     <Button
                         android:id="@+id/menu_btn"

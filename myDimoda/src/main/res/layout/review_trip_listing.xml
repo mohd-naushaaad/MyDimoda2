@@ -3,14 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f7f7f7"
+    android:background="@color/white_f7"
     android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/title_layout"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="#f0f0f0">
+        android:layout_height="60dp">
 
         <TextView
             android:id="@+id/title_view"
@@ -51,10 +50,10 @@
     </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
         android:id="@+id/rv_trip_planned"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
         tools:listitem="@layout/item_review_trip_planned" />
 </LinearLayout>
