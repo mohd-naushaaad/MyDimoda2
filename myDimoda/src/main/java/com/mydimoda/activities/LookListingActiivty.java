@@ -65,8 +65,15 @@ public class LookListingActiivty extends AppCompatActivity {
     }
 
     private void setStaticListing(int i) {
+        DemoModelForLook demoModelForLook;
+        List sublist = new ArrayList();
         for (int j = 0; j < i; j++) {
-            lookList.add(new DemoModelForLook());
+            sublist.clear();
+            for (int k = 0; k < 2; k++) {
+                sublist.add(k);
+            }
+            demoModelForLook = new DemoModelForLook(sublist);
+            lookList.add(demoModelForLook);
         }
         lookAdapter.notifyDataSetChanged();
     }

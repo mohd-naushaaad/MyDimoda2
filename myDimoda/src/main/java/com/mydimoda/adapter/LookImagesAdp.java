@@ -6,15 +6,20 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.mydimoda.R;
+import com.mydimoda.customView.SqureImageView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by Parth on 2/13/2018.
  */
 
 public class LookImagesAdp extends RecyclerView.Adapter<LookImagesAdp.LookImageHolder> {
+
     private List list = new ArrayList();
 
     public LookImagesAdp(List list) {
@@ -38,8 +43,12 @@ public class LookImagesAdp extends RecyclerView.Adapter<LookImagesAdp.LookImageH
     }
 
     public class LookImageHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.img)
+        SqureImageView img;
+
         public LookImageHolder(View itemView) {
             super(itemView);
+            ButterKnife.bind(this, itemView);
         }
     }
 }

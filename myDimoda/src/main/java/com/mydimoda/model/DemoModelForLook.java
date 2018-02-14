@@ -10,11 +10,11 @@ import java.util.List;
 public class DemoModelForLook {
     private List list = new ArrayList();
 
-    public List getList() {
-        for (int i = 0; i < 2; i++) {
-            list.add(i);
-        }
-        return list;
+    public DemoModelForLook(List list) {
+        this.list = list;
     }
 
+    public List getList() {
+        return list;
+    }
 }
