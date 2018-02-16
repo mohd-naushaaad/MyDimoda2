@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.mydimoda.R;
+import com.mydimoda.customView.SqureImageView;
 import com.mydimoda.model.SuggestedModel;
 
 import java.util.ArrayList;
@@ -61,9 +62,9 @@ public class SuggestedItemAdp extends RecyclerView.Adapter<SuggestedItemAdp.Sugg
 
     public class SuggestedItemHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.img_main)
-        ImageView imgMain;
+        SqureImageView imgMain;
         @BindView(R.id.img_back)
-        ImageView imgBack;
+        SqureImageView imgBack;
         @BindView(R.id.rl_suggested_item)
         RelativeLayout rlSuggestedItem;
 

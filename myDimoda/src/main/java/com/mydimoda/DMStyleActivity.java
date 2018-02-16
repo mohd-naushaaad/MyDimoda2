@@ -265,7 +265,7 @@ public class DMStyleActivity extends Activity {
 				 * {
 				 */
                 showPurchaseAlert();
-				/* } */
+                /* } */
             } else {
                 gotoAlgorithmActivity();
             }
@@ -388,7 +388,7 @@ public class DMStyleActivity extends Activity {
                                 GoogleIAP.buyFeature(0);
 
 						/*
-						 * showProgressBar("");
+                         * showProgressBar("");
 						 * 
 						 * ParseUser user = ParseUser.getCurrentUser();
 						 * user.put("Buy", true);

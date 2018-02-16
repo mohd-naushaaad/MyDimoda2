@@ -200,7 +200,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
                                         android:gravity="center"
-                                        android:text="Start Date" />
+                                        android:text="End Date" />
                                 </LinearLayout>
 
 
@@ -274,13 +274,11 @@
 
                                 <com.mydimoda.customView.BrixtonLightText
                                     android:id="@+id/tv_casual_val"
+                                    style="@style/tv_plus_minus"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="0.20"
-                                    android:gravity="center"
-                                    android:text="0"
-                                    android:textColor="@color/light_brown"
-                                    android:textSize="@dimen/normal_text_size" />
+                                    android:text="0" />
 
                                 <com.mydimoda.customView.BrixtonLightText
                                     android:id="@+id/tv_casual_plus"
@@ -390,7 +388,7 @@
                             android:layout_height="120dp"
                             android:layout_marginBottom="10dp"
                             android:layout_marginTop="10dp"
-                            android:background="@drawable/style_bg">
+                            android:background="@drawable/style_me_img">
 
                             <com.mydimoda.customView.BrixtonLightText
                                 android:layout_width="match_parent"
@@ -410,7 +408,7 @@
                             android:layout_height="120dp"
                             android:layout_marginBottom="10dp"
                             android:layout_marginTop="10dp"
-                            android:background="@drawable/help_bg">
+                            android:background="@drawable/help_me_img">
 
                             <com.mydimoda.customView.BrixtonLightText
                                 android:layout_width="match_parent"

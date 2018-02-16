@@ -3,19 +3,20 @@
     android:id="@+id/rl_suggested_item"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingRight="5dp">
+    android:paddingBottom="@dimen/img_padd"
+    android:paddingRight="@dimen/img_padd">
 
-    <ImageView
+    <com.mydimoda.customView.SqureImageView
         android:id="@+id/img_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerInParent="true"
+        android:scaleType="centerCrop"
         android:src="@drawable/my_look" />
 
-    <ImageView
+    <com.mydimoda.customView.SqureImageView
         android:id="@+id/img_back"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerInParent="true"
+        android:scaleType="centerCrop"
         android:visibility="gone" />
 </RelativeLayout>

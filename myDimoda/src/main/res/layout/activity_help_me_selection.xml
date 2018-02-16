@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@id/back_layout"
             android:gravity="center"
-            android:text="Suggested wardrob items"
+            android:text="Select Wardrobe Item"
             android:textColor="#000000"
             android:textSize="20sp" />
     </RelativeLayout>

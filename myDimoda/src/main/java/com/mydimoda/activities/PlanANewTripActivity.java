@@ -185,7 +185,7 @@ public class PlanANewTripActivity extends Activity {
 
     @OnClick({R.id.menu_btn, R.id.back_layout, R.id.tv_casual_minus, R.id.tv_casual_plus, R.id.tv_formal_minus, R.id.tv_formal_plus
             , R.id.tv_business_minus, R.id.tv_business_plus, R.id.tv_start_date, R.id.tv_end_date, R.id.ll_start_date, R.id.ll_end_date
-            , R.id.tv_trip, R.id.rl_styleme, R.id.rl_helpme})
+            , R.id.tv_trip, R.id.rl_styleme, R.id.rl_helpme, R.id.iv_calender})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.menu_btn:
@@ -225,6 +225,7 @@ public class PlanANewTripActivity extends Activity {
                 break;
             case R.id.tv_end_date:
             case R.id.ll_end_date:
+            case R.id.iv_calender:
                 endDatePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
                 endDatePickerDialog.show();
                 break;
