@@ -78,7 +78,7 @@ public class DMHangUpActivity extends Activity {
 
         vBackLayout = (RelativeLayout) findViewById(R.id.back_layout);
 
-        vBtnShirt = (Button) findViewById(R.id.restorerestore_btn);
+        vBtnShirt = (Button) findViewById(R.id.restore_btn);
         vBtnPant = (Button) findViewById(R.id.pants_btn);
         vBtnCoat = (Button) findViewById(R.id.coat_btn);
         vBtnTie = (Button) findViewById(R.id.tie_btn);

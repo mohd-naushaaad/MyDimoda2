@@ -20,6 +20,8 @@ import com.parse.ParseUser;
 import org.acra.annotation.ReportsCrashes;
 
 import io.fabric.sdk.android.Fabric;
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 
 @ReportsCrashes(mailTo = "nirmal@solulab.com")
 public class ParseApplication extends Application {
@@ -54,13 +56,22 @@ public class ParseApplication extends Application {
         mContext.startService(new Intent(this, ServiceHelper.class));
 
         initImageLoader(getApplicationContext());
+        // Use for troubleshooting -- remove this line for production
+        Parse.setLogLevel(Parse.LOG_LEVEL_DEBUG);
 
-		/*Parse.initialize(this, "SPi9A2wXDrfMonNm9PBbJzumanlXMiEYfqpRCkJd",
+        // Use for monitoring Parse OkHttp traffic
+        // Can be Level.BASIC, Level.HEADERS, or Level.BODY
+        // See http://square.github.io/okhttp/3.x/logging-interceptor/ to see the options.
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
+        httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        builder.networkInterceptors().add(httpLoggingInterceptor);
+        /*Parse.initialize(this, "SPi9A2wXDrfMonNm9PBbJzumanlXMiEYfqpRCkJd",
                 "MGuamZwIkAVisZWyZ5ZGqGR50Cl42kOAhNNgFQLm");*/
         Parse.initialize(new Parse.Configuration.Builder(this)
                 .applicationId("SPi9A2wXDrfMonNm9PBbJzumanlXMiEYfqpRCkJd") // should correspond to APP_ID env variable
                 .clientKey("MGuamZwIkAVisZWyZ5ZGqGR50Cl42kOAhNNgFQLm")  // set explicitly unless clientKey is explicitly configured on Parse server
-
+                .clientBuilder(builder)
                 .server("http://52.25.182.16:1337/parse/").build());
 
 //		ParseFacebookUtils.initialize("608361809277602");
