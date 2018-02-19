@@ -376,6 +376,10 @@ public class constant {
     public static final String PREF_IS_FSN_SHOWN = "isfsnshown";
     public static final String PREF_IS_HANGUP_SHOWN = "ishangupshown";
     public static final String PREF_IS_HANGUP_HELP_SHOWN = "ishanguphelpshown";
+    //Add by parth ukani
+    public static final String PREF_IS_PLAN_NEW_TRIP_SHOWN="prefisplannewtripshown";
+    public static final String PREF_IS_REVIEW_TRIP_SHOWN="prefisreviewtripshown";
+    public static final String PREF_IS_SELECT_MERCHANDISE_ITEM_SHOWN="prefismerchandiseshown";
 
 
     public static final String PREF_IS_FIND_SHOWN = "isfindshown";

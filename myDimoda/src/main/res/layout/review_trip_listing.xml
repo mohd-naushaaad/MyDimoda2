@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white_f7"
-    android:orientation="vertical">
+    android:background="@color/white_f7">
 
     <RelativeLayout
         android:id="@+id/title_layout"
@@ -50,10 +49,23 @@
     </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
+        android:layout_below="@id/title_layout"
         android:id="@+id/rv_trip_planned"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         tools:listitem="@layout/item_review_trip_planned" />
-</LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_coach_review_trip"
+        android:layout_width="match_parent"
+        android:background="@drawable/home_2"
+        android:layout_marginLeft="-4dp"
+        android:clickable="true"
+        android:visibility="gone"
+        android:layout_marginTop="-2dp"
+        android:layout_height="match_parent">
+
+    </RelativeLayout>
+</RelativeLayout>

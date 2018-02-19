@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/back_wight"
-    android:orientation="vertical">
+    >
 
     <RelativeLayout
         android:id="@+id/main_content_layout"
@@ -464,4 +464,16 @@
              android:layout_height="match_parent" />-->
 
     </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rl_coach_plan_new_trip"
+        android:layout_width="match_parent"
+        android:background="@drawable/home_2"
+        android:layout_marginLeft="-4dp"
+        android:clickable="true"
+        android:visibility="gone"
+        android:layout_marginTop="-2dp"
+        android:layout_height="match_parent">
+
+    </RelativeLayout>
+
 </RelativeLayout>

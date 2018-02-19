@@ -13,7 +13,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.mydimoda.R;
+import com.mydimoda.SharedPreferenceUtil;
 import com.mydimoda.adapter.SuggestedItemAdp;
+import com.mydimoda.constant;
 import com.mydimoda.customView.BrixtonLightText;
 import com.mydimoda.model.SuggestedModel;
 import com.mydimoda.widget.cropper.util.FontsUtil;
@@ -44,6 +46,10 @@ public class TripSuggestedItemActivity extends AppCompatActivity implements Sugg
     RecyclerView rvItems;
     @BindView(R.id.tv_next)
     BrixtonLightText tvNext;
+    @BindView(R.id.tv_label_select_item)
+    BrixtonLightText tvLabelSelectItem;
+    @BindView(R.id.rl_coach_suggestion_merchandise)
+    RelativeLayout rlCoachSuggestionMerchandise;
     private SuggestedItemAdp suggestedItemAdp;
     private List<SuggestedModel> list;
     private int lastSelectedPos = -1;
@@ -53,10 +59,24 @@ public class TripSuggestedItemActivity extends AppCompatActivity implements Sugg
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_merchandise);
         ButterKnife.bind(this);
+//        showShowcaseView();
         FontsUtil.setExistenceLight(this, titleView);
         FontsUtil.setExistenceLight(this, backTxt);
         setUpAdp();
         makeStaticList(15);
+
+    }
+    private void showShowcaseView() {
+        if (!SharedPreferenceUtil.getBoolean(constant.PREF_IS_SELECT_MERCHANDISE_ITEM_SHOWN, false)) {
+            rlCoachSuggestionMerchandise.setVisibility(View.VISIBLE);
+            rlCoachSuggestionMerchandise.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    rlCoachSuggestionMerchandise.setVisibility(View.GONE);
+                    SharedPreferenceUtil.putValue(constant.PREF_IS_SELECT_MERCHANDISE_ITEM_SHOWN, true);
+                }
+            });
+        }
 
     }
 

@@ -11,7 +11,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.mydimoda.R;
+import com.mydimoda.SharedPreferenceUtil;
 import com.mydimoda.adapter.ReviewTripAdp;
+import com.mydimoda.constant;
 import com.mydimoda.widget.cropper.util.FontsUtil;
 
 import java.util.ArrayList;
@@ -25,7 +27,7 @@ import butterknife.OnClick;
  * Created by Parth on 2/9/2018.
  */
 
-public class ReviewTripPlannedActivity extends AppCompatActivity implements ReviewTripAdp.tripClickListner{
+public class ReviewTripPlannedActivity extends AppCompatActivity implements ReviewTripAdp.tripClickListner {
     @BindView(R.id.title_view)
     TextView titleView;
     @BindView(R.id.back_txt)
@@ -38,6 +40,8 @@ public class ReviewTripPlannedActivity extends AppCompatActivity implements Revi
     RelativeLayout titleLayout;
     @BindView(R.id.rv_trip_planned)
     RecyclerView rvTripPlanned;
+    @BindView(R.id.rl_coach_review_trip)
+    RelativeLayout rlCoachReviewTrip;
     private ReviewTripAdp reviewTripAdp;
     private List list;
 
@@ -46,9 +50,23 @@ public class ReviewTripPlannedActivity extends AppCompatActivity implements Revi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.review_trip_listing);
         ButterKnife.bind(this);
+//        showShowcaseView();
         applyCustomFont();
         setUpAdp();
         makeStaticList(15);
+    }
+    private void showShowcaseView() {
+        if (!SharedPreferenceUtil.getBoolean(constant.PREF_IS_REVIEW_TRIP_SHOWN, false)) {
+            rlCoachReviewTrip.setVisibility(View.VISIBLE);
+            rlCoachReviewTrip.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    rlCoachReviewTrip.setVisibility(View.GONE);
+                    SharedPreferenceUtil.putValue(constant.PREF_IS_REVIEW_TRIP_SHOWN, true);
+                }
+            });
+        }
+
     }
 
     private void setUpAdp() {

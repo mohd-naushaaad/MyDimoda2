@@ -20,6 +20,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.mydimoda.R;
+import com.mydimoda.SharedPreferenceUtil;
 import com.mydimoda.adapter.DMMenuListAdapter;
 import com.mydimoda.constant;
 import com.mydimoda.customView.BrixtonLightText;
@@ -119,6 +120,8 @@ public class PlanANewTripActivity extends Activity {
     RelativeLayout rlStyleme;
     @BindView(R.id.rl_helpme)
     RelativeLayout rlHelpme;
+    @BindView(R.id.rl_coach_plan_new_trip)
+    RelativeLayout rlCoachPlanNewTrip;
     private DatePickerDialog startDatePickerDialog, endDatePickerDialog;
 
 
@@ -251,7 +254,7 @@ public class PlanANewTripActivity extends Activity {
 
     public void init() {
         showMenu();
-        showShowcaseView();
+//        showShowcaseView();
     }
 
     public void showMenu() {
@@ -260,16 +263,16 @@ public class PlanANewTripActivity extends Activity {
     }
 
     private void showShowcaseView() {
-       /* if (!SharedPreferenceUtil.getBoolean(constant.PREF_IS_HOME_SHOWN, false)) {
-            mCoachmark.setVisibility(View.VISIBLE);
-            mCoachmark.setOnClickListener(new View.OnClickListener() {
+        if (!SharedPreferenceUtil.getBoolean(constant.PREF_IS_PLAN_NEW_TRIP_SHOWN, false)) {
+            rlCoachPlanNewTrip.setVisibility(View.VISIBLE);
+            rlCoachPlanNewTrip.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    mCoachmark.setVisibility(View.GONE);
-                    SharedPreferenceUtil.putValue(constant.PREF_IS_HOME_SHOWN,true);
+                    rlCoachPlanNewTrip.setVisibility(View.GONE);
+                    SharedPreferenceUtil.putValue(constant.PREF_IS_PLAN_NEW_TRIP_SHOWN, true);
                 }
             });
-        }*/
+        }
 
     }
 
