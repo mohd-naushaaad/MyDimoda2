@@ -380,6 +380,7 @@ public class constant {
     public static final String PREF_IS_PLAN_NEW_TRIP_SHOWN="prefisplannewtripshown";
     public static final String PREF_IS_REVIEW_TRIP_SHOWN="prefisreviewtripshown";
     public static final String PREF_IS_SELECT_MERCHANDISE_ITEM_SHOWN="prefismerchandiseshown";
+    public static final String PREF_IS_LOOK_LISTING="prefislooklisting";
 
 
     public static final String PREF_IS_FIND_SHOWN = "isfindshown";

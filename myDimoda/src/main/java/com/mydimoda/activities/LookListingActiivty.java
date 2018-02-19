@@ -16,7 +16,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.mydimoda.R;
+import com.mydimoda.SharedPreferenceUtil;
 import com.mydimoda.adapter.LookAdapter;
+import com.mydimoda.constant;
 import com.mydimoda.customView.BrixtonLightText;
 import com.mydimoda.customView.Existence_Light_TextView;
 import com.mydimoda.model.DemoModelForLook;
@@ -50,6 +52,8 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
     BrixtonLightText tvForTrip;
     @BindView(R.id.rv_looklisting)
     RecyclerView rvLooklisting;
+    @BindView(R.id.rl_coach_look_listing)
+    RelativeLayout rlCoachLookListing;
     private List<DemoModelForLook> lookList;
     private LookAdapter lookAdapter;
 
@@ -58,6 +62,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_look_listing);
         ButterKnife.bind(this);
+//        showShowcaseView();
         setUpAdp();
         setStaticListing(10);
     }
@@ -67,6 +72,19 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
         lookAdapter = new LookAdapter(lookList, this, this);
         rvLooklisting.setLayoutManager(new LinearLayoutManager(this));
         rvLooklisting.setAdapter(lookAdapter);
+    }
+    private void showShowcaseView() {
+        if (!SharedPreferenceUtil.getBoolean(constant.PREF_IS_LOOK_LISTING, false)) {
+            rlCoachLookListing.setVisibility(View.VISIBLE);
+            rlCoachLookListing.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    rlCoachLookListing.setVisibility(View.GONE);
+                    SharedPreferenceUtil.putValue(constant.PREF_IS_LOOK_LISTING, true);
+                }
+            });
+        }
+
     }
 
     private void setStaticListing(int i) {

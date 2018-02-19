@@ -71,4 +71,13 @@
         android:layout_height="match_parent"
         android:layout_below="@id/tv_for_trip"
         tools:listitem="@layout/item_trip_looks" />
+    <RelativeLayout
+        android:id="@+id/rl_coach_look_listing"
+        android:layout_width="match_parent"
+        android:background="@drawable/home_2"
+        android:clickable="true"
+        android:visibility="gone"
+        android:layout_height="match_parent">
+
+    </RelativeLayout>
 </RelativeLayout>
