@@ -49,18 +49,18 @@
 
     <com.mydimoda.customView.BrixtonLightText
         android:id="@+id/tv_label_select_item"
-        android:layout_below="@id/title_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/title_layout"
         android:gravity="center"
         android:paddingBottom="15dp"
         android:paddingTop="15dp"
         android:text="Select any one merchandise item" />
 
     <LinearLayout
-        android:layout_below="@id/tv_label_select_item"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/tv_label_select_item"
         android:orientation="vertical"
         android:weightSum="1">
 
@@ -74,6 +74,7 @@
             tools:spanCount="3" />
 
         <LinearLayout
+            android:id="@+id/ll_next"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.30"
@@ -81,7 +82,6 @@
             android:orientation="horizontal">
 
             <com.mydimoda.customView.BrixtonLightText
-                android:id="@+id/tv_next"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Next"
@@ -95,15 +95,16 @@
                 android:src="@drawable/next_icon" />
         </LinearLayout>
     </LinearLayout>
+
     <RelativeLayout
         android:id="@+id/rl_coach_suggestion_merchandise"
         android:layout_width="match_parent"
-        android:background="@drawable/home_2"
+        android:layout_height="match_parent"
         android:layout_marginLeft="-4dp"
-        android:clickable="true"
-        android:visibility="gone"
         android:layout_marginTop="-2dp"
-        android:layout_height="match_parent">
+        android:background="@drawable/home_2"
+        android:clickable="true"
+        android:visibility="gone">
 
     </RelativeLayout>
 </RelativeLayout>

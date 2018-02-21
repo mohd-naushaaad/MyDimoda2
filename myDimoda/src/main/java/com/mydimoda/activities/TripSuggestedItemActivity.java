@@ -44,12 +44,12 @@ public class TripSuggestedItemActivity extends AppCompatActivity implements Sugg
     RelativeLayout titleLayout;
     @BindView(R.id.rv_items)
     RecyclerView rvItems;
-    @BindView(R.id.tv_next)
-    BrixtonLightText tvNext;
     @BindView(R.id.tv_label_select_item)
     BrixtonLightText tvLabelSelectItem;
     @BindView(R.id.rl_coach_suggestion_merchandise)
     RelativeLayout rlCoachSuggestionMerchandise;
+    @BindView(R.id.ll_next)
+    LinearLayout llNext;
     private SuggestedItemAdp suggestedItemAdp;
     private List<SuggestedModel> list;
     private int lastSelectedPos = -1;
@@ -66,6 +66,7 @@ public class TripSuggestedItemActivity extends AppCompatActivity implements Sugg
         makeStaticList(15);
 
     }
+
     private void showShowcaseView() {
         if (!SharedPreferenceUtil.getBoolean(constant.PREF_IS_SELECT_MERCHANDISE_ITEM_SHOWN, false)) {
             rlCoachSuggestionMerchandise.setVisibility(View.VISIBLE);
@@ -94,10 +95,10 @@ public class TripSuggestedItemActivity extends AppCompatActivity implements Sugg
         rvItems.setAdapter(suggestedItemAdp);
     }
 
-    @OnClick({R.id.back_layout, R.id.tv_next})
+    @OnClick({R.id.back_layout, R.id.ll_next})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.tv_next:
+            case R.id.ll_next:
                 Intent intent = new Intent(this, LookListingActiivty.class);
                 startActivity(intent);
                 break;

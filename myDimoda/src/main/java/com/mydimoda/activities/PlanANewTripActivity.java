@@ -18,6 +18,7 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mydimoda.R;
 import com.mydimoda.SharedPreferenceUtil;
@@ -26,7 +27,9 @@ import com.mydimoda.constant;
 import com.mydimoda.customView.BrixtonLightText;
 import com.mydimoda.widget.cropper.util.FontsUtil;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -80,6 +83,7 @@ public class PlanANewTripActivity extends Activity {
     @BindView(R.id.RelativeLayout1)
     RelativeLayout RelativeLayout1;
     int val_causal = 0, val_formal = 0, val_business = 0;
+
     @BindView(R.id.iv_calender)
     ImageView ivCalender;
     @BindView(R.id.tv_casual_minus)
@@ -237,11 +241,32 @@ public class PlanANewTripActivity extends Activity {
                 startActivity(intent);
                 break;
             case R.id.rl_styleme:
+                Intent styleMeintent = new Intent(this, LookListingActiivty.class);
+                startActivity(styleMeintent);
                 break;
             case R.id.rl_helpme:
-                Intent helpMeintent = new Intent(this, TripHelpMeActivity.class);
-                startActivity(helpMeintent);
+                passListing();
                 break;
+        }
+    }
+
+    private void passListing() {
+        ArrayList<Integer> list = new ArrayList<>();
+        if (val_causal == 0 && val_formal == 0 && val_business == 0) {
+            Toast.makeText(this, "Please Select alteast one Cloth", Toast.LENGTH_SHORT).show();
+        } else {
+            if (val_causal > 0) {
+                list.add(constant.casual);
+            }
+            if (val_formal > 0) {
+                list.add(constant.formal);
+            }
+            if (val_business > 0) {
+                list.add(constant.business);
+            }
+            Intent helpMeintent = new Intent(this, TripHelpMeActivity.class);
+            helpMeintent.putExtra(constant.BUNDLE_LOOKLISTING, list);
+            startActivity(helpMeintent);
         }
     }
 

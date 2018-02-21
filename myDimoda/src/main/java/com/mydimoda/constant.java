@@ -81,7 +81,6 @@ public class constant {
     public static List<DMBlockedObject> gBlockedList = new ArrayList<DMBlockedObject>();
     public static DMBlockedObject gFashion = null;
     public static DatabaseModel gFashiondb = null;
-
     // SAINT1021
     public static String gFashionID = "";
 
@@ -98,6 +97,8 @@ public class constant {
 
     public static final String API_ITEM_OFFSET = "ItemPageOffset";
 
+    public static final int casual = 0, formal = 1, business = 2;
+    public static final String BUNDLE_LOOKLISTING = "bundle_looklisting";
 
     public constant() {
 
@@ -377,10 +378,10 @@ public class constant {
     public static final String PREF_IS_HANGUP_SHOWN = "ishangupshown";
     public static final String PREF_IS_HANGUP_HELP_SHOWN = "ishanguphelpshown";
     //Add by parth ukani
-    public static final String PREF_IS_PLAN_NEW_TRIP_SHOWN="prefisplannewtripshown";
-    public static final String PREF_IS_REVIEW_TRIP_SHOWN="prefisreviewtripshown";
-    public static final String PREF_IS_SELECT_MERCHANDISE_ITEM_SHOWN="prefismerchandiseshown";
-    public static final String PREF_IS_LOOK_LISTING="prefislooklisting";
+    public static final String PREF_IS_PLAN_NEW_TRIP_SHOWN = "prefisplannewtripshown";
+    public static final String PREF_IS_REVIEW_TRIP_SHOWN = "prefisreviewtripshown";
+    public static final String PREF_IS_SELECT_MERCHANDISE_ITEM_SHOWN = "prefismerchandiseshown";
+    public static final String PREF_IS_LOOK_LISTING = "prefislooklisting";
 
 
     public static final String PREF_IS_FIND_SHOWN = "isfindshown";

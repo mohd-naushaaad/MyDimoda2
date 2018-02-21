@@ -131,7 +131,7 @@ public class DMHangUpActivity extends Activity {
         vBackLayout.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-			/*	if (!mFromMain) {
+            /*	if (!mFromMain) {
                     Intent intent = new Intent(DMHangUpActivity.this,
 							DMHomeActivity.class);
 					startActivity(intent);
@@ -286,6 +286,7 @@ public class DMHangUpActivity extends Activity {
             });
         }
     }
+
     private void showHelpShowcaseView() {
         if (!SharedPreferenceUtil.getBoolean(constant.PREF_IS_HANGUP_HELP_SHOWN, false)) {
             mCoachMarkScreenIv.setVisibility(View.VISIBLE);

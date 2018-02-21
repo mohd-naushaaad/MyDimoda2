@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -12,9 +11,10 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.mydimoda.R;
-import com.mydimoda.adapter.DMMenuListAdapter;
 import com.mydimoda.constant;
 import com.mydimoda.customView.Existence_Light_TextView;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,6 +26,7 @@ import butterknife.OnClick;
 
 public class TripHelpMeActivity extends Activity {
 
+    ArrayList<Integer> list;
     @BindView(R.id.back_txt)
     Existence_Light_TextView backTxt;
     @BindView(R.id.back_btn)
@@ -42,46 +43,82 @@ public class TripHelpMeActivity extends Activity {
     ImageView shirtIcon;
     @BindView(R.id.shirt_txt)
     Existence_Light_TextView shirtTxt;
-    @BindView(R.id.restore_layout)
-    RelativeLayout restoreLayout;
+    @BindView(R.id.rl_shirts)
+    RelativeLayout rlShirts;
     @BindView(R.id.pants_btn)
     Button pantsBtn;
     @BindView(R.id.pants_icon)
     ImageView pantsIcon;
     @BindView(R.id.pants_txt)
     Existence_Light_TextView pantsTxt;
-    @BindView(R.id.pants_layout)
-    RelativeLayout pantsLayout;
+    @BindView(R.id.rl_pants)
+    RelativeLayout rlPants;
     @BindView(R.id.coat_btn)
     Button coatBtn;
     @BindView(R.id.coat_icon)
     ImageView coatIcon;
     @BindView(R.id.coat_txt)
     Existence_Light_TextView coatTxt;
-    @BindView(R.id.coat_layout)
-    RelativeLayout coatLayout;
+    @BindView(R.id.rl_coats)
+    RelativeLayout rlCoats;
     @BindView(R.id.tie_btn)
     Button tieBtn;
     @BindView(R.id.tie_icon)
     ImageView tieIcon;
     @BindView(R.id.tie_txt)
     Existence_Light_TextView tieTxt;
-    @BindView(R.id.tie_layout)
-    RelativeLayout tieLayout;
+    @BindView(R.id.rl_tie)
+    RelativeLayout rlTie;
     @BindView(R.id.suit_btn)
     Button suitBtn;
     @BindView(R.id.suit_icon)
     ImageView suitIcon;
     @BindView(R.id.suit_txt)
     Existence_Light_TextView suitTxt;
-    @BindView(R.id.suit_layout)
-    RelativeLayout suitLayout;
+    @BindView(R.id.rl_suit)
+    RelativeLayout rlSuit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help_me_selection);
         ButterKnife.bind(this);
+        manageListingOfClothes();
+    }
+
+    private void manageListingOfClothes() {
+        list = (ArrayList<Integer>) getIntent().getSerializableExtra(constant.BUNDLE_LOOKLISTING);
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i) == constant.casual) {
+                showCasualLook();
+            }
+            if (list.get(i) == constant.formal) {
+                showFormalLook();
+            }
+            if (list.get(i) == constant.business) {
+                showBusinessLook();
+            }
+        }
+    }
+
+    private void showCasualLook() {
+        rlShirts.setVisibility(View.VISIBLE);
+        rlPants.setVisibility(View.VISIBLE);
+    }
+
+    private void showFormalLook() {
+        rlShirts.setVisibility(View.VISIBLE);
+        rlPants.setVisibility(View.VISIBLE);
+        rlCoats.setVisibility(View.VISIBLE);
+        rlTie.setVisibility(View.VISIBLE);
+        rlSuit.setVisibility(View.VISIBLE);
+    }
+
+    private void showBusinessLook() {
+        rlShirts.setVisibility(View.VISIBLE);
+        rlPants.setVisibility(View.VISIBLE);
+        rlCoats.setVisibility(View.VISIBLE);
+        rlSuit.setVisibility(View.VISIBLE);
     }
 
     private void showShowcaseView() {
