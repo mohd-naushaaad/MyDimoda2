@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/back_wight"
-    android:orientation="vertical">
+    android:background="@color/back_wight">
 
     <RelativeLayout
         android:id="@+id/title_layout"
@@ -47,54 +46,50 @@
             android:textSize="20sp" />
     </RelativeLayout>
 
-    <com.mydimoda.customView.BrixtonLightText
+    <com.mydimoda.customView.Existence_Light_TextView
         android:id="@+id/tv_label_select_item"
+        style="@style/trip_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/title_layout"
         android:gravity="center"
-        android:paddingBottom="15dp"
-        android:paddingTop="15dp"
+        android:paddingBottom="25dp"
+        android:paddingTop="10dp"
         android:text="Select any one merchandise item" />
 
     <LinearLayout
+        android:id="@+id/ll_next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.mydimoda.customView.Existence_Light_TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Next"
+            android:textColor="@color/color_black"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:src="@drawable/next_icon" />
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_items"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@id/ll_next"
         android:layout_below="@id/tv_label_select_item"
-        android:orientation="vertical"
-        android:weightSum="1">
+        tools:layoutManager="android.support.v7.widget.GridLayoutManager"
+        tools:listitem="@layout/item_merchandise"
+        tools:spanCount="3" />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_items"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.70"
-            tools:layoutManager="android.support.v7.widget.GridLayoutManager"
-            tools:listitem="@layout/item_merchandise"
-            tools:spanCount="3" />
-
-        <LinearLayout
-            android:id="@+id/ll_next"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.30"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <com.mydimoda.customView.BrixtonLightText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Next"
-                android:textColor="@color/color_black"
-                android:textSize="20sp" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:src="@drawable/next_icon" />
-        </LinearLayout>
-    </LinearLayout>
 
     <RelativeLayout
         android:id="@+id/rl_coach_suggestion_merchandise"

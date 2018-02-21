@@ -55,29 +55,32 @@
         </LinearLayout>
     </RelativeLayout>
 
-    <com.mydimoda.customView.BrixtonLightText
+    <com.mydimoda.customView.Existence_Light_TextView
         android:id="@+id/tv_for_trip"
         android:layout_width="match_parent"
+        style="@style/trip_text"
         android:layout_height="wrap_content"
         android:layout_below="@id/title_layout"
+        android:gravity="center"
         android:paddingBottom="@dimen/txt_padd"
         android:paddingTop="@dimen/txt_padd"
         android:text="Suggested looks for USA Business trip" />
 
     <android.support.v7.widget.RecyclerView
-        android:clipToPadding="false"
         android:id="@+id/rv_looklisting"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/tv_for_trip"
+        android:clipToPadding="false"
         tools:listitem="@layout/item_trip_looks" />
+
     <RelativeLayout
         android:id="@+id/rl_coach_look_listing"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="@drawable/home_2"
         android:clickable="true"
-        android:visibility="gone"
-        android:layout_height="match_parent">
+        android:visibility="gone">
 
     </RelativeLayout>
 </RelativeLayout>

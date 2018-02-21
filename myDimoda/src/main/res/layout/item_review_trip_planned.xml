@@ -40,14 +40,14 @@
                 android:gravity="center_horizontal|center_vertical"
                 android:orientation="vertical">
 
-                <com.mydimoda.customView.BrixtonLightText
+                <com.mydimoda.customView.Existence_Light_TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="29"
                     android:textColor="@color/light_black"
                     android:textSize="@dimen/normal_text_size" />
 
-                <com.mydimoda.customView.BrixtonLightText
+                <com.mydimoda.customView.Existence_Light_TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="SEP 2017"
@@ -62,7 +62,7 @@
                 android:gravity="center_vertical"
                 android:paddingLeft="20dp">
 
-                <com.mydimoda.customView.BrixtonLightText
+                <com.mydimoda.customView.Existence_Light_TextView
                     android:id="@+id/tv_trip_ttl"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -70,7 +70,7 @@
                     android:textColor="@color/light_black"
                     android:textSize="@dimen/normal_text_size" />
 
-                <com.mydimoda.customView.BrixtonLightText
+                <com.mydimoda.customView.Existence_Light_TextView
                     android:id="@+id/tv_trip_status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -79,7 +79,7 @@
                     android:textColor="@android:color/holo_red_light"
                     android:textSize="@dimen/normal_text_size" />
 
-                <com.mydimoda.customView.BrixtonLightText
+                <com.mydimoda.customView.Existence_Light_TextView
                     android:id="@+id/tv_trip_looks"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

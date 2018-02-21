@@ -49,7 +49,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
     @BindView(R.id.title_layout)
     RelativeLayout titleLayout;
     @BindView(R.id.tv_for_trip)
-    BrixtonLightText tvForTrip;
+    Existence_Light_TextView tvForTrip;
     @BindView(R.id.rv_looklisting)
     RecyclerView rvLooklisting;
     @BindView(R.id.rl_coach_look_listing)
@@ -73,6 +73,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
         rvLooklisting.setLayoutManager(new LinearLayoutManager(this));
         rvLooklisting.setAdapter(lookAdapter);
     }
+
     private void showShowcaseView() {
         if (!SharedPreferenceUtil.getBoolean(constant.PREF_IS_LOOK_LISTING, false)) {
             rlCoachLookListing.setVisibility(View.VISIBLE);
@@ -114,11 +115,11 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
 
     @Override
     public void onClickOfLike(int pos) {
-        lookList.get(pos).setLiked(!lookList.get(pos).isLiked());
+        /*lookList.get(pos).setLiked(!lookList.get(pos).isLiked());
         lookAdapter.notifyItemChanged(pos);
         if (lookList.get(pos).isLiked()) {
             showSimilarDialog();
-        }
+        }*/
     }
 
     public void showSimilarDialog() {
@@ -149,7 +150,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
 
     @Override
     public void onClickofClose(int pos) {
-        lookList.get(pos).setColsed(!lookList.get(pos).isColsed());
-        lookAdapter.notifyItemChanged(pos);
+        /*lookList.get(pos).setColsed(!lookList.get(pos).isColsed());
+        lookAdapter.notifyItemChanged(pos);*/
     }
 }

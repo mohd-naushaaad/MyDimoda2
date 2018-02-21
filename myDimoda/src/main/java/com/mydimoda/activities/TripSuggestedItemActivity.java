@@ -17,6 +17,7 @@ import com.mydimoda.SharedPreferenceUtil;
 import com.mydimoda.adapter.SuggestedItemAdp;
 import com.mydimoda.constant;
 import com.mydimoda.customView.BrixtonLightText;
+import com.mydimoda.customView.Existence_Light_TextView;
 import com.mydimoda.model.SuggestedModel;
 import com.mydimoda.widget.cropper.util.FontsUtil;
 
@@ -45,7 +46,7 @@ public class TripSuggestedItemActivity extends AppCompatActivity implements Sugg
     @BindView(R.id.rv_items)
     RecyclerView rvItems;
     @BindView(R.id.tv_label_select_item)
-    BrixtonLightText tvLabelSelectItem;
+    Existence_Light_TextView tvLabelSelectItem;
     @BindView(R.id.rl_coach_suggestion_merchandise)
     RelativeLayout rlCoachSuggestionMerchandise;
     @BindView(R.id.ll_next)

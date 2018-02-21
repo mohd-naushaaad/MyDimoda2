@@ -43,4 +43,6 @@
     <color name="light_black">#333333</color>
     <color name="back_wight">#F9F9F9</color>
     <color name="white_f7">#F7F7F7</color>
+    <color name="hint_color">#aeaeae</color>
+    <color name="seprator">#c7c7c7</color>
 </resources>

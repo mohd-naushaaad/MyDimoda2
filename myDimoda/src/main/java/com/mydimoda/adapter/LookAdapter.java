@@ -24,11 +24,6 @@ import butterknife.OnClick;
  */
 
 public class LookAdapter extends RecyclerView.Adapter<LookAdapter.LookHolder> {
-    @BindView(R.id.iv_like)
-    ImageView ivLike;
-    @BindView(R.id.iv_close)
-    ImageView ivClose;
-
     public interface ClickListnerOfLook {
         void onClickOfLike(int pos);
 
@@ -91,7 +86,9 @@ public class LookAdapter extends RecyclerView.Adapter<LookAdapter.LookHolder> {
             lookImagesAdp = new LookImagesAdp(lookList.get(position).getList());
             rvImgLook.setLayoutManager(new GridLayoutManager(mContext, 2));
             rvImgLook.setAdapter(lookImagesAdp);
-            if (lookList.get(position).isLiked()) {
+            ivLike.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.like_btn_sel));
+            ivClose.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.dismiss_btn_sel));
+            /*if (lookList.get(position).isLiked()) {
                 ivLike.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.like_fill));
             } else {
                 ivLike.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.like));
@@ -100,7 +97,7 @@ public class LookAdapter extends RecyclerView.Adapter<LookAdapter.LookHolder> {
                 ivClose.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.close_fill));
             } else {
                 ivClose.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.close));
-            }
+            }*/
         }
     }
 }

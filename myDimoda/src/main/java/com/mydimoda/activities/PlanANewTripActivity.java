@@ -24,12 +24,11 @@ import com.mydimoda.R;
 import com.mydimoda.SharedPreferenceUtil;
 import com.mydimoda.adapter.DMMenuListAdapter;
 import com.mydimoda.constant;
-import com.mydimoda.customView.BrixtonLightText;
+import com.mydimoda.customView.Existence_Light_TextView;
 import com.mydimoda.widget.cropper.util.FontsUtil;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -40,8 +39,7 @@ import butterknife.OnClick;
  */
 
 public class PlanANewTripActivity extends Activity {
-
-
+    int val_causal = 0, val_formal = 0, val_business = 0;
     @BindView(R.id.menu_btn)
     Button menuBtn;
     @BindView(R.id.title_view)
@@ -57,17 +55,57 @@ public class PlanANewTripActivity extends Activity {
     @BindView(R.id.ed_name_trip)
     EditText edNameTrip;
     @BindView(R.id.tv_lbl_date_range)
-    BrixtonLightText tvLblDateRange;
+    Existence_Light_TextView tvLblDateRange;
+    @BindView(R.id.iv_calender)
+    ImageView ivCalender;
+    @BindView(R.id.tv_start_dd)
+    Existence_Light_TextView tvStartDd;
+    @BindView(R.id.tv_start_mm)
+    Existence_Light_TextView tvStartMm;
+    @BindView(R.id.ll_start_date)
+    LinearLayout llStartDate;
+    @BindView(R.id.tv_start_date)
+    Existence_Light_TextView tvStartDate;
+    @BindView(R.id.tv_end_dd)
+    Existence_Light_TextView tvEndDd;
+    @BindView(R.id.tv_end_mm)
+    Existence_Light_TextView tvEndMm;
+    @BindView(R.id.ll_end_date)
+    LinearLayout llEndDate;
+    @BindView(R.id.tv_end_date)
+    Existence_Light_TextView tvEndDate;
     @BindView(R.id.tv_lbl_need_pkg)
-    BrixtonLightText tvLblNeedPkg;
+    Existence_Light_TextView tvLblNeedPkg;
     @BindView(R.id.rb_more_look)
     RadioButton rbMoreLook;
     @BindView(R.id.rb_less_look)
     RadioButton rbLessLook;
     @BindView(R.id.tv_lbl_que_looks)
-    BrixtonLightText tvLblQueLooks;
-    @BindView(R.id.tv_trip)
-    BrixtonLightText tvTrip;
+    Existence_Light_TextView tvLblQueLooks;
+    @BindView(R.id.tv_casual_minus)
+    Existence_Light_TextView tvCasualMinus;
+    @BindView(R.id.tv_casual_val)
+    Existence_Light_TextView tvCasualVal;
+    @BindView(R.id.tv_casual_plus)
+    Existence_Light_TextView tvCasualPlus;
+    @BindView(R.id.tv_formal_minus)
+    Existence_Light_TextView tvFormalMinus;
+    @BindView(R.id.tv_formal_val)
+    Existence_Light_TextView tvFormalVal;
+    @BindView(R.id.tv_formal_plus)
+    Existence_Light_TextView tvFormalPlus;
+    @BindView(R.id.tv_business_minus)
+    Existence_Light_TextView tvBusinessMinus;
+    @BindView(R.id.tv_business_val)
+    Existence_Light_TextView tvBusinessVal;
+    @BindView(R.id.tv_business_plus)
+    Existence_Light_TextView tvBusinessPlus;
+    @BindView(R.id.rl_styleme)
+    RelativeLayout rlStyleme;
+    @BindView(R.id.rl_helpme)
+    RelativeLayout rlHelpme;
+    @BindView(R.id.btn_trip)
+    Button btnTrip;
     @BindView(R.id.ll_plan_a_new_trip)
     LinearLayout llPlanANewTrip;
     @BindView(R.id.layout)
@@ -80,52 +118,10 @@ public class PlanANewTripActivity extends Activity {
     DrawerLayout drawerLayout;
     @BindView(R.id.main_content_layout)
     RelativeLayout mainContentLayout;
-    @BindView(R.id.RelativeLayout1)
-    RelativeLayout RelativeLayout1;
-    int val_causal = 0, val_formal = 0, val_business = 0;
-
-    @BindView(R.id.iv_calender)
-    ImageView ivCalender;
-    @BindView(R.id.tv_casual_minus)
-    BrixtonLightText tvCasualMinus;
-    @BindView(R.id.tv_casual_val)
-    BrixtonLightText tvCasualVal;
-    @BindView(R.id.tv_casual_plus)
-    BrixtonLightText tvCasualPlus;
-    @BindView(R.id.tv_formal_minus)
-    BrixtonLightText tvFormalMinus;
-    @BindView(R.id.tv_formal_val)
-    BrixtonLightText tvFormalVal;
-    @BindView(R.id.tv_formal_plus)
-    BrixtonLightText tvFormalPlus;
-    @BindView(R.id.tv_business_minus)
-    BrixtonLightText tvBusinessMinus;
-    @BindView(R.id.tv_business_val)
-    BrixtonLightText tvBusinessVal;
-    @BindView(R.id.tv_business_plus)
-    BrixtonLightText tvBusinessPlus;
-    @BindView(R.id.tv_start_dd)
-    BrixtonLightText tvStartDd;
-    @BindView(R.id.tv_start_mm)
-    BrixtonLightText tvStartMm;
-    @BindView(R.id.ll_start_date)
-    LinearLayout llStartDate;
-    @BindView(R.id.tv_start_date)
-    BrixtonLightText tvStartDate;
-    @BindView(R.id.tv_end_dd)
-    BrixtonLightText tvEndDd;
-    @BindView(R.id.tv_end_mm)
-    BrixtonLightText tvEndMm;
-    @BindView(R.id.ll_end_date)
-    LinearLayout llEndDate;
-    @BindView(R.id.tv_end_date)
-    BrixtonLightText tvEndDate;
-    @BindView(R.id.rl_styleme)
-    RelativeLayout rlStyleme;
-    @BindView(R.id.rl_helpme)
-    RelativeLayout rlHelpme;
     @BindView(R.id.rl_coach_plan_new_trip)
     RelativeLayout rlCoachPlanNewTrip;
+    @BindView(R.id.RelativeLayout1)
+    RelativeLayout RelativeLayout1;
     private DatePickerDialog startDatePickerDialog, endDatePickerDialog;
 
 
@@ -170,10 +166,11 @@ public class PlanANewTripActivity extends Activity {
 
     private void setFontToTextView() {
         FontsUtil.setExistenceLight(this, titleView);
+        FontsUtil.setExistenceLight(this, btnTrip);
         FontsUtil.setExistenceLight(this, backTxt);
-        FontsUtil.setLight(this, rbLessLook);
-        FontsUtil.setLight(this, rbMoreLook);
-        FontsUtil.setLight(this, edNameTrip);
+        FontsUtil.setExistenceLight(this, rbLessLook);
+        FontsUtil.setExistenceLight(this, rbMoreLook);
+        FontsUtil.setExistenceLight(this, edNameTrip);
     }
 
     private void sideMenuClickListner() {
@@ -192,7 +189,7 @@ public class PlanANewTripActivity extends Activity {
 
     @OnClick({R.id.menu_btn, R.id.back_layout, R.id.tv_casual_minus, R.id.tv_casual_plus, R.id.tv_formal_minus, R.id.tv_formal_plus
             , R.id.tv_business_minus, R.id.tv_business_plus, R.id.tv_start_date, R.id.tv_end_date, R.id.ll_start_date, R.id.ll_end_date
-            , R.id.tv_trip, R.id.rl_styleme, R.id.rl_helpme, R.id.iv_calender})
+            , R.id.btn_trip, R.id.rl_styleme, R.id.rl_helpme, R.id.iv_calender})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.menu_btn:
@@ -236,7 +233,7 @@ public class PlanANewTripActivity extends Activity {
                 endDatePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
                 endDatePickerDialog.show();
                 break;
-            case R.id.tv_trip:
+            case R.id.btn_trip:
                 Intent intent = new Intent(this, ReviewTripPlannedActivity.class);
                 startActivity(intent);
                 break;

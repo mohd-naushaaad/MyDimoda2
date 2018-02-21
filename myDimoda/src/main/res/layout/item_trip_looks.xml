@@ -11,14 +11,14 @@
         android:paddingBottom="10dp"
         android:paddingTop="10dp">
 
-        <com.mydimoda.customView.BrixtonLightText
+        <com.mydimoda.customView.Existence_Light_TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:text="Look"
             android:textSize="@dimen/normal_text_size" />
 
-        <com.mydimoda.customView.BrixtonLightText
+        <com.mydimoda.customView.Existence_Light_TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -32,7 +32,7 @@
         android:id="@+id/rv_img_look"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:itemCount="3"
+        tools:itemCount="2"
         tools:layoutManager="android.support.v7.widget.GridLayoutManager"
         tools:listitem="@layout/item_image"
         tools:spanCount="2" />
@@ -48,13 +48,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/img_padd"
-            tools:src="@drawable/like" />
+            tools:src="@drawable/like_btn" />
 
         <ImageView
             android:id="@+id/iv_close"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/img_padd"
-            tools:src="@drawable/close" />
+            tools:src="@drawable/dismiss_btn_sel" />
     </LinearLayout>
 </LinearLayout>

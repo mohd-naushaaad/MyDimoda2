@@ -57,6 +57,7 @@
         <item name="android:paddingRight">20dp</item>
         <item name="android:paddingTop">7dp</item>
         <item name="android:paddingBottom">7dp</item>
+        <item name="android:textSize">@dimen/normal_text_size</item>
         <!--<item name="android:gravity">center_vertical</item>-->
         <item name="android:button">@android:color/transparent</item>
         <item name="android:background">@drawable/bg_selector_trip</item>
@@ -69,6 +70,7 @@
     </style>
 
     <style name="tv_plus_minus" parent="trip_text">
+        <item name="android:textSize">20sp</item>
         <item name="android:paddingLeft">3dp</item>
         <item name="android:paddingRight">3dp</item>
         <item name="android:gravity">center</item>

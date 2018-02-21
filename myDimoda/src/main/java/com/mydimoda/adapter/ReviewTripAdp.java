@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import com.daimajia.swipe.SwipeLayout;
 import com.mydimoda.R;
 import com.mydimoda.customView.BrixtonLightText;
+import com.mydimoda.customView.Existence_Light_TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,11 +59,11 @@ public class ReviewTripAdp extends RecyclerView.Adapter<ReviewTripAdp.ReviewTrip
         @BindView(R.id.ll_delete)
         LinearLayout llDelete;
         @BindView(R.id.tv_trip_ttl)
-        BrixtonLightText tvTripTtl;
+        Existence_Light_TextView tvTripTtl;
         @BindView(R.id.tv_trip_status)
-        BrixtonLightText tvTripStatus;
+        Existence_Light_TextView tvTripStatus;
         @BindView(R.id.tv_trip_looks)
-        BrixtonLightText tvTripLooks;
+        Existence_Light_TextView tvTripLooks;
         @BindView(R.id.swiproot)
         SwipeLayout swiproot;
 
