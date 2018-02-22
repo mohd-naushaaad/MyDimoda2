@@ -60,12 +60,12 @@ public class LookAdapter extends RecyclerView.Adapter<LookAdapter.LookHolder> {
     public class LookHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.rv_img_look)
         RecyclerView rvImgLook;
-        @BindView(R.id.iv_like)
+        /*@BindView(R.id.iv_like)
         ImageView ivLike;
         @BindView(R.id.iv_close)
-        ImageView ivClose;
+        ImageView ivClose;*/
 
-        @OnClick({R.id.iv_like, R.id.iv_close})
+        /*@OnClick({R.id.iv_like, R.id.iv_close})
         public void onViewClicked(View view) {
             switch (view.getId()) {
                 case R.id.iv_like:
@@ -75,7 +75,7 @@ public class LookAdapter extends RecyclerView.Adapter<LookAdapter.LookHolder> {
                     listnerOfLook.onClickofClose(getAdapterPosition());
                     break;
             }
-        }
+        }*/
 
         public LookHolder(View itemView) {
             super(itemView);
@@ -86,8 +86,8 @@ public class LookAdapter extends RecyclerView.Adapter<LookAdapter.LookHolder> {
             lookImagesAdp = new LookImagesAdp(lookList.get(position).getList());
             rvImgLook.setLayoutManager(new GridLayoutManager(mContext, 2));
             rvImgLook.setAdapter(lookImagesAdp);
-            ivLike.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.like_btn_sel));
-            ivClose.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.dismiss_btn_sel));
+//            ivLike.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.like_btn_sel));
+//            ivClose.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.dismiss_btn_sel));
             /*if (lookList.get(position).isLiked()) {
                 ivLike.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.like_fill));
             } else {

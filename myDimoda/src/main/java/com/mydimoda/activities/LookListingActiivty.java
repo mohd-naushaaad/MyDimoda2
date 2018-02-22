@@ -36,8 +36,8 @@ import butterknife.OnClick;
  */
 
 public class LookListingActiivty extends AppCompatActivity implements LookAdapter.ClickListnerOfLook {
-    @BindView(R.id.iv_share)
-    ImageView ivShare;
+    /*@BindView(R.id.iv_share)
+    ImageView ivShare;*/
     @BindView(R.id.title_view)
     Existence_Light_TextView titleView;
     @BindView(R.id.back_txt)
@@ -102,11 +102,10 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
         lookAdapter.notifyDataSetChanged();
     }
 
-    @OnClick({R.id.iv_share, R.id.back_layout})
+    @OnClick({R.id.back_layout})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.iv_share:
-                break;
+
             case R.id.back_layout:
                 onBackPressed();
                 break;

@@ -238,8 +238,12 @@ public class PlanANewTripActivity extends Activity {
                 startActivity(intent);
                 break;
             case R.id.rl_styleme:
-                Intent styleMeintent = new Intent(this, LookListingActiivty.class);
-                startActivity(styleMeintent);
+                if (val_causal == 0 && val_formal == 0 && val_business == 0) {
+                    Toast.makeText(this, "Please Select alteast one Cloth", Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent styleMeintent = new Intent(this, LookListingActiivty.class);
+                    startActivity(styleMeintent);
+                }
                 break;
             case R.id.rl_helpme:
                 passListing();

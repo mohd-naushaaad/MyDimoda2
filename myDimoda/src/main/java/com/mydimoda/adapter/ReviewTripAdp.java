@@ -60,8 +60,8 @@ public class ReviewTripAdp extends RecyclerView.Adapter<ReviewTripAdp.ReviewTrip
         LinearLayout llDelete;
         @BindView(R.id.tv_trip_ttl)
         Existence_Light_TextView tvTripTtl;
-        @BindView(R.id.tv_trip_status)
-        Existence_Light_TextView tvTripStatus;
+        /*@BindView(R.id.tv_trip_status)
+        Existence_Light_TextView tvTripStatus;*/
         @BindView(R.id.tv_trip_looks)
         Existence_Light_TextView tvTripLooks;
         @BindView(R.id.swiproot)
