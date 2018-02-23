@@ -3,14 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/back_wight"
-    android:padding="10dp">
+    android:background="@color/back_wight">
 
     <RelativeLayout
         android:id="@+id/title_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:padding="10dp">
 
         <!-- <ImageView
              android:id="@+id/iv_share"
@@ -71,13 +71,14 @@
         android:layout_height="match_parent"
         android:layout_below="@id/tv_for_trip"
         android:clipToPadding="false"
+        android:padding="10dp"
         tools:listitem="@layout/item_trip_looks" />
 
     <RelativeLayout
         android:id="@+id/rl_coach_look_listing"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/home_2"
+        android:background="@drawable/formal_etc"
         android:clickable="true"
         android:visibility="gone">
 

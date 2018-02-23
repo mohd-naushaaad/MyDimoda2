@@ -27,8 +27,11 @@ import com.mydimoda.constant;
 import com.mydimoda.customView.Existence_Light_TextView;
 import com.mydimoda.widget.cropper.util.FontsUtil;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -123,7 +126,9 @@ public class PlanANewTripActivity extends Activity {
     @BindView(R.id.RelativeLayout1)
     RelativeLayout RelativeLayout1;
     private DatePickerDialog startDatePickerDialog, endDatePickerDialog;
-
+    private Calendar calendar;
+    private Date startDate, endDate;
+    SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -145,6 +150,10 @@ public class PlanANewTripActivity extends Activity {
         startDatePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
 
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                calendar = Calendar.getInstance();
+                calendar.set(year, monthOfYear, dayOfMonth);
+                startDate = calendar.getTime();
+
                 tvStartDate.setVisibility(View.GONE);
                 llStartDate.setVisibility(View.VISIBLE);
                 tvStartDd.setText(String.valueOf(dayOfMonth));
@@ -156,12 +165,49 @@ public class PlanANewTripActivity extends Activity {
         endDatePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
+                calendar = Calendar.getInstance();
+                calendar.set(year, monthOfYear, dayOfMonth);
+                endDate = calendar.getTime();
+
                 tvEndDate.setVisibility(View.GONE);
                 llEndDate.setVisibility(View.VISIBLE);
                 tvEndDd.setText(String.valueOf(dayOfMonth));
                 tvEndMm.setText(constant.getMonth(monthOfYear + 1));
             }
         }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+    }
+
+    private boolean isvalidate() {
+        if (val_causal == 0 && val_formal == 0 && val_business == 0) {
+            Toast.makeText(this, "Please Select alteast one Cloth", Toast.LENGTH_SHORT).show();
+            return false;
+        } else {
+            if (startDate != null && endDate != null) {
+                if (dateFormatter.format(startDate).equalsIgnoreCase(dateFormatter.format(endDate))) {
+                    return true;
+                } else {
+                    if (startDate.compareTo(endDate) > 0) {
+                        Toast.makeText(this, "end Date should be greter than start date", Toast.LENGTH_SHORT).show();
+                        return false;
+                    } else {
+                        long different = endDate.getTime() - startDate.getTime();
+                        long secondsInMilli = 1000;
+                        long minutesInMilli = secondsInMilli * 60;
+                        long hoursInMilli = minutesInMilli * 60;
+                        long daysInMilli = hoursInMilli * 24;
+                        if (different / daysInMilli > 14) {
+                            Toast.makeText(this, "Date range should be less than 2 week", Toast.LENGTH_SHORT).show();
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    }
+                }
+            } else {
+                Toast.makeText(this, "Please Select Start date and End date", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
     }
 
     private void setFontToTextView() {
@@ -234,13 +280,13 @@ public class PlanANewTripActivity extends Activity {
                 endDatePickerDialog.show();
                 break;
             case R.id.btn_trip:
-                Intent intent = new Intent(this, ReviewTripPlannedActivity.class);
-                startActivity(intent);
+                if (isvalidate()) {
+                    Intent intent = new Intent(this, ReviewTripPlannedActivity.class);
+                    startActivity(intent);
+                }
                 break;
             case R.id.rl_styleme:
-                if (val_causal == 0 && val_formal == 0 && val_business == 0) {
-                    Toast.makeText(this, "Please Select alteast one Cloth", Toast.LENGTH_SHORT).show();
-                } else {
+                if (isvalidate()) {
                     Intent styleMeintent = new Intent(this, LookListingActiivty.class);
                     startActivity(styleMeintent);
                 }

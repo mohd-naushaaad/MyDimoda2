@@ -55,6 +55,7 @@ public class ReviewTripPlannedActivity extends AppCompatActivity implements Revi
         setUpAdp();
         makeStaticList(15);
     }
+
     private void showShowcaseView() {
         if (!SharedPreferenceUtil.getBoolean(constant.PREF_IS_REVIEW_TRIP_SHOWN, false)) {
             rlCoachReviewTrip.setVisibility(View.VISIBLE);
