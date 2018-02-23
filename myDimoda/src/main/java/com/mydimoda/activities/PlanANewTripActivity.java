@@ -280,10 +280,8 @@ public class PlanANewTripActivity extends Activity {
                 endDatePickerDialog.show();
                 break;
             case R.id.btn_trip:
-                if (isvalidate()) {
-                    Intent intent = new Intent(this, ReviewTripPlannedActivity.class);
-                    startActivity(intent);
-                }
+                Intent intent = new Intent(this, ReviewTripPlannedActivity.class);
+                startActivity(intent);
                 break;
             case R.id.rl_styleme:
                 if (isvalidate()) {
@@ -292,29 +290,29 @@ public class PlanANewTripActivity extends Activity {
                 }
                 break;
             case R.id.rl_helpme:
-                passListing();
+                if (isvalidate()) {
+                    passListing();
+                }
                 break;
         }
     }
 
     private void passListing() {
         ArrayList<Integer> list = new ArrayList<>();
-        if (val_causal == 0 && val_formal == 0 && val_business == 0) {
-            Toast.makeText(this, "Please Select alteast one Cloth", Toast.LENGTH_SHORT).show();
-        } else {
-            if (val_causal > 0) {
-                list.add(constant.casual);
-            }
-            if (val_formal > 0) {
-                list.add(constant.formal);
-            }
-            if (val_business > 0) {
-                list.add(constant.business);
-            }
-            Intent helpMeintent = new Intent(this, TripHelpMeActivity.class);
-            helpMeintent.putExtra(constant.BUNDLE_LOOKLISTING, list);
-            startActivity(helpMeintent);
+
+        if (val_causal > 0) {
+            list.add(constant.casual);
         }
+        if (val_formal > 0) {
+            list.add(constant.formal);
+        }
+        if (val_business > 0) {
+            list.add(constant.business);
+        }
+        Intent helpMeintent = new Intent(this, TripHelpMeActivity.class);
+        helpMeintent.putExtra(constant.BUNDLE_LOOKLISTING, list);
+        startActivity(helpMeintent);
+
     }
 
     public void slideMenu() {
