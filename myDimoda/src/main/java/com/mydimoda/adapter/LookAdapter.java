@@ -91,7 +91,7 @@ public class LookAdapter extends RecyclerView.Adapter<LookAdapter.LookHolder> {
             /*if (lookList.get(position).isLiked()) {
                 ivLike.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.like_fill));
             } else {
-                ivLike.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.like));
+                ivLike.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.like_heart));
             }
             if (lookList.get(position).isColsed()) {
                 ivClose.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.close_fill));

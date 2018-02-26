@@ -408,7 +408,7 @@ public class DMAlgorithmActivity extends Activity {
             mSendData.put("closet", clothArr);
             mSendData.put("name", "genparams");
             mSendData.put("value", "1");
-            System.out.println("Sending" + constant.gCategory + "" + constant.gMode + "" + clothArr);
+//            System.out.println("Sending" + constant.gCategory + "" + constant.gMode + "" + clothArr);
             if (constant.gCategory.equalsIgnoreCase("")) {
                 mSendData.put("category", "casual");
             }
@@ -437,7 +437,7 @@ public class DMAlgorithmActivity extends Activity {
             e.printStackTrace();
         }
 
-        Log.e("data---------", mSendData.toString());
+//        Log.e("data---------", mSendData.toString());
 
 		/*
          * m_DatabaseModel.setVersion(2);
