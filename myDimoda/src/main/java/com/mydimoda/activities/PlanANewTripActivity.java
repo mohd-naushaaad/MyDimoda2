@@ -1,7 +1,9 @@
 package com.mydimoda.activities;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -25,7 +27,9 @@ import com.mydimoda.SharedPreferenceUtil;
 import com.mydimoda.adapter.DMMenuListAdapter;
 import com.mydimoda.constant;
 import com.mydimoda.customView.Existence_Light_TextView;
+import com.mydimoda.social.google.GoogleIAP;
 import com.mydimoda.widget.cropper.util.FontsUtil;
+import com.parse.ParseUser;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -43,6 +47,7 @@ import butterknife.OnClick;
 
 public class PlanANewTripActivity extends Activity {
     int val_causal = 0, val_formal = 0, val_business = 0;
+    private ArrayList<Integer> listSelection = new ArrayList<>();
     @BindView(R.id.menu_btn)
     Button menuBtn;
     @BindView(R.id.title_view)
@@ -129,6 +134,7 @@ public class PlanANewTripActivity extends Activity {
     private Calendar calendar;
     private Date startDate, endDate;
     SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+    private long gapDiffbetweenDate = 0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -177,36 +183,123 @@ public class PlanANewTripActivity extends Activity {
         }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
     }
 
-    private boolean isvalidate() {
-        if (val_causal == 0 && val_formal == 0 && val_business == 0) {
-            Toast.makeText(this, "Please Select alteast one Cloth", Toast.LENGTH_SHORT).show();
-            return false;
+    private boolean hasPurchase() {
+
+        final ParseUser user = ParseUser.getCurrentUser();
+        boolean bPurchased = user.getBoolean("Buy");
+        int maxCount = user.getInt(constant.USER_MAX_COUNT); // new max count according to new policy
+
+        if (!bPurchased) {
+            int count = user.getInt("Count");
+
+            if (SharedPreferenceUtil.getString("inApp", "0").equalsIgnoreCase(
+                    "1")) {
+                return true;
+            } else if (count >= (maxCount >= 5 ? maxCount : constant.maxCount)) {
+                /*
+                 * if(SharedPreferenceUtil.getString("inApp",
+				 * "0").equalsIgnoreCase("1")) { gotoAlgorithmActivity(); } else
+				 * {
+				 */
+                showPurchaseAlert();
+                /* } */
+            } else {
+                return true;
+
+            }
         } else {
-            if (startDate != null && endDate != null) {
-                if (dateFormatter.format(startDate).equalsIgnoreCase(dateFormatter.format(endDate))) {
-                    return true;
-                } else {
-                    if (startDate.compareTo(endDate) > 0) {
-                        Toast.makeText(this, "end Date should be greter than start date", Toast.LENGTH_SHORT).show();
-                        return false;
+            return true;
+
+        }
+        return false;
+    }
+
+    private void showPurchaseAlert() {
+
+        new AlertDialog.Builder(this)
+                .setTitle("Upgrade for myDiModa!")
+                .setMessage(
+                        "To get more Style Me mode, please buy unlimited styling license at 1.99$")
+                .setCancelable(false)
+                .setNegativeButton("Buy",
+                        new DialogInterface.OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog,
+                                                int which) {
+
+                                GoogleIAP.buyFeature(0);
+
+						/*
+                         * showProgressBar("");
+						 *
+						 * ParseUser user = ParseUser.getCurrentUser();
+						 * user.put("Buy", true);
+						 * user.saveInBackground(new SaveCallback() {
+						 *
+						 * @Override public void done(ParseException e1)
+						 * {
+						 *
+						 * hideProgressBar();
+						 *
+						 * if(e1 == null) { gotoAlgorithmActivity(); }
+						 * else { Toast.makeText(DMStyleActivity.this,
+						 * e1.toString(), Toast.LENGTH_LONG).show(); } }
+						 * });
+						 */
+                            }
+                        })
+                .setPositiveButton("Cancel",
+                        new DialogInterface.OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog,
+                                                int which) {
+                            }
+                        }).show();
+    }
+
+    private boolean isvalidate() {
+        if (edNameTrip.getText().toString().length() > 0) {
+            if (val_causal == 0 && val_formal == 0 && val_business == 0) {
+                Toast.makeText(this, "Please Select alteast one Cloth", Toast.LENGTH_SHORT).show();
+                return false;
+            } else {
+                if (startDate != null && endDate != null) {
+                    if (dateFormatter.format(startDate).equalsIgnoreCase(dateFormatter.format(endDate))) {
+                        return true;
                     } else {
-                        long different = endDate.getTime() - startDate.getTime();
-                        long secondsInMilli = 1000;
-                        long minutesInMilli = secondsInMilli * 60;
-                        long hoursInMilli = minutesInMilli * 60;
-                        long daysInMilli = hoursInMilli * 24;
-                        if (different / daysInMilli > 14) {
-                            Toast.makeText(this, "Date range should be less than 2 week", Toast.LENGTH_SHORT).show();
+                        if (startDate.compareTo(endDate) > 0) {
+                            Toast.makeText(this, "end Date should be greter than start date", Toast.LENGTH_SHORT).show();
                             return false;
                         } else {
-                            return true;
+                            long different = endDate.getTime() - startDate.getTime();
+                            long secondsInMilli = 1000;
+                            long minutesInMilli = secondsInMilli * 60;
+                            long hoursInMilli = minutesInMilli * 60;
+                            long daysInMilli = hoursInMilli * 24;
+                            gapDiffbetweenDate = different / daysInMilli;
+                            if (gapDiffbetweenDate > 14) {
+                                Toast.makeText(this, "Date range should be less than 2 week", Toast.LENGTH_SHORT).show();
+                                return false;
+                            } else {
+                                if ((val_causal + val_formal + val_business) > gapDiffbetweenDate) {
+                                    Toast.makeText(this, "You can not carry more cloth", Toast.LENGTH_SHORT).show();
+                                    return false;
+                                } else {
+                                    return true;
+                                }
+                            }
                         }
                     }
+                } else {
+                    Toast.makeText(this, "Please Select Start date and End date", Toast.LENGTH_SHORT).show();
+                    return false;
                 }
-            } else {
-                Toast.makeText(this, "Please Select Start date and End date", Toast.LENGTH_SHORT).show();
-                return false;
             }
+        } else {
+            Toast.makeText(this, "Trip name not should be empty", Toast.LENGTH_SHORT).show();
+            return false;
         }
     }
 
@@ -285,13 +378,22 @@ public class PlanANewTripActivity extends Activity {
                 break;
             case R.id.rl_styleme:
                 if (isvalidate()) {
-                    Intent styleMeintent = new Intent(this, LookListingActiivty.class);
-                    startActivity(styleMeintent);
+                    if (hasPurchase()) {
+                        Intent styleMeintent = new Intent(this, LookListingActiivty.class);
+                        listSelection.clear();
+                        listSelection.add(val_causal);
+                        listSelection.add(val_formal);
+                        listSelection.add(val_business);
+                        styleMeintent.putExtra(constant.BUNDLE_LIST_OF_SELECTION, listSelection);
+                        startActivity(styleMeintent);
+                    }
                 }
                 break;
             case R.id.rl_helpme:
                 if (isvalidate()) {
-                    passListing();
+                    if (hasPurchase()) {
+                        passListing();
+                    }
                 }
                 break;
         }

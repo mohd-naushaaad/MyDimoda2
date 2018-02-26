@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ProgressWheel="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -73,6 +74,32 @@
         android:clipToPadding="false"
         android:padding="10dp"
         tools:listitem="@layout/item_trip_looks" />
+
+    <com.mydimoda.widget.ProgressWheel
+        android:id="@+id/progress_view"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerInParent="true"
+        ProgressWheel:barColor="@color/circular_progress_default_progress"
+        ProgressWheel:barLength="20dp"
+        ProgressWheel:barWidth="10dp"
+        ProgressWheel:rimColor="@color/circular_progress_default_background"
+        ProgressWheel:rimWidth="10dp" />
+
+    <com.mydimoda.customView.Existence_Light_TextView
+        android:id="@+id/progress_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/progress_view"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="Look being created"
+        android:textColor="#000000"
+        android:textSize="25sp" />
+
 
     <RelativeLayout
         android:id="@+id/rl_coach_look_listing"
