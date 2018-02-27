@@ -47,7 +47,7 @@ import butterknife.OnClick;
 
 public class PlanANewTripActivity extends Activity {
     int val_causal = 0, val_formal = 0, val_business = 0;
-    private ArrayList<Integer> listSelection = new ArrayList<>();
+    private ArrayList<String> listTypeSelection = new ArrayList<>();
     @BindView(R.id.menu_btn)
     Button menuBtn;
     @BindView(R.id.title_view)
@@ -380,11 +380,17 @@ public class PlanANewTripActivity extends Activity {
                 if (isvalidate()) {
                     if (hasPurchase()) {
                         Intent styleMeintent = new Intent(this, LookListingActiivty.class);
-                        listSelection.clear();
-                        listSelection.add(val_causal);
-                        listSelection.add(val_formal);
-                        listSelection.add(val_business);
-                        styleMeintent.putExtra(constant.BUNDLE_LIST_OF_SELECTION, listSelection);
+                        listTypeSelection.clear();
+                        for (int i = 0; i < val_causal; i++) {
+                            listTypeSelection.add("casual");
+                        }
+                        for (int i = 0; i < val_formal; i++) {
+                            listTypeSelection.add("formal");
+                        }
+                        for (int i = 0; i < val_business; i++) {
+                            listTypeSelection.add("after5");
+                        }
+                        styleMeintent.putExtra(constant.BUNDLE_LIST_OF_SELECTION, listTypeSelection);
                         startActivity(styleMeintent);
                     }
                 }

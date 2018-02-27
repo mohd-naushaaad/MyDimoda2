@@ -19,7 +19,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.mydimoda.DMAlgorithmActivity;
 import com.mydimoda.JSONPostParser;
 import com.mydimoda.R;
 import com.mydimoda.SharedPreferenceUtil;
@@ -27,6 +26,7 @@ import com.mydimoda.adapter.LookAdapter;
 import com.mydimoda.constant;
 import com.mydimoda.customView.Existence_Light_TextView;
 import com.mydimoda.model.DemoModelForLook;
+import com.mydimoda.model.ModelLookListing;
 import com.mydimoda.object.DMBlockedObject;
 import com.mydimoda.object.DMItemObject;
 import com.mydimoda.widget.ProgressWheel;
@@ -42,7 +42,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
@@ -78,9 +77,14 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
     Existence_Light_TextView progressText;
     private List<DemoModelForLook> lookList;
     private LookAdapter lookAdapter;
-    private ArrayList<Integer> listSelection;
+    private ArrayList<String> listTypeSelection;
     private CountDownTimer timer;
     private JSONObject mSendData;
+    private List<ParseObject> listOfClothFromParceDB;
+    private ModelLookListing modelLookListing = new ModelLookListing();
+    private int apicounter = 0;
+    private List<DMItemObject> listOfresultItem = new ArrayList<>();
+    private String currentCat = "";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -89,9 +93,8 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
         ButterKnife.bind(this);
 //        showShowcaseView();
         init();
-        getBundleValue();
-        setStaticListing(10);
-        makeApiCall();
+        getClothsFP();
+//        setStaticListing(10);
     }
 
     public void hideProgress() {
@@ -99,6 +102,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
     }
 
     public void getClothsFP() {
+        currentCat = listTypeSelection.get(apicounter);
         ParseUser user = ParseUser.getCurrentUser();
 
         ParseQuery<ParseObject> query = null;
@@ -116,10 +120,10 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
             query = ParseQuery.getQuery("DemoCloset");
         }
 
-        if (constant.gCategory.equals("after5")
-                || constant.gCategory.equals("formal"))
+        if (currentCat.equals("after5")
+                || currentCat.equals("formal"))
             query.whereNotEqualTo("Category", "casual");
-        if (constant.gCategory.equals("casual")) {
+        if (currentCat.equals("casual")) {
             ArrayList<String> list = new ArrayList<String>();
             list.add("shirt");
             list.add("trousers");
@@ -130,7 +134,10 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
             public void done(List<ParseObject> clothList, ParseException e) {
 
                 if (e == null) {
-                    makeSendData(makeJSONArray(clothList));
+                    listOfClothFromParceDB.clear();
+                    listOfClothFromParceDB.addAll(clothList);
+                    removeDublicateItem();
+                    makeSendData(makeJSONArray(listOfClothFromParceDB));
                     sendClothsTS();
                 } else {
                     Toast.makeText(LookListingActiivty.this, e.toString(),
@@ -138,6 +145,19 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
                 }
             }
         });
+    }
+
+    private void removeDublicateItem() {
+        if (apicounter - 1 != 0) {
+            for (int i = 0; i < listOfresultItem.size(); i++) {
+                for (int j = 0; j < listOfClothFromParceDB.size(); j++) {
+                    if (listOfClothFromParceDB.get(j).getObjectId().equalsIgnoreCase(listOfresultItem.get(i).index)) {
+                        listOfClothFromParceDB.remove(j);
+                        break;
+                    }
+                }
+            }
+        }
     }
 
     // / ------------------------------------------------ send json data to
@@ -151,8 +171,6 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
             AsyncTask<String, Integer, JSONObject> {
 
         // / server communicate using asyncTask
-
-        ArrayList<HashMap<String, String>> UploadsList = new ArrayList<HashMap<String, String>>();
         JSONObject mResponseData;
 
         @Override
@@ -176,9 +194,38 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
 
         @Override
         protected void onPostExecute(JSONObject result) {
-            hideProgress();
-//            parseResponse(result);
+            parseResponse(result);
             super.onPostExecute(result);
+        }
+    }
+
+    public void parseResponse(JSONObject data) {
+        if (data != null) {
+            try {
+                JSONArray arr = data.getJSONArray("selection");
+                if (arr != null) {
+                    List<DMItemObject> listSubItemLsit = new ArrayList<>();
+                    for (int i = 0; i < arr.length(); i++) {
+                        JSONObject obj = arr.getJSONObject(i);
+                        DMItemObject item = new DMItemObject(obj);
+                        listSubItemLsit.add(item);
+                        listOfresultItem.add(item);
+                    }
+                    modelLookListing.list.add(listSubItemLsit);
+
+                    if (listTypeSelection.size() - 1 > apicounter) {
+                        apicounter++;
+                        getClothsFP();
+                    } else {
+                        hideProgress();
+                    }
+                }
+            } catch (JSONException e) {
+                // TODO Auto-generated catch block
+                Toast.makeText(this, "You can not get clothes",
+                        Toast.LENGTH_LONG).show();
+                e.printStackTrace();
+            }
         }
     }
 
@@ -188,24 +235,16 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
         mSendData = new JSONObject();
         try {
             mSendData.put("version", "2");
-            mSendData.put("category", constant.gCategory);
-            mSendData.put("mode", constant.gMode);
+            mSendData.put("category", currentCat);//causal,formal,after5
+            mSendData.put("mode", "style me");//style me or help me
             mSendData.put("closet", clothArr);
             mSendData.put("name", "genparams");
             mSendData.put("value", "1");
-//            System.out.println("Sending" + constant.gCategory + "" + constant.gMode + "" + clothArr);
-            if (constant.gCategory.equalsIgnoreCase("")) {
-                mSendData.put("category", "casual");
+            mSendData.put("blocked", makeBlockedJSONArray(constant.gBlockedList));
+
+            if (constant.gMode.equals("help me")) {
+                mSendData.put("items", makeItemJSONArray(constant.gItemList));
             }
-            if (constant.gMode.equalsIgnoreCase("")) {
-
-                mSendData.put("mode", "style me");
-
-            } else {
-
-            }
-            mSendData.put("blocked",
-                    makeBlockedJSONArray(constant.gBlockedList));
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -233,14 +272,8 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
                     obj.put("id", list.get(i).index);
                     obj.put("type", list.get(i).type);
 
-                    System.out.println("list.get(i).index ->"
-                            + list.get(i).index);
-                    System.out
-                            .println("list.get(i).type ->" + list.get(i).type);
-
                     arr.put(obj);
                 } catch (JSONException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             }
@@ -294,7 +327,12 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
     }
 
     private void init() {
+        listOfClothFromParceDB = new ArrayList<>();
+        modelLookListing.list.clear();
         progressView.spin();
+        //get value from Bundle
+        listTypeSelection = (ArrayList<String>) getIntent().getSerializableExtra(constant.BUNDLE_LIST_OF_SELECTION);
+
         setUpAdp();
         final int[] mTime = {0};
         timer = new CountDownTimer(Long.MAX_VALUE, 1000) {
@@ -312,14 +350,6 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
             }
 
         }.start();
-    }
-
-    private void getBundleValue() {
-        listSelection = (ArrayList<Integer>) getIntent().getSerializableExtra(constant.BUNDLE_LIST_OF_SELECTION);
-    }
-
-    private void makeApiCall() {
-
     }
 
     private void setUpAdp() {
