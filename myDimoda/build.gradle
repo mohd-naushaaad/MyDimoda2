@@ -73,6 +73,7 @@ dependencies {
 // explicitly depend on RxJava's latest version for bug fixes and new features.
     compile 'io.reactivex.rxjava2:rxjava:2.1.0'
     compile "com.daimajia.swipelayout:library:1.2.0@aar"
-
+//Added by PARTH
+    compile 'com.facebook.stetho:stetho:1.5.0'
 
 }

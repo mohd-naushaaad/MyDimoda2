@@ -1,5 +1,7 @@
 package com.mydimoda.model;
 
+import com.parse.ParseObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,13 +10,26 @@ import java.util.List;
  */
 
 public class ModelLookListing {
-    public List list = new ArrayList();
+    private List list = new ArrayList();
+    private String clothType = "";
+    private int colorCode;
+
+    public ModelLookListing(List list, String clothType, int colorCode) {
+        this.list = list;
+        this.clothType = clothType;
+        this.colorCode = colorCode;
+    }
 
     public List getList() {
+
         return list;
     }
 
-    public void setList(List list) {
-        this.list = list;
+    public String getClothType() {
+        return clothType;
+    }
+
+    public int getColorCode() {
+        return colorCode;
     }
 }
