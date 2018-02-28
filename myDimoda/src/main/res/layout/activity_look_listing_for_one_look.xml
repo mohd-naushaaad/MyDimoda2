@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ProgressWheel="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/back_wight">
+
+    <RelativeLayout
+        android:id="@+id/title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="10dp">
+
+        <!-- <ImageView
+             android:id="@+id/iv_share"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentLeft="true"
+             android:padding="@dimen/img_padd"
+             android:src="@drawable/share" />-->
+
+        <com.mydimoda.customView.Existence_Light_TextView
+            android:id="@+id/title_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="Styling"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:id="@+id/back_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true">
+
+            <com.mydimoda.customView.Existence_Light_TextView
+                android:id="@+id/back_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:text="Back"
+                android:textColor="@color/color_black"
+                android:textSize="20sp" />
+
+            <ImageButton
+                android:id="@+id/back_btn"
+                android:layout_width="15dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/back_btn" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <com.mydimoda.customView.Existence_Light_TextView
+        android:id="@+id/tv_for_trip"
+        style="@style/trip_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title_layout"
+        android:gravity="center"
+        android:paddingBottom="@dimen/txt_padd"
+        android:paddingTop="@dimen/txt_padd"
+        android:text="Suggested looks for USA Business trip" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_looklisting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_for_trip"
+        android:clipToPadding="false"
+        android:padding="10dp"
+        tools:itemCount="2"
+        tools:listitem="@layout/item_look_listing_one_look" />
+
+    <LinearLayout
+        android:id="@+id/ll_progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <com.mydimoda.widget.ProgressWheel
+            android:id="@+id/progress_view"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerInParent="true"
+            ProgressWheel:barColor="@color/circular_progress_default_progress"
+            ProgressWheel:barLength="20dp"
+            ProgressWheel:barWidth="10dp"
+            ProgressWheel:rimColor="@color/circular_progress_default_background"
+            ProgressWheel:rimWidth="10dp" />
+
+        <com.mydimoda.customView.Existence_Light_TextView
+            android:id="@+id/progress_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/progress_view"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="Look being created"
+            android:textColor="#000000"
+            android:textSize="25sp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_coach_look_listing"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/formal_etc"
+        android:clickable="true"
+        android:visibility="gone">
+
+    </RelativeLayout>
+</RelativeLayout>

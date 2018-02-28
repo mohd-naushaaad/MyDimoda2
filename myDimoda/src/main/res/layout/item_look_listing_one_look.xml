@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp">
+
+        <com.mydimoda.customView.Existence_Light_TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="Look"
+            android:textSize="@dimen/normal_text_size" />
+
+        <com.mydimoda.customView.Existence_Light_TextView
+            android:id="@+id/tv_clothtype"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:gravity="right"
+            android:text="Formal"
+            android:textColor="@android:color/holo_red_light"
+            android:textSize="@dimen/normal_text_size" />
+    </RelativeLayout>
+
+    <GridView
+        android:id="@+id/fashion_gridview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:horizontalSpacing="10dp"
+        android:listSelector="#cccccc"
+        android:numColumns="2"
+        android:verticalSpacing="10dp"
+        tools:listitem="@layout/grid_fashion_layout" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/like_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/like_btn_sel" />
+
+        <Button
+            android:id="@+id/dissmiss_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/dismiss_btn_sel" />
+    </LinearLayout>
+</LinearLayout>

@@ -379,7 +379,7 @@ public class PlanANewTripActivity extends Activity {
             case R.id.rl_styleme:
                 if (isvalidate()) {
                     if (hasPurchase()) {
-                        Intent styleMeintent = new Intent(this, LookListingActiivty.class);
+                        /*Intent styleMeintent = new Intent(this, LookListingActiivty.class);
                         listTypeSelection.clear();
                         for (int i = 0; i < val_causal; i++) {
                             listTypeSelection.add("casual");
@@ -391,7 +391,9 @@ public class PlanANewTripActivity extends Activity {
                             listTypeSelection.add("after5");
                         }
                         styleMeintent.putExtra(constant.BUNDLE_LIST_OF_SELECTION, listTypeSelection);
-                        startActivity(styleMeintent);
+                        startActivity(styleMeintent);*/
+                        Intent intent1 = new Intent(PlanANewTripActivity.this, LooklistingActivityForOneLook.class);
+                        startActivity(intent1);
                     }
                 }
                 break;

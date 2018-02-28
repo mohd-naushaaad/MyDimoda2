@@ -10,20 +10,17 @@ import java.util.List;
  */
 
 public class ModelLookListing {
-    private List list = new ArrayList();
+    private List<OrderClothModel> list = new ArrayList();
     private String clothType = "";
     private int colorCode;
 
-    public ModelLookListing(List list, String clothType, int colorCode) {
+    public ModelLookListing(List<OrderClothModel> list, String clothType, int colorCode) {
         this.list = list;
         this.clothType = clothType;
         this.colorCode = colorCode;
     }
 
-    public List getList() {
 
-        return list;
-    }
 
     public String getClothType() {
         return clothType;
@@ -31,5 +28,13 @@ public class ModelLookListing {
 
     public int getColorCode() {
         return colorCode;
+    }
+
+    public List<OrderClothModel> getList() {
+        return list;
+    }
+
+    public void setList(List<OrderClothModel> list) {
+        this.list = list;
     }
 }
