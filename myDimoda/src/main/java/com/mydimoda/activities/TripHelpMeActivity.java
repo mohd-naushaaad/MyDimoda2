@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.mydimoda.DMHelpActivity;
 import com.mydimoda.R;
 import com.mydimoda.constant;
 import com.mydimoda.customView.Existence_Light_TextView;
@@ -37,8 +38,7 @@ public class TripHelpMeActivity extends Activity {
     Existence_Light_TextView titleView;
     @BindView(R.id.title_layout)
     RelativeLayout titleLayout;
-    @BindView(R.id.restore_btn)
-    Button restoreBtn;
+
     @BindView(R.id.shirt_icon)
     ImageView shirtIcon;
     @BindView(R.id.shirt_txt)
@@ -77,6 +77,8 @@ public class TripHelpMeActivity extends Activity {
     Existence_Light_TextView suitTxt;
     @BindView(R.id.rl_suit)
     RelativeLayout rlSuit;
+    @BindView(R.id.shirt_btn)
+    Button shirtBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,20 +138,37 @@ public class TripHelpMeActivity extends Activity {
     }
 
 
-    @OnClick({R.id.back_layout, R.id.restore_btn, R.id.pants_btn, R.id.coat_btn, R.id.tie_btn, R.id.suit_btn})
+    @OnClick({R.id.back_layout, R.id.shirt_btn, R.id.pants_btn, R.id.coat_btn, R.id.tie_btn, R.id.suit_btn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.back_layout:
                 onBackPressed();
                 break;
-            case R.id.restore_btn:
+            case R.id.shirt_btn:
+                navigatetoClothListing("shirt");
+                break;
             case R.id.pants_btn:
+                navigatetoClothListing("trousers");
+
+                break;
             case R.id.coat_btn:
+                navigatetoClothListing("jacket");
+
+                break;
             case R.id.tie_btn:
+                navigatetoClothListing("tie");
+
+                break;
             case R.id.suit_btn:
-                Intent intent = new Intent(this, TripSuggestedItemActivity.class);
-                startActivity(intent);
+                navigatetoClothListing("suit");
                 break;
         }
+    }
+
+    private void navigatetoClothListing(String type) {
+        Intent intent = new Intent(this, DMHelpActivity.class);
+        intent.putExtra(constant.BUNDLE_ISFROMPLANNEWTRIP, true);
+        intent.putExtra("type", type);
+        startActivity(intent);
     }
 }

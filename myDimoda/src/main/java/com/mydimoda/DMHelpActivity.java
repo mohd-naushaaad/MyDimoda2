@@ -22,6 +22,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mydimoda.activities.LooklistingActivityForOneLook;
 import com.mydimoda.adapter.DMHelpGridAdapter;
 import com.mydimoda.adapter.DMMenuListAdapter;
 import com.mydimoda.object.DMItemObject;
@@ -46,7 +47,7 @@ public class DMHelpActivity extends Activity {
     DrawerLayout vDrawerLayout;
     LinearLayout vMenuLayout;
     RelativeLayout vBackLayout;
-
+    private boolean isFromPlanNewTrip = false;
     GridView vClothGrid;
 
     String mType;
@@ -96,7 +97,14 @@ public class DMHelpActivity extends Activity {
                                     int position, long id) {
                 constant.gItemList = makeItemList(mClothList.get(position));
                 constant.gItemListTemp = makeItemList(mClothList.get(position));//mayur added for fixinf cloths swap issue
-                checkPermissions();
+                if (!isFromPlanNewTrip) {
+                    checkPermissions();
+                } else {
+                    Intent styleMeintent = new Intent(DMHelpActivity.this, LooklistingActivityForOneLook.class);
+                    styleMeintent.putExtra(constant.BUNDLE_CATEGORY, "casual");
+                    styleMeintent.putExtra(constant.BUNDLE_MODE, "help me");
+                    startActivity(styleMeintent);
+                }
             }
         });
     }
@@ -113,6 +121,9 @@ public class DMHelpActivity extends Activity {
 
         Intent in = getIntent();
         mType = in.getStringExtra("type");
+        if (in.getBooleanExtra(constant.BUNDLE_ISFROMPLANNEWTRIP, false)) {
+            isFromPlanNewTrip = true;
+        }
         showTitle();
         if (AppUtils.isConnectingToInternet(DMHelpActivity.this)) {
             getClothFP();

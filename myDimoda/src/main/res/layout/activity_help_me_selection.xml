@@ -61,7 +61,7 @@
             android:visibility="gone">
 
             <Button
-                android:id="@+id/restore_btn"
+                android:id="@+id/shirt_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/list_item_sel" />

@@ -103,6 +103,9 @@ public class constant {
     //Bundle Constant
     public static final String BUNDLE_LOOKLISTING = "bundle_looklisting";
     public static final String BUNDLE_LIST_OF_SELECTION = "bundle_list_of_selection";
+    public static final String BUNDLE_ISFROMPLANNEWTRIP = "bundle_isfromplannewtrip";
+    public static final String BUNDLE_CATEGORY = "bundle_category";
+    public static final String BUNDLE_MODE = "bundle_mode";
 
     public constant() {
 

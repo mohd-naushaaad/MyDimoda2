@@ -29,7 +29,9 @@ import com.mydimoda.constant;
 import com.mydimoda.customView.Existence_Light_TextView;
 import com.mydimoda.social.google.GoogleIAP;
 import com.mydimoda.widget.cropper.util.FontsUtil;
+import com.parse.ParseException;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -392,8 +394,10 @@ public class PlanANewTripActivity extends Activity {
                         }
                         styleMeintent.putExtra(constant.BUNDLE_LIST_OF_SELECTION, listTypeSelection);
                         startActivity(styleMeintent);*/
-                        Intent intent1 = new Intent(PlanANewTripActivity.this, LooklistingActivityForOneLook.class);
-                        startActivity(intent1);
+                        Intent styleMeintent = new Intent(this, LooklistingActivityForOneLook.class);
+                        styleMeintent.putExtra(constant.BUNDLE_CATEGORY, "casual");
+                        styleMeintent.putExtra(constant.BUNDLE_MODE, "style me");
+                        startActivity(styleMeintent);
                     }
                 }
                 break;
@@ -406,6 +410,28 @@ public class PlanANewTripActivity extends Activity {
                 break;
         }
     }
+
+    private void goToLookListingActivity() {
+        /*if (constant.gIsCloset) {
+            ParseUser user = ParseUser.getCurrentUser();
+            int count = user.getInt("Count");
+            count++;
+            user.put("Count", count);
+            user.saveInBackground(new SaveCallback() {
+                @Override
+                public void done(ParseException e) {
+
+                }
+
+            });
+            Intent intent1 = new Intent(PlanANewTripActivity.this, LooklistingActivityForOneLook.class);
+            startActivity(intent1);
+        } else {
+            Intent intent1 = new Intent(PlanANewTripActivity.this, LooklistingActivityForOneLook.class);
+            startActivity(intent1);
+        }*/
+    }
+
 
     private void passListing() {
         ArrayList<Integer> list = new ArrayList<>();

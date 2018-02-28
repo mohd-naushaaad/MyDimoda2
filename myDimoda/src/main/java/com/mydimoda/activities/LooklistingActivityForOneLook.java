@@ -75,8 +75,8 @@ public class LooklistingActivityForOneLook extends Activity {
     JSONObject mSendData;
     @BindView(R.id.ll_progress)
     LinearLayout llProgress;
-    private String category = "casual";
-    private String mode = "style me";
+    private String category = "";
+    private String mode = "";
     private List<ParseObject> listOfClothFromParceDB;
     private ModelLookListing modelLookListing;
     private List<ModelLookListing> listResultingLook;
@@ -87,9 +87,15 @@ public class LooklistingActivityForOneLook extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_look_listing_for_one_look);
         ButterKnife.bind(this);
+        getBundleData();
         listOfClothFromParceDB = new ArrayList<>();
         setUpAdb();
         getClothsFP();
+    }
+
+    private void getBundleData() {
+        category = getIntent().getStringExtra(constant.BUNDLE_CATEGORY);
+        mode = getIntent().getStringExtra(constant.BUNDLE_MODE);
     }
 
     private void setUpAdb() {
