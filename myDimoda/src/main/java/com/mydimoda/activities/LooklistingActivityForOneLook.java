@@ -87,10 +87,15 @@ public class LooklistingActivityForOneLook extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_look_listing_for_one_look);
         ButterKnife.bind(this);
-        getBundleData();
+        init();
+        getClothsFP();
+    }
+
+    private void init() {
         listOfClothFromParceDB = new ArrayList<>();
         setUpAdb();
-        getClothsFP();
+        tvForTrip.setText(String.format(getString(R.string.suggested_look_for_trip), constant.BUNDLE_TRIP_NAME));
+        getBundleData();
     }
 
     private void getBundleData() {

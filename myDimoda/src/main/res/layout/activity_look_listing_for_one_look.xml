@@ -64,7 +64,7 @@
         android:gravity="center"
         android:paddingBottom="@dimen/txt_padd"
         android:paddingTop="@dimen/txt_padd"
-        android:text="Suggested looks for USA Business trip" />
+        tools:text="Suggested looks for USA Business trip" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_looklisting"

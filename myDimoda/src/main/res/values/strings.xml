@@ -24,7 +24,7 @@
     <string name="rate_button_later">Later</string>
     <string name="rate_body">Rate the app and we\'ll upgrade you to pro version that includes unlimited styling licence for free.</string>
 
-    
+
     <string name="build_closet">Tap the camera or photo icon to add photos and start building your closet</string>
     <string name="setting.rate">Rate App</string>
     <string name="setting.notification">Notifications</string>
@@ -55,6 +55,6 @@
     <string name="review_trip_planned">Review Trips Planned</string>
     <string name="select_eardrobe_item">Select Wardrobe item</string>
     <string name="alert_added">We have successfully added this look as your favourite look for the trip.</string>
-
+    <string name="suggested_look_for_trip">Suggested looks for %1s trip</string>
 
 </resources>

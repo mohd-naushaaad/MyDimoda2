@@ -3,12 +3,16 @@ package com.mydimoda.activities;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -149,6 +153,35 @@ public class PlanANewTripActivity extends Activity {
         sideMenuClickListner();
     }
 
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        int x = (int) ev.getX();
+        int y = (int) ev.getY();
+
+        if (ev.getAction() == MotionEvent.ACTION_DOWN &&
+                !getLocationOnScreen(edNameTrip).contains(x, y)) {
+            InputMethodManager input = (InputMethodManager)
+                    getSystemService(Context.INPUT_METHOD_SERVICE);
+            input.hideSoftInputFromWindow(edNameTrip.getWindowToken(), 0);
+        }
+
+        return super.dispatchTouchEvent(ev);
+    }
+
+    protected Rect getLocationOnScreen(EditText mEditText) {
+        Rect mRect = new Rect();
+        int[] location = new int[2];
+
+        mEditText.getLocationOnScreen(location);
+
+        mRect.left = location[0];
+        mRect.top = location[1];
+        mRect.right = location[0] + mEditText.getWidth();
+        mRect.bottom = location[1] + mEditText.getHeight();
+
+        return mRect;
+    }
+
     private void init_view() {
         rbMoreLook.setChecked(true);
         tvCasualVal.setText(String.valueOf(val_causal));
@@ -261,18 +294,24 @@ public class PlanANewTripActivity extends Activity {
                         }).show();
     }
 
+
     private boolean isvalidate() {
         if (edNameTrip.getText().toString().length() > 0) {
             if (val_causal == 0 && val_formal == 0 && val_business == 0) {
-                Toast.makeText(this, "Please Select alteast one Cloth", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Please Provide atleast one look for this trip.", Toast.LENGTH_SHORT).show();
                 return false;
             } else {
                 if (startDate != null && endDate != null) {
                     if (dateFormatter.format(startDate).equalsIgnoreCase(dateFormatter.format(endDate))) {
-                        return true;
+                        if ((val_causal + val_formal + val_business) > 1) {
+                            Toast.makeText(this, "Number of looks you have requested do not match with trip dates. You could only select one pair for each day of your trip.", Toast.LENGTH_SHORT).show();
+                            return false;
+                        } else {
+                            return true;
+                        }
                     } else {
                         if (startDate.compareTo(endDate) > 0) {
-                            Toast.makeText(this, "end Date should be greter than start date", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, "Trip end date should be later than trip start date", Toast.LENGTH_SHORT).show();
                             return false;
                         } else {
                             long different = endDate.getTime() - startDate.getTime();
@@ -282,11 +321,11 @@ public class PlanANewTripActivity extends Activity {
                             long daysInMilli = hoursInMilli * 24;
                             gapDiffbetweenDate = different / daysInMilli;
                             if (gapDiffbetweenDate > 14) {
-                                Toast.makeText(this, "Date range should be less than 2 week", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(this, "Date Range should be less than 2 weeks for a trip", Toast.LENGTH_SHORT).show();
                                 return false;
                             } else {
                                 if ((val_causal + val_formal + val_business) > gapDiffbetweenDate) {
-                                    Toast.makeText(this, "You can not carry more cloth", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(this, "Number of looks you have requested do not match with trip dates. You could only select one pair for each day of your trip.", Toast.LENGTH_SHORT).show();
                                     return false;
                                 } else {
                                     return true;
@@ -295,15 +334,16 @@ public class PlanANewTripActivity extends Activity {
                         }
                     }
                 } else {
-                    Toast.makeText(this, "Please Select Start date and End date", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Please provide start and end date for this trip", Toast.LENGTH_SHORT).show();
                     return false;
                 }
             }
         } else {
-            Toast.makeText(this, "Trip name not should be empty", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please provide a meaningful name for this trip", Toast.LENGTH_SHORT).show();
             return false;
         }
     }
+
 
     private void setFontToTextView() {
         FontsUtil.setExistenceLight(this, titleView);
@@ -395,6 +435,7 @@ public class PlanANewTripActivity extends Activity {
                         styleMeintent.putExtra(constant.BUNDLE_LIST_OF_SELECTION, listTypeSelection);
                         startActivity(styleMeintent);*/
                         Intent styleMeintent = new Intent(this, LooklistingActivityForOneLook.class);
+                        constant.BUNDLE_TRIP_NAME = edNameTrip.getText().toString();
                         styleMeintent.putExtra(constant.BUNDLE_CATEGORY, "casual");
                         styleMeintent.putExtra(constant.BUNDLE_MODE, "style me");
                         startActivity(styleMeintent);
@@ -404,6 +445,7 @@ public class PlanANewTripActivity extends Activity {
             case R.id.rl_helpme:
                 if (isvalidate()) {
                     if (hasPurchase()) {
+                        constant.BUNDLE_TRIP_NAME = edNameTrip.getText().toString();
                         passListing();
                     }
                 }

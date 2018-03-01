@@ -87,6 +87,8 @@
                         android:padding="10dp">
 
                         <EditText
+                            android:inputType="text"
+                            android:maxLines="1"
                             android:id="@+id/ed_name_trip"
                             style="@style/trip_text"
                             android:layout_width="match_parent"
