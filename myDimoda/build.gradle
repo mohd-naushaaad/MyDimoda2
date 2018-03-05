@@ -75,5 +75,6 @@ dependencies {
     compile "com.daimajia.swipelayout:library:1.2.0@aar"
 //Added by PARTH
     compile 'com.facebook.stetho:stetho:1.5.0'
+    compile 'com.google.code.gson:gson:2.8.2'
 
 }

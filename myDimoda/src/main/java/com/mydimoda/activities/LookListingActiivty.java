@@ -20,6 +20,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.reflect.TypeToken;
 import com.mydimoda.AppUtils;
 import com.mydimoda.JSONPostParser;
 import com.mydimoda.R;
@@ -28,9 +32,11 @@ import com.mydimoda.adapter.LookAdapter;
 import com.mydimoda.adapter.LookListingAdpForOneLook;
 import com.mydimoda.constant;
 import com.mydimoda.customView.Existence_Light_TextView;
+import com.mydimoda.model.ClothDetails;
 import com.mydimoda.model.DemoModelForLook;
 import com.mydimoda.model.ModelLookListing;
 import com.mydimoda.model.OrderClothModel;
+import com.mydimoda.model.TripLookForInsetinParse;
 import com.mydimoda.object.DMBlockedObject;
 import com.mydimoda.object.DMItemObject;
 import com.mydimoda.widget.ProgressWheel;
@@ -114,6 +120,46 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
         adapter = new LookListingAdpForOneLook(listResultingLook, this);
         rvLooklisting.setAdapter(adapter);
     }
+
+    private void storeinParseDb(List<ModelLookListing> listResultingLook) {
+        List<TripLookForInsetinParse> totalLookList = new ArrayList<>();
+        for (int i = 0; i < listResultingLook.size(); i++) {
+            TripLookForInsetinParse tripLookForInsetinParse = new TripLookForInsetinParse();
+            List<ClothDetails> list_Cloth = new ArrayList<>();
+            for (int j = 0; j < listResultingLook.get(i).getList().size(); j++) {
+                OrderClothModel orderClothModel = listResultingLook.get(i).getList().get(j);
+                ClothDetails clothDetails = new ClothDetails(orderClothModel.getImageUrl(), orderClothModel.getType());
+                list_Cloth.add(clothDetails);
+            }
+            tripLookForInsetinParse.setClothType(listResultingLook.get(i).getClothType());
+            tripLookForInsetinParse.setListOfCloth(list_Cloth);
+            totalLookList.add(tripLookForInsetinParse);
+        }
+
+        ParseObject testObject = new ParseObject("TripData");
+        testObject.put("Title", "Test by parth");
+//        testObject.put("Start_date", startDate);
+        testObject.put("User", ParseUser.getCurrentUser());
+
+        Gson gson = new Gson();
+
+        String listString = gson.toJson(
+                totalLookList,
+                new TypeToken<ArrayList<TripLookForInsetinParse>>() {}.getType());
+
+        try {
+            JSONArray jsonArray =  new JSONArray(listString);
+            testObject.put("Looks", jsonArray);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+        testObject.saveInBackground();
+
+
+    }
+
 
     private int giveMeColorCode(String currentCat) {
         if (currentCat.equalsIgnoreCase("casual")) {
@@ -252,6 +298,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
                     } else {
                         hideProgress();
                         adapter.notifyDataSetChanged();
+
                     }
                 }
             } catch (JSONException e) {
@@ -474,7 +521,8 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
         switch (view.getId()) {
 
             case R.id.back_layout:
-                onBackPressed();
+               /* onBackPressed();*/
+                storeinParseDb(listResultingLook);
                 break;
         }
     }

@@ -34,6 +34,7 @@ import com.mydimoda.customView.Existence_Light_TextView;
 import com.mydimoda.social.google.GoogleIAP;
 import com.mydimoda.widget.cropper.util.FontsUtil;
 import com.parse.ParseException;
+import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
@@ -41,6 +42,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import butterknife.BindView;
@@ -439,6 +441,7 @@ public class PlanANewTripActivity extends Activity {
                         styleMeintent.putExtra(constant.BUNDLE_CATEGORY, "casual");
                         styleMeintent.putExtra(constant.BUNDLE_MODE, "style me");
                         startActivity(styleMeintent);*/
+//                        saveDataintoParseDb();
                     }
                 }
                 break;
@@ -451,6 +454,20 @@ public class PlanANewTripActivity extends Activity {
                 }
                 break;
         }
+    }
+
+    private void saveDataintoParseDb() {
+        List<ParseObject> lookListing = new ArrayList<>();
+        List<ParseObject> subItemListing = new ArrayList<>();
+
+        List<String> list = new ArrayList<>();
+        list.add("test by Parth");
+        ParseObject testObject = new ParseObject("TripData");
+        testObject.put("Title", "Test Trip");
+        testObject.put("Start_date", startDate);
+        testObject.put("User", ParseUser.getCurrentUser());
+        testObject.put("Looks", list);
+        testObject.saveInBackground();
     }
 
     private void goToLookListingActivity() {
