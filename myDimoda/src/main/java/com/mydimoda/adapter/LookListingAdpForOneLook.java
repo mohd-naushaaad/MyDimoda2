@@ -1,7 +1,7 @@
 package com.mydimoda.adapter;
 
 import android.content.Context;
-import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +24,7 @@ import butterknife.OnClick;
  */
 
 public class LookListingAdpForOneLook extends RecyclerView.Adapter<LookListingAdpForOneLook.MyHolder> {
+
     private List<ModelLookListing> listOfCloth;
     private Context mContext;
 
@@ -40,7 +41,10 @@ public class LookListingAdpForOneLook extends RecyclerView.Adapter<LookListingAd
 
     @Override
     public void onBindViewHolder(MyHolder holder, int position) {
-        holder.setData(position);
+        SubItemOfLookAdp subItemOfLookAdp = new SubItemOfLookAdp(listOfCloth.get(position).getList(), mContext);
+        holder.tvClothtype.setText(listOfCloth.get(position).getClothType());
+        holder.rvSubitem.setLayoutManager(new GridLayoutManager(mContext, 2));
+        holder.rvSubitem.setAdapter(subItemOfLookAdp);
     }
 
     @Override
@@ -59,24 +63,32 @@ public class LookListingAdpForOneLook extends RecyclerView.Adapter<LookListingAd
     }
 
     public class MyHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.fashion_gridview)
-        GridView fashionGridview;
+        /* @BindView(R.id.fashion_gridview)
+         GridView fashionGridview;
+         @BindView(R.id.like_btn)
+         Button likeBtn;
+         @BindView(R.id.dissmiss_btn)
+         Button dissmissBtn;
+         @BindView(R.id.tv_clothtype)
+         Existence_Light_TextView tvClothtype;*/
+        @BindView(R.id.tv_clothtype)
+        Existence_Light_TextView tvClothtype;
+        @BindView(R.id.rv_subitem)
+        RecyclerView rvSubitem;
         @BindView(R.id.like_btn)
         Button likeBtn;
         @BindView(R.id.dissmiss_btn)
         Button dissmissBtn;
-        @BindView(R.id.tv_clothtype)
-        Existence_Light_TextView tvClothtype;
 
         public MyHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
 
-        public void setData(int position) {
+       /* public void setData(int position) {
             fashionGridview.setAdapter(new DMFashionGridAdapter(mContext, listOfCloth.get(position).getList()));
             tvClothtype.setText(listOfCloth.get(position).getClothType());
 //            tvClothtype.setTextColor(ContextCompat.getColor(mContext, listOfCloth.get(position).getColorCode()));
-        }
+        }*/
     }
 }

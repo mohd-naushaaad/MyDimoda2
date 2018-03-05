@@ -21,7 +21,6 @@ public class ModelLookListing {
     }
 
 
-
     public String getClothType() {
         return clothType;
     }

@@ -7,7 +7,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -26,6 +25,7 @@ import com.mydimoda.JSONPostParser;
 import com.mydimoda.R;
 import com.mydimoda.SharedPreferenceUtil;
 import com.mydimoda.adapter.LookAdapter;
+import com.mydimoda.adapter.LookListingAdpForOneLook;
 import com.mydimoda.constant;
 import com.mydimoda.customView.Existence_Light_TextView;
 import com.mydimoda.model.DemoModelForLook;
@@ -62,8 +62,6 @@ import butterknife.OnClick;
 public class LookListingActiivty extends AppCompatActivity implements LookAdapter.ClickListnerOfLook {
     /*@BindView(R.id.iv_share)
     ImageView ivShare;*/
-    @BindView(R.id.title_view)
-    Existence_Light_TextView titleView;
     @BindView(R.id.back_txt)
     Existence_Light_TextView backTxt;
     @BindView(R.id.back_btn)
@@ -82,6 +80,10 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
     ProgressWheel progressView;
     @BindView(R.id.progress_text)
     Existence_Light_TextView progressText;
+    @BindView(R.id.title_view)
+    Existence_Light_TextView titleView;
+    @BindView(R.id.ll_progress)
+    LinearLayout llProgress;
     private List<DemoModelForLook> lookList;
     private LookAdapter lookAdapter;
     private ArrayList<String> listTypeSelection;
@@ -93,6 +95,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
     private String currentCat = "";
     private List<ModelLookListing> listResultingLook;
     private ModelLookListing modelLookListing;
+    private LookListingAdpForOneLook adapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -103,6 +106,13 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
         init();
         getClothsFP();
 //        setStaticListing(10);
+    }
+
+    private void setUpAdb() {
+        listResultingLook = new ArrayList<>();
+        rvLooklisting.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new LookListingAdpForOneLook(listResultingLook, this);
+        rvLooklisting.setAdapter(adapter);
     }
 
     private int giveMeColorCode(String currentCat) {
@@ -117,7 +127,11 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
     }
 
     public void hideProgress() {
-        progressView.setVisibility(View.INVISIBLE);
+        llProgress.setVisibility(View.GONE);
+    }
+
+    private void showProgress() {
+        llProgress.setVisibility(View.VISIBLE);
     }
 
     public void getClothsFP() {
@@ -237,6 +251,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
                         getClothsFP();
                     } else {
                         hideProgress();
+                        adapter.notifyDataSetChanged();
                     }
                 }
             } catch (JSONException e) {
@@ -395,13 +410,12 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
     }
 
     private void init() {
+        setUpAdb();
         listOfClothFromParceDB = new ArrayList<>();
-        listResultingLook = new ArrayList<>();
+        showProgress();
         progressView.spin();
         //get value from Bundle
         listTypeSelection = (ArrayList<String>) getIntent().getSerializableExtra(constant.BUNDLE_LIST_OF_SELECTION);
-
-        setUpAdp();
         final int[] mTime = {0};
         timer = new CountDownTimer(Long.MAX_VALUE, 1000) {
             public void onTick(long millisUntilFinished) {
@@ -420,12 +434,12 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
         }.start();
     }
 
-    private void setUpAdp() {
+   /* private void setUpAdp() {
         lookList = new ArrayList<>();
         lookAdapter = new LookAdapter(lookList, this, this);
         rvLooklisting.setLayoutManager(new LinearLayoutManager(this));
         rvLooklisting.setAdapter(lookAdapter);
-    }
+    }*/
 
     private void showShowcaseView() {
         if (!SharedPreferenceUtil.getBoolean(constant.PREF_IS_LOOK_LISTING, false)) {

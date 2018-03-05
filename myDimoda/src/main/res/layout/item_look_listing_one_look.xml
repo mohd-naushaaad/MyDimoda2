@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -29,7 +30,16 @@
             android:textSize="@dimen/normal_text_size" />
     </RelativeLayout>
 
-    <GridView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_subitem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layoutManager="android.support.v7.widget.GridLayoutManager"
+        tools:itemCount="4"
+        tools:listitem="@layout/grid_fashion_layout"
+        tools:spanCount="2" />
+    <!--<GridView
         android:id="@+id/fashion_gridview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,27 +48,29 @@
         android:listSelector="#cccccc"
         android:numColumns="2"
         android:verticalSpacing="10dp"
-        tools:listitem="@layout/grid_fashion_layout" />
+        tools:listitem="@layout/grid_fashion_layout" />-->
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="55dp"
+        android:layout_width="250dp"
+        android:layout_height="45dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="5dp"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/like_btn"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
+            android:layout_weight="1"
             android:background="@drawable/like_btn_sel" />
 
         <Button
             android:id="@+id/dissmiss_btn"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
+            android:layout_weight="1"
             android:background="@drawable/dismiss_btn_sel" />
     </LinearLayout>
 </LinearLayout>
