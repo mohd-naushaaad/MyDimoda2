@@ -3,15 +3,17 @@ package com.mydimoda.model;
 import com.parse.ParseClassName;
 import com.parse.ParseObject;
 
+import org.parceler.Parcel;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Parth on 3/5/2018.
  */
-
-public class TripLookForInsetinParse {
-    public TripLookForInsetinParse() {
+@Parcel
+public class TripLookListingModel {
+    public TripLookListingModel() {
     }
 
     String clothType = "";

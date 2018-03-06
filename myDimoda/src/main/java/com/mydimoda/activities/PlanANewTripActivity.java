@@ -423,6 +423,7 @@ public class PlanANewTripActivity extends Activity {
             case R.id.rl_styleme:
                 if (isvalidate()) {
                     if (hasPurchase()) {
+
                         Intent styleMeintent = new Intent(this, LookListingActiivty.class);
                         listTypeSelection.clear();
                         for (int i = 0; i < val_causal; i++) {
@@ -435,6 +436,8 @@ public class PlanANewTripActivity extends Activity {
                             listTypeSelection.add("after5");
                         }
                         styleMeintent.putExtra(constant.BUNDLE_LIST_OF_SELECTION, listTypeSelection);
+                        styleMeintent.putExtra(constant.BUNDLE_START_DATE, startDate);
+                        styleMeintent.putExtra(constant.BUNDLE_TRIP_NAME, edNameTrip.getText().toString());
                         startActivity(styleMeintent);
                         /*Intent styleMeintent = new Intent(this, LooklistingActivityForOneLook.class);
                         constant.BUNDLE_TRIP_NAME = edNameTrip.getText().toString();
@@ -506,6 +509,7 @@ public class PlanANewTripActivity extends Activity {
         }
         Intent helpMeintent = new Intent(this, TripHelpMeActivity.class);
         helpMeintent.putExtra(constant.BUNDLE_LOOKLISTING, list);
+        helpMeintent.putExtra(constant.BUNDLE_TRIP_NAME, edNameTrip.getText().toString());
         startActivity(helpMeintent);
 
     }

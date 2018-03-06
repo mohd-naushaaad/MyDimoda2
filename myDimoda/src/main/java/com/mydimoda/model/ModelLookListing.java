@@ -1,6 +1,9 @@
 package com.mydimoda.model;
 
-import com.parse.ParseObject;
+
+import com.google.gson.annotations.SerializedName;
+
+import org.parceler.Parcel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,32 +11,29 @@ import java.util.List;
 /**
  * Created by Parth on 2/27/2018.
  */
-
+@Parcel
 public class ModelLookListing {
-    private List<OrderClothModel> list = new ArrayList();
+    @SerializedName("listOfCloth")
+    public List<OrderClothModel> listOfCloth = new ArrayList();
     private String clothType = "";
-    private int colorCode;
 
-    public ModelLookListing(List<OrderClothModel> list, String clothType, int colorCode) {
-        this.list = list;
+    public ModelLookListing(List<OrderClothModel> listOfCloth, String clothType) {
+        this.listOfCloth = listOfCloth;
         this.clothType = clothType;
-        this.colorCode = colorCode;
     }
 
+    public ModelLookListing() {
+    }
 
     public String getClothType() {
         return clothType;
     }
 
-    public int getColorCode() {
-        return colorCode;
-    }
-
     public List<OrderClothModel> getList() {
-        return list;
+        return listOfCloth;
     }
 
-    public void setList(List<OrderClothModel> list) {
-        this.list = list;
+    public void setList(List<OrderClothModel> listOfCloth) {
+        this.listOfCloth = listOfCloth;
     }
 }

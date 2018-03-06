@@ -21,22 +21,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
 import com.mydimoda.AppUtils;
 import com.mydimoda.JSONPostParser;
 import com.mydimoda.R;
 import com.mydimoda.SharedPreferenceUtil;
 import com.mydimoda.adapter.LookAdapter;
-import com.mydimoda.adapter.LookListingAdpForOneLook;
+import com.mydimoda.adapter.LookListingAdp;
 import com.mydimoda.constant;
 import com.mydimoda.customView.Existence_Light_TextView;
 import com.mydimoda.model.ClothDetails;
 import com.mydimoda.model.DemoModelForLook;
 import com.mydimoda.model.ModelLookListing;
 import com.mydimoda.model.OrderClothModel;
-import com.mydimoda.model.TripLookForInsetinParse;
+import com.mydimoda.model.TripLookListingModel;
 import com.mydimoda.object.DMBlockedObject;
 import com.mydimoda.object.DMItemObject;
 import com.mydimoda.widget.ProgressWheel;
@@ -51,10 +49,12 @@ import com.parse.ParseUser;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -101,7 +101,10 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
     private String currentCat = "";
     private List<ModelLookListing> listResultingLook;
     private ModelLookListing modelLookListing;
-    private LookListingAdpForOneLook adapter;
+    private LookListingAdp adapter;
+    private Date startDate;
+    List<ModelLookListing> listLooks = new ArrayList<>();
+    private String tripName;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -109,54 +112,51 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
         setContentView(R.layout.activity_look_listing);
         ButterKnife.bind(this);
 //        showShowcaseView();
-        init();
-        getClothsFP();
+        getBundleData();
+
 //        setStaticListing(10);
     }
 
     private void setUpAdb() {
         listResultingLook = new ArrayList<>();
         rvLooklisting.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new LookListingAdpForOneLook(listResultingLook, this);
+        adapter = new LookListingAdp(listResultingLook, this);
         rvLooklisting.setAdapter(adapter);
     }
 
     private void storeinParseDb(List<ModelLookListing> listResultingLook) {
-        List<TripLookForInsetinParse> totalLookList = new ArrayList<>();
+        /*List<TripLookListingModel> totalLookList = new ArrayList<>();
         for (int i = 0; i < listResultingLook.size(); i++) {
-            TripLookForInsetinParse tripLookForInsetinParse = new TripLookForInsetinParse();
+            TripLookListingModel tripLookListingModel = new TripLookListingModel();
             List<ClothDetails> list_Cloth = new ArrayList<>();
             for (int j = 0; j < listResultingLook.get(i).getList().size(); j++) {
                 OrderClothModel orderClothModel = listResultingLook.get(i).getList().get(j);
                 ClothDetails clothDetails = new ClothDetails(orderClothModel.getImageUrl(), orderClothModel.getType());
                 list_Cloth.add(clothDetails);
             }
-            tripLookForInsetinParse.setClothType(listResultingLook.get(i).getClothType());
-            tripLookForInsetinParse.setListOfCloth(list_Cloth);
-            totalLookList.add(tripLookForInsetinParse);
-        }
+            tripLookListingModel.setClothType(listResultingLook.get(i).getClothType());
+            tripLookListingModel.setListOfCloth(list_Cloth);
+            totalLookList.add(tripLookListingModel);
+        }*/
 
         ParseObject testObject = new ParseObject("TripData");
-        testObject.put("Title", "Test by parth");
-//        testObject.put("Start_date", startDate);
-        testObject.put("User", ParseUser.getCurrentUser());
-
         Gson gson = new Gson();
-
         String listString = gson.toJson(
-                totalLookList,
-                new TypeToken<ArrayList<TripLookForInsetinParse>>() {}.getType());
-
+                listResultingLook,
+                new TypeToken<ArrayList<ModelLookListing>>() {
+                }.getType());
         try {
-            JSONArray jsonArray =  new JSONArray(listString);
+            JSONArray jsonArray = new JSONArray(listString);
+            testObject.put("Title", tripName);
+            testObject.put("Start_date", startDate);
+            testObject.put("User", ParseUser.getCurrentUser());
+            testObject.put("OsType", 1);
             testObject.put("Looks", jsonArray);
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-
         testObject.saveInBackground();
-
 
     }
 
@@ -290,7 +290,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
                         listSubItemLsit.add(item);
                         listOfAllresultItem.add(item);
                     }
-                    modelLookListing = new ModelLookListing(convertInParceObject(listSubItemLsit), currentCat, giveMeColorCode(currentCat));
+                    modelLookListing = new ModelLookListing(convertInParceObject(listSubItemLsit), currentCat);
                     listResultingLook.add(modelLookListing);
                     if (listTypeSelection.size() - 1 > apicounter) {
                         apicounter++;
@@ -298,7 +298,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
                     } else {
                         hideProgress();
                         adapter.notifyDataSetChanged();
-
+                        storeinParseDb(listResultingLook);
                     }
                 }
             } catch (JSONException e) {
@@ -456,13 +456,31 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
         return clothArr;
     }
 
-    private void init() {
+    private void getBundleData() {
+        tripName = getIntent().getStringExtra(constant.BUNDLE_TRIP_NAME);
+        tvForTrip.setText(String.format(getString(R.string.suggested_look_for_trip), tripName));
+        startDate = (Date) getIntent().getSerializableExtra(constant.BUNDLE_START_DATE);
         setUpAdb();
+        if (getIntent().getSerializableExtra(constant.BUNDLE_LIST_OF_SELECTION) != null) {
+            listTypeSelection = (ArrayList<String>) getIntent().getSerializableExtra(constant.BUNDLE_LIST_OF_SELECTION);
+            initBasedOnSelection();
+            getClothsFP();
+        } else {
+            listLooks = Parcels.unwrap(getIntent().getParcelableExtra(constant.BUNDLE_TRIP_LIST_LOOKS));
+            listResultingLook.addAll(listLooks);
+            adapter.notifyDataSetChanged();
+        }
+
+    }
+
+    private void initBasedOnSelection() {
+
         listOfClothFromParceDB = new ArrayList<>();
+
+
         showProgress();
         progressView.spin();
-        //get value from Bundle
-        listTypeSelection = (ArrayList<String>) getIntent().getSerializableExtra(constant.BUNDLE_LIST_OF_SELECTION);
+
         final int[] mTime = {0};
         timer = new CountDownTimer(Long.MAX_VALUE, 1000) {
             public void onTick(long millisUntilFinished) {
@@ -521,8 +539,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
         switch (view.getId()) {
 
             case R.id.back_layout:
-               /* onBackPressed();*/
-                storeinParseDb(listResultingLook);
+                onBackPressed();
                 break;
         }
     }

@@ -1,5 +1,8 @@
 package com.mydimoda.model;
 
+import org.parceler.Parcel;
+
+@Parcel
 public class OrderClothModel {
 	String imageUrl;
 	int position;

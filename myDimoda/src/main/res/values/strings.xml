@@ -56,5 +56,6 @@
     <string name="select_eardrobe_item">Select Wardrobe item</string>
     <string name="alert_added">We have successfully added this look as your favourite look for the trip.</string>
     <string name="suggested_look_for_trip">Suggested looks for %1s trip</string>
+    <string name="number_of_look">%d Looks</string>
 
 </resources>

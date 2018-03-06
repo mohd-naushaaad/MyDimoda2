@@ -106,7 +106,9 @@ public class constant {
     public static final String BUNDLE_ISFROMPLANNEWTRIP = "bundle_isfromplannewtrip";
     public static final String BUNDLE_CATEGORY = "bundle_category";
     public static final String BUNDLE_MODE = "bundle_mode";
-    public static  String BUNDLE_TRIP_NAME = "trip_name";
+    public static String BUNDLE_TRIP_NAME = "trip_name";
+    public static final String BUNDLE_START_DATE = "bundle_start_date";
+    public static final String BUNDLE_TRIP_LIST_LOOKS = "bundle_trip_looks";
 
     public constant() {
 

@@ -18,7 +18,7 @@ import android.widget.Toast;
 import com.mydimoda.AppUtils;
 import com.mydimoda.JSONPostParser;
 import com.mydimoda.R;
-import com.mydimoda.adapter.LookListingAdpForOneLook;
+import com.mydimoda.adapter.LookListingAdp;
 import com.mydimoda.constant;
 import com.mydimoda.customView.Existence_Light_TextView;
 import com.mydimoda.model.ModelLookListing;
@@ -80,7 +80,7 @@ public class LooklistingActivityForOneLook extends Activity {
     private List<ParseObject> listOfClothFromParceDB;
     private ModelLookListing modelLookListing;
     private List<ModelLookListing> listResultingLook;
-    private LookListingAdpForOneLook adapter;
+    private LookListingAdp adapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -106,7 +106,7 @@ public class LooklistingActivityForOneLook extends Activity {
     private void setUpAdb() {
         listResultingLook = new ArrayList<>();
         rvLooklisting.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new LookListingAdpForOneLook(listResultingLook, this);
+        adapter = new LookListingAdp(listResultingLook, this);
         rvLooklisting.setAdapter(adapter);
     }
 
@@ -217,7 +217,7 @@ public class LooklistingActivityForOneLook extends Activity {
                         DMItemObject item = new DMItemObject(obj);
                         listSubItemLsit.add(item);
                     }
-                    modelLookListing = new ModelLookListing(convertInParceObject(listSubItemLsit), category, Color.GREEN);
+                    modelLookListing = new ModelLookListing(convertInParceObject(listSubItemLsit), category);
                     listResultingLook.add(modelLookListing);
                     adapter.notifyDataSetChanged();
 

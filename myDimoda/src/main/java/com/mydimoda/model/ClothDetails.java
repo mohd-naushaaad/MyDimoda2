@@ -1,13 +1,18 @@
 package com.mydimoda.model;
 
+import org.parceler.Parcel;
+
 /**
  * Created by Parth on 3/5/2018.
  */
-
+@Parcel
 public class ClothDetails {
     //    String id;
     String imageUrl;
     String type;
+
+    public ClothDetails() {
+    }
 
     public ClothDetails(/*String id, */String imageUrl, String type) {
 //        this.id = id;

@@ -1,13 +1,13 @@
 package com.mydimoda.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.GridView;
 
 import com.mydimoda.R;
 import com.mydimoda.customView.Existence_Light_TextView;
@@ -23,12 +23,12 @@ import butterknife.OnClick;
  * Created by Parth on 2/28/2018.
  */
 
-public class LookListingAdpForOneLook extends RecyclerView.Adapter<LookListingAdpForOneLook.MyHolder> {
+public class LookListingAdp extends RecyclerView.Adapter<LookListingAdp.MyHolder> {
 
     private List<ModelLookListing> listOfCloth;
     private Context mContext;
 
-    public LookListingAdpForOneLook(List<ModelLookListing> listOfCloth, Context mContext) {
+    public LookListingAdp(List<ModelLookListing> listOfCloth, Context mContext) {
         this.listOfCloth = listOfCloth;
         this.mContext = mContext;
     }
@@ -43,6 +43,15 @@ public class LookListingAdpForOneLook extends RecyclerView.Adapter<LookListingAd
     public void onBindViewHolder(MyHolder holder, int position) {
         SubItemOfLookAdp subItemOfLookAdp = new SubItemOfLookAdp(listOfCloth.get(position).getList(), mContext);
         holder.tvClothtype.setText(listOfCloth.get(position).getClothType());
+        if (listOfCloth.get(position).getClothType().equalsIgnoreCase("casual")) {
+            holder.tvClothtype.setTextColor(Color.GREEN);
+        } else if (listOfCloth.get(position).getClothType().equalsIgnoreCase("formal")) {
+            holder.tvClothtype.setTextColor(Color.RED);
+
+        } else if (listOfCloth.get(position).getClothType().equalsIgnoreCase("after5")) {
+            holder.tvClothtype.setText("business");
+            holder.tvClothtype.setTextColor(Color.BLUE);
+        }
         holder.rvSubitem.setLayoutManager(new GridLayoutManager(mContext, 2));
         holder.rvSubitem.setAdapter(subItemOfLookAdp);
     }

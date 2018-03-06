@@ -25,6 +25,8 @@ android {
         applicationId "com.mydimoda"
         minSdkVersion 15
         targetSdkVersion 26
+        /*// Enabling multidex support.
+        multiDexEnabled true*/
     }
 
     buildTypes {
@@ -76,5 +78,8 @@ dependencies {
 //Added by PARTH
     compile 'com.facebook.stetho:stetho:1.5.0'
     compile 'com.google.code.gson:gson:2.8.2'
+
+    compile 'org.parceler:parceler-api:1.1.9'
+    annotationProcessor 'org.parceler:parceler:1.1.9'
 
 }

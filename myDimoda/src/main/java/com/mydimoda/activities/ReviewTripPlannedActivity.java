@@ -1,5 +1,7 @@
 package com.mydimoda.activities;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -9,13 +11,31 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.mydimoda.AppUtils;
 import com.mydimoda.R;
 import com.mydimoda.SharedPreferenceUtil;
 import com.mydimoda.adapter.ReviewTripAdp;
 import com.mydimoda.constant;
+import com.mydimoda.model.ModelLookListing;
+import com.mydimoda.model.OrderClothModel;
+import com.mydimoda.model.ReviewTripData;
+import com.mydimoda.model.TripLookListingModel;
 import com.mydimoda.widget.cropper.util.FontsUtil;
+import com.parse.FindCallback;
+import com.parse.GetCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
+import org.json.JSONArray;
+import org.parceler.Parcels;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +47,7 @@ import butterknife.OnClick;
  * Created by Parth on 2/9/2018.
  */
 
-public class ReviewTripPlannedActivity extends AppCompatActivity implements ReviewTripAdp.tripClickListner {
+public class ReviewTripPlannedActivity extends AppCompatActivity implements ReviewTripAdp.TripClickListner {
     @BindView(R.id.title_view)
     TextView titleView;
     @BindView(R.id.back_txt)
@@ -43,17 +63,36 @@ public class ReviewTripPlannedActivity extends AppCompatActivity implements Revi
     @BindView(R.id.rl_coach_review_trip)
     RelativeLayout rlCoachReviewTrip;
     private ReviewTripAdp reviewTripAdp;
-    private List list;
+    private List<ReviewTripData> tripDataList;
+    private ProgressDialog dialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.review_trip_listing);
         ButterKnife.bind(this);
-//        showShowcaseView();
+        init();
+    }
+
+    private void init() {
+        dialog = new ProgressDialog(this);
+        //        showShowcaseView();
         applyCustomFont();
         setUpAdp();
-        makeStaticList(15);
+        if (AppUtils.isConnectingToInternet(this)) {
+            getDataFromParse();
+        } else {
+            Toast.makeText(this, "Please check your internet connection", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void showProgress() {
+        dialog.setMessage("Please wait...");
+        dialog.show();
+    }
+
+    private void hideProgress() {
+        dialog.hide();
     }
 
     private void showShowcaseView() {
@@ -70,18 +109,47 @@ public class ReviewTripPlannedActivity extends AppCompatActivity implements Revi
 
     }
 
-    private void setUpAdp() {
-        list = new ArrayList();
-        reviewTripAdp = new ReviewTripAdp(this, list, this);
-        rvTripPlanned.setLayoutManager(new LinearLayoutManager(this));
-        rvTripPlanned.setAdapter(reviewTripAdp);
+    private void getDataFromParse() {
+        showProgress();
+        ParseUser user = ParseUser.getCurrentUser();
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("TripData");
+        query.whereEqualTo("User", user);
+
+        query.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> objects, ParseException e) {
+                hideProgress();
+                if (e == null) {
+                    for (int i = 0; i < objects.size(); i++) {
+                        ParseObject parseObject = objects.get(i);
+                        ReviewTripData tripData = new ReviewTripData(getListFronJsonArray(parseObject.getJSONArray("Looks"))
+                                , parseObject.getString("Title")
+                                , parseObject.getDate("Start_date")
+                                , parseObject.getObjectId());
+                        tripDataList.add(tripData);
+                    }
+                    reviewTripAdp.notifyDataSetChanged();
+
+                } else {
+
+                }
+            }
+        });
     }
 
-    private void makeStaticList(int i) {
-        for (int j = 0; j < i; j++) {
-            list.add(j);
-        }
-        reviewTripAdp.notifyDataSetChanged();
+    private List<ModelLookListing> getListFronJsonArray(JSONArray jsonArray) {
+        Gson gson = new Gson();
+        Type listType = new TypeToken<List<ModelLookListing>>() {
+        }.getType();
+        List<ModelLookListing> myModelList = gson.fromJson(String.valueOf(jsonArray), listType);
+        return myModelList;
+    }
+
+    private void setUpAdp() {
+        tripDataList = new ArrayList<>();
+        reviewTripAdp = new ReviewTripAdp(this, tripDataList, this);
+        rvTripPlanned.setLayoutManager(new LinearLayoutManager(this));
+        rvTripPlanned.setAdapter(reviewTripAdp);
     }
 
     private void applyCustomFont() {
@@ -100,6 +168,43 @@ public class ReviewTripPlannedActivity extends AppCompatActivity implements Revi
 
     @Override
     public void onClickofTrip(int pos) {
+        Intent intent = new Intent(this, LookListingActiivty.class);
+        Bundle bundle = new Bundle();
+        intent.putExtra(constant.BUNDLE_START_DATE, tripDataList.get(pos).getStartDate());
+        intent.putExtra(constant.BUNDLE_TRIP_NAME, tripDataList.get(pos).getTripTitle());
+        bundle.putParcelable(constant.BUNDLE_TRIP_LIST_LOOKS, Parcels.wrap(tripDataList.get(pos).getTotalLookList()));
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
 
+
+    @Override
+    public void onClickOfDeleteIcon(int pos) {
+        deleteTrip(pos);
+    }
+
+    private void deleteTrip(final int pos) {
+        showProgress();
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("TripData");
+        query.whereEqualTo("objectId", tripDataList.get(pos).getRowId());
+
+        query.getFirstInBackground(new GetCallback<ParseObject>() {
+            @Override
+            public void done(ParseObject object, ParseException e) {
+                hideProgress();
+                if (e == null) {
+                    try {
+                        object.delete();
+                        object.saveInBackground();
+                        tripDataList.remove(pos);
+                        reviewTripAdp.notifyItemRemoved(pos);
+                    } catch (ParseException e1) {
+                        e1.printStackTrace();
+                    }
+                } else {
+
+                }
+            }
+        });
     }
 }

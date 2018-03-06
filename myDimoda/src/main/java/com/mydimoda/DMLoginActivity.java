@@ -185,7 +185,7 @@ public class DMLoginActivity extends Activity {
     // -----------------------------------------
     public void loginWithFacebook() {
         //constant.showProgress(this, "Logging in..");
-        List<String> permissions = Arrays.asList("email","basic_info");
+        List<String> permissions = Arrays.asList("email", "basic_info");
         ParseFacebookUtils.logInWithReadPermissionsInBackground(this, permissions, new LogInCallback() {
             @Override
             public void done(ParseUser user, ParseException err) {
@@ -208,7 +208,8 @@ public class DMLoginActivity extends Activity {
             }
         });
     }
-// updated according to new sdk
+
+    // updated according to new sdk
     public void saveUserData(final Activity activity) {
        /* Session session = ParseFacebookUtils.getSession();
         if (session == null || session.isOpened() == false)
@@ -220,8 +221,9 @@ public class DMLoginActivity extends Activity {
                     @Override
                     public void onCompleted(JSONObject object, GraphResponse response) {
 
-                        Log.e("dmlogin", object.toString() + " response: "+response.getRawResponse());
-                        constant.gUserName = object.optString("name");;
+                        Log.e("dmlogin", object.toString() + " response: " + response.getRawResponse());
+                        constant.gUserName = object.optString("name");
+                        ;
 
                         if (object.has("email")) {
                             constant.gEmail = object.optString("email");
@@ -232,7 +234,7 @@ public class DMLoginActivity extends Activity {
 
                         if (!constant.gUserName.equals(""))
                             parseUser.put("username", constant.gUserName);
-                        if (!constant.gEmail.equals("")){
+                        if (!constant.gEmail.equals("")) {
                             parseUser.put("email", constant.gEmail);
                         }
                         parseUser.put("loggedInWay", "facebook");
@@ -246,7 +248,7 @@ public class DMLoginActivity extends Activity {
                             parseUser.setPassword("");
                         }
 
-                        parseUser.put("newUser",true);
+                        parseUser.put("newUser", true);
                         parseUser.saveInBackground(new SaveCallback() {
                             @Override
                             public void done(ParseException arg0) {
@@ -265,8 +267,8 @@ public class DMLoginActivity extends Activity {
                                                                 .isLinked(parseUser)) {
                                                             Log.d("Wooho",
                                                                     "user logged in with Facebook");
-                                                         //   ParseFacebookUtils.save
-                                                          //          .saveLatestSessionData(parseUser);
+                                                            //   ParseFacebookUtils.save
+                                                            //          .saveLatestSessionData(parseUser);
                                                         }
                                                     }
 
@@ -340,7 +342,7 @@ public class DMLoginActivity extends Activity {
             @Override
             public void done(ParseException arg0) {
                 // TODO Auto-generated method stub
-                user.put("newUser",true);
+                user.put("newUser", true);
                 user.saveInBackground(new SaveCallback() {
                     @Override
                     public void done(ParseException e) {
