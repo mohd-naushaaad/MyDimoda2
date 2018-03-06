@@ -498,7 +498,7 @@ public class PlanANewTripActivity extends Activity {
     private void passListing() {
         ArrayList<Integer> list = new ArrayList<>();
 
-        if (val_causal > 0) {
+        /*if (val_causal > 0) {
             list.add(constant.casual);
         }
         if (val_formal > 0) {
@@ -506,7 +506,11 @@ public class PlanANewTripActivity extends Activity {
         }
         if (val_business > 0) {
             list.add(constant.business);
-        }
+        }*/
+        list.add(constant.casual);
+        constant.STARTDATE = startDate;
+        constant.TRIPNAME = edNameTrip.getText().toString();
+
         Intent helpMeintent = new Intent(this, TripHelpMeActivity.class);
         helpMeintent.putExtra(constant.BUNDLE_LOOKLISTING, list);
         helpMeintent.putExtra(constant.BUNDLE_TRIP_NAME, edNameTrip.getText().toString());

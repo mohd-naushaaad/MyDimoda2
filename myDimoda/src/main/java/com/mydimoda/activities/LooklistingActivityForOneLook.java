@@ -15,6 +15,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.mydimoda.AppUtils;
 import com.mydimoda.JSONPostParser;
 import com.mydimoda.R;
@@ -220,7 +222,7 @@ public class LooklistingActivityForOneLook extends Activity {
                     modelLookListing = new ModelLookListing(convertInParceObject(listSubItemLsit), category);
                     listResultingLook.add(modelLookListing);
                     adapter.notifyDataSetChanged();
-
+                    storeinParseDb(listResultingLook);
                 }
             } catch (JSONException e) {
                 // TODO Auto-generated catch block
@@ -231,6 +233,28 @@ public class LooklistingActivityForOneLook extends Activity {
             }
         }
         //do smthing
+    }
+
+    private void storeinParseDb(List<ModelLookListing> listResultingLook) {
+
+        ParseObject testObject = new ParseObject("TripData");
+        Gson gson = new Gson();
+        String listString = gson.toJson(
+                listResultingLook,
+                new TypeToken<ArrayList<ModelLookListing>>() {
+                }.getType());
+        try {
+            JSONArray jsonArray = new JSONArray(listString);
+            testObject.put("Title", constant.TRIPNAME);
+            testObject.put("Start_date", constant.STARTDATE);
+            testObject.put("User", ParseUser.getCurrentUser());
+            testObject.put("OsType", 1);
+            testObject.put("Looks", jsonArray);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        testObject.saveInBackground();
     }
 
     private List<OrderClothModel> convertInParceObject(List<DMItemObject> listSubItemLsit) {

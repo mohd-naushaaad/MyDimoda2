@@ -110,6 +110,10 @@ public class constant {
     public static final String BUNDLE_START_DATE = "bundle_start_date";
     public static final String BUNDLE_TRIP_LIST_LOOKS = "bundle_trip_looks";
 
+    public static String TRIPNAME = "";
+    public static Date STARTDATE = new Date();
+
+
     public constant() {
 
     }
