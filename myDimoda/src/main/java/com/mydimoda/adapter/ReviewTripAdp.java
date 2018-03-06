@@ -27,7 +27,6 @@ import butterknife.OnClick;
 
 public class ReviewTripAdp extends RecyclerView.Adapter<ReviewTripAdp.ReviewTripHolder> {
 
-
     public interface TripClickListner {
         void onClickofTrip(int pos);
 
@@ -72,6 +71,8 @@ public class ReviewTripAdp extends RecyclerView.Adapter<ReviewTripAdp.ReviewTrip
         Existence_Light_TextView tvTripTtl;
         @BindView(R.id.tv_trip_looks)
         Existence_Light_TextView tvTripLooks;
+        @BindView(R.id.ll_trip)
+        LinearLayout llTrip;
         @BindView(R.id.swiproot)
         SwipeLayout swiproot;
 
@@ -80,13 +81,13 @@ public class ReviewTripAdp extends RecyclerView.Adapter<ReviewTripAdp.ReviewTrip
             ButterKnife.bind(this, itemView);
         }
 
-        @OnClick({R.id.ll_delete, R.id.swiproot})
+        @OnClick({R.id.ll_delete, R.id.ll_trip})
         public void onViewClicked(View view) {
             switch (view.getId()) {
                 case R.id.ll_delete:
                     tripClickListner.onClickOfDeleteIcon(getAdapterPosition());
                     break;
-                case R.id.swiproot:
+                case R.id.ll_trip:
                     tripClickListner.onClickofTrip(getAdapterPosition());
                     break;
             }
