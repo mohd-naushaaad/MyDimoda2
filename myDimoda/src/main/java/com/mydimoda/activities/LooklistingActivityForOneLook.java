@@ -219,10 +219,32 @@ public class LooklistingActivityForOneLook extends Activity {
                         DMItemObject item = new DMItemObject(obj);
                         listSubItemLsit.add(item);
                     }
-                    modelLookListing = new ModelLookListing(convertInParceObject(listSubItemLsit), category);
-                    listResultingLook.add(modelLookListing);
-                    adapter.notifyDataSetChanged();
-                    storeinParseDb(listResultingLook);
+                    for (int i = 0; i < constant.gItemListTemp.size(); i++) {
+                        for (int j = 0; j < listSubItemLsit.size(); j++) {
+                            if (listSubItemLsit.get(j).index.equalsIgnoreCase(constant.gItemListTemp.get(i).index)) {
+                                modelLookListing = new ModelLookListing(convertInParceObject(listSubItemLsit), category);
+                                listResultingLook.add(modelLookListing);
+                                adapter.notifyDataSetChanged();
+                                storeinParseDb(listResultingLook);
+                                return;
+                            }
+                        }
+                            String type = constant.gItemListTemp.get(0).type;
+                            for (int j = 0; j < listSubItemLsit.size(); j++) {
+                                if (listSubItemLsit.get(j).type.equalsIgnoreCase(type)) {
+
+                                    listSubItemLsit.set(j, constant.gItemListTemp.get(0));
+                                    modelLookListing = new ModelLookListing(convertInParceObject(listSubItemLsit), category);
+                                    listResultingLook.add(modelLookListing);
+                                    adapter.notifyDataSetChanged();
+                                    storeinParseDb(listResultingLook);
+                                    break;
+                                }
+                            }
+
+
+                    }
+
                 }
             } catch (JSONException e) {
                 // TODO Auto-generated catch block
