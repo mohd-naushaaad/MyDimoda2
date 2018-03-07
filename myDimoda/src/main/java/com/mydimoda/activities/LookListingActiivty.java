@@ -21,6 +21,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
 import com.mydimoda.AppUtils;
 import com.mydimoda.JSONPostParser;
@@ -125,52 +127,34 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
     }
 
     private void storeinParseDb(List<ModelLookListing> listResultingLook) {
-        /*List<TripLookListingModel> totalLookList = new ArrayList<>();
-        for (int i = 0; i < listResultingLook.size(); i++) {
-            TripLookListingModel tripLookListingModel = new TripLookListingModel();
-            List<ClothDetails> list_Cloth = new ArrayList<>();
-            for (int j = 0; j < listResultingLook.get(i).getList().size(); j++) {
-                OrderClothModel orderClothModel = listResultingLook.get(i).getList().get(j);
-                ClothDetails clothDetails = new ClothDetails(orderClothModel.getImageUrl(), orderClothModel.getType());
-                list_Cloth.add(clothDetails);
-            }
-            tripLookListingModel.setClothType(listResultingLook.get(i).getClothType());
-            tripLookListingModel.setListOfCloth(list_Cloth);
-            totalLookList.add(tripLookListingModel);
-        }*/
 
         ParseObject testObject = new ParseObject("TripData");
         Gson gson = new Gson();
+
         String listString = gson.toJson(
                 listResultingLook,
                 new TypeToken<ArrayList<ModelLookListing>>() {
                 }.getType());
+
+        JSONArray jsonArray = null;
         try {
-            JSONArray jsonArray = new JSONArray(listString);
+            jsonArray = new JSONArray(listString);
+            System.out.println("jsonArray" + jsonArray);
+
             testObject.put("Title", tripName);
             testObject.put("Start_date", startDate);
             testObject.put("User", ParseUser.getCurrentUser());
             testObject.put("OsType", 1);
             testObject.put("Looks", jsonArray);
+
+            testObject.saveInBackground();
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        testObject.saveInBackground();
 
     }
 
-
-    private int giveMeColorCode(String currentCat) {
-        if (currentCat.equalsIgnoreCase("casual")) {
-            return Color.GREEN;
-        } else if (currentCat.equalsIgnoreCase("formal")) {
-            return Color.RED;
-        } else if (currentCat.equalsIgnoreCase("after5")) {
-            return Color.BLUE;
-        }
-        return 0;
-    }
 
     public void hideProgress() {
         llProgress.setVisibility(View.GONE);
