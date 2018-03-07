@@ -139,6 +139,15 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
         JSONArray jsonArray = null;
         try {
             jsonArray = new JSONArray(listString);
+
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jsonObj = jsonArray.getJSONObject(i);
+                JSONArray ja = jsonObj.getJSONArray("listOfCloth");
+                for (int j = 0; j < ja.length(); j++) {
+                    JSONObject jsonSubObj = ja.getJSONObject(j);
+                    jsonSubObj.remove("position");
+                }
+            }
             System.out.println("jsonArray" + jsonArray);
 
             testObject.put("Title", tripName);

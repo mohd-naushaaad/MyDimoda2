@@ -1,6 +1,5 @@
 package com.mydimoda.model;
 
-import com.google.gson.annotations.Expose;
 
 import org.parceler.Parcel;
 
