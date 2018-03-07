@@ -1,6 +1,8 @@
 package com.mydimoda.activities;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -65,6 +67,9 @@ public class ReviewTripPlannedActivity extends AppCompatActivity implements Revi
     private ReviewTripAdp reviewTripAdp;
     private List<ReviewTripData> tripDataList;
     private ProgressDialog dialog;
+    private AlertDialog.Builder builder;
+    private DialogInterface.OnClickListener clickListener;
+    private int pos;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -77,6 +82,24 @@ public class ReviewTripPlannedActivity extends AppCompatActivity implements Revi
     private void init() {
         dialog = new ProgressDialog(this);
         //        showShowcaseView();
+        clickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                switch (i) {
+                    case DialogInterface.BUTTON_POSITIVE:
+                        deleteTrip(pos);
+                        break;
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        break;
+                }
+            }
+        };
+        builder = new AlertDialog.Builder(this);
+        builder.setMessage("Are you sure want to delete this trip")
+                .setTitle(getString(R.string.app_name))
+                .setPositiveButton("Yes", clickListener)
+                .setNegativeButton("No", clickListener);
+
         applyCustomFont();
         setUpAdp();
         if (AppUtils.isConnectingToInternet(this)) {
@@ -129,7 +152,9 @@ public class ReviewTripPlannedActivity extends AppCompatActivity implements Revi
                         tripDataList.add(tripData);
                     }
                     reviewTripAdp.notifyDataSetChanged();
-
+                    if (tripDataList.size() == 0) {
+                        Toast.makeText(ReviewTripPlannedActivity.this, "No trips planned", Toast.LENGTH_SHORT).show();
+                    }
                 } else {
 
                 }
@@ -180,8 +205,11 @@ public class ReviewTripPlannedActivity extends AppCompatActivity implements Revi
 
     @Override
     public void onClickOfDeleteIcon(int pos) {
-        deleteTrip(pos);
+        this.pos = pos;
+        builder.show();
+
     }
+
 
     private void deleteTrip(final int pos) {
         showProgress();
@@ -198,6 +226,9 @@ public class ReviewTripPlannedActivity extends AppCompatActivity implements Revi
                         object.saveInBackground();
                         tripDataList.remove(pos);
                         reviewTripAdp.notifyItemRemoved(pos);
+                        if (tripDataList.size() == 0) {
+                            Toast.makeText(ReviewTripPlannedActivity.this, "No trips planned", Toast.LENGTH_SHORT).show();
+                        }
                     } catch (ParseException e1) {
                         e1.printStackTrace();
                     }

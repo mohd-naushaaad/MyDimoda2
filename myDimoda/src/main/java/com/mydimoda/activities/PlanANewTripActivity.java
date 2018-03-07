@@ -44,6 +44,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.TimeZone;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -194,7 +195,13 @@ public class PlanANewTripActivity extends Activity {
 
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 calendar = Calendar.getInstance();
+//                calendar.setTimeZone(TimeZone.getTimeZone("UTC"));
+
                 calendar.set(year, monthOfYear, dayOfMonth);
+                /*calendar.set(Calendar.HOUR, 0);
+                calendar.set(Calendar.MINUTE, 0);
+                calendar.set(Calendar.SECOND, 0);*/
+
                 startDate = calendar.getTime();
 
                 tvStartDate.setVisibility(View.GONE);
@@ -209,7 +216,13 @@ public class PlanANewTripActivity extends Activity {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
                 calendar = Calendar.getInstance();
+//                calendar.setTimeZone(TimeZone.getTimeZone("UTC"));
+
                 calendar.set(year, monthOfYear, dayOfMonth);
+               /* calendar.set(Calendar.HOUR, 0);
+                calendar.set(Calendar.MINUTE, 0);
+                calendar.set(Calendar.SECOND, 0);*/
+
                 endDate = calendar.getTime();
 
                 tvEndDate.setVisibility(View.GONE);

@@ -100,6 +100,8 @@ public class constant {
     public static final int casual = 0, formal = 1, business = 2;
     //By Parth Ukani
     public static final String base_url = "http://54.69.61.15/";
+    public static List<DMItemObject> helpSelection = new ArrayList<DMItemObject>();
+
     //Bundle Constant
     public static final String BUNDLE_LOOKLISTING = "bundle_looklisting";
     public static final String BUNDLE_LIST_OF_SELECTION = "bundle_list_of_selection";

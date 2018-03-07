@@ -239,22 +239,38 @@ public class LooklistingActivityForOneLook extends Activity {
 
         ParseObject testObject = new ParseObject("TripData");
         Gson gson = new Gson();
+
         String listString = gson.toJson(
                 listResultingLook,
                 new TypeToken<ArrayList<ModelLookListing>>() {
                 }.getType());
+
+        JSONArray jsonArray = null;
         try {
-            JSONArray jsonArray = new JSONArray(listString);
+            jsonArray = new JSONArray(listString);
+
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jsonObj = jsonArray.getJSONObject(i);
+                JSONArray ja = jsonObj.getJSONArray("listOfCloth");
+                for (int j = 0; j < ja.length(); j++) {
+                    JSONObject jsonSubObj = ja.getJSONObject(j);
+                    jsonSubObj.remove("position");
+                }
+            }
+            System.out.println("jsonArray" + jsonArray);
+
             testObject.put("Title", constant.TRIPNAME);
             testObject.put("Start_date", constant.STARTDATE);
             testObject.put("User", ParseUser.getCurrentUser());
             testObject.put("OsType", 1);
             testObject.put("Looks", jsonArray);
+
+            testObject.saveInBackground();
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        testObject.saveInBackground();
+
     }
 
     private List<OrderClothModel> convertInParceObject(List<DMItemObject> listSubItemLsit) {

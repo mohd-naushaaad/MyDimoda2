@@ -100,6 +100,8 @@ public class DMHelpActivity extends Activity {
                 if (!isFromPlanNewTrip) {
                     checkPermissions();
                 } else {
+                    /*constant.helpSelection.clear();
+                    constant.helpSelection = makeItemList(mClothList.get(position));*/
                     Intent styleMeintent = new Intent(DMHelpActivity.this, LooklistingActivityForOneLook.class);
                     styleMeintent.putExtra(constant.BUNDLE_CATEGORY, "casual");
                     styleMeintent.putExtra(constant.BUNDLE_MODE, "help me");
