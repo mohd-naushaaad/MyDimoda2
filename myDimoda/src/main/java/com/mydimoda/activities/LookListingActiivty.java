@@ -345,6 +345,9 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
 
             model.setImageUrl(url);
             model.setType(AppUtils.asUpperCaseFirstChar(ParceobjectList.get(i).getString("Type")));
+            model.setId(ParceobjectList.get(i).getObjectId());
+            model.setColor(ParceobjectList.get(i).getString("Color"));
+            model.setPattern(ParceobjectList.get(i).getString("Pattern"));
             if (ParceobjectList.get(i).getString("Type")
                     .equalsIgnoreCase("shirt")) {
                 model.setPosition(constant.SHIRT);

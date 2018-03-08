@@ -9,6 +9,33 @@ public class OrderClothModel {
     String imageUrl;
     int position;
     String type;
+    String id;
+    String color;
+    String pattern;
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getPattern() {
+        return pattern;
+    }
+
+    public void setPattern(String pattern) {
+        this.pattern = pattern;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getImageUrl() {
         return imageUrl;

@@ -23,7 +23,7 @@
             <ImageButton
 
                 android:layout_width="wrap_content"
-                android:layout_height="25dp"
+                android:layout_height="20dp"
                 android:background="@drawable/save_icon" />
 
             <com.mydimoda.customView.Existence_Light_TextView
