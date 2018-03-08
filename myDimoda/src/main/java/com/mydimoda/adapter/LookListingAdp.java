@@ -25,12 +25,20 @@ import butterknife.OnClick;
 
 public class LookListingAdp extends RecyclerView.Adapter<LookListingAdp.MyHolder> {
 
+    public interface ClickListnerOfLook {
+        void onClickOfLike(int pos);
+
+        void onClickofDisLike(int pos);
+    }
+
     private List<ModelLookListing> listOfCloth;
     private Context mContext;
+    private ClickListnerOfLook listner;
 
-    public LookListingAdp(List<ModelLookListing> listOfCloth, Context mContext) {
+    public LookListingAdp(List<ModelLookListing> listOfCloth, Context mContext, ClickListnerOfLook listner) {
         this.listOfCloth = listOfCloth;
         this.mContext = mContext;
+        this.listner = listner;
     }
 
     @Override
@@ -67,25 +75,7 @@ public class LookListingAdp extends RecyclerView.Adapter<LookListingAdp.MyHolder
         return listOfCloth.size();
     }
 
-    @OnClick({R.id.like_btn, R.id.dissmiss_btn})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.like_btn:
-                break;
-            case R.id.dissmiss_btn:
-                break;
-        }
-    }
-
     public class MyHolder extends RecyclerView.ViewHolder {
-        /* @BindView(R.id.fashion_gridview)
-         GridView fashionGridview;
-         @BindView(R.id.like_btn)
-         Button likeBtn;
-         @BindView(R.id.dissmiss_btn)
-         Button dissmissBtn;
-         @BindView(R.id.tv_clothtype)
-         Existence_Light_TextView tvClothtype;*/
         @BindView(R.id.tv_clothtype)
         Existence_Light_TextView tvClothtype;
         @BindView(R.id.rv_subitem)
@@ -100,10 +90,17 @@ public class LookListingAdp extends RecyclerView.Adapter<LookListingAdp.MyHolder
             ButterKnife.bind(this, itemView);
         }
 
-       /* public void setData(int position) {
-            fashionGridview.setAdapter(new DMFashionGridAdapter(mContext, listOfCloth.get(position).getList()));
-            tvClothtype.setText(listOfCloth.get(position).getClothType());
-//            tvClothtype.setTextColor(ContextCompat.getColor(mContext, listOfCloth.get(position).getColorCode()));
-        }*/
+        @OnClick({R.id.like_btn, R.id.dissmiss_btn})
+        public void onViewClicked(View view) {
+            switch (view.getId()) {
+                case R.id.like_btn:
+                    listner.onClickOfLike(getAdapterPosition());
+                    break;
+                case R.id.dissmiss_btn:
+                    listner.onClickofDisLike(getAdapterPosition());
+                    break;
+            }
+        }
+
     }
 }

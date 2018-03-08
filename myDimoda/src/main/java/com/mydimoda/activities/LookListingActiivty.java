@@ -27,7 +27,6 @@ import com.mydimoda.AppUtils;
 import com.mydimoda.JSONPostParser;
 import com.mydimoda.R;
 import com.mydimoda.SharedPreferenceUtil;
-import com.mydimoda.adapter.LookAdapter;
 import com.mydimoda.adapter.LookListingAdp;
 import com.mydimoda.constant;
 import com.mydimoda.customView.Existence_Light_TextView;
@@ -55,6 +54,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
@@ -65,7 +65,7 @@ import butterknife.OnClick;
  * Created by Parth on 2/13/2018.
  */
 
-public class LookListingActiivty extends AppCompatActivity implements LookAdapter.ClickListnerOfLook {
+public class LookListingActiivty extends AppCompatActivity implements LookListingAdp.ClickListnerOfLook {
     /*@BindView(R.id.iv_share)
     ImageView ivShare;*/
     @BindView(R.id.back_txt)
@@ -92,8 +92,6 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
     LinearLayout llProgress;
     @BindView(R.id.ll_save)
     LinearLayout llSave;
-    private List<DemoModelForLook> lookList;
-    private LookAdapter lookAdapter;
     private ArrayList<String> listTypeSelection;
     private CountDownTimer timer;
     private JSONObject mSendData;
@@ -108,6 +106,8 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
     List<ModelLookListing> listLooks = new ArrayList<>();
     private String tripName;
     private ProgressDialog dialog;
+    private String likeDislikeUrl = "http://54.69.61.15:/resp_attire";
+    boolean mIsDislike = false;
 
 
     @Override
@@ -125,8 +125,101 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
     private void setUpAdb() {
         listResultingLook = new ArrayList<>();
         rvLooklisting.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new LookListingAdp(listResultingLook, this);
+        adapter = new LookListingAdp(listResultingLook, this,this);
         rvLooklisting.setAdapter(adapter);
+    }
+
+    public void likeCloth(List<OrderClothModel> listOfCloths) {
+        makeSendData("like", listOfCloths);
+        LikeAndDislikeAsynk likeAndDislikeAsynk = new LikeAndDislikeAsynk();
+        likeAndDislikeAsynk.execute();
+//        constant.gItemListTemp = getItemList();
+    }
+
+    public void dislikeCloth(List<OrderClothModel> listOfCloths) {
+        mIsDislike = true;
+        constant.gBlockedList.add(constant.gFashion);
+        makeSendData("dislike", listOfCloths);
+        LikeAndDislikeAsynk likeAndDislikeAsynk = new LikeAndDislikeAsynk();
+        likeAndDislikeAsynk.execute();
+    }
+
+    // / ----------------------------------------------- make send data with
+    // json format ------------
+    public void makeSendData(String feedback, List<OrderClothModel> listOfCloths) {
+        mSendData = new JSONObject();
+        try {
+            mSendData.put("version", "2");
+            mSendData.put("category", constant.gCategory);
+            mSendData.put("feedback", feedback);
+            mSendData.put("target", makeTargetJSONArray(listOfCloths));
+            mSendData.put("name", "genparams");
+            mSendData.put("value", "1");
+
+            Log.e("data-----upd24liked---", mSendData.toString());
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // / ---------------------------------------------- make target json array
+    // -----------
+    public JSONArray makeTargetJSONArray(List<OrderClothModel> mClothList) {
+        JSONArray arr = new JSONArray();
+
+        for (int i = 0; i < mClothList.size(); i++) {
+            JSONObject obj = new JSONObject();
+            try {
+                obj.put("color", mClothList.get(i).getColor());
+                obj.put("pattern", mClothList.get(i).getPattern());
+                obj.put("type", mClothList.get(i).getType());
+                obj.put("id", mClothList.get(i).getId());
+
+                arr.put(obj);
+            } catch (JSONException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+        return arr;
+    }
+
+    public class LikeAndDislikeAsynk extends
+            AsyncTask<String, Integer, ArrayList<HashMap<String, String>>> {
+
+        // / server communicate using asyncTask
+
+        ArrayList<HashMap<String, String>> UploadsList = new ArrayList<HashMap<String, String>>();
+        JSONObject mResponseData;
+
+        @Override
+        protected void onPreExecute() {
+            constant.showProgress(LookListingActiivty.this, "Loading...");
+        }
+
+        @Override
+        protected ArrayList<HashMap<String, String>> doInBackground(
+                String... params) {
+
+            // Creating JSON Parser instance
+            JSONPostParser jParser = new JSONPostParser();
+            // getting JSON string from URL
+            mResponseData = jParser.getJSONFromUrl(likeDislikeUrl,
+                    mSendData.toString());
+
+            return UploadsList;
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<HashMap<String, String>> result) {
+
+            // / when get response, call parser response function of the class
+            constant.hideProgress();
+            parseResponse(mResponseData);
+
+            super.onPostExecute(result);
+        }
     }
 
     private void storeinParseDb(List<ModelLookListing> listResultingLook) {
@@ -539,19 +632,6 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
 
     }
 
-    private void setStaticListing(int i) {
-        DemoModelForLook demoModelForLook;
-        List sublist = new ArrayList();
-        for (int j = 0; j < i; j++) {
-            sublist.clear();
-            for (int k = 0; k < 2; k++) {
-                sublist.add(k);
-            }
-            demoModelForLook = new DemoModelForLook(sublist);
-            lookList.add(demoModelForLook);
-        }
-        lookAdapter.notifyDataSetChanged();
-    }
 
     @OnClick({R.id.back_layout, R.id.ll_save})
     public void onViewClicked(View view) {
@@ -568,11 +648,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
 
     @Override
     public void onClickOfLike(int pos) {
-        /*lookList.get(pos).setLiked(!lookList.get(pos).isLiked());
-        lookAdapter.notifyItemChanged(pos);
-        if (lookList.get(pos).isLiked()) {
-            showSimilarDialog();
-        }*/
+        likeCloth(listResultingLook.get(pos).getList());
     }
 
     public void showSimilarDialog() {
@@ -602,8 +678,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
     }
 
     @Override
-    public void onClickofClose(int pos) {
-        /*lookList.get(pos).setColsed(!lookList.get(pos).isColsed());
-        lookAdapter.notifyItemChanged(pos);*/
+    public void onClickofDisLike(int pos) {
+        dislikeCloth(listResultingLook.get(pos).getList());
     }
 }

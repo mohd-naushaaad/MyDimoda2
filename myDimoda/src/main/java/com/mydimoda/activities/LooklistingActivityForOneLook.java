@@ -56,7 +56,7 @@ import butterknife.OnClick;
  * Created by Parth on 2/28/2018.
  */
 
-public class LooklistingActivityForOneLook extends Activity {
+public class LooklistingActivityForOneLook extends Activity implements LookListingAdp.ClickListnerOfLook {
     @BindView(R.id.title_view)
     Existence_Light_TextView titleView;
     @BindView(R.id.back_txt)
@@ -140,7 +140,7 @@ public class LooklistingActivityForOneLook extends Activity {
     private void setUpAdb() {
         listResultingLook = new ArrayList<>();
         rvLooklisting.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new LookListingAdp(listResultingLook, this);
+        adapter = new LookListingAdp(listResultingLook, this, this);
         rvLooklisting.setAdapter(adapter);
     }
 
@@ -207,6 +207,16 @@ public class LooklistingActivityForOneLook extends Activity {
     public void sendClothsTS() {
         MyAsyncTask task1 = new MyAsyncTask();
         task1.execute();
+    }
+
+    @Override
+    public void onClickOfLike(int pos) {
+
+    }
+
+    @Override
+    public void onClickofDisLike(int pos) {
+
     }
 
     public class MyAsyncTask extends
