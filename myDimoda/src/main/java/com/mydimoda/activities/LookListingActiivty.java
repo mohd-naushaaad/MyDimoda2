@@ -1,8 +1,9 @@
 package com.mydimoda.activities;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -21,8 +22,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
 import com.mydimoda.AppUtils;
 import com.mydimoda.JSONPostParser;
@@ -32,11 +31,9 @@ import com.mydimoda.adapter.LookAdapter;
 import com.mydimoda.adapter.LookListingAdp;
 import com.mydimoda.constant;
 import com.mydimoda.customView.Existence_Light_TextView;
-import com.mydimoda.model.ClothDetails;
 import com.mydimoda.model.DemoModelForLook;
 import com.mydimoda.model.ModelLookListing;
 import com.mydimoda.model.OrderClothModel;
-import com.mydimoda.model.TripLookListingModel;
 import com.mydimoda.object.DMBlockedObject;
 import com.mydimoda.object.DMItemObject;
 import com.mydimoda.widget.ProgressWheel;
@@ -47,6 +44,7 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -92,6 +90,8 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
     Existence_Light_TextView titleView;
     @BindView(R.id.ll_progress)
     LinearLayout llProgress;
+    @BindView(R.id.ll_save)
+    LinearLayout llSave;
     private List<DemoModelForLook> lookList;
     private LookAdapter lookAdapter;
     private ArrayList<String> listTypeSelection;
@@ -107,13 +107,16 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
     private Date startDate;
     List<ModelLookListing> listLooks = new ArrayList<>();
     private String tripName;
+    private ProgressDialog dialog;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_look_listing);
+        dialog = new ProgressDialog(this);
         ButterKnife.bind(this);
-//        showShowcaseView();
+        showShowcaseView();
         getBundleData();
 
 //        setStaticListing(10);
@@ -127,7 +130,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
     }
 
     private void storeinParseDb(List<ModelLookListing> listResultingLook) {
-
+        showProgressDialog();
         ParseObject testObject = new ParseObject("TripData");
         Gson gson = new Gson();
 
@@ -156,7 +159,17 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
             testObject.put("OsType", 1);
             testObject.put("Looks", jsonArray);
 
-            testObject.saveInBackground();
+            testObject.saveInBackground(new SaveCallback() {
+                @Override
+                public void done(ParseException e) {
+                    hideProgressDialog();
+                    if (e == null) {
+                        Intent intent = new Intent(LookListingActiivty.this, ReviewTripPlannedActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                }
+            });
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -171,6 +184,15 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
 
     private void showProgress() {
         llProgress.setVisibility(View.VISIBLE);
+    }
+
+    private void showProgressDialog() {
+        dialog.setMessage("Please wait...");
+        dialog.show();
+    }
+
+    private void hideProgressDialog() {
+        dialog.hide();
     }
 
     public void getClothsFP() {
@@ -291,7 +313,8 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
                     } else {
                         hideProgress();
                         adapter.notifyDataSetChanged();
-                        storeinParseDb(listResultingLook);
+                        llSave.setVisibility(View.VISIBLE);
+
                     }
                 }
             } catch (JSONException e) {
@@ -527,12 +550,15 @@ public class LookListingActiivty extends AppCompatActivity implements LookAdapte
         lookAdapter.notifyDataSetChanged();
     }
 
-    @OnClick({R.id.back_layout})
+    @OnClick({R.id.back_layout, R.id.ll_save})
     public void onViewClicked(View view) {
         switch (view.getId()) {
 
             case R.id.back_layout:
                 onBackPressed();
+                break;
+            case R.id.ll_save:
+                storeinParseDb(listResultingLook);
                 break;
         }
     }

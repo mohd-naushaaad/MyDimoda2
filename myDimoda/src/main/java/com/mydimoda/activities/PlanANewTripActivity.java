@@ -311,7 +311,7 @@ public class PlanANewTripActivity extends Activity {
 
 
     private boolean isvalidate() {
-        if (edNameTrip.getText().toString().length() > 0) {
+        if (edNameTrip.getText().toString().trim().length() > 0) {
             if (val_causal == 0 && val_formal == 0 && val_business == 0) {
                 Toast.makeText(this, "Please Provide atleast one look for this trip.", Toast.LENGTH_SHORT).show();
                 return false;
@@ -450,7 +450,7 @@ public class PlanANewTripActivity extends Activity {
                         }
                         styleMeintent.putExtra(constant.BUNDLE_LIST_OF_SELECTION, listTypeSelection);
                         styleMeintent.putExtra(constant.BUNDLE_START_DATE, startDate);
-                        styleMeintent.putExtra(constant.BUNDLE_TRIP_NAME, edNameTrip.getText().toString());
+                        styleMeintent.putExtra(constant.BUNDLE_TRIP_NAME, edNameTrip.getText().toString().trim());
                         startActivity(styleMeintent);
                         /*Intent styleMeintent = new Intent(this, LooklistingActivityForOneLook.class);
                         constant.BUNDLE_TRIP_NAME = edNameTrip.getText().toString();
@@ -464,7 +464,7 @@ public class PlanANewTripActivity extends Activity {
             case R.id.rl_helpme:
                 if (isvalidate()) {
                     if (hasPurchase()) {
-                        constant.BUNDLE_TRIP_NAME = edNameTrip.getText().toString();
+                        constant.BUNDLE_TRIP_NAME = edNameTrip.getText().toString().trim();
                         passListing();
                     }
                 }
@@ -522,11 +522,11 @@ public class PlanANewTripActivity extends Activity {
         }*/
         list.add(constant.casual);
         constant.STARTDATE = startDate;
-        constant.TRIPNAME = edNameTrip.getText().toString();
+        constant.TRIPNAME = edNameTrip.getText().toString().trim();
 
         Intent helpMeintent = new Intent(this, TripHelpMeActivity.class);
         helpMeintent.putExtra(constant.BUNDLE_LOOKLISTING, list);
-        helpMeintent.putExtra(constant.BUNDLE_TRIP_NAME, edNameTrip.getText().toString());
+        helpMeintent.putExtra(constant.BUNDLE_TRIP_NAME, edNameTrip.getText().toString().trim());
         startActivity(helpMeintent);
 
     }
@@ -540,7 +540,7 @@ public class PlanANewTripActivity extends Activity {
 
     public void init() {
         showMenu();
-//        showShowcaseView();
+        showShowcaseView();
     }
 
     public void showMenu() {

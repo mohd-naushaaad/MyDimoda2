@@ -21,6 +21,30 @@
              android:padding="@dimen/img_padd"
              android:src="@drawable/share" />-->
 
+        <LinearLayout
+            android:id="@+id/ll_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:gravity="center"
+            android:visibility="gone">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:background="@drawable/save_icon" />
+
+            <com.mydimoda.customView.Existence_Light_TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="Save"
+                android:textColor="@color/color_black"
+                android:textSize="20sp" />
+
+
+        </LinearLayout>
+
         <com.mydimoda.customView.Existence_Light_TextView
             android:id="@+id/title_view"
             android:layout_width="wrap_content"
@@ -50,8 +74,10 @@
                 android:id="@+id/back_btn"
                 android:layout_width="15dp"
                 android:layout_height="25dp"
+                android:layout_centerVertical="true"
                 android:layout_marginRight="5dp"
                 android:background="@drawable/back_btn" />
+
         </LinearLayout>
     </RelativeLayout>
 
@@ -115,7 +141,7 @@
         android:id="@+id/rl_coach_look_listing"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/formal_etc"
+        android:background="@drawable/coach_look_listing"
         android:clickable="true"
         android:visibility="gone">
 

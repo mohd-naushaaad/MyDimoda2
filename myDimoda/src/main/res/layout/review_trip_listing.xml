@@ -49,10 +49,10 @@
     </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
-        android:layout_below="@id/title_layout"
         android:id="@+id/rv_trip_planned"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/title_layout"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         tools:listitem="@layout/item_review_trip_planned" />
@@ -60,12 +60,12 @@
     <RelativeLayout
         android:id="@+id/rl_coach_review_trip"
         android:layout_width="match_parent"
-        android:background="@drawable/home_2"
+        android:layout_height="match_parent"
         android:layout_marginLeft="-4dp"
-        android:clickable="true"
-        android:visibility="gone"
         android:layout_marginTop="-2dp"
-        android:layout_height="match_parent">
+        android:background="@drawable/coach_review_trips_lanned"
+        android:clickable="true"
+        android:visibility="gone">
 
     </RelativeLayout>
 </RelativeLayout>

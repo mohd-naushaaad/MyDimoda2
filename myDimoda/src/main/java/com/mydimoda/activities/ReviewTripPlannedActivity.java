@@ -81,7 +81,7 @@ public class ReviewTripPlannedActivity extends AppCompatActivity implements Revi
 
     private void init() {
         dialog = new ProgressDialog(this);
-        //        showShowcaseView();
+        showShowcaseView();
         clickListener = new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {

@@ -26,8 +26,7 @@
             android:layout_alignParentRight="true"
             android:gravity="right"
             android:textSize="@dimen/normal_text_size"
-            tools:text="Formal"
-            tools:textColor="@android:color/holo_red_light" />
+            tools:text="Formal" />
     </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView

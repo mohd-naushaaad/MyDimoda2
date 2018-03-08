@@ -1,8 +1,9 @@
 package com.mydimoda.activities;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -20,6 +21,7 @@ import com.google.gson.reflect.TypeToken;
 import com.mydimoda.AppUtils;
 import com.mydimoda.JSONPostParser;
 import com.mydimoda.R;
+import com.mydimoda.SharedPreferenceUtil;
 import com.mydimoda.adapter.LookListingAdp;
 import com.mydimoda.constant;
 import com.mydimoda.customView.Existence_Light_TextView;
@@ -34,6 +36,7 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -77,27 +80,56 @@ public class LooklistingActivityForOneLook extends Activity {
     JSONObject mSendData;
     @BindView(R.id.ll_progress)
     LinearLayout llProgress;
+    @BindView(R.id.ll_save)
+    LinearLayout llSave;
     private String category = "";
     private String mode = "";
     private List<ParseObject> listOfClothFromParceDB;
     private ModelLookListing modelLookListing;
     private List<ModelLookListing> listResultingLook;
     private LookListingAdp adapter;
+    private ProgressDialog dialog;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_look_listing_for_one_look);
+        dialog = new ProgressDialog(this);
         ButterKnife.bind(this);
         init();
         getClothsFP();
     }
 
+    private void showProgressDialog() {
+        dialog.setMessage("Please wait...");
+        dialog.show();
+    }
+
+    private void hideProgressDialog() {
+        dialog.hide();
+    }
+
     private void init() {
+        showShowcaseView();
         listOfClothFromParceDB = new ArrayList<>();
         setUpAdb();
         tvForTrip.setText(String.format(getString(R.string.suggested_look_for_trip), constant.BUNDLE_TRIP_NAME));
         getBundleData();
+    }
+
+    private void showShowcaseView() {
+        if (!SharedPreferenceUtil.getBoolean(constant.PREF_IS_LOOK_LISTING, false)) {
+            rlCoachLookListing.setVisibility(View.VISIBLE);
+            rlCoachLookListing.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    rlCoachLookListing.setVisibility(View.GONE);
+                    SharedPreferenceUtil.putValue(constant.PREF_IS_LOOK_LISTING, true);
+                }
+            });
+        }
+
     }
 
     private void getBundleData() {
@@ -112,9 +144,17 @@ public class LooklistingActivityForOneLook extends Activity {
         rvLooklisting.setAdapter(adapter);
     }
 
-    @OnClick(R.id.back_layout)
-    public void onViewClicked() {
-        onBackPressed();
+    @OnClick({R.id.back_layout, R.id.ll_save})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.back_layout:
+                onBackPressed();
+                break;
+            case R.id.ll_save:
+                storeinParseDb(listResultingLook);
+                break;
+        }
+
     }
 
     // / ---------------------------------- get cloth set from parse
@@ -222,25 +262,18 @@ public class LooklistingActivityForOneLook extends Activity {
                     for (int i = 0; i < constant.gItemListTemp.size(); i++) {
                         for (int j = 0; j < listSubItemLsit.size(); j++) {
                             if (listSubItemLsit.get(j).index.equalsIgnoreCase(constant.gItemListTemp.get(i).index)) {
-                                modelLookListing = new ModelLookListing(convertInParceObject(listSubItemLsit), category);
-                                listResultingLook.add(modelLookListing);
-                                adapter.notifyDataSetChanged();
-                                storeinParseDb(listResultingLook);
+                                makeProperListBeforeStore(listSubItemLsit);
                                 return;
                             }
                         }
-                            String type = constant.gItemListTemp.get(0).type;
-                            for (int j = 0; j < listSubItemLsit.size(); j++) {
-                                if (listSubItemLsit.get(j).type.equalsIgnoreCase(type)) {
-
-                                    listSubItemLsit.set(j, constant.gItemListTemp.get(0));
-                                    modelLookListing = new ModelLookListing(convertInParceObject(listSubItemLsit), category);
-                                    listResultingLook.add(modelLookListing);
-                                    adapter.notifyDataSetChanged();
-                                    storeinParseDb(listResultingLook);
-                                    break;
-                                }
+                        String type = constant.gItemListTemp.get(0).type;
+                        for (int j = 0; j < listSubItemLsit.size(); j++) {
+                            if (listSubItemLsit.get(j).type.equalsIgnoreCase(type)) {
+                                listSubItemLsit.set(j, constant.gItemListTemp.get(0));
+                                makeProperListBeforeStore(listSubItemLsit);
+                                break;
                             }
+                        }
 
 
                     }
@@ -257,8 +290,15 @@ public class LooklistingActivityForOneLook extends Activity {
         //do smthing
     }
 
-    private void storeinParseDb(List<ModelLookListing> listResultingLook) {
+    private void makeProperListBeforeStore(List<DMItemObject> listSubItemLsit) {
+        modelLookListing = new ModelLookListing(convertInParceObject(listSubItemLsit), category);
+        listResultingLook.add(modelLookListing);
+        adapter.notifyDataSetChanged();
+        llSave.setVisibility(View.VISIBLE);
+    }
 
+    private void storeinParseDb(List<ModelLookListing> listResultingLook) {
+        showProgressDialog();
         ParseObject testObject = new ParseObject("TripData");
         Gson gson = new Gson();
 
@@ -287,7 +327,15 @@ public class LooklistingActivityForOneLook extends Activity {
             testObject.put("OsType", 1);
             testObject.put("Looks", jsonArray);
 
-            testObject.saveInBackground();
+            testObject.saveInBackground(new SaveCallback() {
+                @Override
+                public void done(ParseException e) {
+                    hideProgressDialog();
+                    Intent intent = new Intent(LooklistingActivityForOneLook.this, ReviewTripPlannedActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            });
         } catch (JSONException e) {
             e.printStackTrace();
         }

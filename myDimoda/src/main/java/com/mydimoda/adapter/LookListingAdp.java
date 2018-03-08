@@ -42,8 +42,14 @@ public class LookListingAdp extends RecyclerView.Adapter<LookListingAdp.MyHolder
     @Override
     public void onBindViewHolder(MyHolder holder, int position) {
         SubItemOfLookAdp subItemOfLookAdp = new SubItemOfLookAdp(listOfCloth.get(position).getList(), mContext);
-        holder.tvClothtype.setText(listOfCloth.get(position).getClothType());
-        if (listOfCloth.get(position).getClothType().equalsIgnoreCase("casual")) {
+
+        if (listOfCloth.get(position).getClothType().equalsIgnoreCase("after5")) {
+            holder.tvClothtype.setText("business");
+        } else {
+            holder.tvClothtype.setText(listOfCloth.get(position).getClothType());
+        }
+
+        /*if (listOfCloth.get(position).getClothType().equalsIgnoreCase("casual")) {
             holder.tvClothtype.setTextColor(Color.GREEN);
         } else if (listOfCloth.get(position).getClothType().equalsIgnoreCase("formal")) {
             holder.tvClothtype.setTextColor(Color.RED);
@@ -51,7 +57,7 @@ public class LookListingAdp extends RecyclerView.Adapter<LookListingAdp.MyHolder
         } else if (listOfCloth.get(position).getClothType().equalsIgnoreCase("after5")) {
             holder.tvClothtype.setText("business");
             holder.tvClothtype.setTextColor(Color.BLUE);
-        }
+        }*/
         holder.rvSubitem.setLayoutManager(new GridLayoutManager(mContext, 2));
         holder.rvSubitem.setAdapter(subItemOfLookAdp);
     }
