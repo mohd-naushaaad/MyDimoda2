@@ -101,7 +101,8 @@ public class constant {
     //By Parth Ukani
     public static final String base_url = "http://54.69.61.15/";
     public static List<DMItemObject> helpSelection = new ArrayList<DMItemObject>();
-
+    public static final String helpME = "help me";
+    public static final String styleME = "style me";
     //Bundle Constant
     public static final String BUNDLE_LOOKLISTING = "bundle_looklisting";
     public static final String BUNDLE_LIST_OF_SELECTION = "bundle_list_of_selection";

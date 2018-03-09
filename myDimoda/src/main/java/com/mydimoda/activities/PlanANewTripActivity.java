@@ -448,6 +448,7 @@ public class PlanANewTripActivity extends Activity {
                         for (int i = 0; i < val_business; i++) {
                             listTypeSelection.add("after5");
                         }
+                        constant.gMode = constant.styleME;
                         styleMeintent.putExtra(constant.BUNDLE_LIST_OF_SELECTION, listTypeSelection);
                         styleMeintent.putExtra(constant.BUNDLE_START_DATE, startDate);
                         styleMeintent.putExtra(constant.BUNDLE_TRIP_NAME, edNameTrip.getText().toString().trim());
@@ -523,6 +524,7 @@ public class PlanANewTripActivity extends Activity {
         list.add(constant.casual);
         constant.STARTDATE = startDate;
         constant.TRIPNAME = edNameTrip.getText().toString().trim();
+        constant.gMode = constant.helpME;
 
         Intent helpMeintent = new Intent(this, TripHelpMeActivity.class);
         helpMeintent.putExtra(constant.BUNDLE_LOOKLISTING, list);

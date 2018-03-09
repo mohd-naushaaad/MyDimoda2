@@ -1,21 +1,31 @@
 package com.mydimoda.activities;
 
+import android.app.AlarmManager;
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -23,13 +33,18 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.mydimoda.AlarmReciever;
 import com.mydimoda.AppUtils;
+import com.mydimoda.DMFashionActivity;
 import com.mydimoda.JSONPostParser;
+import com.mydimoda.ParseApplication;
 import com.mydimoda.R;
 import com.mydimoda.SharedPreferenceUtil;
 import com.mydimoda.adapter.LookListingAdp;
 import com.mydimoda.constant;
 import com.mydimoda.customView.Existence_Light_TextView;
+import com.mydimoda.database.DbAdapter;
+import com.mydimoda.model.DatabaseModel;
 import com.mydimoda.model.DemoModelForLook;
 import com.mydimoda.model.ModelLookListing;
 import com.mydimoda.model.OrderClothModel;
@@ -37,6 +52,7 @@ import com.mydimoda.object.DMBlockedObject;
 import com.mydimoda.object.DMItemObject;
 import com.mydimoda.widget.ProgressWheel;
 import com.mydimoda.widget.cropper.util.FontsUtil;
+import com.nostra13.universalimageloader.core.assist.ImageSize;
 import com.parse.FindCallback;
 import com.parse.Parse;
 import com.parse.ParseException;
@@ -57,6 +73,7 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -107,16 +124,29 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
     List<ModelLookListing> listLooks = new ArrayList<>();
     private String tripName;
     private ProgressDialog dialog;
+    final public static String ONE_TIME = "onetime";
     private String likeDislikeUrl = "http://54.69.61.15:/resp_attire";
     boolean mIsDislike = false;
+    DatabaseModel m_DatabaseModel;
+    DbAdapter mDbAdapter;
+    /**
+     * for some use idk
+     */
+    int id;
+    private List<OrderClothModel> listOfSelectedCloth = new ArrayList<>();
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_look_listing);
-        dialog = new ProgressDialog(this);
         ButterKnife.bind(this);
+
+        mDbAdapter = new DbAdapter(LookListingActiivty.this);
+        mDbAdapter.createDatabase();
+        mDbAdapter.open();
+        m_DatabaseModel = new DatabaseModel();
+        dialog = new ProgressDialog(this);
         showShowcaseView();
         getBundleData();
 
@@ -130,39 +160,106 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
         rvLooklisting.setAdapter(adapter);
     }
 
-    public void likeCloth(List<OrderClothModel> listOfCloths, String clothType) {
+    public void likeCloth(String clothType) {
         mIsDislike = false;
-        makeSendData("like", listOfCloths, clothType);
+        makeSendData("like", clothType);
         LikeAndDislikeAsynk likeAndDislikeAsynk = new LikeAndDislikeAsynk();
         likeAndDislikeAsynk.execute();
-//        constant.gItemListTemp = getItemList();
+        constant.gItemListTemp = getItemList();
     }
 
-    public void dislikeCloth(List<OrderClothModel> listOfCloths, String clothType) {
+    // / --------------------------------------- When mode is help me, make item
+    // list -------------
+    public List<DMItemObject> getItemList() {
+        List<DMItemObject> list = new ArrayList<DMItemObject>();
+        if (listOfSelectedCloth != null) {
+            for (int i = 0; i < listOfSelectedCloth.size(); i++) {
+                DMItemObject item = new DMItemObject();
+                item.index = listOfSelectedCloth.get(i).getId();
+                item.type = listOfSelectedCloth.get(i).getType();
+
+                list.add(item);
+            }
+        }
+        return list;
+    }
+
+    public void dislikeCloth(String clothType) {
         mIsDislike = true;
         constant.gBlockedList.add(constant.gFashion);
-        makeSendData("dislike", listOfCloths, clothType);
+        makeSendData("dislike", clothType);
         LikeAndDislikeAsynk likeAndDislikeAsynk = new LikeAndDislikeAsynk();
         likeAndDislikeAsynk.execute();
     }
 
     // / ----------------------------------------------- make send data with
     // json format ------------
-    public void makeSendData(String feedback, List<OrderClothModel> listOfCloths, String type) {
+    public void makeSendData(String feedback, String type) {
         mSendData = new JSONObject();
         try {
             mSendData.put("version", "2");
             mSendData.put("category", type);
             mSendData.put("feedback", feedback);
-            mSendData.put("target", makeTargetJSONArray(listOfCloths));
+            mSendData.put("target", makeTargetJSONArray(listOfSelectedCloth));
             mSendData.put("name", "genparams");
             mSendData.put("value", "1");
 
             Log.e("data-----upd24liked---", mSendData.toString());
+            if (feedback.equalsIgnoreCase("dislike")) {
+                m_DatabaseModel.setFeedback(feedback);
+            } else {
+                String favoritelist = "";
+                Bundle extras = getIntent().getExtras();
+                if (extras != null) {
+                    favoritelist = extras.getString("favoritelist");
+                }
+
+                if (favoritelist != null
+                        && favoritelist.equalsIgnoreCase("favoritelist")) {
+                    System.out.println("favorite" + favoritelist);
+
+                } else {
+                    m_DatabaseModel.setFeedback(feedback);
+                    m_DatabaseModel.setVersion(2);
+                    m_DatabaseModel.setCategory(constant.gCategory);
+                    m_DatabaseModel
+                            .setTarget("" + makeTargetJSONArrayid_type(listOfSelectedCloth));
+                    // m_DatabaseModel.setName("genparams");
+
+                    Random r = new Random();
+                    id = r.nextInt();
+                    m_DatabaseModel.setValue("" + id);
+                    m_DatabaseModel.setFeedback(feedback);
+
+                    mDbAdapter.add(m_DatabaseModel);
+//                    setAlarm(id);
+                }
+            }
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    public JSONArray makeTargetJSONArrayid_type(List<OrderClothModel> subClothList) {
+        JSONArray arr = new JSONArray();
+        if (subClothList != null) {
+            for (int i = 0; i < subClothList.size(); i++) {
+                JSONObject obj = new JSONObject();
+                try {
+
+                    obj.put("id", subClothList.get(i).getId());
+                    obj.put("type", subClothList.get(i).getType());
+
+                    arr.put(obj);
+                } catch (JSONException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+
+        }
+        return arr;
     }
 
     // / ---------------------------------------------- make target json array
@@ -240,6 +337,282 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                 Toast.makeText(this, "Liked", Toast.LENGTH_LONG).show();
             }
         }
+        if (mIsDislike) {
+            mIsDislike = false;
+//            goAlgorithmActivity();
+        } //moved this code to share dialog dismiss//moved this code to share dialog dismiss
+        else {
+            initItemList();
+            if (constant.gMode.equals("help me")) {
+
+            } else {
+                constant.gLikeNum = 0;
+                new DownloadTaskRunner().execute();
+            }
+        }
+    }
+
+    void setAlarm(int id) {
+
+        final int ALARM_REQUEST_CODE = 5503;
+
+        AlarmManager am = (AlarmManager) LookListingActiivty.this
+                .getSystemService(Context.ALARM_SERVICE);
+
+
+        Intent alarmIntent = new Intent(LookListingActiivty.this, AlarmReciever.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, ALARM_REQUEST_CODE, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        try {
+            am.cancel(pendingIntent);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        Intent intent = new Intent(LookListingActiivty.this,
+                AlarmReciever.class);
+        intent.putExtra(ONE_TIME, Boolean.TRUE);
+        intent.putExtra("id", "" + id);
+        // PendingIntent pi =
+        // PendingIntent.getBroadcast(DMFashionActivity.this, 0,
+        // intent, 0);
+
+        PendingIntent pi = PendingIntent.getBroadcast(this, ALARM_REQUEST_CODE,
+                intent, PendingIntent.FLAG_ONE_SHOT);
+        am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,  // mayur
+                SystemClock.elapsedRealtime() + 24 * 60 * 60 * 1000, pi);
+         /*           am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,  // for testing mayur
+                            SystemClock.elapsedRealtime() +  10000, pi);*/
+
+    }
+
+    int getId() {
+        if (id == 0) {
+            id = new Random().nextInt();
+        }
+        return id;
+    }
+
+    private class DownloadTaskRunner extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            setAlarm(getId());
+            constant.showProgress(LookListingActiivty.this, "Please wait...");
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            if (isFinishing()) {
+                return null;
+            }
+            downloadBitmaps();
+            return null;
+        }
+
+
+        @Override
+        protected void onPostExecute(Void result) {
+            if (!isFinishing() && AppUtils.isOnline(LookListingActiivty.this)) {
+                constant.hideProgress();
+                try {
+                    makeImage();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public boolean makeImage() {
+        View v = LayoutInflater.from(getApplication()).inflate(R.layout.collage_view, new RelativeLayout(getApplication()), false);
+        AlertDialog.Builder builder = new AlertDialog.Builder(LookListingActiivty.this);
+        builder.setView(v);
+        //    builder.create().show();
+
+        ImageView mImage_1, mImage_2, mImage_3, mImage_4;
+        TextView mTxtVw_1, mTxtVw_2, mTxtVw_3, mTxtVw_4;
+        FrameLayout mFl_1, mFl_2, mFl_3, mFl_4;
+        mImage_1 = (ImageView) v.findViewById(R.id.collage_image_1);
+        mImage_2 = (ImageView) v.findViewById(R.id.collage_image_2);
+        mImage_3 = (ImageView) v.findViewById(R.id.collage_image_3);
+        mImage_4 = (ImageView) v.findViewById(R.id.collage_image_4);
+
+        mTxtVw_1 = (TextView) v.findViewById(R.id.collage_1_tv);
+        mTxtVw_2 = (TextView) v.findViewById(R.id.collage_2_tv);
+        mTxtVw_3 = (TextView) v.findViewById(R.id.collage_3_tv);
+        mTxtVw_4 = (TextView) v.findViewById(R.id.collage_4_tv);
+
+        mFl_1 = (FrameLayout) v.findViewById(R.id.collage_1);
+        mFl_2 = (FrameLayout) v.findViewById(R.id.collage_2);
+        mFl_3 = (FrameLayout) v.findViewById(R.id.collage_3);
+        mFl_4 = (FrameLayout) v.findViewById(R.id.collage_4);
+        FontsUtil.setExistenceLight(this, mTxtVw_1);
+        FontsUtil.setExistenceLight(this, mTxtVw_2);
+        FontsUtil.setExistenceLight(this, mTxtVw_3);
+        FontsUtil.setExistenceLight(this, mTxtVw_4);
+
+        switch (listOfSelectedCloth.size()) {
+            case 0:
+                return false;
+            case 1:
+                return false;
+            case 2:
+
+                try {
+                    mImage_1.setImageBitmap(constant.getclothsBitmapLst().get(0));
+                    mImage_2.setImageBitmap(constant.getclothsBitmapLst().get(1));
+
+                    //  ParseApplication.getInstance().mImageLoader.displayImage(
+                    //        listOfSelectedCloth.get(1).getImageUrl(), mImage_2);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                mTxtVw_1.setText(listOfSelectedCloth.get(0).getType());
+
+                mTxtVw_2.setText(listOfSelectedCloth.get(1).getType());
+
+                mFl_1.setRotation(AppUtils.generatRandomPositiveNegitiveValue());
+                mFl_2.setRotation(AppUtils.generatRandomPositiveNegitiveValue());
+                mFl_3.setVisibility(View.GONE);
+                mFl_4.setVisibility(View.GONE);
+                break;
+            case 3:
+                mImage_1.setImageBitmap(constant.getclothsBitmapLst().get(0));
+                mImage_2.setImageBitmap(constant.getclothsBitmapLst().get(1));
+                mImage_3.setImageBitmap(constant.getclothsBitmapLst().get(2));
+
+                mTxtVw_1.setText(listOfSelectedCloth.get(0).getType());
+                mTxtVw_2.setText(listOfSelectedCloth.get(1).getType());
+                mTxtVw_3.setText(listOfSelectedCloth.get(2).getType());
+                mFl_1.setRotation(AppUtils.generatRandomPositiveNegitiveValue());
+                mFl_2.setRotation(AppUtils.generatRandomPositiveNegitiveValue());
+                mFl_3.setRotation(AppUtils.generatRandomPositiveNegitiveValue());
+                mFl_4.setVisibility(View.GONE);
+                break;
+            case 4:
+                mImage_1.setImageBitmap(constant.getclothsBitmapLst().get(0));
+                mImage_2.setImageBitmap(constant.getclothsBitmapLst().get(1));
+                mImage_3.setImageBitmap(constant.getclothsBitmapLst().get(2));
+                mImage_4.setImageBitmap(constant.getclothsBitmapLst().get(3));
+                mTxtVw_1.setText(listOfSelectedCloth.get(0).getType());
+                mTxtVw_2.setText(listOfSelectedCloth.get(1).getType());
+                mTxtVw_3.setText(listOfSelectedCloth.get(2).getType());
+                mTxtVw_4.setText(listOfSelectedCloth.get(3).getType());
+                mFl_1.setRotation(AppUtils.generatRandomPositiveNegitiveValue(30, 5));
+                mFl_2.setRotation(AppUtils.generatRandomPositiveNegitiveValue());
+                mFl_3.setRotation(AppUtils.generatRandomPositiveNegitiveValue());
+                mFl_4.setRotation(AppUtils.generatRandomPositiveNegitiveValue());
+                break;
+            default:
+                try {
+                    ParseApplication.getInstance().mImageLoader.displayImage(
+                            listOfSelectedCloth.get(0).getImageUrl(), mImage_1);
+                    mTxtVw_1.setText(listOfSelectedCloth.get(0).getType());
+                    ParseApplication.getInstance().mImageLoader.displayImage(
+                            listOfSelectedCloth.get(1).getImageUrl(), mImage_2);
+                    mTxtVw_2.setText(listOfSelectedCloth.get(1).getType());
+                    ParseApplication.getInstance().mImageLoader.displayImage(
+                            listOfSelectedCloth.get(2).getImageUrl(), mImage_3);
+                    mTxtVw_3.setText(listOfSelectedCloth.get(2).getType());
+                    ParseApplication.getInstance().mImageLoader.displayImage(
+                            listOfSelectedCloth.get(3).getImageUrl(), mImage_4);
+                    mTxtVw_4.setText(listOfSelectedCloth.get(3).getType());
+                    mFl_1.setRotation(AppUtils.generatRandomPositiveNegitiveValue());
+                    mFl_2.setRotation(AppUtils.generatRandomPositiveNegitiveValue());
+                    mFl_3.setRotation(AppUtils.generatRandomPositiveNegitiveValue());
+                    mFl_4.setRotation(AppUtils.generatRandomPositiveNegitiveValue());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+        }
+
+        // this is to give attribute
+        int specWidth = View.MeasureSpec.makeMeasureSpec(0 /* any */, View.MeasureSpec.UNSPECIFIED);
+        // if (v.getHeight() == 0) {
+        v.measure(specWidth, specWidth);
+
+        //}
+
+
+        Bitmap b = Bitmap.createBitmap(v.getMeasuredWidth(), v.getMeasuredHeight(), Bitmap.Config.ARGB_8888);
+        Canvas c = new Canvas(b);
+        v.layout(0, 0, v.getMeasuredWidth(), v.getMeasuredHeight());
+        v.draw(c);
+        try {
+
+            AppUtils.savebitmap(b);
+
+            AppUtils.showShareDialog(b, LookListingActiivty.this, new AppUtils.onShareDialogDismissListener() {
+                @Override
+                public void onDismiss() {
+
+                   /* initItemList();
+                    if (constant.gMode.equals("help me")) {
+                        constant.gLikeNum++;
+                        if (constant.gCategory.equals("casual")) {
+                            constant.gLikeNum = 0;
+                        } else if (constant.gCategory.equals("after5")) {
+                            if (constant.gLikeNum == 2) {
+                                constant.gLikeNum = 0;
+                            } else {
+                                constant.gItemList = getItemList();
+                                goAlgorithmActivity();
+                            }
+                        } else if (constant.gCategory.equals("formal")) {
+                            if (constant.gLikeNum == 3) {
+                                constant.gLikeNum = 0;
+                            } else {
+                                constant.gItemList = getItemList();
+                                goAlgorithmActivity();
+                            }
+                        }
+                    } else {
+                        constant.gLikeNum = 0;
+                    }*/
+                }
+            });
+
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public void downloadBitmaps() {
+        try {
+            if (constant.getclothsBitmapLst().size() != listOfSelectedCloth.size()) {
+                for (int i = 0; i < listOfSelectedCloth.size(); i++) {
+                    //      InputStream mInputStr = new URL(listOfSelectedCloth.get(i).getImageUrl()).openConnection().getInputStream();
+                    try {
+                        //            BitmapFactory.Options options = new BitmapFactory.Options();
+                        //              options.inJustDecodeBounds = true;
+                        //                BitmapFactory.decodeStream(mInputStr, null, options);
+
+                        //                  options.inSampleSize = calculateInSampleSize(options, 500, 500);
+                        //                    options.inJustDecodeBounds = false;
+                        //                      mInputStr.reset();
+                        constant.getclothsBitmapLst().add(i, ParseApplication.getInstance().mImageLoader.loadImageSync(listOfSelectedCloth.get(i).getImageUrl(), new ImageSize(500, 500)));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    } finally {
+                        //        if (mInputStr != null) {
+                        //          mInputStr.close();
+                        //    }
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            //Toast.makeText(DMFashionActivity.this,"Loading images please wait",Toast.LENGTH_SHORT);
+        }
+    }
+
+    public void initItemList() {
+        constant.gItemList = new ArrayList<DMItemObject>();
+        constant.gBlockedList = new ArrayList<DMBlockedObject>();
     }
 
     private void storeinParseDb(List<ModelLookListing> listResultingLook) {
@@ -321,10 +694,13 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
             System.out.println("" + constant.gIsCloset);
 
             query = ParseQuery.getQuery("Clothes");
+            m_DatabaseModel.setName("Clothes");
             query.whereEqualTo("User", user);
             query.setLimit(constant.RESULT_SIZE);//mayur increased limit to 1000
         } else {
             query = ParseQuery.getQuery("DemoCloset");
+            m_DatabaseModel.setName("DemoCloset");
+
         }
 
         if (currentCat.equals("after5")
@@ -498,7 +874,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
         try {
             mSendData.put("version", "2");
             mSendData.put("category", currentCat);//causal,formal,after5
-            mSendData.put("mode", "style me");//style me or help me
+            mSendData.put("mode", constant.gMode);//style me or help me
             mSendData.put("closet", clothArr);
             mSendData.put("name", "genparams");
             mSendData.put("value", "1");
@@ -668,7 +1044,9 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
 
     @Override
     public void onClickOfLike(int pos) {
-        likeCloth(listResultingLook.get(pos).getList(), listResultingLook.get(pos).getClothType());
+        listOfSelectedCloth.clear();
+        listOfSelectedCloth.addAll(listResultingLook.get(pos).getList());
+        likeCloth(listResultingLook.get(pos).getClothType());
     }
 
     public void showSimilarDialog() {
@@ -699,6 +1077,9 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
 
     @Override
     public void onClickofDisLike(int pos) {
-        dislikeCloth(listResultingLook.get(pos).getList(), listResultingLook.get(pos).getClothType());
+        listOfSelectedCloth.clear();
+        listOfSelectedCloth.addAll(listResultingLook.get(pos).getList());
+        dislikeCloth(listResultingLook.get(pos).getClothType());
+        constant.clearClothBitmapList();
     }
 }
