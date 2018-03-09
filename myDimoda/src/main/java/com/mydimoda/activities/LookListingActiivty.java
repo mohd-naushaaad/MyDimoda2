@@ -38,6 +38,7 @@ import com.mydimoda.object.DMItemObject;
 import com.mydimoda.widget.ProgressWheel;
 import com.mydimoda.widget.cropper.util.FontsUtil;
 import com.parse.FindCallback;
+import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
@@ -125,32 +126,33 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
     private void setUpAdb() {
         listResultingLook = new ArrayList<>();
         rvLooklisting.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new LookListingAdp(listResultingLook, this,this);
+        adapter = new LookListingAdp(listResultingLook, this, this);
         rvLooklisting.setAdapter(adapter);
     }
 
-    public void likeCloth(List<OrderClothModel> listOfCloths) {
-        makeSendData("like", listOfCloths);
+    public void likeCloth(List<OrderClothModel> listOfCloths, String clothType) {
+        mIsDislike = false;
+        makeSendData("like", listOfCloths, clothType);
         LikeAndDislikeAsynk likeAndDislikeAsynk = new LikeAndDislikeAsynk();
         likeAndDislikeAsynk.execute();
 //        constant.gItemListTemp = getItemList();
     }
 
-    public void dislikeCloth(List<OrderClothModel> listOfCloths) {
+    public void dislikeCloth(List<OrderClothModel> listOfCloths, String clothType) {
         mIsDislike = true;
         constant.gBlockedList.add(constant.gFashion);
-        makeSendData("dislike", listOfCloths);
+        makeSendData("dislike", listOfCloths, clothType);
         LikeAndDislikeAsynk likeAndDislikeAsynk = new LikeAndDislikeAsynk();
         likeAndDislikeAsynk.execute();
     }
 
     // / ----------------------------------------------- make send data with
     // json format ------------
-    public void makeSendData(String feedback, List<OrderClothModel> listOfCloths) {
+    public void makeSendData(String feedback, List<OrderClothModel> listOfCloths, String type) {
         mSendData = new JSONObject();
         try {
             mSendData.put("version", "2");
-            mSendData.put("category", constant.gCategory);
+            mSendData.put("category", type);
             mSendData.put("feedback", feedback);
             mSendData.put("target", makeTargetJSONArray(listOfCloths));
             mSendData.put("name", "genparams");
@@ -216,9 +218,27 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
 
             // / when get response, call parser response function of the class
             constant.hideProgress();
-            parseResponse(mResponseData);
+            ParseLikeandDislikeResponse(mResponseData);
 
             super.onPostExecute(result);
+        }
+    }
+
+    private void ParseLikeandDislikeResponse(JSONObject mResponseData) {
+        String status = null;
+        try {
+            status = mResponseData.getString("status");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        if (status.equals("ok")) {
+            if (mIsDislike) {
+                Toast.makeText(this, "Disliked", Toast.LENGTH_LONG)
+                        .show();
+            } else {
+                Toast.makeText(this, "Liked", Toast.LENGTH_LONG).show();
+            }
         }
     }
 
@@ -437,7 +457,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
             Log.e("URL", ParceobjectList.get(i).get("ImageContent").toString());
 
             model.setImageUrl(url);
-            model.setType(AppUtils.asUpperCaseFirstChar(ParceobjectList.get(i).getString("Type")));
+            model.setType(ParceobjectList.get(i).getString("Type"));
             model.setId(ParceobjectList.get(i).getObjectId());
             model.setColor(ParceobjectList.get(i).getString("Color"));
             model.setPattern(ParceobjectList.get(i).getString("Pattern"));
@@ -648,7 +668,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
 
     @Override
     public void onClickOfLike(int pos) {
-        likeCloth(listResultingLook.get(pos).getList());
+        likeCloth(listResultingLook.get(pos).getList(), listResultingLook.get(pos).getClothType());
     }
 
     public void showSimilarDialog() {
@@ -679,6 +699,6 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
 
     @Override
     public void onClickofDisLike(int pos) {
-        dislikeCloth(listResultingLook.get(pos).getList());
+        dislikeCloth(listResultingLook.get(pos).getList(), listResultingLook.get(pos).getClothType());
     }
 }

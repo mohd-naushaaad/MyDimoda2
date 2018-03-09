@@ -7,7 +7,9 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 
 import org.apache.http.HttpEntity;
+import org.apache.http.HttpRequestInterceptor;
 import org.apache.http.HttpResponse;
+import org.apache.http.HttpResponseInterceptor;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
@@ -17,30 +19,32 @@ import org.json.JSONObject;
 
 import android.util.Log;
 
+
 public class JSONPostParser {
 
-	static InputStream is = null;
+    static InputStream is = null;
     static JSONObject jObj = null;
     static String json = "";
 
     // constructor
-    public JSONPostParser() {}
+    public JSONPostParser() {
+    }
 
-    public JSONObject getJSONFromUrl(String url,String sendData) {
+    public JSONObject getJSONFromUrl(String url, String sendData) {
 
         // Making HTTP request
         try {
             // defaultHttpClient
             DefaultHttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost(url);          
-            httpPost.setHeader("Content-Type","application/json");
+            HttpPost httpPost = new HttpPost(url);
+            httpPost.setHeader("Content-Type", "application/json");
             //httpPost.setHeader(HTTP.CONTENT_TYPE, "application/x-www-form-urlencoded");
             StringEntity se = new StringEntity(sendData);
             httpPost.setEntity(se);
             HttpResponse httpResponse = httpClient.execute(httpPost);
             HttpEntity httpEntity = httpResponse.getEntity();
             is = httpEntity.getContent();
-            
+
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         } catch (ClientProtocolException e) {
@@ -59,6 +63,8 @@ public class JSONPostParser {
             }
             is.close();
             json = sb.toString();
+            Log.d("Response", url + " " + json);
+
         } catch (Exception e) {
             Log.e("Buffer Error", "Error converting result " + e.toString());
         }
@@ -69,11 +75,11 @@ public class JSONPostParser {
         } catch (JSONException e) {
             Log.e("JSON Parser", "Error parsing data " + e.toString());
         }
-        Log.d("request",url+" " + sendData);
+        Log.d("Request", url + " " + sendData);
         // return JSON String
         return jObj;
 
     }
-    
-    
+
+
 }
