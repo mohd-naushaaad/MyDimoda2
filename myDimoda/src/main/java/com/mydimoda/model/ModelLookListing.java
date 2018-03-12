@@ -15,7 +15,7 @@ import java.util.List;
 public class ModelLookListing {
     @SerializedName("listOfCloth")
     public List<OrderClothModel> listOfCloth = new ArrayList();
-    private String clothType = "";
+    public String clothType = "";
 
     public ModelLookListing(List<OrderClothModel> listOfCloth, String clothType) {
         this.listOfCloth = listOfCloth;

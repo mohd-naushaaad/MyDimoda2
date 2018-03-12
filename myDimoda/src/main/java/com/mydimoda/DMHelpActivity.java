@@ -55,6 +55,7 @@ public class DMHelpActivity extends Activity {
     private boolean isFromPlanNewTrip = false;
     private ProgressDialog progressbar = null;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,6 +100,15 @@ public class DMHelpActivity extends Activity {
                     constant.gItemListTemp = makeItemList(mClothList.get(position));//mayur added for fixinf cloths swap issue
                     checkPermissions();
                 } else {
+                    if (mType.equalsIgnoreCase(constant.L_SHIRT) || mType.equalsIgnoreCase(constant.L_TROUSERS)) {
+
+                    } else if (mType.equalsIgnoreCase(constant.L_JACKET)) {
+
+                    } else if (mType.equalsIgnoreCase(constant.L_TIE)) {
+
+                    } else if (mType.equalsIgnoreCase(constant.L_SUIT)) {
+
+                    }
                     Intent styleMeintent = new Intent(DMHelpActivity.this, LooklistingActivityForOneLook.class);
                     styleMeintent.putExtra(constant.BUNDLE_CATEGORY, "casual");
                     styleMeintent.putExtra(constant.BUNDLE_MODE, "help me");

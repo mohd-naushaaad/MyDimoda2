@@ -31,6 +31,7 @@ import com.mydimoda.SharedPreferenceUtil;
 import com.mydimoda.adapter.DMMenuListAdapter;
 import com.mydimoda.constant;
 import com.mydimoda.customView.Existence_Light_TextView;
+import com.mydimoda.model.ModelCatWithMode;
 import com.mydimoda.social.google.GoogleIAP;
 import com.mydimoda.widget.cropper.util.FontsUtil;
 import com.parse.ParseObject;
@@ -141,6 +142,7 @@ public class PlanANewTripActivity extends Activity {
     private Calendar calendar;
     private Date startDate, endDate;
     private long gapDiffbetweenDate = 0;
+    private List<ModelCatWithMode> listcatWithMode = new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -433,19 +435,12 @@ public class PlanANewTripActivity extends Activity {
             case R.id.rl_styleme:
                 if (isvalidate()) {
                     if (hasPurchase()) {
-
                         Intent styleMeintent = new Intent(this, LookListingActiivty.class);
-                        listTypeSelection.clear();
-                        for (int i = 0; i < val_causal; i++) {
-                            listTypeSelection.add("casual");
-                        }
-                        for (int i = 0; i < val_formal; i++) {
-                            listTypeSelection.add("formal");
-                        }
-                        for (int i = 0; i < val_business; i++) {
-                            listTypeSelection.add("after5");
-                        }
+                        makeLiveArrayOfCat();
+                        makeListForStyleMe();
                         constant.gMode = constant.styleME;
+                        Bundle bundle=new Bundle();
+//                        bundle.putParcelable();
                         styleMeintent.putExtra(constant.BUNDLE_LIST_OF_SELECTION, listTypeSelection);
                         styleMeintent.putExtra(constant.BUNDLE_START_DATE, startDate);
                         styleMeintent.putExtra(constant.BUNDLE_TRIP_NAME, edNameTrip.getText().toString().trim());
@@ -463,10 +458,35 @@ public class PlanANewTripActivity extends Activity {
                 if (isvalidate()) {
                     if (hasPurchase()) {
                         constant.BUNDLE_TRIP_NAME = edNameTrip.getText().toString().trim();
+                        makeLiveArrayOfCat();
                         passListing();
                     }
                 }
                 break;
+        }
+    }
+
+    private void makeListForStyleMe() {
+        listcatWithMode.clear();
+        for (int i = 0; i < listTypeSelection.size(); i++) {
+            ModelCatWithMode modelCatWithMode = new ModelCatWithMode();
+            modelCatWithMode.setCategory(listTypeSelection.get(i));
+            modelCatWithMode.setMode(constant.styleME);
+            listcatWithMode.add(modelCatWithMode);
+        }
+    }
+
+
+    private void makeLiveArrayOfCat() {
+        listTypeSelection.clear();
+        for (int i = 0; i < val_causal; i++) {
+            listTypeSelection.add("casual");
+        }
+        for (int i = 0; i < val_formal; i++) {
+            listTypeSelection.add("formal");
+        }
+        for (int i = 0; i < val_business; i++) {
+            listTypeSelection.add("after5");
         }
     }
 

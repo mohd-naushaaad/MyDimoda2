@@ -13,7 +13,6 @@ import android.graphics.Typeface;
 import com.mydimoda.activities.PlanANewTripActivity;
 import com.mydimoda.model.CropListModel;
 import com.mydimoda.model.DatabaseModel;
-import com.mydimoda.model.ModelCatWithMode;
 import com.mydimoda.object.DMBlockedObject;
 import com.mydimoda.object.DMItemObject;
 
@@ -39,20 +38,26 @@ public class constant {
     public static final String base_url = "http://54.69.61.15/";
     public static final String helpME = "help me";
     public static final String styleME = "style me";
+
     public static final String CASUAL = "casual";
     public static final String FORMAL = "formal";
     public static final String AFTER5 = "after5";
-    public static List<ModelCatWithMode> liveArrOfCatWithMode=new ArrayList<>();
 
+    public static final String L_SHIRT = "shirt";
+    public static final String L_TROUSERS = "trousers";
+    public static final String L_JACKET = "jacket";
+    public static final String L_TIE = "tie";
+    public static final String L_SUIT = "suit";
     //Bundle Constant
     public static final String BUNDLE_LOOKLISTING = "bundle_looklisting";
-//	public static String 					gPrefUrl 	= "http://54.149.157.66/index.php";
+    //	public static String 					gPrefUrl 	= "http://54.149.157.66/index.php";
     public static final String BUNDLE_LIST_OF_SELECTION = "bundle_list_of_selection";
     public static final String BUNDLE_ISFROMPLANNEWTRIP = "bundle_isfromplannewtrip";
     public static final String BUNDLE_CATEGORY = "bundle_category";
     public static final String BUNDLE_MODE = "bundle_mode";
     public static final String BUNDLE_START_DATE = "bundle_start_date";
     public static final String BUNDLE_TRIP_LIST_LOOKS = "bundle_trip_looks";
+
     public static final int MAX_GAL_IMAGE_COUNT = 12;
     public static final String EMPTY_TYPE = "Undefined";
     public static final String FRM_DIALG_KEY = "isFromDialog";
@@ -173,6 +178,7 @@ public class constant {
     //Mayur to save array of cropped images for otehr view
     private static ArrayList<Bitmap> clothsBitmapLst;
     private static ArrayList<String> mStatuses;
+
     public constant() {
 
     }
