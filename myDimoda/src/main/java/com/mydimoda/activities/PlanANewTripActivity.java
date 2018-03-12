@@ -33,10 +33,8 @@ import com.mydimoda.constant;
 import com.mydimoda.customView.Existence_Light_TextView;
 import com.mydimoda.social.google.GoogleIAP;
 import com.mydimoda.widget.cropper.util.FontsUtil;
-import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
-import com.parse.SaveCallback;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -44,7 +42,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.TimeZone;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -56,7 +53,6 @@ import butterknife.OnClick;
 
 public class PlanANewTripActivity extends Activity {
     int val_causal = 0, val_formal = 0, val_business = 0;
-    private ArrayList<String> listTypeSelection = new ArrayList<>();
     @BindView(R.id.menu_btn)
     Button menuBtn;
     @BindView(R.id.title_view)
@@ -139,10 +135,11 @@ public class PlanANewTripActivity extends Activity {
     RelativeLayout rlCoachPlanNewTrip;
     @BindView(R.id.RelativeLayout1)
     RelativeLayout RelativeLayout1;
+    SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+    private ArrayList<String> listTypeSelection = new ArrayList<>();
     private DatePickerDialog startDatePickerDialog, endDatePickerDialog;
     private Calendar calendar;
     private Date startDate, endDate;
-    SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
     private long gapDiffbetweenDate = 0;
 
     @Override
@@ -512,7 +509,7 @@ public class PlanANewTripActivity extends Activity {
     private void passListing() {
         ArrayList<Integer> list = new ArrayList<>();
 
-        /*if (val_causal > 0) {
+        if (val_causal > 0) {
             list.add(constant.casual);
         }
         if (val_formal > 0) {
@@ -520,7 +517,7 @@ public class PlanANewTripActivity extends Activity {
         }
         if (val_business > 0) {
             list.add(constant.business);
-        }*/
+        }
         list.add(constant.casual);
         constant.STARTDATE = startDate;
         constant.TRIPNAME = edNameTrip.getText().toString().trim();

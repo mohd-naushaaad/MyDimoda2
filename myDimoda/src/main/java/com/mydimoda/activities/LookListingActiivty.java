@@ -35,7 +35,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.mydimoda.AlarmReciever;
 import com.mydimoda.AppUtils;
-import com.mydimoda.DMFashionActivity;
 import com.mydimoda.JSONPostParser;
 import com.mydimoda.ParseApplication;
 import com.mydimoda.R;
@@ -45,7 +44,6 @@ import com.mydimoda.constant;
 import com.mydimoda.customView.Existence_Light_TextView;
 import com.mydimoda.database.DbAdapter;
 import com.mydimoda.model.DatabaseModel;
-import com.mydimoda.model.DemoModelForLook;
 import com.mydimoda.model.ModelLookListing;
 import com.mydimoda.model.OrderClothModel;
 import com.mydimoda.object.DMBlockedObject;
@@ -54,7 +52,6 @@ import com.mydimoda.widget.ProgressWheel;
 import com.mydimoda.widget.cropper.util.FontsUtil;
 import com.nostra13.universalimageloader.core.assist.ImageSize;
 import com.parse.FindCallback;
-import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
@@ -84,6 +81,7 @@ import butterknife.OnClick;
  */
 
 public class LookListingActiivty extends AppCompatActivity implements LookListingAdp.ClickListnerOfLook {
+    final public static String ONE_TIME = "onetime";
     /*@BindView(R.id.iv_share)
     ImageView ivShare;*/
     @BindView(R.id.back_txt)
@@ -110,6 +108,14 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
     LinearLayout llProgress;
     @BindView(R.id.ll_save)
     LinearLayout llSave;
+    List<ModelLookListing> listLooks = new ArrayList<>();
+    boolean mIsDislike = false;
+    DatabaseModel m_DatabaseModel;
+    DbAdapter mDbAdapter;
+    /**
+     * for some use idk
+     */
+    int id;
     private ArrayList<String> listTypeSelection;
     private CountDownTimer timer;
     private JSONObject mSendData;
@@ -121,18 +127,9 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
     private ModelLookListing modelLookListing;
     private LookListingAdp adapter;
     private Date startDate;
-    List<ModelLookListing> listLooks = new ArrayList<>();
     private String tripName;
     private ProgressDialog dialog;
-    final public static String ONE_TIME = "onetime";
     private String likeDislikeUrl = "http://54.69.61.15:/resp_attire";
-    boolean mIsDislike = false;
-    DatabaseModel m_DatabaseModel;
-    DbAdapter mDbAdapter;
-    /**
-     * for some use idk
-     */
-    int id;
     private List<OrderClothModel> listOfSelectedCloth = new ArrayList<>();
 
 
@@ -162,9 +159,16 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
 
     public void likeCloth(String clothType) {
         mIsDislike = false;
-        makeSendData("like", clothType);
+        /*makeSendData("like", clothType);
         LikeAndDislikeAsynk likeAndDislikeAsynk = new LikeAndDislikeAsynk();
-        likeAndDislikeAsynk.execute();
+        likeAndDislikeAsynk.execute();*/
+        initItemList();
+        if (constant.gMode.equals("help me")) {
+
+        } else {
+            constant.gLikeNum = 0;
+            new DownloadTaskRunner().execute();
+        }
         constant.gItemListTemp = getItemList();
     }
 
@@ -284,43 +288,6 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
         return arr;
     }
 
-    public class LikeAndDislikeAsynk extends
-            AsyncTask<String, Integer, ArrayList<HashMap<String, String>>> {
-
-        // / server communicate using asyncTask
-
-        ArrayList<HashMap<String, String>> UploadsList = new ArrayList<HashMap<String, String>>();
-        JSONObject mResponseData;
-
-        @Override
-        protected void onPreExecute() {
-            constant.showProgress(LookListingActiivty.this, "Loading...");
-        }
-
-        @Override
-        protected ArrayList<HashMap<String, String>> doInBackground(
-                String... params) {
-
-            // Creating JSON Parser instance
-            JSONPostParser jParser = new JSONPostParser();
-            // getting JSON string from URL
-            mResponseData = jParser.getJSONFromUrl(likeDislikeUrl,
-                    mSendData.toString());
-
-            return UploadsList;
-        }
-
-        @Override
-        protected void onPostExecute(ArrayList<HashMap<String, String>> result) {
-
-            // / when get response, call parser response function of the class
-            constant.hideProgress();
-            ParseLikeandDislikeResponse(mResponseData);
-
-            super.onPostExecute(result);
-        }
-    }
-
     private void ParseLikeandDislikeResponse(JSONObject mResponseData) {
         String status = null;
         try {
@@ -391,38 +358,6 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
             id = new Random().nextInt();
         }
         return id;
-    }
-
-    private class DownloadTaskRunner extends AsyncTask<Void, Void, Void> {
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            setAlarm(getId());
-            constant.showProgress(LookListingActiivty.this, "Please wait...");
-        }
-
-        @Override
-        protected Void doInBackground(Void... params) {
-            if (isFinishing()) {
-                return null;
-            }
-            downloadBitmaps();
-            return null;
-        }
-
-
-        @Override
-        protected void onPostExecute(Void result) {
-            if (!isFinishing() && AppUtils.isOnline(LookListingActiivty.this)) {
-                constant.hideProgress();
-                try {
-                    makeImage();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }
     }
 
     public boolean makeImage() {
@@ -663,7 +598,6 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
 
     }
 
-
     public void hideProgress() {
         llProgress.setVisibility(View.GONE);
     }
@@ -748,38 +682,6 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
     public void sendClothsTS() {
         MyAsyncTask task1 = new MyAsyncTask();
         task1.execute();
-    }
-
-    public class MyAsyncTask extends
-            AsyncTask<String, Integer, JSONObject> {
-
-        // / server communicate using asyncTask
-        JSONObject mResponseData;
-
-        @Override
-        protected void onPreExecute() {
-
-        }
-
-        @Override
-        protected JSONObject doInBackground(
-                String... params) {
-
-            // Creating JSON Parser instance
-            JSONPostParser jParser = new JSONPostParser();
-            // getting JSON string from URL
-            mResponseData = jParser.getJSONFromUrl(constant.base_url,
-                    mSendData.toString());
-
-//            return UploadsList;
-            return mResponseData;
-        }
-
-        @Override
-        protected void onPostExecute(JSONObject result) {
-            parseResponse(result);
-            super.onPostExecute(result);
-        }
     }
 
     public void parseResponse(JSONObject data) {
@@ -1007,13 +909,6 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
         }.start();
     }
 
-   /* private void setUpAdp() {
-        lookList = new ArrayList<>();
-        lookAdapter = new LookAdapter(lookList, this, this);
-        rvLooklisting.setLayoutManager(new LinearLayoutManager(this));
-        rvLooklisting.setAdapter(lookAdapter);
-    }*/
-
     private void showShowcaseView() {
         if (!SharedPreferenceUtil.getBoolean(constant.PREF_IS_LOOK_LISTING, false)) {
             rlCoachLookListing.setVisibility(View.VISIBLE);
@@ -1027,7 +922,6 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
         }
 
     }
-
 
     @OnClick({R.id.back_layout, R.id.ll_save})
     public void onViewClicked(View view) {
@@ -1048,6 +942,13 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
         listOfSelectedCloth.addAll(listResultingLook.get(pos).getList());
         likeCloth(listResultingLook.get(pos).getClothType());
     }
+
+   /* private void setUpAdp() {
+        lookList = new ArrayList<>();
+        lookAdapter = new LookAdapter(lookList, this, this);
+        rvLooklisting.setLayoutManager(new LinearLayoutManager(this));
+        rvLooklisting.setAdapter(lookAdapter);
+    }*/
 
     public void showSimilarDialog() {
         // custom dialog
@@ -1081,5 +982,106 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
         listOfSelectedCloth.addAll(listResultingLook.get(pos).getList());
         dislikeCloth(listResultingLook.get(pos).getClothType());
         constant.clearClothBitmapList();
+    }
+
+    public class LikeAndDislikeAsynk extends
+            AsyncTask<String, Integer, ArrayList<HashMap<String, String>>> {
+
+        // / server communicate using asyncTask
+
+        ArrayList<HashMap<String, String>> UploadsList = new ArrayList<HashMap<String, String>>();
+        JSONObject mResponseData;
+
+        @Override
+        protected void onPreExecute() {
+            constant.showProgress(LookListingActiivty.this, "Loading...");
+        }
+
+        @Override
+        protected ArrayList<HashMap<String, String>> doInBackground(
+                String... params) {
+
+            // Creating JSON Parser instance
+            JSONPostParser jParser = new JSONPostParser();
+            // getting JSON string from URL
+            mResponseData = jParser.getJSONFromUrl(likeDislikeUrl,
+                    mSendData.toString());
+
+            return UploadsList;
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<HashMap<String, String>> result) {
+
+            // / when get response, call parser response function of the class
+            constant.hideProgress();
+            ParseLikeandDislikeResponse(mResponseData);
+
+            super.onPostExecute(result);
+        }
+    }
+
+    private class DownloadTaskRunner extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            setAlarm(getId());
+            constant.showProgress(LookListingActiivty.this, "Please wait...");
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            if (isFinishing()) {
+                return null;
+            }
+            downloadBitmaps();
+            return null;
+        }
+
+
+        @Override
+        protected void onPostExecute(Void result) {
+            if (!isFinishing() && AppUtils.isOnline(LookListingActiivty.this)) {
+                constant.hideProgress();
+                try {
+                    makeImage();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public class MyAsyncTask extends
+            AsyncTask<String, Integer, JSONObject> {
+
+        // / server communicate using asyncTask
+        JSONObject mResponseData;
+
+        @Override
+        protected void onPreExecute() {
+
+        }
+
+        @Override
+        protected JSONObject doInBackground(
+                String... params) {
+
+            // Creating JSON Parser instance
+            JSONPostParser jParser = new JSONPostParser();
+            // getting JSON string from URL
+            mResponseData = jParser.getJSONFromUrl(constant.base_url,
+                    mSendData.toString());
+
+//            return UploadsList;
+            return mResponseData;
+        }
+
+        @Override
+        protected void onPostExecute(JSONObject result) {
+            parseResponse(result);
+            super.onPostExecute(result);
+        }
     }
 }

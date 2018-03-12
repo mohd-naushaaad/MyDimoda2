@@ -47,14 +47,12 @@ public class DMHelpActivity extends Activity {
     DrawerLayout vDrawerLayout;
     LinearLayout vMenuLayout;
     RelativeLayout vBackLayout;
-    private boolean isFromPlanNewTrip = false;
     GridView vClothGrid;
-
     String mType;
     DMHelpGridAdapter mAdapter;
     List<ParseObject> mClothList = null;
     List<String> mUrlList = null;
-
+    private boolean isFromPlanNewTrip = false;
     private ProgressDialog progressbar = null;
 
     @Override
@@ -95,13 +93,12 @@ public class DMHelpActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                constant.gItemList = makeItemList(mClothList.get(position));
-                constant.gItemListTemp = makeItemList(mClothList.get(position));//mayur added for fixinf cloths swap issue
+
                 if (!isFromPlanNewTrip) {
+                    constant.gItemList = makeItemList(mClothList.get(position));
+                    constant.gItemListTemp = makeItemList(mClothList.get(position));//mayur added for fixinf cloths swap issue
                     checkPermissions();
                 } else {
-                    /*constant.helpSelection.clear();
-                    constant.helpSelection = makeItemList(mClothList.get(position));*/
                     Intent styleMeintent = new Intent(DMHelpActivity.this, LooklistingActivityForOneLook.class);
                     styleMeintent.putExtra(constant.BUNDLE_CATEGORY, "casual");
                     styleMeintent.putExtra(constant.BUNDLE_MODE, "help me");

@@ -13,6 +13,7 @@ import android.graphics.Typeface;
 import com.mydimoda.activities.PlanANewTripActivity;
 import com.mydimoda.model.CropListModel;
 import com.mydimoda.model.DatabaseModel;
+import com.mydimoda.model.ModelCatWithMode;
 import com.mydimoda.object.DMBlockedObject;
 import com.mydimoda.object.DMItemObject;
 
@@ -30,10 +31,86 @@ import java.util.Random;
 @SuppressLint("SimpleDateFormat")
 public class constant {
 
+    public static final String COUNT = "Count";
+    public static final int RESULT_SIZE = 1000;
+    public static final String API_ITEM_OFFSET = "ItemPageOffset";
+    public static final int casual = 0, formal = 1, business = 2;
+    //By Parth Ukani
+    public static final String base_url = "http://54.69.61.15/";
+    public static final String helpME = "help me";
+    public static final String styleME = "style me";
+    public static final String CASUAL = "casual";
+    public static final String FORMAL = "formal";
+    public static final String AFTER5 = "after5";
+    public static List<ModelCatWithMode> liveArrOfCatWithMode=new ArrayList<>();
+
+    //Bundle Constant
+    public static final String BUNDLE_LOOKLISTING = "bundle_looklisting";
+//	public static String 					gPrefUrl 	= "http://54.149.157.66/index.php";
+    public static final String BUNDLE_LIST_OF_SELECTION = "bundle_list_of_selection";
+    public static final String BUNDLE_ISFROMPLANNEWTRIP = "bundle_isfromplannewtrip";
+    public static final String BUNDLE_CATEGORY = "bundle_category";
+    public static final String BUNDLE_MODE = "bundle_mode";
+    public static final String BUNDLE_START_DATE = "bundle_start_date";
+    public static final String BUNDLE_TRIP_LIST_LOOKS = "bundle_trip_looks";
+    public static final int MAX_GAL_IMAGE_COUNT = 12;
+    public static final String EMPTY_TYPE = "Undefined";
+    public static final String FRM_DIALG_KEY = "isFromDialog";
+    public static final String FRM_DIALG_PROCESS_KEY = "isFromDialogProcess";
+    //notification enable disable pref key
+    public static final String PREF_IS_NOTI_ENABLE = "notificationenabledisable";
+    public static final String PREF_MAX_COUNT = "maxearnedcounts";
+    public static final String PREF_MAX_COUNT_GVN = "maxearnedcountsfor";
+    /* public static final String PREF_MAX_COUNT_GVN_shirt = "maxearnedcountsforshirt";*/
+    public static final String PREF_MAX_COUNT_CONFIGURED = "ismaxcountconfigured";
+    public static final String RATED_APP = "ratedmyDiModa";
+    public static final String PREF_CLOTH_COUNT = "maxearnedcountsforsuits";
+    public static final String USER_MAX_COUNT = "MaxUserCount";
+    public static final String PREF_IS_GALRY_DIALOG_SHOWN = "isgalshown";
+    public static final String USER_MAX_COUNT_INITILISED = "maxusercountinitilised";
+    //ShowcaseView pref constants
+    public static final String PREF_IS_HOME_SHOWN = "ishomeshown";
+    public static final String PREF_IS_OCCASION_SHOWN = "isocassionshown";
+    public static final String PREF_IS_STYLE_SHOWN = "isstyleshown";
+    public static final String PREF_IS_FSN_SHOWN = "isfsnshown";
+    public static final String PREF_IS_HANGUP_SHOWN = "ishangupshown";
+    public static final String PREF_IS_HANGUP_HELP_SHOWN = "ishanguphelpshown";
+    //Add by parth ukani
+    public static final String PREF_IS_PLAN_NEW_TRIP_SHOWN = "prefisplannewtripshown";
+    public static final String PREF_IS_REVIEW_TRIP_SHOWN = "prefisreviewtripshown";
+    public static final String PREF_IS_SELECT_MERCHANDISE_ITEM_SHOWN = "prefismerchandiseshown";
+    public static final String PREF_IS_LOOK_LISTING = "prefislooklisting";
+    public static final String PREF_IS_FIND_SHOWN = "isfindshown";
+    public static final String PREF_IS_AUTO_SHOWN = "isautoshown";
+    public static final String PREF_IS_LUCKY_AUTO_SHOWN = "isluckyautoshown";
+    public static final String PREF_IS_ORGANISE_SHOWN = "isorganiseshown";
+    public static final String PREF_IS_SETTING_SHOWN = "issettingshown";
+    public static final String PREF_IS_EXACT_SHOWN = "isexactshown";
+    public static final String PREF_IS_DETAIL_SHOWN = "isdetilshown";
+    public static final String PREF_IS_CAMERA_OPTION_SHOWN = "iscameraoptionhown";
+    public static final String PREF_IS_CROP_SHOWN = "isfindcropshown";
+    public static final String PREF_IS_CAPTURE_ACT_SHOWN = "iscaptureshown";
+    public static final String PREF_IS_DELETE_ACT_SHOWN = "isdeleteisiscaptureshown";
+    // find cloths bundle key
+    public static final String SHOP_NAME = "shopname";
+    public static final String SORT_BY_KEY = "sortby";
+    // api key
+    public static final String SORT = "Sort";
+    public static final String SORT_HI_LO = "high-to-low";
+    public static final String SORT_LO_HI = "low-to-high";
+    public static final String SORT_RELEVANCE = "relevance"; // default
+    //Shop names api functions
+    public static final String All_OPTION = "productloop";
+    public static final String AMAZON_SHOP = "getAWSdata";
+    public static final String SHOPSTYLE_SHOP = "getShopStyleData";
+    public static final String ASOS_SHOP = "getAsosData";
+    public static final String FRM_DETAIL_FOR_HANGUP_KEY = "isfromdetailforhangup";
+    public static final String IMAGE_BYTEARRY_KEY = "imagebytearraykey";
+    public static final String IMAGE_POS_KEY = "imageposkey";
+    public static final String INTENT_NOTI_KEY = "fromnoti";
     // /// font face
     public static Typeface boldfontface = null;
     public static Typeface fontface = null;
-
     // / user data
     public static String gUserName = "";
     public static String gEmail = "";
@@ -41,29 +118,20 @@ public class constant {
     public static String gUserId = "";
     public static boolean gIsCloset = false;
     public static int maxCount = 5;
-
     // / server side, shared preference
     public static String PREFS_NAME = "MyPrefName";
     public static ArrayList<NameValuePair> nameValuePairs;
-    private static ProgressDialog vProgress;
-//	public static String 					gPrefUrl 	= "http://54.149.157.66/index.php";
-
-
     //	public static String 					gPrefUrl 	= "http://52.25.182.16/index.php";
     public static String gPrefUrl = "http://purchase.myDiModa.com/index.php";
-
-
     // / engine value
     public static String[] gColor = {"empty", "black", "blue", "brown", "dark blue",
             "dark green", "dark red", "gray", "green",
             "light blue", "orange", "pink", "purple", "red",
             "white", "yellow"};
     public static String[] gPattern = {"empty", "dot", "plaid", "stripe", "florial"};
-
     // / menu item
     public static String[] menuArr = {"HOME", "STYLE ME", "HANG UP", "ORGANIZE", "PURCHASE", "PLAN A NEW TRIP", "SETTINGS"};
     public static List<String> gMenuList = Arrays.asList(menuArr);
-
     // cloth order
     public static int SHIRT = 0;
     public static int JACKET = 1;
@@ -72,7 +140,6 @@ public class constant {
     public static int SUIT = 4;
     public static int SHOES = 5;
     public static int NONE = 6;
-
     // / category when user click item of occasion list
     public static String gCategory = "";
     public static String gMode = "";
@@ -83,40 +150,29 @@ public class constant {
     public static DatabaseModel gFashiondb = null;
     // SAINT1021
     public static String gFashionID = "";
-
     public static Bitmap gTakenBitmap;
     public static Bitmap gCropBitmap = null;
     public static String gMessage = null;
     public static String gColorVal = null;
     public static String gPatternVal = null;
-
     public static boolean gIsStart = false;
-    public static final String COUNT = "Count";
-
-    public static final int RESULT_SIZE = 1000;
-
-    public static final String API_ITEM_OFFSET = "ItemPageOffset";
-
-    public static final int casual = 0, formal = 1, business = 2;
-    //By Parth Ukani
-    public static final String base_url = "http://54.69.61.15/";
     public static List<DMItemObject> helpSelection = new ArrayList<DMItemObject>();
-    public static final String helpME = "help me";
-    public static final String styleME = "style me";
-    //Bundle Constant
-    public static final String BUNDLE_LOOKLISTING = "bundle_looklisting";
-    public static final String BUNDLE_LIST_OF_SELECTION = "bundle_list_of_selection";
-    public static final String BUNDLE_ISFROMPLANNEWTRIP = "bundle_isfromplannewtrip";
-    public static final String BUNDLE_CATEGORY = "bundle_category";
-    public static final String BUNDLE_MODE = "bundle_mode";
     public static String BUNDLE_TRIP_NAME = "trip_name";
-    public static final String BUNDLE_START_DATE = "bundle_start_date";
-    public static final String BUNDLE_TRIP_LIST_LOOKS = "bundle_trip_looks";
-
     public static String TRIPNAME = "";
     public static Date STARTDATE = new Date();
-
-
+    public static int max_lic_count = 5;
+    public static String APP_LINK = "\nApp Store: http://apple.co/235CP4Y\n" +
+            "Play Store: http://bit.ly/26tp8RZ";
+    //mayur added for fixing cloth swap issue in help me
+    public static List<DMItemObject> gItemListTemp = new ArrayList<DMItemObject>();
+    private static ProgressDialog vProgress;
+    // Dipen Saved image temp to add more images
+    private static ArrayList<CropListModel> mCroppedItemListModelTempArray;
+    //Mayur to save array of cropped images for otehr view
+    private static ArrayList<CropListModel> mCroppedItemListModelArray;
+    //Mayur to save array of cropped images for otehr view
+    private static ArrayList<Bitmap> clothsBitmapLst;
+    private static ArrayList<String> mStatuses;
     public constant() {
 
     }
@@ -300,29 +356,6 @@ public class constant {
         }
     }
 
-    public static int max_lic_count = 5;
-
-    public static final int MAX_GAL_IMAGE_COUNT = 12;
-    public static final String EMPTY_TYPE = "Undefined";
-    public static final String FRM_DIALG_KEY = "isFromDialog";
-    public static final String FRM_DIALG_PROCESS_KEY = "isFromDialogProcess";
-
-
-    //notification enable disable pref key
-    public static final String PREF_IS_NOTI_ENABLE = "notificationenabledisable";
-    public static final String PREF_MAX_COUNT = "maxearnedcounts";
-    public static final String PREF_MAX_COUNT_GVN = "maxearnedcountsfor";
-    /* public static final String PREF_MAX_COUNT_GVN_shirt = "maxearnedcountsforshirt";*/
-    public static final String PREF_MAX_COUNT_CONFIGURED = "ismaxcountconfigured";
-    public static final String RATED_APP = "ratedmyDiModa";
-    public static final String PREF_CLOTH_COUNT = "maxearnedcountsforsuits";
-    public static final String USER_MAX_COUNT = "MaxUserCount";
-    public static final String PREF_IS_GALRY_DIALOG_SHOWN = "isgalshown";
-    public static final String USER_MAX_COUNT_INITILISED = "maxusercountinitilised";
-
-    // Dipen Saved image temp to add more images
-    private static ArrayList<CropListModel> mCroppedItemListModelTempArray;
-
     public static ArrayList<CropListModel> getTempImageLst() {
         if (mCroppedItemListModelTempArray == null) {
             mCroppedItemListModelTempArray = new ArrayList<>();
@@ -330,8 +363,8 @@ public class constant {
         return mCroppedItemListModelTempArray;
     }
 
-    //Mayur to save array of cropped images for otehr view
-    private static ArrayList<CropListModel> mCroppedItemListModelArray;
+
+    // for hangup
 
     public static ArrayList<CropListModel> getImageLst() {
         if (mCroppedItemListModelArray == null) {
@@ -339,9 +372,6 @@ public class constant {
         }
         return mCroppedItemListModelArray;
     }
-
-    //Mayur to save array of cropped images for otehr view
-    private static ArrayList<Bitmap> clothsBitmapLst;
 
     public static ArrayList<Bitmap> getclothsBitmapLst() {
         if (clothsBitmapLst == null) {
@@ -358,11 +388,6 @@ public class constant {
             clothsBitmapLst.clear();
         }
     }
-
-    public static String APP_LINK = "\nApp Store: http://apple.co/235CP4Y\n" +
-            "Play Store: http://bit.ly/26tp8RZ";
-
-    private static ArrayList<String> mStatuses;
 
     public static String getRandomStatus() {
         if (mStatuses == null || mStatuses.isEmpty()) {
@@ -386,72 +411,6 @@ public class constant {
             return (new Random().nextInt(from - to + 1) + to);
         }
     }
-
-    //ShowcaseView pref constants
-    public static final String PREF_IS_HOME_SHOWN = "ishomeshown";
-    public static final String PREF_IS_OCCASION_SHOWN = "isocassionshown";
-    public static final String PREF_IS_STYLE_SHOWN = "isstyleshown";
-    public static final String PREF_IS_FSN_SHOWN = "isfsnshown";
-    public static final String PREF_IS_HANGUP_SHOWN = "ishangupshown";
-    public static final String PREF_IS_HANGUP_HELP_SHOWN = "ishanguphelpshown";
-    //Add by parth ukani
-    public static final String PREF_IS_PLAN_NEW_TRIP_SHOWN = "prefisplannewtripshown";
-    public static final String PREF_IS_REVIEW_TRIP_SHOWN = "prefisreviewtripshown";
-    public static final String PREF_IS_SELECT_MERCHANDISE_ITEM_SHOWN = "prefismerchandiseshown";
-    public static final String PREF_IS_LOOK_LISTING = "prefislooklisting";
-
-
-    public static final String PREF_IS_FIND_SHOWN = "isfindshown";
-    public static final String PREF_IS_AUTO_SHOWN = "isautoshown";
-    public static final String PREF_IS_LUCKY_AUTO_SHOWN = "isluckyautoshown";
-
-    public static final String PREF_IS_ORGANISE_SHOWN = "isorganiseshown";
-    public static final String PREF_IS_SETTING_SHOWN = "issettingshown";
-    public static final String PREF_IS_EXACT_SHOWN = "isexactshown";
-
-    public static final String PREF_IS_DETAIL_SHOWN = "isdetilshown";
-
-    public static final String PREF_IS_CAMERA_OPTION_SHOWN = "iscameraoptionhown";
-
-    public static final String PREF_IS_CROP_SHOWN = "isfindcropshown";
-    public static final String PREF_IS_CAPTURE_ACT_SHOWN = "iscaptureshown";
-    public static final String PREF_IS_DELETE_ACT_SHOWN = "isdeleteisiscaptureshown";
-
-
-    // find cloths bundle key
-    public static final String SHOP_NAME = "shopname";
-    public static final String SORT_BY_KEY = "sortby";
-
-
-    // api key
-    public static final String SORT = "Sort";
-
-    public static final String SORT_HI_LO = "high-to-low";
-    public static final String SORT_LO_HI = "low-to-high";
-    public static final String SORT_RELEVANCE = "relevance"; // default
-
-
-    //Shop names api functions
-    public static final String All_OPTION = "productloop";
-    public static final String AMAZON_SHOP = "getAWSdata";
-    public static final String SHOPSTYLE_SHOP = "getShopStyleData";
-    public static final String ASOS_SHOP = "getAsosData";
-
-
-    // for hangup
-
-    public static final String FRM_DETAIL_FOR_HANGUP_KEY = "isfromdetailforhangup";
-
-
-    public static final String IMAGE_BYTEARRY_KEY = "imagebytearraykey";
-
-    public static final String IMAGE_POS_KEY = "imageposkey";
-
-    //mayur added for fixing cloth swap issue in help me
-    public static List<DMItemObject> gItemListTemp = new ArrayList<DMItemObject>();
-
-
-    public static final String INTENT_NOTI_KEY = "fromnoti";
 
 
 }
