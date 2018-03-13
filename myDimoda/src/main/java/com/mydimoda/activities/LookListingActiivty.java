@@ -514,7 +514,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
 
     public void downloadBitmaps() {
         try {
-            if (constant.getclothsBitmapLst().size() != listOfSelectedCloth.size()) {
+
                 for (int i = 0; i < listOfSelectedCloth.size(); i++) {
                     //      InputStream mInputStr = new URL(listOfSelectedCloth.get(i).getImageUrl()).openConnection().getInputStream();
                     try {
@@ -534,7 +534,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                         //    }
                     }
                 }
-            }
+
         } catch (Exception e) {
             e.printStackTrace();
             //Toast.makeText(DMFashionActivity.this,"Loading images please wait",Toast.LENGTH_SHORT);
