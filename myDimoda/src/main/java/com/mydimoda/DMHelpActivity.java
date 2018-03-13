@@ -23,7 +23,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mydimoda.activities.LookListingActiivty;
-import com.mydimoda.activities.LooklistingActivityForOneLook;
 import com.mydimoda.adapter.DMHelpGridAdapter;
 import com.mydimoda.adapter.DMMenuListAdapter;
 import com.mydimoda.model.ModelCatWithMode;
@@ -98,10 +97,9 @@ public class DMHelpActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-
+                constant.gItemList = makeItemList(mClothList.get(position));
+                constant.gItemListTemp = makeItemList(mClothList.get(position));//mayur added for fixinf cloths swap issue
                 if (!isFromPlanNewTrip) {
-                    constant.gItemList = makeItemList(mClothList.get(position));
-                    constant.gItemListTemp = makeItemList(mClothList.get(position));//mayur added for fixinf cloths swap issue
                     checkPermissions();
                 } else {
                     if (mType.equalsIgnoreCase(constant.L_SHIRT) || mType.equalsIgnoreCase(constant.L_TROUSERS)) {
@@ -113,10 +111,10 @@ public class DMHelpActivity extends Activity {
                     } else if (mType.equalsIgnoreCase(constant.L_SUIT)) {
 
                     }
-                    Intent styleMeintent = new Intent(DMHelpActivity.this, LooklistingActivityForOneLook.class);
+                    /*Intent styleMeintent = new Intent(DMHelpActivity.this, LooklistingActivityForOneLook.class);
                     styleMeintent.putExtra(constant.BUNDLE_CATEGORY, "casual");
                     styleMeintent.putExtra(constant.BUNDLE_MODE, "help me");
-                    startActivity(styleMeintent);
+                    startActivity(styleMeintent);*/
                 }
             }
         });
@@ -136,7 +134,8 @@ public class DMHelpActivity extends Activity {
         Intent styleMeintent = new Intent(DMHelpActivity.this, LookListingActiivty.class);
         Bundle bundle = new Bundle();
         bundle.putParcelable(constant.BUNDLE_LIST_OF_SELECTION, Parcels.wrap(listOfCatwithMode));
-
+        styleMeintent.putExtras(bundle);
+        startActivity(styleMeintent);
 
     }
 

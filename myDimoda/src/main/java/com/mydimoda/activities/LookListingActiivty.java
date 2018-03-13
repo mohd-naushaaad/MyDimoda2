@@ -155,19 +155,18 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
         rvLooklisting.setAdapter(adapter);
     }
 
-    public void likeCloth(String clothType) {
+    public void likeCloth() {
         mIsDislike = false;
         /*makeSendData("like", clothType);
         LikeAndDislikeAsynk likeAndDislikeAsynk = new LikeAndDislikeAsynk();
         likeAndDislikeAsynk.execute();*/
-        initItemList();
-        if (constant.gMode.equals("help me")) {
+        new DownloadTaskRunner().execute();
+        /*if (constant.gMode.equals("help me")) {
 
         } else {
             constant.gLikeNum = 0;
             new DownloadTaskRunner().execute();
-        }
-        constant.gItemListTemp = getItemList();
+        }*/
     }
 
     // / --------------------------------------- When mode is help me, make item
@@ -307,7 +306,6 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
 //            goAlgorithmActivity();
         } //moved this code to share dialog dismiss//moved this code to share dialog dismiss
         else {
-            initItemList();
             if (constant.gMode.equals("help me")) {
 
             } else {
@@ -543,11 +541,6 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
         }
     }
 
-    public void initItemList() {
-        constant.gItemList = new ArrayList<DMItemObject>();
-        constant.gBlockedList = new ArrayList<DMBlockedObject>();
-    }
-
     private void storeinParseDb(List<ModelLookListing> listResultingLook) {
         showProgressDialog();
         ParseObject testObject = new ParseObject("TripData");
@@ -780,7 +773,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
             mSendData.put("value", "1");
             mSendData.put("blocked", makeBlockedJSONArray(constant.gBlockedList));
 
-            if (constant.gMode.equals("help me")) {
+            if (modelCatWithMode.getMode().equals("help me")) {
                 mSendData.put("items", makeItemJSONArray(constant.gItemList));
             }
 
@@ -939,7 +932,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
     public void onClickOfLike(int pos) {
         listOfSelectedCloth.clear();
         listOfSelectedCloth.addAll(listResultingLook.get(pos).getList());
-        likeCloth(listResultingLook.get(pos).getClothType());
+        likeCloth(/*listResultingLook.get(pos).getClothType()*/);
     }
 
    /* private void setUpAdp() {
