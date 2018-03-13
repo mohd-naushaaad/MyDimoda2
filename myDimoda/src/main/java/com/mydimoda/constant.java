@@ -55,9 +55,7 @@ public class constant {
     public static final String BUNDLE_ISFROMPLANNEWTRIP = "bundle_isfromplannewtrip";
     public static final String BUNDLE_CATEGORY = "bundle_category";
     public static final String BUNDLE_MODE = "bundle_mode";
-    public static final String BUNDLE_START_DATE = "bundle_start_date";
     public static final String BUNDLE_TRIP_LIST_LOOKS = "bundle_trip_looks";
-
     public static final int MAX_GAL_IMAGE_COUNT = 12;
     public static final String EMPTY_TYPE = "Undefined";
     public static final String FRM_DIALG_KEY = "isFromDialog";
@@ -113,6 +111,9 @@ public class constant {
     public static final String IMAGE_BYTEARRY_KEY = "imagebytearraykey";
     public static final String IMAGE_POS_KEY = "imageposkey";
     public static final String INTENT_NOTI_KEY = "fromnoti";
+    public static ArrayList<String> listTypeSelection = new ArrayList<>();
+    public static String trip_name = "";
+    public static Date start_date = new Date();
     // /// font face
     public static Typeface boldfontface = null;
     public static Typeface fontface = null;
@@ -162,7 +163,6 @@ public class constant {
     public static String gPatternVal = null;
     public static boolean gIsStart = false;
     public static List<DMItemObject> helpSelection = new ArrayList<DMItemObject>();
-    public static String BUNDLE_TRIP_NAME = "trip_name";
     public static String TRIPNAME = "";
     public static Date STARTDATE = new Date();
     public static int max_lic_count = 5;

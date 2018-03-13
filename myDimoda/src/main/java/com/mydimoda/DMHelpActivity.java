@@ -22,9 +22,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mydimoda.activities.LookListingActiivty;
 import com.mydimoda.activities.LooklistingActivityForOneLook;
 import com.mydimoda.adapter.DMHelpGridAdapter;
 import com.mydimoda.adapter.DMMenuListAdapter;
+import com.mydimoda.model.ModelCatWithMode;
 import com.mydimoda.object.DMItemObject;
 import com.mydimoda.social.google.GoogleIAP;
 import com.mydimoda.widget.cropper.util.FontsUtil;
@@ -34,6 +36,8 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
+
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -101,7 +105,7 @@ public class DMHelpActivity extends Activity {
                     checkPermissions();
                 } else {
                     if (mType.equalsIgnoreCase(constant.L_SHIRT) || mType.equalsIgnoreCase(constant.L_TROUSERS)) {
-
+                        makeListOfModeWithCat(0);
                     } else if (mType.equalsIgnoreCase(constant.L_JACKET)) {
 
                     } else if (mType.equalsIgnoreCase(constant.L_TIE)) {
@@ -116,6 +120,24 @@ public class DMHelpActivity extends Activity {
                 }
             }
         });
+    }
+
+    private void makeListOfModeWithCat(int index) {
+        List<ModelCatWithMode> listOfCatwithMode = new ArrayList<>();
+        for (int i = 0; i < constant.listTypeSelection.size(); i++) {
+            ModelCatWithMode modelCatWithMode;
+            if (i == index) {
+                modelCatWithMode = new ModelCatWithMode(constant.listTypeSelection.get(i), constant.helpME);
+            } else {
+                modelCatWithMode = new ModelCatWithMode(constant.listTypeSelection.get(i), constant.styleME);
+            }
+            listOfCatwithMode.add(modelCatWithMode);
+        }
+        Intent styleMeintent = new Intent(DMHelpActivity.this, LookListingActiivty.class);
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(constant.BUNDLE_LIST_OF_SELECTION, Parcels.wrap(listOfCatwithMode));
+
+
     }
 
     @Override

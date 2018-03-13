@@ -139,7 +139,7 @@ public class PlanANewTripActivity extends Activity {
     @BindView(R.id.RelativeLayout1)
     RelativeLayout RelativeLayout1;
     SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
-    private ArrayList<String> listTypeSelection = new ArrayList<>();
+    //    private ArrayList<String> listTypeSelection = new ArrayList<>();
     private DatePickerDialog startDatePickerDialog, endDatePickerDialog;
     private Calendar calendar;
     private Date startDate, endDate;
@@ -438,13 +438,12 @@ public class PlanANewTripActivity extends Activity {
                 if (isvalidate()) {
                     if (hasPurchase()) {
                         Intent styleMeintent = new Intent(this, LookListingActiivty.class);
-                        makeLiveArrayOfCat();
+                        makeStringArrayOfCatName();
                         makeListForStyleMe();
-                        constant.gMode = constant.styleME;
                         Bundle bundle = new Bundle();
                         bundle.putParcelable(constant.BUNDLE_LIST_OF_SELECTION, Parcels.wrap(listcatWithMode));
-                        styleMeintent.putExtra(constant.BUNDLE_START_DATE, startDate);
-                        styleMeintent.putExtra(constant.BUNDLE_TRIP_NAME, edNameTrip.getText().toString().trim());
+                        constant.start_date = startDate;
+                        constant.trip_name = edNameTrip.getText().toString().trim();
                         styleMeintent.putExtras(bundle);
                         startActivity(styleMeintent);
                         /*Intent styleMeintent = new Intent(this, LooklistingActivityForOneLook.class);
@@ -459,8 +458,7 @@ public class PlanANewTripActivity extends Activity {
             case R.id.rl_helpme:
                 if (isvalidate()) {
                     if (hasPurchase()) {
-                        constant.BUNDLE_TRIP_NAME = edNameTrip.getText().toString().trim();
-                        makeLiveArrayOfCat();
+                        makeStringArrayOfCatName();
                         passListing();
                     }
                 }
@@ -470,25 +468,25 @@ public class PlanANewTripActivity extends Activity {
 
     private void makeListForStyleMe() {
         listcatWithMode.clear();
-        for (int i = 0; i < listTypeSelection.size(); i++) {
+        for (int i = 0; i < constant.listTypeSelection.size(); i++) {
             ModelCatWithMode modelCatWithMode = new ModelCatWithMode();
-            modelCatWithMode.setCategory(listTypeSelection.get(i));
+            modelCatWithMode.setCategory(constant.listTypeSelection.get(i));
             modelCatWithMode.setMode(constant.styleME);
             listcatWithMode.add(modelCatWithMode);
         }
     }
 
 
-    private void makeLiveArrayOfCat() {
-        listTypeSelection.clear();
+    private void makeStringArrayOfCatName() {
+        constant.listTypeSelection.clear();
         for (int i = 0; i < val_causal; i++) {
-            listTypeSelection.add("casual");
+            constant.listTypeSelection.add("casual");
         }
         for (int i = 0; i < val_formal; i++) {
-            listTypeSelection.add("formal");
+            constant.listTypeSelection.add("formal");
         }
         for (int i = 0; i < val_business; i++) {
-            listTypeSelection.add("after5");
+            constant.listTypeSelection.add("after5");
         }
     }
 
@@ -547,7 +545,8 @@ public class PlanANewTripActivity extends Activity {
 
         Intent helpMeintent = new Intent(this, TripHelpMeActivity.class);
         helpMeintent.putExtra(constant.BUNDLE_LOOKLISTING, list);
-        helpMeintent.putExtra(constant.BUNDLE_TRIP_NAME, edNameTrip.getText().toString().trim());
+        constant.trip_name = edNameTrip.getText().toString().trim();
+
         startActivity(helpMeintent);
 
     }

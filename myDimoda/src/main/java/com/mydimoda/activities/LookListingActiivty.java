@@ -865,9 +865,9 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
     }
 
     private void getBundleData() {
-        tripName = getIntent().getStringExtra(constant.BUNDLE_TRIP_NAME);
+        tripName = constant.trip_name;
         tvForTrip.setText(String.format(getString(R.string.suggested_look_for_trip), tripName));
-        startDate = (Date) getIntent().getSerializableExtra(constant.BUNDLE_START_DATE);
+        startDate = constant.start_date;
         setUpAdb();
         if (Parcels.unwrap(getIntent().getParcelableExtra(constant.BUNDLE_LIST_OF_SELECTION)) != null) {
 //            listTypeSelection = (ArrayList<String>) getIntent().getSerializableExtra(constant.BUNDLE_LIST_OF_SELECTION);

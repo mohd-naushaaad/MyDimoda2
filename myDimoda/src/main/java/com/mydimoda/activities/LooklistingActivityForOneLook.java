@@ -114,7 +114,7 @@ public class LooklistingActivityForOneLook extends Activity implements LookListi
         showShowcaseView();
         listOfClothFromParceDB = new ArrayList<>();
         setUpAdb();
-        tvForTrip.setText(String.format(getString(R.string.suggested_look_for_trip), constant.BUNDLE_TRIP_NAME));
+        tvForTrip.setText(String.format(getString(R.string.suggested_look_for_trip), constant.trip_name));
         getBundleData();
     }
 

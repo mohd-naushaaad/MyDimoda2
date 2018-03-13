@@ -23,9 +23,7 @@ import com.mydimoda.SharedPreferenceUtil;
 import com.mydimoda.adapter.ReviewTripAdp;
 import com.mydimoda.constant;
 import com.mydimoda.model.ModelLookListing;
-import com.mydimoda.model.OrderClothModel;
 import com.mydimoda.model.ReviewTripData;
-import com.mydimoda.model.TripLookListingModel;
 import com.mydimoda.widget.cropper.util.FontsUtil;
 import com.parse.FindCallback;
 import com.parse.GetCallback;
@@ -195,8 +193,8 @@ public class ReviewTripPlannedActivity extends AppCompatActivity implements Revi
     public void onClickofTrip(int pos) {
         Intent intent = new Intent(this, LookListingActiivty.class);
         Bundle bundle = new Bundle();
-        intent.putExtra(constant.BUNDLE_START_DATE, tripDataList.get(pos).getStartDate());
-        intent.putExtra(constant.BUNDLE_TRIP_NAME, tripDataList.get(pos).getTripTitle());
+        constant.start_date = tripDataList.get(pos).getStartDate();
+        constant.trip_name = tripDataList.get(pos).getTripTitle();
         bundle.putParcelable(constant.BUNDLE_TRIP_LIST_LOOKS, Parcels.wrap(tripDataList.get(pos).getTotalLookList()));
         intent.putExtras(bundle);
         startActivity(intent);
