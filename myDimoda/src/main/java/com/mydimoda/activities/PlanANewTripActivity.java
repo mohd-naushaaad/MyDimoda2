@@ -37,6 +37,8 @@ import com.mydimoda.widget.cropper.util.FontsUtil;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
+import org.parceler.Parcels;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -439,11 +441,11 @@ public class PlanANewTripActivity extends Activity {
                         makeLiveArrayOfCat();
                         makeListForStyleMe();
                         constant.gMode = constant.styleME;
-                        Bundle bundle=new Bundle();
-//                        bundle.putParcelable();
-                        styleMeintent.putExtra(constant.BUNDLE_LIST_OF_SELECTION, listTypeSelection);
+                        Bundle bundle = new Bundle();
+                        bundle.putParcelable(constant.BUNDLE_LIST_OF_SELECTION, Parcels.wrap(listcatWithMode));
                         styleMeintent.putExtra(constant.BUNDLE_START_DATE, startDate);
                         styleMeintent.putExtra(constant.BUNDLE_TRIP_NAME, edNameTrip.getText().toString().trim());
+                        styleMeintent.putExtras(bundle);
                         startActivity(styleMeintent);
                         /*Intent styleMeintent = new Intent(this, LooklistingActivityForOneLook.class);
                         constant.BUNDLE_TRIP_NAME = edNameTrip.getText().toString();

@@ -44,6 +44,7 @@ import com.mydimoda.constant;
 import com.mydimoda.customView.Existence_Light_TextView;
 import com.mydimoda.database.DbAdapter;
 import com.mydimoda.model.DatabaseModel;
+import com.mydimoda.model.ModelCatWithMode;
 import com.mydimoda.model.ModelLookListing;
 import com.mydimoda.model.OrderClothModel;
 import com.mydimoda.object.DMBlockedObject;
@@ -116,13 +117,12 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
      * for some use idk
      */
     int id;
-    private ArrayList<String> listTypeSelection;
+    private List<ModelCatWithMode> listModelWithCat = new ArrayList<>();
     private CountDownTimer timer;
     private JSONObject mSendData;
     private List<ParseObject> listOfClothFromParceDB;
     private int apicounter = 0;
     private List<DMItemObject> listOfAllresultItem = new ArrayList<>();
-    private String currentCat = "";
     private List<ModelLookListing> listResultingLook;
     private ModelLookListing modelLookListing;
     private LookListingAdp adapter;
@@ -131,7 +131,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
     private ProgressDialog dialog;
     private String likeDislikeUrl = "http://54.69.61.15:/resp_attire";
     private List<OrderClothModel> listOfSelectedCloth = new ArrayList<>();
-
+    private ModelCatWithMode modelCatWithMode = new ModelCatWithMode();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -146,8 +146,6 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
         dialog = new ProgressDialog(this);
         showShowcaseView();
         getBundleData();
-
-//        setStaticListing(10);
     }
 
     private void setUpAdb() {
@@ -616,7 +614,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
     }
 
     public void getClothsFP() {
-        currentCat = listTypeSelection.get(apicounter);
+        modelCatWithMode = listModelWithCat.get(apicounter);
         ParseUser user = ParseUser.getCurrentUser();
 
         ParseQuery<ParseObject> query = null;
@@ -637,10 +635,10 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
 
         }
 
-        if (currentCat.equals("after5")
-                || currentCat.equals("formal"))
+        if (modelCatWithMode.getCategory().equals("after5")
+                || (modelCatWithMode.getCategory().equals("formal")))
             query.whereNotEqualTo("Category", "casual");
-        if (currentCat.equals("casual")) {
+        if ((modelCatWithMode.getCategory().equals("casual"))) {
             ArrayList<String> list = new ArrayList<String>();
             list.add("shirt");
             list.add("trousers");
@@ -696,9 +694,9 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                         listSubItemLsit.add(item);
                         listOfAllresultItem.add(item);
                     }
-                    modelLookListing = new ModelLookListing(convertInParceObject(listSubItemLsit), currentCat);
+                    modelLookListing = new ModelLookListing(convertInParceObject(listSubItemLsit), modelCatWithMode.getCategory());
                     listResultingLook.add(modelLookListing);
-                    if (listTypeSelection.size() - 1 > apicounter) {
+                    if (listModelWithCat.size() - 1 > apicounter) {
                         apicounter++;
                         getClothsFP();
                     } else {
@@ -775,8 +773,8 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
         mSendData = new JSONObject();
         try {
             mSendData.put("version", "2");
-            mSendData.put("category", currentCat);//causal,formal,after5
-            mSendData.put("mode", constant.gMode);//style me or help me
+            mSendData.put("category", modelCatWithMode.getCategory());//causal,formal,after5
+            mSendData.put("mode", modelCatWithMode.getMode());//style me or help me
             mSendData.put("closet", clothArr);
             mSendData.put("name", "genparams");
             mSendData.put("value", "1");
@@ -871,8 +869,9 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
         tvForTrip.setText(String.format(getString(R.string.suggested_look_for_trip), tripName));
         startDate = (Date) getIntent().getSerializableExtra(constant.BUNDLE_START_DATE);
         setUpAdb();
-        if (getIntent().getSerializableExtra(constant.BUNDLE_LIST_OF_SELECTION) != null) {
-            listTypeSelection = (ArrayList<String>) getIntent().getSerializableExtra(constant.BUNDLE_LIST_OF_SELECTION);
+        if (Parcels.unwrap(getIntent().getParcelableExtra(constant.BUNDLE_LIST_OF_SELECTION)) != null) {
+//            listTypeSelection = (ArrayList<String>) getIntent().getSerializableExtra(constant.BUNDLE_LIST_OF_SELECTION);
+            listModelWithCat = Parcels.unwrap(getIntent().getParcelableExtra(constant.BUNDLE_LIST_OF_SELECTION));
             initBasedOnSelection();
             getClothsFP();
         } else {
