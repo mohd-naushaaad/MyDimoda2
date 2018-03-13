@@ -117,6 +117,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
      * for some use idk
      */
     int id;
+    private List<DMItemObject> listHelpMeTemp = new ArrayList<>();
     private List<ModelCatWithMode> listModelWithCat = new ArrayList<>();
     private CountDownTimer timer;
     private JSONObject mSendData;
@@ -515,25 +516,25 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
     public void downloadBitmaps() {
         try {
 
-                for (int i = 0; i < listOfSelectedCloth.size(); i++) {
-                    //      InputStream mInputStr = new URL(listOfSelectedCloth.get(i).getImageUrl()).openConnection().getInputStream();
-                    try {
-                        //            BitmapFactory.Options options = new BitmapFactory.Options();
-                        //              options.inJustDecodeBounds = true;
-                        //                BitmapFactory.decodeStream(mInputStr, null, options);
+            for (int i = 0; i < listOfSelectedCloth.size(); i++) {
+                //      InputStream mInputStr = new URL(listOfSelectedCloth.get(i).getImageUrl()).openConnection().getInputStream();
+                try {
+                    //            BitmapFactory.Options options = new BitmapFactory.Options();
+                    //              options.inJustDecodeBounds = true;
+                    //                BitmapFactory.decodeStream(mInputStr, null, options);
 
-                        //                  options.inSampleSize = calculateInSampleSize(options, 500, 500);
-                        //                    options.inJustDecodeBounds = false;
-                        //                      mInputStr.reset();
-                        constant.getclothsBitmapLst().add(i, ParseApplication.getInstance().mImageLoader.loadImageSync(listOfSelectedCloth.get(i).getImageUrl(), new ImageSize(500, 500)));
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    } finally {
-                        //        if (mInputStr != null) {
-                        //          mInputStr.close();
-                        //    }
-                    }
+                    //                  options.inSampleSize = calculateInSampleSize(options, 500, 500);
+                    //                    options.inJustDecodeBounds = false;
+                    //                      mInputStr.reset();
+                    constant.getclothsBitmapLst().add(i, ParseApplication.getInstance().mImageLoader.loadImageSync(listOfSelectedCloth.get(i).getImageUrl(), new ImageSize(500, 500)));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    //        if (mInputStr != null) {
+                    //          mInputStr.close();
+                    //    }
                 }
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -656,7 +657,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
     }
 
     private void removeDublicateItem() {
-        if (apicounter - 1 != 0) {
+        if (apicounter != 0) {
             for (int i = 0; i < listOfAllresultItem.size(); i++) {
                 for (int j = 0; j < listOfClothFromParceDB.size(); j++) {
                     if (listOfClothFromParceDB.get(j).getObjectId().equalsIgnoreCase(listOfAllresultItem.get(i).index)) {
@@ -976,6 +977,64 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
         constant.clearClothBitmapList();
     }
 
+    private void doHelpMe(JSONObject result) {
+        if (result != null) {
+            try {
+                JSONArray arr = result.getJSONArray("selection");
+                if (arr != null) {
+                    constant.gItemList.clear();
+                    for (int i = 0; i < arr.length(); i++) {
+                        JSONObject obj = arr.getJSONObject(i);
+                        DMItemObject item = new DMItemObject(obj);
+                        constant.gItemList.add(item);
+                    }
+
+                    if (modelCatWithMode.getCategory().equalsIgnoreCase(constant.CASUAL)) {
+                        parseResponse(result);
+                    } else if (modelCatWithMode.getCategory().equalsIgnoreCase(constant.AFTER5)) {
+                        if (constant.gItemList.size() == 3 || isLookComplete(constant.gItemList, modelCatWithMode.getCategory())) {// mayur added fix for  after 5 cloths
+                            parseResponse(result);
+                        } else {
+                            makeSendData(makeJSONArray(listOfClothFromParceDB));
+                            sendClothsTS();
+                        }
+                    } else if (modelCatWithMode.getCategory().equalsIgnoreCase(constant.FORMAL)) {
+                        if (constant.gItemList.size() == 4 || isLookComplete(constant.gItemList, modelCatWithMode.getCategory())) {
+                            parseResponse(result);
+
+                        } else {
+                            makeSendData(makeJSONArray(listOfClothFromParceDB));
+                            sendClothsTS();
+                        }
+                    }
+
+                }
+            } catch (JSONException e) {
+                // TODO Auto-generated catch block
+                Toast.makeText(this, "You can not get clothes",
+                        Toast.LENGTH_LONG).show();
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private boolean isLookComplete(List<DMItemObject> mClothModellist, String category) {
+        if ((modelCatWithMode.getCategory().equalsIgnoreCase("formal") && mClothModellist.size() == 3) ||
+                (modelCatWithMode.getCategory().equalsIgnoreCase("after5") && mClothModellist.size() == 2)) {
+            return checkHasSuit(mClothModellist);
+        }
+        return false;
+    }
+
+    boolean checkHasSuit(List<DMItemObject> mClothModellist) {
+        for (DMItemObject mModel : mClothModellist) {
+            if (mModel.type.equalsIgnoreCase("suit")) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public class LikeAndDislikeAsynk extends
             AsyncTask<String, Integer, ArrayList<HashMap<String, String>>> {
 
@@ -1072,7 +1131,22 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
 
         @Override
         protected void onPostExecute(JSONObject result) {
-            parseResponse(result);
+            /*try {
+                JSONArray arr = result.getJSONArray("selection");
+                for (int i = 0; i < arr.length(); i++) {
+                    JSONObject obj = arr.getJSONObject(i);
+                    DMItemObject item = new DMItemObject(obj);
+                    listOfAllresultItem.add(item);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }*/
+
+            if (modelCatWithMode.getMode().equalsIgnoreCase(constant.styleME)) {
+                parseResponse(result);
+            } else {
+                doHelpMe(result);
+            }
             super.onPostExecute(result);
         }
     }
