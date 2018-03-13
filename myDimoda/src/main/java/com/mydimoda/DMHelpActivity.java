@@ -122,10 +122,7 @@ public class DMHelpActivity extends Activity {
                         }
 
                     }
-                    /*Intent styleMeintent = new Intent(DMHelpActivity.this, LooklistingActivityForOneLook.class);
-                    styleMeintent.putExtra(constant.BUNDLE_CATEGORY, "casual");
-                    styleMeintent.putExtra(constant.BUNDLE_MODE, "help me");
-                    startActivity(styleMeintent);*/
+
                 }
             }
         });

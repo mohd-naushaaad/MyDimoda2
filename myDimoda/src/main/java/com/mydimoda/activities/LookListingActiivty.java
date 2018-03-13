@@ -646,6 +646,10 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                     listOfClothFromParceDB.clear();
                     listOfClothFromParceDB.addAll(clothList);
                     removeDublicateItem();
+                    if (modelCatWithMode.getMode().equalsIgnoreCase(constant.helpME)) {
+                        listHelpMeTemp.clear();
+                        listHelpMeTemp.addAll(constant.gItemList);
+                    }
                     makeSendData(makeJSONArray(listOfClothFromParceDB));
                     sendClothsTS();
                 } else {
@@ -983,9 +987,16 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                 JSONArray arr = result.getJSONArray("selection");
                 if (arr != null) {
                     constant.gItemList.clear();
+                    parth:
                     for (int i = 0; i < arr.length(); i++) {
                         JSONObject obj = arr.getJSONObject(i);
                         DMItemObject item = new DMItemObject(obj);
+                        for (int j = 0; j < listHelpMeTemp.size(); j++) {
+                            if (item.type.equalsIgnoreCase(listHelpMeTemp.get(j).type)) {
+                                constant.gItemList.add(listHelpMeTemp.get(j));
+                                continue parth;
+                            }
+                        }
                         constant.gItemList.add(item);
                     }
 
