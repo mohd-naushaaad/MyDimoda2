@@ -1001,9 +1001,25 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                     }
 
                     if (modelCatWithMode.getCategory().equalsIgnoreCase(constant.CASUAL)) {
+                        JSONArray modifiedArr = new JSONArray();
+                        for (int i = 0; i < constant.gItemList.size(); i++) {
+                            JSONObject object = new JSONObject();
+                            object.put("id", constant.gItemList.get(i).index);
+                            object.put("type", constant.gItemList.get(i).type);
+                            modifiedArr.put(object);
+                        }
+                        result.put("selection", (Object) modifiedArr);
                         parseResponse(result);
                     } else if (modelCatWithMode.getCategory().equalsIgnoreCase(constant.AFTER5)) {
                         if (constant.gItemList.size() == 3 || isLookComplete(constant.gItemList, modelCatWithMode.getCategory())) {// mayur added fix for  after 5 cloths
+                            JSONArray modifiedArr = new JSONArray();
+                            for (int i = 0; i < constant.gItemList.size(); i++) {
+                                JSONObject object = new JSONObject();
+                                object.put("id", constant.gItemList.get(i).index);
+                                object.put("type", constant.gItemList.get(i).type);
+                                modifiedArr.put(object);
+                            }
+                            result.put("selection", (Object) modifiedArr);
                             parseResponse(result);
                         } else {
                             makeSendData(makeJSONArray(listOfClothFromParceDB));
@@ -1011,6 +1027,14 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                         }
                     } else if (modelCatWithMode.getCategory().equalsIgnoreCase(constant.FORMAL)) {
                         if (constant.gItemList.size() == 4 || isLookComplete(constant.gItemList, modelCatWithMode.getCategory())) {
+                            JSONArray modifiedArr = new JSONArray();
+                            for (int i = 0; i < constant.gItemList.size(); i++) {
+                                JSONObject object = new JSONObject();
+                                object.put("id", constant.gItemList.get(i).index);
+                                object.put("type", constant.gItemList.get(i).type);
+                                modifiedArr.put(object);
+                            }
+                            result.put("selection", (Object) modifiedArr);
                             parseResponse(result);
 
                         } else {
