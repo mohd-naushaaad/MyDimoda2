@@ -104,11 +104,22 @@ public class DMHelpActivity extends Activity {
                 } else {
                     if (mType.equalsIgnoreCase(constant.L_SHIRT) || mType.equalsIgnoreCase(constant.L_TROUSERS)) {
                         makeListOfModeWithCat(0);
-                    } else if (mType.equalsIgnoreCase(constant.L_JACKET)) {
+                    } else if (mType.equalsIgnoreCase(constant.L_JACKET) || mType.equalsIgnoreCase(constant.L_SUIT)) {
+                        for (int i = 0; i < constant.listTypeSelection.size(); i++) {
+                            if (constant.listTypeSelection.get(i).equalsIgnoreCase(constant.FORMAL) ||
+                                    constant.listTypeSelection.get(i).equalsIgnoreCase(constant.AFTER5)) {
+                                makeListOfModeWithCat(i);
+                                break;
+                            }
+                        }
 
                     } else if (mType.equalsIgnoreCase(constant.L_TIE)) {
-
-                    } else if (mType.equalsIgnoreCase(constant.L_SUIT)) {
+                        for (int i = 0; i < constant.listTypeSelection.size(); i++) {
+                            if (constant.listTypeSelection.get(i).equalsIgnoreCase(constant.FORMAL)) {
+                                makeListOfModeWithCat(i);
+                                break;
+                            }
+                        }
 
                     }
                     /*Intent styleMeintent = new Intent(DMHelpActivity.this, LooklistingActivityForOneLook.class);
