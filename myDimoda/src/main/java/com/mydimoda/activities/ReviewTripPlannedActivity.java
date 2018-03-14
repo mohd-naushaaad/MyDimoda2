@@ -113,7 +113,7 @@ public class ReviewTripPlannedActivity extends AppCompatActivity implements Revi
     }
 
     private void hideProgress() {
-        dialog.hide();
+        dialog.dismiss();
     }
 
     private void showShowcaseView() {
