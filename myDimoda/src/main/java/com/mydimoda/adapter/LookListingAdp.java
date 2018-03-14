@@ -66,7 +66,7 @@ public class LookListingAdp extends RecyclerView.Adapter<LookListingAdp.MyHolder
             holder.tvClothtype.setText("business");
             holder.tvClothtype.setTextColor(Color.BLUE);
         }*/
-        holder.rvSubitem.setLayoutManager(new GridLayoutManager(mContext, 2));
+
         holder.rvSubitem.setAdapter(subItemOfLookAdp);
     }
 
@@ -88,6 +88,7 @@ public class LookListingAdp extends RecyclerView.Adapter<LookListingAdp.MyHolder
         public MyHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            rvSubitem.setLayoutManager(new GridLayoutManager(mContext, 2));
         }
 
         @OnClick({R.id.like_btn/*, R.id.dissmiss_btn*/})

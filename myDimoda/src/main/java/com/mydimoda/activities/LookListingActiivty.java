@@ -113,13 +113,15 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
     boolean mIsDislike = false;
     DatabaseModel m_DatabaseModel;
     DbAdapter mDbAdapter;
+    int mTime = 0;
+
     /**
      * for some use idk
      */
     int id;
     private List<DMItemObject> listHelpMeTemp = new ArrayList<>();
     private List<ModelCatWithMode> listModelWithCat = new ArrayList<>();
-    private CountDownTimer timer;
+//    private CountDownTimer timer;
     private JSONObject mSendData;
     private List<ParseObject> listOfClothFromParceDB;
     private int apicounter = 0;
@@ -147,6 +149,13 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
         dialog = new ProgressDialog(this);
         showShowcaseView();
         getBundleData();
+    }
+
+    @Override
+    public void onPause() {
+//        timer.cancel();
+//        t.cancel();
+        super.onPause();
     }
 
     private void setUpAdb() {
@@ -591,6 +600,8 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
     }
 
     public void hideProgress() {
+        System.out.println("LookListingActiivty.hideProgress");
+        ;
         llProgress.setVisibility(View.GONE);
     }
 
@@ -887,8 +898,22 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
 
         showProgress();
         progressView.spin();
+        /*// ///tick function call section
+        timer = new CountDownTimer(Long.MAX_VALUE, 1000) {
+            public void onTick(long millisUntilFinished) {
 
-        final int[] mTime = {0};
+                mTime++;
+                if (mTime == 5) {
+                    progressText.setText("myEnergy. myStyle. \nmyDiModa");
+                }
+            }
+
+            public void onFinish() {
+                Log.d("test", "Timer last tick");
+            }
+
+        }.start();*/
+        /*final int[] mTime = {0};
         timer = new CountDownTimer(Long.MAX_VALUE, 1000) {
             public void onTick(long millisUntilFinished) {
                 Log.e("onTick: ", "Tick");
@@ -903,7 +928,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                 Log.d("test", "Timer last tick");
             }
 
-        }.start();
+        }.start();*/
     }
 
     private void showShowcaseView() {
@@ -1083,6 +1108,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
             constant.showProgress(LookListingActiivty.this, "Loading...");
         }
 
+
         @Override
         protected ArrayList<HashMap<String, String>> doInBackground(
                 String... params) {
@@ -1113,7 +1139,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
         protected void onPreExecute() {
             super.onPreExecute();
             setAlarm(getId());
-            constant.showProgress(LookListingActiivty.this, "Please wait...");
+            constant.showProgress(getApplicationContext(), "Please wait...");
         }
 
         @Override

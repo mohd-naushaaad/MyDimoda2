@@ -55,7 +55,7 @@ public class DMAlgorithmActivity extends Activity {
 
     String mBaseUrl;
     JSONObject mSendData;
-    int mTime = 0;
+   int mTime = 0;
     DatabaseModel m_DatabaseModel;
     ArrayList<DatabaseModel> m_DatabaseModels = new ArrayList<DatabaseModel>();
     ArrayList<DatabaseModel> m_notDatabaseModels = new ArrayList<DatabaseModel>();

@@ -131,7 +131,8 @@
             android:layout_marginRight="15dp"
             android:layout_marginTop="15dp"
             android:gravity="center"
-            android:text="Look being created"
+            android:text="myEnergy. myStyle.
+myDiModa"
             android:textColor="#000000"
             android:textSize="25sp" />
     </LinearLayout>
