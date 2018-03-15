@@ -344,7 +344,12 @@ public class PlanANewTripActivity extends Activity {
                                     Toast.makeText(this, "Number of looks you have requested do not match with trip dates. You could only select one pair for each day of your trip.", Toast.LENGTH_SHORT).show();
                                     return false;
                                 } else {
-                                    return true;
+                                    if ((val_causal + val_formal + val_business) > 5) {
+                                        Toast.makeText(this, "You can select maximum 5 looks", Toast.LENGTH_SHORT).show();
+                                        return false;
+                                    } else {
+                                        return true;
+                                    }
                                 }
                             }
                         }
