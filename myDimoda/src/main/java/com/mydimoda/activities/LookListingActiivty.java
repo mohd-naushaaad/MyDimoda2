@@ -12,9 +12,9 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.os.SystemClock;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -22,11 +22,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,6 +41,7 @@ import com.mydimoda.JSONPostParser;
 import com.mydimoda.ParseApplication;
 import com.mydimoda.R;
 import com.mydimoda.SharedPreferenceUtil;
+import com.mydimoda.adapter.DMMenuListAdapter;
 import com.mydimoda.adapter.LookListingAdp;
 import com.mydimoda.constant;
 import com.mydimoda.customView.Existence_Light_TextView;
@@ -69,7 +72,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
@@ -85,8 +87,6 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
     final public static String ONE_TIME = "onetime";
     /*@BindView(R.id.iv_share)
     ImageView ivShare;*/
-    @BindView(R.id.back_txt)
-    Existence_Light_TextView backTxt;
     @BindView(R.id.back_btn)
     ImageButton backBtn;
     @BindView(R.id.back_layout)
@@ -107,8 +107,8 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
     Existence_Light_TextView titleView;
     @BindView(R.id.ll_progress)
     LinearLayout llProgress;
-    @BindView(R.id.ll_save)
-    LinearLayout llSave;
+    /* @BindView(R.id.ll_save)
+     LinearLayout llSave;*/
     List<ModelLookListing> listLooks = new ArrayList<>();
     DatabaseModel m_DatabaseModel;
     DbAdapter mDbAdapter;
@@ -118,6 +118,18 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
      * for some use idk
      */
     int id;
+    @BindView(R.id.tv_save)
+    Existence_Light_TextView tvSave;
+    @BindView(R.id.menu_btn)
+    Button menuBtn;
+    @BindView(R.id.back_txt)
+    Existence_Light_TextView backTxt;
+    @BindView(R.id.menu_list)
+    ListView menuList;
+    @BindView(R.id.menu_layout)
+    LinearLayout menuLayout;
+    @BindView(R.id.drawer_layout)
+    DrawerLayout drawerLayout;
     private List<DMItemObject> listHelpMeTemp = new ArrayList<>();
     private List<ModelCatWithMode> listModelWithCat = new ArrayList<>();
     //    private CountDownTimer timer;
@@ -718,7 +730,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                     } else {
                         hideProgress();
                         adapter.notifyDataSetChanged();
-                        llSave.setVisibility(View.VISIBLE);
+                        tvSave.setVisibility(View.VISIBLE);
 
                     }
                 }
@@ -899,6 +911,9 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
             listLooks = Parcels.unwrap(getIntent().getParcelableExtra(constant.BUNDLE_TRIP_LIST_LOOKS));
             listResultingLook.addAll(listLooks);
             adapter.notifyDataSetChanged();
+            menuBtn.setVisibility(View.VISIBLE);
+            showMenu();
+            sideMenuClickListner();
         }
 
     }
@@ -957,17 +972,43 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
 
     }
 
-    @OnClick({R.id.back_layout, R.id.ll_save})
+    public void showMenu() {
+        System.out.println("Setting" + constant.gMenuList);
+        menuList.setAdapter(new DMMenuListAdapter(this, constant.gMenuList));
+    }
+
+    private void sideMenuClickListner() {
+        menuList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
+                constant.selectMenuItem(LookListingActiivty.this, position,
+                        true);
+            }
+        });
+    }
+
+    @OnClick({R.id.back_layout, R.id.tv_save, R.id.menu_btn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
 
             case R.id.back_layout:
                 onBackPressed();
                 break;
-            case R.id.ll_save:
+            case R.id.tv_save:
                 storeinParseDb(listResultingLook);
                 break;
+            case R.id.menu_btn:
+                slideMenu();
+                break;
         }
+    }
+
+    public void slideMenu() {
+        if (drawerLayout.isDrawerOpen(menuLayout)) {
+            drawerLayout.closeDrawer(menuLayout);
+        } else
+            drawerLayout.openDrawer(menuLayout);
     }
 
     @Override

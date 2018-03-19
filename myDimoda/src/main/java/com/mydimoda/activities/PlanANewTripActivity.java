@@ -456,6 +456,7 @@ public class PlanANewTripActivity extends Activity implements DatePickerDialog.O
                 if (AppUtils.isInternetConnected(this)) {
                     Intent intent = new Intent(this, ReviewTripPlannedActivity.class);
                     startActivity(intent);
+                    finish();
                 }
                 break;
             case R.id.rl_styleme:

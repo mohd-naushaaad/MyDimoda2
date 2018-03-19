@@ -6,11 +6,16 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +25,7 @@ import com.google.gson.reflect.TypeToken;
 import com.mydimoda.AppUtils;
 import com.mydimoda.R;
 import com.mydimoda.SharedPreferenceUtil;
+import com.mydimoda.adapter.DMMenuListAdapter;
 import com.mydimoda.adapter.ReviewTripAdp;
 import com.mydimoda.constant;
 import com.mydimoda.model.ModelLookListing;
@@ -62,6 +68,14 @@ public class ReviewTripPlannedActivity extends AppCompatActivity implements Revi
     RecyclerView rvTripPlanned;
     @BindView(R.id.rl_coach_review_trip)
     RelativeLayout rlCoachReviewTrip;
+    @BindView(R.id.menu_btn)
+    Button menuBtn;
+    @BindView(R.id.menu_list)
+    ListView menuList;
+    @BindView(R.id.menu_layout)
+    LinearLayout menuLayout;
+    @BindView(R.id.drawer_layout)
+    DrawerLayout drawerLayout;
     private ReviewTripAdp reviewTripAdp;
     private List<ReviewTripData> tripDataList;
     private ProgressDialog dialog;
@@ -75,10 +89,28 @@ public class ReviewTripPlannedActivity extends AppCompatActivity implements Revi
         setContentView(R.layout.review_trip_listing);
         ButterKnife.bind(this);
         init();
+        sideMenuClickListner();
+    }
+
+    private void sideMenuClickListner() {
+        menuList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
+                constant.selectMenuItem(ReviewTripPlannedActivity.this, position,
+                        true);
+            }
+        });
+    }
+
+    public void showMenu() {
+        System.out.println("Setting" + constant.gMenuList);
+        menuList.setAdapter(new DMMenuListAdapter(this, constant.gMenuList));
     }
 
     private void init() {
         dialog = new ProgressDialog(this);
+        showMenu();
         showShowcaseView();
         clickListener = new DialogInterface.OnClickListener() {
             @Override
@@ -182,13 +214,23 @@ public class ReviewTripPlannedActivity extends AppCompatActivity implements Revi
         FontsUtil.setExistenceLight(this, backTxt);
     }
 
-    @OnClick({R.id.back_layout})
+    @OnClick({R.id.back_layout, R.id.menu_btn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.back_layout:
                 onBackPressed();
                 break;
+            case R.id.menu_btn:
+                slideMenu();
+                break;
         }
+    }
+
+    public void slideMenu() {
+        if (drawerLayout.isDrawerOpen(menuLayout)) {
+            drawerLayout.closeDrawer(menuLayout);
+        } else
+            drawerLayout.openDrawer(menuLayout);
     }
 
     @Override

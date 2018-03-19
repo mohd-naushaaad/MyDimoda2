@@ -5,67 +5,107 @@
     android:layout_height="match_parent"
     android:background="@color/white_f7">
 
-    <RelativeLayout
-        android:id="@+id/title_layout"
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
-        android:layout_height="60dp">
+        android:layout_height="match_parent"
+        android:background="@android:color/white">
 
-        <TextView
-            android:id="@+id/title_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:text="@string/review_trip_planned"
-            android:textColor="#000000"
-            android:textSize="20sp" />
-
-        <RelativeLayout
-            android:id="@+id/back_layout"
-            android:layout_width="90dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_alignParentRight="true">
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/back_txt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="5dp"
-                android:layout_toLeftOf="@id/back_btn"
-                android:text="Back"
-                android:textColor="@color/color_black"
-                android:textSize="20sp" />
+            <RelativeLayout
+                android:id="@+id/title_layout"
+                android:layout_width="match_parent"
+                android:layout_height="60dp">
 
-            <ImageButton
-                android:id="@+id/back_btn"
-                android:layout_width="15dp"
-                android:layout_height="25dp"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="5dp"
-                android:background="@drawable/back_btn" />
-        </RelativeLayout>
-    </RelativeLayout>
+                <Button
+                    android:id="@+id/menu_btn"
+                    android:layout_width="@dimen/menu_btn_size"
+                    android:layout_height="@dimen/menu_btn_size"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:background="@drawable/btn_menu_sel" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_trip_planned"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/title_layout"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        tools:listitem="@layout/item_review_trip_planned" />
+                <TextView
+                    android:id="@+id/title_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/review_trip_planned"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
 
-    <RelativeLayout
-        android:id="@+id/rl_coach_review_trip"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="-4dp"
-        android:layout_marginTop="-2dp"
-        android:background="@drawable/coach_review_trips_lanned"
-        android:clickable="true"
-        android:visibility="gone">
+                <RelativeLayout
+                    android:id="@+id/back_layout"
+                    android:layout_width="90dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true">
 
-    </RelativeLayout>
+                    <TextView
+                        android:id="@+id/back_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="5dp"
+                        android:layout_toLeftOf="@id/back_btn"
+                        android:text="Back"
+                        android:textColor="@color/color_black"
+                        android:textSize="20sp" />
+
+                    <ImageButton
+                        android:id="@+id/back_btn"
+                        android:layout_width="15dp"
+                        android:layout_height="25dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/back_btn" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_trip_planned"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/title_layout"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                tools:listitem="@layout/item_review_trip_planned" />
+
+            <RelativeLayout
+                android:id="@+id/rl_coach_review_trip"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="-4dp"
+                android:layout_marginTop="-2dp"
+                android:background="@drawable/coach_review_trips_lanned"
+                android:clickable="true"
+                android:visibility="gone">
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/menu_layout"
+            android:layout_width="270dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:background="@drawable/menu_bg"
+            android:orientation="vertical">
+
+            <ListView
+                android:id="@+id/menu_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@drawable/empty"
+                android:dividerHeight="2dp"
+                android:listSelector="@drawable/listitem_selector"
+                android:paddingTop="60dp"></ListView>
+        </LinearLayout>
+    </android.support.v4.widget.DrawerLayout>
 </RelativeLayout>
