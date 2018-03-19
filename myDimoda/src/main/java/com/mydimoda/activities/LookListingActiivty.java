@@ -963,7 +963,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
     public void onClickOfLike(int pos) {
         listOfSelectedCloth.clear();
         listOfSelectedCloth.addAll(listResultingLook.get(pos).getList());
-        likeCloth(/*listResultingLook.get(pos).getClothType()*/);
+        likeCloth();
     }
 
    /* private void setUpAdp() {

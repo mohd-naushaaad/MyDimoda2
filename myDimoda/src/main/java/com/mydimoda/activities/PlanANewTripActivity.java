@@ -322,20 +322,23 @@ public class PlanANewTripActivity extends Activity implements DatePickerDialog.O
     private boolean isvalidate() {
         if (edNameTrip.getText().toString().trim().length() > 0) {
             if (val_causal == 0 && val_formal == 0 && val_business == 0) {
-                Toast.makeText(this, "Please Provide atleast one look for this trip.", Toast.LENGTH_SHORT).show();
+                constant.alertbox("Warning!", "Please Provide atleast one look for this trip.", this);
+//                Toast.makeText(this, "Please Provide atleast one look for this trip.", Toast.LENGTH_SHORT).show();
                 return false;
             } else {
                 if (startDate != null && endDate != null) {
                     if (dateFormatter.format(startDate).equalsIgnoreCase(dateFormatter.format(endDate))) {
                         if ((val_causal + val_formal + val_business) > 1) {
-                            Toast.makeText(this, "Number of looks you have requested do not match with trip dates. You could only select one pair for each day of your trip.", Toast.LENGTH_SHORT).show();
+                            constant.alertbox("Warning!", "Number of looks you have requested do not match with trip dates. You could only select one pair for each day of your trip.", this);
+//                            Toast.makeText(this, "Number of looks you have requested do not match with trip dates. You could only select one pair for each day of your trip.", Toast.LENGTH_SHORT).show();
                             return false;
                         } else {
                             return true;
                         }
                     } else {
                         if (startDate.compareTo(endDate) > 0) {
-                            Toast.makeText(this, "Trip end date should be later than trip start date", Toast.LENGTH_SHORT).show();
+                            constant.alertbox("Warning!", "Trip end date should be later than trip start date.", this);
+//                            Toast.makeText(this, "Trip end date should be later than trip start date", Toast.LENGTH_SHORT).show();
                             return false;
                         } else {
                             long different = endDate.getTime() - startDate.getTime();
@@ -345,15 +348,18 @@ public class PlanANewTripActivity extends Activity implements DatePickerDialog.O
                             long daysInMilli = hoursInMilli * 24;
                             gapDiffbetweenDate = different / daysInMilli;
                             if (gapDiffbetweenDate > 14) {
-                                Toast.makeText(this, "Date Range should be less than 2 weeks for a trip", Toast.LENGTH_SHORT).show();
+                                constant.alertbox("Warning!", "Date Range should be less than 2 weeks for a trip.", this);
+//                                Toast.makeText(this, "Date Range should be less than 2 weeks for a trip", Toast.LENGTH_SHORT).show();
                                 return false;
                             } else {
                                 if ((val_causal + val_formal + val_business) > gapDiffbetweenDate) {
-                                    Toast.makeText(this, "Number of looks you have requested do not match with trip dates. You could only select one pair for each day of your trip.", Toast.LENGTH_SHORT).show();
+                                    constant.alertbox("Warning!", "Number of looks you have requested do not match with trip dates. You could only select one pair for each day of your trip.", this);
+//                                    Toast.makeText(this, "Number of looks you have requested do not match with trip dates. You could only select one pair for each day of your trip.", Toast.LENGTH_SHORT).show();
                                     return false;
                                 } else {
                                     if ((val_causal + val_formal + val_business) > 5) {
-                                        Toast.makeText(this, "You can select maximum 5 looks", Toast.LENGTH_SHORT).show();
+                                        constant.alertbox("Warning!", "You can select maximum 5 looks.", this);
+//                                        Toast.makeText(this, "You can select maximum 5 looks", Toast.LENGTH_SHORT).show();
                                         return false;
                                     } else {
                                         return true;
@@ -363,12 +369,14 @@ public class PlanANewTripActivity extends Activity implements DatePickerDialog.O
                         }
                     }
                 } else {
-                    Toast.makeText(this, "Please provide start and end date for this trip", Toast.LENGTH_SHORT).show();
+                    constant.alertbox("Warning!", "Please provide start and end date for this trip.", this);
+//                    Toast.makeText(this, "Please provide start and end date for this trip", Toast.LENGTH_SHORT).show();
                     return false;
                 }
             }
         } else {
-            Toast.makeText(this, "Please provide a meaningful name for this trip", Toast.LENGTH_SHORT).show();
+            constant.alertbox("Warning!", "Please provide a meaningful name for this trip.", this);
+//            Toast.makeText(this, "Please provide a meaningful name for this trip", Toast.LENGTH_SHORT).show();
             return false;
         }
     }
