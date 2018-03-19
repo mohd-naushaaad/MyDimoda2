@@ -110,7 +110,6 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
     @BindView(R.id.ll_save)
     LinearLayout llSave;
     List<ModelLookListing> listLooks = new ArrayList<>();
-    boolean mIsDislike = false;
     DatabaseModel m_DatabaseModel;
     DbAdapter mDbAdapter;
     int mTime = 0;
@@ -166,17 +165,22 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
     }
 
     public void likeCloth() {
-        mIsDislike = false;
-        /*makeSendData("like", clothType);
-        LikeAndDislikeAsynk likeAndDislikeAsynk = new LikeAndDislikeAsynk();
-        likeAndDislikeAsynk.execute();*/
         new DownloadTaskRunner().execute();
-        /*if (constant.gMode.equals("help me")) {
+    }
 
-        } else {
-            constant.gLikeNum = 0;
-            new DownloadTaskRunner().execute();
-        }*/
+    private void dislikeCloth() {
+        for (int i = 0; i < listOfSelectedCloth.size(); i++) {
+            JSONObject jsonObject = new JSONObject();
+            try {
+                jsonObject.put("id", listOfSelectedCloth.get(i).getId());
+                jsonObject.put("type", listOfSelectedCloth.get(i).getType());
+                DMItemObject item = new DMItemObject(jsonObject);
+                listOfAllresultItem.add(item);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }
     }
 
     // / --------------------------------------- When mode is help me, make item
@@ -196,16 +200,13 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
     }
 
     public void dislikeCloth(String clothType) {
-        mIsDislike = true;
-        constant.gBlockedList.add(constant.gFashion);
-        makeSendData("dislike", clothType);
-        LikeAndDislikeAsynk likeAndDislikeAsynk = new LikeAndDislikeAsynk();
-        likeAndDislikeAsynk.execute();
+
+
     }
 
     // / ----------------------------------------------- make send data with
     // json format ------------
-    public void makeSendData(String feedback, String type) {
+    /*public void makeSendData(String feedback, String type) {
         mSendData = new JSONObject();
         try {
             mSendData.put("version", "2");
@@ -250,7 +251,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
         } catch (JSONException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
     public JSONArray makeTargetJSONArrayid_type(List<OrderClothModel> subClothList) {
         JSONArray arr = new JSONArray();
@@ -295,7 +296,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
         return arr;
     }
 
-    private void ParseLikeandDislikeResponse(JSONObject mResponseData) {
+    /*private void ParseLikeandDislikeResponse(JSONObject mResponseData) {
         String status = null;
         try {
             status = mResponseData.getString("status");
@@ -323,7 +324,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                 new DownloadTaskRunner().execute();
             }
         }
-    }
+    }*/
 
     void setAlarm(int id) {
 
@@ -1002,8 +1003,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
     public void onClickofDisLike(int pos) {
         listOfSelectedCloth.clear();
         listOfSelectedCloth.addAll(listResultingLook.get(pos).getList());
-        dislikeCloth(listResultingLook.get(pos).getClothType());
-        constant.clearClothBitmapList();
+        dislikeCloth();
     }
 
     private void doHelpMe(JSONObject result) {
@@ -1095,7 +1095,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
         return false;
     }
 
-    public class LikeAndDislikeAsynk extends
+    /*public class LikeAndDislikeAsynk extends
             AsyncTask<String, Integer, ArrayList<HashMap<String, String>>> {
 
         // / server communicate using asyncTask
@@ -1131,7 +1131,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
 
             super.onPostExecute(result);
         }
-    }
+    }*/
 
     private class DownloadTaskRunner extends AsyncTask<Void, Void, Void> {
 

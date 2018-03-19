@@ -216,6 +216,11 @@ public class DMHomeActivity extends FragmentActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        finishAffinity();
+    }
+
     public void init() {
         showMenu();
         showShowcaseView();
