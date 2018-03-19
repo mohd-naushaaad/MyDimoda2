@@ -70,6 +70,21 @@ public class AppUtils {
         return false;
     }
 
+    public static boolean isInternetConnected(Context context) {
+        ConnectivityManager connectivity = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivity != null) {
+            NetworkInfo[] info = connectivity.getAllNetworkInfo();
+            if (info != null)
+                for (int i = 0; i < info.length; i++)
+                    if (info[i].getState() == NetworkInfo.State.CONNECTED) {
+                        return true;
+                    }
+
+        }
+        Toast.makeText(context, "No internet connection", Toast.LENGTH_LONG).show();
+        return false;
+    }
+
 
     public static void showAlertDialog(String message, Context m_Context) {
         AlertDialog.Builder builder = new AlertDialog.Builder(m_Context);
@@ -313,7 +328,7 @@ public class AppUtils {
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                     // Dipen select only one image
-                    if(!mGallerImageLst.get(position).isSelected()) {
+                    if (!mGallerImageLst.get(position).isSelected()) {
                         for (int i = 0; i < mGallerImageLst.size(); i++) {
                             if (mGallerImageLst.get(i).isSelected()) {
                                 mGallerImageLst.get(i).setSelected(false);
@@ -324,7 +339,7 @@ public class AppUtils {
 
                     mAdapter.notifyDataSetChanged();
                     if (mGallerImageLst.get(position).isSelected()) {
-                        getDialogImgSelectLst().add(0,mGallerImageLst.get(position).getImagePathl());
+                        getDialogImgSelectLst().add(0, mGallerImageLst.get(position).getImagePathl());
                     } else {
                         getDialogImgSelectLst().remove(mGallerImageLst.get(position).getImagePathl());
                     }

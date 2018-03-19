@@ -85,7 +85,9 @@ public class ReviewTripPlannedActivity extends AppCompatActivity implements Revi
             public void onClick(DialogInterface dialogInterface, int i) {
                 switch (i) {
                     case DialogInterface.BUTTON_POSITIVE:
-                        deleteTrip(pos);
+                        if (AppUtils.isInternetConnected(ReviewTripPlannedActivity.this)) {
+                            deleteTrip(pos);
+                        }
                         break;
                     case DialogInterface.BUTTON_NEGATIVE:
                         break;

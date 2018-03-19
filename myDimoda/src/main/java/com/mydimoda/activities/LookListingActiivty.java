@@ -663,7 +663,9 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                         listHelpMeTemp.addAll(constant.gItemList);
                     }
                     makeSendData(makeJSONArray(listOfClothFromParceDB));
-                    sendClothsTS();
+                    if (AppUtils.isInternetConnected(LookListingActiivty.this)) {
+                        sendClothsTS();
+                    }
                 } else {
                     Toast.makeText(LookListingActiivty.this, e.toString(),
                             Toast.LENGTH_LONG).show();
@@ -708,7 +710,11 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                     listResultingLook.add(modelLookListing);
                     if (listModelWithCat.size() - 1 > apicounter) {
                         apicounter++;
-                        getClothsFP();
+                        if (AppUtils.isInternetConnected(this)) {
+                            getClothsFP();
+                        } else {
+                            hideProgress();
+                        }
                     } else {
                         hideProgress();
                         adapter.notifyDataSetChanged();
@@ -717,6 +723,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                     }
                 }
             } catch (JSONException e) {
+                hideProgress();
                 // TODO Auto-generated catch block
                 Toast.makeText(this, "You can not get clothes",
                         Toast.LENGTH_LONG).show();
@@ -883,7 +890,11 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
 //            listTypeSelection = (ArrayList<String>) getIntent().getSerializableExtra(constant.BUNDLE_LIST_OF_SELECTION);
             listModelWithCat = Parcels.unwrap(getIntent().getParcelableExtra(constant.BUNDLE_LIST_OF_SELECTION));
             initBasedOnSelection();
-            getClothsFP();
+            if (AppUtils.isInternetConnected(this)) {
+                getClothsFP();
+            } else {
+                hideProgress();
+            }
         } else {
             listLooks = Parcels.unwrap(getIntent().getParcelableExtra(constant.BUNDLE_TRIP_LIST_LOOKS));
             listResultingLook.addAll(listLooks);

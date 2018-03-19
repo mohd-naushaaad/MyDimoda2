@@ -26,6 +26,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mydimoda.AppUtils;
 import com.mydimoda.R;
 import com.mydimoda.SharedPreferenceUtil;
 import com.mydimoda.adapter.DMMenuListAdapter;
@@ -452,8 +453,10 @@ public class PlanANewTripActivity extends Activity implements DatePickerDialog.O
                 endDatePickerDialog.show();
                 break;
             case R.id.btn_trip:
-                Intent intent = new Intent(this, ReviewTripPlannedActivity.class);
-                startActivity(intent);
+                if (AppUtils.isInternetConnected(this)) {
+                    Intent intent = new Intent(this, ReviewTripPlannedActivity.class);
+                    startActivity(intent);
+                }
                 break;
             case R.id.rl_styleme:
                 if (isvalidate()) {
