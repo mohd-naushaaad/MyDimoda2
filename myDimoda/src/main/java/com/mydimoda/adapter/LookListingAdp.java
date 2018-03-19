@@ -82,8 +82,8 @@ public class LookListingAdp extends RecyclerView.Adapter<LookListingAdp.MyHolder
         RecyclerView rvSubitem;
         @BindView(R.id.like_btn)
         Button likeBtn;
-        /*@BindView(R.id.dissmiss_btn)
-        Button dissmissBtn;*/
+        @BindView(R.id.dissmiss_btn)
+        Button dissmissBtn;
 
         public MyHolder(View itemView) {
             super(itemView);
@@ -91,15 +91,15 @@ public class LookListingAdp extends RecyclerView.Adapter<LookListingAdp.MyHolder
             rvSubitem.setLayoutManager(new GridLayoutManager(mContext, 2));
         }
 
-        @OnClick({R.id.like_btn/*, R.id.dissmiss_btn*/})
+        @OnClick({R.id.like_btn, R.id.dissmiss_btn})
         public void onViewClicked(View view) {
             switch (view.getId()) {
                 case R.id.like_btn:
                     listner.onClickOfLike(getAdapterPosition());
                     break;
-                /*case R.id.dissmiss_btn:
+                case R.id.dissmiss_btn:
                     listner.onClickofDisLike(getAdapterPosition());
-                    break;*/
+                    break;
             }
         }
 

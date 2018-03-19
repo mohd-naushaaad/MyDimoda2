@@ -121,7 +121,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
     int id;
     private List<DMItemObject> listHelpMeTemp = new ArrayList<>();
     private List<ModelCatWithMode> listModelWithCat = new ArrayList<>();
-//    private CountDownTimer timer;
+    //    private CountDownTimer timer;
     private JSONObject mSendData;
     private List<ParseObject> listOfClothFromParceDB;
     private int apicounter = 0;

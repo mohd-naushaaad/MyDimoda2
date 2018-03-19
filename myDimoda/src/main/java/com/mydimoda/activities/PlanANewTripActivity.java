@@ -40,6 +40,7 @@ import com.parse.ParseUser;
 import org.parceler.Parcels;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -54,7 +55,7 @@ import butterknife.OnClick;
  * Created by Parth on 2/8/2018.
  */
 
-public class PlanANewTripActivity extends Activity {
+public class PlanANewTripActivity extends Activity implements DatePickerDialog.OnDateSetListener {
     int val_causal = 0, val_formal = 0, val_business = 0;
     @BindView(R.id.menu_btn)
     Button menuBtn;
@@ -90,12 +91,12 @@ public class PlanANewTripActivity extends Activity {
     LinearLayout llEndDate;
     @BindView(R.id.tv_end_date)
     Existence_Light_TextView tvEndDate;
-    @BindView(R.id.tv_lbl_need_pkg)
-    Existence_Light_TextView tvLblNeedPkg;
-    @BindView(R.id.rb_more_look)
-    RadioButton rbMoreLook;
-    @BindView(R.id.rb_less_look)
-    RadioButton rbLessLook;
+    /* @BindView(R.id.tv_lbl_need_pkg)
+     Existence_Light_TextView tvLblNeedPkg;
+     @BindView(R.id.rb_more_look)
+     RadioButton rbMoreLook;
+     @BindView(R.id.rb_less_look)
+     RadioButton rbLessLook;*/
     @BindView(R.id.tv_lbl_que_looks)
     Existence_Light_TextView tvLblQueLooks;
     @BindView(R.id.tv_casual_minus)
@@ -157,6 +158,12 @@ public class PlanANewTripActivity extends Activity {
         sideMenuClickListner();
     }
 
+    private long giveMinDate(Date startDate) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(startDate);
+        return cal.getTimeInMillis();
+    }
+
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         int x = (int) ev.getX();
@@ -187,7 +194,7 @@ public class PlanANewTripActivity extends Activity {
     }
 
     private void init_view() {
-        rbMoreLook.setChecked(true);
+//        rbMoreLook.setChecked(true);
         tvCasualVal.setText(String.valueOf(val_causal));
         tvFormalVal.setText(String.valueOf(val_formal));
         tvBusinessVal.setText(String.valueOf(val_business));
@@ -198,12 +205,17 @@ public class PlanANewTripActivity extends Activity {
                 calendar = Calendar.getInstance();
 //                calendar.setTimeZone(TimeZone.getTimeZone("UTC"));
 
+                endDatePickerDialog.getDatePicker().setMinDate(0);
+
                 calendar.set(year, monthOfYear, dayOfMonth);
+                endDatePickerDialog.getDatePicker().setMinDate(calendar.getTimeInMillis());
+
+                startDate = calendar.getTime();
+
                 /*calendar.set(Calendar.HOUR, 0);
                 calendar.set(Calendar.MINUTE, 0);
                 calendar.set(Calendar.SECOND, 0);*/
 
-                startDate = calendar.getTime();
 
                 tvStartDate.setVisibility(View.GONE);
                 llStartDate.setVisibility(View.VISIBLE);
@@ -211,8 +223,8 @@ public class PlanANewTripActivity extends Activity {
                 tvStartMm.setText(constant.getMonth(monthOfYear + 1));
             }
 
-        }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
 
+        }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
         endDatePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
@@ -220,10 +232,6 @@ public class PlanANewTripActivity extends Activity {
 //                calendar.setTimeZone(TimeZone.getTimeZone("UTC"));
 
                 calendar.set(year, monthOfYear, dayOfMonth);
-               /* calendar.set(Calendar.HOUR, 0);
-                calendar.set(Calendar.MINUTE, 0);
-                calendar.set(Calendar.SECOND, 0);*/
-
                 endDate = calendar.getTime();
 
                 tvEndDate.setVisibility(View.GONE);
@@ -370,8 +378,8 @@ public class PlanANewTripActivity extends Activity {
         FontsUtil.setExistenceLight(this, titleView);
         FontsUtil.setExistenceLight(this, btnTrip);
         FontsUtil.setExistenceLight(this, backTxt);
-        FontsUtil.setExistenceLight(this, rbLessLook);
-        FontsUtil.setExistenceLight(this, rbMoreLook);
+        /*FontsUtil.setExistenceLight(this, rbLessLook);
+        FontsUtil.setExistenceLight(this, rbMoreLook);*/
         FontsUtil.setExistenceLight(this, edNameTrip);
     }
 
@@ -432,7 +440,7 @@ public class PlanANewTripActivity extends Activity {
             case R.id.tv_end_date:
             case R.id.ll_end_date:
             case R.id.iv_calender:
-                endDatePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+                endDatePickerDialog.getDatePicker().setMinDate(calendar.getTimeInMillis());
                 endDatePickerDialog.show();
                 break;
             case R.id.btn_trip:
@@ -587,4 +595,8 @@ public class PlanANewTripActivity extends Activity {
 
     }
 
+    @Override
+    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+
+    }
 }
