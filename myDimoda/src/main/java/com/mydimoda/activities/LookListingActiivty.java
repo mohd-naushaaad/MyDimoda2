@@ -738,6 +738,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                 }
             } catch (JSONException e) {
                 hideProgress();
+                adapter.notifyDataSetChanged();
                 // TODO Auto-generated catch block
                 Toast.makeText(this, "You can not get clothes",
                         Toast.LENGTH_LONG).show();
