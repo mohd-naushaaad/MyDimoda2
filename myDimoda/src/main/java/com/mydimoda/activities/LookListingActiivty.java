@@ -37,6 +37,8 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.mydimoda.AlarmReciever;
 import com.mydimoda.AppUtils;
+import com.mydimoda.DMAlgorithmActivity;
+import com.mydimoda.DMStyleActivity;
 import com.mydimoda.JSONPostParser;
 import com.mydimoda.ParseApplication;
 import com.mydimoda.R;
@@ -903,6 +905,19 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
             listModelWithCat = Parcels.unwrap(getIntent().getParcelableExtra(constant.BUNDLE_LIST_OF_SELECTION));
             initBasedOnSelection();
             if (AppUtils.isInternetConnected(this)) {
+
+                ParseUser user = ParseUser.getCurrentUser();
+                int count = user.getInt("Count");
+                count++;
+                user.put("Count", count);
+                user.saveInBackground(new SaveCallback() {
+                    @Override
+                    public void done(ParseException e) {
+
+                    }
+
+                });
+
                 getClothsFP();
             } else {
                 hideProgress();
