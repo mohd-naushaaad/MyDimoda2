@@ -3,15 +3,19 @@ package com.mydimoda.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 
 import com.mydimoda.DMHelpActivity;
 import com.mydimoda.R;
+import com.mydimoda.adapter.DMMenuListAdapter;
 import com.mydimoda.constant;
 import com.mydimoda.customView.Existence_Light_TextView;
 
@@ -79,6 +83,14 @@ public class TripHelpMeActivity extends Activity {
     RelativeLayout rlSuit;
     @BindView(R.id.shirt_btn)
     Button shirtBtn;
+    @BindView(R.id.menu_btn)
+    Button menuBtn;
+    @BindView(R.id.menu_list)
+    ListView menuList;
+    @BindView(R.id.menu_layout)
+    LinearLayout menuLayout;
+    @BindView(R.id.drawer_layout)
+    DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,6 +98,31 @@ public class TripHelpMeActivity extends Activity {
         setContentView(R.layout.activity_help_me_selection);
         ButterKnife.bind(this);
         manageListingOfClothes();
+        showMenu();
+        sideMenuClickListner();
+    }
+
+    public void showMenu() {
+        System.out.println("Setting" + constant.gMenuList);
+        menuList.setAdapter(new DMMenuListAdapter(this, constant.gMenuList));
+    }
+
+    private void sideMenuClickListner() {
+        menuList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
+                constant.selectMenuItem(TripHelpMeActivity.this, position,
+                        true);
+            }
+        });
+    }
+
+    public void slideMenu() {
+        if (drawerLayout.isDrawerOpen(menuLayout)) {
+            drawerLayout.closeDrawer(menuLayout);
+        } else
+            drawerLayout.openDrawer(menuLayout);
     }
 
     private void manageListingOfClothes() {
@@ -138,7 +175,7 @@ public class TripHelpMeActivity extends Activity {
     }
 
 
-    @OnClick({R.id.back_layout, R.id.shirt_btn, R.id.pants_btn, R.id.coat_btn, R.id.tie_btn, R.id.suit_btn})
+    @OnClick({R.id.back_layout, R.id.shirt_btn, R.id.pants_btn, R.id.coat_btn, R.id.tie_btn, R.id.suit_btn, R.id.menu_btn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.back_layout:
@@ -161,6 +198,9 @@ public class TripHelpMeActivity extends Activity {
                 break;
             case R.id.suit_btn:
                 navigatetoClothListing("suit");
+                break;
+            case R.id.menu_btn:
+                slideMenu();
                 break;
         }
     }
