@@ -927,11 +927,13 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                 });
                 currentCat = listModelWithCat.get(apicounter).getCategory();
                 currentMode = listModelWithCat.get(apicounter).getMode();
+                adapter.updateFlag(false);
                 getClothsFP();
             } else {
                 hideProgress();
             }
         } else {
+            adapter.updateFlag(true);
             listLooks = Parcels.unwrap(getIntent().getParcelableExtra(constant.BUNDLE_TRIP_LIST_LOOKS));
             listResultingLook.addAll(listLooks);
             adapter.notifyDataSetChanged();

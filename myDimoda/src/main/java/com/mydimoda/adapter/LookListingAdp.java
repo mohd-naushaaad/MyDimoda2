@@ -34,11 +34,16 @@ public class LookListingAdp extends RecyclerView.Adapter<LookListingAdp.MyHolder
     private List<ModelLookListing> listOfCloth;
     private Context mContext;
     private ClickListnerOfLook listner;
+    private boolean isFromTrip = false;
 
     public LookListingAdp(List<ModelLookListing> listOfCloth, Context mContext, ClickListnerOfLook listner) {
         this.listOfCloth = listOfCloth;
         this.mContext = mContext;
         this.listner = listner;
+    }
+
+    public void updateFlag(boolean b) {
+        isFromTrip = b;
     }
 
     @Override
@@ -50,7 +55,11 @@ public class LookListingAdp extends RecyclerView.Adapter<LookListingAdp.MyHolder
     @Override
     public void onBindViewHolder(MyHolder holder, int position) {
         SubItemOfLookAdp subItemOfLookAdp = new SubItemOfLookAdp(listOfCloth.get(position).getList(), mContext);
-
+        if (isFromTrip) {
+            holder.dissmissBtn.setVisibility(View.GONE);
+        } else {
+            holder.dissmissBtn.setVisibility(View.VISIBLE);
+        }
         if (listOfCloth.get(position).getClothType().equalsIgnoreCase("after5")) {
             holder.tvClothtype.setText("business");
         } else {
