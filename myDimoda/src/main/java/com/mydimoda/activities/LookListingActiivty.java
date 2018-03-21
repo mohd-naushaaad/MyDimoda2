@@ -37,8 +37,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.mydimoda.AlarmReciever;
 import com.mydimoda.AppUtils;
-import com.mydimoda.DMAlgorithmActivity;
-import com.mydimoda.DMStyleActivity;
 import com.mydimoda.JSONPostParser;
 import com.mydimoda.ParseApplication;
 import com.mydimoda.R;
@@ -633,8 +631,8 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
         dialog.hide();
     }
 
-    public void getClothsFP() {
-        modelCatWithMode = listModelWithCat.get(apicounter);
+    public void getClothsFP(final String clothCat, final String mode) {
+//        modelCatWithMode = listModelWithCat.get(apicounter);
         ParseUser user = ParseUser.getCurrentUser();
 
         ParseQuery<ParseObject> query = null;
@@ -652,13 +650,12 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
         } else {
             query = ParseQuery.getQuery("DemoCloset");
             m_DatabaseModel.setName("DemoCloset");
-
         }
 
-        if (modelCatWithMode.getCategory().equals("after5")
-                || (modelCatWithMode.getCategory().equals("formal")))
+        if (clothCat.equals("after5")
+                || (clothCat.equals("formal")))
             query.whereNotEqualTo("Category", "casual");
-        if ((modelCatWithMode.getCategory().equals("casual"))) {
+        if ((clothCat.equals("casual"))) {
             ArrayList<String> list = new ArrayList<String>();
             list.add("shirt");
             list.add("trousers");
@@ -672,11 +669,11 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                     listOfClothFromParceDB.clear();
                     listOfClothFromParceDB.addAll(clothList);
                     removeDublicateItem();
-                    if (modelCatWithMode.getMode().equalsIgnoreCase(constant.helpME)) {
+                    if (mode.equalsIgnoreCase(constant.helpME)) {
                         listHelpMeTemp.clear();
                         listHelpMeTemp.addAll(constant.gItemList);
                     }
-                    makeSendData(makeJSONArray(listOfClothFromParceDB));
+                    makeSendData(makeJSONArray(listOfClothFromParceDB), clothCat, mode);
                     if (AppUtils.isInternetConnected(LookListingActiivty.this)) {
                         sendClothsTS();
                     }
@@ -708,7 +705,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
         task1.execute();
     }
 
-    public void parseResponse(JSONObject data) {
+    public void parseResponse(JSONObject data, String cat) {
         if (data != null) {
             try {
                 JSONArray arr = data.getJSONArray("selection");
@@ -720,12 +717,13 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                         listSubItemLsit.add(item);
                         listOfAllresultItem.add(item);
                     }
-                    modelLookListing = new ModelLookListing(convertInParceObject(listSubItemLsit), modelCatWithMode.getCategory());
+                    modelLookListing = new ModelLookListing(convertInParceObject(listSubItemLsit), cat);
                     listResultingLook.add(modelLookListing);
                     if (listModelWithCat.size() - 1 > apicounter) {
                         apicounter++;
                         if (AppUtils.isInternetConnected(this)) {
-                            getClothsFP();
+                            modelCatWithMode = listModelWithCat.get(apicounter);
+                            getClothsFP(modelCatWithMode.getCategory(), modelCatWithMode.getMode());
                         } else {
                             hideProgress();
                         }
@@ -801,12 +799,12 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
 
     // / --------------------------------------------------------- make
     // JSONObject to send server ----------
-    public void makeSendData(JSONArray clothArr) {
+    public void makeSendData(JSONArray clothArr, String clothCat, String mode) {
         mSendData = new JSONObject();
         try {
             mSendData.put("version", "2");
-            mSendData.put("category", modelCatWithMode.getCategory());//causal,formal,after5
-            mSendData.put("mode", modelCatWithMode.getMode());//style me or help me
+            mSendData.put("category", clothCat);//causal,formal,after5
+            mSendData.put("mode", mode);//style me or help me
             mSendData.put("closet", clothArr);
             mSendData.put("name", "genparams");
             mSendData.put("value", "1");
@@ -918,8 +916,8 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                     }
 
                 });
-
-                getClothsFP();
+                modelCatWithMode = listModelWithCat.get(apicounter);
+                getClothsFP(modelCatWithMode.getCategory(), modelCatWithMode.getMode());
             } else {
                 hideProgress();
             }
@@ -1074,7 +1072,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
         dislikeCloth();
     }
 
-    private void doHelpMe(JSONObject result) {
+    private void doHelpMe(JSONObject result, String cat, String mode) {
         if (result != null) {
             try {
                 JSONArray arr = result.getJSONArray("selection");
@@ -1093,7 +1091,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                         constant.gItemList.add(item);
                     }
 
-                    if (modelCatWithMode.getCategory().equalsIgnoreCase(constant.CASUAL)) {
+                    if (cat.equalsIgnoreCase(constant.CASUAL)) {
                         JSONArray modifiedArr = new JSONArray();
                         for (int i = 0; i < constant.gItemList.size(); i++) {
                             JSONObject object = new JSONObject();
@@ -1102,9 +1100,9 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                             modifiedArr.put(object);
                         }
                         result.put("selection", (Object) modifiedArr);
-                        parseResponse(result);
-                    } else if (modelCatWithMode.getCategory().equalsIgnoreCase(constant.AFTER5)) {
-                        if (constant.gItemList.size() == 3 || isLookComplete(constant.gItemList, modelCatWithMode.getCategory())) {// mayur added fix for  after 5 cloths
+                        parseResponse(result, cat);
+                    } else if (cat.equalsIgnoreCase(constant.AFTER5)) {
+                        if (constant.gItemList.size() == 3 || isLookComplete(constant.gItemList, cat)) {// mayur added fix for  after 5 cloths
                             JSONArray modifiedArr = new JSONArray();
                             for (int i = 0; i < constant.gItemList.size(); i++) {
                                 JSONObject object = new JSONObject();
@@ -1113,13 +1111,13 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                                 modifiedArr.put(object);
                             }
                             result.put("selection", (Object) modifiedArr);
-                            parseResponse(result);
+                            parseResponse(result, cat);
                         } else {
-                            makeSendData(makeJSONArray(listOfClothFromParceDB));
+                            makeSendData(makeJSONArray(listOfClothFromParceDB), cat, mode);
                             sendClothsTS();
                         }
-                    } else if (modelCatWithMode.getCategory().equalsIgnoreCase(constant.FORMAL)) {
-                        if (constant.gItemList.size() == 4 || isLookComplete(constant.gItemList, modelCatWithMode.getCategory())) {
+                    } else if (cat.equalsIgnoreCase(constant.FORMAL)) {
+                        if (constant.gItemList.size() == 4 || isLookComplete(constant.gItemList, cat)) {
                             JSONArray modifiedArr = new JSONArray();
                             for (int i = 0; i < constant.gItemList.size(); i++) {
                                 JSONObject object = new JSONObject();
@@ -1128,10 +1126,10 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                                 modifiedArr.put(object);
                             }
                             result.put("selection", (Object) modifiedArr);
-                            parseResponse(result);
+                            parseResponse(result, cat);
 
                         } else {
-                            makeSendData(makeJSONArray(listOfClothFromParceDB));
+                            makeSendData(makeJSONArray(listOfClothFromParceDB), cat, mode);
                             sendClothsTS();
                         }
                     }
@@ -1272,9 +1270,9 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
             }*/
 
             if (modelCatWithMode.getMode().equalsIgnoreCase(constant.styleME)) {
-                parseResponse(result);
+                parseResponse(result, modelCatWithMode.getCategory());
             } else {
-                doHelpMe(result);
+                doHelpMe(result, modelCatWithMode.getCategory(), modelCatWithMode.getMode());
             }
             super.onPostExecute(result);
         }
