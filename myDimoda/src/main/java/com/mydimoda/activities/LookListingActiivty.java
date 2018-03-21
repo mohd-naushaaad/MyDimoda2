@@ -184,20 +184,19 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
     }
 
     private void dislikeCloth() {
-        for (int i = 0; i < listOfSelectedCloth.size(); i++) {
-            JSONObject jsonObject = new JSONObject();
-            try {
-                jsonObject.put("id", listOfSelectedCloth.get(i).getId());
-                jsonObject.put("type", listOfSelectedCloth.get(i).getType());
-                DMItemObject item = new DMItemObject(jsonObject);
-                listOfAllresultItem.add(item);
-            } catch (JSONException e) {
-                e.printStackTrace();
-                return;
-            }
-        }
         isDisLike = true;
         showProgressDialog();
+        if (currentMode.equalsIgnoreCase(constant.helpME)) {
+            constant.gItemList.clear();
+            constant.gItemList.addAll(constant.gItemListTemp);
+            for (int i = 0; i < listOfAllresultItem.size(); i++) {
+                if (listOfAllresultItem.get(i).index.equalsIgnoreCase(constant.gItemList.get(0).index)) {
+                    listOfAllresultItem.remove(i);
+                    System.out.println("is removed" + i);
+                    break;
+                }
+            }
+        }
         getClothsFP();
     }
 
@@ -1078,11 +1077,12 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
 
     @Override
     public void onClickofDisLike(int pos) {
+        currentCat = listResultingLook.get(pos).getClothType();
+        currentMode = listResultingLook.get(pos).getMode();
         disLikePos = pos;
         listOfSelectedCloth.clear();
         listOfSelectedCloth.addAll(listResultingLook.get(pos).getList());
-        currentCat = listResultingLook.get(pos).getClothType();
-        currentMode = listResultingLook.get(pos).getMode();
+
         dislikeCloth();
     }
 
