@@ -145,7 +145,10 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
     private ProgressDialog dialog;
     private String likeDislikeUrl = "http://54.69.61.15:/resp_attire";
     private List<OrderClothModel> listOfSelectedCloth = new ArrayList<>();
-    private ModelCatWithMode modelCatWithMode = new ModelCatWithMode();
+    //    private ModelCatWithMode modelCatWithMode = new ModelCatWithMode();
+    private String currentCat = "", currentMode = "";
+    private boolean isDisLike = false;
+    private int disLikePos;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -190,9 +193,12 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                 listOfAllresultItem.add(item);
             } catch (JSONException e) {
                 e.printStackTrace();
+                return;
             }
-
         }
+        isDisLike = true;
+        showProgressDialog();
+        getClothsFP();
     }
 
     // / --------------------------------------- When mode is help me, make item
@@ -211,10 +217,6 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
         return list;
     }
 
-    public void dislikeCloth(String clothType) {
-
-
-    }
 
     // / ----------------------------------------------- make send data with
     // json format ------------
@@ -631,7 +633,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
         dialog.hide();
     }
 
-    public void getClothsFP(final String clothCat, final String mode) {
+    public void getClothsFP() {
 //        modelCatWithMode = listModelWithCat.get(apicounter);
         ParseUser user = ParseUser.getCurrentUser();
 
@@ -652,10 +654,10 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
             m_DatabaseModel.setName("DemoCloset");
         }
 
-        if (clothCat.equals("after5")
-                || (clothCat.equals("formal")))
+        if (currentCat.equals("after5")
+                || (currentCat.equals("formal")))
             query.whereNotEqualTo("Category", "casual");
-        if ((clothCat.equals("casual"))) {
+        if ((currentCat.equals("casual"))) {
             ArrayList<String> list = new ArrayList<String>();
             list.add("shirt");
             list.add("trousers");
@@ -669,11 +671,11 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                     listOfClothFromParceDB.clear();
                     listOfClothFromParceDB.addAll(clothList);
                     removeDublicateItem();
-                    if (mode.equalsIgnoreCase(constant.helpME)) {
+                    if (currentMode.equalsIgnoreCase(constant.helpME)) {
                         listHelpMeTemp.clear();
                         listHelpMeTemp.addAll(constant.gItemList);
                     }
-                    makeSendData(makeJSONArray(listOfClothFromParceDB), clothCat, mode);
+                    makeSendData(makeJSONArray(listOfClothFromParceDB));
                     if (AppUtils.isInternetConnected(LookListingActiivty.this)) {
                         sendClothsTS();
                     }
@@ -705,7 +707,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
         task1.execute();
     }
 
-    public void parseResponse(JSONObject data, String cat) {
+    public void parseResponse(JSONObject data) {
         if (data != null) {
             try {
                 JSONArray arr = data.getJSONArray("selection");
@@ -717,13 +719,21 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                         listSubItemLsit.add(item);
                         listOfAllresultItem.add(item);
                     }
-                    modelLookListing = new ModelLookListing(convertInParceObject(listSubItemLsit), cat);
+                    modelLookListing = new ModelLookListing(convertInParceObject(listSubItemLsit), currentCat, currentMode);
+                    if (isDisLike) {
+                        listResultingLook.set(disLikePos, modelLookListing);
+                        adapter.notifyItemChanged(disLikePos);
+                        isDisLike = false;
+                        hideProgressDialog();
+                        return;
+                    }
                     listResultingLook.add(modelLookListing);
                     if (listModelWithCat.size() - 1 > apicounter) {
                         apicounter++;
                         if (AppUtils.isInternetConnected(this)) {
-                            modelCatWithMode = listModelWithCat.get(apicounter);
-                            getClothsFP(modelCatWithMode.getCategory(), modelCatWithMode.getMode());
+                            currentCat = listModelWithCat.get(apicounter).getCategory();
+                            currentMode = listModelWithCat.get(apicounter).getMode();
+                            getClothsFP();
                         } else {
                             hideProgress();
                         }
@@ -799,18 +809,18 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
 
     // / --------------------------------------------------------- make
     // JSONObject to send server ----------
-    public void makeSendData(JSONArray clothArr, String clothCat, String mode) {
+    public void makeSendData(JSONArray clothArr) {
         mSendData = new JSONObject();
         try {
             mSendData.put("version", "2");
-            mSendData.put("category", clothCat);//causal,formal,after5
-            mSendData.put("mode", mode);//style me or help me
+            mSendData.put("category", currentCat);//causal,formal,after5
+            mSendData.put("mode", currentMode);//style me or help me
             mSendData.put("closet", clothArr);
             mSendData.put("name", "genparams");
             mSendData.put("value", "1");
             mSendData.put("blocked", makeBlockedJSONArray(constant.gBlockedList));
 
-            if (modelCatWithMode.getMode().equals("help me")) {
+            if (currentMode.equals("help me")) {
                 mSendData.put("items", makeItemJSONArray(constant.gItemList));
             }
 
@@ -916,8 +926,9 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                     }
 
                 });
-                modelCatWithMode = listModelWithCat.get(apicounter);
-                getClothsFP(modelCatWithMode.getCategory(), modelCatWithMode.getMode());
+                currentCat = listModelWithCat.get(apicounter).getCategory();
+                currentMode = listModelWithCat.get(apicounter).getMode();
+                getClothsFP();
             } else {
                 hideProgress();
             }
@@ -1067,12 +1078,15 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
 
     @Override
     public void onClickofDisLike(int pos) {
+        disLikePos = pos;
         listOfSelectedCloth.clear();
         listOfSelectedCloth.addAll(listResultingLook.get(pos).getList());
+        currentCat = listResultingLook.get(pos).getClothType();
+        currentMode = listResultingLook.get(pos).getMode();
         dislikeCloth();
     }
 
-    private void doHelpMe(JSONObject result, String cat, String mode) {
+    private void doHelpMe(JSONObject result) {
         if (result != null) {
             try {
                 JSONArray arr = result.getJSONArray("selection");
@@ -1091,7 +1105,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                         constant.gItemList.add(item);
                     }
 
-                    if (cat.equalsIgnoreCase(constant.CASUAL)) {
+                    if (currentCat.equalsIgnoreCase(constant.CASUAL)) {
                         JSONArray modifiedArr = new JSONArray();
                         for (int i = 0; i < constant.gItemList.size(); i++) {
                             JSONObject object = new JSONObject();
@@ -1100,9 +1114,9 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                             modifiedArr.put(object);
                         }
                         result.put("selection", (Object) modifiedArr);
-                        parseResponse(result, cat);
-                    } else if (cat.equalsIgnoreCase(constant.AFTER5)) {
-                        if (constant.gItemList.size() == 3 || isLookComplete(constant.gItemList, cat)) {// mayur added fix for  after 5 cloths
+                        parseResponse(result);
+                    } else if (currentCat.equalsIgnoreCase(constant.AFTER5)) {
+                        if (constant.gItemList.size() == 3 || isLookComplete(constant.gItemList, currentCat)) {// mayur added fix for  after 5 cloths
                             JSONArray modifiedArr = new JSONArray();
                             for (int i = 0; i < constant.gItemList.size(); i++) {
                                 JSONObject object = new JSONObject();
@@ -1111,13 +1125,13 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                                 modifiedArr.put(object);
                             }
                             result.put("selection", (Object) modifiedArr);
-                            parseResponse(result, cat);
+                            parseResponse(result);
                         } else {
-                            makeSendData(makeJSONArray(listOfClothFromParceDB), cat, mode);
+                            makeSendData(makeJSONArray(listOfClothFromParceDB));
                             sendClothsTS();
                         }
-                    } else if (cat.equalsIgnoreCase(constant.FORMAL)) {
-                        if (constant.gItemList.size() == 4 || isLookComplete(constant.gItemList, cat)) {
+                    } else if (currentCat.equalsIgnoreCase(constant.FORMAL)) {
+                        if (constant.gItemList.size() == 4 || isLookComplete(constant.gItemList, currentCat)) {
                             JSONArray modifiedArr = new JSONArray();
                             for (int i = 0; i < constant.gItemList.size(); i++) {
                                 JSONObject object = new JSONObject();
@@ -1126,10 +1140,10 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                                 modifiedArr.put(object);
                             }
                             result.put("selection", (Object) modifiedArr);
-                            parseResponse(result, cat);
+                            parseResponse(result);
 
                         } else {
-                            makeSendData(makeJSONArray(listOfClothFromParceDB), cat, mode);
+                            makeSendData(makeJSONArray(listOfClothFromParceDB));
                             sendClothsTS();
                         }
                     }
@@ -1145,8 +1159,8 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
     }
 
     private boolean isLookComplete(List<DMItemObject> mClothModellist, String category) {
-        if ((modelCatWithMode.getCategory().equalsIgnoreCase("formal") && mClothModellist.size() == 3) ||
-                (modelCatWithMode.getCategory().equalsIgnoreCase("after5") && mClothModellist.size() == 2)) {
+        if ((currentCat.equalsIgnoreCase("formal") && mClothModellist.size() == 3) ||
+                (currentCat.equalsIgnoreCase("after5") && mClothModellist.size() == 2)) {
             return checkHasSuit(mClothModellist);
         }
         return false;
@@ -1269,10 +1283,10 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                 e.printStackTrace();
             }*/
 
-            if (modelCatWithMode.getMode().equalsIgnoreCase(constant.styleME)) {
-                parseResponse(result, modelCatWithMode.getCategory());
+            if (currentMode.equalsIgnoreCase(constant.styleME)) {
+                parseResponse(result);
             } else {
-                doHelpMe(result, modelCatWithMode.getCategory(), modelCatWithMode.getMode());
+                doHelpMe(result);
             }
             super.onPostExecute(result);
         }

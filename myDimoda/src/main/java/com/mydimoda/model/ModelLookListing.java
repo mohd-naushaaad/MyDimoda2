@@ -16,24 +16,39 @@ public class ModelLookListing {
     @SerializedName("listOfCloth")
     public List<OrderClothModel> listOfCloth = new ArrayList();
     public String clothType = "";
+    public String mode = "";
 
-    public ModelLookListing(List<OrderClothModel> listOfCloth, String clothType) {
+    public ModelLookListing(List<OrderClothModel> listOfCloth, String clothType, String mode) {
         this.listOfCloth = listOfCloth;
         this.clothType = clothType;
+        this.mode = mode;
     }
 
     public ModelLookListing() {
-    }
-
-    public String getClothType() {
-        return clothType;
     }
 
     public List<OrderClothModel> getList() {
         return listOfCloth;
     }
 
-    public void setList(List<OrderClothModel> listOfCloth) {
+    public void setListOfCloth(List<OrderClothModel> listOfCloth) {
         this.listOfCloth = listOfCloth;
     }
+
+    public String getClothType() {
+        return clothType;
+    }
+
+    public void setClothType(String clothType) {
+        this.clothType = clothType;
+    }
+
+    public String getMode() {
+        return mode;
+    }
+
+    public void setMode(String mode) {
+        this.mode = mode;
+    }
+
 }
