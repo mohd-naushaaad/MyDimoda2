@@ -201,47 +201,12 @@ public class PlanANewTripActivity extends Activity implements DatePickerDialog.O
         tvFormalVal.setText(String.valueOf(val_formal));
         tvBusinessVal.setText(String.valueOf(val_business));
         Calendar newCalendar = Calendar.getInstance();
-        startDatePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+        startDatePickerDialog = new DatePickerDialog(this, this
+                , newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
 
-            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                calendar = Calendar.getInstance();
-//                calendar.setTimeZone(TimeZone.getTimeZone("UTC"));
+        endDatePickerDialog = new DatePickerDialog(this, this
+                , newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
 
-
-                calendar.set(year, monthOfYear, dayOfMonth);
-                startDate = calendar.getTime();
-
-                endDatePickerDialog.getDatePicker().setMinDate(0);
-                endDatePickerDialog.getDatePicker().setMinDate(calendar.getTimeInMillis());
-
-                /*calendar.set(Calendar.HOUR, 0);
-                calendar.set(Calendar.MINUTE, 0);
-                calendar.set(Calendar.SECOND, 0);*/
-
-
-                tvStartDate.setVisibility(View.GONE);
-                llStartDate.setVisibility(View.VISIBLE);
-                tvStartDd.setText(String.valueOf(dayOfMonth));
-                tvStartMm.setText(constant.getMonth(monthOfYear + 1));
-            }
-
-
-        }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
-        endDatePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
-                calendar = Calendar.getInstance();
-//                calendar.setTimeZone(TimeZone.getTimeZone("UTC"));
-
-                calendar.set(year, monthOfYear, dayOfMonth);
-                endDate = calendar.getTime();
-
-                tvEndDate.setVisibility(View.GONE);
-                llEndDate.setVisibility(View.VISIBLE);
-                tvEndDd.setText(String.valueOf(dayOfMonth));
-                tvEndMm.setText(constant.getMonth(monthOfYear + 1));
-            }
-        }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
     }
 
     private boolean hasPurchase() {
@@ -451,6 +416,8 @@ public class PlanANewTripActivity extends Activity implements DatePickerDialog.O
             case R.id.ll_end_date:
             case R.id.iv_calender:
                 if (startDate != null) {
+                    endDatePickerDialog.getDatePicker().setMinDate(0);
+                    endDatePickerDialog.getDatePicker().setMinDate(calendar.getTimeInMillis());
                     endDatePickerDialog.show();
                 } else {
                     constant.alertbox("Warning!", "Please select start date first.", this);
@@ -619,7 +586,24 @@ public class PlanANewTripActivity extends Activity implements DatePickerDialog.O
     }
 
     @Override
-    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+    public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
+        calendar = Calendar.getInstance();
+        calendar.set(year, monthOfYear, dayOfMonth);
+        if (datePicker == startDatePickerDialog.getDatePicker()) {
+            startDate = calendar.getTime();
 
+            tvStartDate.setVisibility(View.GONE);
+            llStartDate.setVisibility(View.VISIBLE);
+            tvStartDd.setText(String.valueOf(dayOfMonth));
+            tvStartMm.setText(constant.getMonth(monthOfYear + 1));
+
+        } else {
+            endDate = calendar.getTime();
+
+            tvEndDate.setVisibility(View.GONE);
+            llEndDate.setVisibility(View.VISIBLE);
+            tvEndDd.setText(String.valueOf(dayOfMonth));
+            tvEndMm.setText(constant.getMonth(monthOfYear + 1));
+        }
     }
 }
