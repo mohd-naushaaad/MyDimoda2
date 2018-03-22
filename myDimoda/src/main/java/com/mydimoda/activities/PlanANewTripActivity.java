@@ -27,6 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mydimoda.AppUtils;
+import com.mydimoda.DMHomeActivity;
 import com.mydimoda.R;
 import com.mydimoda.SharedPreferenceUtil;
 import com.mydimoda.adapter.DMMenuListAdapter;
@@ -456,7 +457,6 @@ public class PlanANewTripActivity extends Activity implements DatePickerDialog.O
                 if (AppUtils.isInternetConnected(this)) {
                     Intent intent = new Intent(this, ReviewTripPlannedActivity.class);
                     startActivity(intent);
-                    finish();
                 }
                 break;
             case R.id.rl_styleme:
@@ -513,6 +513,14 @@ public class PlanANewTripActivity extends Activity implements DatePickerDialog.O
         for (int i = 0; i < val_business; i++) {
             constant.listTypeSelection.add("after5");
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, DMHomeActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        finish();
     }
 
     private void saveDataintoParseDb() {
