@@ -207,12 +207,12 @@ public class PlanANewTripActivity extends Activity implements DatePickerDialog.O
                 calendar = Calendar.getInstance();
 //                calendar.setTimeZone(TimeZone.getTimeZone("UTC"));
 
-                endDatePickerDialog.getDatePicker().setMinDate(0);
 
                 calendar.set(year, monthOfYear, dayOfMonth);
-                endDatePickerDialog.getDatePicker().setMinDate(calendar.getTimeInMillis());
-
                 startDate = calendar.getTime();
+
+                endDatePickerDialog.getDatePicker().setMinDate(0);
+                endDatePickerDialog.getDatePicker().setMinDate(calendar.getTimeInMillis());
 
                 /*calendar.set(Calendar.HOUR, 0);
                 calendar.set(Calendar.MINUTE, 0);
@@ -450,8 +450,11 @@ public class PlanANewTripActivity extends Activity implements DatePickerDialog.O
             case R.id.tv_end_date:
             case R.id.ll_end_date:
             case R.id.iv_calender:
-                endDatePickerDialog.getDatePicker().setMinDate(calendar.getTimeInMillis());
-                endDatePickerDialog.show();
+                if (startDate != null) {
+                    endDatePickerDialog.show();
+                } else {
+                    constant.alertbox("Warning!", "Please select start date first.", this);
+                }
                 break;
             case R.id.btn_trip:
                 if (AppUtils.isInternetConnected(this)) {

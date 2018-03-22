@@ -171,6 +171,7 @@ public class ReviewTripPlannedActivity extends AppCompatActivity implements Revi
         ParseUser user = ParseUser.getCurrentUser();
         ParseQuery<ParseObject> query = ParseQuery.getQuery("TripData");
         query.whereEqualTo("User", user);
+        query.addDescendingOrder("createdAt");
 
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
