@@ -110,6 +110,8 @@ public class ReviewTripPlannedActivity extends AppCompatActivity implements Revi
 
     private void init() {
         dialog = new ProgressDialog(this);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.setCancelable(false);
         showMenu();
         showShowcaseView();
         clickListener = new DialogInterface.OnClickListener() {

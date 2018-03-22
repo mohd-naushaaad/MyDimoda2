@@ -161,6 +161,8 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
         mDbAdapter.open();
         m_DatabaseModel = new DatabaseModel();
         dialog = new ProgressDialog(this);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.setCancelable(false);
         showShowcaseView();
         getBundleData();
     }
