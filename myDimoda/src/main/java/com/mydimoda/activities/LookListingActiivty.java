@@ -1223,7 +1223,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
         protected void onPreExecute() {
             super.onPreExecute();
             setAlarm(getId());
-            constant.showProgress(getApplicationContext(), "Please wait...");
+            showProgressDialog();
         }
 
         @Override
@@ -1239,7 +1239,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
         @Override
         protected void onPostExecute(Void result) {
             if (!isFinishing() && AppUtils.isOnline(LookListingActiivty.this)) {
-                constant.hideProgress();
+                hideProgressDialog();
                 try {
                     makeImage();
                 } catch (Exception e) {

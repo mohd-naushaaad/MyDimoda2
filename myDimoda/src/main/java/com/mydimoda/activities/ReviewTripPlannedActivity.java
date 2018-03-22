@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.mydimoda.AppUtils;
+import com.mydimoda.DMHomeActivity;
 import com.mydimoda.R;
 import com.mydimoda.SharedPreferenceUtil;
 import com.mydimoda.adapter.DMMenuListAdapter;
@@ -227,6 +228,14 @@ public class ReviewTripPlannedActivity extends AppCompatActivity implements Revi
                 slideMenu();
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, PlanANewTripActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        finish();
     }
 
     public void slideMenu() {
