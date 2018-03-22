@@ -631,7 +631,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
     }
 
     private void hideProgressDialog() {
-        dialog.hide();
+       dialog.dismiss();
     }
 
     public void getClothsFP() {
@@ -751,6 +751,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                 // TODO Auto-generated catch block
                 Toast.makeText(this, "You can not get clothes",
                         Toast.LENGTH_LONG).show();
+                hideProgressDialog();
                 e.printStackTrace();
             }
         }
