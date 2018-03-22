@@ -144,7 +144,7 @@ public class PlanANewTripActivity extends Activity implements DatePickerDialog.O
     SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
     //    private ArrayList<String> listTypeSelection = new ArrayList<>();
     private DatePickerDialog startDatePickerDialog, endDatePickerDialog;
-    private Calendar calendar;
+    private Calendar calendar, newCalendar;
     private Date startDate, endDate;
     private long gapDiffbetweenDate = 0;
     private List<ModelCatWithMode> listcatWithMode = new ArrayList<>();
@@ -200,13 +200,10 @@ public class PlanANewTripActivity extends Activity implements DatePickerDialog.O
         tvCasualVal.setText(String.valueOf(val_causal));
         tvFormalVal.setText(String.valueOf(val_formal));
         tvBusinessVal.setText(String.valueOf(val_business));
-        Calendar newCalendar = Calendar.getInstance();
+        newCalendar = Calendar.getInstance();
         startDatePickerDialog = new DatePickerDialog(this, this
                 , newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
-
-        endDatePickerDialog = new DatePickerDialog(this, this
-                , newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
-
+        startDatePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
     }
 
     private boolean hasPurchase() {
@@ -409,14 +406,14 @@ public class PlanANewTripActivity extends Activity implements DatePickerDialog.O
                 break;
             case R.id.tv_start_date:
             case R.id.ll_start_date:
-                startDatePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
                 startDatePickerDialog.show();
                 break;
             case R.id.tv_end_date:
             case R.id.ll_end_date:
             case R.id.iv_calender:
                 if (startDate != null) {
-                    endDatePickerDialog.getDatePicker().setMinDate(0);
+                    endDatePickerDialog = new DatePickerDialog(this, this
+                            , newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
                     endDatePickerDialog.getDatePicker().setMinDate(calendar.getTimeInMillis());
                     endDatePickerDialog.show();
                 } else {
