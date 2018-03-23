@@ -17,6 +17,18 @@
             android:orientation="vertical">
 
             <RelativeLayout
+                android:id="@+id/rl_coach_review_trip"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="-4dp"
+                android:layout_marginTop="-2dp"
+                android:background="@drawable/coach_review_trips_lanned"
+                android:clickable="true"
+                android:visibility="gone">
+
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:id="@+id/title_layout"
                 android:layout_width="match_parent"
                 android:layout_height="60dp">
@@ -77,17 +89,7 @@
                 android:paddingRight="20dp"
                 tools:listitem="@layout/item_review_trip_planned" />
 
-            <RelativeLayout
-                android:id="@+id/rl_coach_review_trip"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="-4dp"
-                android:layout_marginTop="-2dp"
-                android:background="@drawable/coach_review_trips_lanned"
-                android:clickable="true"
-                android:visibility="gone">
 
-            </RelativeLayout>
         </LinearLayout>
 
         <LinearLayout
