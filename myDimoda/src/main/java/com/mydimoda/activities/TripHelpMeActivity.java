@@ -37,7 +37,7 @@ public class TripHelpMeActivity extends Activity {
     @BindView(R.id.back_btn)
     ImageButton backBtn;
     @BindView(R.id.back_layout)
-    RelativeLayout backLayout;
+    LinearLayout backLayout;
     @BindView(R.id.title_view)
     Existence_Light_TextView titleView;
     @BindView(R.id.title_layout)
