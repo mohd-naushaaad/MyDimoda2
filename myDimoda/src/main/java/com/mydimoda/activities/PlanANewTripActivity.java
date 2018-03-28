@@ -144,7 +144,7 @@ public class PlanANewTripActivity extends Activity implements DatePickerDialog.O
     SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
     //    private ArrayList<String> listTypeSelection = new ArrayList<>();
     private DatePickerDialog startDatePickerDialog, endDatePickerDialog;
-    private Calendar calendar, newCalendar;
+    private Calendar startDatecalendar, endDateCalender;
     private Date startDate, endDate;
     private long gapDiffbetweenDate = 0;
     private List<ModelCatWithMode> listcatWithMode = new ArrayList<>();
@@ -200,9 +200,12 @@ public class PlanANewTripActivity extends Activity implements DatePickerDialog.O
         tvCasualVal.setText(String.valueOf(val_causal));
         tvFormalVal.setText(String.valueOf(val_formal));
         tvBusinessVal.setText(String.valueOf(val_business));
-        newCalendar = Calendar.getInstance();
+
+        startDatecalendar = Calendar.getInstance();
+        endDateCalender = Calendar.getInstance();
+
         startDatePickerDialog = new DatePickerDialog(this, this
-                , newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+                , startDatecalendar.get(Calendar.YEAR), startDatecalendar.get(Calendar.MONTH), startDatecalendar.get(Calendar.DAY_OF_MONTH));
         startDatePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
     }
 
@@ -221,9 +224,9 @@ public class PlanANewTripActivity extends Activity implements DatePickerDialog.O
             } else if (count >= (maxCount >= 5 ? maxCount : constant.maxCount)) {
                 /*
                  * if(SharedPreferenceUtil.getString("inApp",
-				 * "0").equalsIgnoreCase("1")) { gotoAlgorithmActivity(); } else
-				 * {
-				 */
+                 * "0").equalsIgnoreCase("1")) { gotoAlgorithmActivity(); } else
+                 * {
+                 */
                 showPurchaseAlert();
                 /* } */
             } else {
@@ -253,23 +256,23 @@ public class PlanANewTripActivity extends Activity implements DatePickerDialog.O
 
                                 GoogleIAP.buyFeature(0);
 
-						/*
-                         * showProgressBar("");
-						 *
-						 * ParseUser user = ParseUser.getCurrentUser();
-						 * user.put("Buy", true);
-						 * user.saveInBackground(new SaveCallback() {
-						 *
-						 * @Override public void done(ParseException e1)
-						 * {
-						 *
-						 * hideProgressBar();
-						 *
-						 * if(e1 == null) { gotoAlgorithmActivity(); }
-						 * else { Toast.makeText(DMStyleActivity.this,
-						 * e1.toString(), Toast.LENGTH_LONG).show(); } }
-						 * });
-						 */
+                                /*
+                                 * showProgressBar("");
+                                 *
+                                 * ParseUser user = ParseUser.getCurrentUser();
+                                 * user.put("Buy", true);
+                                 * user.saveInBackground(new SaveCallback() {
+                                 *
+                                 * @Override public void done(ParseException e1)
+                                 * {
+                                 *
+                                 * hideProgressBar();
+                                 *
+                                 * if(e1 == null) { gotoAlgorithmActivity(); }
+                                 * else { Toast.makeText(DMStyleActivity.this,
+                                 * e1.toString(), Toast.LENGTH_LONG).show(); } }
+                                 * });
+                                 */
                             }
                         })
                 .setPositiveButton("Cancel",
@@ -310,7 +313,7 @@ public class PlanANewTripActivity extends Activity implements DatePickerDialog.O
                             long minutesInMilli = secondsInMilli * 60;
                             long hoursInMilli = minutesInMilli * 60;
                             long daysInMilli = hoursInMilli * 24;
-                            gapDiffbetweenDate = different / daysInMilli;
+                            gapDiffbetweenDate = (different / daysInMilli) + 1;
                             if (gapDiffbetweenDate > 14) {
                                 constant.alertbox("Warning!", "Date Range should be less than 2 weeks for a trip.", this);
 //                                Toast.makeText(this, "Date Range should be less than 2 weeks for a trip", Toast.LENGTH_SHORT).show();
@@ -413,8 +416,8 @@ public class PlanANewTripActivity extends Activity implements DatePickerDialog.O
             case R.id.iv_calender:
                 if (startDate != null) {
                     endDatePickerDialog = new DatePickerDialog(this, this
-                            , newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
-                    endDatePickerDialog.getDatePicker().setMinDate(calendar.getTimeInMillis());
+                            , endDateCalender.get(Calendar.YEAR), endDateCalender.get(Calendar.MONTH), endDateCalender.get(Calendar.DAY_OF_MONTH));
+                    endDatePickerDialog.getDatePicker().setMinDate(startDatecalendar.getTimeInMillis());
                     endDatePickerDialog.show();
                 } else {
                     constant.alertbox("Warning!", "Please select start date first.", this);
@@ -584,10 +587,10 @@ public class PlanANewTripActivity extends Activity implements DatePickerDialog.O
 
     @Override
     public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
-        calendar = Calendar.getInstance();
-        calendar.set(year, monthOfYear, dayOfMonth);
         if (datePicker == startDatePickerDialog.getDatePicker()) {
-            startDate = calendar.getTime();
+
+            startDatecalendar.set(year, monthOfYear, dayOfMonth);
+            startDate = startDatecalendar.getTime();
 
             tvStartDate.setVisibility(View.GONE);
             llStartDate.setVisibility(View.VISIBLE);
@@ -595,7 +598,8 @@ public class PlanANewTripActivity extends Activity implements DatePickerDialog.O
             tvStartMm.setText(constant.getMonth(monthOfYear + 1));
 
         } else {
-            endDate = calendar.getTime();
+            endDateCalender.set(year, monthOfYear, dayOfMonth);
+            endDate = endDateCalender.getTime();
 
             tvEndDate.setVisibility(View.GONE);
             llEndDate.setVisibility(View.VISIBLE);
