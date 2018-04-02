@@ -87,6 +87,7 @@
                         android:padding="10dp">
 
                         <EditText
+                            android:maxLength="50"
                             android:id="@+id/ed_name_trip"
                             style="@style/trip_text"
                             android:layout_width="match_parent"
