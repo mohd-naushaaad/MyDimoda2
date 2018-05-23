@@ -631,7 +631,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
     }
 
     private void hideProgressDialog() {
-       dialog.dismiss();
+        dialog.dismiss();
     }
 
     public void getClothsFP() {
@@ -706,6 +706,41 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
     public void sendClothsTS() {
         MyAsyncTask task1 = new MyAsyncTask();
         task1.execute();
+    }
+
+    private void getAllClothes() {
+        ParseUser user = ParseUser.getCurrentUser();
+
+        ParseQuery<ParseObject> query = null;
+
+        SharedPreferences settings = getSharedPreferences(constant.PREFS_NAME, 0);
+        constant.gIsCloset = settings.getBoolean("isCloset", false);
+        if (constant.gIsCloset) {
+
+            System.out.println("" + constant.gIsCloset);
+
+            query = ParseQuery.getQuery("Clothes");
+            m_DatabaseModel.setName("Clothes");
+            query.whereEqualTo("User", user);
+            query.setLimit(constant.RESULT_SIZE);//mayur increased limit to 1000
+        } else {
+            query = ParseQuery.getQuery("DemoCloset");
+            m_DatabaseModel.setName("DemoCloset");
+        }
+
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> clothList, ParseException e) {
+
+                if (e == null) {
+                    listOfClothFromParceDB.clear();
+                    listOfClothFromParceDB.addAll(clothList);
+                    makeJSONArray(listOfClothFromParceDB);
+                } else {
+                    Toast.makeText(LookListingActiivty.this, e.toString(),
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 
     public void parseResponse(JSONObject data) {
