@@ -209,6 +209,7 @@ public class TripHelpMeActivity extends Activity {
         Intent intent = new Intent(this, DMHelpActivity.class);
         intent.putExtra(constant.BUNDLE_ISFROMPLANNEWTRIP, true);
         intent.putExtra("type", type);
+        intent.putExtra("look", getIntent().getStringExtra("look"));
         startActivity(intent);
     }
 }

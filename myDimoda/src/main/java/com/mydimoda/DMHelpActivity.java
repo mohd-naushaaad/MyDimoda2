@@ -141,6 +141,7 @@ public class DMHelpActivity extends Activity {
         }
         Intent styleMeintent = new Intent(DMHelpActivity.this, LookListingActiivty.class);
         Bundle bundle = new Bundle();
+        styleMeintent.putExtra("look", getIntent().getStringExtra("look"));
         bundle.putParcelable(constant.BUNDLE_LIST_OF_SELECTION, Parcels.wrap(listOfCatwithMode));
         styleMeintent.putExtras(bundle);
         startActivity(styleMeintent);
@@ -365,23 +366,23 @@ public class DMHelpActivity extends Activity {
 
                                 GoogleIAP.buyFeature(0);
 
-								/*
+                                /*
                                  * showProgressBar("");
-								 * 
-								 * ParseUser user = ParseUser.getCurrentUser();
-								 * user.put("Buy", true);
-								 * user.saveInBackground(new SaveCallback() {
-								 * 
-								 * @Override public void done(ParseException e1)
-								 * {
-								 * 
-								 * hideProgressBar();
-								 * 
-								 * if(e1 == null) { goAlgorithmActivity(); }
-								 * else { Toast.makeText(DMHelpActivity.this,
-								 * e1.toString(), Toast.LENGTH_LONG).show(); } }
-								 * });
-								 */
+                                 *
+                                 * ParseUser user = ParseUser.getCurrentUser();
+                                 * user.put("Buy", true);
+                                 * user.saveInBackground(new SaveCallback() {
+                                 *
+                                 * @Override public void done(ParseException e1)
+                                 * {
+                                 *
+                                 * hideProgressBar();
+                                 *
+                                 * if(e1 == null) { goAlgorithmActivity(); }
+                                 * else { Toast.makeText(DMHelpActivity.this,
+                                 * e1.toString(), Toast.LENGTH_LONG).show(); } }
+                                 * });
+                                 */
                             }
                         })
                 .setPositiveButton("Cancel",

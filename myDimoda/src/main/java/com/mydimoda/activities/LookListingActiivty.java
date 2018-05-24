@@ -34,6 +34,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
 import com.mydimoda.AlarmReciever;
 import com.mydimoda.AppUtils;
@@ -149,6 +150,9 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
     private String currentCat = "", currentMode = "";
     private boolean isDisLike = false;
     private int disLikePos;
+    private List<ModelCatWithMode> listOfHelpME = new ArrayList<>();
+    private List<ModelCatWithMode> listOfSytleME = new ArrayList<>();
+    String look = "";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -708,7 +712,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
         task1.execute();
     }
 
-    private void getAllClothes() {
+    private void getAllClothesFromParse() {
         ParseUser user = ParseUser.getCurrentUser();
 
         ParseQuery<ParseObject> query = null;
@@ -734,13 +738,90 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                 if (e == null) {
                     listOfClothFromParceDB.clear();
                     listOfClothFromParceDB.addAll(clothList);
-                    makeJSONArray(listOfClothFromParceDB);
+                    new AsyncTaskForPackageing().execute(getJsonForNewApi(makeJSONArray(listOfClothFromParceDB)).toString());
                 } else {
                     Toast.makeText(LookListingActiivty.this, e.toString(),
                             Toast.LENGTH_LONG).show();
                 }
             }
         });
+    }
+
+    public void parsePackagingResponse(JSONObject packageingdata) {
+        if (packageingdata != null) {
+            try {
+                JSONArray arrLooks = packageingdata.getJSONArray("looks");
+                for (int i = 0; i < arrLooks.length(); i++) {
+                    ModelLookListing modelOfPackage = new ModelLookListing();
+                    JSONObject jsonObject = arrLooks.getJSONObject(i);
+                    String category = jsonObject.getString("category");
+                    JSONArray arrSelection = jsonObject.getJSONArray("selection");
+                    if (arrSelection != null) {
+                        List<DMItemObject> listSubItemLsit = new ArrayList<>();
+                        for (int j = 0; j < arrSelection.length(); j++) {
+                            JSONObject obj = arrSelection.getJSONObject(j);
+                            DMItemObject item = new DMItemObject(obj);
+                            listSubItemLsit.add(item);
+                            listOfAllresultItem.add(item);
+                        }
+                        modelOfPackage.setClothType(category);
+                        modelOfPackage.setMode(constant.styleME);
+                        modelOfPackage.setListOfCloth(convertInParceObject(listSubItemLsit));
+                        listResultingLook.add(modelOfPackage);
+                    }
+                }
+                if (listOfHelpME.size() > 0) {
+                    currentMode = listOfHelpME.get(0).getMode();
+                    currentCat = listOfHelpME.get(0).getCategory();
+                    getClothsFP();
+                } else {
+                    hidePressAndUpdateView();
+                }
+
+            } catch (JSONException e) {
+                hideProgress();
+                adapter.notifyDataSetChanged();
+                // TODO Auto-generated catch block
+                Toast.makeText(this, "You can not get clothes",
+                        Toast.LENGTH_LONG).show();
+                hideProgressDialog();
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void hidePressAndUpdateView() {
+        hideProgress();
+        adapter.notifyDataSetChanged();
+        tvSave.setVisibility(View.VISIBLE);
+    }
+
+    private void parseFinalLookOfHelpMe(JSONObject data, String cat) {
+        if (data != null) {
+            try {
+                JSONArray arr = data.getJSONArray("selection");
+                if (arr != null) {
+                    List<DMItemObject> listSubItemLsit = new ArrayList<>();
+                    for (int i = 0; i < arr.length(); i++) {
+                        JSONObject obj = arr.getJSONObject(i);
+                        DMItemObject item = new DMItemObject(obj);
+                        listSubItemLsit.add(item);
+                        listOfAllresultItem.add(item);
+                    }
+                    modelLookListing = new ModelLookListing(convertInParceObject(listSubItemLsit), cat, constant.helpME);
+                    listResultingLook.add(modelLookListing);
+                    hidePressAndUpdateView();
+                }
+            } catch (JSONException e) {
+                hideProgress();
+                adapter.notifyDataSetChanged();
+                // TODO Auto-generated catch block
+                Toast.makeText(this, "You can not get clothes",
+                        Toast.LENGTH_LONG).show();
+                hideProgressDialog();
+                e.printStackTrace();
+            }
+        }
     }
 
     public void parseResponse(JSONObject data) {
@@ -791,6 +872,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
             }
         }
     }
+
 
     private List<OrderClothModel> convertInParceObject(List<DMItemObject> listSubItemLsit) {
         List<OrderClothModel> resultingList = new ArrayList<>();
@@ -941,17 +1023,40 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
         return clothArr;
     }
 
+    private JSONObject getJsonForNewApi(JSONArray clothesJsonArray) {
+        JSONObject jsonObjForGenerateLook = new JSONObject();
+        JSONObject jsonObjblockedStyles = new JSONObject();
+        JSONArray catJsonArray = new JSONArray();
+        for (int i = 0; i < listOfSytleME.size(); i++) {
+            catJsonArray.put(listOfSytleME.get(i).getCategory());
+        }
+        if (catJsonArray.length() > 0) {
+            try {
+                jsonObjForGenerateLook.put("category", catJsonArray);
+                jsonObjForGenerateLook.put("pack_for", look);
+                jsonObjForGenerateLook.put("name", "genparams");
+                jsonObjForGenerateLook.put("closet", clothesJsonArray);
+                jsonObjForGenerateLook.put("value", "1");
+                jsonObjForGenerateLook.put("version", "2");
+                jsonObjForGenerateLook.put("blocked_styles", jsonObjblockedStyles);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return jsonObjForGenerateLook;
+    }
+
     private void getBundleData() {
         tripName = constant.trip_name;
         tvForTrip.setText(String.format(getString(R.string.suggested_look_for_trip), tripName));
         startDate = constant.start_date;
         setUpAdb();
         if (Parcels.unwrap(getIntent().getParcelableExtra(constant.BUNDLE_LIST_OF_SELECTION)) != null) {
+            look = getIntent().getStringExtra("look");
 //            listTypeSelection = (ArrayList<String>) getIntent().getSerializableExtra(constant.BUNDLE_LIST_OF_SELECTION);
             listModelWithCat = Parcels.unwrap(getIntent().getParcelableExtra(constant.BUNDLE_LIST_OF_SELECTION));
             initBasedOnSelection();
             if (AppUtils.isInternetConnected(this)) {
-
                 ParseUser user = ParseUser.getCurrentUser();
                 int count = user.getInt("Count");
                 count++;
@@ -963,10 +1068,24 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                     }
 
                 });
-                currentCat = listModelWithCat.get(apicounter).getCategory();
+                for (int i = 0; i < listModelWithCat.size(); i++) {
+                    if (listModelWithCat.get(i).getMode().equalsIgnoreCase(constant.styleME)) {
+                        listOfSytleME.add(listModelWithCat.get(i));
+                    } else {
+                        listOfHelpME.add(listModelWithCat.get(i));
+                    }
+                }
+                if (listOfSytleME.size() > 0) {
+                    getAllClothesFromParse();
+                } else {
+                    currentCat = listOfHelpME.get(0).getCategory();
+                    currentMode = listOfHelpME.get(0).getMode();
+                    getClothsFP();
+                }
+                /*currentCat = listModelWithCat.get(apicounter).getCategory();
                 currentMode = listModelWithCat.get(apicounter).getMode();
                 adapter.updateFlag(false);
-                getClothsFP();
+                getClothsFP();*/
             } else {
                 hideProgress();
             }
@@ -1154,7 +1273,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                             modifiedArr.put(object);
                         }
                         result.put("selection", (Object) modifiedArr);
-                        parseResponse(result);
+                        parseFinalLookOfHelpMe(result, constant.CASUAL);
                     } else if (currentCat.equalsIgnoreCase(constant.AFTER5)) {
                         if (constant.gItemList.size() == 3 || isLookComplete(constant.gItemList, currentCat)) {// mayur added fix for  after 5 cloths
                             JSONArray modifiedArr = new JSONArray();
@@ -1165,7 +1284,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                                 modifiedArr.put(object);
                             }
                             result.put("selection", (Object) modifiedArr);
-                            parseResponse(result);
+                            parseFinalLookOfHelpMe(result, constant.AFTER5);
                         } else {
                             makeSendData(makeJSONArray(listOfClothFromParceDB));
                             sendClothsTS();
@@ -1180,7 +1299,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                                 modifiedArr.put(object);
                             }
                             result.put("selection", (Object) modifiedArr);
-                            parseResponse(result);
+                            parseFinalLookOfHelpMe(result, constant.FORMAL);
 
                         } else {
                             makeSendData(makeJSONArray(listOfClothFromParceDB));
@@ -1329,6 +1448,32 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                 doHelpMe(result);
             }
             super.onPostExecute(result);
+        }
+    }
+
+    public class AsyncTaskForPackageing extends AsyncTask<String, Integer, JSONObject> {
+        JSONObject responseOfPackaging;
+
+        @Override
+        protected JSONObject doInBackground(String... strings) {
+            // Creating JSON Parser instance
+            JSONPostParser jParser = new JSONPostParser();
+            // getting JSON string from URL
+            responseOfPackaging = jParser.getJSONFromUrl(constant.packagin_url,
+                    strings[0]);
+
+            return responseOfPackaging;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(JSONObject jsonObject) {
+            parsePackagingResponse(jsonObject);
+            super.onPostExecute(jsonObject);
         }
     }
 }

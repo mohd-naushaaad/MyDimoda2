@@ -93,12 +93,12 @@ public class PlanANewTripActivity extends Activity implements DatePickerDialog.O
     LinearLayout llEndDate;
     @BindView(R.id.tv_end_date)
     Existence_Light_TextView tvEndDate;
-    /* @BindView(R.id.tv_lbl_need_pkg)
-     Existence_Light_TextView tvLblNeedPkg;
-     @BindView(R.id.rb_more_look)
-     RadioButton rbMoreLook;
-     @BindView(R.id.rb_less_look)
-     RadioButton rbLessLook;*/
+    @BindView(R.id.tv_lbl_need_pkg)
+    Existence_Light_TextView tvLblNeedPkg;
+    @BindView(R.id.rb_more_look)
+    RadioButton rbMoreLook;
+    @BindView(R.id.rb_less_look)
+    RadioButton rbLessLook;
     @BindView(R.id.tv_lbl_que_looks)
     Existence_Light_TextView tvLblQueLooks;
     @BindView(R.id.tv_casual_minus)
@@ -196,7 +196,7 @@ public class PlanANewTripActivity extends Activity implements DatePickerDialog.O
     }
 
     private void init_view() {
-//        rbMoreLook.setChecked(true);
+        rbMoreLook.setChecked(true);
         tvCasualVal.setText(String.valueOf(val_causal));
         tvFormalVal.setText(String.valueOf(val_formal));
         tvBusinessVal.setText(String.valueOf(val_business));
@@ -353,8 +353,8 @@ public class PlanANewTripActivity extends Activity implements DatePickerDialog.O
         FontsUtil.setExistenceLight(this, titleView);
         FontsUtil.setExistenceLight(this, btnTrip);
         FontsUtil.setExistenceLight(this, backTxt);
-        /*FontsUtil.setExistenceLight(this, rbLessLook);
-        FontsUtil.setExistenceLight(this, rbMoreLook);*/
+        FontsUtil.setExistenceLight(this, rbLessLook);
+        FontsUtil.setExistenceLight(this, rbMoreLook);
         FontsUtil.setExistenceLight(this, edNameTrip);
     }
 
@@ -437,6 +437,11 @@ public class PlanANewTripActivity extends Activity implements DatePickerDialog.O
                         makeListForStyleMe();
                         Bundle bundle = new Bundle();
                         bundle.putParcelable(constant.BUNDLE_LIST_OF_SELECTION, Parcels.wrap(listcatWithMode));
+                        if (rbLessLook.isChecked()) {
+                            styleMeintent.putExtra("look", "packing");
+                        } else {
+                            styleMeintent.putExtra("look", "variety");
+                        }
                         constant.start_date = startDate;
                         constant.trip_name = edNameTrip.getText().toString().trim();
                         styleMeintent.putExtras(bundle);
@@ -548,6 +553,12 @@ public class PlanANewTripActivity extends Activity implements DatePickerDialog.O
 
         Intent helpMeintent = new Intent(this, TripHelpMeActivity.class);
         helpMeintent.putExtra(constant.BUNDLE_LOOKLISTING, list);
+        if (rbLessLook.isChecked()) {
+            helpMeintent.putExtra("look", "packing");
+        } else {
+            helpMeintent.putExtra("look", "variety");
+
+        }
         constant.trip_name = edNameTrip.getText().toString().trim();
 
         startActivity(helpMeintent);

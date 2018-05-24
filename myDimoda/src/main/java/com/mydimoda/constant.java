@@ -36,6 +36,7 @@ public class constant {
     public static final int casual = 0, formal = 1, business = 2;
     //By Parth Ukani
     public static final String base_url = "http://54.69.61.15/";
+    public static final String packagin_url = "http://54.69.61.15/packing";
     public static final String helpME = "help me";
     public static final String styleME = "style me";
 
