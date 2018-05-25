@@ -11,6 +11,8 @@ import android.content.SharedPreferences.Editor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -25,6 +27,7 @@ import android.widget.Toast;
 import com.mydimoda.activities.LookListingActiivty;
 import com.mydimoda.adapter.DMHelpGridAdapter;
 import com.mydimoda.adapter.DMMenuListAdapter;
+import com.mydimoda.adapter.ItemListingAdp;
 import com.mydimoda.model.ModelCatWithMode;
 import com.mydimoda.object.DMItemObject;
 import com.mydimoda.social.google.GoogleIAP;
@@ -41,7 +44,7 @@ import org.parceler.Parcels;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DMHelpActivity extends Activity {
+public class DMHelpActivity extends Activity implements ItemListingAdp.onclickOfSingleItemListner {
 
     // / menu
     Button vBtnMenu;
@@ -50,7 +53,8 @@ public class DMHelpActivity extends Activity {
     DrawerLayout vDrawerLayout;
     LinearLayout vMenuLayout;
     RelativeLayout vBackLayout;
-    GridView vClothGrid;
+    //    GridView vClothGrid;
+    RecyclerView rvLooks;
     String mType;
     DMHelpGridAdapter mAdapter;
     List<ParseObject> mClothList = null;
@@ -73,7 +77,8 @@ public class DMHelpActivity extends Activity {
         vTxtBack = (TextView) findViewById(R.id.back_txt);
         FontsUtil.setExistenceLight(this, vTxtBack);
         vBackLayout = (RelativeLayout) findViewById(R.id.back_layout);
-        vClothGrid = (GridView) findViewById(R.id.cloths_grid);
+//        vClothGrid = (GridView) findViewById(R.id.cloths_grid);
+        rvLooks = (RecyclerView) findViewById(R.id.rvItems);
         vBtnMenu.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -93,7 +98,8 @@ public class DMHelpActivity extends Activity {
                 finish();
             }
         });
-        vClothGrid.setOnItemClickListener(new OnItemClickListener() {
+
+        /*vClothGrid.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
@@ -125,7 +131,7 @@ public class DMHelpActivity extends Activity {
 
                 }
             }
-        });
+        });*/
     }
 
     private void makeListOfModeWithCat(int index) {
@@ -494,8 +500,11 @@ public class DMHelpActivity extends Activity {
     // / ------------------------------------- show cloth
     // ---------------------------------------
     public void showClothList() {
-        mAdapter = new DMHelpGridAdapter(this, mUrlList);
-        vClothGrid.setAdapter(mAdapter);
+        ItemListingAdp itemListingAdp = new ItemListingAdp(this, mUrlList, this);
+        rvLooks.setLayoutManager(new GridLayoutManager(this, 2));
+        rvLooks.setAdapter(itemListingAdp);
+//        mAdapter = new DMHelpGridAdapter(this, mUrlList);
+//        vClothGrid.setAdapter(mAdapter);
     }
 
     // / ------------------------------------ make JSONArray
@@ -514,5 +523,36 @@ public class DMHelpActivity extends Activity {
         AppUtils.putPref("type", item.type, this);
         list.add(item);
         return list;
+    }
+
+    @Override
+    public void onClickOfitem(int pos) {
+        constant.gItemList = makeItemList(mClothList.get(pos));
+        constant.gItemListTemp = makeItemList(mClothList.get(pos));//mayur added for fixinf cloths swap issue
+        if (!isFromPlanNewTrip) {
+            checkPermissions();
+        } else {
+            if (mType.equalsIgnoreCase(constant.L_SHIRT) || mType.equalsIgnoreCase(constant.L_TROUSERS)) {
+                makeListOfModeWithCat(0);
+            } else if (mType.equalsIgnoreCase(constant.L_JACKET) || mType.equalsIgnoreCase(constant.L_SUIT)) {
+                for (int i = 0; i < constant.listTypeSelection.size(); i++) {
+                    if (constant.listTypeSelection.get(i).equalsIgnoreCase(constant.FORMAL) ||
+                            constant.listTypeSelection.get(i).equalsIgnoreCase(constant.AFTER5)) {
+                        makeListOfModeWithCat(i);
+                        break;
+                    }
+                }
+
+            } else if (mType.equalsIgnoreCase(constant.L_TIE)) {
+                for (int i = 0; i < constant.listTypeSelection.size(); i++) {
+                    if (constant.listTypeSelection.get(i).equalsIgnoreCase(constant.FORMAL)) {
+                        makeListOfModeWithCat(i);
+                        break;
+                    }
+                }
+
+            }
+
+        }
     }
 }

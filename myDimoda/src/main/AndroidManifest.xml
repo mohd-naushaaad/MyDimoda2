@@ -21,6 +21,7 @@
     <used-feature android:name="android.hardware.camera.setParameters" />
 
     <application
+
         android:name="com.mydimoda.ParseApplication"
         android:allowBackup="true"
         android:hardwareAccelerated="false"

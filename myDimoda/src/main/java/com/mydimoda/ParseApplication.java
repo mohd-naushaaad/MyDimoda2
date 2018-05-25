@@ -102,7 +102,9 @@ public class ParseApplication extends Application {
                 .denyCacheImageMultipleSizesInMemory()
                 .diskCacheFileNameGenerator(new Md5FileNameGenerator())
                 .diskCacheSize(50 * 1024 * 1024)
+                .threadPoolSize(1)
                 // 50 Mb
+                .diskCacheExtraOptions(480, 320, null)
                 .tasksProcessingOrder(QueueProcessingType.LIFO)
                 .writeDebugLogs() // Remove for release app
                 .build();

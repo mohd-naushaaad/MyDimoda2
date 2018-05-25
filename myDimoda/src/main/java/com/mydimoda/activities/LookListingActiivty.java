@@ -49,6 +49,7 @@ import com.mydimoda.customView.Existence_Light_TextView;
 import com.mydimoda.database.DbAdapter;
 import com.mydimoda.model.DatabaseModel;
 import com.mydimoda.model.ModelCatWithMode;
+import com.mydimoda.model.ModelForBlockedStyle;
 import com.mydimoda.model.ModelLookListing;
 import com.mydimoda.model.OrderClothModel;
 import com.mydimoda.object.DMBlockedObject;
@@ -153,6 +154,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
     private List<ModelCatWithMode> listOfHelpME = new ArrayList<>();
     private List<ModelCatWithMode> listOfSytleME = new ArrayList<>();
     String look = "";
+    private List<ModelLookListing> listOfgeneratedLook = new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -202,8 +204,15 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                     break;
                 }
             }
+            getClothsFP();
+        } else {
+            updateListOfGeneratedLook();
+            generateLookUsingApi(makeJsonForBlockedStyle(), getCatJsonArray(currentCat, new ArrayList<ModelCatWithMode>()));
+
+            //do
         }
-        getClothsFP();
+
+
     }
 
     // / --------------------------------------- When mode is help me, make item
@@ -377,6 +386,51 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
          /*           am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,  // for testing mayur
                             SystemClock.elapsedRealtime() +  10000, pi);*/
 
+    }
+
+    private String makeJsonForBlockedStyle() {
+        ModelForBlockedStyle modelForBlockedStyle = new ModelForBlockedStyle();
+
+        List<ModelForBlockedStyle.ItemsData> listOfItem;
+        List<List<ModelForBlockedStyle.ItemsData>> listOfCasual = new ArrayList<>();
+        List<List<ModelForBlockedStyle.ItemsData>> listOfformal = new ArrayList<>();
+        List<List<ModelForBlockedStyle.ItemsData>> listOfafter5 = new ArrayList<>();
+
+        for (int i = 0; i < listOfgeneratedLook.size(); i++) {
+            ModelLookListing modelLookListing = listOfgeneratedLook.get(i);
+            if (modelLookListing.getClothType().equalsIgnoreCase("casual")) {
+                listOfItem = new ArrayList<>();
+                for (int j = 0; j < modelLookListing.getList().size(); j++) {
+                    listOfItem.add(giveItemDataWithTypeAndId(modelLookListing.getList().get(j)));
+                }
+                listOfCasual.add(listOfItem);
+            } else if (modelLookListing.getClothType().equalsIgnoreCase("formal")) {
+                listOfItem = new ArrayList<>();
+                for (int j = 0; j < modelLookListing.getList().size(); j++) {
+                    listOfItem.add(giveItemDataWithTypeAndId(modelLookListing.getList().get(j)));
+                }
+                listOfformal.add(listOfItem);
+
+            } else if (modelLookListing.getClothType().equalsIgnoreCase("after5")) {
+                listOfItem = new ArrayList<>();
+                for (int j = 0; j < modelLookListing.getList().size(); j++) {
+                    listOfItem.add(giveItemDataWithTypeAndId(modelLookListing.getList().get(j)));
+                }
+                listOfafter5.add(listOfItem);
+            }
+        }
+        modelForBlockedStyle.setCasual(listOfCasual);
+        modelForBlockedStyle.setFormal(listOfformal);
+        modelForBlockedStyle.setAfter5(listOfafter5);
+        Gson gson = new Gson();
+        return gson.toJson(modelForBlockedStyle);
+    }
+
+    private ModelForBlockedStyle.ItemsData giveItemDataWithTypeAndId(OrderClothModel orderClothModel) {
+        ModelForBlockedStyle.ItemsData itemsData = new ModelForBlockedStyle.ItemsData();
+        itemsData.id = orderClothModel.getId();
+        itemsData.type = orderClothModel.getType();
+        return itemsData;
     }
 
     int getId() {
@@ -738,13 +792,17 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                 if (e == null) {
                     listOfClothFromParceDB.clear();
                     listOfClothFromParceDB.addAll(clothList);
-                    new AsyncTaskForPackageing().execute(getJsonForNewApi(makeJSONArray(listOfClothFromParceDB)).toString());
+                    generateLookUsingApi("{}", getCatJsonArray("", listOfSytleME));
                 } else {
                     Toast.makeText(LookListingActiivty.this, e.toString(),
                             Toast.LENGTH_LONG).show();
                 }
             }
         });
+    }
+
+    private void generateLookUsingApi(String blockedStyle, JSONArray catJsonArr) {
+        new AsyncTaskForPackageing().execute(getJsonForNewApi(makeJSONArray(listOfClothFromParceDB), blockedStyle, catJsonArr).toString());
     }
 
     public void parsePackagingResponse(JSONObject packageingdata) {
@@ -767,6 +825,13 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                         modelOfPackage.setClothType(category);
                         modelOfPackage.setMode(constant.styleME);
                         modelOfPackage.setListOfCloth(convertInParceObject(listSubItemLsit));
+                        if (isDisLike) {
+                            listResultingLook.set(disLikePos, modelOfPackage);
+                            hideProgressDialog();
+                            adapter.notifyItemChanged(disLikePos);
+                            isDisLike = false;
+                            return;
+                        }
                         listResultingLook.add(modelOfPackage);
                     }
                 }
@@ -794,6 +859,12 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
         hideProgress();
         adapter.notifyDataSetChanged();
         tvSave.setVisibility(View.VISIBLE);
+        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+    }
+
+    private void updateListOfGeneratedLook() {
+        listOfgeneratedLook.clear();
+        listOfgeneratedLook.addAll(listResultingLook);
     }
 
     private void parseFinalLookOfHelpMe(JSONObject data, String cat) {
@@ -809,8 +880,14 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                         listOfAllresultItem.add(item);
                     }
                     modelLookListing = new ModelLookListing(convertInParceObject(listSubItemLsit), cat, constant.helpME);
-                    listResultingLook.add(modelLookListing);
-                    hidePressAndUpdateView();
+                    if (isDisLike) {
+                        listResultingLook.set(disLikePos, modelLookListing);
+                        adapter.notifyItemChanged(disLikePos);
+                        hideProgressDialog();
+                    } else {
+                        listResultingLook.add(modelLookListing);
+                        hidePressAndUpdateView();
+                    }
                 }
             } catch (JSONException e) {
                 hideProgress();
@@ -858,6 +935,8 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                         hideProgress();
                         adapter.notifyDataSetChanged();
                         tvSave.setVisibility(View.VISIBLE);
+                        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+
 
                     }
                 }
@@ -1023,27 +1102,41 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
         return clothArr;
     }
 
-    private JSONObject getJsonForNewApi(JSONArray clothesJsonArray) {
+    private JSONObject getJsonForNewApi(JSONArray clothesJsonArray, String blockedStyleStrign, JSONArray catJsonArr) {
         JSONObject jsonObjForGenerateLook = new JSONObject();
-        JSONObject jsonObjblockedStyles = new JSONObject();
-        JSONArray catJsonArray = new JSONArray();
-        for (int i = 0; i < listOfSytleME.size(); i++) {
-            catJsonArray.put(listOfSytleME.get(i).getCategory());
+        JSONObject jsonObjblockedStyles = null;
+        try {
+            jsonObjblockedStyles = new JSONObject(blockedStyleStrign);
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
-        if (catJsonArray.length() > 0) {
-            try {
-                jsonObjForGenerateLook.put("category", catJsonArray);
-                jsonObjForGenerateLook.put("pack_for", look);
-                jsonObjForGenerateLook.put("name", "genparams");
-                jsonObjForGenerateLook.put("closet", clothesJsonArray);
-                jsonObjForGenerateLook.put("value", "1");
-                jsonObjForGenerateLook.put("version", "2");
-                jsonObjForGenerateLook.put("blocked_styles", jsonObjblockedStyles);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+        try {
+            jsonObjForGenerateLook.put("category", catJsonArr);
+            jsonObjForGenerateLook.put("pack_for", look);
+            jsonObjForGenerateLook.put("name", "genparams");
+            jsonObjForGenerateLook.put("closet", clothesJsonArray);
+            jsonObjForGenerateLook.put("value", "1");
+            jsonObjForGenerateLook.put("version", "2");
+            jsonObjForGenerateLook.put("blocked_styles", jsonObjblockedStyles);
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
+
         return jsonObjForGenerateLook;
+    }
+
+    private JSONArray getCatJsonArray(String cat, List<ModelCatWithMode> list) {
+        JSONArray catJsonArray = new JSONArray();
+
+        if (list.size() > 0) {
+            for (int i = 0; i < listOfSytleME.size(); i++) {
+                catJsonArray.put(listOfSytleME.get(i).getCategory());
+            }
+        } else {
+            catJsonArray.put(cat);
+
+        }
+        return catJsonArray;
     }
 
     private void getBundleData() {
