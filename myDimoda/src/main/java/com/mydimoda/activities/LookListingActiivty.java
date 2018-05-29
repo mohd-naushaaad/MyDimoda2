@@ -142,7 +142,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
     private List<ModelLookListing> listResultingLook;
     private ModelLookListing modelLookListing;
     private LookListingAdp adapter;
-    private Date startDate;
+    private Date startDate, endDate;
     private String tripName;
     private ProgressDialog dialog;
     private String likeDislikeUrl = "http://54.69.61.15:/resp_attire";
@@ -150,7 +150,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
     //    private ModelCatWithMode modelCatWithMode = new ModelCatWithMode();
     private String currentCat = "", currentMode = "";
     private boolean isDisLike = false;
-    private int disLikePos;
+    private int disLikePos, likepos;
     private List<ModelCatWithMode> listOfHelpME = new ArrayList<>();
     private List<ModelCatWithMode> listOfSytleME = new ArrayList<>();
     String look = "";
@@ -381,8 +381,8 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
 
         PendingIntent pi = PendingIntent.getBroadcast(this, ALARM_REQUEST_CODE,
                 intent, PendingIntent.FLAG_ONE_SHOT);
-        am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,  // mayur
-                SystemClock.elapsedRealtime() + 24 * 60 * 60 * 1000, pi);
+        am.set(AlarmManager.RTC_WAKEUP,  // PARTH
+                /*SystemClock.elapsedRealtime() + 24 * 60 * 60 * 1000*/endDate.getTime() + 24 * 60 * 60 * 1000, pi);
          /*           am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP,  // for testing mayur
                             SystemClock.elapsedRealtime() +  10000, pi);*/
 
@@ -556,9 +556,9 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
         v.layout(0, 0, v.getMeasuredWidth(), v.getMeasuredHeight());
         v.draw(c);
         try {
-
+            listResultingLook.get(likepos).setIsliked(true);
+            adapter.notifyItemChanged(likepos);
             AppUtils.savebitmap(b);
-
             AppUtils.showShareDialog(b, LookListingActiivty.this, new AppUtils.onShareDialogDismissListener() {
                 @Override
                 public void onDismiss() {
@@ -879,7 +879,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                         listSubItemLsit.add(item);
                         listOfAllresultItem.add(item);
                     }
-                    modelLookListing = new ModelLookListing(convertInParceObject(listSubItemLsit), cat, constant.helpME);
+                    modelLookListing = new ModelLookListing(convertInParceObject(listSubItemLsit), cat, constant.helpME, false);
                     if (isDisLike) {
                         listResultingLook.set(disLikePos, modelLookListing);
                         adapter.notifyItemChanged(disLikePos);
@@ -913,7 +913,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                         listSubItemLsit.add(item);
                         listOfAllresultItem.add(item);
                     }
-                    modelLookListing = new ModelLookListing(convertInParceObject(listSubItemLsit), currentCat, currentMode);
+                    modelLookListing = new ModelLookListing(convertInParceObject(listSubItemLsit), currentCat, currentMode, false);
                     if (isDisLike) {
                         listResultingLook.set(disLikePos, modelLookListing);
                         adapter.notifyItemChanged(disLikePos);
@@ -1143,6 +1143,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
         tripName = constant.trip_name;
         tvForTrip.setText(String.format(getString(R.string.suggested_look_for_trip), tripName));
         startDate = constant.start_date;
+        endDate = constant.end_date;
         setUpAdb();
         if (Parcels.unwrap(getIntent().getParcelableExtra(constant.BUNDLE_LIST_OF_SELECTION)) != null) {
             look = getIntent().getStringExtra("look");
@@ -1289,6 +1290,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
 
     @Override
     public void onClickOfLike(int pos) {
+        likepos = pos;
         listOfSelectedCloth.clear();
         listOfSelectedCloth.addAll(listResultingLook.get(pos).getList());
         likeCloth();

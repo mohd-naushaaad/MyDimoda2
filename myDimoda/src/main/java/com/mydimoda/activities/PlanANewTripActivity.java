@@ -443,6 +443,7 @@ public class PlanANewTripActivity extends Activity implements DatePickerDialog.O
                             styleMeintent.putExtra("look", "variety");
                         }
                         constant.start_date = startDate;
+                        constant.end_date = endDate;
                         constant.trip_name = edNameTrip.getText().toString().trim();
                         styleMeintent.putExtras(bundle);
                         startActivity(styleMeintent);

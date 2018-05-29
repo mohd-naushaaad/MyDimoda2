@@ -2,6 +2,7 @@ package com.mydimoda.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -64,6 +65,9 @@ public class LookListingAdp extends RecyclerView.Adapter<LookListingAdp.MyHolder
             holder.tvClothtype.setText("business");
         } else {
             holder.tvClothtype.setText(listOfCloth.get(position).getClothType());
+        }
+        if (listOfCloth.get(position).isIsliked()) {
+            holder.likeBtn.setBackground(ContextCompat.getDrawable(mContext, R.drawable.btn_liked));
         }
 
         /*if (listOfCloth.get(position).getClothType().equalsIgnoreCase("casual")) {

@@ -43,7 +43,7 @@
 
     <string name="perm_denied">Permissions denied. Please check app settings.</string>
     <string name="uploading_count_txt">Uploading image : %1$d</string>
-    <string name="plannewtrip">plan a New Trip</string>
+    <string name="plannewtrip">Pack for Me</string>
     <string name="more_look">More Looks</string>
     <string name="less_look">Less Packing</string>
     <string name="name_trip">Name Your Trip</string>

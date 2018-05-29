@@ -17,11 +17,21 @@ public class ModelLookListing {
     public List<OrderClothModel> listOfCloth = new ArrayList();
     public String clothType = "";
     public String mode = "";
+    private boolean isliked = false;
 
-    public ModelLookListing(List<OrderClothModel> listOfCloth, String clothType, String mode) {
+    public boolean isIsliked() {
+        return isliked;
+    }
+
+    public void setIsliked(boolean isliked) {
+        this.isliked = isliked;
+    }
+
+    public ModelLookListing(List<OrderClothModel> listOfCloth, String clothType, String mode, boolean isliked) {
         this.listOfCloth = listOfCloth;
         this.clothType = clothType;
         this.mode = mode;
+        this.isliked = isliked;
     }
 
     public ModelLookListing() {

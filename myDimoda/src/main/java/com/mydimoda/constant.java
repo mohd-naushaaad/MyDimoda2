@@ -115,6 +115,7 @@ public class constant {
     public static ArrayList<String> listTypeSelection = new ArrayList<>();
     public static String trip_name = "";
     public static Date start_date = new Date();
+    public static Date end_date = new Date();
     // /// font face
     public static Typeface boldfontface = null;
     public static Typeface fontface = null;
