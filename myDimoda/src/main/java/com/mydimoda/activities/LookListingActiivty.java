@@ -588,12 +588,21 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                     }*/
                 }
             });
-
+            saveinternallyLooks();
             return true;
         } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public void saveinternallyLooks() {
+        for (int i = 0; i < listResultingLook.size(); i++) {
+            if (!listResultingLook.get(i).isIsliked()) {
+                return;
+            }
+        }
+        storeinParseDb(listResultingLook);
     }
 
     public void downloadBitmaps() {
@@ -1291,9 +1300,13 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
     @Override
     public void onClickOfLike(int pos) {
         likepos = pos;
-        listOfSelectedCloth.clear();
+        listResultingLook.get(likepos).setIsliked(true);
+        adapter.notifyItemChanged(likepos);
+        saveinternallyLooks();
+
+        /*listOfSelectedCloth.clear();
         listOfSelectedCloth.addAll(listResultingLook.get(pos).getList());
-        likeCloth();
+        likeCloth();*/
     }
 
    /* private void setUpAdp() {
