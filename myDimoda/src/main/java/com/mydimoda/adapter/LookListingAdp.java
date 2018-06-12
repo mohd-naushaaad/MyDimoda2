@@ -68,7 +68,10 @@ public class LookListingAdp extends RecyclerView.Adapter<LookListingAdp.MyHolder
         }
         if (listOfCloth.get(position).isIsliked()) {
             holder.likeBtn.setBackground(ContextCompat.getDrawable(mContext, R.drawable.btn_liked));
+        } else {
+            holder.likeBtn.setBackground(ContextCompat.getDrawable(mContext, R.drawable.like_btn_sel));
         }
+
 
         /*if (listOfCloth.get(position).getClothType().equalsIgnoreCase("casual")) {
             holder.tvClothtype.setTextColor(Color.GREEN);

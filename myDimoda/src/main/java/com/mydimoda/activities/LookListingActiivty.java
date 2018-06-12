@@ -890,6 +890,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                     }
                     modelLookListing = new ModelLookListing(convertInParceObject(listSubItemLsit), cat, constant.helpME, false);
                     if (isDisLike) {
+                        modelLookListing.setIsliked(false);
                         listResultingLook.set(disLikePos, modelLookListing);
                         adapter.notifyItemChanged(disLikePos);
                         hideProgressDialog();
@@ -924,6 +925,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                     }
                     modelLookListing = new ModelLookListing(convertInParceObject(listSubItemLsit), currentCat, currentMode, false);
                     if (isDisLike) {
+                        modelLookListing.setIsliked(false);
                         listResultingLook.set(disLikePos, modelLookListing);
                         adapter.notifyItemChanged(disLikePos);
                         isDisLike = false;
@@ -1347,6 +1349,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
         currentCat = listResultingLook.get(pos).getClothType();
         currentMode = listResultingLook.get(pos).getMode();
         disLikePos = pos;
+
         listOfSelectedCloth.clear();
         listOfSelectedCloth.addAll(listResultingLook.get(pos).getList());
 
