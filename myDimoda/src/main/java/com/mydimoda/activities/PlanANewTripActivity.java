@@ -362,7 +362,7 @@ public class PlanANewTripActivity extends Activity implements DatePickerDialog.O
         menuList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                if (position == 5) {
+                if (position == 2) {
                     slideMenu();
                 } else {
                     constant.selectMenuItem(PlanANewTripActivity.this, position,

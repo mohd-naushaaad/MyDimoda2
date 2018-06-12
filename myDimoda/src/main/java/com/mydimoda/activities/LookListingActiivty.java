@@ -557,7 +557,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
         v.draw(c);
         try {
             listResultingLook.get(likepos).setIsliked(true);
-            adapter.notifyItemChanged(likepos);
+//            adapter.notifyItemChanged(likepos);
             AppUtils.savebitmap(b);
             AppUtils.showShareDialog(b, LookListingActiivty.this, new AppUtils.onShareDialogDismissListener() {
                 @Override

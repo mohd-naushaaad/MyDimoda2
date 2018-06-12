@@ -123,7 +123,7 @@ public class DMHangUpActivity extends Activity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 vDrawerLayout.closeDrawer(vMenuLayout);
-                if (position != 2)
+                if (position != 4)
                     constant.selectMenuItem(DMHangUpActivity.this, position,
                             true);
             }

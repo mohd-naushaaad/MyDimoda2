@@ -138,7 +138,8 @@ public class constant {
             "white", "yellow"};
     public static String[] gPattern = {"empty", "dot", "plaid", "stripe", "florial"};
     // / menu item
-    public static String[] menuArr = {"HOME", "STYLE ME", "HANG UP", "ORGANIZE", "PURCHASE", "PLAN A NEW TRIP", "SETTINGS"};
+//    public static String[] menuArr = {"HOME", "STYLE ME", "HANG UP", "ORGANIZE", "PURCHASE", "PLAN A NEW TRIP", "SETTINGS"};
+    public static String[] menuArr = {"HOME", "STYLE ME", "TRAVEL", "PURCHASE", "HANG UP", "ORGANIZE", "SETTINGS"};
     public static List<String> gMenuList = Arrays.asList(menuArr);
     // cloth order
     public static int SHIRT = 0;
@@ -307,6 +308,8 @@ public class constant {
 
     // / ------------------------------------- menu item clicked
     // ------------------
+//    public static String[] menuArr = {"HOME", "STYLE ME", "TRAVEL", "PURCHASE", "HANG UP", "ORGANIZE", "SETTINGS"};
+
     public static void selectMenuItem(Activity context, int pos,
                                       boolean isFinish) {
 
@@ -316,14 +319,14 @@ public class constant {
             context.startActivity(intent);
             context.finish();
 
-        } else if (pos == 1) // --- my look
+        } else if (pos == 1) // --- STYLE ME
         {
 
             Intent intent = new Intent(context, DMMyLookActivity.class);
             context.startActivity(intent);
             if (isFinish)
                 context.finish();
-        } else if (pos == 2) // --- hang up
+        } else if (pos == 4) // --- hang up
         {
 
             constant.gCategory = "formal";
@@ -332,7 +335,7 @@ public class constant {
             context.startActivity(intent);
             if (isFinish)
                 context.finish();
-        } else if (pos == 3) // --- organize
+        } else if (pos == 5) // --- organize
         {
 
             constant.gCategory = "formal";
@@ -342,14 +345,14 @@ public class constant {
             if (isFinish)
                 context.finish();
 
-        } else if (pos == 4) // --- purchase
+        } else if (pos == 3) // --- purchase
         {
             Intent intent = new Intent(context, DMFindMeActivity.class);
             context.startActivity(intent);
             if (isFinish)
                 context.finish();
 
-        } else if (pos == 5)// --- plan a new trip
+        } else if (pos == 2)// --- Travel
         {
             Intent intent = new Intent(context, PlanANewTripActivity.class);
             context.startActivity(intent);
