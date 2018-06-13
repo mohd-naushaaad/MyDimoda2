@@ -557,13 +557,13 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
         v.draw(c);
         try {
             listResultingLook.get(likepos).setIsliked(true);
-//            adapter.notifyItemChanged(likepos);
+            adapter.notifyItemChanged(likepos);
             AppUtils.savebitmap(b);
-            AppUtils.showShareDialog(b, LookListingActiivty.this, new AppUtils.onShareDialogDismissListener() {
+            /*AppUtils.showShareDialog(b, LookListingActiivty.this, new AppUtils.onShareDialogDismissListener() {
                 @Override
                 public void onDismiss() {
 
-                   /* initItemList();
+                   *//* initItemList();
                     if (constant.gMode.equals("help me")) {
                         constant.gLikeNum++;
                         if (constant.gCategory.equals("casual")) {
@@ -585,9 +585,9 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                         }
                     } else {
                         constant.gLikeNum = 0;
-                    }*/
+                    }*//*
                 }
-            });
+            });*/
             saveinternallyLooks();
             return true;
         } catch (Exception e) {
@@ -1301,14 +1301,18 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
 
     @Override
     public void onClickOfLike(int pos) {
-        likepos = pos;
-        listResultingLook.get(likepos).setIsliked(true);
-        adapter.notifyItemChanged(likepos);
-        saveinternallyLooks();
+        if (listResultingLook.get(pos).isIsliked()) {
 
-        /*listOfSelectedCloth.clear();
-        listOfSelectedCloth.addAll(listResultingLook.get(pos).getList());
-        likeCloth();*/
+        } else {
+            likepos = pos;
+//            listResultingLook.get(likepos).setIsliked(true);
+//            adapter.notifyItemChanged(likepos);
+//            saveinternallyLooks();
+
+            listOfSelectedCloth.clear();
+            listOfSelectedCloth.addAll(listResultingLook.get(pos).getList());
+            likeCloth();
+        }
     }
 
    /* private void setUpAdp() {
