@@ -87,7 +87,6 @@
                         android:padding="10dp">
 
                         <EditText
-                            android:maxLength="50"
                             android:id="@+id/ed_name_trip"
                             style="@style/trip_text"
                             android:layout_width="match_parent"
@@ -96,6 +95,7 @@
                             android:backgroundTint="@color/color_black"
                             android:hint="@string/name_trip"
                             android:inputType="text"
+                            android:maxLength="50"
                             android:maxLines="1"
                             android:textColorHint="@color/hint_color" />
 

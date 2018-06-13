@@ -1300,18 +1300,20 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
     }
 
     @Override
-    public void onClickOfLike(int pos) {
-        if (listResultingLook.get(pos).isIsliked()) {
+    public void onClickOfLike(int pos, boolean isFromTrip) {
+        if (!isFromTrip) {
+            if (listResultingLook.get(pos).isIsliked()) {
 
-        } else {
-            likepos = pos;
+            } else {
+                likepos = pos;
 //            listResultingLook.get(likepos).setIsliked(true);
 //            adapter.notifyItemChanged(likepos);
 //            saveinternallyLooks();
 
-            listOfSelectedCloth.clear();
-            listOfSelectedCloth.addAll(listResultingLook.get(pos).getList());
-            likeCloth();
+                listOfSelectedCloth.clear();
+                listOfSelectedCloth.addAll(listResultingLook.get(pos).getList());
+                likeCloth();
+            }
         }
     }
 

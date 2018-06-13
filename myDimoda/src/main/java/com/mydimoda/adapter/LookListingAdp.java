@@ -27,7 +27,7 @@ import butterknife.OnClick;
 public class LookListingAdp extends RecyclerView.Adapter<LookListingAdp.MyHolder> {
 
     public interface ClickListnerOfLook {
-        void onClickOfLike(int pos);
+        void onClickOfLike(int pos, boolean isFromTrip);
 
         void onClickofDisLike(int pos);
     }
@@ -111,7 +111,7 @@ public class LookListingAdp extends RecyclerView.Adapter<LookListingAdp.MyHolder
         public void onViewClicked(View view) {
             switch (view.getId()) {
                 case R.id.like_btn:
-                    listner.onClickOfLike(getAdapterPosition());
+                    listner.onClickOfLike(getAdapterPosition(), isFromTrip);
                     break;
                 case R.id.dissmiss_btn:
                     listner.onClickofDisLike(getAdapterPosition());
