@@ -89,7 +89,7 @@ public class DMDeleteActivity extends Activity implements DMListItemCallback {
         vBackLayout = (RelativeLayout) findViewById(R.id.back_layout);
 
         vClothGrid = (GridView) findViewById(R.id.cloths_grid);
-
+        vClothGrid.setVisibility(View.VISIBLE);
         vBtnMenu.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -261,7 +261,7 @@ public class DMDeleteActivity extends Activity implements DMListItemCallback {
         ParseUser user = ParseUser.getCurrentUser();
         user.put("isDemoCloset", true);
         user.saveInBackground();
-        SharedPreferences settings = getSharedPreferences(constant.PREFS_NAME,0);
+        SharedPreferences settings = getSharedPreferences(constant.PREFS_NAME, 0);
         SharedPreferences.Editor editor = settings.edit();
         editor.putBoolean("isCloset", constant.gIsCloset);
         editor.commit();
@@ -333,13 +333,13 @@ public class DMDeleteActivity extends Activity implements DMListItemCallback {
     // / ------------------------------------- show cloth
     // ---------------------------------------
     public void showClothList() {
-        if(mType.equals("suit")){
-            if(mUrlList.size()>0){
+        if (mType.equals("suit")) {
+            if (mUrlList.size() > 0) {
                 mUrlList.remove(0);
-                mUrlList.add(0,"http://files.parsetfss.com/8cb1c15c-9cc6-439c-9887-920c37c63181/tfss-14ca376e-8637-4550-8bbc-3e952e3c6e83-image");
+                mUrlList.add(0, "http://files.parsetfss.com/8cb1c15c-9cc6-439c-9887-920c37c63181/tfss-14ca376e-8637-4550-8bbc-3e952e3c6e83-image");
             }
             mAdapter = new DMDeleteGridAdapter(this, mUrlList, mClothList, this);
-        }else{
+        } else {
             mAdapter = new DMDeleteGridAdapter(this, mUrlList, mClothList, this);
         }
         vClothGrid.setAdapter(mAdapter);
@@ -537,8 +537,8 @@ public class DMDeleteActivity extends Activity implements DMListItemCallback {
                                 startUploadFromCache(mClothList, position + 1);//iteration baby!!
                             }
                         });
-                    }else{
-                        Log.e(TAG,"null image byte array, wtf is going on??!!");
+                    } else {
+                        Log.e(TAG, "null image byte array, wtf is going on??!!");
                     }
                 }
 

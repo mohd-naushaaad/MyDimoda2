@@ -53,7 +53,7 @@ public class DMHelpActivity extends Activity implements ItemListingAdp.onclickOf
     DrawerLayout vDrawerLayout;
     LinearLayout vMenuLayout;
     RelativeLayout vBackLayout;
-    //    GridView vClothGrid;
+        GridView vClothGrid;
     RecyclerView rvLooks;
     String mType;
     DMHelpGridAdapter mAdapter;
@@ -79,6 +79,7 @@ public class DMHelpActivity extends Activity implements ItemListingAdp.onclickOf
         vBackLayout = (RelativeLayout) findViewById(R.id.back_layout);
 //        vClothGrid = (GridView) findViewById(R.id.cloths_grid);
         rvLooks = (RecyclerView) findViewById(R.id.rvItems);
+        rvLooks.setVisibility(View.VISIBLE);
         vBtnMenu.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
