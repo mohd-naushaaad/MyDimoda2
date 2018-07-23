@@ -188,6 +188,20 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
     }
 
     public void likeCloth() {
+        String feedback = "like";
+        m_DatabaseModel.setFeedback(feedback);
+        m_DatabaseModel.setVersion(2);
+        m_DatabaseModel.setCategory(listResultingLook.get(likepos).getClothType());
+        m_DatabaseModel
+                .setTarget("" + makeTargetJSONArrayid_type(listResultingLook.get(likepos).listOfCloth));
+        // m_DatabaseModel.setName("genparams");
+
+        Random r = new Random();
+        id = r.nextInt();
+        m_DatabaseModel.setValue("" + id);
+        m_DatabaseModel.setFeedback(feedback);
+
+        mDbAdapter.add(m_DatabaseModel);
         new DownloadTaskRunner().execute();
     }
 
