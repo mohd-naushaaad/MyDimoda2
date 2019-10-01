@@ -18,13 +18,10 @@ import com.parse.ParseACL;
 import com.parse.ParseFacebookUtils;
 import com.parse.ParseUser;
 
-import org.acra.annotation.ReportsCrashes;
-
 import io.fabric.sdk.android.Fabric;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 
-@ReportsCrashes(mailTo = "nirmal@solulab.com")
 public class ParseApplication extends Application {
 
     static volatile ParseApplication application = null;
@@ -55,7 +52,9 @@ public class ParseApplication extends Application {
 
         //Keyur
         //Starting helper service.
-        mContext.startService(new Intent(this, ServiceHelper.class));
+//        ContextCompat.startForegroundService(mContext,new Intent(mContext, ServiceHelper.class));
+
+        ServiceHelper.enqueueWork(mContext, new Intent());
 
         initImageLoader(getApplicationContext());
         // Use for troubleshooting -- remove this line for production

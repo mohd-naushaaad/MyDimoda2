@@ -1197,9 +1197,11 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
                 if (listOfSytleME.size() > 0) {
                     getAllClothesFromParse();
                 } else {
-                    currentCat = listOfHelpME.get(0).getCategory();
-                    currentMode = listOfHelpME.get(0).getMode();
-                    getClothsFP();
+                    if (!listOfHelpME.isEmpty()) {
+                        currentCat = listOfHelpME.get(0).getCategory();
+                        currentMode = listOfHelpME.get(0).getMode();
+                        getClothsFP();
+                    }
                 }
                 /*currentCat = listModelWithCat.get(apicounter).getCategory();
                 currentMode = listModelWithCat.get(apicounter).getMode();

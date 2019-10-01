@@ -18,6 +18,7 @@ import android.net.Uri;
 import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
+import android.support.v4.content.FileProvider;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.View;
@@ -551,8 +552,10 @@ public class AppUtils {
             String filename = "shareimage.jpg";
             File imageFile = new File(Environment.getExternalStorageDirectory(), filename);
 
+            Uri path = FileProvider.getUriForFile(mContext, BuildConfig.APPLICATION_ID + ".provider", imageFile);
+
             tweetIntent.putExtra(Intent.EXTRA_TEXT, tag + constant.APP_LINK);
-            tweetIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(imageFile));
+            tweetIntent.putExtra(Intent.EXTRA_STREAM, path);
             tweetIntent.setType("image/jpeg");
             PackageManager pm = mContext.getPackageManager();
             List<ResolveInfo> lract = pm.queryIntentActivities(tweetIntent, PackageManager.MATCH_DEFAULT_ONLY);
@@ -581,9 +584,9 @@ public class AppUtils {
 
             String filename = "shareimage.jpg";
             File imageFile = new File(Environment.getExternalStorageDirectory(), filename);
-
+            Uri path = FileProvider.getUriForFile(mContext, BuildConfig.APPLICATION_ID + ".provider", imageFile);
             tweetIntent.putExtra(Intent.EXTRA_TEXT, tag + constant.APP_LINK);
-            tweetIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(imageFile));
+            tweetIntent.putExtra(Intent.EXTRA_STREAM, path);
             tweetIntent.setType("image/jpeg");
             PackageManager pm = mContext.getPackageManager();
             List<ResolveInfo> lract = pm.queryIntentActivities(tweetIntent, PackageManager.MATCH_DEFAULT_ONLY);

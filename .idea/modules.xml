@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/myDimoda/myDimoda.iml" filepath="$PROJECT_DIR$/myDimoda/myDimoda.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mydimoda.iml" filepath="$PROJECT_DIR$/mydimoda.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pullSDK/pullSDK.iml" filepath="$PROJECT_DIR$/pullSDK/pullSDK.iml" />
+    </modules>
+  </component>
+</project>

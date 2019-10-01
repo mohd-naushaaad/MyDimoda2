@@ -8,7 +8,8 @@
         <attr name="titleColor" format="string"/>
         <attr name="subtitle_" format="string"/>
         <attr name="subtitleColor" format="string"/>
-        <attr name="strokeWidth" format="integer"/>
+        <attr name="strokeWidth1" format="integer"/>
+        <attr name="strokeWidth2" format="integer"/>
     </declare-styleable>
     
     <declare-styleable name="ProgressWheel">   

@@ -75,7 +75,11 @@ public class DMAlgorithmActivity extends Activity {
         mDbAdapter.createDatabase();
         mDbAdapter.open();
         m_DatabaseModel = new DatabaseModel();
-        m_DatabaseModels = mDbAdapter.getAllCity();
+        try {
+            m_DatabaseModels = mDbAdapter.getAllCity();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         // / layout
         vDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);

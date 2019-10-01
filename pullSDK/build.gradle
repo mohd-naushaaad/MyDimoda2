@@ -1,14 +1,14 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion '26.0.2'
+    compileSdkVersion 28
 
     defaultConfig {
-        minSdkVersion 4
-        targetSdkVersion 25
+        minSdkVersion 16
+        targetSdkVersion 28
     }
     aaptOptions {
+        cruncherEnabled = false
         useNewCruncher false
     }
     buildTypes {

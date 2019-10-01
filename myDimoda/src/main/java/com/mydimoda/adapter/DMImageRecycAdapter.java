@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.mydimoda.AppUtils;
 import com.mydimoda.R;
 import com.mydimoda.model.CropListModel;
 import com.mydimoda.widget.cropper.util.FontsUtil;
@@ -54,12 +55,14 @@ public class DMImageRecycAdapter extends RecyclerView.Adapter<DMImageRecycAdapte
         } else {
             viewHolder.mCategory.setText(items.get(position).getmCategory());
         }
-        /*viewHolder.mType.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mCallbacks.type(position);
-            }
-        });*/
+        if (AppUtils.getPref("iFirstTime", mContext).equalsIgnoreCase("true")) {
+            viewHolder.mType.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mCallbacks.type(position);
+                }
+            });
+        }
         viewHolder.mCategory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

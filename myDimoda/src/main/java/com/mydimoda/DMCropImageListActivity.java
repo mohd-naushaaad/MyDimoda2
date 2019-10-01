@@ -145,6 +145,11 @@ public class DMCropImageListActivity extends FragmentActivity {
 
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        AppUtils.putPref("iFirstTime", "false", this);
+    }
     // / ------------------------------------------- show dialog
 
     @Override

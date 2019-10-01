@@ -360,6 +360,8 @@ public class DMLoginActivity extends Activity {
     // / ---------------------------------- go to home activity
     // ------------------------------------
     public void goHomeActivity() {
+
+        AppUtils.putPref("iFirstTime", "true", this);
         Intent intent = new Intent(DMLoginActivity.this, DMHomeActivity.class);
         startActivity(intent);
         finish();
