@@ -2,7 +2,7 @@ package com.mydimoda.adapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +13,6 @@ import android.widget.TextView;
 import com.mydimoda.ParseApplication;
 import com.mydimoda.R;
 import com.mydimoda.constant;
-import com.mydimoda.model.ModelLookListing;
 import com.mydimoda.model.OrderClothModel;
 import com.mydimoda.widget.CircularProgressBar;
 import com.mydimoda.widget.cropper.util.FontsUtil;

@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
-        <android.support.v4.widget.DrawerLayout
+        <androidx.drawerlayout.widget.DrawerLayout
             android:id="@+id/drawer_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -161,7 +161,7 @@
                     android:paddingTop="60dp" >
                 </ListView>
             </LinearLayout>
-        </android.support.v4.widget.DrawerLayout>
+        </androidx.drawerlayout.widget.DrawerLayout>
         <ImageView
             android:id="@+id/act_find_coach_mrk_iv"
             android:layout_width="match_parent"

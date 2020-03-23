@@ -2,14 +2,13 @@ package com.mydimoda.customView;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.widget.ImageView;
 
 /**
  * Created by Parth on 2/14/2018.
  */
 
 
-public class SqureImageView extends android.support.v7.widget.AppCompatImageView {
+public class SqureImageView extends androidx.appcompat.widget.AppCompatImageView {
 
     public SqureImageView(Context context) {
         super(context);

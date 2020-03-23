@@ -67,7 +67,7 @@ public class DMResetPasswordActivity extends Activity {
 		}
 
 		ParseUser.requestPasswordResetInBackground(emailText.getText()
-				.toString(), new RequestPasswordResetCallback() {
+				.toString().toLowerCase().trim(), new RequestPasswordResetCallback() {
 			@Override
 			public void done(com.parse.ParseException e) {
 				// TODO Auto-generated method stub

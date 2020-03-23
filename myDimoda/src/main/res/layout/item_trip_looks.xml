@@ -28,12 +28,12 @@
             android:textSize="@dimen/normal_text_size" />
     </RelativeLayout>
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_img_look"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:itemCount="2"
-        tools:layoutManager="android.support.v7.widget.GridLayoutManager"
+        tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         tools:listitem="@layout/item_image"
         tools:spanCount="2" />
 

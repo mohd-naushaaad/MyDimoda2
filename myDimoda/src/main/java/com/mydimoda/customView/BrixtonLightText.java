@@ -2,15 +2,14 @@ package com.mydimoda.customView;
 
 import android.content.Context;
 import android.graphics.Typeface;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
-import android.widget.TextView;
 
 /**
  * Created by Parth on 2/8/2018.
  */
 
-public class BrixtonLightText extends android.support.v7.widget.AppCompatTextView {
+public class BrixtonLightText extends androidx.appcompat.widget.AppCompatTextView {
     public BrixtonLightText(Context context) {
         super(context);
         init();

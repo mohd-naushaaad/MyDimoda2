@@ -1,7 +1,8 @@
 package com.mydimoda.adapter;
 
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.mydimoda.DMIntroFragment1;
 import com.mydimoda.DMIntroFragment2;
@@ -20,7 +21,7 @@ public class DMPagerAdapter extends FragmentPagerAdapter{
 		super(fm);
 	}
 	@Override
-	public android.support.v4.app.Fragment getItem(int pos) {
+	public Fragment getItem(int pos) {
 		// TODO Auto-generated method stub
 		if(pos == 0)
 		{
