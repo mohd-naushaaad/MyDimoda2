@@ -19,122 +19,15 @@
   </component>
   <component name="AndroidLogFilters">
     <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="675195de-edd9-472f-aa75-773e1d53deb2" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myDimoda/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/myDimoda.iml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/myDimoda.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myDimoda/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/AlarmReciever.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/AlarmReciever.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/AlarmReciever_7hour.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/AlarmReciever_7hour.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/AppUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/AppUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMAlgorithmActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMAlgorithmActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMAutoActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMAutoActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMCaptureActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMCaptureActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMCaptureOptionActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMCaptureOptionActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMCropImageListActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMCropImageListActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMDeleteActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMDeleteActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMDetailActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMDetailActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMExactActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMExactActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity_7Hour.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity_7Hour.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFavoriteActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFavoriteActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFindMeActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFindMeActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMHangUpActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMHangUpActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMHelpActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMHelpActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMHomeActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMHomeActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMIntroActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMIntroActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMIntroFragment1.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMIntroFragment1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMIntroFragment2.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMIntroFragment2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMIntroFragment3.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMIntroFragment3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMIntroFragment3_5.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMIntroFragment3_5.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMIntroFragment4.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMIntroFragment4.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMIntroFragment5.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMIntroFragment5.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMIntroFragment6.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMIntroFragment6.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMIntroFragment7.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMIntroFragment7.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMIntroFragment8.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMIntroFragment8.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMMainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMMainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMMyLookActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMMyLookActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMNotificationActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMNotificationActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMOrganizeActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMOrganizeActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMResetPasswordActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMResetPasswordActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMSettingActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMSettingActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMSignUpActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMSignUpActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMStyleActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMStyleActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/ServiceHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/ServiceHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/UploadPicService.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/UploadPicService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/activities/LookListingActiivty.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/activities/LookListingActiivty.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/activities/PlanANewTripActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/activities/PlanANewTripActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/activities/ReviewTripPlannedActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/activities/ReviewTripPlannedActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/activities/TripHelpMeActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/activities/TripHelpMeActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/adapter/DMCropActRecycAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/adapter/DMCropActRecycAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/adapter/DMDialogGridAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/adapter/DMDialogGridAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/adapter/DMImageRecycAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/adapter/DMImageRecycAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/adapter/DMPagerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/adapter/DMPagerAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/adapter/ItemListingAdp.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/adapter/ItemListingAdp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/adapter/LookImagesAdp.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/adapter/LookImagesAdp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/adapter/LookListingAdp.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/adapter/LookListingAdp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/adapter/ReviewTripAdp.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/adapter/ReviewTripAdp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/adapter/SubItemOfLookAdp.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/adapter/SubItemOfLookAdp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/adapter/SuggestedItemAdp.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/adapter/SuggestedItemAdp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/camera/CameraActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/camera/CameraActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/camera/CropActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/camera/CropActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/customView/BrixtonLightText.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/customView/BrixtonLightText.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/customView/Existence_Light_TextView.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/customView/Existence_Light_TextView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/customView/SqureImageView.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/customView/SqureImageView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout-xlarge/activity_algorithm.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout-xlarge/activity_algorithm.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout-xlarge/activity_auto.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout-xlarge/activity_auto.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout-xlarge/activity_capture_option.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout-xlarge/activity_capture_option.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout-xlarge/activity_detail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout-xlarge/activity_detail.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout-xlarge/activity_exact.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout-xlarge/activity_exact.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout-xlarge/activity_fashion.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout-xlarge/activity_fashion.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout-xlarge/activity_favorite.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout-xlarge/activity_favorite.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout-xlarge/activity_findme.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout-xlarge/activity_findme.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout-xlarge/activity_hangup.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout-xlarge/activity_hangup.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout-xlarge/activity_help.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout-xlarge/activity_help.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout-xlarge/activity_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout-xlarge/activity_home.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout-xlarge/activity_occasion.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout-xlarge/activity_occasion.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout-xlarge/activity_setting.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout-xlarge/activity_setting.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout-xlarge/activity_style.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout-xlarge/activity_style.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_algorithm.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_algorithm.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_auto.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_auto.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_camera.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_camera.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_capture.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_capture.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_capture_option.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_capture_option.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_crop.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_crop.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_crop_image_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_crop_image_list.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_detail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_detail.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_exact.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_exact.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_fashion.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_fashion.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_fashion_eight.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_fashion_eight.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_favorite.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_favorite.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_findme.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_findme.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_hangup.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_hangup.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_help.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_help.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_help_me_selection.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_help_me_selection.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_home.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_intro.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_intro.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_look_listing.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_look_listing.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_look_listing_for_one_look.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_look_listing_for_one_look.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_merchandise.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_merchandise.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_notfashion.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_notfashion.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_occasion.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_occasion.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_plannewtrip.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_plannewtrip.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_setting.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_setting.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_style.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_style.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout/item_look_listing_one_look.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout/item_look_listing_one_look.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout/item_trip_looks.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout/item_trip_looks.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout/review_trip_listing.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout/review_trip_listing.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pullSDK/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/pullSDK/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pullSDK/pullSDK.iml" beforeDir="false" afterPath="$PROJECT_DIR$/pullSDK/pullSDK.iml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -145,7 +38,6 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="93MAX096VV" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -163,7 +55,7 @@
   </component>
   <component name="GenerateSignedApkSettings">
     <option name="EXPORT_PRIVATE_KEY" value="false" />
-    <option name="KEY_STORE_PATH" value="D:\ProjectDAta\MyDiModa\keystore\mydimoda.keystore" />
+    <option name="KEY_STORE_PATH" value="C:\Users\Nirmal\Downloads\mydimoda.keystore" />
     <option name="KEY_ALIAS" value="mydimoda inc" />
     <option name="REMEMBER_PASSWORDS" value="true" />
     <option name="BUILD_TARGET_KEY" value="apk" />
@@ -182,12 +74,13 @@
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="4.2" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="BX903F2Q8E" />
     <property name="AnalyzeApkAction.lastApkPath" value="$PROJECT_DIR$/myDimoda/build/outputs/apk/debug/myDimoda-debug.apk" />
+    <property name="ApkExportedModule" value="myDimoda" />
     <property name="DEBUGGABLE_DEVICE" value="google-pixel_3a_xl-93MAX096VV" />
     <property name="DEBUGGABLE_PROCESS" value="com.mydimoda" />
     <property name="DEBUGGER_ID" value="Auto" />
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="ZY2245B534" />
     <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2019-09-30T14:00:18.273Z" />
-    <property name="ExportApk.ApkPath" value="D:\ProjectDAta\MyDiModa\signBuild" />
+    <property name="ExportApk.ApkPath" value="C:\Users\Nirmal\Desktop" />
     <property name="ExportApk.BuildVariants" value="release" />
     <property name="ExportApk.SignV1" value="true" />
     <property name="ExportApk.SignV2" value="true" />
