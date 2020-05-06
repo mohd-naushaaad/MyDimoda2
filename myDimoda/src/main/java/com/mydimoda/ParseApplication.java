@@ -73,7 +73,7 @@ public class ParseApplication extends Application {
                 .applicationId("SPi9A2wXDrfMonNm9PBbJzumanlXMiEYfqpRCkJd") // should correspond to APP_ID env variable
                 .clientKey("MGuamZwIkAVisZWyZ5ZGqGR50Cl42kOAhNNgFQLm")  // set explicitly unless clientKey is explicitly configured on Parse server
                 .clientBuilder(builder)
-                .server("http://52.25.182.16:1335/parse/").build());
+                .server("http://52.25.182.16:1337/parse/").build());
 
 //		ParseFacebookUtils.initialize("608361809277602");
         ParseFacebookUtils.initialize(this);//mayur updated

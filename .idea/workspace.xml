@@ -25,7 +25,6 @@
     <list default="true" id="675195de-edd9-472f-aa75-773e1d53deb2" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/ParseApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/ParseApplication.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,7 +36,6 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="93MAX096VV" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
