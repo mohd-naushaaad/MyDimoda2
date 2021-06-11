@@ -32,14 +32,15 @@
             android:layout_width="match_parent"
             android:layout_height="45dp" >
 
-            <EditText
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/username_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/edit_bg"
                 android:hint="Username"
-                android:imeOptions="actionNext"
                 android:paddingLeft="10dp"
+                android:gravity="center|start"
+                android:textColorHint="#9C9C9C"
                 android:textColor="#000000"
                 android:textSize="15sp" />
         </RelativeLayout>
@@ -50,13 +51,14 @@
             android:layout_height="45dp"
             android:layout_marginTop="10dp" >
 
-            <EditText
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/pass_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/edit_bg"
                 android:hint="Password"
-                android:imeOptions="actionDone"
+                android:textColorHint="#9C9C9C"
+                android:gravity="center|start"
                 android:inputType="textPassword"
                 android:paddingLeft="10dp"
                 android:textColor="#000000"

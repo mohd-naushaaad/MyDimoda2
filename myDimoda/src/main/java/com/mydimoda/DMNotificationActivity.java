@@ -481,7 +481,8 @@ public class DMNotificationActivity extends Activity {
 	public void likeCloth() {
 		// mBaseUrl="http://54.69.61.15:/newa";//"http://54.191.209.169:/newa";
 		// mBaseUrl="http://52.11.139.58:/upd24";//"http://54.69.61.15:/newa";
-		mBaseUrl = "http://AIProd.myDiModa.com/resp_attire_24";// "http://54.69.61.15:/newa";
+		//mBaseUrl = "http://AIProd.myDiModa.com/resp_attire_24";// "http://54.69.61.15:/newa";
+		mBaseUrl = "http://54.69.61.15:/resp_attire";
 		makeSendData("like");
 
 		MyAsyncTask task1 = new MyAsyncTask();
@@ -494,7 +495,8 @@ public class DMNotificationActivity extends Activity {
 		constant.gBlockedList.add(constant.gFashion);
 		// mBaseUrl="http://54.69.61.15:/newa";//"http://54.191.209.169:/newa";
 		// mBaseUrl="http://52.11.139.58:/upd24";//"http://54.69.61.15:/newa";
-		mBaseUrl = "http://AIProd.myDiModa.com/resp_attire_24";
+		mBaseUrl = "http://54.69.61.15:/resp_attire";
+		//mBaseUrl = "http://AIProd.myDiModa.com/resp_attire_24";
 		makeSendData("dislike");
 		MyAsyncTask task1 = new MyAsyncTask();
 		task1.execute();
@@ -721,6 +723,7 @@ public class DMNotificationActivity extends Activity {
 			// / when get response, call parser response function of the class
 			constant.hideProgress();
 			parseResponse(mResponseData);
+			vBtnRemember.performClick();
 
 			super.onPostExecute(result);
 		}

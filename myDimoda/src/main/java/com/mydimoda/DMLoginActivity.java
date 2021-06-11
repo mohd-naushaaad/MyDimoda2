@@ -19,11 +19,14 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.widget.AppCompatEditText;
 
 import com.facebook.AccessToken;
 import com.facebook.GraphRequest;
@@ -47,7 +50,7 @@ import java.util.List;
 public class DMLoginActivity extends Activity {
 
     Button vBtnFacebook, vBtnSignUp, vBtnLogin;
-    EditText vUsername, vPassword;
+    AppCompatEditText vUsername, vPassword;
     TextView vTxtRemember;
     ImageButton vBtnRemember;
     ProgressDialog vProgress;
@@ -82,8 +85,8 @@ public class DMLoginActivity extends Activity {
         vBtnFacebook = (Button) findViewById(R.id.facebook_btn);
         vBtnSignUp = (Button) findViewById(R.id.signup_btn);
         vBtnLogin = (Button) findViewById(R.id.login_btn);
-        vUsername = (EditText) findViewById(R.id.username_view);
-        vPassword = (EditText) findViewById(R.id.pass_view);
+        vUsername =  findViewById(R.id.username_view);
+        vPassword = findViewById(R.id.pass_view);
         vTxtRemember = (TextView) findViewById(R.id.remember_view);
         vBtnRemember = (ImageButton) findViewById(R.id.remember_btn);
         Button forgotPasswordButton = (Button) findViewById(R.id.forgot_password_btn);
@@ -92,6 +95,7 @@ public class DMLoginActivity extends Activity {
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
+                closeKeyboard();
                 if (AppUtils.isConnectingToInternet(DMLoginActivity.this)) {
                     Intent intent = new Intent(DMLoginActivity.this,
                             DMResetPasswordActivity.class);
@@ -108,6 +112,7 @@ public class DMLoginActivity extends Activity {
 
             public void onClick(View v) {
                 // TODO Auto-generated method stub
+                closeKeyboard();
                 if (mIsRemember) {
                     mIsRemember = false;
                     vBtnRemember.setBackgroundResource(R.drawable.remember_bg);
@@ -122,6 +127,7 @@ public class DMLoginActivity extends Activity {
 
             public void onClick(View v) {
                 // TODO Auto-generated method stub
+                closeKeyboard();
                 if (AppUtils.isConnectingToInternet(DMLoginActivity.this)) {
                     loginWithFacebook();
                 } else {
@@ -134,6 +140,7 @@ public class DMLoginActivity extends Activity {
 
             public void onClick(View v) {
                 // TODO Auto-generated method stub
+                closeKeyboard();
                 if (AppUtils.isConnectingToInternet(DMLoginActivity.this)) {
                     Intent intent = new Intent(DMLoginActivity.this,
                             DMSignUpActivity.class);
@@ -149,6 +156,7 @@ public class DMLoginActivity extends Activity {
 
             public void onClick(View v) {
                 // TODO Auto-generated method stub
+                closeKeyboard();
                 if (AppUtils.isConnectingToInternet(DMLoginActivity.this)) {
                     loginToParse();
                 } else {
@@ -159,6 +167,8 @@ public class DMLoginActivity extends Activity {
     }
 
     public void init() {
+        //close keyboard
+        closeKeyboard();
         // / Global font setting
         constant.boldfontface = Typeface.createFromAsset(getAssets(),
                 "Brixton Bold.ttf");
@@ -167,6 +177,29 @@ public class DMLoginActivity extends Activity {
         setViewWithFont();
         if (getUserData()) {
             goHomeActivity();
+        }
+    }
+
+    private void closeKeyboard() {
+        // this will give us the view
+        // which is currently focus
+        // in this layout
+        View view = this.getCurrentFocus();
+
+        // if nothing is currently
+        // focus then this will protect
+        // the app from crash
+        if (view != null) {
+
+            // now assign the system
+            // service to InputMethodManager
+            InputMethodManager manager
+                    = (InputMethodManager)
+                    getSystemService(
+                            this.INPUT_METHOD_SERVICE);
+            manager
+                    .hideSoftInputFromWindow(
+                            view.getWindowToken(), 0);
         }
     }
 
@@ -184,7 +217,7 @@ public class DMLoginActivity extends Activity {
     // /--------------------------------------- login with facebook data
     // -----------------------------------------
     public void loginWithFacebook() {
-        //constant.showProgress(this, "Logging in..");
+        constant.showProgress(this, "Logging in..");
         List<String> permissions = Arrays.asList("email", "basic_info");
         ParseFacebookUtils.logInWithReadPermissionsInBackground(this, permissions, new LogInCallback() {
             @Override
@@ -194,7 +227,7 @@ public class DMLoginActivity extends Activity {
                             DMLoginActivity.this,
                             "Uh oh. The user cancelled the Facebook login.",
                             Toast.LENGTH_LONG).show();
-                    // constant.hideProgress();
+                     constant.hideProgress();
                 } else if (user.isNew()) {
                     Log.d("MyApp",
                             "User signed up and logged in through Facebook!");

@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.mydimoda.R;
 import com.mydimoda.customView.Existence_Light_TextView;
@@ -111,6 +112,7 @@ public class LookListingAdp extends RecyclerView.Adapter<LookListingAdp.MyHolder
         public void onViewClicked(View view) {
             switch (view.getId()) {
                 case R.id.like_btn:
+                  //  Toast.makeText(mContext,"Product Already Liked",Toast.LENGTH_LONG).show();
                     listner.onClickOfLike(getAdapterPosition(), isFromTrip);
                     break;
                 case R.id.dissmiss_btn:

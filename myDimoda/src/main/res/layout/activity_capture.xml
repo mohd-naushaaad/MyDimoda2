@@ -286,13 +286,14 @@
             </FrameLayout>
         </LinearLayout>
     </FrameLayout>
+
     <ImageView
         android:id="@+id/act_capture_scrn_coach"
         android:layout_width="match_parent"
-        android:src="@drawable/hangup_scrn_coach"
-        android:scaleType="fitXY"
+        android:layout_height="match_parent"
         android:clickable="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/hangup_scrn_coach"
         android:visibility="gone"
-        tools:visibility="visible"
-        android:layout_height="match_parent" />
+        tools:visibility="gone" />
 </RelativeLayout>

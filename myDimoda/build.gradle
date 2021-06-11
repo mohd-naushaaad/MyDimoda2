@@ -42,7 +42,7 @@ android {
         /*ndk {
             abiFilters "armeabi-v7a", "arm64-v8a", "x86", "x86_64", "armeabi", "mips"
         }*/
-        ndk.abiFilters 'armeabi-v7a','arm64-v8a','x86','x86_64'
+       // ndk.abiFilters 'armeabi-v7a','arm64-v8a','x86','x86_64'
 
     }
     compileOptions {
@@ -76,7 +76,8 @@ dependencies {
     implementation files('libs/google-play-services.jar')
     implementation 'androidx.multidex:multidex:2.0.0'
     /* compile files('libs/Parse-1.5.1.jar')*/
-    implementation files('libs/universal-image-loader-1.9.5.jar')
+    //implementation files('libs/universal-image-loader-1.9.5.jar')
+    implementation 'com.github.nostra13:Android-Universal-Image-Loader:f6a9615868482672c3630cb7db6dcf43391e80de'
     implementation 'com.jakewharton:butterknife:10.2.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
     implementation('com.crashlytics.sdk.android:crashlytics:2.5.5@aar') {
@@ -109,5 +110,9 @@ dependencies {
     implementation 'org.parceler:parceler-api:1.1.12'
     annotationProcessor 'org.parceler:parceler:1.1.12'
     implementation "androidx.annotation:annotation:1.1.0"
+
+    //Migrate to androidx
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'androidx.browser:browser:1.0.0'
 
 }

@@ -254,6 +254,7 @@ public class DMDetailActivity extends Activity {
                 if (data != null) {
                     mReview = new DMReviewObject(data);
                 } else {
+                    //uncomment when amazona and ASOS issue solved
                     Toast.makeText(DMDetailActivity.this, "Network Error",
                             Toast.LENGTH_LONG).show();
                 }
@@ -402,7 +403,8 @@ public class DMDetailActivity extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         if (resultCode != RESULT_OK) {
-            super.onBackPressed();
+            //By Vipul, 10-06-21 Commented to keep the detail screen when backpressed on scanning screen, same as iOS.
+            //super.onBackPressed();
             return;
         }
 

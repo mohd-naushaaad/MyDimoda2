@@ -203,7 +203,7 @@ public class DMHelpActivity extends Activity implements ItemListingAdp.onclickOf
 
     public void showTitle() {
         if (mType.equals("shirt")) {
-            vTxtTitle.setText("Shirt");
+            vTxtTitle.setText("Shirts");
         } else if (mType.equals("trousers")) {
             vTxtTitle.setText("Trousers");
         } else if (mType.equals("jacket")) {

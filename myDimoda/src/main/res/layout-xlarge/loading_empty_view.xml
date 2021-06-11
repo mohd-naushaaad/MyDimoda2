@@ -20,7 +20,7 @@
         android:layout_centerHorizontal="true"
         android:gravity="center"
         android:padding="15dp"
-        android:text="Empty List"
+        android:text="No Brand Name Available"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:visibility="gone" />
 

@@ -2,7 +2,9 @@
 <project version="4">
   <component name="AndroidLayouts">
     <shared>
-      <config />
+      <config>
+        <device id="pixel_2_xl" />
+      </config>
     </shared>
     <layouts>
       <layout url="file://$PROJECT_DIR$/myDimoda/src/main/res/layout-xlarge/activity_setting.xml">
@@ -18,16 +20,71 @@
     </layouts>
   </component>
   <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="response" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="675195de-edd9-472f-aa75-773e1d53deb2" name="Default" comment="">
+    <list default="true" id="675195de-edd9-472f-aa75-773e1d53deb2" name="Default" comment="Bugs Fixed">
+      <change afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myDimoda/src/main/ic_launcher-playstore.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myDimoda/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myDimoda/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myDimoda/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myDimoda/src/main/res/mipmap-hdpi/ic_launcher_foreground.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myDimoda/src/main/res/mipmap-hdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myDimoda/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myDimoda/src/main/res/mipmap-mdpi/ic_launcher_foreground.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myDimoda/src/main/res/mipmap-mdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myDimoda/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myDimoda/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myDimoda/src/main/res/mipmap-xhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myDimoda/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myDimoda/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myDimoda/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myDimoda/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myDimoda/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myDimoda/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myDimoda/src/main/res/values/ic_launcher_background.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/ParseApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/ParseApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myDimoda/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myDimoda/myDimoda.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/assets/myDiModa.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/assets/myDiModa.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/AlarmReciever.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/AlarmReciever.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/AppRater.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/AppRater.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMAutoActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMAutoActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMDetailActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMDetailActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMExactActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMExactActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMHelpActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMHelpActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMLoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMLoginActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMNotificationActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMNotificationActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMResetPasswordActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMResetPasswordActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/activities/LookListingActiivty.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/activities/LookListingActiivty.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/adapter/LookListingAdp.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/adapter/LookListingAdp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/constant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/database/DatabaseHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/database/DatabaseHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/database/DbAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/database/DbAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout-xlarge/activity_exact.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout-xlarge/activity_exact.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout-xlarge/activity_signup.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout-xlarge/activity_signup.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout-xlarge/loading_empty_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout-xlarge/loading_empty_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_capture.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_capture.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_crop.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_crop.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_favorite.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_favorite.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_help.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_help.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_login.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_resetpassword.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_resetpassword.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_signup.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_signup.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/values/array.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/values/array.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pullSDK/pullSDK.iml" beforeDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,6 +93,7 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[New_Device_1_API_28]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -44,12 +102,36 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
-        <projects_view />
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/myDimoda">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="mydimoda" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="mydimoda" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="mydimoda" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="android" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
       </state>
     </system>
-  </component>
-  <component name="FavoritesManager">
-    <favorites_list name="MyDimoda_3_MARCH" />
   </component>
   <component name="GenerateSignedApkSettings">
     <option name="EXPORT_PRIVATE_KEY" value="false" />
@@ -59,25 +141,28 @@
     <option name="BUILD_TARGET_KEY" value="apk" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="FinalCode" />
       </map>
     </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1ZWm6SEo40sntEdzGX2d8NQgdab" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="4.2" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="BX903F2Q8E" />
     <property name="AnalyzeApkAction.lastApkPath" value="$PROJECT_DIR$/myDimoda/build/outputs/apk/debug/myDimoda-debug.apk" />
     <property name="ApkExportedModule" value="myDimoda" />
-    <property name="DEBUGGABLE_DEVICE" value="google-pixel_3a_xl-93MAX096VV" />
+    <property name="DEBUGGABLE_DEVICE" value="New_Device_1_API_28 [emulator-5554]" />
     <property name="DEBUGGABLE_PROCESS" value="com.mydimoda" />
-    <property name="DEBUGGER_ID" value="Auto" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="ZY2245B534" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2019-09-30T14:00:18.273Z" />
+    <property name="DEBUGGER_ID" value="Java" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="New_Device_1_API_28" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2021-05-28T08:05:44.923Z" />
     <property name="ExportApk.ApkPath" value="C:\Users\Nirmal\Desktop" />
     <property name="ExportApk.BuildVariants" value="release" />
     <property name="ExportApk.SignV1" value="true" />
@@ -87,28 +172,32 @@
     <property name="SHOW_ALL_PROCESSES" value="false" />
     <property name="SearchEverywhereHistoryKey" value="alar&#9;FILE&#9;file://E:/MyDimoda_3_MARCH/myDimoda/src/main/java/com/mydimoda/AlarmReciever.java&#10;noti&#9;FILE&#9;file://E:/MyDimoda_3_MARCH/myDimoda/src/main/java/com/mydimoda/DMNotificationActivity.java&#10;dmoc&#9;PSI&#9;JAVA://com.mydimoda.adapter.DMOccasionListAdapter&#10;gra&#9;FILE&#9;file://E:/MyDimoda_3_MARCH/myDimoda/build.gradle&#10;log&#9;FILE&#9;file://E:/MyDimoda_3_MARCH/myDimoda/src/main/res/layout-xlarge/activity_login.xml&#10;logi&#9;PSI&#9;JAVA://com.facebook.LoginActivity&#10;set&#9;FILE&#9;file://E:/MyDimoda_3_MARCH/myDimoda/src/main/res/layout-xlarge/activity_setting.xml&#10;cons&#9;FILE&#9;file://E:/MyDimoda_3_MARCH/myDimoda/src/main/java/com/mydimoda/constant.java&#10;rate&#9;PSI&#9;JAVA://com.mydimoda.Activity_RateApp&#10;sett&#9;FILE&#9;file://E:/MyDimoda_3_MARCH/myDimoda/src/main/java/com/mydimoda/DMSettingActivity.java&#10;se&#9;FILE&#9;file://E:/MyDimoda_3_MARCH/myDimoda/src/main/res/layout-xlarge/activity_setting.xml" />
     <property name="add_unversioned_files" value="true" />
+    <property name="android-custom-viewC:/Users/Hp/AppData/Local/Android/Sdk/sources/android-29/android/view/View.java_SELECTED" value="View" />
+    <property name="android-custom-viewD:/android/mydimoda/myDimoda/src/main/java/com/mydimoda/widget/cropper/CropImageView.java_SELECTED" value="CropImageView" />
+    <property name="android-custom-viewD:/android/mydimoda/myDimoda/src/main/java/com/mydimoda/widget/cropper/cropwindow/CropOverlayView.java_SELECTED" value="CropOverlayView" />
+    <property name="android-custom-viewD:/android/mydimoda/pullSDK/src/main/java/com/handmark/pulltorefresh/library/PullToRefreshAdapterViewBase.java_SELECTED" value="PullToRefreshAdapterViewBase" />
+    <property name="android-custom-viewD:/android/mydimoda/pullSDK/src/main/java/com/handmark/pulltorefresh/library/PullToRefreshBase.java_SELECTED" value="PullToRefreshBase" />
+    <property name="android-custom-viewD:/android/mydimoda/pullSDK/src/main/java/com/handmark/pulltorefresh/library/PullToRefreshGridView.java_SELECTED" value="PullToRefreshGridView" />
     <property name="device.picker.selection" value="ZY2245B534" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Documents/Blackmagic Design" />
+    <property name="multi-representation-previewC:/Users/Hp/AppData/Local/Android/Sdk/sources/android-29/android/view/View.java_selected" value="Custom views" />
+    <property name="multi-representation-previewD:/android/mydimoda/myDimoda/src/main/java/com/mydimoda/widget/cropper/CropImageView.java_selected" value="Custom views" />
+    <property name="multi-representation-previewD:/android/mydimoda/myDimoda/src/main/java/com/mydimoda/widget/cropper/cropwindow/CropOverlayView.java_selected" value="Custom views" />
+    <property name="multi-representation-previewD:/android/mydimoda/pullSDK/src/main/java/com/handmark/pulltorefresh/library/PullToRefreshAdapterViewBase.java_selected" value="Custom views" />
+    <property name="multi-representation-previewD:/android/mydimoda/pullSDK/src/main/java/com/handmark/pulltorefresh/library/PullToRefreshBase.java_selected" value="Custom views" />
+    <property name="multi-representation-previewD:/android/mydimoda/pullSDK/src/main/java/com/handmark/pulltorefresh/library/PullToRefreshGridView.java_selected" value="Custom views" />
     <property name="recentsLimit" value="5" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\android\mydimoda\myDimoda\src\main\jniLibs\arm64-v8a" />
+      <recent name="D:\android\mydimoda\myDimoda\src\main\jniLibs\x86" />
+      <recent name="D:\android\mydimoda\myDimoda\src\main\jniLibs\armeabi-v7a" />
+      <recent name="D:\android\mydimoda\myDimoda\src\main\jniLibs" />
       <recent name="E:\Sudio_WorkSpace\mydimoda\myDimoda\src\main\res" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="Android App.myDimoda">
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
@@ -152,6 +241,12 @@
       <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
       <method />
     </configuration>
+    <configuration default="true" type="Applet">
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -187,12 +282,13 @@
       </method>
     </configuration>
     <configuration name="myDimoda" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
-      <module name="myDimoda" />
+      <module name="mydimoda.myDimoda" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
       <option name="DEPLOY_AS_INSTANT" value="false" />
       <option name="ARTIFACT_NAME" value="" />
       <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
       <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
       <option name="ACTIVITY_EXTRA_FLAGS" value="" />
       <option name="MODE" value="default_activity" />
@@ -228,11 +324,16 @@
       </Native>
       <Profilers>
         <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
         <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
         <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
       </Profilers>
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
       <method v="2">
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
@@ -258,17 +359,49 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet">
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="mydimoda [signingReport]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="signingReport" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="mydimoda:myDimoda [lintDebug]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/myDimoda" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="lintDebug" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
     </configuration>
     <configuration default="true" type="TestNG">
       <option name="TEST_OBJECT" value="CLASS" />
@@ -281,7 +414,15 @@
     </configuration>
     <list>
       <item itemvalue="Android App.myDimoda" />
+      <item itemvalue="Gradle.mydimoda:myDimoda [lintDebug]" />
+      <item itemvalue="Gradle.mydimoda [signingReport]" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.mydimoda [signingReport]" />
+        <item itemvalue="Gradle.mydimoda:myDimoda [lintDebug]" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -320,9 +461,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -341,6 +480,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -349,6 +489,112 @@
     <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
       <collection />
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Bugs Fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bugs Fixed" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="397" y="147" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1622203691454">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="397" y="147" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.689@0.0.1280.689" timestamp="1622203691454" />
+    <state x="446" y="52" key="#com.intellij.ide.util.MemberChooser" timestamp="1623336840964">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="446" y="52" key="#com.intellij.ide.util.MemberChooser/0.0.1280.689@0.0.1280.689" timestamp="1623336840964" />
+    <state x="606" y="95" key="#xdebugger.evaluate" timestamp="1623311027791">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="606" y="95" key="#xdebugger.evaluate/0.0.1280.689@0.0.1280.689" timestamp="1623311027791" />
+    <state x="93" y="93" width="1095" height="504" key="AVDManager" timestamp="1622189343302">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="93" y="93" width="1095" height="504" key="AVDManager/0.0.1280.689@0.0.1280.689" timestamp="1622189343302" />
+    <state x="221" y="100" key="AndroidCreateResourceDirectoryDialog" timestamp="1621506663317">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="221" y="100" key="AndroidCreateResourceDirectoryDialog/0.0.1280.689@0.0.1280.689" timestamp="1621506663317" />
+    <state x="438" y="92" key="AndroidProcessChooserDialog" timestamp="1623392007883">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="438" y="92" key="AndroidProcessChooserDialog/0.0.1280.689@0.0.1280.689" timestamp="1623392007883" />
+    <state x="293" y="0" key="CommitChangelistDialog2" timestamp="1623393918699">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="293" y="0" key="CommitChangelistDialog2/0.0.1280.689@0.0.1280.689" timestamp="1623393918699" />
+    <state width="448" height="438" key="DebuggerActiveHint" timestamp="1622811519699">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="448" height="438" key="DebuggerActiveHint/0.0.1280.689@0.0.1280.689" timestamp="1622811519699" />
+    <state x="125" y="51" key="DiffContextDialog" timestamp="1623222484494">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="125" y="51" key="DiffContextDialog/0.0.1280.689@0.0.1280.689" timestamp="1623222484494" />
+    <state x="421" y="87" key="FileChooserDialogImpl" timestamp="1623326041142">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="421" y="87" key="FileChooserDialogImpl/0.0.1280.689@0.0.1280.689" timestamp="1623326041142" />
+    <state width="1236" height="193" key="GridCell.Tab.0.bottom" timestamp="1623393918828">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="1236" height="193" key="GridCell.Tab.0.bottom/0.0.1280.689@0.0.1280.689" timestamp="1623393918828" />
+    <state width="1236" height="193" key="GridCell.Tab.0.center" timestamp="1623393918828">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="1236" height="193" key="GridCell.Tab.0.center/0.0.1280.689@0.0.1280.689" timestamp="1623393918828" />
+    <state width="1236" height="193" key="GridCell.Tab.0.left" timestamp="1623393918827">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="1236" height="193" key="GridCell.Tab.0.left/0.0.1280.689@0.0.1280.689" timestamp="1623393918827" />
+    <state width="1236" height="193" key="GridCell.Tab.0.right" timestamp="1623393918828">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="1236" height="193" key="GridCell.Tab.0.right/0.0.1280.689@0.0.1280.689" timestamp="1623393918828" />
+    <state width="1236" height="139" key="GridCell.Tab.1.bottom" timestamp="1623392147637">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="1236" height="139" key="GridCell.Tab.1.bottom/0.0.1280.689@0.0.1280.689" timestamp="1623392147637" />
+    <state width="1236" height="139" key="GridCell.Tab.1.center" timestamp="1623392147637">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="1236" height="139" key="GridCell.Tab.1.center/0.0.1280.689@0.0.1280.689" timestamp="1623392147637" />
+    <state width="1236" height="139" key="GridCell.Tab.1.left" timestamp="1623392147637">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="1236" height="139" key="GridCell.Tab.1.left/0.0.1280.689@0.0.1280.689" timestamp="1623392147637" />
+    <state width="1236" height="139" key="GridCell.Tab.1.right" timestamp="1623392147637">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="1236" height="139" key="GridCell.Tab.1.right/0.0.1280.689@0.0.1280.689" timestamp="1623392147637" />
+    <state x="396" y="48" key="RollbackChangesDialog" timestamp="1623046893248">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="396" y="48" key="RollbackChangesDialog/0.0.1280.689@0.0.1280.689" timestamp="1623046893248" />
+    <state x="142" y="0" key="SettingsEditor" timestamp="1621503987161">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="142" y="0" key="SettingsEditor/0.0.1280.689@0.0.1280.689" timestamp="1621503987161" />
+    <state width="647" height="346" key="XDebugger.FullValuePopup" timestamp="1623392046963">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="647" height="346" key="XDebugger.FullValuePopup/0.0.1280.689@0.0.1280.689" timestamp="1623392046963" />
+    <state x="554" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1622816747906">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="554" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1280.689@0.0.1280.689" timestamp="1622816747906" />
+    <state x="219" y="155" width="787" height="534" key="find.popup" timestamp="1623393626866">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="219" y="155" width="787" height="534" key="find.popup/0.0.1280.689@0.0.1280.689" timestamp="1623393626866" />
+    <state x="298" y="153" key="run.anything.popup" timestamp="1623333059981">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="298" y="153" key="run.anything.popup/0.0.1280.689@0.0.1280.689" timestamp="1623333059981" />
+    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup" timestamp="1623333786962">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup/0.0.1280.689@0.0.1280.689" timestamp="1623333786962" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -360,123 +606,23 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMAutoActivity.java</url>
-          <line>186</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMAutoActivity.java</url>
-          <line>189</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMAutoActivity.java</url>
-          <line>230</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMAutoActivity.java</url>
-          <line>232</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMAutoActivity.java</url>
-          <line>306</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMAutoActivity.java</url>
-          <line>307</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMAutoActivity.java</url>
-          <line>311</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMAutoActivity.java</url>
-          <line>310</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMAutoActivity.java</url>
-          <line>322</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMAutoActivity.java</url>
-          <line>335</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMAutoActivity.java</url>
-          <line>344</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMAutoActivity.java</url>
-          <line>354</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMAutoActivity.java</url>
-          <line>356</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMAutoActivity.java</url>
-          <line>358</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMAutoActivity.java</url>
-          <line>369</line>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMAutoActivity.java</url>
           <line>391</line>
           <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMAutoActivity.java</url>
-          <line>403</line>
+          <line>404</line>
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMAutoActivity.java</url>
-          <line>406</line>
+          <line>407</line>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMAutoActivity.java</url>
-          <line>434</line>
+          <line>436</line>
           <option name="timeStamp" value="25" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/async/MyAsyncTask.java</url>
-          <line>57</line>
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMAutoActivity.java</url>
-          <line>440</line>
-          <option name="timeStamp" value="27" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/async/MyAsyncTask.java</url>
-          <line>43</line>
-          <option name="timeStamp" value="30" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/async/MyAsyncTask.java</url>
-          <line>40</line>
-          <option name="timeStamp" value="31" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/async/MyAsyncTask.java</url>
-          <line>49</line>
-          <option name="timeStamp" value="32" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMHomeFragment.java</url>
@@ -503,17 +649,778 @@
           <line>84</line>
           <option name="timeStamp" value="37" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/camera/CropActivity.java</url>
+          <line>147</line>
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/camera/CropActivity.java</url>
+          <line>98</line>
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/camera/CropActivity.java</url>
+          <line>100</line>
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/camera/CropActivity.java</url>
+          <line>222</line>
+          <option name="timeStamp" value="41" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMResetPasswordActivity.java</url>
+          <line>73</line>
+          <option name="timeStamp" value="51" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.parse/parse-android/1.17.3/8250e682e318c0b151c08b719f4d47126c44cfc1/parse-android-1.17.3-sources.jar!/com/parse/ParseUser.java</url>
+          <line>1080</line>
+          <option name="timeStamp" value="55" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMResetPasswordActivity.java</url>
+          <line>111</line>
+          <option name="timeStamp" value="59" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMResetPasswordActivity.java</url>
+          <line>109</line>
+          <option name="timeStamp" value="61" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMCropImageListActivity.java</url>
+          <line>102</line>
+          <option name="timeStamp" value="64" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/activities/LookListingActiivty.java</url>
+          <line>163</line>
+          <option name="timeStamp" value="65" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/activities/LookListingActiivty.java</url>
+          <line>202</line>
+          <option name="timeStamp" value="67" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMLoginActivity.java</url>
+          <line>471</line>
+          <option name="timeStamp" value="68" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/activities/LookListingActiivty.java</url>
+          <line>1318</line>
+          <option name="timeStamp" value="69" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/adapter/LookListingAdp.java</url>
+          <line>114</line>
+          <option name="timeStamp" value="70" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/activities/LookListingActiivty.java</url>
+          <line>190</line>
+          <option name="timeStamp" value="71" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/activities/LookListingActiivty.java</url>
+          <line>191</line>
+          <option name="timeStamp" value="72" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/activities/LookListingActiivty.java</url>
+          <line>192</line>
+          <option name="timeStamp" value="73" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/activities/LookListingActiivty.java</url>
+          <line>193</line>
+          <option name="timeStamp" value="74" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/activities/LookListingActiivty.java</url>
+          <line>197</line>
+          <option name="timeStamp" value="75" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/activities/LookListingActiivty.java</url>
+          <line>198</line>
+          <option name="timeStamp" value="76" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/activities/LookListingActiivty.java</url>
+          <line>199</line>
+          <option name="timeStamp" value="77" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/activities/LookListingActiivty.java</url>
+          <line>200</line>
+          <option name="timeStamp" value="78" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/activities/LookListingActiivty.java</url>
+          <line>203</line>
+          <option name="timeStamp" value="79" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>182</line>
+          <option name="timeStamp" value="80" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>184</line>
+          <option name="timeStamp" value="81" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>190</line>
+          <option name="timeStamp" value="82" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>194</line>
+          <option name="timeStamp" value="83" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>195</line>
+          <option name="timeStamp" value="84" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>506</line>
+          <option name="timeStamp" value="85" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>510</line>
+          <option name="timeStamp" value="86" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>536</line>
+          <option name="timeStamp" value="87" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>537</line>
+          <option name="timeStamp" value="88" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>540</line>
+          <option name="timeStamp" value="89" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>543</line>
+          <option name="timeStamp" value="90" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>545</line>
+          <option name="timeStamp" value="91" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>546</line>
+          <option name="timeStamp" value="92" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>559</line>
+          <option name="timeStamp" value="93" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>560</line>
+          <option name="timeStamp" value="94" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>562</line>
+          <option name="timeStamp" value="95" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>569</line>
+          <option name="timeStamp" value="96" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>567</line>
+          <option name="timeStamp" value="97" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>571</line>
+          <option name="timeStamp" value="98" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>555</line>
+          <option name="timeStamp" value="99" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>551</line>
+          <option name="timeStamp" value="100" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>687</line>
+          <option name="timeStamp" value="101" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>690</line>
+          <option name="timeStamp" value="102" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>693</line>
+          <option name="timeStamp" value="103" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>694</line>
+          <option name="timeStamp" value="104" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>697</line>
+          <option name="timeStamp" value="105" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>564</line>
+          <option name="timeStamp" value="106" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>572</line>
+          <option name="timeStamp" value="107" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>596</line>
+          <option name="timeStamp" value="108" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>600</line>
+          <option name="timeStamp" value="109" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>603</line>
+          <option name="timeStamp" value="110" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>609</line>
+          <option name="timeStamp" value="111" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>619</line>
+          <option name="timeStamp" value="112" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/database/DatabaseHelper.java</url>
+          <line>76</line>
+          <option name="timeStamp" value="113" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/database/DatabaseHelper.java</url>
+          <line>74</line>
+          <option name="timeStamp" value="114" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/database/DatabaseHelper.java</url>
+          <line>151</line>
+          <option name="timeStamp" value="115" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMAlgorithmActivity.java</url>
+          <line>242</line>
+          <option name="timeStamp" value="116" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMAlgorithmActivity.java</url>
+          <line>244</line>
+          <option name="timeStamp" value="117" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMAlgorithmActivity.java</url>
+          <line>246</line>
+          <option name="timeStamp" value="118" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/social/google/util/IabHelper.java</url>
+          <line>199</line>
+          <option name="timeStamp" value="119" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/social/google/GoogleIAP.java</url>
+          <line>73</line>
+          <option name="timeStamp" value="120" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMStyleActivity.java</url>
+          <line>181</line>
+          <option name="timeStamp" value="121" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/social/google/util/IabHelper.java</url>
+          <line>197</line>
+          <option name="timeStamp" value="122" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/social/google/GoogleIAP.java</url>
+          <line>72</line>
+          <option name="timeStamp" value="123" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/database/DbAdapter.java</url>
+          <line>51</line>
+          <option name="timeStamp" value="124" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/database/DbAdapter.java</url>
+          <line>46</line>
+          <option name="timeStamp" value="125" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/database/DbAdapter.java</url>
+          <line>47</line>
+          <option name="timeStamp" value="126" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMHomeActivity.java</url>
+          <line>66</line>
+          <option name="timeStamp" value="127" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/database/DatabaseHelper.java</url>
+          <line>98</line>
+          <option name="timeStamp" value="128" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/database/DatabaseHelper.java</url>
+          <line>100</line>
+          <option name="timeStamp" value="129" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/database/DatabaseHelper.java</url>
+          <line>102</line>
+          <option name="timeStamp" value="130" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/database/DatabaseHelper.java</url>
+          <line>116</line>
+          <option name="timeStamp" value="131" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/database/DatabaseHelper.java</url>
+          <line>118</line>
+          <option name="timeStamp" value="132" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/database/DatabaseHelper.java</url>
+          <line>120</line>
+          <option name="timeStamp" value="133" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/database/DatabaseHelper.java</url>
+          <line>124</line>
+          <option name="timeStamp" value="134" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/database/DatabaseHelper.java</url>
+          <line>127</line>
+          <option name="timeStamp" value="135" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/database/DatabaseHelper.java</url>
+          <line>131</line>
+          <option name="timeStamp" value="136" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/database/DatabaseHelper.java</url>
+          <line>49</line>
+          <option name="timeStamp" value="139" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/database/DatabaseHelper.java</url>
+          <line>52</line>
+          <option name="timeStamp" value="140" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/database/DatabaseHelper.java</url>
+          <line>53</line>
+          <option name="timeStamp" value="141" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/database/DatabaseHelper.java</url>
+          <line>47</line>
+          <option name="timeStamp" value="142" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/database/DatabaseHelper.java</url>
+          <line>55</line>
+          <option name="timeStamp" value="143" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/database/DatabaseHelper.java</url>
+          <line>56</line>
+          <option name="timeStamp" value="144" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/database/DatabaseHelper.java</url>
+          <line>80</line>
+          <option name="timeStamp" value="145" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/database/DatabaseHelper.java</url>
+          <line>84</line>
+          <option name="timeStamp" value="146" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/database/DatabaseHelper.java</url>
+          <line>73</line>
+          <option name="timeStamp" value="147" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/AlarmReciever.java</url>
+          <line>47</line>
+          <option name="timeStamp" value="150" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/AlarmReciever.java</url>
+          <line>42</line>
+          <option name="timeStamp" value="151" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMNotificationActivity.java</url>
+          <line>105</line>
+          <option name="timeStamp" value="152" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMNotificationActivity.java</url>
+          <line>107</line>
+          <option name="timeStamp" value="153" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMNotificationActivity.java</url>
+          <line>180</line>
+          <option name="timeStamp" value="154" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMNotificationActivity.java</url>
+          <line>331</line>
+          <option name="timeStamp" value="155" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMAlgorithmActivity.java</url>
+          <line>524</line>
+          <option name="timeStamp" value="156" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMAlgorithmActivity.java</url>
+          <line>581</line>
+          <option name="timeStamp" value="157" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity_7Hour.java</url>
+          <line>596</line>
+          <option name="timeStamp" value="158" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity_7Hour.java</url>
+          <line>606</line>
+          <option name="timeStamp" value="159" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>655</line>
+          <option name="timeStamp" value="160" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMNotificationActivity.java</url>
+          <line>585</line>
+          <option name="timeStamp" value="161" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMNotificationActivity.java</url>
+          <line>711</line>
+          <option name="timeStamp" value="162" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMNotificationActivity.java</url>
+          <line>713</line>
+          <option name="timeStamp" value="163" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMNotificationActivity.java</url>
+          <line>716</line>
+          <option name="timeStamp" value="164" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMNotificationActivity.java</url>
+          <line>724</line>
+          <option name="timeStamp" value="165" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMHangUpActivity.java</url>
+          <line>246</line>
+          <option name="timeStamp" value="167" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMHangUpActivity.java</url>
+          <line>252</line>
+          <option name="timeStamp" value="168" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMHelpActivity.java</url>
+          <line>530</line>
+          <option name="timeStamp" value="169" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMHelpActivity.java</url>
+          <line>533</line>
+          <option name="timeStamp" value="170" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMHelpActivity.java</url>
+          <line>535</line>
+          <option name="timeStamp" value="171" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMHelpActivity.java</url>
+          <line>538</line>
+          <option name="timeStamp" value="172" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMHelpActivity.java</url>
+          <line>537</line>
+          <option name="timeStamp" value="173" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMHelpActivity.java</url>
+          <line>540</line>
+          <option name="timeStamp" value="174" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMHelpActivity.java</url>
+          <line>542</line>
+          <option name="timeStamp" value="175" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMHelpActivity.java</url>
+          <line>547</line>
+          <option name="timeStamp" value="176" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMHelpActivity.java</url>
+          <line>546</line>
+          <option name="timeStamp" value="177" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMHelpActivity.java</url>
+          <line>549</line>
+          <option name="timeStamp" value="178" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMHelpActivity.java</url>
+          <line>550</line>
+          <option name="timeStamp" value="179" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMHelpActivity.java</url>
+          <line>271</line>
+          <option name="timeStamp" value="180" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMHelpActivity.java</url>
+          <line>273</line>
+          <option name="timeStamp" value="181" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMHelpActivity.java</url>
+          <line>268</line>
+          <option name="timeStamp" value="182" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMHelpActivity.java</url>
+          <line>248</line>
+          <option name="timeStamp" value="183" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMHelpActivity.java</url>
+          <line>251</line>
+          <option name="timeStamp" value="184" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMHelpActivity.java</url>
+          <line>255</line>
+          <option name="timeStamp" value="185" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMHelpActivity.java</url>
+          <line>257</line>
+          <option name="timeStamp" value="186" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMHelpActivity.java</url>
+          <line>260</line>
+          <option name="timeStamp" value="187" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMHelpActivity.java</url>
+          <line>263</line>
+          <option name="timeStamp" value="188" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMHelpActivity.java</url>
+          <line>224</line>
+          <option name="timeStamp" value="189" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMAlgorithmActivity.java</url>
+          <line>74</line>
+          <option name="timeStamp" value="190" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMAlgorithmActivity.java</url>
+          <line>75</line>
+          <option name="timeStamp" value="191" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMAlgorithmActivity.java</url>
+          <line>255</line>
+          <option name="timeStamp" value="192" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMAlgorithmActivity.java</url>
+          <line>256</line>
+          <option name="timeStamp" value="193" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMAlgorithmActivity.java</url>
+          <line>250</line>
+          <option name="timeStamp" value="194" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>186</line>
+          <option name="timeStamp" value="195" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>1062</line>
+          <option name="timeStamp" value="196" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>576</line>
+          <option name="timeStamp" value="197" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>701</line>
+          <option name="timeStamp" value="198" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>705</line>
+          <option name="timeStamp" value="199" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>713</line>
+          <option name="timeStamp" value="200" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>717</line>
+          <option name="timeStamp" value="201" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>720</line>
+          <option name="timeStamp" value="202" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>722</line>
+          <option name="timeStamp" value="203" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>729</line>
+          <option name="timeStamp" value="204" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>734</line>
+          <option name="timeStamp" value="205" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>737</line>
+          <option name="timeStamp" value="206" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java</url>
+          <line>733</line>
+          <option name="timeStamp" value="207" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMDetailActivity.java</url>
+          <line>406</line>
+          <option name="timeStamp" value="208" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMExactActivity.java</url>
+          <line>146</line>
+          <option name="timeStamp" value="209" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMExactActivity.java</url>
+          <line>145</line>
+          <option name="timeStamp" value="210" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMExactActivity.java</url>
+          <line>147</line>
+          <option name="timeStamp" value="211" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMAutoActivity.java</url>
+          <line>562</line>
+          <option name="timeStamp" value="212" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMAutoActivity.java</url>
+          <line>563</line>
+          <option name="timeStamp" value="213" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMAutoActivity.java</url>
+          <line>401</line>
+          <option name="timeStamp" value="215" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMExactActivity.java</url>
+          <line>180</line>
+          <option name="timeStamp" value="222" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-  </component>
-  <component name="debuggerHistoryManager">
-    <expressions id="evaluateExpression">
-      <expression>
-        <expression-string>mDbAdapter.getAllCity()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-    </expressions>
   </component>
   <component name="masterDetails">
     <states>

@@ -386,7 +386,7 @@
         <item>Vedem</item>
         <item>coromose</item>
         <item>Levi\'s</item>
-        <item>Zacoo</item>
+        <item>Zacoo</item>s
         <item>Dickies</item>
         <item>DressForLess</item>
         <item>Keral</item>
@@ -1245,7 +1245,7 @@
         <item>Chennai</item>
     </string-array>
     <string-array name="shop_filter">
-        <item>All</item>
+        <item>ALL</item>
         <item>Amazon</item>
         <item>ShopStyle</item>
         <item>Asos</item>

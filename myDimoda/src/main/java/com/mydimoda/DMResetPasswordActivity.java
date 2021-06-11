@@ -19,10 +19,13 @@ import com.parse.ParseUser;
 import com.parse.RequestPasswordResetCallback;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class DMResetPasswordActivity extends Activity {
     TextView title_layout1;
-
+    public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
+            Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,8 +73,9 @@ public class DMResetPasswordActivity extends Activity {
                 // TODO Auto-generated method stub
                 if (e == null) {
                     Toast.makeText(DMResetPasswordActivity.this,
-                            "Please check your email.", Toast.LENGTH_SHORT)
+                            "Please check your email to reset Password.", Toast.LENGTH_SHORT)
                             .show();
+                    onBackPressed();
                 } else {
                     Toast.makeText(
                             DMResetPasswordActivity.this,
@@ -92,6 +96,12 @@ public class DMResetPasswordActivity extends Activity {
                     .show();
             return;
         }
+        if(!validate(emailText.getText().toString())){
+            Toast.makeText(DMResetPasswordActivity.this,
+                    "Please enter correct email address", Toast.LENGTH_SHORT)
+                    .show();
+            return;
+        }
         ParseQuery<ParseObject> query = ParseQuery.getQuery("_User");
         query.whereMatches("email", emailText.getText().toString(), "i");
         query.findInBackground(new FindCallback<ParseObject>() {
@@ -100,7 +110,7 @@ public class DMResetPasswordActivity extends Activity {
                 if (e == null) {
                     if (objects.size() > 0) {
                         ParseObject object = objects.get(0);
-                        String email = object.getString("email");
+                        String email = emailText.getText().toString();
                         System.out.println("DMResetPasswordActivity.done email: " + email);
                         resetPassword(email);
                     } else
@@ -116,5 +126,9 @@ public class DMResetPasswordActivity extends Activity {
         });
 
 
+    }
+    public static boolean validate(String emailStr) {
+        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(emailStr);
+        return matcher.find();
     }
 }

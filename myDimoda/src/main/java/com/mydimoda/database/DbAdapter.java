@@ -49,7 +49,7 @@ public class DbAdapter {
 		} 
 		catch (IOException mIOException) 
 		{
-			//			throw new Error("UnableToCreateDatabase");
+			throw new Error("UnableToCreateDatabase"+ mIOException.toString());
 		}
 		return this;
 	}
@@ -61,6 +61,11 @@ public class DbAdapter {
 			Log.d(TAG,"Open");
 			mDbHelper.openDataBase();
 			mDbHelper.close();
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 			mDb = mDbHelper.getWritableDatabase();
 		} 
 		catch (SQLException mSQLException) 

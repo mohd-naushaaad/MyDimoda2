@@ -34,6 +34,7 @@
             android:layout_height="match_parent"
             android:background="@drawable/edit_bg"
             android:hint="Username"
+            android:textColorHint="#808080"
             android:imeOptions="actionNext"
             android:paddingLeft="10dp"
             android:textColor="#000000"
@@ -53,6 +54,7 @@
             android:layout_height="match_parent"
             android:background="@drawable/edit_bg"
             android:hint="Email"
+            android:textColorHint="#808080"
             android:imeOptions="actionNext"
             android:paddingLeft="10dp"
             android:textColor="#000000"
@@ -72,6 +74,7 @@
             android:layout_height="match_parent"
             android:background="@drawable/edit_bg"
             android:hint="Password"
+            android:textColorHint="#808080"
             android:imeOptions="actionDone"
             android:inputType="textPassword"
             android:paddingLeft="10dp"
@@ -95,7 +98,7 @@
             android:background="@drawable/button_gray_rounded"
             android:text="Back"
             android:textColor="#000000"
-            android:textSize="25sp" />
+            android:textSize="20sp" />
 
         <RelativeLayout
             android:id="@+id/empty"
@@ -112,7 +115,7 @@
             android:background="@drawable/button_gray_rounded"
             android:text="Sign up"
             android:textColor="#000000"
-            android:textSize="25sp" />
+            android:textSize="20sp" />
     </LinearLayout>
 
 </RelativeLayout>

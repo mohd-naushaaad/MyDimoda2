@@ -1316,6 +1316,7 @@ public class LookListingActiivty extends AppCompatActivity implements LookListin
 
     @Override
     public void onClickOfLike(int pos, boolean isFromTrip) {
+       // Toast.makeText(this,"Product Already Liked",Toast.LENGTH_SHORT).show();
         if (!isFromTrip) {
             if (listResultingLook.get(pos).isIsliked()) {
 

@@ -43,12 +43,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      */
     public void createDataBase() throws IOException {
 
-
-        boolean mDataBaseExist = checkDataBase();
+        File db = mContext.getDatabasePath(DB_NAME);
+        boolean mDataBaseExist = db.exists();
         Log.d(TAG, "create DB in Helper. Data exists?" + mDataBaseExist);
         if (!mDataBaseExist) {
             Log.d(TAG, "get Writable in DatabaseHelper");
-            this.getWritableDatabase();
+            //this.getWritableDatabase();
             try {
                 Log.d(TAG, "copy Database");
                 copyDataBase();
@@ -70,15 +70,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase mCheckDataBase = null;
         try {
             String myPath = DB_PATH + DB_NAME;
-            mCheckDataBase = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.NO_LOCALIZED_COLLATORS);
+            File db = mContext.getDatabasePath(DB_NAME);
+            if(db.exists()){
+            mCheckDataBase = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.NO_LOCALIZED_COLLATORS);}
         } catch (SQLiteException mSQLiteException) {
             Log.e(TAG, "DatabaseNotFound " + mSQLiteException.toString());
         }
 
         if (mCheckDataBase != null) {
             mCheckDataBase.close();
+            return true;
+        }else
+        {
+            return false;
         }
-        return mCheckDataBase != null;
 
     }
 
@@ -90,7 +95,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      */
     private void copyDataBase() throws IOException {
 
-        Log.d(TAG, "copy");
+      /*  Log.d(TAG, "copy");
         InputStream mInput = mContext.getResources().getAssets().open(DB_NAME);
 
         String outFileName = DB_PATH + DB_NAME;
@@ -107,7 +112,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         mOutput.flush();
         mOutput.close();
-        mInput.close();
+        mInput.close();*/
+
+        InputStream myInput = mContext.getAssets().open(DB_NAME);
+        // Path to the just created empty db
+        String outFileName = DB_PATH + DB_NAME;
+        // if the path doesn't exist first, create it
+        File f = new File(mContext.getApplicationInfo().dataDir + DB_PATH);
+        if (!f.exists())
+            f.mkdir();
+        // Open the empty db as the output stream
+        OutputStream myOutput = new FileOutputStream(outFileName);
+        // transfer bytes from the inputfile to the outputfile
+        byte[] buffer = new byte[1024];
+        int length;
+        while ((length = myInput.read(buffer)) > 0) {
+            myOutput.write(buffer, 0, length);
+        }
+        // Close the streams
+        myOutput.flush();
+        myOutput.close();
+        myInput.close();
 
     }
 
@@ -120,8 +145,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      */
 
     public boolean openDataBase() throws SQLException {
+        File db = mContext.getDatabasePath(DB_NAME);
         String mPath = DB_PATH + DB_NAME;
+        if(db.exists())
+        {
         mDataBase = SQLiteDatabase.openDatabase(mPath, null, SQLiteDatabase.NO_LOCALIZED_COLLATORS);
+        }
         return mDataBase != null;
     }
 
@@ -138,12 +167,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-		/*try 
+		/*try
 		{
 			createDataBase();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}*/
+        //CREATE TABLE "Categories" ("id" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE ,"version" VARCHAR NOT NULL , "category" VARCHAR NOT NULL , "feedback" VARCHAR NOT NULL , "target" VARCHAR NOT NULL , "name" VARCHAR NOT NULL , "value" VARCHAR NOT NULL , "color" VARCHAR, "pattern" VARCHAR, "type" VARCHAR, "datetime" VARCHAR)
+        //db.execSQL("CREATE TABLE " + "Categories" + " (" + "id" + " INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE, " + "version" + " VARCHAR NOT NULL, " + "category" + " VARCHAR NOT NULL, " + "feedback" +  " VARCHAR NOT NULL, " + "target" + " VARCHAR NOT NULL, " + "name" + " VARCHAR NOT NULL, " + "value" + " VARCHAR NOT NULL, " + "color" + " VARCHAR, " + "pattern" + " VARCHAR, "+ "type" +"VARCHAR, "+"datetime"+"VARCHAR)");
     }
 
     @Override

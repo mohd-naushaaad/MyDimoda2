@@ -7,8 +7,12 @@ import android.os.Handler;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.ContextThemeWrapper;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -119,6 +123,38 @@ public class DMExactActivity extends FragmentActivity {
         vLytJacket = (RelativeLayout) findViewById(R.id.coat_layout);
         vLytTie = (RelativeLayout) findViewById(R.id.tie_layout);
 
+        vEdtMax.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean hasfocus) {
+                if (hasfocus) {
+                    vEdtMax.setHint("");
+                } else {
+                    vEdtMax.setHint("$1000");
+                }
+            }
+        });
+
+        vEdtMax.addTextChangedListener(new TextWatcher(){
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(s.toString().equals("00")){
+                    vEdtMax.setText("0");
+                    vEdtMax.setSelection(1);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
         vBtnMenu.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -139,6 +175,9 @@ public class DMExactActivity extends FragmentActivity {
 
             public void onClick(View v) {
                 // TODO Auto-generated method stub
+                AppUtils.brand = "";
+                vEdtDesign.setText("");
+                vEdtDesign.setHint("ALL");
                 finish();
             }
         });
@@ -505,5 +544,18 @@ public class DMExactActivity extends FragmentActivity {
                 }
             });
         }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        if ((keyCode == KeyEvent.KEYCODE_BACK))
+        {
+            AppUtils.brand = "";
+            vEdtDesign.setText("");
+            vEdtDesign.setHint("ALL");
+            finish();
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

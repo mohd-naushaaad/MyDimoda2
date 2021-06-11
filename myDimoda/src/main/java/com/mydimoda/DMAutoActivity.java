@@ -174,7 +174,7 @@ public class DMAutoActivity extends Activity {
                         + constant.getCurrentHour());
                 mIsRefresh = true;
 
-                if (mPageIndex < mTotalPage) {
+                if (mPageIndex <= mTotalPage) {
                     mPageIndex++;
                     // after brands addded
                     mAWSOffset = mPageIndex;
@@ -392,11 +392,12 @@ public class DMAutoActivity extends Activity {
                 int itemCount = 0;
                 JSONArray mArrayData = new JSONArray();
                 JSONObject mObjectData = new JSONObject();
-
+                Log.e("RESPONSE",data.toString());
                 if (mProductList == null)
                     mProductList = new ArrayList<DMProductObject>();
                 if (data != null) {
                     try {
+
                         mTotalResult = data.getInt("TotalResults");
                         mTotalPage = data.getInt("TotalPages");
                         mItemPageOffset =  data.optInt(constant.API_ITEM_OFFSET, 0); //mayur
@@ -432,6 +433,7 @@ public class DMAutoActivity extends Activity {
                         e.printStackTrace();
                     }
                 } else {
+                    //uncomment when amazona and ASOS issue solved
                     Toast.makeText(DMAutoActivity.this, "Network Error",
                             Toast.LENGTH_LONG).show();
                 }
@@ -583,6 +585,7 @@ public class DMAutoActivity extends Activity {
                         e.printStackTrace();
                     }
                 } else {
+                    //uncomment when amazona and ASOS issue solved
                     Toast.makeText(DMAutoActivity.this, "Network Error",
                             Toast.LENGTH_LONG).show();
                 }

@@ -730,7 +730,8 @@ public class DMFashionActivity extends Activity {
                         goAlgorithmActivity();
                     }
                 } else if (constant.gCategory.equals("formal")) {
-                    if (constant.gLikeNum == 3 || isLookComplete(mClothModellist, constant.gCategory)) {
+                    //Vipul, adding true to the condition here 08-06-21, so it get scheduled to notification directly instead of loading new product, similar to iOS
+                    if (constant.gLikeNum == 3 || isLookComplete(mClothModellist, constant.gCategory)||true) {
                         constant.gLikeNum = 0;
                         new DownloadTaskRunner().execute();
                     } else {

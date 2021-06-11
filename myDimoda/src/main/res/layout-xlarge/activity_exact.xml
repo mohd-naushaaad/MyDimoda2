@@ -260,7 +260,7 @@
                                 android:hint="$1000"
                                 android:imeOptions="actionDone"
                                 android:inputType="number"
-                                android:textColor="#a3a3a3"
+                                android:textColor="#000000"
                                 android:textColorHint="#aaaaaa"
                                 android:textSize="40sp" />
 

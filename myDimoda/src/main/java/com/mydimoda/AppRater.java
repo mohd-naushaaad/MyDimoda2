@@ -15,7 +15,7 @@ public class AppRater {
     private static String APP_TITLE = "YOUR-APP-NAME";
     private final static String APP_PNAME = "com.mydimoda";
     
-    private final static int DAYS_UNTIL_PROMPT = 0;
+    private final static int DAYS_UNTIL_PROMPT = 1;
     private final static int LAUNCHES_UNTIL_PROMPT = 10;
     
     public static void app_launched(Context mContext) {
@@ -43,6 +43,7 @@ public class AppRater {
                     (DAYS_UNTIL_PROMPT * 24 * 60 * 60 * 1000)) 
             {
                // showRateDialog(mContext, editor);
+                editor.putLong("date_firstlaunch", date_firstLaunch);
             	editor.putLong("launch_count", 0);
                 Intent i = new Intent(mContext, Activity_RateApp.class);
                 mContext.startActivity(i);

@@ -2,7 +2,6 @@ package com.mydimoda;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -10,6 +9,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
 
+import androidx.appcompat.app.AlertDialog;
 import com.mydimoda.activities.PlanANewTripActivity;
 import com.mydimoda.model.CropListModel;
 import com.mydimoda.model.DatabaseModel;
@@ -260,7 +260,7 @@ public class constant {
     public static void alertbox(String title, String mymessage, Context context) {
         new AlertDialog.Builder(context).setMessage(mymessage).setTitle(title)
                 .setCancelable(true)
-                .setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                .setNegativeButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                     }
                 }).show();

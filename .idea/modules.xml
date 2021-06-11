@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/WorkSpace-mydimoda.iml" filepath="$PROJECT_DIR$/WorkSpace-mydimoda.iml" group="mydimoda" />
-      <module fileurl="file://$PROJECT_DIR$/myDimoda/myDimoda.iml" filepath="$PROJECT_DIR$/myDimoda/myDimoda.iml" group="mydimoda/myDimoda" />
-      <module fileurl="file://$PROJECT_DIR$/mydimoda.iml" filepath="$PROJECT_DIR$/mydimoda.iml" />
-      <module fileurl="file://$PROJECT_DIR$/pullSDK/pullSDK.iml" filepath="$PROJECT_DIR$/pullSDK/pullSDK.iml" group="mydimoda/pullSDK" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/android.mydimoda.iml" filepath="$PROJECT_DIR$/.idea/modules/android.mydimoda.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/myDimoda/mydimoda.myDimoda.iml" filepath="$PROJECT_DIR$/.idea/modules/myDimoda/mydimoda.myDimoda.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/pullSDK/mydimoda.pullSDK.iml" filepath="$PROJECT_DIR$/.idea/modules/pullSDK/mydimoda.pullSDK.iml" />
     </modules>
   </component>
 </project>
