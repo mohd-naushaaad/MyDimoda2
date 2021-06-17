@@ -11,6 +11,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.mydimoda.model.DatabaseModel;
+import com.parse.ParseObject;
 
 public class DbAdapter {
 
@@ -257,7 +258,27 @@ public class DbAdapter {
 		return true;
 	}
 */
+	public  boolean CheckIsDataAlreadyInDBorNot(String dbfield, String fieldValue){
+		Boolean returnvalue = false;
+		//String Query = "Select * from " + TABLE_CATEGORY + " where " + dbfield + " = " + fieldValue;
+		Cursor cursor = mDb.rawQuery("select * from "+TABLE_CATEGORY , null);
+		/*if(cursor.getCount() <= 0){
+			cursor.close();
+			return false;
+		}*/
+		if (cursor.moveToFirst()) {
+			while (!cursor.isAfterLast()) {
+				String name = cursor.getString(cursor.getColumnIndex(dbfield));
+				if(name.contains(fieldValue)){
+					returnvalue = true;
+				}
+				cursor.moveToNext();
+			}
+		}cursor.close();
 
+		return  returnvalue;
+
+	}
 
 	/**
 	 * 	Delete Data

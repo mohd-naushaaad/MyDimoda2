@@ -1,15 +1,20 @@
 package com.mydimoda;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -28,6 +33,8 @@ import com.mydimoda.camera.CropActivity;
 import com.mydimoda.interfaces.DialogItemClickListener;
 import com.mydimoda.widget.cropper.util.FontsUtil;
 
+import java.util.ArrayList;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -41,6 +48,7 @@ public class DMCaptureOptionActivity extends Activity {
     public static final int REQUEST_IMG_CROP1 = 22;
     int RESULT_GALLERY = 2;
     int RESULT_CROP = 3;
+    int launch = 0;
     Context mContext;
     //  menu
     Button vBtnMenu;
@@ -58,6 +66,11 @@ public class DMCaptureOptionActivity extends Activity {
     Bitmap mBitmap;
     String mType;
     boolean mFromMain;
+    public static String[] perm_array = {
+            Manifest.permission.CAMERA,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+
+    };
     @BindView(R.id.act_cap_optn_coach_mrk_iv)
     ImageView mCoachMarkScreenIv;
 
@@ -118,7 +131,9 @@ public class DMCaptureOptionActivity extends Activity {
         lltCamrea.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                goCaptureActivity(mType);
+                //goCaptureActivity(mType);
+                launch=1;
+                loadPermissions(perm_array);
             }
         });
 
@@ -126,7 +141,9 @@ public class DMCaptureOptionActivity extends Activity {
             @Override
             public void onClick(View v) {
                 //callGallery();
-                showGalleryDialog();
+                //showGalleryDialog();
+                launch=2;
+                loadPermissions(perm_array);
             }
         });
 showShowcaseView();
@@ -300,5 +317,62 @@ showShowcaseView();
                 }
             });
         }
+    }
+    public void loadPermissions(String[] perm_array) {
+        System.out.println("Load permission : ");
+        ArrayList<String> permArray = new ArrayList<>();
+        for (String permission : perm_array) {
+            if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
+                permArray.add(permission);
+            }
+        }
+        perm_array = new String[permArray.size()];
+        perm_array = permArray.toArray(perm_array);
+
+        if (perm_array.length > 0) {
+            ActivityCompat.requestPermissions(this, perm_array, 0);
+        } else {
+            //permission = true;
+            if(launch==1){
+            goCaptureActivity(mType);
+            }else{
+                showGalleryDialog();
+            }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @androidx.annotation.NonNull String[] permissions, @androidx.annotation.NonNull int[] grantResults) {
+        switch (requestCode) {
+
+            case 0:
+                boolean isDenied = false;
+                for (int i = 0; i < grantResults.length; i++) {
+                    System.out.println(grantResults[i]);
+                    if (grantResults[i] == -1) {
+                        isDenied = true;
+                    }
+                }
+
+                if (!isDenied) {
+                    //GlobalApp.getInstance().makeDir();
+                    //permission = true;
+                    //doAction();
+                   /* finish();
+                    overridePendingTransition(0,0);
+                    startActivity(getIntent());
+                    overridePendingTransition(0,0);*/
+                    if(launch==1){
+                        goCaptureActivity(mType);
+                    }else{
+                        showGalleryDialog();
+                    }
+                } else {
+                    Toast.makeText(this, getResources().getString(R.string.perm_denied), Toast.LENGTH_LONG).show();
+                    finish();
+                }
+                break;
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 }

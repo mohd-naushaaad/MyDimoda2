@@ -164,7 +164,12 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
 
             public void onClick(View v) {
                 // TODO Auto-generated method stub
+                if(constant.selectBackPress){
+                    constant.selectBackPress = false;
+                    onBackPressed();
+                }else{
                 goToCaptureOptionsAct();
+                }
             }
         });
 
@@ -181,7 +186,12 @@ public class DMCaptureActivity extends FragmentActivity implements OnClickListen
 
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                goToCaptureOptionsAct();
+                if(constant.selectBackPress){
+                    constant.selectBackPress = false;
+                    onBackPressed();
+                }else{
+                    goToCaptureOptionsAct();
+                }
             }
         });
 

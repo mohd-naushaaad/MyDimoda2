@@ -1,9 +1,11 @@
 package com.mydimoda.camera;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -14,6 +16,9 @@ import android.hardware.Camera;
 import android.hardware.Camera.PictureCallback;
 import android.os.Build;
 import android.os.Bundle;
+
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import android.text.TextUtils;
 import android.util.Log;
@@ -36,6 +41,7 @@ import android.widget.Toast;
 
 import com.android.zlightness;
 import com.mydimoda.DMCaptureOptionActivity;
+import com.mydimoda.DMMainActivity;
 import com.mydimoda.R;
 import com.mydimoda.adapter.DMMenuListAdapter;
 import com.mydimoda.constant;
@@ -44,6 +50,7 @@ import com.mydimoda.widget.cropper.util.FontsUtil;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.regex.Pattern;
@@ -57,9 +64,15 @@ import io.reactivex.schedulers.Schedulers;
 public class CameraActivity extends Activity implements SurfaceHolder.Callback,
         Camera.PreviewCallback, OnClickListener {
 
+    public static String[] perm_array = {
+            Manifest.permission.CAMERA,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+
+    };
+
     public static final String LOGTAG = "CameraActivity";
     private static final Pattern COMMA_PATTERN = Pattern.compile(",");
-
+    boolean permission= false;
     private Context context;
     private Camera camera;
     private Camera.Parameters cameraParameters;
@@ -148,39 +161,20 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback,
     }
 
     @Override
+    protected void onStart() {
+
+        super.onStart();
+    }
+
+    @Override
     public void onResume() {
 
+       /* if(permission){
+        doAction();
+        }*/
+        loadPermissions(perm_array);
         super.onResume();
 
-        showMenu();
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
-
-            Camera.CameraInfo info = new Camera.CameraInfo();
-
-            for (int i = 0; i < Camera.getNumberOfCameras(); i++) {
-                Camera.getCameraInfo(i, info);
-
-                if (info.facing == Camera.CameraInfo.CAMERA_FACING_BACK) {
-                    camera = Camera.open(i);
-                    break;
-                } else {
-                    camera = Camera.open(i);
-                    break;
-                }
-            }
-        }
-
-        if (camera == null)
-            camera = Camera.open();
-
-        if (this.getResources().getConfiguration().orientation != Configuration.ORIENTATION_LANDSCAPE)
-            camera.setDisplayOrientation(90);
-        else
-            camera.setDisplayOrientation(0);
-
-        camera.startPreview();
-        previewRunning = true;
     }
 
     @Override
@@ -188,9 +182,10 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback,
         if (previewRunning) {
             camera.stopPreview();
             camera.setPreviewCallback(null);
+            camera.release();
         }
 
-        camera.release();
+        permission= false;
         camera = null;
         previewRunning = false;
 
@@ -591,5 +586,85 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback,
         }
         camera.setDisplayOrientation(result);
         finalRotation = result;//hack
+    }
+    public void loadPermissions(String[] perm_array) {
+        System.out.println("Load permission : ");
+        ArrayList<String> permArray = new ArrayList<>();
+        for (String permission : perm_array) {
+            if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
+                permArray.add(permission);
+            }
+        }
+        perm_array = new String[permArray.size()];
+        perm_array = permArray.toArray(perm_array);
+
+        if (perm_array.length > 0) {
+            ActivityCompat.requestPermissions(this, perm_array, 0);
+        } else {
+           permission = true;
+           doAction();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @androidx.annotation.NonNull String[] permissions, @androidx.annotation.NonNull int[] grantResults) {
+        switch (requestCode) {
+
+            case 0:
+                boolean isDenied = false;
+                for (int i = 0; i < grantResults.length; i++) {
+                    System.out.println(grantResults[i]);
+                    if (grantResults[i] == -1) {
+                        isDenied = true;
+                    }
+                }
+
+                if (!isDenied) {
+                    //GlobalApp.getInstance().makeDir();
+                   permission = true;
+                    //doAction();
+                    finish();
+                    overridePendingTransition(0,0);
+                    startActivity(getIntent());
+                    overridePendingTransition(0,0);
+                } else {
+                    Toast.makeText(this, getResources().getString(R.string.perm_denied), Toast.LENGTH_LONG).show();
+                    finish();
+                }
+                break;
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    private void doAction() {
+        showMenu();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
+
+            Camera.CameraInfo info = new Camera.CameraInfo();
+
+            for (int i = 0; i < Camera.getNumberOfCameras(); i++) {
+                Camera.getCameraInfo(i, info);
+
+                if (info.facing == Camera.CameraInfo.CAMERA_FACING_BACK) {
+                    camera = Camera.open(i);
+                    break;
+                } else {
+                    camera = Camera.open(i);
+                    break;
+                }
+            }
+        }
+
+        if (camera == null)
+            camera = Camera.open();
+
+        if (this.getResources().getConfiguration().orientation != Configuration.ORIENTATION_LANDSCAPE)
+            camera.setDisplayOrientation(90);
+        else
+            camera.setDisplayOrientation(0);
+
+        camera.startPreview();
+        previewRunning = true;
     }
 }

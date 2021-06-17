@@ -2,18 +2,24 @@ package com.mydimoda;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+
+import android.provider.Settings;
 import android.view.Menu;
 import android.widget.Toast;
 
+import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 import java.util.ArrayList;
@@ -137,11 +143,45 @@ public class DMMainActivity extends Activity {
 					//GlobalApp.getInstance().makeDir();
 					doAction();
 				} else {
-					Toast.makeText(DMMainActivity.this, getResources().getString(R.string.perm_denied), Toast.LENGTH_LONG).show();
-					finish();
+					//Toast.makeText(DMMainActivity.this, getResources().getString(R.string.perm_denied), Toast.LENGTH_LONG).show();
+					displayDialog();
+					//finish();
 				}
 				break;
 		}
+	}
+
+	private void displayDialog() {
+		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+				this);
+		alertDialogBuilder.setTitle("Warning");
+		alertDialogBuilder
+				.setMessage(
+						"We Require Storage and Camera permission to work")
+				.setCancelable(false)
+				.setPositiveButton("Settings",
+						new DialogInterface.OnClickListener() {
+							public void onClick(
+									DialogInterface dialog, int id) {
+
+								Intent intent = new Intent();
+								intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+								Uri uri = Uri.fromParts("package", getPackageName(), null);
+								intent.setData(uri);
+								startActivity(intent);
+								finish();
+							}
+						})
+				.setNegativeButton("Exit",
+						new DialogInterface.OnClickListener() {
+							public void onClick(
+									DialogInterface dialog, int id) {
+								//dialog.cancel();
+								finish();
+							}
+						});
+		AlertDialog alertDialog = alertDialogBuilder.create();
+		alertDialog.show();
 	}
 
 

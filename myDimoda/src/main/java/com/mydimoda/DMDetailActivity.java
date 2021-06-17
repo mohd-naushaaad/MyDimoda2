@@ -346,6 +346,7 @@ public class DMDetailActivity extends Activity {
 
         if (mBitmap != null) {
             constant.gTakenBitmap = mBitmap;
+            constant.selectBackPress = true;
             Intent intent = new Intent(this, CropActivity.class);
             intent.putExtra(constant.FRM_DETAIL_FOR_HANGUP_KEY, isHangup);
             startActivityForResult(intent, RESULT_CROP);

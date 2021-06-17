@@ -392,7 +392,7 @@ public class DMAutoActivity extends Activity {
                 int itemCount = 0;
                 JSONArray mArrayData = new JSONArray();
                 JSONObject mObjectData = new JSONObject();
-                Log.e("RESPONSE",data.toString());
+      //          Log.e("RESPONSE",data.toString());
                 if (mProductList == null)
                     mProductList = new ArrayList<DMProductObject>();
                 if (data != null) {

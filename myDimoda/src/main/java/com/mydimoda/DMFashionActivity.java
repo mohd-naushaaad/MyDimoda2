@@ -198,6 +198,7 @@ public class DMFashionActivity extends Activity {
             }
         });
 
+
         vBtnDismiss.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -377,6 +378,10 @@ public class DMFashionActivity extends Activity {
         } else {
             Toast.makeText(DMFashionActivity.this, getString(R.string.no_internet_msg), Toast.LENGTH_LONG).show();
         }
+        /*if(mDbAdapter.CheckIsDataAlreadyInDBorNot("target",mIdList.get(0)))
+        {
+            hideBtnLayout();
+        }*/
 
     }
 
@@ -399,7 +404,6 @@ public class DMFashionActivity extends Activity {
         query.whereContainedIn("objectId", list);
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> clothList, ParseException e) {
-
                 hideProgress();
                 if (e == null) {
                     makeClothList(clothList);

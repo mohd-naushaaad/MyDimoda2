@@ -173,6 +173,7 @@ public class constant {
             "Play Store: http://bit.ly/26tp8RZ";
     //mayur added for fixing cloth swap issue in help me
     public static List<DMItemObject> gItemListTemp = new ArrayList<DMItemObject>();
+    public static boolean selectBackPress = false;
     private static ProgressDialog vProgress;
     // Dipen Saved image temp to add more images
     private static ArrayList<CropListModel> mCroppedItemListModelTempArray;
