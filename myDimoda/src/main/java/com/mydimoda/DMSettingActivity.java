@@ -1,8 +1,10 @@
 package com.mydimoda;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -30,6 +32,7 @@ import com.mydimoda.social.google.util.IabResult;
 import com.mydimoda.social.google.util.Inventory;
 import com.mydimoda.social.google.util.Purchase;
 import com.mydimoda.widget.cropper.util.FontsUtil;
+import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 import butterknife.BindView;
@@ -163,7 +166,35 @@ public class DMSettingActivity extends Activity {
         vLytRestore.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                restore();
+                GoogleIAP.initiate(DMSettingActivity.this,
+                        getResources().getString(R.string.google_iap_base64));
+
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                        DMSettingActivity.this);
+                alertDialogBuilder.setTitle("Warning");
+                alertDialogBuilder
+                        .setMessage(
+                                "Buy me unlimited style, Already purchased go for restore instead.")
+                        .setCancelable(false)
+                        .setPositiveButton("Restore",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(
+                                            DialogInterface dialog, int id) {
+                                        restore();
+                                        // finish();
+                                    }
+                                })
+                        .setNegativeButton("Purchase",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(
+                                            DialogInterface dialog, int id) {
+                                        purchase();
+                                    }
+                                });
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+
+                //restore();
             }
         });
 
@@ -273,6 +304,17 @@ public class DMSettingActivity extends Activity {
         init();
     }
 
+    protected void purchase(){
+        ParseUser user = ParseUser.getCurrentUser();
+        boolean userPurchased = user.getBoolean("Buy");
+        if(!userPurchased){
+            GoogleIAP.buyFeature(0);
+        }else{
+            showToast("You have already purchased this before, Please Try Restoring it.");
+        }
+
+    }
+
     protected void restore() {
 
         final IabHelper iabHelper = new IabHelper(this, getResources()
@@ -322,8 +364,9 @@ public class DMSettingActivity extends Activity {
                                         : "NOT PREMIUM"));
 
                                 Log.e("", "mIsPremium == " + mIsPremium);
-
-                                if (mIsPremium) {
+                                ParseUser user = ParseUser.getCurrentUser();
+                                boolean userPurchased = user.getBoolean("Buy");
+                                if (mIsPremium||userPurchased) {
                                     Log.e("", "In App from base activity == 1");
                                     try {
                                         handler.post(new Runnable() {

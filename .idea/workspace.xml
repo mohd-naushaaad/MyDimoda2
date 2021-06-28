@@ -25,65 +25,11 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="675195de-edd9-472f-aa75-773e1d53deb2" name="Default" comment="Bugs Fixed">
-      <change afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myDimoda/src/main/ic_launcher-playstore.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myDimoda/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myDimoda/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myDimoda/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myDimoda/src/main/res/mipmap-hdpi/ic_launcher_foreground.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myDimoda/src/main/res/mipmap-hdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myDimoda/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myDimoda/src/main/res/mipmap-mdpi/ic_launcher_foreground.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myDimoda/src/main/res/mipmap-mdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myDimoda/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myDimoda/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myDimoda/src/main/res/mipmap-xhdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myDimoda/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myDimoda/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myDimoda/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myDimoda/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myDimoda/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myDimoda/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myDimoda/src/main/res/values/ic_launcher_background.xml" afterDir="false" />
+    <list default="true" id="675195de-edd9-472f-aa75-773e1d53deb2" name="Default" comment="5-2 logic corrected testing in progress">
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myDimoda/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/myDimoda.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/assets/myDiModa.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/assets/myDiModa.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/AlarmReciever.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/AlarmReciever.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/AppRater.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/AppRater.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMAutoActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMAutoActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMDetailActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMDetailActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMExactActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMExactActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMFashionActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMHelpActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMHelpActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMLoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMLoginActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMNotificationActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMNotificationActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMResetPasswordActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMResetPasswordActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/activities/LookListingActiivty.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/activities/LookListingActiivty.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/adapter/LookListingAdp.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/adapter/LookListingAdp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/constant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/database/DatabaseHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/database/DatabaseHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/database/DbAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/database/DbAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout-xlarge/activity_exact.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout-xlarge/activity_exact.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout-xlarge/activity_signup.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout-xlarge/activity_signup.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout-xlarge/loading_empty_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout-xlarge/loading_empty_view.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_capture.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_capture.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_crop.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_crop.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_favorite.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_favorite.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_help.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_help.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_login.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_resetpassword.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_resetpassword.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_signup.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_signup.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/values/array.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/values/array.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pullSDK/pullSDK.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMSettingActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMSettingActivity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +81,7 @@
   </component>
   <component name="GenerateSignedApkSettings">
     <option name="EXPORT_PRIVATE_KEY" value="false" />
-    <option name="KEY_STORE_PATH" value="C:\Users\Nirmal\Downloads\mydimoda.keystore" />
+    <option name="KEY_STORE_PATH" value="C:\Users\Hp\Downloads\mydimoda.keystore" />
     <option name="KEY_ALIAS" value="mydimoda inc" />
     <option name="REMEMBER_PASSWORDS" value="true" />
     <option name="BUILD_TARGET_KEY" value="apk" />
@@ -143,7 +89,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="FinalCode" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -157,13 +103,13 @@
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="4.2" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="BX903F2Q8E" />
     <property name="AnalyzeApkAction.lastApkPath" value="$PROJECT_DIR$/myDimoda/build/outputs/apk/debug/myDimoda-debug.apk" />
-    <property name="ApkExportedModule" value="myDimoda" />
+    <property name="ApkExportedModule" value="mydimoda.myDimoda" />
     <property name="DEBUGGABLE_DEVICE" value="New_Device_1_API_28 [emulator-5554]" />
     <property name="DEBUGGABLE_PROCESS" value="com.mydimoda" />
     <property name="DEBUGGER_ID" value="Java" />
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="New_Device_1_API_28" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2021-05-28T08:05:44.923Z" />
-    <property name="ExportApk.ApkPath" value="C:\Users\Nirmal\Desktop" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2021-06-24T05:45:23.835Z" />
+    <property name="ExportApk.ApkPath" value="C:\Users\Hp\Desktop" />
     <property name="ExportApk.BuildVariants" value="release" />
     <property name="ExportApk.SignV1" value="true" />
     <property name="ExportApk.SignV2" value="true" />
@@ -178,14 +124,18 @@
     <property name="android-custom-viewD:/android/mydimoda/pullSDK/src/main/java/com/handmark/pulltorefresh/library/PullToRefreshAdapterViewBase.java_SELECTED" value="PullToRefreshAdapterViewBase" />
     <property name="android-custom-viewD:/android/mydimoda/pullSDK/src/main/java/com/handmark/pulltorefresh/library/PullToRefreshBase.java_SELECTED" value="PullToRefreshBase" />
     <property name="android-custom-viewD:/android/mydimoda/pullSDK/src/main/java/com/handmark/pulltorefresh/library/PullToRefreshGridView.java_SELECTED" value="PullToRefreshGridView" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="device.picker.selection" value="ZY2245B534" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Documents/Blackmagic Design" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop" />
     <property name="multi-representation-previewC:/Users/Hp/AppData/Local/Android/Sdk/sources/android-29/android/view/View.java_selected" value="Custom views" />
     <property name="multi-representation-previewD:/android/mydimoda/myDimoda/src/main/java/com/mydimoda/widget/cropper/CropImageView.java_selected" value="Custom views" />
     <property name="multi-representation-previewD:/android/mydimoda/myDimoda/src/main/java/com/mydimoda/widget/cropper/cropwindow/CropOverlayView.java_selected" value="Custom views" />
     <property name="multi-representation-previewD:/android/mydimoda/pullSDK/src/main/java/com/handmark/pulltorefresh/library/PullToRefreshAdapterViewBase.java_selected" value="Custom views" />
     <property name="multi-representation-previewD:/android/mydimoda/pullSDK/src/main/java/com/handmark/pulltorefresh/library/PullToRefreshBase.java_selected" value="Custom views" />
     <property name="multi-representation-previewD:/android/mydimoda/pullSDK/src/main/java/com/handmark/pulltorefresh/library/PullToRefreshGridView.java_selected" value="Custom views" />
+    <property name="project.structure.last.edited" value="Suggestions" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
     <property name="show.migrate.to.gradle.popup" value="false" />
@@ -495,30 +445,34 @@
     <option name="LAST_COMMIT_MESSAGE" value="Bugs Fixed" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="158" y="91" key="#PSD" timestamp="1624338795631">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="158" y="91" key="#PSD/0.0.1280.689@0.0.1280.689" timestamp="1624338795631" />
     <state x="397" y="147" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1622203691454">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="397" y="147" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.689@0.0.1280.689" timestamp="1622203691454" />
-    <state x="446" y="52" key="#com.intellij.ide.util.MemberChooser" timestamp="1623336840964">
+    <state x="446" y="52" key="#com.intellij.ide.util.MemberChooser" timestamp="1624340271367">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="446" y="52" key="#com.intellij.ide.util.MemberChooser/0.0.1280.689@0.0.1280.689" timestamp="1623336840964" />
+    <state x="446" y="52" key="#com.intellij.ide.util.MemberChooser/0.0.1280.689@0.0.1280.689" timestamp="1624340271367" />
     <state x="606" y="95" key="#xdebugger.evaluate" timestamp="1623311027791">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="606" y="95" key="#xdebugger.evaluate/0.0.1280.689@0.0.1280.689" timestamp="1623311027791" />
-    <state x="93" y="93" width="1095" height="504" key="AVDManager" timestamp="1622189343302">
+    <state x="93" y="93" width="1095" height="504" key="AVDManager" timestamp="1624515034627">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="93" y="93" width="1095" height="504" key="AVDManager/0.0.1280.689@0.0.1280.689" timestamp="1622189343302" />
+    <state x="93" y="93" width="1095" height="504" key="AVDManager/0.0.1280.689@0.0.1280.689" timestamp="1624515034627" />
     <state x="221" y="100" key="AndroidCreateResourceDirectoryDialog" timestamp="1621506663317">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="221" y="100" key="AndroidCreateResourceDirectoryDialog/0.0.1280.689@0.0.1280.689" timestamp="1621506663317" />
-    <state x="438" y="92" key="AndroidProcessChooserDialog" timestamp="1623392007883">
+    <state x="438" y="92" key="AndroidProcessChooserDialog" timestamp="1624448460069">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="438" y="92" key="AndroidProcessChooserDialog/0.0.1280.689@0.0.1280.689" timestamp="1623392007883" />
+    <state x="438" y="92" key="AndroidProcessChooserDialog/0.0.1280.689@0.0.1280.689" timestamp="1624448460069" />
     <state x="293" y="0" key="CommitChangelistDialog2" timestamp="1623393918699">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
@@ -531,26 +485,26 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="125" y="51" key="DiffContextDialog/0.0.1280.689@0.0.1280.689" timestamp="1623222484494" />
-    <state x="421" y="87" key="FileChooserDialogImpl" timestamp="1623326041142">
+    <state x="421" y="87" key="FileChooserDialogImpl" timestamp="1624428748243">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="421" y="87" key="FileChooserDialogImpl/0.0.1280.689@0.0.1280.689" timestamp="1623326041142" />
-    <state width="1236" height="193" key="GridCell.Tab.0.bottom" timestamp="1623393918828">
+    <state x="421" y="87" key="FileChooserDialogImpl/0.0.1280.689@0.0.1280.689" timestamp="1624428748243" />
+    <state width="1236" height="2" key="GridCell.Tab.0.bottom" timestamp="1624459406770">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1236" height="193" key="GridCell.Tab.0.bottom/0.0.1280.689@0.0.1280.689" timestamp="1623393918828" />
-    <state width="1236" height="193" key="GridCell.Tab.0.center" timestamp="1623393918828">
+    <state width="1236" height="2" key="GridCell.Tab.0.bottom/0.0.1280.689@0.0.1280.689" timestamp="1624459406770" />
+    <state width="1236" height="2" key="GridCell.Tab.0.center" timestamp="1624459406770">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1236" height="193" key="GridCell.Tab.0.center/0.0.1280.689@0.0.1280.689" timestamp="1623393918828" />
-    <state width="1236" height="193" key="GridCell.Tab.0.left" timestamp="1623393918827">
+    <state width="1236" height="2" key="GridCell.Tab.0.center/0.0.1280.689@0.0.1280.689" timestamp="1624459406770" />
+    <state width="1236" height="2" key="GridCell.Tab.0.left" timestamp="1624459406770">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1236" height="193" key="GridCell.Tab.0.left/0.0.1280.689@0.0.1280.689" timestamp="1623393918827" />
-    <state width="1236" height="193" key="GridCell.Tab.0.right" timestamp="1623393918828">
+    <state width="1236" height="2" key="GridCell.Tab.0.left/0.0.1280.689@0.0.1280.689" timestamp="1624459406770" />
+    <state width="1236" height="2" key="GridCell.Tab.0.right" timestamp="1624459406770">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1236" height="193" key="GridCell.Tab.0.right/0.0.1280.689@0.0.1280.689" timestamp="1623393918828" />
+    <state width="1236" height="2" key="GridCell.Tab.0.right/0.0.1280.689@0.0.1280.689" timestamp="1624459406770" />
     <state width="1236" height="139" key="GridCell.Tab.1.bottom" timestamp="1623392147637">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
@@ -567,10 +521,10 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state width="1236" height="139" key="GridCell.Tab.1.right/0.0.1280.689@0.0.1280.689" timestamp="1623392147637" />
-    <state x="396" y="48" key="RollbackChangesDialog" timestamp="1623046893248">
+    <state x="396" y="48" key="RollbackChangesDialog" timestamp="1624366932161">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="396" y="48" key="RollbackChangesDialog/0.0.1280.689@0.0.1280.689" timestamp="1623046893248" />
+    <state x="396" y="48" key="RollbackChangesDialog/0.0.1280.689@0.0.1280.689" timestamp="1624366932161" />
     <state x="142" y="0" key="SettingsEditor" timestamp="1621503987161">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
@@ -579,22 +533,22 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state width="647" height="346" key="XDebugger.FullValuePopup/0.0.1280.689@0.0.1280.689" timestamp="1623392046963" />
-    <state x="554" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1622816747906">
+    <state x="552" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1624342762897">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="554" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1280.689@0.0.1280.689" timestamp="1622816747906" />
-    <state x="219" y="155" width="787" height="534" key="find.popup" timestamp="1623393626866">
+    <state x="552" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1280.689@0.0.1280.689" timestamp="1624342762897" />
+    <state x="219" y="3" width="787" height="686" key="find.popup" timestamp="1624447234864">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="219" y="155" width="787" height="534" key="find.popup/0.0.1280.689@0.0.1280.689" timestamp="1623393626866" />
+    <state x="219" y="3" width="787" height="686" key="find.popup/0.0.1280.689@0.0.1280.689" timestamp="1624447234864" />
     <state x="298" y="153" key="run.anything.popup" timestamp="1623333059981">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="298" y="153" key="run.anything.popup/0.0.1280.689@0.0.1280.689" timestamp="1623333059981" />
-    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup" timestamp="1623333786962">
+    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup" timestamp="1624426590666">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup/0.0.1280.689@0.0.1280.689" timestamp="1623333786962" />
+    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup/0.0.1280.689@0.0.1280.689" timestamp="1624426590666" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1418,6 +1372,81 @@
           <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMExactActivity.java</url>
           <line>180</line>
           <option name="timeStamp" value="222" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMSettingActivity.java</url>
+          <line>350</line>
+          <option name="timeStamp" value="223" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMSettingActivity.java</url>
+          <line>349</line>
+          <option name="timeStamp" value="224" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMSettingActivity.java</url>
+          <line>351</line>
+          <option name="timeStamp" value="225" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMStyleActivity.java</url>
+          <line>255</line>
+          <option name="timeStamp" value="226" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/social/google/GoogleIAP.java</url>
+          <line>87</line>
+          <option name="timeStamp" value="228" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/social/google/GoogleIAP.java</url>
+          <line>89</line>
+          <option name="timeStamp" value="229" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/social/google/GoogleIAP.java</url>
+          <line>92</line>
+          <option name="timeStamp" value="230" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/social/google/GoogleIAP.java</url>
+          <line>96</line>
+          <option name="timeStamp" value="231" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/social/google/GoogleIAP.java</url>
+          <line>95</line>
+          <option name="timeStamp" value="232" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/social/google/GoogleIAP.java</url>
+          <line>109</line>
+          <option name="timeStamp" value="233" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/social/google/GoogleIAP.java</url>
+          <line>112</line>
+          <option name="timeStamp" value="234" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/social/google/GoogleIAP.java</url>
+          <line>125</line>
+          <option name="timeStamp" value="235" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMSettingActivity.java</url>
+          <line>307</line>
+          <option name="timeStamp" value="236" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMSettingActivity.java</url>
+          <line>308</line>
+          <option name="timeStamp" value="237" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMSettingActivity.java</url>
+          <line>309</line>
+          <option name="timeStamp" value="238" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
