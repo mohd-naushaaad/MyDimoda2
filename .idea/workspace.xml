@@ -20,17 +20,14 @@
     </layouts>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="response" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="675195de-edd9-472f-aa75-773e1d53deb2" name="Default" comment="5-2 logic corrected testing in progress">
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMSettingActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMSettingActivity.java" afterDir="false" />
-    </list>
+    <list default="true" id="675195de-edd9-472f-aa75-773e1d53deb2" name="Default" comment="5-2 logic corrected testing in progress" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -39,7 +36,7 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[New_Device_1_API_28]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[VirtualDevicePath@/Users/arpitajain/.android/avd/Samsung_M30_API_30.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -81,7 +78,7 @@
   </component>
   <component name="GenerateSignedApkSettings">
     <option name="EXPORT_PRIVATE_KEY" value="false" />
-    <option name="KEY_STORE_PATH" value="C:\Users\Hp\Downloads\mydimoda.keystore" />
+    <option name="KEY_STORE_PATH" value="$USER_HOME$/Downloads/mydimoda.keystore" />
     <option name="KEY_ALIAS" value="mydimoda inc" />
     <option name="REMEMBER_PASSWORDS" value="true" />
     <option name="BUILD_TARGET_KEY" value="apk" />
@@ -109,7 +106,7 @@
     <property name="DEBUGGER_ID" value="Java" />
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="New_Device_1_API_28" />
     <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2021-06-24T05:45:23.835Z" />
-    <property name="ExportApk.ApkPath" value="C:\Users\Hp\Desktop" />
+    <property name="ExportApk.ApkPath" value="$PROJECT_DIR$/../.." />
     <property name="ExportApk.BuildVariants" value="release" />
     <property name="ExportApk.SignV1" value="true" />
     <property name="ExportApk.SignV2" value="true" />
@@ -126,7 +123,7 @@
     <property name="android-custom-viewD:/android/mydimoda/pullSDK/src/main/java/com/handmark/pulltorefresh/library/PullToRefreshGridView.java_SELECTED" value="PullToRefreshGridView" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="device.picker.selection" value="ZY2245B534" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="multi-representation-previewC:/Users/Hp/AppData/Local/Android/Sdk/sources/android-29/android/view/View.java_selected" value="Custom views" />
     <property name="multi-representation-previewD:/android/mydimoda/myDimoda/src/main/java/com/mydimoda/widget/cropper/CropImageView.java_selected" value="Custom views" />
     <property name="multi-representation-previewD:/android/mydimoda/myDimoda/src/main/java/com/mydimoda/widget/cropper/cropwindow/CropOverlayView.java_selected" value="Custom views" />
@@ -239,6 +236,7 @@
       <option name="ARTIFACT_NAME" value="" />
       <option name="PM_INSTALL_OPTIONS" value="" />
       <option name="ALL_USERS" value="false" />
+      <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
       <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
       <option name="ACTIVITY_EXTRA_FLAGS" value="" />
       <option name="MODE" value="default_activity" />
@@ -374,6 +372,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -411,7 +410,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/bugFixing2021" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -445,110 +456,42 @@
     <option name="LAST_COMMIT_MESSAGE" value="Bugs Fixed" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="158" y="91" key="#PSD" timestamp="1624338795631">
-      <screen x="0" y="0" width="1280" height="689" />
+    <state x="161" y="123" width="993" height="538" key="AVDManager" timestamp="1635920746547">
+      <screen x="0" y="23" width="1440" height="793" />
     </state>
-    <state x="158" y="91" key="#PSD/0.0.1280.689@0.0.1280.689" timestamp="1624338795631" />
-    <state x="397" y="147" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1622203691454">
-      <screen x="0" y="0" width="1280" height="689" />
+    <state x="161" y="123" width="993" height="538" key="AVDManager/0.23.1440.793@0.23.1440.793" timestamp="1635920746547" />
+    <state x="488" y="150" key="AndroidCreateXmlResourceDialog" timestamp="1635848933170">
+      <screen x="0" y="23" width="1440" height="793" />
     </state>
-    <state x="397" y="147" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.689@0.0.1280.689" timestamp="1622203691454" />
-    <state x="446" y="52" key="#com.intellij.ide.util.MemberChooser" timestamp="1624340271367">
-      <screen x="0" y="0" width="1280" height="689" />
+    <state x="488" y="150" key="AndroidCreateXmlResourceDialog/0.23.1440.793@0.23.1440.793" timestamp="1635848933170" />
+    <state width="1151" height="285" key="GridCell.Tab.0.bottom" timestamp="1635855788945">
+      <screen x="0" y="23" width="1440" height="793" />
     </state>
-    <state x="446" y="52" key="#com.intellij.ide.util.MemberChooser/0.0.1280.689@0.0.1280.689" timestamp="1624340271367" />
-    <state x="606" y="95" key="#xdebugger.evaluate" timestamp="1623311027791">
-      <screen x="0" y="0" width="1280" height="689" />
+    <state width="1151" height="285" key="GridCell.Tab.0.bottom/0.23.1440.793@0.23.1440.793" timestamp="1635855788945" />
+    <state width="1151" height="285" key="GridCell.Tab.0.center" timestamp="1635855788944">
+      <screen x="0" y="23" width="1440" height="793" />
     </state>
-    <state x="606" y="95" key="#xdebugger.evaluate/0.0.1280.689@0.0.1280.689" timestamp="1623311027791" />
-    <state x="93" y="93" width="1095" height="504" key="AVDManager" timestamp="1624515034627">
-      <screen x="0" y="0" width="1280" height="689" />
+    <state width="1151" height="285" key="GridCell.Tab.0.center/0.23.1440.793@0.23.1440.793" timestamp="1635855788944" />
+    <state width="1151" height="285" key="GridCell.Tab.0.left" timestamp="1635855788943">
+      <screen x="0" y="23" width="1440" height="793" />
     </state>
-    <state x="93" y="93" width="1095" height="504" key="AVDManager/0.0.1280.689@0.0.1280.689" timestamp="1624515034627" />
-    <state x="221" y="100" key="AndroidCreateResourceDirectoryDialog" timestamp="1621506663317">
-      <screen x="0" y="0" width="1280" height="689" />
+    <state width="1151" height="285" key="GridCell.Tab.0.left/0.23.1440.793@0.23.1440.793" timestamp="1635855788943" />
+    <state width="1151" height="285" key="GridCell.Tab.0.right" timestamp="1635855788944">
+      <screen x="0" y="23" width="1440" height="793" />
     </state>
-    <state x="221" y="100" key="AndroidCreateResourceDirectoryDialog/0.0.1280.689@0.0.1280.689" timestamp="1621506663317" />
-    <state x="438" y="92" key="AndroidProcessChooserDialog" timestamp="1624448460069">
-      <screen x="0" y="0" width="1280" height="689" />
+    <state width="1151" height="285" key="GridCell.Tab.0.right/0.23.1440.793@0.23.1440.793" timestamp="1635855788944" />
+    <state x="364" y="147" width="630" height="490" key="find.popup" timestamp="1635930517832">
+      <screen x="0" y="23" width="1440" height="793" />
     </state>
-    <state x="438" y="92" key="AndroidProcessChooserDialog/0.0.1280.689@0.0.1280.689" timestamp="1624448460069" />
-    <state x="293" y="0" key="CommitChangelistDialog2" timestamp="1623393918699">
-      <screen x="0" y="0" width="1280" height="689" />
+    <state x="364" y="147" width="630" height="490" key="find.popup/0.23.1440.793@0.23.1440.793" timestamp="1635930517832" />
+    <state width="300" height="98" key="javadoc.popup.new" timestamp="1635851272257">
+      <screen x="0" y="23" width="1440" height="793" />
     </state>
-    <state x="293" y="0" key="CommitChangelistDialog2/0.0.1280.689@0.0.1280.689" timestamp="1623393918699" />
-    <state width="448" height="438" key="DebuggerActiveHint" timestamp="1622811519699">
-      <screen x="0" y="0" width="1280" height="689" />
+    <state width="300" height="98" key="javadoc.popup.new/0.23.1440.793@0.23.1440.793" timestamp="1635851272257" />
+    <state x="296" y="140" width="670" height="676" key="search.everywhere.popup" timestamp="1635920791784">
+      <screen x="0" y="23" width="1440" height="793" />
     </state>
-    <state width="448" height="438" key="DebuggerActiveHint/0.0.1280.689@0.0.1280.689" timestamp="1622811519699" />
-    <state x="125" y="51" key="DiffContextDialog" timestamp="1623222484494">
-      <screen x="0" y="0" width="1280" height="689" />
-    </state>
-    <state x="125" y="51" key="DiffContextDialog/0.0.1280.689@0.0.1280.689" timestamp="1623222484494" />
-    <state x="421" y="87" key="FileChooserDialogImpl" timestamp="1624428748243">
-      <screen x="0" y="0" width="1280" height="689" />
-    </state>
-    <state x="421" y="87" key="FileChooserDialogImpl/0.0.1280.689@0.0.1280.689" timestamp="1624428748243" />
-    <state width="1236" height="2" key="GridCell.Tab.0.bottom" timestamp="1624459406770">
-      <screen x="0" y="0" width="1280" height="689" />
-    </state>
-    <state width="1236" height="2" key="GridCell.Tab.0.bottom/0.0.1280.689@0.0.1280.689" timestamp="1624459406770" />
-    <state width="1236" height="2" key="GridCell.Tab.0.center" timestamp="1624459406770">
-      <screen x="0" y="0" width="1280" height="689" />
-    </state>
-    <state width="1236" height="2" key="GridCell.Tab.0.center/0.0.1280.689@0.0.1280.689" timestamp="1624459406770" />
-    <state width="1236" height="2" key="GridCell.Tab.0.left" timestamp="1624459406770">
-      <screen x="0" y="0" width="1280" height="689" />
-    </state>
-    <state width="1236" height="2" key="GridCell.Tab.0.left/0.0.1280.689@0.0.1280.689" timestamp="1624459406770" />
-    <state width="1236" height="2" key="GridCell.Tab.0.right" timestamp="1624459406770">
-      <screen x="0" y="0" width="1280" height="689" />
-    </state>
-    <state width="1236" height="2" key="GridCell.Tab.0.right/0.0.1280.689@0.0.1280.689" timestamp="1624459406770" />
-    <state width="1236" height="139" key="GridCell.Tab.1.bottom" timestamp="1623392147637">
-      <screen x="0" y="0" width="1280" height="689" />
-    </state>
-    <state width="1236" height="139" key="GridCell.Tab.1.bottom/0.0.1280.689@0.0.1280.689" timestamp="1623392147637" />
-    <state width="1236" height="139" key="GridCell.Tab.1.center" timestamp="1623392147637">
-      <screen x="0" y="0" width="1280" height="689" />
-    </state>
-    <state width="1236" height="139" key="GridCell.Tab.1.center/0.0.1280.689@0.0.1280.689" timestamp="1623392147637" />
-    <state width="1236" height="139" key="GridCell.Tab.1.left" timestamp="1623392147637">
-      <screen x="0" y="0" width="1280" height="689" />
-    </state>
-    <state width="1236" height="139" key="GridCell.Tab.1.left/0.0.1280.689@0.0.1280.689" timestamp="1623392147637" />
-    <state width="1236" height="139" key="GridCell.Tab.1.right" timestamp="1623392147637">
-      <screen x="0" y="0" width="1280" height="689" />
-    </state>
-    <state width="1236" height="139" key="GridCell.Tab.1.right/0.0.1280.689@0.0.1280.689" timestamp="1623392147637" />
-    <state x="396" y="48" key="RollbackChangesDialog" timestamp="1624366932161">
-      <screen x="0" y="0" width="1280" height="689" />
-    </state>
-    <state x="396" y="48" key="RollbackChangesDialog/0.0.1280.689@0.0.1280.689" timestamp="1624366932161" />
-    <state x="142" y="0" key="SettingsEditor" timestamp="1621503987161">
-      <screen x="0" y="0" width="1280" height="689" />
-    </state>
-    <state x="142" y="0" key="SettingsEditor/0.0.1280.689@0.0.1280.689" timestamp="1621503987161" />
-    <state width="647" height="346" key="XDebugger.FullValuePopup" timestamp="1623392046963">
-      <screen x="0" y="0" width="1280" height="689" />
-    </state>
-    <state width="647" height="346" key="XDebugger.FullValuePopup/0.0.1280.689@0.0.1280.689" timestamp="1623392046963" />
-    <state x="552" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1624342762897">
-      <screen x="0" y="0" width="1280" height="689" />
-    </state>
-    <state x="552" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1280.689@0.0.1280.689" timestamp="1624342762897" />
-    <state x="219" y="3" width="787" height="686" key="find.popup" timestamp="1624447234864">
-      <screen x="0" y="0" width="1280" height="689" />
-    </state>
-    <state x="219" y="3" width="787" height="686" key="find.popup/0.0.1280.689@0.0.1280.689" timestamp="1624447234864" />
-    <state x="298" y="153" key="run.anything.popup" timestamp="1623333059981">
-      <screen x="0" y="0" width="1280" height="689" />
-    </state>
-    <state x="298" y="153" key="run.anything.popup/0.0.1280.689@0.0.1280.689" timestamp="1623333059981" />
-    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup" timestamp="1624426590666">
-      <screen x="0" y="0" width="1280" height="689" />
-    </state>
-    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup/0.0.1280.689@0.0.1280.689" timestamp="1624426590666" />
+    <state x="296" y="140" width="670" height="676" key="search.everywhere.popup/0.23.1440.793@0.23.1440.793" timestamp="1635920791784" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -580,27 +523,27 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMHomeFragment.java</url>
-          <line>77</line>
+          <line>90</line>
           <option name="timeStamp" value="33" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMHomeFragment.java</url>
-          <line>82</line>
+          <line>95</line>
           <option name="timeStamp" value="34" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMHomeFragment.java</url>
-          <line>91</line>
+          <line>104</line>
           <option name="timeStamp" value="35" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMHomeFragment.java</url>
-          <line>97</line>
+          <line>110</line>
           <option name="timeStamp" value="36" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMHomeFragment.java</url>
-          <line>84</line>
+          <line>97</line>
           <option name="timeStamp" value="37" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">

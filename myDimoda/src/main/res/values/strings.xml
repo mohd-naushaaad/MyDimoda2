@@ -57,5 +57,7 @@
     <string name="alert_added">We have successfully added this look as your favourite look for the trip.</string>
     <string name="suggested_look_for_trip">Suggested looks for %1s trip</string>
     <string name="number_of_look">%d Looks</string>
+    <string name="txt_privacy_policy"><u>Privacy Policy</u></string>
+    <string name="privacypolicyurl">https://www.docracy.com/0z2hyuetx2i/mydimoda-privacy-policy</string>
 
 </resources>

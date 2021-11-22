@@ -1,6 +1,7 @@
 package com.mydimoda;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.media.MediaPlayer;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.mydimoda.widget.MyVideoView;
 
@@ -36,6 +38,7 @@ public class DMHomeFragment extends Fragment {
 		View view = inflater.inflate(R.layout.fragment_home, container, false);
 		vHomeVideo = (MyVideoView) view.findViewById(R.id.home_videoview);
 		vEmpty = (View) view.findViewById(R.id.view1);
+		TextView tvPrivacyPolicy = (TextView) view.findViewById(R.id.tvPrivacyPolicy);
 
 		vEmpty.setOnClickListener(new OnClickListener() {
 
@@ -43,6 +46,16 @@ public class DMHomeFragment extends Fragment {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				mActivity.slideMenu();
+			}
+		});
+
+		tvPrivacyPolicy.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.privacypolicyurl)));
+				startActivity(browserIntent);
 			}
 		});
 

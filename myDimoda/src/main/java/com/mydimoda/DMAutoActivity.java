@@ -434,8 +434,8 @@ public class DMAutoActivity extends Activity {
                     }
                 } else {
                     //uncomment when amazona and ASOS issue solved
-                    Toast.makeText(DMAutoActivity.this, "Network Error",
-                            Toast.LENGTH_LONG).show();
+//                    Toast.makeText(DMAutoActivity.this, "Network Error",
+//                            Toast.LENGTH_LONG).show();
                 }
 
                 showProductGrid(itemCount);
@@ -586,8 +586,8 @@ public class DMAutoActivity extends Activity {
                     }
                 } else {
                     //uncomment when amazona and ASOS issue solved
-                    Toast.makeText(DMAutoActivity.this, "Network Error",
-                            Toast.LENGTH_LONG).show();
+//                    Toast.makeText(DMAutoActivity.this, "Network Error",
+//                            Toast.LENGTH_LONG).show();
                 }
                 showProductGrid(itemCount);
             }

@@ -255,8 +255,8 @@ public class DMDetailActivity extends Activity {
                     mReview = new DMReviewObject(data);
                 } else {
                     //uncomment when amazona and ASOS issue solved
-                    Toast.makeText(DMDetailActivity.this, "Network Error",
-                            Toast.LENGTH_LONG).show();
+//                    Toast.makeText(DMDetailActivity.this, "Network Error",
+//                            Toast.LENGTH_LONG).show();
                 }
 
                 showReview();
