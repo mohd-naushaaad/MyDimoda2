@@ -3,10 +3,17 @@
 
     <string name="app_name">myDiModa</string>
     <string name="action_settings">Settings</string>
-    <string name="facebook_app_id">608361809277602</string>
     <string name="camera_cropping">Cropping Card</string>
     <!-- <string name="google_iap_base64">MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjcGH6tBtzrbHJ1dcby0BstdozBxIWQ/X7aKyXKcRU9XxX5aScHaNV50FOxM4tA7etGf4pyJWqCK6CibGX5vm9CRP+/5d3g8NQlGGVieaplnRzeKVRfNrhS4Mersin+UHhuSNN+bW6mj87xmwP23nQ+4eNpT/kr3BDAq7tFm+12iSo+8J3uIgr/QVbIYmPTjgwWMUcP2OU2z+g3kIQjFMkxCUQh8/XaA71QeV19ByjMQSB35iy/ThS0P1xJYjl7FKGSFifu8QCsnjK5+bmtWWLsDW9/Kx8KgVz+aUO3EqWTxnpq44+7rqoUiXWWj8P48ppPz/TzQvjWu4ZeuZz1bGVQIDAQAB</string> -->
     <string name="google_iap_base64">MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArZAl5DO/ShtymzD3PZiuHv7u0yKpRZ0lQPMQhD8wnsPe4PEwlXCQxPNUaQkh+ZnvZka1qwr5V2VvC7w8onIYtzpiWtVI5gofrynw/W4RVZu2e8HXMFfwZfRpJVr7PluJqhuY70I8fayocs9sHP7jWXOVjyGczN6NO5jld9dWjg+Omzu+s2KF05+zKW1vamGPUtOzmWlLlKOlgykmi6IKuhp9Q0nbow7w13+OafoKcWQFZQD4HcdUhxWWrj8qo/yc0u/AcljXVmU/p1LoPJb3H53gG//G8XTEwGS1YGhlG/R45vE+FLunCTGFDo1HEBv2IIOrUuIulIIN/7MAi0p1BwIDAQAB</string>
+
+
+    <!-- Facebook -->
+    <string name="facebook_app_id">608361809277602</string>
+    <string name="fb_login_protocol_scheme">fb608361809277602</string>
+    <string name="facebook_client_token">d154ca1de61a30252546ba51be5a4170</string>
+
+
 
     <!-- China -->
 

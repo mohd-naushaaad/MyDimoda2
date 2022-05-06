@@ -288,6 +288,7 @@ public class DMSettingActivity extends Activity {
         AppUtils.setDefaults(constant.PREF_IS_GALRY_DIALOG_SHOWN, false, this);
         SharedPreferenceUtil.putValue(constant.USER_MAX_COUNT_INITILISED, false);
         SharedPreferenceUtil.putValue(constant.PREF_MAX_COUNT_CONFIGURED, false);
+
 //Now call logout
         ParseUser.logOutInBackground();
 

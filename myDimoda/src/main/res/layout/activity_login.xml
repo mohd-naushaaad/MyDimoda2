@@ -71,11 +71,12 @@
             android:layout_height="45dp"
             android:layout_marginTop="15dp" >
 
-            <Button
+            <com.facebook.login.widget.LoginButton
                 android:id="@+id/facebook_btn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/facebook_btn" />
+                android:layout_centerInParent="true"/>
+
         </RelativeLayout>
 
         <LinearLayout
