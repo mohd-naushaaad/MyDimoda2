@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mydimoda.iml" filepath="$PROJECT_DIR$/.idea/modules/mydimoda.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/myDimoda/mydimoda.myDimoda.iml" filepath="$PROJECT_DIR$/.idea/modules/myDimoda/mydimoda.myDimoda.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/pullSDK/mydimoda.pullSDK.iml" filepath="$PROJECT_DIR$/.idea/modules/pullSDK/mydimoda.pullSDK.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MyDimoda2.iml" filepath="$PROJECT_DIR$/.idea/modules/MyDimoda2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/myDimoda/MyDimoda2.myDimoda.iml" filepath="$PROJECT_DIR$/.idea/modules/myDimoda/MyDimoda2.myDimoda.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/pullSDK/MyDimoda2.pullSDK.iml" filepath="$PROJECT_DIR$/.idea/modules/pullSDK/MyDimoda2.pullSDK.iml" />
     </modules>
   </component>
 </project>

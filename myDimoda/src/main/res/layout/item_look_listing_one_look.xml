@@ -38,6 +38,7 @@
         tools:itemCount="4"
         tools:listitem="@layout/grid_fashion_layout"
         tools:spanCount="2" />
+
     <!--<GridView
         android:id="@+id/fashion_gridview"
         android:layout_width="match_parent"

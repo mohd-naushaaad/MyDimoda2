@@ -20,14 +20,24 @@
     </layouts>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="675195de-edd9-472f-aa75-773e1d53deb2" name="Default" comment="5-2 logic corrected testing in progress" />
+    <list default="true" id="675195de-edd9-472f-aa75-773e1d53deb2" name="Default" comment="5-2 logic corrected testing in progress">
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myDimoda/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/jniLibs/armeabi/libcvlibbase.so" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/jniLibs/armeabi/libcvlibbase.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout/item_look_listing_one_look.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout/item_look_listing_one_look.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,7 +46,7 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[VirtualDevicePath@/Users/arpitajain/.android/avd/Samsung_M30_API_30.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\Naushad\.android\avd\Pixel_4_API_24.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -86,10 +96,13 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="bugFixing2021" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/myDimoda/build.gradle" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1ZWm6SEo40sntEdzGX2d8NQgdab" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -106,24 +119,29 @@
     <property name="DEBUGGER_ID" value="Java" />
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="New_Device_1_API_28" />
     <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2021-06-24T05:45:23.835Z" />
-    <property name="ExportApk.ApkPath" value="$PROJECT_DIR$/../.." />
+    <property name="ExportApk.ApkPath" value="$USER_HOME$" />
     <property name="ExportApk.BuildVariants" value="release" />
     <property name="ExportApk.SignV1" value="true" />
     <property name="ExportApk.SignV2" value="true" />
     <property name="FullScreen" value="false" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SHOW_ALL_PROCESSES" value="false" />
     <property name="SearchEverywhereHistoryKey" value="alar&#9;FILE&#9;file://E:/MyDimoda_3_MARCH/myDimoda/src/main/java/com/mydimoda/AlarmReciever.java&#10;noti&#9;FILE&#9;file://E:/MyDimoda_3_MARCH/myDimoda/src/main/java/com/mydimoda/DMNotificationActivity.java&#10;dmoc&#9;PSI&#9;JAVA://com.mydimoda.adapter.DMOccasionListAdapter&#10;gra&#9;FILE&#9;file://E:/MyDimoda_3_MARCH/myDimoda/build.gradle&#10;log&#9;FILE&#9;file://E:/MyDimoda_3_MARCH/myDimoda/src/main/res/layout-xlarge/activity_login.xml&#10;logi&#9;PSI&#9;JAVA://com.facebook.LoginActivity&#10;set&#9;FILE&#9;file://E:/MyDimoda_3_MARCH/myDimoda/src/main/res/layout-xlarge/activity_setting.xml&#10;cons&#9;FILE&#9;file://E:/MyDimoda_3_MARCH/myDimoda/src/main/java/com/mydimoda/constant.java&#10;rate&#9;PSI&#9;JAVA://com.mydimoda.Activity_RateApp&#10;sett&#9;FILE&#9;file://E:/MyDimoda_3_MARCH/myDimoda/src/main/java/com/mydimoda/DMSettingActivity.java&#10;se&#9;FILE&#9;file://E:/MyDimoda_3_MARCH/myDimoda/src/main/res/layout-xlarge/activity_setting.xml" />
     <property name="add_unversioned_files" value="true" />
     <property name="android-custom-viewC:/Users/Hp/AppData/Local/Android/Sdk/sources/android-29/android/view/View.java_SELECTED" value="View" />
+    <property name="android-custom-viewC:/Users/Naushad/AndroidStudioProjects/MyDimoda2/pullSDK/src/main/java/com/handmark/pulltorefresh/library/PullToRefreshWebView.java_SELECTED" value="PullToRefreshWebView" />
     <property name="android-custom-viewD:/android/mydimoda/myDimoda/src/main/java/com/mydimoda/widget/cropper/CropImageView.java_SELECTED" value="CropImageView" />
     <property name="android-custom-viewD:/android/mydimoda/myDimoda/src/main/java/com/mydimoda/widget/cropper/cropwindow/CropOverlayView.java_SELECTED" value="CropOverlayView" />
     <property name="android-custom-viewD:/android/mydimoda/pullSDK/src/main/java/com/handmark/pulltorefresh/library/PullToRefreshAdapterViewBase.java_SELECTED" value="PullToRefreshAdapterViewBase" />
     <property name="android-custom-viewD:/android/mydimoda/pullSDK/src/main/java/com/handmark/pulltorefresh/library/PullToRefreshBase.java_SELECTED" value="PullToRefreshBase" />
     <property name="android-custom-viewD:/android/mydimoda/pullSDK/src/main/java/com/handmark/pulltorefresh/library/PullToRefreshGridView.java_SELECTED" value="PullToRefreshGridView" />
+    <property name="cidr.known.project.marker" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="device.picker.selection" value="ZY2245B534" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/myDimoda/src/main/jniLibs/x86_64" />
     <property name="multi-representation-previewC:/Users/Hp/AppData/Local/Android/Sdk/sources/android-29/android/view/View.java_selected" value="Custom views" />
     <property name="multi-representation-previewD:/android/mydimoda/myDimoda/src/main/java/com/mydimoda/widget/cropper/CropImageView.java_selected" value="Custom views" />
     <property name="multi-representation-previewD:/android/mydimoda/myDimoda/src/main/java/com/mydimoda/widget/cropper/cropwindow/CropOverlayView.java_selected" value="Custom views" />
@@ -133,20 +151,26 @@
     <property name="project.structure.last.edited" value="Suggestions" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="recentsLimit" value="5" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\android\mydimoda\myDimoda\src\main\jniLibs\arm64-v8a" />
-      <recent name="D:\android\mydimoda\myDimoda\src\main\jniLibs\x86" />
-      <recent name="D:\android\mydimoda\myDimoda\src\main\jniLibs\armeabi-v7a" />
-      <recent name="D:\android\mydimoda\myDimoda\src\main\jniLibs" />
-      <recent name="E:\Sudio_WorkSpace\mydimoda\myDimoda\src\main\res" />
+      <recent name="C:\Users\Naushad\AndroidStudioProjects\MyDimoda2\myDimoda\src\main\jniLibs\x86_64" />
+      <recent name="C:\Users\Naushad\AndroidStudioProjects\MyDimoda2\myDimoda\src\main\jniLibs\x86" />
+      <recent name="C:\Users\Naushad\AndroidStudioProjects\MyDimoda2\myDimoda\src\main\jniLibs\armeabi-v7a" />
+      <recent name="C:\Users\Naushad\AndroidStudioProjects\MyDimoda2\myDimoda\src\main\jniLibs\arm64-v8a" />
+      <recent name="C:\Users\Naushad\AndroidStudioProjects\MyDimoda2\myDimoda\src\main\jniLibs" />
     </key>
   </component>
   <component name="RunManager" selected="Android App.myDimoda">
+    <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
       <module name="" />
       <option name="DEPLOY" value="true" />
@@ -194,42 +218,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="JUnit" factoryName="JUnit">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method>
-        <option name="Make" enabled="false" />
-        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="&lt;template&gt;" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" default="true" selected="false">
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
     </configuration>
-    <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
-      <option name="TEST_OBJECT" value="class" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <method v="2">
-        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="myDimoda" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
-      <module name="mydimoda.myDimoda" />
+      <module name="MyDimoda2.myDimoda" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
       <option name="DEPLOY_AS_INSTANT" value="false" />
@@ -244,10 +237,11 @@
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
       <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
       <option name="FORCE_STOP_RUNNING_APP" value="true" />
-      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="INSPECTION_WITHOUT_ACTIVITY_RESTART" value="false" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
       <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
       <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
-      <option name="DEBUGGER_TYPE" value="Java" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
       <Auto>
         <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
         <option name="SHOW_STATIC_VARS" value="true" />
@@ -274,7 +268,7 @@
         <option name="ADVANCED_PROFILING_ENABLED" value="false" />
         <option name="STARTUP_PROFILING_ENABLED" value="false" />
         <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
-        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Java/Kotlin Method Sample (legacy)" />
         <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
         <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
       </Profilers>
@@ -329,7 +323,9 @@
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
     <configuration name="mydimoda:myDimoda [lintDebug]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -348,8 +344,18 @@
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="false" />
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="TestNG">
       <option name="TEST_OBJECT" value="CLASS" />
@@ -454,44 +460,6 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Bugs Fixed" />
     <option name="LAST_COMMIT_MESSAGE" value="Bugs Fixed" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="161" y="123" width="993" height="538" key="AVDManager" timestamp="1635920746547">
-      <screen x="0" y="23" width="1440" height="793" />
-    </state>
-    <state x="161" y="123" width="993" height="538" key="AVDManager/0.23.1440.793@0.23.1440.793" timestamp="1635920746547" />
-    <state x="488" y="150" key="AndroidCreateXmlResourceDialog" timestamp="1635848933170">
-      <screen x="0" y="23" width="1440" height="793" />
-    </state>
-    <state x="488" y="150" key="AndroidCreateXmlResourceDialog/0.23.1440.793@0.23.1440.793" timestamp="1635848933170" />
-    <state width="1151" height="285" key="GridCell.Tab.0.bottom" timestamp="1635855788945">
-      <screen x="0" y="23" width="1440" height="793" />
-    </state>
-    <state width="1151" height="285" key="GridCell.Tab.0.bottom/0.23.1440.793@0.23.1440.793" timestamp="1635855788945" />
-    <state width="1151" height="285" key="GridCell.Tab.0.center" timestamp="1635855788944">
-      <screen x="0" y="23" width="1440" height="793" />
-    </state>
-    <state width="1151" height="285" key="GridCell.Tab.0.center/0.23.1440.793@0.23.1440.793" timestamp="1635855788944" />
-    <state width="1151" height="285" key="GridCell.Tab.0.left" timestamp="1635855788943">
-      <screen x="0" y="23" width="1440" height="793" />
-    </state>
-    <state width="1151" height="285" key="GridCell.Tab.0.left/0.23.1440.793@0.23.1440.793" timestamp="1635855788943" />
-    <state width="1151" height="285" key="GridCell.Tab.0.right" timestamp="1635855788944">
-      <screen x="0" y="23" width="1440" height="793" />
-    </state>
-    <state width="1151" height="285" key="GridCell.Tab.0.right/0.23.1440.793@0.23.1440.793" timestamp="1635855788944" />
-    <state x="364" y="147" width="630" height="490" key="find.popup" timestamp="1635930517832">
-      <screen x="0" y="23" width="1440" height="793" />
-    </state>
-    <state x="364" y="147" width="630" height="490" key="find.popup/0.23.1440.793@0.23.1440.793" timestamp="1635930517832" />
-    <state width="300" height="98" key="javadoc.popup.new" timestamp="1635851272257">
-      <screen x="0" y="23" width="1440" height="793" />
-    </state>
-    <state width="300" height="98" key="javadoc.popup.new/0.23.1440.793@0.23.1440.793" timestamp="1635851272257" />
-    <state x="296" y="140" width="670" height="676" key="search.everywhere.popup" timestamp="1635920791784">
-      <screen x="0" y="23" width="1440" height="793" />
-    </state>
-    <state x="296" y="140" width="670" height="676" key="search.everywhere.popup/0.23.1440.793@0.23.1440.793" timestamp="1635920791784" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -880,21 +848,6 @@
           <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/social/google/GoogleIAP.java</url>
           <line>72</line>
           <option name="timeStamp" value="123" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
-          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/database/DbAdapter.java</url>
-          <line>51</line>
-          <option name="timeStamp" value="124" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
-          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/database/DbAdapter.java</url>
-          <line>46</line>
-          <option name="timeStamp" value="125" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
-          <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/database/DbAdapter.java</url>
-          <line>47</line>
-          <option name="timeStamp" value="126" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMHomeActivity.java</url>
