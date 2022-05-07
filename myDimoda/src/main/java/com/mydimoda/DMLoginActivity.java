@@ -35,10 +35,10 @@ import com.mydimoda.database.DbAdapter;
 import com.mydimoda.widget.cropper.util.FontsUtil;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
-import com.parse.ParseFacebookUtils;
 import com.parse.ParseInstallation;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
+import com.parse.facebook.ParseFacebookUtils;
 
 import org.json.JSONObject;
 

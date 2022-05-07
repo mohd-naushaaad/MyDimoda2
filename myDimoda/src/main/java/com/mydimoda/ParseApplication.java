@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 
 import com.crashlytics.android.Crashlytics;
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
 import com.facebook.stetho.Stetho;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -15,8 +17,8 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.parse.Parse;
 import com.parse.ParseACL;
-import com.parse.ParseFacebookUtils;
 import com.parse.ParseUser;
+import com.parse.facebook.ParseFacebookUtils;
 
 import io.fabric.sdk.android.Fabric;
 import okhttp3.OkHttpClient;
@@ -41,6 +43,7 @@ public class ParseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
         Stetho.initializeWithDefaults(this);
         Fabric.with(this, new Crashlytics());
         mContext = this;
@@ -59,6 +62,7 @@ public class ParseApplication extends Application {
         initImageLoader(getApplicationContext());
         // Use for troubleshooting -- remove this line for production
         Parse.setLogLevel(Parse.LOG_LEVEL_DEBUG);
+
 
         // Use for monitoring Parse OkHttp traffic
         // Can be Level.BASIC, Level.HEADERS, or Level.BODY
