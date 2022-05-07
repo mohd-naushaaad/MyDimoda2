@@ -28,16 +28,14 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="675195de-edd9-472f-aa75-773e1d53deb2" name="Default" comment="5-2 logic corrected testing in progress">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="675195de-edd9-472f-aa75-773e1d53deb2" name="Default" comment="facebook login upgraded">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myDimoda/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMLoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMLoginActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMSettingActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMSettingActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMSignUpActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/DMSignUpActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/ParseApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/java/com/mydimoda/ParseApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_login.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_signup.xml" beforeDir="false" afterPath="$PROJECT_DIR$/myDimoda/src/main/res/layout/activity_signup.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +45,7 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\Naushad\.android\avd\Pixel_4_API_24.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[83d707fe]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -406,7 +404,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651812015984</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="facebook login upgraded">
+      <created>1651847471157</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1651847471157</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView">
@@ -477,7 +482,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Bugs Fixed" />
     <MESSAGE value="5-2 logic corrected testing in progress" />
-    <option name="LAST_COMMIT_MESSAGE" value="5-2 logic corrected testing in progress" />
+    <MESSAGE value="facebook login upgraded" />
+    <option name="LAST_COMMIT_MESSAGE" value="facebook login upgraded" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

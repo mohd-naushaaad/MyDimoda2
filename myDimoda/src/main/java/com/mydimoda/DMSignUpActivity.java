@@ -91,7 +91,6 @@ public class DMSignUpActivity extends Activity {
 		user.setEmail(email);
 		user.put("newUser",true);
 
-
 		constant.showProgress(this, "Registering");
 		user.signUpInBackground(new SignUpCallback() {
 			public void done(ParseException e) {

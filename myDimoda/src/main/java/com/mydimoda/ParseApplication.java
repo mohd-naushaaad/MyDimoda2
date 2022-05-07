@@ -6,8 +6,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 
 import com.crashlytics.android.Crashlytics;
-import com.facebook.FacebookSdk;
-import com.facebook.appevents.AppEventsLogger;
 import com.facebook.stetho.Stetho;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -43,10 +41,6 @@ public class ParseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
-        FacebookSdk.sdkInitialize(getApplicationContext());
-        AppEventsLogger.activateApp(this);
-
         Stetho.initializeWithDefaults(this);
         Fabric.with(this, new Crashlytics());
         mContext = this;
@@ -82,7 +76,7 @@ public class ParseApplication extends Application {
                 .server("http://52.25.182.16:1337/parse/").build());
 
 //		ParseFacebookUtils.initialize("608361809277602");
-/*        ParseFacebookUtils.initialize(this);//mayur updated*/
+        ParseFacebookUtils.initialize(this);//mayur updated
         ParseACL defaultACL = new ParseACL();
         ParseACL.setDefaultACL(defaultACL, true);
 

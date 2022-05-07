@@ -29,13 +29,8 @@ import android.widget.Toast;
 import androidx.appcompat.widget.AppCompatEditText;
 
 import com.facebook.AccessToken;
-import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
-import com.facebook.login.LoginResult;
-import com.facebook.login.widget.LoginButton;
 import com.mydimoda.database.DbAdapter;
 import com.mydimoda.widget.cropper.util.FontsUtil;
 import com.parse.LogInCallback;
@@ -54,8 +49,7 @@ import java.util.List;
 
 public class DMLoginActivity extends Activity {
 
-    Button vBtnSignUp, vBtnLogin;
-    private LoginButton vBtnFacebook;
+    Button vBtnFacebook, vBtnSignUp, vBtnLogin;
     AppCompatEditText vUsername, vPassword;
     TextView vTxtRemember;
     ImageButton vBtnRemember;
@@ -64,15 +58,10 @@ public class DMLoginActivity extends Activity {
     boolean mIsRemember = true;
     DbAdapter mDbAdapter;
 
-    private CallbackManager callbackManager;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        callbackManager = CallbackManager.Factory.create();
-
 //		mDbAdapter = new DbAdapter(DMLoginActivity.this);
 //		mDbAdapter.createDatabase();
 //		mDbAdapter.open();
@@ -93,10 +82,10 @@ public class DMLoginActivity extends Activity {
             e.printStackTrace();
         }
 
-        vBtnFacebook = (LoginButton) findViewById(R.id.facebook_btn);
+        vBtnFacebook = (Button) findViewById(R.id.facebook_btn);
         vBtnSignUp = (Button) findViewById(R.id.signup_btn);
         vBtnLogin = (Button) findViewById(R.id.login_btn);
-        vUsername = findViewById(R.id.username_view);
+        vUsername =  findViewById(R.id.username_view);
         vPassword = findViewById(R.id.pass_view);
         vTxtRemember = (TextView) findViewById(R.id.remember_view);
         vBtnRemember = (ImageButton) findViewById(R.id.remember_btn);
@@ -134,31 +123,7 @@ public class DMLoginActivity extends Activity {
             }
         });
 
-        vBtnFacebook.setPermissions("email", "public_profile");
-        vBtnFacebook.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-
-
-                Log.d("MyApp",
-                        "User signed up and logged in through Facebook!");
-                AppUtils.getDefaults(DMLoginActivity.this, constant.PREF_IS_GALRY_DIALOG_SHOWN, false);
-                saveUserData(DMLoginActivity.this);
-            }
-
-            @Override
-            public void onCancel() {
-                Toast.makeText(DMLoginActivity.this,
-                        "Uh oh. The user cancelled the Facebook login.", Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void onError(FacebookException e) {
-                e.printStackTrace();
-            }
-        });
-
-       /* vBtnFacebook.setOnClickListener(new View.OnClickListener() {
+        vBtnFacebook.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
                 // TODO Auto-generated method stub
@@ -170,7 +135,7 @@ public class DMLoginActivity extends Activity {
                 }
             }
         });
-*/
+
         vBtnSignUp.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -262,7 +227,7 @@ public class DMLoginActivity extends Activity {
                             DMLoginActivity.this,
                             "Uh oh. The user cancelled the Facebook login.",
                             Toast.LENGTH_LONG).show();
-                    constant.hideProgress();
+                     constant.hideProgress();
                 } else if (user.isNew()) {
                     Log.d("MyApp",
                             "User signed up and logged in through Facebook!");
@@ -275,14 +240,6 @@ public class DMLoginActivity extends Activity {
 
             }
         });
-    }
-
-    public void loginWithFacebook2() {
-
-    }
-
-    public void retrieveFacebookData(JSONObject jsonObject) {
-
     }
 
     // updated according to new sdk
@@ -299,7 +256,7 @@ public class DMLoginActivity extends Activity {
 
                         Log.e("dmlogin", object.toString() + " response: " + response.getRawResponse());
                         constant.gUserName = object.optString("name");
-
+                        ;
 
                         if (object.has("email")) {
                             constant.gEmail = object.optString("email");
@@ -381,7 +338,8 @@ public class DMLoginActivity extends Activity {
 
                             if (user != null) {
 
-                                boolean isVerify = user.getBoolean("emailVerified");
+                                boolean isVerify = user
+                                        .getBoolean("emailVerified");
                                 if (isVerify) {
                                     constant.gUserName = user.getUsername();
                                     constant.gEmail = user.getEmail();
@@ -511,13 +469,9 @@ public class DMLoginActivity extends Activity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (callbackManager != null) {
-            callbackManager.onActivityResult(requestCode, resultCode, data);
-        }
-
         super.onActivityResult(requestCode, resultCode, data);
         //  ParseFacebookUtils.finishAuthentication(requestCode, resultCode, data);
-        /*        ParseFacebookUtils.onActivityResult(requestCode, resultCode, data);// mayur updated*/
+        ParseFacebookUtils.onActivityResult(requestCode, resultCode, data);// mayur updated
     }
 
     @Override
